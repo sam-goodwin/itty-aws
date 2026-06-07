@@ -14,6 +14,7 @@ export const MarketplaceAgreementsCancelInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/agreements/{publisherId}/offers/{offerId}/plans/{planId}/cancel",
+      apiVersion: "2021-01-01",
     }),
   );
 export type MarketplaceAgreementsCancelInput =
@@ -41,10 +42,42 @@ export const MarketplaceAgreementsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MarketplaceAgreementsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        publisher: Schema.optional(Schema.String),
+        product: Schema.optional(Schema.String),
+        plan: Schema.optional(Schema.String),
+        licenseTextLink: Schema.optional(Schema.String),
+        privacyPolicyLink: Schema.optional(Schema.String),
+        marketplaceTermsLink: Schema.optional(Schema.String),
+        retrieveDatetime: Schema.optional(Schema.String),
+        signature: Schema.optional(Schema.String),
+        accepted: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/offerTypes/{offerType}/publishers/{publisherId}/offers/{offerId}/plans/{planId}/agreements/current",
+      apiVersion: "2021-01-01",
     }),
   );
 export type MarketplaceAgreementsCreateInput =
@@ -76,6 +109,7 @@ export const MarketplaceAgreementsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/offerTypes/{offerType}/publishers/{publisherId}/offers/{offerId}/plans/{planId}/agreements/current",
+      apiVersion: "2021-01-01",
     }),
   );
 export type MarketplaceAgreementsGetInput =
@@ -107,6 +141,7 @@ export const MarketplaceAgreementsGetAgreementInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/agreements/{publisherId}/offers/{offerId}/plans/{planId}",
+      apiVersion: "2021-01-01",
     }),
   );
 export type MarketplaceAgreementsGetAgreementInput =
@@ -137,6 +172,7 @@ export const MarketplaceAgreementsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/agreements",
+      apiVersion: "2021-01-01",
     }),
   );
 export type MarketplaceAgreementsListInput =
@@ -174,6 +210,7 @@ export const MarketplaceAgreementsSignInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/agreements/{publisherId}/offers/{offerId}/plans/{planId}/sign",
+      apiVersion: "2021-01-01",
     }),
   );
 export type MarketplaceAgreementsSignInput =
@@ -206,6 +243,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.MarketplaceOrdering/operations",
+    apiVersion: "2021-01-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;

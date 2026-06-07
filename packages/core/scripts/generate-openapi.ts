@@ -714,9 +714,16 @@ function generateInputSchemaSwagger(
   const bodyParam = parameters.find((p) => p.in === "body");
 
   const fields: string[] = [];
+  // Track emitted field names so later groups (query, body) don't redeclare a
+  // name already taken by an earlier group. Path params win — without this, a
+  // body field sharing a path param's name (e.g. `billingAccountId`) would be
+  // emitted second and clobber the `T.PathParam()` binding.
+  const usedNames = new Set<string>();
 
   // Path parameters
   for (const param of pathParams) {
+    if (usedNames.has(param.name)) continue;
+    usedNames.add(param.name);
     const baseSchema = param.enum
       ? renderEnumLiterals(param.enum, param.type)
       : param.type === "integer"
@@ -727,6 +734,8 @@ function generateInputSchemaSwagger(
 
   // Query parameters
   for (const param of queryParams) {
+    if (usedNames.has(param.name)) continue;
+    usedNames.add(param.name);
     let schema = param.enum
       ? renderEnumLiterals(param.enum, param.type)
       : param.type === "integer" || param.type === "number"
@@ -743,10 +752,36 @@ function generateInputSchemaSwagger(
 
   // Body parameters
   if (bodyParam?.schema) {
-    const bodySchema = bodyParam.schema;
+    let bodySchema = bodyParam.schema;
+    // Resolve a top-level `$ref` body (e.g. `{ $ref: "#/definitions/ResourceGroup" }`).
+    // Without this, `bodySchema.properties` is undefined and the request body is
+    // emitted empty — breaking create/update operations. Mirrors the OAS3 emitter.
+    if (bodySchema.$ref) {
+      bodySchema = resolveRef(spec as any, bodySchema.$ref) as typeof bodySchema;
+    }
+    // Flatten `allOf` so inherited properties surface as body fields.
+    if (bodySchema.allOf && bodySchema.allOf.length > 0) {
+      const mergedProps: Record<string, any> = { ...(bodySchema.properties ?? {}) };
+      const mergedRequired: string[] = [...(bodySchema.required ?? [])];
+      for (const subSchema of bodySchema.allOf) {
+        const resolvedSub = subSchema.$ref
+          ? (resolveRef(spec as any, subSchema.$ref) as any)
+          : subSchema;
+        if (resolvedSub.properties) Object.assign(mergedProps, resolvedSub.properties);
+        if (resolvedSub.required) mergedRequired.push(...resolvedSub.required);
+      }
+      bodySchema = {
+        ...bodySchema,
+        type: "object",
+        properties: mergedProps,
+        required: [...new Set(mergedRequired)],
+      } as typeof bodySchema;
+    }
     if (bodySchema.properties) {
       const required = new Set(bodySchema.required || []);
       for (const [key, value] of Object.entries(bodySchema.properties)) {
+        if (usedNames.has(key)) continue;
+        usedNames.add(key);
         // Auto-detect sensitive fields by name pattern
         const bType = getBaseType(value);
         const isSensitiveByName =

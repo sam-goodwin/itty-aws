@@ -9,12 +9,35 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.Struct({
+    principalId: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+  }),
+  properties: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Creating",
+          "Deleting",
+          "Moving",
+          "Failed",
+        ]),
+      ),
+      userEmail: Schema.optional(Schema.String),
+      userName: Schema.optional(Schema.String),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type AccountsCreateInput = typeof AccountsCreateInput.Type;
@@ -58,6 +81,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -102,6 +126,7 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type AccountsGetInput = typeof AccountsGetInput.Type;
@@ -146,6 +171,7 @@ export const AccountsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts",
+      apiVersion: "2021-08-01",
     }),
   );
 export type AccountsListByResourceGroupInput =
@@ -212,6 +238,7 @@ export const AccountsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataShare/accounts",
+      apiVersion: "2021-08-01",
     }),
   );
 export type AccountsListBySubscriptionInput =
@@ -271,12 +298,13 @@ export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -322,6 +350,7 @@ export const ConsumerInvitationsGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.DataShare/locations/{location}/consumerInvitations/{invitationId}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ConsumerInvitationsGetInput =
@@ -374,6 +403,7 @@ export const ConsumerInvitationsListInvitationsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.DataShare/listInvitations",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ConsumerInvitationsListInvitationsInput =
@@ -435,10 +465,47 @@ export const ConsumerInvitationsListInvitations =
 export const ConsumerInvitationsRejectInvitationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      dataSetCount: Schema.optional(Schema.Number),
+      description: Schema.optional(Schema.String),
+      expirationDate: Schema.optional(Schema.String),
+      invitationId: Schema.String,
+      invitationStatus: Schema.optional(
+        Schema.Literals(["Pending", "Accepted", "Rejected", "Withdrawn"]),
+      ),
+      location: Schema.optional(Schema.String),
+      providerEmail: Schema.optional(Schema.String),
+      providerName: Schema.optional(Schema.String),
+      providerTenantName: Schema.optional(Schema.String),
+      respondedAt: Schema.optional(Schema.String),
+      sentAt: Schema.optional(Schema.String),
+      shareName: Schema.optional(Schema.String),
+      termsOfUse: Schema.optional(Schema.String),
+      userEmail: Schema.optional(Schema.String),
+      userName: Schema.optional(Schema.String),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdAt: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+      }),
+    ),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.DataShare/locations/{location}/rejectInvitation",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ConsumerInvitationsRejectInvitationInput =
@@ -490,6 +557,7 @@ export const ConsumerSourceDataSetsListByShareSubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/consumerSourceDataSets",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ConsumerSourceDataSetsListByShareSubscriptionInput =
@@ -553,10 +621,42 @@ export const DataSetMappingsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     dataSetMappingName: Schema.String.pipe(T.PathParam()),
+    kind: Schema.Literals([
+      "Blob",
+      "Container",
+      "BlobFolder",
+      "AdlsGen2FileSystem",
+      "AdlsGen2Folder",
+      "AdlsGen2File",
+      "KustoCluster",
+      "KustoDatabase",
+      "KustoTable",
+      "SqlDBTable",
+      "SqlDWTable",
+      "SynapseWorkspaceSqlPoolTable",
+    ]),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdAt: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+      }),
+    ),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type DataSetMappingsCreateInput = typeof DataSetMappingsCreateInput.Type;
@@ -610,6 +710,7 @@ export const DataSetMappingsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type DataSetMappingsDeleteInput = typeof DataSetMappingsDeleteInput.Type;
@@ -644,6 +745,7 @@ export const DataSetMappingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type DataSetMappingsGetInput = typeof DataSetMappingsGetInput.Type;
@@ -695,6 +797,7 @@ export const DataSetMappingsListByShareSubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings",
+      apiVersion: "2021-08-01",
     }),
   );
 export type DataSetMappingsListByShareSubscriptionInput =
@@ -759,10 +862,44 @@ export const DataSetMappingsListByShareSubscription =
 export const DataSetsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   shareName: Schema.String.pipe(T.PathParam()),
   dataSetName: Schema.String.pipe(T.PathParam()),
+  kind: Schema.Literals([
+    "Blob",
+    "Container",
+    "BlobFolder",
+    "AdlsGen2FileSystem",
+    "AdlsGen2Folder",
+    "AdlsGen2File",
+    "AdlsGen1Folder",
+    "AdlsGen1File",
+    "KustoCluster",
+    "KustoDatabase",
+    "KustoTable",
+    "SqlDBTable",
+    "SqlDWTable",
+    "SynapseWorkspaceSqlPoolTable",
+  ]),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets/{dataSetName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type DataSetsCreateInput = typeof DataSetsCreateInput.Type;
@@ -810,6 +947,7 @@ export const DataSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets/{dataSetName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type DataSetsDeleteInput = typeof DataSetsDeleteInput.Type;
@@ -839,6 +977,7 @@ export const DataSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets/{dataSetName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type DataSetsGetInput = typeof DataSetsGetInput.Type;
@@ -889,6 +1028,7 @@ export const DataSetsListByShareInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets",
+      apiVersion: "2021-08-01",
     }),
   );
 export type DataSetsListByShareInput = typeof DataSetsListByShareInput.Type;
@@ -950,10 +1090,22 @@ export const DataSetsListByShare = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EmailRegistrationsActivateEmailInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
+    activationCode: Schema.optional(Schema.String),
+    activationExpirationDate: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    registrationStatus: Schema.optional(
+      Schema.Literals([
+        "ActivationPending",
+        "Activated",
+        "ActivationAttemptsExhausted",
+      ]),
+    ),
+    tenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.DataShare/locations/{location}/activateEmail",
+      apiVersion: "2021-08-01",
     }),
   );
 export type EmailRegistrationsActivateEmailInput =
@@ -998,6 +1150,7 @@ export const EmailRegistrationsRegisterEmailInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.DataShare/locations/{location}/registerEmail",
+      apiVersion: "2021-08-01",
     }),
   );
 export type EmailRegistrationsRegisterEmailInput =
@@ -1039,11 +1192,45 @@ export const InvitationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     shareName: Schema.String.pipe(T.PathParam()),
     invitationName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        expirationDate: Schema.optional(Schema.String),
+        invitationId: Schema.optional(Schema.String),
+        invitationStatus: Schema.optional(
+          Schema.Literals(["Pending", "Accepted", "Rejected", "Withdrawn"]),
+        ),
+        respondedAt: Schema.optional(Schema.String),
+        sentAt: Schema.optional(Schema.String),
+        targetActiveDirectoryId: Schema.optional(Schema.String),
+        targetEmail: Schema.optional(Schema.String),
+        targetObjectId: Schema.optional(Schema.String),
+        userEmail: Schema.optional(Schema.String),
+        userName: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdAt: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+      }),
+    ),
+    type: Schema.optional(Schema.String),
   },
 ).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type InvitationsCreateInput = typeof InvitationsCreateInput.Type;
@@ -1094,6 +1281,7 @@ export const InvitationsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type InvitationsDeleteInput = typeof InvitationsDeleteInput.Type;
@@ -1123,6 +1311,7 @@ export const InvitationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type InvitationsGetInput = typeof InvitationsGetInput.Type;
@@ -1173,6 +1362,7 @@ export const InvitationsListByShareInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations",
+      apiVersion: "2021-08-01",
     }),
   );
 export type InvitationsListByShareInput =
@@ -1238,7 +1428,11 @@ export const InvitationsListByShare = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.DataShare/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.DataShare/operations",
+    apiVersion: "2021-08-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -1325,10 +1519,44 @@ export const ProviderShareSubscriptionsAdjustInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        consumerEmail: Schema.optional(Schema.String),
+        consumerName: Schema.optional(Schema.String),
+        consumerTenantName: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        expirationDate: Schema.optional(Schema.String),
+        providerEmail: Schema.optional(Schema.String),
+        providerName: Schema.optional(Schema.String),
+        sharedAt: Schema.optional(Schema.String),
+        shareSubscriptionObjectId: Schema.optional(Schema.String),
+        shareSubscriptionStatus: Schema.optional(
+          Schema.Literals(["Active", "Revoked", "SourceDeleted", "Revoking"]),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdAt: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+      }),
+    ),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions/{providerShareSubscriptionId}/adjust",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ProviderShareSubscriptionsAdjustInput =
@@ -1381,6 +1609,7 @@ export const ProviderShareSubscriptionsGetByShareInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions/{providerShareSubscriptionId}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ProviderShareSubscriptionsGetByShareInput =
@@ -1433,6 +1662,7 @@ export const ProviderShareSubscriptionsListByShareInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ProviderShareSubscriptionsListByShareInput =
@@ -1496,10 +1726,44 @@ export const ProviderShareSubscriptionsReinstateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        consumerEmail: Schema.optional(Schema.String),
+        consumerName: Schema.optional(Schema.String),
+        consumerTenantName: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        expirationDate: Schema.optional(Schema.String),
+        providerEmail: Schema.optional(Schema.String),
+        providerName: Schema.optional(Schema.String),
+        sharedAt: Schema.optional(Schema.String),
+        shareSubscriptionObjectId: Schema.optional(Schema.String),
+        shareSubscriptionStatus: Schema.optional(
+          Schema.Literals(["Active", "Revoked", "SourceDeleted", "Revoking"]),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdAt: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+      }),
+    ),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions/{providerShareSubscriptionId}/reinstate",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ProviderShareSubscriptionsReinstateInput =
@@ -1552,6 +1816,7 @@ export const ProviderShareSubscriptionsRevokeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions/{providerShareSubscriptionId}/revoke",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ProviderShareSubscriptionsRevokeInput =
@@ -1598,10 +1863,47 @@ export const ProviderShareSubscriptionsRevoke =
 // Input Schema
 export const SharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   shareName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Creating",
+          "Deleting",
+          "Moving",
+          "Failed",
+        ]),
+      ),
+      shareKind: Schema.optional(Schema.Literals(["CopyBased", "InPlace"])),
+      terms: Schema.optional(Schema.String),
+      userEmail: Schema.optional(Schema.String),
+      userName: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type SharesCreateInput = typeof SharesCreateInput.Type;
@@ -1647,6 +1949,7 @@ export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type SharesDeleteInput = typeof SharesDeleteInput.Type;
@@ -1693,6 +1996,7 @@ export const SharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type SharesGetInput = typeof SharesGetInput.Type;
@@ -1741,6 +2045,7 @@ export const SharesListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares",
+      apiVersion: "2021-08-01",
     }),
   );
 export type SharesListByAccountInput = typeof SharesListByAccountInput.Type;
@@ -1804,10 +2109,23 @@ export const SharesListSynchronizationDetailsInput =
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
+    consumerEmail: Schema.optional(Schema.String),
+    consumerName: Schema.optional(Schema.String),
+    consumerTenantName: Schema.optional(Schema.String),
+    durationMs: Schema.optional(Schema.Number),
+    endTime: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    synchronizationId: Schema.optional(Schema.String),
+    synchronizationMode: Schema.optional(
+      Schema.Literals(["Incremental", "FullSync"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/listSynchronizationDetails",
+      apiVersion: "2021-08-01",
     }),
   );
 export type SharesListSynchronizationDetailsInput =
@@ -1884,6 +2202,7 @@ export const SharesListSynchronizationsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/listSynchronizations",
+      apiVersion: "2021-08-01",
     }),
   );
 export type SharesListSynchronizationsInput =
@@ -1934,10 +2253,20 @@ export const SharesListSynchronizations = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ShareSubscriptionsCancelSynchronizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
+    durationMs: Schema.optional(Schema.Number),
+    endTime: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    synchronizationId: Schema.String,
+    synchronizationMode: Schema.optional(
+      Schema.Literals(["Incremental", "FullSync"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/cancelSynchronization",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ShareSubscriptionsCancelSynchronizationInput =
@@ -1976,10 +2305,55 @@ export const ShareSubscriptionsCancelSynchronization =
 export const ShareSubscriptionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      expirationDate: Schema.optional(Schema.String),
+      invitationId: Schema.String,
+      providerEmail: Schema.optional(Schema.String),
+      providerName: Schema.optional(Schema.String),
+      providerTenantName: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Creating",
+          "Deleting",
+          "Moving",
+          "Failed",
+        ]),
+      ),
+      shareDescription: Schema.optional(Schema.String),
+      shareKind: Schema.optional(Schema.Literals(["CopyBased", "InPlace"])),
+      shareName: Schema.optional(Schema.String),
+      shareSubscriptionStatus: Schema.optional(
+        Schema.Literals(["Active", "Revoked", "SourceDeleted", "Revoking"]),
+      ),
+      shareTerms: Schema.optional(Schema.String),
+      sourceShareLocation: Schema.String,
+      userEmail: Schema.optional(Schema.String),
+      userName: Schema.optional(Schema.String),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdAt: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+      }),
+    ),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ShareSubscriptionsCreateInput =
@@ -2031,6 +2405,7 @@ export const ShareSubscriptionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ShareSubscriptionsDeleteInput =
@@ -2083,6 +2458,7 @@ export const ShareSubscriptionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ShareSubscriptionsGetInput = typeof ShareSubscriptionsGetInput.Type;
@@ -2135,6 +2511,7 @@ export const ShareSubscriptionsListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ShareSubscriptionsListByAccountInput =
@@ -2203,6 +2580,7 @@ export const ShareSubscriptionsListSourceShareSynchronizationSettingsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/listSourceShareSynchronizationSettings",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ShareSubscriptionsListSourceShareSynchronizationSettingsInput =
@@ -2243,10 +2621,20 @@ export const ShareSubscriptionsListSynchronizationDetailsInput =
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
+    durationMs: Schema.optional(Schema.Number),
+    endTime: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    synchronizationId: Schema.String,
+    synchronizationMode: Schema.optional(
+      Schema.Literals(["Incremental", "FullSync"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/listSynchronizationDetails",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ShareSubscriptionsListSynchronizationDetailsInput =
@@ -2323,6 +2711,7 @@ export const ShareSubscriptionsListSynchronizationsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/listSynchronizations",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ShareSubscriptionsListSynchronizationsInput =
@@ -2369,10 +2758,14 @@ export const ShareSubscriptionsListSynchronizations =
 export const ShareSubscriptionsSynchronizeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
+    synchronizationMode: Schema.optional(
+      Schema.Literals(["Incremental", "FullSync"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/synchronize",
+      apiVersion: "2021-08-01",
     }),
   );
 export type ShareSubscriptionsSynchronizeInput =
@@ -2412,10 +2805,29 @@ export const SynchronizationSettingsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shareName: Schema.String.pipe(T.PathParam()),
     synchronizationSettingName: Schema.String.pipe(T.PathParam()),
+    kind: Schema.Literals(["ScheduleBased"]),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdAt: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+      }),
+    ),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type SynchronizationSettingsCreateInput =
@@ -2468,6 +2880,7 @@ export const SynchronizationSettingsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type SynchronizationSettingsDeleteInput =
@@ -2521,6 +2934,7 @@ export const SynchronizationSettingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type SynchronizationSettingsGetInput =
@@ -2574,6 +2988,7 @@ export const SynchronizationSettingsListByShareInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings",
+      apiVersion: "2021-08-01",
     }),
   );
 export type SynchronizationSettingsListByShareInput =
@@ -2636,10 +3051,29 @@ export const SynchronizationSettingsListByShare =
 export const TriggersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
+  kind: Schema.Literals(["ScheduleBased"]),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type TriggersCreateInput = typeof TriggersCreateInput.Type;
@@ -2687,6 +3121,7 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
@@ -2735,6 +3170,7 @@ export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type TriggersGetInput = typeof TriggersGetInput.Type;
@@ -2783,6 +3219,7 @@ export const TriggersListByShareSubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers",
+      apiVersion: "2021-08-01",
     }),
   );
 export type TriggersListByShareSubscriptionInput =

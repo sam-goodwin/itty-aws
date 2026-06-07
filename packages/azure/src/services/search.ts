@@ -13,11 +13,11 @@ export const AdminKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/listAdminKeys",
+    apiVersion: "2025-05-01",
   }),
 );
 export type AdminKeysGetInput = typeof AdminKeysGetInput.Type;
@@ -50,11 +50,11 @@ export const AdminKeysRegenerateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
     keyKind: Schema.Literals(["primary", "secondary"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/regenerateAdminKey/{keyKind}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type AdminKeysRegenerateInput = typeof AdminKeysRegenerateInput.Type;
@@ -89,11 +89,11 @@ export const NetworkSecurityPerimeterConfigurationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
     nspConfigName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/networkSecurityPerimeterConfigurations/{nspConfigName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsGetInput =
@@ -144,11 +144,11 @@ export const NetworkSecurityPerimeterConfigurationsListByServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/networkSecurityPerimeterConfigurations",
+      apiVersion: "2025-05-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsListByServiceInput =
@@ -214,11 +214,11 @@ export const NetworkSecurityPerimeterConfigurationsReconcileInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
     nspConfigName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/networkSecurityPerimeterConfigurations/{nspConfigName}/reconcile",
+      apiVersion: "2025-05-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsReconcileInput =
@@ -246,10 +246,14 @@ export const NetworkSecurityPerimeterConfigurationsReconcile =
     outputSchema: NetworkSecurityPerimeterConfigurationsReconcileOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Search/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Search/operations",
+    apiVersion: "2025-05-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -296,11 +300,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -355,11 +359,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -411,11 +415,11 @@ export const PrivateEndpointConnectionsListByServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/privateEndpointConnections",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PrivateEndpointConnectionsListByServiceInput =
@@ -484,11 +488,45 @@ export const PrivateEndpointConnectionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Pending",
+                "Approved",
+                "Rejected",
+                "Disconnected",
+              ]),
+            ),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+        groupId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Updating",
+            "Deleting",
+            "Failed",
+            "Succeeded",
+            "Incomplete",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PrivateEndpointConnectionsUpdateInput =
@@ -540,11 +578,11 @@ export const PrivateLinkResourcesListSupportedInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/privateLinkResources",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PrivateLinkResourcesListSupportedInput =
@@ -612,11 +650,11 @@ export const QueryKeysCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/createQueryKey/{name}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type QueryKeysCreateInput = typeof QueryKeysCreateInput.Type;
@@ -649,11 +687,11 @@ export const QueryKeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
   key: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/deleteQueryKey/{key}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type QueryKeysDeleteInput = typeof QueryKeysDeleteInput.Type;
@@ -685,11 +723,11 @@ export const QueryKeysListBySearchServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/listQueryKeys",
+      apiVersion: "2025-05-01",
     }),
   );
 export type QueryKeysListBySearchServiceInput =
@@ -730,11 +768,13 @@ export const QueryKeysListBySearchService =
 export const ServicesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals(["searchServices"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Search/checkNameAvailability",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ServicesCheckNameAvailabilityInput =
@@ -769,11 +809,192 @@ export const ServicesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        replicaCount: Schema.optional(Schema.Number),
+        partitionCount: Schema.optional(Schema.Number),
+        endpoint: Schema.optional(Schema.String),
+        hostingMode: Schema.optional(
+          Schema.Literals(["Default", "HighDensity"]),
+        ),
+        computeType: Schema.optional(
+          Schema.Literals(["Default", "Confidential"]),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "running",
+            "provisioning",
+            "deleting",
+            "degraded",
+            "disabled",
+            "error",
+            "stopped",
+          ]),
+        ),
+        statusDetails: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals(["succeeded", "provisioning", "failed"]),
+        ),
+        networkRuleSet: Schema.optional(
+          Schema.Struct({
+            ipRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            bypass: Schema.optional(Schema.Literals(["None", "AzureServices"])),
+          }),
+        ),
+        dataExfiltrationProtections: Schema.optional(
+          Schema.Array(Schema.Literals(["BlockAll"])),
+        ),
+        encryptionWithCmk: Schema.optional(
+          Schema.Struct({
+            enforcement: Schema.optional(
+              Schema.Literals(["Disabled", "Enabled", "Unspecified"]),
+            ),
+            encryptionComplianceStatus: Schema.optional(
+              Schema.Literals(["Compliant", "NonCompliant"]),
+            ),
+          }),
+        ),
+        disableLocalAuth: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        authOptions: Schema.optional(
+          Schema.Struct({
+            apiKeyOnly: Schema.optional(Schema.Unknown),
+            aadOrApiKey: Schema.optional(
+              Schema.Struct({
+                aadAuthFailureMode: Schema.optional(
+                  Schema.Literals(["http403", "http401WithBearerChallenge"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        semanticSearch: Schema.optional(
+          Schema.Literals(["disabled", "free", "standard"]),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        sharedPrivateLinkResources: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        eTag: Schema.optional(Schema.String),
+        upgradeAvailable: Schema.optional(
+          Schema.Literals(["notAvailable", "available"]),
+        ),
+        serviceUpgradedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(
+          Schema.Literals([
+            "free",
+            "basic",
+            "standard",
+            "standard2",
+            "standard3",
+            "storage_optimized_l1",
+            "storage_optimized_l2",
+          ]),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -824,11 +1045,11 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -857,11 +1078,11 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type ServicesGetInput = typeof ServicesGetInput.Type;
@@ -907,11 +1128,11 @@ export const ServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ServicesListByResourceGroupInput =
@@ -977,11 +1198,11 @@ export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Search/searchServices",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ServicesListBySubscriptionInput =
@@ -1047,11 +1268,207 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      replicaCount: Schema.optional(Schema.Number),
+      partitionCount: Schema.optional(Schema.Number),
+      endpoint: Schema.optional(Schema.String),
+      hostingMode: Schema.optional(Schema.Literals(["Default", "HighDensity"])),
+      computeType: Schema.optional(
+        Schema.Literals(["Default", "Confidential"]),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+      ),
+      status: Schema.optional(
+        Schema.Literals([
+          "running",
+          "provisioning",
+          "deleting",
+          "degraded",
+          "disabled",
+          "error",
+          "stopped",
+        ]),
+      ),
+      statusDetails: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals(["succeeded", "provisioning", "failed"]),
+      ),
+      networkRuleSet: Schema.optional(
+        Schema.Struct({
+          ipRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          bypass: Schema.optional(Schema.Literals(["None", "AzureServices"])),
+        }),
+      ),
+      dataExfiltrationProtections: Schema.optional(
+        Schema.Array(Schema.Literals(["BlockAll"])),
+      ),
+      encryptionWithCmk: Schema.optional(
+        Schema.Struct({
+          enforcement: Schema.optional(
+            Schema.Literals(["Disabled", "Enabled", "Unspecified"]),
+          ),
+          encryptionComplianceStatus: Schema.optional(
+            Schema.Literals(["Compliant", "NonCompliant"]),
+          ),
+        }),
+      ),
+      disableLocalAuth: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      authOptions: Schema.optional(
+        Schema.Struct({
+          apiKeyOnly: Schema.optional(Schema.Unknown),
+          aadOrApiKey: Schema.optional(
+            Schema.Struct({
+              aadAuthFailureMode: Schema.optional(
+                Schema.Literals(["http403", "http401WithBearerChallenge"]),
+              ),
+            }),
+          ),
+        }),
+      ),
+      semanticSearch: Schema.optional(
+        Schema.Literals(["disabled", "free", "standard"]),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      sharedPrivateLinkResources: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      eTag: Schema.optional(Schema.String),
+      upgradeAvailable: Schema.optional(
+        Schema.Literals(["notAvailable", "available"]),
+      ),
+      serviceUpgradedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(
+        Schema.Literals([
+          "free",
+          "basic",
+          "standard",
+          "standard2",
+          "standard3",
+          "storage_optimized_l1",
+          "storage_optimized_l2",
+        ]),
+      ),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned, UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
@@ -1097,11 +1514,11 @@ export const ServicesUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   searchServiceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/upgrade",
+    apiVersion: "2025-05-01",
   }),
 );
 export type ServicesUpgradeInput = typeof ServicesUpgradeInput.Type;
@@ -1148,11 +1565,31 @@ export const SharedPrivateLinkResourcesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateLinkResourceId: Schema.optional(Schema.String),
+        groupId: Schema.optional(Schema.String),
+        requestMessage: Schema.optional(Schema.String),
+        resourceRegion: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Literals(["Pending", "Approved", "Rejected", "Disconnected"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Updating",
+            "Deleting",
+            "Failed",
+            "Succeeded",
+            "Incomplete",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type SharedPrivateLinkResourcesCreateOrUpdateInput =
@@ -1205,11 +1642,11 @@ export const SharedPrivateLinkResourcesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type SharedPrivateLinkResourcesDeleteInput =
@@ -1246,11 +1683,11 @@ export const SharedPrivateLinkResourcesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type SharedPrivateLinkResourcesGetInput =
@@ -1302,11 +1739,11 @@ export const SharedPrivateLinkResourcesListByServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     searchServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/sharedPrivateLinkResources",
+      apiVersion: "2025-05-01",
     }),
   );
 export type SharedPrivateLinkResourcesListByServiceInput =
@@ -1374,11 +1811,11 @@ export const UsageBySubscriptionSkuInput =
     location: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     skuName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/usages/{skuName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type UsageBySubscriptionSkuInput =
@@ -1422,11 +1859,11 @@ export const UsagesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/usages",
+      apiVersion: "2025-05-01",
     }),
   );
 export type UsagesListBySubscriptionInput =

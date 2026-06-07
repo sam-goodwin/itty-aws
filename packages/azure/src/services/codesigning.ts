@@ -15,11 +15,68 @@ export const CertificateProfilesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        profileType: Schema.Literals([
+          "PublicTrust",
+          "PrivateTrust",
+          "PrivateTrustCIPolicy",
+          "VBSEnclave",
+          "PublicTrustTest",
+        ]),
+        includeStreetAddress: Schema.optional(Schema.Boolean),
+        includeCity: Schema.optional(Schema.Boolean),
+        includeState: Schema.optional(Schema.Boolean),
+        includeCountry: Schema.optional(Schema.Boolean),
+        includePostalCode: Schema.optional(Schema.Boolean),
+        identityValidationId: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Literals(["Active", "Disabled", "Suspended"]),
+        ),
+        certificates: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              serialNumber: Schema.optional(Schema.String),
+              enhancedKeyUsage: Schema.optional(Schema.String),
+              subjectName: Schema.optional(Schema.String),
+              thumbprint: Schema.optional(Schema.String),
+              createdDate: Schema.optional(Schema.String),
+              expiryDate: Schema.optional(Schema.String),
+              status: Schema.optional(
+                Schema.Literals(["Active", "Expired", "Revoked"]),
+              ),
+              revocation: Schema.optional(
+                Schema.Struct({
+                  requestedAt: Schema.optional(Schema.String),
+                  effectiveAt: Schema.optional(Schema.String),
+                  reason: Schema.optional(Schema.String),
+                  remarks: Schema.optional(Schema.String),
+                  status: Schema.optional(
+                    Schema.Literals(["Succeeded", "InProgress", "Failed"]),
+                  ),
+                  failureReason: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
+      apiVersion: "2025-10-13",
     }),
   );
 export type CertificateProfilesCreateInput =
@@ -72,11 +129,11 @@ export const CertificateProfilesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
+      apiVersion: "2025-10-13",
     }),
   );
 export type CertificateProfilesDeleteInput =
@@ -111,11 +168,11 @@ export const CertificateProfilesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
+      apiVersion: "2025-10-13",
     }),
   );
 export type CertificateProfilesGetInput =
@@ -167,11 +224,11 @@ export const CertificateProfilesListByCodeSigningAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles",
+      apiVersion: "2025-10-13",
     }),
   );
 export type CertificateProfilesListByCodeSigningAccountInput =
@@ -237,11 +294,16 @@ export const CertificateProfilesRevokeCertificateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    serialNumber: Schema.String,
+    thumbprint: Schema.String,
+    effectiveAt: Schema.String,
+    reason: Schema.String,
+    remarks: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}/revokeCertificate",
+      apiVersion: "2025-10-13",
     }),
   );
 export type CertificateProfilesRevokeCertificateInput =
@@ -272,11 +334,13 @@ export const CertificateProfilesRevokeCertificate =
 export const CodeSigningAccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    type: Schema.String,
+    name: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CodeSigning/checkNameAvailability",
+      apiVersion: "2025-10-13",
     }),
   );
 export type CodeSigningAccountsCheckNameAvailabilityInput =
@@ -312,11 +376,33 @@ export const CodeSigningAccountsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        accountUri: Schema.optional(Schema.String),
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.Literals(["Basic", "Premium"]),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
+      apiVersion: "2025-10-13",
     }),
   );
 export type CodeSigningAccountsCreateInput =
@@ -367,11 +453,11 @@ export const CodeSigningAccountsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
+      apiVersion: "2025-10-13",
     }),
   );
 export type CodeSigningAccountsDeleteInput =
@@ -404,11 +490,11 @@ export const CodeSigningAccountsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
+      apiVersion: "2025-10-13",
     }),
   );
 export type CodeSigningAccountsGetInput =
@@ -458,11 +544,11 @@ export const CodeSigningAccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts",
+      apiVersion: "2025-10-13",
     }),
   );
 export type CodeSigningAccountsListByResourceGroupInput =
@@ -524,11 +610,11 @@ export const CodeSigningAccountsListByResourceGroup =
 export const CodeSigningAccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CodeSigning/codeSigningAccounts",
+      apiVersion: "2025-10-13",
     }),
   );
 export type CodeSigningAccountsListBySubscriptionInput =
@@ -591,11 +677,21 @@ export const CodeSigningAccountsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.Literals(["Basic", "Premium"])),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
+      apiVersion: "2025-10-13",
     }),
   );
 export type CodeSigningAccountsUpdateInput =
@@ -641,12 +737,13 @@ export const CodeSigningAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.CodeSigning/operations",
+    apiVersion: "2025-10-13",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;

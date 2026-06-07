@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const ApplicationsCreateOrUpdateInput =
@@ -15,11 +16,97 @@ export const ApplicationsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        managedIdentities: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              principalId: Schema.String,
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+        parameters: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        upgradePolicy: Schema.optional(
+          Schema.Struct({
+            applicationHealthPolicy: Schema.optional(
+              Schema.Struct({
+                considerWarningAsError: Schema.Boolean,
+                maxPercentUnhealthyDeployedApplications: Schema.Number,
+                defaultServiceTypeHealthPolicy: Schema.optional(
+                  Schema.Struct({
+                    maxPercentUnhealthyServices: Schema.Number,
+                    maxPercentUnhealthyPartitionsPerService: Schema.Number,
+                    maxPercentUnhealthyReplicasPerPartition: Schema.Number,
+                  }),
+                ),
+                serviceTypeHealthPolicyMap: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      maxPercentUnhealthyServices: Schema.Number,
+                      maxPercentUnhealthyPartitionsPerService: Schema.Number,
+                      maxPercentUnhealthyReplicasPerPartition: Schema.Number,
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            forceRestart: Schema.optional(Schema.Boolean),
+            rollingUpgradeMonitoringPolicy: Schema.optional(
+              Schema.Struct({
+                failureAction: Schema.Literals(["Rollback", "Manual"]),
+                healthCheckWaitDuration: Schema.String,
+                healthCheckStableDuration: Schema.String,
+                healthCheckRetryTimeout: Schema.String,
+                upgradeTimeout: Schema.String,
+                upgradeDomainTimeout: Schema.String,
+              }),
+            ),
+            instanceCloseDelayDuration: Schema.optional(Schema.Number),
+            upgradeMode: Schema.optional(
+              Schema.Literals(["Monitored", "UnmonitoredAuto"]),
+            ),
+            upgradeReplicaSetCheckTimeout: Schema.optional(Schema.Number),
+            recreateApplication: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationsCreateOrUpdateInput =
@@ -72,11 +159,11 @@ export const ApplicationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
@@ -106,11 +193,22 @@ export const ApplicationsFetchHealthInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    eventsHealthStateFilter: Schema.optional(
+      Schema.Literals(["Default", "None", "Ok", "Warning", "Error", "All"]),
+    ),
+    deployedApplicationsHealthStateFilter: Schema.optional(
+      Schema.Literals(["Default", "None", "Ok", "Warning", "Error", "All"]),
+    ),
+    servicesHealthStateFilter: Schema.optional(
+      Schema.Literals(["Default", "None", "Ok", "Warning", "Error", "All"]),
+    ),
+    excludeHealthStatistics: Schema.optional(Schema.Boolean),
+    timeout: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/fetchHealth",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationsFetchHealthInput =
@@ -144,11 +242,11 @@ export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   applicationName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}",
+    apiVersion: "2026-02-01",
   }),
 );
 export type ApplicationsGetInput = typeof ApplicationsGetInput.Type;
@@ -194,11 +292,11 @@ export const ApplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications",
+    apiVersion: "2026-02-01",
   }),
 );
 export type ApplicationsListInput = typeof ApplicationsListInput.Type;
@@ -262,11 +360,11 @@ export const ApplicationsReadUpgradeInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/fetchUpgradeStatus",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationsReadUpgradeInput =
@@ -301,11 +399,16 @@ export const ApplicationsRestartDeployedCodePackageInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    nodeName: Schema.String,
+    serviceManifestName: Schema.String,
+    codePackageName: Schema.String,
+    codePackageInstanceId: Schema.String,
+    servicePackageActivationId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/restartDeployedCodePackage",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationsRestartDeployedCodePackageInput =
@@ -339,11 +442,12 @@ export const ApplicationsResumeUpgradeInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    upgradeDomainName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/resumeUpgrade",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationsResumeUpgradeInput =
@@ -378,11 +482,11 @@ export const ApplicationsStartRollbackInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/startRollback",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationsStartRollbackInput =
@@ -417,11 +521,19 @@ export const ApplicationsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        parameters: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
@@ -470,11 +582,54 @@ export const ApplicationsUpdateUpgradeInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    upgradeKind: Schema.Literals(["Rolling"]),
+    applicationHealthPolicy: Schema.optional(
+      Schema.Struct({
+        considerWarningAsError: Schema.Boolean,
+        maxPercentUnhealthyDeployedApplications: Schema.Number,
+        defaultServiceTypeHealthPolicy: Schema.optional(
+          Schema.Struct({
+            maxPercentUnhealthyServices: Schema.Number,
+            maxPercentUnhealthyPartitionsPerService: Schema.Number,
+            maxPercentUnhealthyReplicasPerPartition: Schema.Number,
+          }),
+        ),
+        serviceTypeHealthPolicyMap: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              maxPercentUnhealthyServices: Schema.Number,
+              maxPercentUnhealthyPartitionsPerService: Schema.Number,
+              maxPercentUnhealthyReplicasPerPartition: Schema.Number,
+            }),
+          ),
+        ),
+      }),
+    ),
+    updateDescription: Schema.optional(
+      Schema.Struct({
+        rollingUpgradeMode: Schema.Literals([
+          "UnmonitoredAuto",
+          "UnmonitoredManual",
+          "Monitored",
+        ]),
+        forceRestart: Schema.optional(Schema.Boolean),
+        replicaSetCheckTimeoutInMilliseconds: Schema.optional(Schema.Number),
+        failureAction: Schema.optional(Schema.Literals(["Rollback", "Manual"])),
+        healthCheckWaitDurationInMilliseconds: Schema.optional(Schema.String),
+        healthCheckStableDurationInMilliseconds: Schema.optional(Schema.String),
+        healthCheckRetryTimeoutInMilliseconds: Schema.optional(Schema.String),
+        upgradeTimeoutInMilliseconds: Schema.optional(Schema.String),
+        upgradeDomainTimeoutInMilliseconds: Schema.optional(Schema.String),
+        instanceCloseDelayDurationInSeconds: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/updateUpgrade",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationsUpdateUpgradeInput =
@@ -509,11 +664,18 @@ export const ApplicationTypesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationTypesCreateOrUpdateInput =
@@ -565,11 +727,11 @@ export const ApplicationTypesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationTypesDeleteInput =
@@ -604,11 +766,11 @@ export const ApplicationTypesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationTypesGetInput = typeof ApplicationTypesGetInput.Type;
@@ -656,11 +818,11 @@ export const ApplicationTypesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationTypesListInput = typeof ApplicationTypesListInput.Type;
@@ -725,11 +887,12 @@ export const ApplicationTypesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationTypesUpdateInput =
@@ -783,11 +946,19 @@ export const ApplicationTypeVersionsCreateOrUpdateInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationTypeName: Schema.String.pipe(T.PathParam()),
     version: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        appPackageUrl: Schema.String,
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationTypeVersionsCreateOrUpdateInput =
@@ -841,11 +1012,11 @@ export const ApplicationTypeVersionsDeleteInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationTypeName: Schema.String.pipe(T.PathParam()),
     version: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationTypeVersionsDeleteInput =
@@ -881,11 +1052,11 @@ export const ApplicationTypeVersionsGetInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationTypeName: Schema.String.pipe(T.PathParam()),
     version: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationTypeVersionsGetInput =
@@ -939,11 +1110,11 @@ export const ApplicationTypeVersionsListByApplicationTypesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}/versions",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationTypeVersionsListByApplicationTypesInput =
@@ -1011,11 +1182,12 @@ export const ApplicationTypeVersionsUpdateInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationTypeName: Schema.String.pipe(T.PathParam()),
     version: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ApplicationTypeVersionsUpdateInput =
@@ -1067,11 +1239,11 @@ export const ManagedApplyMaintenanceWindowPostInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applyMaintenanceWindow",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedApplyMaintenanceWindowPostInput =
@@ -1103,11 +1275,11 @@ export const ManagedAzResiliencyStatusGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/getazresiliencystatus",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedAzResiliencyStatusGetInput =
@@ -1151,11 +1323,244 @@ export const ManagedClustersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        dnsName: Schema.String,
+        fqdn: Schema.optional(Schema.String),
+        ipv4Address: Schema.optional(Schema.String),
+        clusterId: Schema.optional(Schema.String),
+        clusterState: Schema.optional(
+          Schema.Literals([
+            "WaitingForNodes",
+            "Deploying",
+            "BaselineUpgrade",
+            "Upgrading",
+            "UpgradeFailed",
+            "Ready",
+          ]),
+        ),
+        clusterCertificateThumbprints: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        clientConnectionPort: Schema.optional(Schema.Number),
+        httpGatewayConnectionPort: Schema.optional(Schema.Number),
+        adminUserName: Schema.String,
+        adminPassword: Schema.optional(SensitiveString),
+        loadBalancingRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              frontendPort: Schema.Number,
+              backendPort: Schema.Number,
+              protocol: Schema.Literals(["tcp", "udp"]),
+              probePort: Schema.optional(Schema.Number),
+              probeProtocol: Schema.Literals(["tcp", "http", "https"]),
+              probeRequestPath: Schema.optional(Schema.String),
+              loadDistribution: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        allowRdpAccess: Schema.optional(Schema.Boolean),
+        networkSecurityRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              description: Schema.optional(Schema.String),
+              protocol: Schema.Literals([
+                "http",
+                "https",
+                "tcp",
+                "udp",
+                "icmp",
+                "ah",
+                "esp",
+              ]),
+              sourceAddressPrefixes: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              destinationAddressPrefixes: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              sourcePortRanges: Schema.optional(Schema.Array(Schema.String)),
+              destinationPortRanges: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              sourceAddressPrefix: Schema.optional(Schema.String),
+              destinationAddressPrefix: Schema.optional(Schema.String),
+              sourcePortRange: Schema.optional(Schema.String),
+              destinationPortRange: Schema.optional(Schema.String),
+              access: Schema.Literals(["allow", "deny"]),
+              priority: Schema.Number,
+              direction: Schema.Literals(["inbound", "outbound"]),
+            }),
+          ),
+        ),
+        clients: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              isAdmin: Schema.Boolean,
+              thumbprint: Schema.optional(Schema.String),
+              commonName: Schema.optional(Schema.String),
+              issuerThumbprint: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        azureActiveDirectory: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            clusterApplication: Schema.optional(Schema.String),
+            clientApplication: Schema.optional(Schema.String),
+          }),
+        ),
+        fabricSettings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              parameters: Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "None",
+            "Creating",
+            "Created",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Deleting",
+            "Deleted",
+            "Other",
+          ]),
+        ),
+        clusterCodeVersion: Schema.optional(Schema.String),
+        clusterUpgradeMode: Schema.optional(
+          Schema.Literals(["Automatic", "Manual"]),
+        ),
+        clusterUpgradeCadence: Schema.optional(
+          Schema.Literals(["Wave0", "Wave1", "Wave2"]),
+        ),
+        addonFeatures: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "DnsService",
+              "BackupRestoreService",
+              "ResourceMonitorService",
+            ]),
+          ),
+        ),
+        enableAutoOSUpgrade: Schema.optional(Schema.Boolean),
+        zonalResiliency: Schema.optional(Schema.Boolean),
+        applicationTypeVersionsCleanupPolicy: Schema.optional(
+          Schema.Struct({
+            maxUnusedVersionsToKeep: Schema.Number,
+          }),
+        ),
+        enableIpv6: Schema.optional(Schema.Boolean),
+        subnetId: Schema.optional(Schema.String),
+        ipTags: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipTagType: Schema.String,
+              tag: Schema.String,
+            }),
+          ),
+        ),
+        ipv6Address: Schema.optional(Schema.String),
+        enableServicePublicIP: Schema.optional(Schema.Boolean),
+        auxiliarySubnets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              enableIpv6: Schema.optional(Schema.Boolean),
+              privateEndpointNetworkPolicies: Schema.optional(
+                Schema.Literals(["enabled", "disabled"]),
+              ),
+              privateLinkServiceNetworkPolicies: Schema.optional(
+                Schema.Literals(["enabled", "disabled"]),
+              ),
+              networkSecurityGroupId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        serviceEndpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              service: Schema.String,
+              locations: Schema.optional(Schema.Array(Schema.String)),
+              networkIdentifier: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        zonalUpdateMode: Schema.optional(Schema.Literals(["Standard", "Fast"])),
+        useCustomVnet: Schema.optional(Schema.Boolean),
+        publicIPPrefixId: Schema.optional(Schema.String),
+        publicIPv6PrefixId: Schema.optional(Schema.String),
+        ddosProtectionPlanId: Schema.optional(Schema.String),
+        upgradeDescription: Schema.optional(
+          Schema.Struct({
+            forceRestart: Schema.optional(Schema.Boolean),
+            healthPolicy: Schema.optional(
+              Schema.Struct({
+                maxPercentUnhealthyNodes: Schema.Number,
+                maxPercentUnhealthyApplications: Schema.Number,
+              }),
+            ),
+            deltaHealthPolicy: Schema.optional(
+              Schema.Struct({
+                maxPercentDeltaUnhealthyNodes: Schema.Number,
+                maxPercentUpgradeDomainDeltaUnhealthyNodes: Schema.optional(
+                  Schema.Number,
+                ),
+                maxPercentDeltaUnhealthyApplications: Schema.optional(
+                  Schema.Number,
+                ),
+              }),
+            ),
+            monitoringPolicy: Schema.optional(
+              Schema.Struct({
+                healthCheckWaitDuration: Schema.String,
+                healthCheckStableDuration: Schema.String,
+                healthCheckRetryTimeout: Schema.String,
+                upgradeTimeout: Schema.String,
+                upgradeDomainTimeout: Schema.String,
+              }),
+            ),
+            upgradeReplicaSetCheckTimeout: Schema.optional(Schema.String),
+          }),
+        ),
+        httpGatewayTokenAuthConnectionPort: Schema.optional(Schema.Number),
+        enableHttpGatewayExclusiveAuthMode: Schema.optional(Schema.Boolean),
+        autoGeneratedDomainNameLabelScope: Schema.optional(
+          Schema.Literals([
+            "TenantReuse",
+            "SubscriptionReuse",
+            "ResourceGroupReuse",
+            "NoReuse",
+          ]),
+        ),
+        allocatedOutboundPorts: Schema.optional(Schema.Number),
+        VMImage: Schema.optional(Schema.String),
+        enableOutboundOnlyNodeTypes: Schema.optional(Schema.Boolean),
+        skipManagedNsgAssignment: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    sku: Schema.Struct({
+      name: Schema.Literals(["Basic", "Standard"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedClustersCreateOrUpdateInput =
@@ -1205,11 +1610,11 @@ export const ManagedClustersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedClustersDeleteInput = typeof ManagedClustersDeleteInput.Type;
@@ -1241,11 +1646,11 @@ export const ManagedClustersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedClustersGetInput = typeof ManagedClustersGetInput.Type;
@@ -1291,11 +1696,11 @@ export const ManagedClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedClustersListByResourceGroupInput =
@@ -1357,11 +1762,11 @@ export const ManagedClustersListByResourceGroup =
 export const ManagedClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/managedClusters",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedClustersListBySubscriptionInput =
@@ -1424,11 +1829,12 @@ export const ManagedClustersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedClustersUpdateInput = typeof ManagedClustersUpdateInput.Type;
@@ -1478,11 +1884,11 @@ export const ManagedClusterVersionGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     clusterVersion: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/managedClusterVersions/{clusterVersion}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedClusterVersionGetInput =
@@ -1529,11 +1935,11 @@ export const ManagedClusterVersionGetByEnvironmentInput =
     location: Schema.String.pipe(T.PathParam()),
     environment: Schema.Literals(["Windows"]).pipe(T.PathParam()),
     clusterVersion: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/managedClusterVersions/{clusterVersion}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedClusterVersionGetByEnvironmentInput =
@@ -1578,11 +1984,11 @@ export const ManagedClusterVersionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/managedClusterVersions",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedClusterVersionListInput =
@@ -1629,11 +2035,11 @@ export const ManagedClusterVersionListByEnvironmentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     environment: Schema.Literals(["Windows"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/managedClusterVersions",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedClusterVersionListByEnvironmentInput =
@@ -1680,11 +2086,11 @@ export const ManagedMaintenanceWindowStatusGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/getMaintenanceWindowStatus",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedMaintenanceWindowStatusGetInput =
@@ -1724,11 +2130,11 @@ export const ManagedUnsupportedVMSizesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     vmSize: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/managedUnsupportedVMSizes/{vmSize}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedUnsupportedVMSizesGetInput =
@@ -1768,11 +2174,11 @@ export const ManagedUnsupportedVMSizesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/managedUnsupportedVMSizes",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ManagedUnsupportedVMSizesListInput =
@@ -1818,11 +2224,312 @@ export const NodeTypesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     nodeTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        isPrimary: Schema.Boolean,
+        vmInstanceCount: Schema.Number,
+        dataDiskSizeGB: Schema.optional(Schema.Number),
+        dataDiskType: Schema.optional(
+          Schema.Literals([
+            "Standard_LRS",
+            "StandardSSD_LRS",
+            "Premium_LRS",
+            "PremiumV2_LRS",
+            "StandardSSD_ZRS",
+            "Premium_ZRS",
+          ]),
+        ),
+        dataDiskLetter: Schema.optional(Schema.String),
+        placementProperties: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        capacities: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        applicationPorts: Schema.optional(
+          Schema.Struct({
+            startPort: Schema.Number,
+            endPort: Schema.Number,
+          }),
+        ),
+        ephemeralPorts: Schema.optional(
+          Schema.Struct({
+            startPort: Schema.Number,
+            endPort: Schema.Number,
+          }),
+        ),
+        vmSize: Schema.optional(Schema.String),
+        vmImagePublisher: Schema.optional(Schema.String),
+        vmImageOffer: Schema.optional(Schema.String),
+        vmImageSku: Schema.optional(Schema.String),
+        vmImageVersion: Schema.optional(Schema.String),
+        vmSecrets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              sourceVault: Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+              vaultCertificates: Schema.Array(
+                Schema.Struct({
+                  certificateUrl: Schema.String,
+                  certificateStore: Schema.String,
+                }),
+              ),
+            }),
+          ),
+        ),
+        vmExtensions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              properties: Schema.Struct({
+                publisher: Schema.String,
+                type: Schema.String,
+                typeHandlerVersion: Schema.String,
+                autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+                settings: Schema.optional(Schema.Unknown),
+                protectedSettings: Schema.optional(Schema.Unknown),
+                forceUpdateTag: Schema.optional(Schema.String),
+                provisionAfterExtensions: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                provisioningState: Schema.optional(Schema.String),
+                enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+                setupOrder: Schema.optional(
+                  Schema.Array(Schema.Literals(["BeforeSFRuntime"])),
+                ),
+              }),
+            }),
+          ),
+        ),
+        vmManagedIdentity: Schema.optional(
+          Schema.Struct({
+            userAssignedIdentities: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+          }),
+        ),
+        isStateless: Schema.optional(Schema.Boolean),
+        multiplePlacementGroups: Schema.optional(Schema.Boolean),
+        frontendConfigurations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipAddressType: Schema.optional(Schema.Literals(["IPv4", "IPv6"])),
+              loadBalancerBackendAddressPoolId: Schema.optional(Schema.String),
+              loadBalancerInboundNatPoolId: Schema.optional(Schema.String),
+              applicationGatewayBackendAddressPoolId: Schema.optional(
+                Schema.String,
+              ),
+            }),
+          ),
+        ),
+        networkSecurityRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              description: Schema.optional(Schema.String),
+              protocol: Schema.Literals([
+                "http",
+                "https",
+                "tcp",
+                "udp",
+                "icmp",
+                "ah",
+                "esp",
+              ]),
+              sourceAddressPrefixes: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              destinationAddressPrefixes: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              sourcePortRanges: Schema.optional(Schema.Array(Schema.String)),
+              destinationPortRanges: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              sourceAddressPrefix: Schema.optional(Schema.String),
+              destinationAddressPrefix: Schema.optional(Schema.String),
+              sourcePortRange: Schema.optional(Schema.String),
+              destinationPortRange: Schema.optional(Schema.String),
+              access: Schema.Literals(["allow", "deny"]),
+              priority: Schema.Number,
+              direction: Schema.Literals(["inbound", "outbound"]),
+            }),
+          ),
+        ),
+        additionalDataDisks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lun: Schema.Number,
+              diskSizeGB: Schema.Number,
+              diskType: Schema.Literals([
+                "Standard_LRS",
+                "StandardSSD_LRS",
+                "Premium_LRS",
+                "PremiumV2_LRS",
+                "StandardSSD_ZRS",
+                "Premium_ZRS",
+              ]),
+              diskLetter: Schema.String,
+            }),
+          ),
+        ),
+        enableEncryptionAtHost: Schema.optional(Schema.Boolean),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "None",
+            "Creating",
+            "Created",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Deleting",
+            "Deleted",
+            "Other",
+          ]),
+        ),
+        enableAcceleratedNetworking: Schema.optional(Schema.Boolean),
+        useDefaultPublicLoadBalancer: Schema.optional(Schema.Boolean),
+        useTempDataDisk: Schema.optional(Schema.Boolean),
+        enableOverProvisioning: Schema.optional(Schema.Boolean),
+        zones: Schema.optional(Schema.Array(Schema.String)),
+        isSpotVM: Schema.optional(Schema.Boolean),
+        hostGroupId: Schema.optional(Schema.String),
+        useEphemeralOSDisk: Schema.optional(Schema.Boolean),
+        spotRestoreTimeout: Schema.optional(Schema.String),
+        evictionPolicy: Schema.optional(
+          Schema.Literals(["Delete", "Deallocate"]),
+        ),
+        vmImageResourceId: Schema.optional(Schema.String),
+        subnetId: Schema.optional(Schema.String),
+        vmSetupActions: Schema.optional(
+          Schema.Array(Schema.Literals(["EnableContainers", "EnableHyperV"])),
+        ),
+        securityType: Schema.optional(
+          Schema.Literals(["TrustedLaunch", "Standard", "ConfidentialVM"]),
+        ),
+        securityEncryptionType: Schema.optional(
+          Schema.Literals(["DiskWithVMGuestState", "VMGuestStateOnly"]),
+        ),
+        secureBootEnabled: Schema.optional(Schema.Boolean),
+        enableNodePublicIP: Schema.optional(Schema.Boolean),
+        enableNodePublicIPv6: Schema.optional(Schema.Boolean),
+        vmSharedGalleryImageId: Schema.optional(Schema.String),
+        natGatewayId: Schema.optional(Schema.String),
+        natConfigurations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              backendPort: Schema.optional(Schema.Number),
+              frontendPortRangeStart: Schema.optional(Schema.Number),
+              frontendPortRangeEnd: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        vmImagePlan: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            product: Schema.optional(Schema.String),
+            promotionCode: Schema.optional(Schema.String),
+            publisher: Schema.optional(Schema.String),
+          }),
+        ),
+        serviceArtifactReferenceId: Schema.optional(Schema.String),
+        dscpConfigurationId: Schema.optional(Schema.String),
+        additionalNetworkInterfaceConfigurations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              enableAcceleratedNetworking: Schema.optional(Schema.Boolean),
+              dscpConfiguration: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+              ipConfigurations: Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  applicationGatewayBackendAddressPools: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        id: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  loadBalancerBackendAddressPools: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        id: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  loadBalancerInboundNatPools: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        id: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  subnet: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  privateIPAddressVersion: Schema.optional(
+                    Schema.Literals(["IPv4", "IPv6"]),
+                  ),
+                  publicIPAddressConfiguration: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.String,
+                      ipTags: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            ipTagType: Schema.String,
+                            tag: Schema.String,
+                          }),
+                        ),
+                      ),
+                      publicIPAddressVersion: Schema.optional(
+                        Schema.Literals(["IPv4", "IPv6"]),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+        computerNamePrefix: Schema.optional(Schema.String),
+        vmApplications: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              configurationReference: Schema.optional(Schema.String),
+              enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+              order: Schema.optional(Schema.Number),
+              packageReferenceId: Schema.String,
+              vmGalleryTags: Schema.optional(Schema.String),
+              treatFailureAsDeploymentFailure: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+        zoneBalance: Schema.optional(Schema.Boolean),
+        isOutboundOnly: Schema.optional(Schema.Boolean),
+        enableResilientEphemeralOsDisk: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.Number,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type NodeTypesCreateOrUpdateInput =
@@ -1875,11 +2582,16 @@ export const NodeTypesDeallocateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     nodeTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    nodes: Schema.optional(Schema.Array(Schema.String)),
+    force: Schema.optional(Schema.Boolean),
+    updateType: Schema.optional(
+      Schema.Literals(["Default", "ByUpgradeDomain"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/deallocate",
+      apiVersion: "2026-02-01",
     }),
   );
 export type NodeTypesDeallocateInput = typeof NodeTypesDeallocateInput.Type;
@@ -1909,11 +2621,11 @@ export const NodeTypesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   nodeTypeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}",
+    apiVersion: "2026-02-01",
   }),
 );
 export type NodeTypesDeleteInput = typeof NodeTypesDeleteInput.Type;
@@ -1943,11 +2655,16 @@ export const NodeTypesDeleteNodeInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     nodeTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    nodes: Schema.optional(Schema.Array(Schema.String)),
+    force: Schema.optional(Schema.Boolean),
+    updateType: Schema.optional(
+      Schema.Literals(["Default", "ByUpgradeDomain"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/deleteNode",
+      apiVersion: "2026-02-01",
     }),
   );
 export type NodeTypesDeleteNodeInput = typeof NodeTypesDeleteNodeInput.Type;
@@ -1977,11 +2694,11 @@ export const NodeTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   nodeTypeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}",
+    apiVersion: "2026-02-01",
   }),
 );
 export type NodeTypesGetInput = typeof NodeTypesGetInput.Type;
@@ -2028,11 +2745,11 @@ export const NodeTypeSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   nodeTypeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/skus",
+    apiVersion: "2026-02-01",
   }),
 );
 export type NodeTypeSkusListInput = typeof NodeTypeSkusListInput.Type;
@@ -2086,11 +2803,11 @@ export const NodeTypesListByManagedClustersInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes",
+      apiVersion: "2026-02-01",
     }),
   );
 export type NodeTypesListByManagedClustersInput =
@@ -2156,12 +2873,17 @@ export const NodeTypesRedeployInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     nodeTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    nodes: Schema.optional(Schema.Array(Schema.String)),
+    force: Schema.optional(Schema.Boolean),
+    updateType: Schema.optional(
+      Schema.Literals(["Default", "ByUpgradeDomain"]),
+    ),
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/redeploy",
+    apiVersion: "2026-02-01",
   }),
 );
 export type NodeTypesRedeployInput = typeof NodeTypesRedeployInput.Type;
@@ -2190,11 +2912,14 @@ export const NodeTypesReimageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   nodeTypeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  nodes: Schema.optional(Schema.Array(Schema.String)),
+  force: Schema.optional(Schema.Boolean),
+  updateType: Schema.optional(Schema.Literals(["Default", "ByUpgradeDomain"])),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/reimage",
+    apiVersion: "2026-02-01",
   }),
 );
 export type NodeTypesReimageInput = typeof NodeTypesReimageInput.Type;
@@ -2223,11 +2948,14 @@ export const NodeTypesRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   nodeTypeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  nodes: Schema.optional(Schema.Array(Schema.String)),
+  force: Schema.optional(Schema.Boolean),
+  updateType: Schema.optional(Schema.Literals(["Default", "ByUpgradeDomain"])),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/restart",
+    apiVersion: "2026-02-01",
   }),
 );
 export type NodeTypesRestartInput = typeof NodeTypesRestartInput.Type;
@@ -2256,11 +2984,14 @@ export const NodeTypesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   nodeTypeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  nodes: Schema.optional(Schema.Array(Schema.String)),
+  force: Schema.optional(Schema.Boolean),
+  updateType: Schema.optional(Schema.Literals(["Default", "ByUpgradeDomain"])),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}/start",
+    apiVersion: "2026-02-01",
   }),
 );
 export type NodeTypesStartInput = typeof NodeTypesStartInput.Type;
@@ -2289,11 +3020,19 @@ export const NodeTypesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   nodeTypeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      tier: Schema.optional(Schema.String),
+      capacity: Schema.Number,
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}",
+    apiVersion: "2026-02-01",
   }),
 );
 export type NodeTypesUpdateInput = typeof NodeTypesUpdateInput.Type;
@@ -2340,11 +3079,11 @@ export const OperationResultsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/managedClusterOperationResults/{operationId}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type OperationResultsGetInput = typeof OperationResultsGetInput.Type;
@@ -2368,12 +3107,13 @@ export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationResultsGetOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ServiceFabric/operations",
+    apiVersion: "2026-02-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -2418,11 +3158,11 @@ export const OperationStatusGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/managedClusterOperations/{operationId}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
@@ -2465,11 +3205,76 @@ export const ServicesCreateOrUpdateInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        placementConstraints: Schema.optional(Schema.String),
+        correlationScheme: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              scheme: Schema.Literals([
+                "AlignedAffinity",
+                "NonAlignedAffinity",
+              ]),
+              serviceName: Schema.String,
+            }),
+          ),
+        ),
+        serviceLoadMetrics: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              weight: Schema.optional(
+                Schema.Literals(["Zero", "Low", "Medium", "High"]),
+              ),
+              primaryDefaultLoad: Schema.optional(Schema.Number),
+              secondaryDefaultLoad: Schema.optional(Schema.Number),
+              defaultLoad: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        servicePlacementPolicies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.Literals([
+                "InvalidDomain",
+                "RequiredDomain",
+                "PreferredPrimaryDomain",
+                "RequiredDomainDistribution",
+                "NonPartiallyPlaceService",
+              ]),
+            }),
+          ),
+        ),
+        defaultMoveCost: Schema.optional(
+          Schema.Literals(["Zero", "Low", "Medium", "High"]),
+        ),
+        scalingPolicies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              scalingMechanism: Schema.Struct({
+                kind: Schema.Literals([
+                  "ScalePartitionInstanceCount",
+                  "AddRemoveIncrementalNamedPartition",
+                ]),
+              }),
+              scalingTrigger: Schema.Struct({
+                kind: Schema.Literals([
+                  "AveragePartitionLoadTrigger",
+                  "AverageServiceLoadTrigger",
+                ]),
+              }),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -2523,11 +3328,11 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
   applicationName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
+    apiVersion: "2026-02-01",
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -2558,11 +3363,11 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
   applicationName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
+    apiVersion: "2026-02-01",
   }),
 );
 export type ServicesGetInput = typeof ServicesGetInput.Type;
@@ -2611,11 +3416,11 @@ export const ServicesListByApplicationsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/services",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ServicesListByApplicationsInput =
@@ -2684,11 +3489,16 @@ export const ServicesRestartReplicaInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    partitionId: Schema.String,
+    replicaIds: Schema.Array(Schema.Number),
+    restartKind: Schema.Literals(["Simultaneous"]),
+    forceRestart: Schema.optional(Schema.Boolean),
+    timeout: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/services/{serviceName}/restartReplica",
+      apiVersion: "2026-02-01",
     }),
   );
 export type ServicesRestartReplicaInput =
@@ -2724,11 +3534,12 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
   applicationName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
+    apiVersion: "2026-02-01",
   }),
 );
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;

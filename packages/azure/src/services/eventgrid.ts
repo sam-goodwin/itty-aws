@@ -14,10 +14,47 @@ export const CaCertificatesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     caCertificateName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        encodedCertificate: Schema.optional(Schema.String),
+        issueTimeInUtc: Schema.optional(Schema.String),
+        expiryTimeInUtc: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "Deleted",
+          ]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates/{caCertificateName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type CaCertificatesCreateOrUpdateInput =
@@ -58,6 +95,7 @@ export const CaCertificatesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates/{caCertificateName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type CaCertificatesDeleteInput = typeof CaCertificatesDeleteInput.Type;
@@ -94,6 +132,7 @@ export const CaCertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates/{caCertificateName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type CaCertificatesGetInput = typeof CaCertificatesGetInput.Type;
@@ -130,6 +169,7 @@ export const CaCertificatesListByNamespaceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates",
+      apiVersion: "2025-02-15",
     }),
   );
 export type CaCertificatesListByNamespaceInput =
@@ -172,10 +212,73 @@ export const ChannelsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
     channelName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        channelType: Schema.optional(Schema.Literals(["PartnerTopic"])),
+        partnerTopicInfo: Schema.optional(
+          Schema.Struct({
+            azureSubscriptionId: Schema.optional(Schema.String),
+            resourceGroupName: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            eventTypeInfo: Schema.optional(
+              Schema.Struct({
+                kind: Schema.optional(Schema.Literals(["Inline"])),
+                inlineEventTypes: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      description: Schema.optional(Schema.String),
+                      displayName: Schema.optional(Schema.String),
+                      documentationUrl: Schema.optional(Schema.String),
+                      dataSchemaUrl: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            source: Schema.optional(Schema.String),
+          }),
+        ),
+        messageForActivation: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "IdleDueToMirroredPartnerTopicDeletion",
+          ]),
+        ),
+        readinessState: Schema.optional(
+          Schema.Literals(["NeverActivated", "Activated"]),
+        ),
+        expirationTimeIfNotActivatedUtc: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels/{channelName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type ChannelsCreateOrUpdateInput =
@@ -216,6 +319,7 @@ export const ChannelsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels/{channelName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type ChannelsDeleteInput = typeof ChannelsDeleteInput.Type;
@@ -247,6 +351,7 @@ export const ChannelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels/{channelName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type ChannelsGetInput = typeof ChannelsGetInput.Type;
@@ -283,6 +388,7 @@ export const ChannelsGetFullUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels/{channelName}/getFullUrl",
+      apiVersion: "2025-02-15",
     }),
   );
 export type ChannelsGetFullUrlInput = typeof ChannelsGetFullUrlInput.Type;
@@ -317,6 +423,7 @@ export const ChannelsListByPartnerNamespaceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels",
+      apiVersion: "2025-02-15",
     }),
   );
 export type ChannelsListByPartnerNamespaceInput =
@@ -358,10 +465,36 @@ export const ChannelsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   partnerNamespaceName: Schema.String.pipe(T.PathParam()),
   channelName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      expirationTimeIfNotActivatedUtc: Schema.optional(Schema.String),
+      partnerTopicInfo: Schema.optional(
+        Schema.Struct({
+          eventTypeInfo: Schema.optional(
+            Schema.Struct({
+              kind: Schema.optional(Schema.Literals(["Inline"])),
+              inlineEventTypes: Schema.optional(
+                Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    description: Schema.optional(Schema.String),
+                    displayName: Schema.optional(Schema.String),
+                    documentationUrl: Schema.optional(Schema.String),
+                    dataSchemaUrl: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels/{channelName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type ChannelsUpdateInput = typeof ChannelsUpdateInput.Type;
@@ -390,10 +523,45 @@ export const ClientGroupsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     clientGroupName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        query: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "Deleted",
+          ]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clientGroups/{clientGroupName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type ClientGroupsCreateOrUpdateInput =
@@ -435,6 +603,7 @@ export const ClientGroupsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clientGroups/{clientGroupName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type ClientGroupsDeleteInput = typeof ClientGroupsDeleteInput.Type;
@@ -466,6 +635,7 @@ export const ClientGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clientGroups/{clientGroupName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type ClientGroupsGetInput = typeof ClientGroupsGetInput.Type;
@@ -501,6 +671,7 @@ export const ClientGroupsListByNamespaceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clientGroups",
+      apiVersion: "2025-02-15",
     }),
   );
 export type ClientGroupsListByNamespaceInput =
@@ -544,10 +715,64 @@ export const ClientsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     clientName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        authenticationName: Schema.optional(Schema.String),
+        clientCertificateAuthentication: Schema.optional(
+          Schema.Struct({
+            validationScheme: Schema.optional(
+              Schema.Literals([
+                "SubjectMatchesAuthenticationName",
+                "DnsMatchesAuthenticationName",
+                "UriMatchesAuthenticationName",
+                "IpMatchesAuthenticationName",
+                "EmailMatchesAuthenticationName",
+                "ThumbprintMatch",
+              ]),
+            ),
+            allowedThumbprints: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "Deleted",
+          ]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clients/{clientName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type ClientsCreateOrUpdateInput = typeof ClientsCreateOrUpdateInput.Type;
@@ -587,6 +812,7 @@ export const ClientsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clients/{clientName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type ClientsDeleteInput = typeof ClientsDeleteInput.Type;
@@ -618,6 +844,7 @@ export const ClientsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clients/{clientName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type ClientsGetInput = typeof ClientsGetInput.Type;
@@ -653,6 +880,7 @@ export const ClientsListByNamespaceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clients",
+      apiVersion: "2025-02-15",
     }),
   );
 export type ClientsListByNamespaceInput =
@@ -696,10 +924,160 @@ export const DomainEventSubscriptionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        topic: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "AwaitingManualAction",
+          ]),
+        ),
+        destination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals([
+              "WebHook",
+              "EventHub",
+              "StorageQueue",
+              "HybridConnection",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+              "AzureFunction",
+              "MonitorAlert",
+              "NamespaceTopic",
+            ]),
+          }),
+        ),
+        deliveryWithResourceIdentity: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            destination: Schema.optional(
+              Schema.Struct({
+                endpointType: Schema.Literals([
+                  "WebHook",
+                  "EventHub",
+                  "StorageQueue",
+                  "HybridConnection",
+                  "ServiceBusQueue",
+                  "ServiceBusTopic",
+                  "AzureFunction",
+                  "MonitorAlert",
+                  "NamespaceTopic",
+                ]),
+              }),
+            ),
+          }),
+        ),
+        filter: Schema.optional(
+          Schema.Struct({
+            subjectBeginsWith: Schema.optional(Schema.String),
+            subjectEndsWith: Schema.optional(Schema.String),
+            includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+            isSubjectCaseSensitive: Schema.optional(Schema.Boolean),
+            enableAdvancedFilteringOnArrays: Schema.optional(Schema.Boolean),
+            advancedFilters: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  operatorType: Schema.Literals([
+                    "NumberIn",
+                    "NumberNotIn",
+                    "NumberLessThan",
+                    "NumberGreaterThan",
+                    "NumberLessThanOrEquals",
+                    "NumberGreaterThanOrEquals",
+                    "BoolEquals",
+                    "StringIn",
+                    "StringNotIn",
+                    "StringBeginsWith",
+                    "StringEndsWith",
+                    "StringContains",
+                    "NumberInRange",
+                    "NumberNotInRange",
+                    "StringNotBeginsWith",
+                    "StringNotEndsWith",
+                    "StringNotContains",
+                    "IsNullOrUndefined",
+                    "IsNotNull",
+                  ]),
+                  key: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        labels: Schema.optional(Schema.Array(Schema.String)),
+        expirationTimeUtc: Schema.optional(Schema.String),
+        eventDeliverySchema: Schema.optional(
+          Schema.Literals([
+            "EventGridSchema",
+            "CustomInputSchema",
+            "CloudEventSchemaV1_0",
+          ]),
+        ),
+        retryPolicy: Schema.optional(
+          Schema.Struct({
+            maxDeliveryAttempts: Schema.optional(Schema.Number),
+            eventTimeToLiveInMinutes: Schema.optional(Schema.Number),
+          }),
+        ),
+        deadLetterDestination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals(["StorageBlob"]),
+          }),
+        ),
+        deadLetterWithResourceIdentity: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            deadLetterDestination: Schema.optional(
+              Schema.Struct({
+                endpointType: Schema.Literals(["StorageBlob"]),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainEventSubscriptionsCreateOrUpdateInput =
@@ -740,6 +1118,7 @@ export const DomainEventSubscriptionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainEventSubscriptionsDeleteInput =
@@ -776,6 +1155,7 @@ export const DomainEventSubscriptionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainEventSubscriptionsGetInput =
@@ -817,6 +1197,7 @@ export const DomainEventSubscriptionsGetDeliveryAttributesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainEventSubscriptionsGetDeliveryAttributesInput =
@@ -862,6 +1243,7 @@ export const DomainEventSubscriptionsGetFullUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainEventSubscriptionsGetFullUrlInput =
@@ -899,6 +1281,7 @@ export const DomainEventSubscriptionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainEventSubscriptionsListInput =
@@ -941,10 +1324,127 @@ export const DomainEventSubscriptionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    destination: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals([
+          "WebHook",
+          "EventHub",
+          "StorageQueue",
+          "HybridConnection",
+          "ServiceBusQueue",
+          "ServiceBusTopic",
+          "AzureFunction",
+          "MonitorAlert",
+          "NamespaceTopic",
+        ]),
+      }),
+    ),
+    deliveryWithResourceIdentity: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        destination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals([
+              "WebHook",
+              "EventHub",
+              "StorageQueue",
+              "HybridConnection",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+              "AzureFunction",
+              "MonitorAlert",
+              "NamespaceTopic",
+            ]),
+          }),
+        ),
+      }),
+    ),
+    filter: Schema.optional(
+      Schema.Struct({
+        subjectBeginsWith: Schema.optional(Schema.String),
+        subjectEndsWith: Schema.optional(Schema.String),
+        includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+        isSubjectCaseSensitive: Schema.optional(Schema.Boolean),
+        enableAdvancedFilteringOnArrays: Schema.optional(Schema.Boolean),
+        advancedFilters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              operatorType: Schema.Literals([
+                "NumberIn",
+                "NumberNotIn",
+                "NumberLessThan",
+                "NumberGreaterThan",
+                "NumberLessThanOrEquals",
+                "NumberGreaterThanOrEquals",
+                "BoolEquals",
+                "StringIn",
+                "StringNotIn",
+                "StringBeginsWith",
+                "StringEndsWith",
+                "StringContains",
+                "NumberInRange",
+                "NumberNotInRange",
+                "StringNotBeginsWith",
+                "StringNotEndsWith",
+                "StringNotContains",
+                "IsNullOrUndefined",
+                "IsNotNull",
+              ]),
+              key: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    labels: Schema.optional(Schema.Array(Schema.String)),
+    expirationTimeUtc: Schema.optional(Schema.String),
+    eventDeliverySchema: Schema.optional(
+      Schema.Literals([
+        "EventGridSchema",
+        "CustomInputSchema",
+        "CloudEventSchemaV1_0",
+      ]),
+    ),
+    retryPolicy: Schema.optional(
+      Schema.Struct({
+        maxDeliveryAttempts: Schema.optional(Schema.Number),
+        eventTimeToLiveInMinutes: Schema.optional(Schema.Number),
+      }),
+    ),
+    deadLetterDestination: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals(["StorageBlob"]),
+      }),
+    ),
+    deadLetterWithResourceIdentity: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        deadLetterDestination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals(["StorageBlob"]),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainEventSubscriptionsUpdateInput =
@@ -980,10 +1480,123 @@ export const DomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+        minimumTlsVersionAllowed: Schema.optional(
+          Schema.Literals(["1.0", "1.1", "1.2"]),
+        ),
+        endpoint: Schema.optional(Schema.String),
+        inputSchema: Schema.optional(
+          Schema.Literals([
+            "EventGridSchema",
+            "CustomEventSchema",
+            "CloudEventSchemaV1_0",
+          ]),
+        ),
+        eventTypeInfo: Schema.optional(
+          Schema.Struct({
+            kind: Schema.optional(Schema.Literals(["Inline"])),
+            inlineEventTypes: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  description: Schema.optional(Schema.String),
+                  displayName: Schema.optional(Schema.String),
+                  documentationUrl: Schema.optional(Schema.String),
+                  dataSchemaUrl: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        inputSchemaMapping: Schema.optional(
+          Schema.Struct({
+            inputSchemaMappingType: Schema.Literals(["Json"]),
+          }),
+        ),
+        metricResourceId: Schema.optional(Schema.String),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        inboundIpRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipMask: Schema.optional(Schema.String),
+              action: Schema.optional(Schema.Literals(["Allow"])),
+            }),
+          ),
+        ),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+        autoCreateTopicWithFirstSubscription: Schema.optional(Schema.Boolean),
+        autoDeleteTopicWithLastSubscription: Schema.optional(Schema.Boolean),
+        dataResidencyBoundary: Schema.optional(
+          Schema.Literals(["WithinGeopair", "WithinRegion"]),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+          ]),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainsCreateOrUpdateInput = typeof DomainsCreateOrUpdateInput.Type;
@@ -1021,6 +1634,7 @@ export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type DomainsDeleteInput = typeof DomainsDeleteInput.Type;
@@ -1050,6 +1664,7 @@ export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type DomainsGetInput = typeof DomainsGetInput.Type;
@@ -1083,6 +1698,7 @@ export const DomainsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainsListByResourceGroupInput =
@@ -1125,6 +1741,7 @@ export const DomainsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/domains",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainsListBySubscriptionInput =
@@ -1168,6 +1785,7 @@ export const DomainsListSharedAccessKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/listKeys",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainsListSharedAccessKeysInput =
@@ -1202,10 +1820,12 @@ export const DomainsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
+    keyName: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/regenerateKey",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainsRegenerateKeyInput = typeof DomainsRegenerateKeyInput.Type;
@@ -1237,10 +1857,75 @@ export const DomainsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      inboundIpRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            ipMask: Schema.optional(Schema.String),
+            action: Schema.optional(Schema.Literals(["Allow"])),
+          }),
+        ),
+      ),
+      minimumTlsVersionAllowed: Schema.optional(
+        Schema.Literals(["1.0", "1.1", "1.2"]),
+      ),
+      disableLocalAuth: Schema.optional(Schema.Boolean),
+      autoCreateTopicWithFirstSubscription: Schema.optional(Schema.Boolean),
+      autoDeleteTopicWithLastSubscription: Schema.optional(Schema.Boolean),
+      dataResidencyBoundary: Schema.optional(
+        Schema.Literals(["WithinGeopair", "WithinRegion"]),
+      ),
+      eventTypeInfo: Schema.optional(
+        Schema.Struct({
+          kind: Schema.optional(Schema.Literals(["Inline"])),
+          inlineEventTypes: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                description: Schema.optional(Schema.String),
+                displayName: Schema.optional(Schema.String),
+                documentationUrl: Schema.optional(Schema.String),
+                dataSchemaUrl: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+        ]),
+      ),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type DomainsUpdateInput = typeof DomainsUpdateInput.Type;
@@ -1269,10 +1954,160 @@ export const DomainTopicEventSubscriptionsCreateOrUpdateInput =
     domainName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        topic: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "AwaitingManualAction",
+          ]),
+        ),
+        destination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals([
+              "WebHook",
+              "EventHub",
+              "StorageQueue",
+              "HybridConnection",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+              "AzureFunction",
+              "MonitorAlert",
+              "NamespaceTopic",
+            ]),
+          }),
+        ),
+        deliveryWithResourceIdentity: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            destination: Schema.optional(
+              Schema.Struct({
+                endpointType: Schema.Literals([
+                  "WebHook",
+                  "EventHub",
+                  "StorageQueue",
+                  "HybridConnection",
+                  "ServiceBusQueue",
+                  "ServiceBusTopic",
+                  "AzureFunction",
+                  "MonitorAlert",
+                  "NamespaceTopic",
+                ]),
+              }),
+            ),
+          }),
+        ),
+        filter: Schema.optional(
+          Schema.Struct({
+            subjectBeginsWith: Schema.optional(Schema.String),
+            subjectEndsWith: Schema.optional(Schema.String),
+            includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+            isSubjectCaseSensitive: Schema.optional(Schema.Boolean),
+            enableAdvancedFilteringOnArrays: Schema.optional(Schema.Boolean),
+            advancedFilters: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  operatorType: Schema.Literals([
+                    "NumberIn",
+                    "NumberNotIn",
+                    "NumberLessThan",
+                    "NumberGreaterThan",
+                    "NumberLessThanOrEquals",
+                    "NumberGreaterThanOrEquals",
+                    "BoolEquals",
+                    "StringIn",
+                    "StringNotIn",
+                    "StringBeginsWith",
+                    "StringEndsWith",
+                    "StringContains",
+                    "NumberInRange",
+                    "NumberNotInRange",
+                    "StringNotBeginsWith",
+                    "StringNotEndsWith",
+                    "StringNotContains",
+                    "IsNullOrUndefined",
+                    "IsNotNull",
+                  ]),
+                  key: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        labels: Schema.optional(Schema.Array(Schema.String)),
+        expirationTimeUtc: Schema.optional(Schema.String),
+        eventDeliverySchema: Schema.optional(
+          Schema.Literals([
+            "EventGridSchema",
+            "CustomInputSchema",
+            "CloudEventSchemaV1_0",
+          ]),
+        ),
+        retryPolicy: Schema.optional(
+          Schema.Struct({
+            maxDeliveryAttempts: Schema.optional(Schema.Number),
+            eventTimeToLiveInMinutes: Schema.optional(Schema.Number),
+          }),
+        ),
+        deadLetterDestination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals(["StorageBlob"]),
+          }),
+        ),
+        deadLetterWithResourceIdentity: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            deadLetterDestination: Schema.optional(
+              Schema.Struct({
+                endpointType: Schema.Literals(["StorageBlob"]),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainTopicEventSubscriptionsCreateOrUpdateInput =
@@ -1315,6 +2150,7 @@ export const DomainTopicEventSubscriptionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainTopicEventSubscriptionsDeleteInput =
@@ -1353,6 +2189,7 @@ export const DomainTopicEventSubscriptionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainTopicEventSubscriptionsGetInput =
@@ -1395,6 +2232,7 @@ export const DomainTopicEventSubscriptionsGetDeliveryAttributesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainTopicEventSubscriptionsGetDeliveryAttributesInput =
@@ -1442,6 +2280,7 @@ export const DomainTopicEventSubscriptionsGetFullUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainTopicEventSubscriptionsGetFullUrlInput =
@@ -1481,6 +2320,7 @@ export const DomainTopicEventSubscriptionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainTopicEventSubscriptionsListInput =
@@ -1525,10 +2365,127 @@ export const DomainTopicEventSubscriptionsUpdateInput =
     domainName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    destination: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals([
+          "WebHook",
+          "EventHub",
+          "StorageQueue",
+          "HybridConnection",
+          "ServiceBusQueue",
+          "ServiceBusTopic",
+          "AzureFunction",
+          "MonitorAlert",
+          "NamespaceTopic",
+        ]),
+      }),
+    ),
+    deliveryWithResourceIdentity: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        destination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals([
+              "WebHook",
+              "EventHub",
+              "StorageQueue",
+              "HybridConnection",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+              "AzureFunction",
+              "MonitorAlert",
+              "NamespaceTopic",
+            ]),
+          }),
+        ),
+      }),
+    ),
+    filter: Schema.optional(
+      Schema.Struct({
+        subjectBeginsWith: Schema.optional(Schema.String),
+        subjectEndsWith: Schema.optional(Schema.String),
+        includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+        isSubjectCaseSensitive: Schema.optional(Schema.Boolean),
+        enableAdvancedFilteringOnArrays: Schema.optional(Schema.Boolean),
+        advancedFilters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              operatorType: Schema.Literals([
+                "NumberIn",
+                "NumberNotIn",
+                "NumberLessThan",
+                "NumberGreaterThan",
+                "NumberLessThanOrEquals",
+                "NumberGreaterThanOrEquals",
+                "BoolEquals",
+                "StringIn",
+                "StringNotIn",
+                "StringBeginsWith",
+                "StringEndsWith",
+                "StringContains",
+                "NumberInRange",
+                "NumberNotInRange",
+                "StringNotBeginsWith",
+                "StringNotEndsWith",
+                "StringNotContains",
+                "IsNullOrUndefined",
+                "IsNotNull",
+              ]),
+              key: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    labels: Schema.optional(Schema.Array(Schema.String)),
+    expirationTimeUtc: Schema.optional(Schema.String),
+    eventDeliverySchema: Schema.optional(
+      Schema.Literals([
+        "EventGridSchema",
+        "CustomInputSchema",
+        "CloudEventSchemaV1_0",
+      ]),
+    ),
+    retryPolicy: Schema.optional(
+      Schema.Struct({
+        maxDeliveryAttempts: Schema.optional(Schema.Number),
+        eventTimeToLiveInMinutes: Schema.optional(Schema.Number),
+      }),
+    ),
+    deadLetterDestination: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals(["StorageBlob"]),
+      }),
+    ),
+    deadLetterWithResourceIdentity: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        deadLetterDestination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals(["StorageBlob"]),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainTopicEventSubscriptionsUpdateInput =
@@ -1570,6 +2527,7 @@ export const DomainTopicsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{domainTopicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainTopicsCreateOrUpdateInput =
@@ -1611,6 +2569,7 @@ export const DomainTopicsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{domainTopicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainTopicsDeleteInput = typeof DomainTopicsDeleteInput.Type;
@@ -1642,6 +2601,7 @@ export const DomainTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{domainTopicName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type DomainTopicsGetInput = typeof DomainTopicsGetInput.Type;
@@ -1677,6 +2637,7 @@ export const DomainTopicsListByDomainInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics",
+      apiVersion: "2025-02-15",
     }),
   );
 export type DomainTopicsListByDomainInput =
@@ -1719,10 +2680,160 @@ export const EventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        topic: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "AwaitingManualAction",
+          ]),
+        ),
+        destination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals([
+              "WebHook",
+              "EventHub",
+              "StorageQueue",
+              "HybridConnection",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+              "AzureFunction",
+              "MonitorAlert",
+              "NamespaceTopic",
+            ]),
+          }),
+        ),
+        deliveryWithResourceIdentity: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            destination: Schema.optional(
+              Schema.Struct({
+                endpointType: Schema.Literals([
+                  "WebHook",
+                  "EventHub",
+                  "StorageQueue",
+                  "HybridConnection",
+                  "ServiceBusQueue",
+                  "ServiceBusTopic",
+                  "AzureFunction",
+                  "MonitorAlert",
+                  "NamespaceTopic",
+                ]),
+              }),
+            ),
+          }),
+        ),
+        filter: Schema.optional(
+          Schema.Struct({
+            subjectBeginsWith: Schema.optional(Schema.String),
+            subjectEndsWith: Schema.optional(Schema.String),
+            includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+            isSubjectCaseSensitive: Schema.optional(Schema.Boolean),
+            enableAdvancedFilteringOnArrays: Schema.optional(Schema.Boolean),
+            advancedFilters: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  operatorType: Schema.Literals([
+                    "NumberIn",
+                    "NumberNotIn",
+                    "NumberLessThan",
+                    "NumberGreaterThan",
+                    "NumberLessThanOrEquals",
+                    "NumberGreaterThanOrEquals",
+                    "BoolEquals",
+                    "StringIn",
+                    "StringNotIn",
+                    "StringBeginsWith",
+                    "StringEndsWith",
+                    "StringContains",
+                    "NumberInRange",
+                    "NumberNotInRange",
+                    "StringNotBeginsWith",
+                    "StringNotEndsWith",
+                    "StringNotContains",
+                    "IsNullOrUndefined",
+                    "IsNotNull",
+                  ]),
+                  key: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        labels: Schema.optional(Schema.Array(Schema.String)),
+        expirationTimeUtc: Schema.optional(Schema.String),
+        eventDeliverySchema: Schema.optional(
+          Schema.Literals([
+            "EventGridSchema",
+            "CustomInputSchema",
+            "CloudEventSchemaV1_0",
+          ]),
+        ),
+        retryPolicy: Schema.optional(
+          Schema.Struct({
+            maxDeliveryAttempts: Schema.optional(Schema.Number),
+            eventTimeToLiveInMinutes: Schema.optional(Schema.Number),
+          }),
+        ),
+        deadLetterDestination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals(["StorageBlob"]),
+          }),
+        ),
+        deadLetterWithResourceIdentity: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            deadLetterDestination: Schema.optional(
+              Schema.Struct({
+                endpointType: Schema.Literals(["StorageBlob"]),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsCreateOrUpdateInput =
@@ -1761,6 +2872,7 @@ export const EventSubscriptionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsDeleteInput =
@@ -1796,6 +2908,7 @@ export const EventSubscriptionsGetInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsGetInput = typeof EventSubscriptionsGetInput.Type;
@@ -1834,6 +2947,7 @@ export const EventSubscriptionsGetDeliveryAttributesInput =
     T.Http({
       method: "POST",
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsGetDeliveryAttributesInput =
@@ -1877,6 +2991,7 @@ export const EventSubscriptionsGetFullUrlInput =
     T.Http({
       method: "POST",
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsGetFullUrlInput =
@@ -1914,6 +3029,7 @@ export const EventSubscriptionsListByDomainTopicInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/providers/Microsoft.EventGrid/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsListByDomainTopicInput =
@@ -1962,6 +3078,7 @@ export const EventSubscriptionsListByResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{providerNamespace}/{resourceTypeName}/{resourceName}/providers/Microsoft.EventGrid/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsListByResourceInput =
@@ -2008,6 +3125,7 @@ export const EventSubscriptionsListGlobalByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsListGlobalByResourceGroupInput =
@@ -2052,6 +3170,7 @@ export const EventSubscriptionsListGlobalByResourceGroupForTopicTypeInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsListGlobalByResourceGroupForTopicTypeInput =
@@ -2094,6 +3213,7 @@ export const EventSubscriptionsListGlobalBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsListGlobalBySubscriptionInput =
@@ -2135,6 +3255,7 @@ export const EventSubscriptionsListGlobalBySubscriptionForTopicTypeInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsListGlobalBySubscriptionForTopicTypeInput =
@@ -2179,6 +3300,7 @@ export const EventSubscriptionsListRegionalByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/locations/{location}/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsListRegionalByResourceGroupInput =
@@ -2225,6 +3347,7 @@ export const EventSubscriptionsListRegionalByResourceGroupForTopicTypeInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/locations/{location}/topicTypes/{topicTypeName}/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsListRegionalByResourceGroupForTopicTypeInput =
@@ -2271,6 +3394,7 @@ export const EventSubscriptionsListRegionalBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/locations/{location}/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsListRegionalBySubscriptionInput =
@@ -2315,6 +3439,7 @@ export const EventSubscriptionsListRegionalBySubscriptionForTopicTypeInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/locations/{location}/topicTypes/{topicTypeName}/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsListRegionalBySubscriptionForTopicTypeInput =
@@ -2357,10 +3482,127 @@ export const EventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    destination: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals([
+          "WebHook",
+          "EventHub",
+          "StorageQueue",
+          "HybridConnection",
+          "ServiceBusQueue",
+          "ServiceBusTopic",
+          "AzureFunction",
+          "MonitorAlert",
+          "NamespaceTopic",
+        ]),
+      }),
+    ),
+    deliveryWithResourceIdentity: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        destination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals([
+              "WebHook",
+              "EventHub",
+              "StorageQueue",
+              "HybridConnection",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+              "AzureFunction",
+              "MonitorAlert",
+              "NamespaceTopic",
+            ]),
+          }),
+        ),
+      }),
+    ),
+    filter: Schema.optional(
+      Schema.Struct({
+        subjectBeginsWith: Schema.optional(Schema.String),
+        subjectEndsWith: Schema.optional(Schema.String),
+        includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+        isSubjectCaseSensitive: Schema.optional(Schema.Boolean),
+        enableAdvancedFilteringOnArrays: Schema.optional(Schema.Boolean),
+        advancedFilters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              operatorType: Schema.Literals([
+                "NumberIn",
+                "NumberNotIn",
+                "NumberLessThan",
+                "NumberGreaterThan",
+                "NumberLessThanOrEquals",
+                "NumberGreaterThanOrEquals",
+                "BoolEquals",
+                "StringIn",
+                "StringNotIn",
+                "StringBeginsWith",
+                "StringEndsWith",
+                "StringContains",
+                "NumberInRange",
+                "NumberNotInRange",
+                "StringNotBeginsWith",
+                "StringNotEndsWith",
+                "StringNotContains",
+                "IsNullOrUndefined",
+                "IsNotNull",
+              ]),
+              key: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    labels: Schema.optional(Schema.Array(Schema.String)),
+    expirationTimeUtc: Schema.optional(Schema.String),
+    eventDeliverySchema: Schema.optional(
+      Schema.Literals([
+        "EventGridSchema",
+        "CustomInputSchema",
+        "CloudEventSchemaV1_0",
+      ]),
+    ),
+    retryPolicy: Schema.optional(
+      Schema.Struct({
+        maxDeliveryAttempts: Schema.optional(Schema.Number),
+        eventTimeToLiveInMinutes: Schema.optional(Schema.Number),
+      }),
+    ),
+    deadLetterDestination: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals(["StorageBlob"]),
+      }),
+    ),
+    deadLetterWithResourceIdentity: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        deadLetterDestination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals(["StorageBlob"]),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type EventSubscriptionsUpdateInput =
@@ -2399,6 +3641,7 @@ export const ExtensionTopicsGetInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.EventGrid/extensionTopics/default",
+      apiVersion: "2025-02-15",
     }),
   );
 export type ExtensionTopicsGetInput = typeof ExtensionTopicsGetInput.Type;
@@ -2429,10 +3672,192 @@ export const NamespacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "Deleted",
+            "DeleteFailed",
+            "CreateFailed",
+            "UpdatedFailed",
+          ]),
+        ),
+        topicsConfiguration: Schema.optional(
+          Schema.Struct({
+            hostname: Schema.optional(Schema.String),
+            customDomains: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  fullyQualifiedDomainName: Schema.String,
+                  validationState: Schema.optional(
+                    Schema.Literals([
+                      "Pending",
+                      "Approved",
+                      "ErrorRetrievingDnsRecord",
+                    ]),
+                  ),
+                  identity: Schema.optional(
+                    Schema.Struct({
+                      type: Schema.optional(
+                        Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                      ),
+                      userAssignedIdentity: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  certificateUrl: Schema.optional(Schema.String),
+                  expectedTxtRecordName: Schema.optional(Schema.String),
+                  expectedTxtRecordValue: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        topicSpacesConfiguration: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+            routeTopicResourceId: Schema.optional(Schema.String),
+            hostname: Schema.optional(Schema.String),
+            routingEnrichments: Schema.optional(
+              Schema.Struct({
+                static: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      valueType: Schema.Literals(["String"]),
+                    }),
+                  ),
+                ),
+                dynamic: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      value: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            maximumSessionExpiryInHours: Schema.optional(Schema.Number),
+            maximumClientSessionsPerAuthenticationName: Schema.optional(
+              Schema.Number,
+            ),
+            routingIdentityInfo: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            customDomains: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  fullyQualifiedDomainName: Schema.String,
+                  validationState: Schema.optional(
+                    Schema.Literals([
+                      "Pending",
+                      "Approved",
+                      "ErrorRetrievingDnsRecord",
+                    ]),
+                  ),
+                  identity: Schema.optional(
+                    Schema.Struct({
+                      type: Schema.optional(
+                        Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                      ),
+                      userAssignedIdentity: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  certificateUrl: Schema.optional(Schema.String),
+                  expectedTxtRecordName: Schema.optional(Schema.String),
+                  expectedTxtRecordValue: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        isZoneRedundant: Schema.optional(Schema.Boolean),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        inboundIpRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipMask: Schema.optional(Schema.String),
+              action: Schema.optional(Schema.Literals(["Allow"])),
+            }),
+          ),
+        ),
+        minimumTlsVersionAllowed: Schema.optional(
+          Schema.Literals(["1.0", "1.1", "1.2"]),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.Literals(["Standard"])),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+          ]),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespacesCreateOrUpdateInput =
@@ -2471,6 +3896,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
@@ -2500,6 +3926,7 @@ export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type NamespacesGetInput = typeof NamespacesGetInput.Type;
@@ -2533,6 +3960,7 @@ export const NamespacesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespacesListByResourceGroupInput =
@@ -2574,6 +4002,7 @@ export const NamespacesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/namespaces",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespacesListBySubscriptionInput =
@@ -2616,6 +4045,7 @@ export const NamespacesListSharedAccessKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/listKeys",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespacesListSharedAccessKeysInput =
@@ -2649,10 +4079,12 @@ export const NamespacesRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
+    keyName: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/regenerateKey",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespacesRegenerateKeyInput =
@@ -2686,10 +4118,148 @@ export const NamespacesRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+        ]),
+      ),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.Literals(["Standard"])),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      topicSpacesConfiguration: Schema.optional(
+        Schema.Struct({
+          state: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+          routeTopicResourceId: Schema.optional(Schema.String),
+          routingEnrichments: Schema.optional(
+            Schema.Struct({
+              static: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    key: Schema.optional(Schema.String),
+                    valueType: Schema.Literals(["String"]),
+                  }),
+                ),
+              ),
+              dynamic: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    key: Schema.optional(Schema.String),
+                    value: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+          maximumSessionExpiryInHours: Schema.optional(Schema.Number),
+          maximumClientSessionsPerAuthenticationName: Schema.optional(
+            Schema.Number,
+          ),
+          routingIdentityInfo: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+              ),
+              userAssignedIdentity: Schema.optional(Schema.String),
+            }),
+          ),
+          customDomains: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                fullyQualifiedDomainName: Schema.String,
+                validationState: Schema.optional(
+                  Schema.Literals([
+                    "Pending",
+                    "Approved",
+                    "ErrorRetrievingDnsRecord",
+                  ]),
+                ),
+                identity: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.optional(
+                      Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                    ),
+                    userAssignedIdentity: Schema.optional(Schema.String),
+                  }),
+                ),
+                certificateUrl: Schema.optional(Schema.String),
+                expectedTxtRecordName: Schema.optional(Schema.String),
+                expectedTxtRecordValue: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      topicsConfiguration: Schema.optional(
+        Schema.Struct({
+          customDomains: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                fullyQualifiedDomainName: Schema.String,
+                validationState: Schema.optional(
+                  Schema.Literals([
+                    "Pending",
+                    "Approved",
+                    "ErrorRetrievingDnsRecord",
+                  ]),
+                ),
+                identity: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.optional(
+                      Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                    ),
+                    userAssignedIdentity: Schema.optional(Schema.String),
+                  }),
+                ),
+                certificateUrl: Schema.optional(Schema.String),
+                expectedTxtRecordName: Schema.optional(Schema.String),
+                expectedTxtRecordValue: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      inboundIpRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            ipMask: Schema.optional(Schema.String),
+            action: Schema.optional(Schema.Literals(["Allow"])),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
@@ -2726,6 +4296,7 @@ export const NamespacesValidateCustomDomainOwnershipInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/validateCustomDomainOwnership",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespacesValidateCustomDomainOwnershipInput =
@@ -2809,10 +4380,178 @@ export const NamespaceTopicEventSubscriptionsCreateOrUpdateInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "AwaitingManualAction",
+            "Deleted",
+            "DeleteFailed",
+            "CreateFailed",
+            "UpdatedFailed",
+          ]),
+        ),
+        deliveryConfiguration: Schema.optional(
+          Schema.Struct({
+            deliveryMode: Schema.optional(Schema.Literals(["Queue", "Push"])),
+            queue: Schema.optional(
+              Schema.Struct({
+                receiveLockDurationInSeconds: Schema.optional(Schema.Number),
+                maxDeliveryCount: Schema.optional(Schema.Number),
+                deadLetterDestinationWithResourceIdentity: Schema.optional(
+                  Schema.Struct({
+                    identity: Schema.optional(
+                      Schema.Struct({
+                        type: Schema.optional(
+                          Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                        ),
+                        userAssignedIdentity: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    deadLetterDestination: Schema.optional(
+                      Schema.Struct({
+                        endpointType: Schema.Literals(["StorageBlob"]),
+                      }),
+                    ),
+                  }),
+                ),
+                eventTimeToLive: Schema.optional(Schema.String),
+              }),
+            ),
+            push: Schema.optional(
+              Schema.Struct({
+                maxDeliveryCount: Schema.optional(Schema.Number),
+                eventTimeToLive: Schema.optional(Schema.String),
+                deadLetterDestinationWithResourceIdentity: Schema.optional(
+                  Schema.Struct({
+                    identity: Schema.optional(
+                      Schema.Struct({
+                        type: Schema.optional(
+                          Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                        ),
+                        userAssignedIdentity: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    deadLetterDestination: Schema.optional(
+                      Schema.Struct({
+                        endpointType: Schema.Literals(["StorageBlob"]),
+                      }),
+                    ),
+                  }),
+                ),
+                deliveryWithResourceIdentity: Schema.optional(
+                  Schema.Struct({
+                    identity: Schema.optional(
+                      Schema.Struct({
+                        type: Schema.optional(
+                          Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                        ),
+                        userAssignedIdentity: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    destination: Schema.optional(
+                      Schema.Struct({
+                        endpointType: Schema.Literals([
+                          "WebHook",
+                          "EventHub",
+                          "StorageQueue",
+                          "HybridConnection",
+                          "ServiceBusQueue",
+                          "ServiceBusTopic",
+                          "AzureFunction",
+                          "MonitorAlert",
+                          "NamespaceTopic",
+                        ]),
+                      }),
+                    ),
+                  }),
+                ),
+                destination: Schema.optional(
+                  Schema.Struct({
+                    endpointType: Schema.Literals([
+                      "WebHook",
+                      "EventHub",
+                      "StorageQueue",
+                      "HybridConnection",
+                      "ServiceBusQueue",
+                      "ServiceBusTopic",
+                      "AzureFunction",
+                      "MonitorAlert",
+                      "NamespaceTopic",
+                    ]),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        eventDeliverySchema: Schema.optional(
+          Schema.Literals(["CloudEventSchemaV1_0"]),
+        ),
+        filtersConfiguration: Schema.optional(
+          Schema.Struct({
+            includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+            filters: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  operatorType: Schema.Literals([
+                    "NumberIn",
+                    "NumberNotIn",
+                    "NumberLessThan",
+                    "NumberGreaterThan",
+                    "NumberLessThanOrEquals",
+                    "NumberGreaterThanOrEquals",
+                    "BoolEquals",
+                    "StringIn",
+                    "StringNotIn",
+                    "StringBeginsWith",
+                    "StringEndsWith",
+                    "StringContains",
+                    "NumberInRange",
+                    "NumberNotInRange",
+                    "StringNotBeginsWith",
+                    "StringNotEndsWith",
+                    "StringNotContains",
+                    "IsNullOrUndefined",
+                    "IsNotNull",
+                  ]),
+                  key: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        expirationTimeUtc: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicEventSubscriptionsCreateOrUpdateInput =
@@ -2855,6 +4594,7 @@ export const NamespaceTopicEventSubscriptionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicEventSubscriptionsDeleteInput =
@@ -2893,6 +4633,7 @@ export const NamespaceTopicEventSubscriptionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicEventSubscriptionsGetInput =
@@ -2935,6 +4676,7 @@ export const NamespaceTopicEventSubscriptionsGetDeliveryAttributesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicEventSubscriptionsGetDeliveryAttributesInput =
@@ -2982,6 +4724,7 @@ export const NamespaceTopicEventSubscriptionsGetFullUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicEventSubscriptionsGetFullUrlInput =
@@ -3021,6 +4764,7 @@ export const NamespaceTopicEventSubscriptionsListByNamespaceTopicInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicEventSubscriptionsListByNamespaceTopicInput =
@@ -3065,10 +4809,146 @@ export const NamespaceTopicEventSubscriptionsUpdateInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        deliveryConfiguration: Schema.optional(
+          Schema.Struct({
+            deliveryMode: Schema.optional(Schema.Literals(["Queue", "Push"])),
+            queue: Schema.optional(
+              Schema.Struct({
+                receiveLockDurationInSeconds: Schema.optional(Schema.Number),
+                maxDeliveryCount: Schema.optional(Schema.Number),
+                deadLetterDestinationWithResourceIdentity: Schema.optional(
+                  Schema.Struct({
+                    identity: Schema.optional(
+                      Schema.Struct({
+                        type: Schema.optional(
+                          Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                        ),
+                        userAssignedIdentity: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    deadLetterDestination: Schema.optional(
+                      Schema.Struct({
+                        endpointType: Schema.Literals(["StorageBlob"]),
+                      }),
+                    ),
+                  }),
+                ),
+                eventTimeToLive: Schema.optional(Schema.String),
+              }),
+            ),
+            push: Schema.optional(
+              Schema.Struct({
+                maxDeliveryCount: Schema.optional(Schema.Number),
+                eventTimeToLive: Schema.optional(Schema.String),
+                deadLetterDestinationWithResourceIdentity: Schema.optional(
+                  Schema.Struct({
+                    identity: Schema.optional(
+                      Schema.Struct({
+                        type: Schema.optional(
+                          Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                        ),
+                        userAssignedIdentity: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    deadLetterDestination: Schema.optional(
+                      Schema.Struct({
+                        endpointType: Schema.Literals(["StorageBlob"]),
+                      }),
+                    ),
+                  }),
+                ),
+                deliveryWithResourceIdentity: Schema.optional(
+                  Schema.Struct({
+                    identity: Schema.optional(
+                      Schema.Struct({
+                        type: Schema.optional(
+                          Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                        ),
+                        userAssignedIdentity: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    destination: Schema.optional(
+                      Schema.Struct({
+                        endpointType: Schema.Literals([
+                          "WebHook",
+                          "EventHub",
+                          "StorageQueue",
+                          "HybridConnection",
+                          "ServiceBusQueue",
+                          "ServiceBusTopic",
+                          "AzureFunction",
+                          "MonitorAlert",
+                          "NamespaceTopic",
+                        ]),
+                      }),
+                    ),
+                  }),
+                ),
+                destination: Schema.optional(
+                  Schema.Struct({
+                    endpointType: Schema.Literals([
+                      "WebHook",
+                      "EventHub",
+                      "StorageQueue",
+                      "HybridConnection",
+                      "ServiceBusQueue",
+                      "ServiceBusTopic",
+                      "AzureFunction",
+                      "MonitorAlert",
+                      "NamespaceTopic",
+                    ]),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        eventDeliverySchema: Schema.optional(
+          Schema.Literals(["CloudEventSchemaV1_0"]),
+        ),
+        filtersConfiguration: Schema.optional(
+          Schema.Struct({
+            includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+            filters: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  operatorType: Schema.Literals([
+                    "NumberIn",
+                    "NumberNotIn",
+                    "NumberLessThan",
+                    "NumberGreaterThan",
+                    "NumberLessThanOrEquals",
+                    "NumberGreaterThanOrEquals",
+                    "BoolEquals",
+                    "StringIn",
+                    "StringNotIn",
+                    "StringBeginsWith",
+                    "StringEndsWith",
+                    "StringContains",
+                    "NumberInRange",
+                    "NumberNotInRange",
+                    "StringNotBeginsWith",
+                    "StringNotEndsWith",
+                    "StringNotContains",
+                    "IsNullOrUndefined",
+                    "IsNotNull",
+                  ]),
+                  key: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        expirationTimeUtc: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicEventSubscriptionsUpdateInput =
@@ -3106,10 +4986,49 @@ export const NamespaceTopicsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "Deleted",
+            "DeleteFailed",
+            "CreateFailed",
+            "UpdatedFailed",
+          ]),
+        ),
+        publisherType: Schema.optional(Schema.Literals(["Custom"])),
+        inputSchema: Schema.optional(Schema.Literals(["CloudEventSchemaV1_0"])),
+        eventRetentionInDays: Schema.optional(Schema.Number),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicsCreateOrUpdateInput =
@@ -3150,6 +5069,7 @@ export const NamespaceTopicsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicsDeleteInput = typeof NamespaceTopicsDeleteInput.Type;
@@ -3186,6 +5106,7 @@ export const NamespaceTopicsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicsGetInput = typeof NamespaceTopicsGetInput.Type;
@@ -3222,6 +5143,7 @@ export const NamespaceTopicsListByNamespaceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicsListByNamespaceInput =
@@ -3268,6 +5190,7 @@ export const NamespaceTopicsListSharedAccessKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/listKeys",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicsListSharedAccessKeysInput =
@@ -3303,10 +5226,12 @@ export const NamespaceTopicsRegenerateKeyInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
+    keyName: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/regenerateKey",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicsRegenerateKeyInput =
@@ -3342,10 +5267,16 @@ export const NamespaceTopicsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        eventRetentionInDays: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type NamespaceTopicsUpdateInput = typeof NamespaceTopicsUpdateInput.Type;
@@ -3380,7 +5311,11 @@ export const NamespaceTopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.EventGrid/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.EventGrid/operations",
+    apiVersion: "2025-02-15",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -3421,10 +5356,14 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PartnerConfigurationsAuthorizePartnerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    partnerRegistrationImmutableId: Schema.optional(Schema.String),
+    partnerName: Schema.optional(Schema.String),
+    authorizationExpirationTimeInUtc: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default/authorizePartner",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerConfigurationsAuthorizePartnerInput =
@@ -3457,10 +5396,62 @@ export const PartnerConfigurationsAuthorizePartner =
 export const PartnerConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        partnerAuthorization: Schema.optional(
+          Schema.Struct({
+            defaultMaximumExpirationTimeInDays: Schema.optional(Schema.Number),
+            authorizedPartnersList: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  partnerRegistrationImmutableId: Schema.optional(
+                    Schema.String,
+                  ),
+                  partnerName: Schema.optional(Schema.String),
+                  authorizationExpirationTimeInUtc: Schema.optional(
+                    Schema.String,
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerConfigurationsCreateOrUpdateInput =
@@ -3497,6 +5488,7 @@ export const PartnerConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerConfigurationsDeleteInput =
@@ -3530,6 +5522,7 @@ export const PartnerConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerConfigurationsGetInput =
@@ -3567,6 +5560,7 @@ export const PartnerConfigurationsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerConfigurationsListByResourceGroupInput =
@@ -3608,6 +5602,7 @@ export const PartnerConfigurationsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/partnerConfigurations",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerConfigurationsListBySubscriptionInput =
@@ -3645,10 +5640,14 @@ export const PartnerConfigurationsListBySubscription =
 export const PartnerConfigurationsUnauthorizePartnerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    partnerRegistrationImmutableId: Schema.optional(Schema.String),
+    partnerName: Schema.optional(Schema.String),
+    authorizationExpirationTimeInUtc: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default/unauthorizePartner",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerConfigurationsUnauthorizePartnerInput =
@@ -3681,10 +5680,17 @@ export const PartnerConfigurationsUnauthorizePartner =
 export const PartnerConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        defaultMaximumExpirationTimeInDays: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerConfigurationsUpdateInput =
@@ -3719,10 +5725,70 @@ export const PartnerNamespacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+        partnerRegistrationFullyQualifiedId: Schema.optional(Schema.String),
+        minimumTlsVersionAllowed: Schema.optional(
+          Schema.Literals(["1.0", "1.1", "1.2"]),
+        ),
+        endpoint: Schema.optional(Schema.String),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        inboundIpRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipMask: Schema.optional(Schema.String),
+              action: Schema.optional(Schema.Literals(["Allow"])),
+            }),
+          ),
+        ),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+        partnerTopicRoutingMode: Schema.optional(
+          Schema.Literals(["SourceEventAttribute", "ChannelNameHeader"]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerNamespacesCreateOrUpdateInput =
@@ -3761,6 +5827,7 @@ export const PartnerNamespacesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerNamespacesDeleteInput =
@@ -3796,6 +5863,7 @@ export const PartnerNamespacesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerNamespacesGetInput = typeof PartnerNamespacesGetInput.Type;
@@ -3832,6 +5900,7 @@ export const PartnerNamespacesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerNamespacesListByResourceGroupInput =
@@ -3873,6 +5942,7 @@ export const PartnerNamespacesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/partnerNamespaces",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerNamespacesListBySubscriptionInput =
@@ -3915,6 +5985,7 @@ export const PartnerNamespacesListSharedAccessKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/listKeys",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerNamespacesListSharedAccessKeysInput =
@@ -3948,10 +6019,12 @@ export const PartnerNamespacesRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
+    keyName: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/regenerateKey",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerNamespacesRegenerateKeyInput =
@@ -3985,10 +6058,31 @@ export const PartnerNamespacesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        inboundIpRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipMask: Schema.optional(Schema.String),
+              action: Schema.optional(Schema.Literals(["Allow"])),
+            }),
+          ),
+        ),
+        minimumTlsVersionAllowed: Schema.optional(
+          Schema.Literals(["1.0", "1.1", "1.2"]),
+        ),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerNamespacesUpdateInput =
@@ -4020,10 +6114,42 @@ export const PartnerRegistrationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+        partnerRegistrationImmutableId: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerRegistrationsCreateOrUpdateInput =
@@ -4062,6 +6188,7 @@ export const PartnerRegistrationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerRegistrationsDeleteInput =
@@ -4097,6 +6224,7 @@ export const PartnerRegistrationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerRegistrationsGetInput =
@@ -4135,6 +6263,7 @@ export const PartnerRegistrationsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerRegistrationsListByResourceGroupInput =
@@ -4176,6 +6305,7 @@ export const PartnerRegistrationsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/partnerRegistrations",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerRegistrationsListBySubscriptionInput =
@@ -4214,10 +6344,12 @@ export const PartnerRegistrationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerRegistrationsUpdateInput =
@@ -4250,10 +6382,160 @@ export const PartnerTopicEventSubscriptionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        topic: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "AwaitingManualAction",
+          ]),
+        ),
+        destination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals([
+              "WebHook",
+              "EventHub",
+              "StorageQueue",
+              "HybridConnection",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+              "AzureFunction",
+              "MonitorAlert",
+              "NamespaceTopic",
+            ]),
+          }),
+        ),
+        deliveryWithResourceIdentity: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            destination: Schema.optional(
+              Schema.Struct({
+                endpointType: Schema.Literals([
+                  "WebHook",
+                  "EventHub",
+                  "StorageQueue",
+                  "HybridConnection",
+                  "ServiceBusQueue",
+                  "ServiceBusTopic",
+                  "AzureFunction",
+                  "MonitorAlert",
+                  "NamespaceTopic",
+                ]),
+              }),
+            ),
+          }),
+        ),
+        filter: Schema.optional(
+          Schema.Struct({
+            subjectBeginsWith: Schema.optional(Schema.String),
+            subjectEndsWith: Schema.optional(Schema.String),
+            includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+            isSubjectCaseSensitive: Schema.optional(Schema.Boolean),
+            enableAdvancedFilteringOnArrays: Schema.optional(Schema.Boolean),
+            advancedFilters: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  operatorType: Schema.Literals([
+                    "NumberIn",
+                    "NumberNotIn",
+                    "NumberLessThan",
+                    "NumberGreaterThan",
+                    "NumberLessThanOrEquals",
+                    "NumberGreaterThanOrEquals",
+                    "BoolEquals",
+                    "StringIn",
+                    "StringNotIn",
+                    "StringBeginsWith",
+                    "StringEndsWith",
+                    "StringContains",
+                    "NumberInRange",
+                    "NumberNotInRange",
+                    "StringNotBeginsWith",
+                    "StringNotEndsWith",
+                    "StringNotContains",
+                    "IsNullOrUndefined",
+                    "IsNotNull",
+                  ]),
+                  key: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        labels: Schema.optional(Schema.Array(Schema.String)),
+        expirationTimeUtc: Schema.optional(Schema.String),
+        eventDeliverySchema: Schema.optional(
+          Schema.Literals([
+            "EventGridSchema",
+            "CustomInputSchema",
+            "CloudEventSchemaV1_0",
+          ]),
+        ),
+        retryPolicy: Schema.optional(
+          Schema.Struct({
+            maxDeliveryAttempts: Schema.optional(Schema.Number),
+            eventTimeToLiveInMinutes: Schema.optional(Schema.Number),
+          }),
+        ),
+        deadLetterDestination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals(["StorageBlob"]),
+          }),
+        ),
+        deadLetterWithResourceIdentity: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            deadLetterDestination: Schema.optional(
+              Schema.Struct({
+                endpointType: Schema.Literals(["StorageBlob"]),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicEventSubscriptionsCreateOrUpdateInput =
@@ -4294,6 +6576,7 @@ export const PartnerTopicEventSubscriptionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicEventSubscriptionsDeleteInput =
@@ -4330,6 +6613,7 @@ export const PartnerTopicEventSubscriptionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicEventSubscriptionsGetInput =
@@ -4370,6 +6654,7 @@ export const PartnerTopicEventSubscriptionsGetDeliveryAttributesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicEventSubscriptionsGetDeliveryAttributesInput =
@@ -4415,6 +6700,7 @@ export const PartnerTopicEventSubscriptionsGetFullUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicEventSubscriptionsGetFullUrlInput =
@@ -4452,6 +6738,7 @@ export const PartnerTopicEventSubscriptionsListByPartnerTopicInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicEventSubscriptionsListByPartnerTopicInput =
@@ -4494,10 +6781,127 @@ export const PartnerTopicEventSubscriptionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    destination: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals([
+          "WebHook",
+          "EventHub",
+          "StorageQueue",
+          "HybridConnection",
+          "ServiceBusQueue",
+          "ServiceBusTopic",
+          "AzureFunction",
+          "MonitorAlert",
+          "NamespaceTopic",
+        ]),
+      }),
+    ),
+    deliveryWithResourceIdentity: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        destination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals([
+              "WebHook",
+              "EventHub",
+              "StorageQueue",
+              "HybridConnection",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+              "AzureFunction",
+              "MonitorAlert",
+              "NamespaceTopic",
+            ]),
+          }),
+        ),
+      }),
+    ),
+    filter: Schema.optional(
+      Schema.Struct({
+        subjectBeginsWith: Schema.optional(Schema.String),
+        subjectEndsWith: Schema.optional(Schema.String),
+        includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+        isSubjectCaseSensitive: Schema.optional(Schema.Boolean),
+        enableAdvancedFilteringOnArrays: Schema.optional(Schema.Boolean),
+        advancedFilters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              operatorType: Schema.Literals([
+                "NumberIn",
+                "NumberNotIn",
+                "NumberLessThan",
+                "NumberGreaterThan",
+                "NumberLessThanOrEquals",
+                "NumberGreaterThanOrEquals",
+                "BoolEquals",
+                "StringIn",
+                "StringNotIn",
+                "StringBeginsWith",
+                "StringEndsWith",
+                "StringContains",
+                "NumberInRange",
+                "NumberNotInRange",
+                "StringNotBeginsWith",
+                "StringNotEndsWith",
+                "StringNotContains",
+                "IsNullOrUndefined",
+                "IsNotNull",
+              ]),
+              key: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    labels: Schema.optional(Schema.Array(Schema.String)),
+    expirationTimeUtc: Schema.optional(Schema.String),
+    eventDeliverySchema: Schema.optional(
+      Schema.Literals([
+        "EventGridSchema",
+        "CustomInputSchema",
+        "CloudEventSchemaV1_0",
+      ]),
+    ),
+    retryPolicy: Schema.optional(
+      Schema.Struct({
+        maxDeliveryAttempts: Schema.optional(Schema.Number),
+        eventTimeToLiveInMinutes: Schema.optional(Schema.Number),
+      }),
+    ),
+    deadLetterDestination: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals(["StorageBlob"]),
+      }),
+    ),
+    deadLetterWithResourceIdentity: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        deadLetterDestination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals(["StorageBlob"]),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicEventSubscriptionsUpdateInput =
@@ -4537,6 +6941,7 @@ export const PartnerTopicsActivateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/activate",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicsActivateInput = typeof PartnerTopicsActivateInput.Type;
@@ -4571,10 +6976,89 @@ export const PartnerTopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        partnerRegistrationImmutableId: Schema.optional(Schema.String),
+        source: Schema.optional(Schema.String),
+        eventTypeInfo: Schema.optional(
+          Schema.Struct({
+            kind: Schema.optional(Schema.Literals(["Inline"])),
+            inlineEventTypes: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  description: Schema.optional(Schema.String),
+                  displayName: Schema.optional(Schema.String),
+                  documentationUrl: Schema.optional(Schema.String),
+                  dataSchemaUrl: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        expirationTimeIfNotActivatedUtc: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "IdleDueToMirroredChannelResourceDeletion",
+          ]),
+        ),
+        activationState: Schema.optional(
+          Schema.Literals(["NeverActivated", "Activated", "Deactivated"]),
+        ),
+        partnerTopicFriendlyDescription: Schema.optional(Schema.String),
+        messageForActivation: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+          ]),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicsCreateOrUpdateInput =
@@ -4614,6 +7098,7 @@ export const PartnerTopicsDeactivateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/deactivate",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicsDeactivateInput =
@@ -4653,6 +7138,7 @@ export const PartnerTopicsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicsDeleteInput = typeof PartnerTopicsDeleteInput.Type;
@@ -4683,6 +7169,7 @@ export const PartnerTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type PartnerTopicsGetInput = typeof PartnerTopicsGetInput.Type;
@@ -4718,6 +7205,7 @@ export const PartnerTopicsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicsListByResourceGroupInput =
@@ -4759,6 +7247,7 @@ export const PartnerTopicsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/partnerTopics",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicsListBySubscriptionInput =
@@ -4797,10 +7286,35 @@ export const PartnerTopicsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+          ]),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PartnerTopicsUpdateInput = typeof PartnerTopicsUpdateInput.Type;
@@ -4829,10 +7343,49 @@ export const PermissionBindingsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     permissionBindingName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        topicSpaceName: Schema.optional(Schema.String),
+        permission: Schema.optional(
+          Schema.Literals(["Publisher", "Subscriber"]),
+        ),
+        clientGroupName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "Deleted",
+          ]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/permissionBindings/{permissionBindingName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PermissionBindingsCreateOrUpdateInput =
@@ -4873,6 +7426,7 @@ export const PermissionBindingsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/permissionBindings/{permissionBindingName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PermissionBindingsDeleteInput =
@@ -4910,6 +7464,7 @@ export const PermissionBindingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/permissionBindings/{permissionBindingName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PermissionBindingsGetInput = typeof PermissionBindingsGetInput.Type;
@@ -4949,6 +7504,7 @@ export const PermissionBindingsListByNamespaceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/permissionBindings",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PermissionBindingsListByNamespaceInput =
@@ -5001,6 +7557,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -5044,6 +7601,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -5090,6 +7648,7 @@ export const PrivateEndpointConnectionsListByResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateEndpointConnections",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PrivateEndpointConnectionsListByResourceInput =
@@ -5139,10 +7698,48 @@ export const PrivateEndpointConnectionsUpdateInput =
     ]).pipe(T.PathParam()),
     parentName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Pending",
+                "Approved",
+                "Rejected",
+                "Disconnected",
+              ]),
+            ),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PrivateEndpointConnectionsUpdateInput =
@@ -5185,6 +7782,7 @@ export const PrivateLinkResourcesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -5235,6 +7833,7 @@ export const PrivateLinkResourcesListByResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateLinkResources",
+      apiVersion: "2025-02-15",
     }),
   );
 export type PrivateLinkResourcesListByResourceInput =
@@ -5286,10 +7885,160 @@ export const SystemTopicEventSubscriptionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        topic: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "AwaitingManualAction",
+          ]),
+        ),
+        destination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals([
+              "WebHook",
+              "EventHub",
+              "StorageQueue",
+              "HybridConnection",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+              "AzureFunction",
+              "MonitorAlert",
+              "NamespaceTopic",
+            ]),
+          }),
+        ),
+        deliveryWithResourceIdentity: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            destination: Schema.optional(
+              Schema.Struct({
+                endpointType: Schema.Literals([
+                  "WebHook",
+                  "EventHub",
+                  "StorageQueue",
+                  "HybridConnection",
+                  "ServiceBusQueue",
+                  "ServiceBusTopic",
+                  "AzureFunction",
+                  "MonitorAlert",
+                  "NamespaceTopic",
+                ]),
+              }),
+            ),
+          }),
+        ),
+        filter: Schema.optional(
+          Schema.Struct({
+            subjectBeginsWith: Schema.optional(Schema.String),
+            subjectEndsWith: Schema.optional(Schema.String),
+            includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+            isSubjectCaseSensitive: Schema.optional(Schema.Boolean),
+            enableAdvancedFilteringOnArrays: Schema.optional(Schema.Boolean),
+            advancedFilters: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  operatorType: Schema.Literals([
+                    "NumberIn",
+                    "NumberNotIn",
+                    "NumberLessThan",
+                    "NumberGreaterThan",
+                    "NumberLessThanOrEquals",
+                    "NumberGreaterThanOrEquals",
+                    "BoolEquals",
+                    "StringIn",
+                    "StringNotIn",
+                    "StringBeginsWith",
+                    "StringEndsWith",
+                    "StringContains",
+                    "NumberInRange",
+                    "NumberNotInRange",
+                    "StringNotBeginsWith",
+                    "StringNotEndsWith",
+                    "StringNotContains",
+                    "IsNullOrUndefined",
+                    "IsNotNull",
+                  ]),
+                  key: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        labels: Schema.optional(Schema.Array(Schema.String)),
+        expirationTimeUtc: Schema.optional(Schema.String),
+        eventDeliverySchema: Schema.optional(
+          Schema.Literals([
+            "EventGridSchema",
+            "CustomInputSchema",
+            "CloudEventSchemaV1_0",
+          ]),
+        ),
+        retryPolicy: Schema.optional(
+          Schema.Struct({
+            maxDeliveryAttempts: Schema.optional(Schema.Number),
+            eventTimeToLiveInMinutes: Schema.optional(Schema.Number),
+          }),
+        ),
+        deadLetterDestination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals(["StorageBlob"]),
+          }),
+        ),
+        deadLetterWithResourceIdentity: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            deadLetterDestination: Schema.optional(
+              Schema.Struct({
+                endpointType: Schema.Literals(["StorageBlob"]),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type SystemTopicEventSubscriptionsCreateOrUpdateInput =
@@ -5330,6 +8079,7 @@ export const SystemTopicEventSubscriptionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type SystemTopicEventSubscriptionsDeleteInput =
@@ -5366,6 +8116,7 @@ export const SystemTopicEventSubscriptionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type SystemTopicEventSubscriptionsGetInput =
@@ -5406,6 +8157,7 @@ export const SystemTopicEventSubscriptionsGetDeliveryAttributesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      apiVersion: "2025-02-15",
     }),
   );
 export type SystemTopicEventSubscriptionsGetDeliveryAttributesInput =
@@ -5451,6 +8203,7 @@ export const SystemTopicEventSubscriptionsGetFullUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
+      apiVersion: "2025-02-15",
     }),
   );
 export type SystemTopicEventSubscriptionsGetFullUrlInput =
@@ -5488,6 +8241,7 @@ export const SystemTopicEventSubscriptionsListBySystemTopicInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type SystemTopicEventSubscriptionsListBySystemTopicInput =
@@ -5530,10 +8284,127 @@ export const SystemTopicEventSubscriptionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    destination: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals([
+          "WebHook",
+          "EventHub",
+          "StorageQueue",
+          "HybridConnection",
+          "ServiceBusQueue",
+          "ServiceBusTopic",
+          "AzureFunction",
+          "MonitorAlert",
+          "NamespaceTopic",
+        ]),
+      }),
+    ),
+    deliveryWithResourceIdentity: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        destination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals([
+              "WebHook",
+              "EventHub",
+              "StorageQueue",
+              "HybridConnection",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+              "AzureFunction",
+              "MonitorAlert",
+              "NamespaceTopic",
+            ]),
+          }),
+        ),
+      }),
+    ),
+    filter: Schema.optional(
+      Schema.Struct({
+        subjectBeginsWith: Schema.optional(Schema.String),
+        subjectEndsWith: Schema.optional(Schema.String),
+        includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+        isSubjectCaseSensitive: Schema.optional(Schema.Boolean),
+        enableAdvancedFilteringOnArrays: Schema.optional(Schema.Boolean),
+        advancedFilters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              operatorType: Schema.Literals([
+                "NumberIn",
+                "NumberNotIn",
+                "NumberLessThan",
+                "NumberGreaterThan",
+                "NumberLessThanOrEquals",
+                "NumberGreaterThanOrEquals",
+                "BoolEquals",
+                "StringIn",
+                "StringNotIn",
+                "StringBeginsWith",
+                "StringEndsWith",
+                "StringContains",
+                "NumberInRange",
+                "NumberNotInRange",
+                "StringNotBeginsWith",
+                "StringNotEndsWith",
+                "StringNotContains",
+                "IsNullOrUndefined",
+                "IsNotNull",
+              ]),
+              key: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    labels: Schema.optional(Schema.Array(Schema.String)),
+    expirationTimeUtc: Schema.optional(Schema.String),
+    eventDeliverySchema: Schema.optional(
+      Schema.Literals([
+        "EventGridSchema",
+        "CustomInputSchema",
+        "CloudEventSchemaV1_0",
+      ]),
+    ),
+    retryPolicy: Schema.optional(
+      Schema.Struct({
+        maxDeliveryAttempts: Schema.optional(Schema.Number),
+        eventTimeToLiveInMinutes: Schema.optional(Schema.Number),
+      }),
+    ),
+    deadLetterDestination: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals(["StorageBlob"]),
+      }),
+    ),
+    deadLetterWithResourceIdentity: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        deadLetterDestination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals(["StorageBlob"]),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type SystemTopicEventSubscriptionsUpdateInput =
@@ -5569,10 +8440,67 @@ export const SystemTopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+        source: Schema.optional(Schema.String),
+        topicType: Schema.optional(Schema.String),
+        metricResourceId: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+          ]),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type SystemTopicsCreateOrUpdateInput =
@@ -5612,6 +8540,7 @@ export const SystemTopicsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type SystemTopicsDeleteInput = typeof SystemTopicsDeleteInput.Type;
@@ -5641,6 +8570,7 @@ export const SystemTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type SystemTopicsGetInput = typeof SystemTopicsGetInput.Type;
@@ -5674,6 +8604,7 @@ export const SystemTopicsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics",
+      apiVersion: "2025-02-15",
     }),
   );
 export type SystemTopicsListByResourceGroupInput =
@@ -5715,6 +8646,7 @@ export const SystemTopicsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/systemTopics",
+      apiVersion: "2025-02-15",
     }),
   );
 export type SystemTopicsListBySubscriptionInput =
@@ -5753,10 +8685,35 @@ export const SystemTopicsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+          ]),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type SystemTopicsUpdateInput = typeof SystemTopicsUpdateInput.Type;
@@ -5789,10 +8746,160 @@ export const TopicEventSubscriptionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        topic: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "AwaitingManualAction",
+          ]),
+        ),
+        destination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals([
+              "WebHook",
+              "EventHub",
+              "StorageQueue",
+              "HybridConnection",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+              "AzureFunction",
+              "MonitorAlert",
+              "NamespaceTopic",
+            ]),
+          }),
+        ),
+        deliveryWithResourceIdentity: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            destination: Schema.optional(
+              Schema.Struct({
+                endpointType: Schema.Literals([
+                  "WebHook",
+                  "EventHub",
+                  "StorageQueue",
+                  "HybridConnection",
+                  "ServiceBusQueue",
+                  "ServiceBusTopic",
+                  "AzureFunction",
+                  "MonitorAlert",
+                  "NamespaceTopic",
+                ]),
+              }),
+            ),
+          }),
+        ),
+        filter: Schema.optional(
+          Schema.Struct({
+            subjectBeginsWith: Schema.optional(Schema.String),
+            subjectEndsWith: Schema.optional(Schema.String),
+            includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+            isSubjectCaseSensitive: Schema.optional(Schema.Boolean),
+            enableAdvancedFilteringOnArrays: Schema.optional(Schema.Boolean),
+            advancedFilters: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  operatorType: Schema.Literals([
+                    "NumberIn",
+                    "NumberNotIn",
+                    "NumberLessThan",
+                    "NumberGreaterThan",
+                    "NumberLessThanOrEquals",
+                    "NumberGreaterThanOrEquals",
+                    "BoolEquals",
+                    "StringIn",
+                    "StringNotIn",
+                    "StringBeginsWith",
+                    "StringEndsWith",
+                    "StringContains",
+                    "NumberInRange",
+                    "NumberNotInRange",
+                    "StringNotBeginsWith",
+                    "StringNotEndsWith",
+                    "StringNotContains",
+                    "IsNullOrUndefined",
+                    "IsNotNull",
+                  ]),
+                  key: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        labels: Schema.optional(Schema.Array(Schema.String)),
+        expirationTimeUtc: Schema.optional(Schema.String),
+        eventDeliverySchema: Schema.optional(
+          Schema.Literals([
+            "EventGridSchema",
+            "CustomInputSchema",
+            "CloudEventSchemaV1_0",
+          ]),
+        ),
+        retryPolicy: Schema.optional(
+          Schema.Struct({
+            maxDeliveryAttempts: Schema.optional(Schema.Number),
+            eventTimeToLiveInMinutes: Schema.optional(Schema.Number),
+          }),
+        ),
+        deadLetterDestination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals(["StorageBlob"]),
+          }),
+        ),
+        deadLetterWithResourceIdentity: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            deadLetterDestination: Schema.optional(
+              Schema.Struct({
+                endpointType: Schema.Literals(["StorageBlob"]),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicEventSubscriptionsCreateOrUpdateInput =
@@ -5833,6 +8940,7 @@ export const TopicEventSubscriptionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicEventSubscriptionsDeleteInput =
@@ -5869,6 +8977,7 @@ export const TopicEventSubscriptionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicEventSubscriptionsGetInput =
@@ -5910,6 +9019,7 @@ export const TopicEventSubscriptionsGetDeliveryAttributesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicEventSubscriptionsGetDeliveryAttributesInput =
@@ -5955,6 +9065,7 @@ export const TopicEventSubscriptionsGetFullUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicEventSubscriptionsGetFullUrlInput =
@@ -5992,6 +9103,7 @@ export const TopicEventSubscriptionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicEventSubscriptionsListInput =
@@ -6035,10 +9147,127 @@ export const TopicEventSubscriptionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
+    destination: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals([
+          "WebHook",
+          "EventHub",
+          "StorageQueue",
+          "HybridConnection",
+          "ServiceBusQueue",
+          "ServiceBusTopic",
+          "AzureFunction",
+          "MonitorAlert",
+          "NamespaceTopic",
+        ]),
+      }),
+    ),
+    deliveryWithResourceIdentity: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        destination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals([
+              "WebHook",
+              "EventHub",
+              "StorageQueue",
+              "HybridConnection",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+              "AzureFunction",
+              "MonitorAlert",
+              "NamespaceTopic",
+            ]),
+          }),
+        ),
+      }),
+    ),
+    filter: Schema.optional(
+      Schema.Struct({
+        subjectBeginsWith: Schema.optional(Schema.String),
+        subjectEndsWith: Schema.optional(Schema.String),
+        includedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+        isSubjectCaseSensitive: Schema.optional(Schema.Boolean),
+        enableAdvancedFilteringOnArrays: Schema.optional(Schema.Boolean),
+        advancedFilters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              operatorType: Schema.Literals([
+                "NumberIn",
+                "NumberNotIn",
+                "NumberLessThan",
+                "NumberGreaterThan",
+                "NumberLessThanOrEquals",
+                "NumberGreaterThanOrEquals",
+                "BoolEquals",
+                "StringIn",
+                "StringNotIn",
+                "StringBeginsWith",
+                "StringEndsWith",
+                "StringContains",
+                "NumberInRange",
+                "NumberNotInRange",
+                "StringNotBeginsWith",
+                "StringNotEndsWith",
+                "StringNotContains",
+                "IsNullOrUndefined",
+                "IsNotNull",
+              ]),
+              key: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    labels: Schema.optional(Schema.Array(Schema.String)),
+    expirationTimeUtc: Schema.optional(Schema.String),
+    eventDeliverySchema: Schema.optional(
+      Schema.Literals([
+        "EventGridSchema",
+        "CustomInputSchema",
+        "CloudEventSchemaV1_0",
+      ]),
+    ),
+    retryPolicy: Schema.optional(
+      Schema.Struct({
+        maxDeliveryAttempts: Schema.optional(Schema.Number),
+        eventTimeToLiveInMinutes: Schema.optional(Schema.Number),
+      }),
+    ),
+    deadLetterDestination: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals(["StorageBlob"]),
+      }),
+    ),
+    deadLetterWithResourceIdentity: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        deadLetterDestination: Schema.optional(
+          Schema.Struct({
+            endpointType: Schema.Literals(["StorageBlob"]),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicEventSubscriptionsUpdateInput =
@@ -6074,10 +9303,121 @@ export const TopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+        endpoint: Schema.optional(Schema.String),
+        eventTypeInfo: Schema.optional(
+          Schema.Struct({
+            kind: Schema.optional(Schema.Literals(["Inline"])),
+            inlineEventTypes: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  description: Schema.optional(Schema.String),
+                  displayName: Schema.optional(Schema.String),
+                  documentationUrl: Schema.optional(Schema.String),
+                  dataSchemaUrl: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        minimumTlsVersionAllowed: Schema.optional(
+          Schema.Literals(["1.0", "1.1", "1.2"]),
+        ),
+        inputSchema: Schema.optional(
+          Schema.Literals([
+            "EventGridSchema",
+            "CustomEventSchema",
+            "CloudEventSchemaV1_0",
+          ]),
+        ),
+        inputSchemaMapping: Schema.optional(
+          Schema.Struct({
+            inputSchemaMappingType: Schema.Literals(["Json"]),
+          }),
+        ),
+        metricResourceId: Schema.optional(Schema.String),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        inboundIpRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipMask: Schema.optional(Schema.String),
+              action: Schema.optional(Schema.Literals(["Allow"])),
+            }),
+          ),
+        ),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+        dataResidencyBoundary: Schema.optional(
+          Schema.Literals(["WithinGeopair", "WithinRegion"]),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+          ]),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicsCreateOrUpdateInput = typeof TopicsCreateOrUpdateInput.Type;
@@ -6114,6 +9454,7 @@ export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type TopicsDeleteInput = typeof TopicsDeleteInput.Type;
@@ -6143,6 +9484,7 @@ export const TopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type TopicsGetInput = typeof TopicsGetInput.Type;
@@ -6176,6 +9518,7 @@ export const TopicsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicsListByResourceGroupInput =
@@ -6218,6 +9561,7 @@ export const TopicsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/topics",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicsListBySubscriptionInput =
@@ -6263,6 +9607,7 @@ export const TopicsListEventTypesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{providerNamespace}/{resourceTypeName}/{resourceName}/providers/Microsoft.EventGrid/eventTypes",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicsListEventTypesInput = typeof TopicsListEventTypesInput.Type;
@@ -6308,6 +9653,7 @@ export const TopicsListSharedAccessKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/listKeys",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicsListSharedAccessKeysInput =
@@ -6343,10 +9689,45 @@ export const TopicSpacesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicSpaceName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        topicTemplates: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "Deleted",
+          ]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topicSpaces/{topicSpaceName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicSpacesCreateOrUpdateInput =
@@ -6389,6 +9770,7 @@ export const TopicSpacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topicSpaces/{topicSpaceName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type TopicSpacesDeleteInput = typeof TopicSpacesDeleteInput.Type;
@@ -6420,6 +9802,7 @@ export const TopicSpacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topicSpaces/{topicSpaceName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type TopicSpacesGetInput = typeof TopicSpacesGetInput.Type;
@@ -6455,6 +9838,7 @@ export const TopicSpacesListByNamespaceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topicSpaces",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicSpacesListByNamespaceInput =
@@ -6497,10 +9881,12 @@ export const TopicsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
+    keyName: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/regenerateKey",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicsRegenerateKeyInput = typeof TopicsRegenerateKeyInput.Type;
@@ -6530,10 +9916,73 @@ export const TopicsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const TopicsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+        ]),
+      ),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      inboundIpRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            ipMask: Schema.optional(Schema.String),
+            action: Schema.optional(Schema.Literals(["Allow"])),
+          }),
+        ),
+      ),
+      minimumTlsVersionAllowed: Schema.optional(
+        Schema.Literals(["1.0", "1.1", "1.2"]),
+      ),
+      disableLocalAuth: Schema.optional(Schema.Boolean),
+      dataResidencyBoundary: Schema.optional(
+        Schema.Literals(["WithinGeopair", "WithinRegion"]),
+      ),
+      eventTypeInfo: Schema.optional(
+        Schema.Struct({
+          kind: Schema.optional(Schema.Literals(["Inline"])),
+          inlineEventTypes: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                description: Schema.optional(Schema.String),
+                displayName: Schema.optional(Schema.String),
+                documentationUrl: Schema.optional(Schema.String),
+                dataSchemaUrl: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type TopicsUpdateInput = typeof TopicsUpdateInput.Type;
@@ -6562,6 +10011,7 @@ export const TopicTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}",
+    apiVersion: "2025-02-15",
   }),
 );
 export type TopicTypesGetInput = typeof TopicTypesGetInput.Type;
@@ -6590,7 +10040,11 @@ export const TopicTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const TopicTypesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.EventGrid/topicTypes" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.EventGrid/topicTypes",
+    apiVersion: "2025-02-15",
+  }),
 );
 export type TopicTypesListInput = typeof TopicTypesListInput.Type;
 
@@ -6626,6 +10080,7 @@ export const TopicTypesListEventTypesInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}/eventTypes",
+      apiVersion: "2025-02-15",
     }),
   );
 export type TopicTypesListEventTypesInput =
@@ -6669,6 +10124,7 @@ export const VerifiedPartnersGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.EventGrid/verifiedPartners/{verifiedPartnerName}",
+      apiVersion: "2025-02-15",
     }),
   );
 export type VerifiedPartnersGetInput = typeof VerifiedPartnersGetInput.Type;
@@ -6700,6 +10156,7 @@ export const VerifiedPartnersListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.EventGrid/verifiedPartners",
+      apiVersion: "2025-02-15",
     }),
   );
 export type VerifiedPartnersListInput = typeof VerifiedPartnersListInput.Type;

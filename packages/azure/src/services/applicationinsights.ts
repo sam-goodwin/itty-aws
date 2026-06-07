@@ -14,12 +14,54 @@ export const WorkbooksCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     sourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.String,
+        serializedData: Schema.NullOr(Schema.String),
+        version: Schema.optional(Schema.String),
+        timeModified: Schema.optional(Schema.String),
+        category: Schema.String,
+        tags: Schema.optional(Schema.Array(Schema.String)),
+        userId: Schema.optional(Schema.String),
+        sourceId: Schema.optional(Schema.String),
+        storageUri: Schema.optional(Schema.NullOr(Schema.String)),
+        description: Schema.optional(Schema.NullOr(Schema.String)),
+        revision: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                principalId: Schema.optional(Schema.String),
+                clientId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
+    kind: Schema.optional(Schema.Literals(["shared"])),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}",
+      apiVersion: "2023-06-01",
     }),
   );
 export type WorkbooksCreateOrUpdateInput =
@@ -70,11 +112,11 @@ export const WorkbooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}",
+    apiVersion: "2023-06-01",
   }),
 );
 export type WorkbooksDeleteInput = typeof WorkbooksDeleteInput.Type;
@@ -101,12 +143,12 @@ export const WorkbooksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   canFetchContent: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}",
+    apiVersion: "2023-06-01",
   }),
 );
 export type WorkbooksGetInput = typeof WorkbooksGetInput.Type;
@@ -152,7 +194,6 @@ export const WorkbooksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     category: Schema.Literals(["workbook", "TSG", "performance", "retention"]),
     tags: Schema.optional(Schema.String),
     sourceId: Schema.optional(Schema.String),
@@ -161,6 +202,7 @@ export const WorkbooksListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks",
+      apiVersion: "2023-06-01",
     }),
   );
 export type WorkbooksListByResourceGroupInput =
@@ -228,7 +270,6 @@ export const WorkbooksListByResourceGroup =
 export const WorkbooksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     category: Schema.Literals(["workbook", "TSG", "performance", "retention"]),
     tags: Schema.optional(Schema.String),
     canFetchContent: Schema.optional(Schema.Boolean),
@@ -236,6 +277,7 @@ export const WorkbooksListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/workbooks",
+      apiVersion: "2023-06-01",
     }),
   );
 export type WorkbooksListBySubscriptionInput =
@@ -305,11 +347,11 @@ export const WorkbooksRevisionGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     revisionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}/revisions/{revisionId}",
+      apiVersion: "2023-06-01",
     }),
   );
 export type WorkbooksRevisionGetInput = typeof WorkbooksRevisionGetInput.Type;
@@ -359,11 +401,11 @@ export const WorkbooksRevisionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}/revisions",
+      apiVersion: "2023-06-01",
     }),
   );
 export type WorkbooksRevisionsListInput =
@@ -430,12 +472,24 @@ export const WorkbooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   sourceId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.Literals(["shared"])),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      displayName: Schema.optional(Schema.String),
+      serializedData: Schema.optional(Schema.String),
+      category: Schema.optional(Schema.String),
+      tags: Schema.optional(Schema.Array(Schema.String)),
+      description: Schema.optional(Schema.NullOr(Schema.String)),
+      revision: Schema.optional(Schema.NullOr(Schema.String)),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}",
+    apiVersion: "2023-06-01",
   }),
 );
 export type WorkbooksUpdateInput = typeof WorkbooksUpdateInput.Type;

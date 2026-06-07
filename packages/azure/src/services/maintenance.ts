@@ -19,6 +19,7 @@ export const ApplyUpdatesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/default",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ApplyUpdatesCreateOrUpdateInput =
@@ -78,6 +79,7 @@ export const ApplyUpdatesCreateOrUpdateParentInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/default",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ApplyUpdatesCreateOrUpdateParentInput =
@@ -136,6 +138,7 @@ export const ApplyUpdatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/{applyUpdateName}",
+    apiVersion: "2023-04-01",
   }),
 );
 export type ApplyUpdatesGetInput = typeof ApplyUpdatesGetInput.Type;
@@ -192,6 +195,7 @@ export const ApplyUpdatesGetParentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/{applyUpdateName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ApplyUpdatesGetParentInput = typeof ApplyUpdatesGetParentInput.Type;
@@ -248,10 +252,53 @@ export const ConfigurationAssignmentsCreateOrUpdateInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        maintenanceConfigurationId: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        filter: Schema.optional(
+          Schema.Struct({
+            resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+            resourceGroups: Schema.optional(Schema.Array(Schema.String)),
+            osTypes: Schema.optional(Schema.Array(Schema.String)),
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            tagSettings: Schema.optional(
+              Schema.Struct({
+                tags: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Array(Schema.String)),
+                ),
+                filterOperator: Schema.optional(
+                  Schema.Literals(["All", "Any"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsCreateOrUpdateInput =
@@ -308,10 +355,53 @@ export const ConfigurationAssignmentsCreateOrUpdateParentInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        maintenanceConfigurationId: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        filter: Schema.optional(
+          Schema.Struct({
+            resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+            resourceGroups: Schema.optional(Schema.Array(Schema.String)),
+            osTypes: Schema.optional(Schema.Array(Schema.String)),
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            tagSettings: Schema.optional(
+              Schema.Struct({
+                tags: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Array(Schema.String)),
+                ),
+                filterOperator: Schema.optional(
+                  Schema.Literals(["All", "Any"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsCreateOrUpdateParentInput =
@@ -372,6 +462,7 @@ export const ConfigurationAssignmentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsDeleteInput =
@@ -432,6 +523,7 @@ export const ConfigurationAssignmentsDeleteParentInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsDeleteParentInput =
@@ -485,10 +577,53 @@ export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        maintenanceConfigurationId: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        filter: Schema.optional(
+          Schema.Struct({
+            resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+            resourceGroups: Schema.optional(Schema.Array(Schema.String)),
+            osTypes: Schema.optional(Schema.Array(Schema.String)),
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            tagSettings: Schema.optional(
+              Schema.Struct({
+                tags: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Array(Schema.String)),
+                ),
+                filterOperator: Schema.optional(
+                  Schema.Literals(["All", "Any"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput =
@@ -541,6 +676,7 @@ export const ConfigurationAssignmentsForResourceGroupDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsForResourceGroupDeleteInput =
@@ -593,6 +729,7 @@ export const ConfigurationAssignmentsForResourceGroupGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsForResourceGroupGetInput =
@@ -641,10 +778,53 @@ export const ConfigurationAssignmentsForResourceGroupUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        maintenanceConfigurationId: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        filter: Schema.optional(
+          Schema.Struct({
+            resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+            resourceGroups: Schema.optional(Schema.Array(Schema.String)),
+            osTypes: Schema.optional(Schema.Array(Schema.String)),
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            tagSettings: Schema.optional(
+              Schema.Struct({
+                tags: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Array(Schema.String)),
+                ),
+                filterOperator: Schema.optional(
+                  Schema.Literals(["All", "Any"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsForResourceGroupUpdateInput =
@@ -692,10 +872,53 @@ export const ConfigurationAssignmentsForResourceGroupUpdate =
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        maintenanceConfigurationId: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        filter: Schema.optional(
+          Schema.Struct({
+            resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+            resourceGroups: Schema.optional(Schema.Array(Schema.String)),
+            osTypes: Schema.optional(Schema.Array(Schema.String)),
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            tagSettings: Schema.optional(
+              Schema.Struct({
+                tags: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Array(Schema.String)),
+                ),
+                filterOperator: Schema.optional(
+                  Schema.Literals(["All", "Any"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput =
@@ -746,6 +969,7 @@ export const ConfigurationAssignmentsForSubscriptionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsForSubscriptionsDeleteInput =
@@ -796,6 +1020,7 @@ export const ConfigurationAssignmentsForSubscriptionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsForSubscriptionsGetInput =
@@ -842,10 +1067,53 @@ export const ConfigurationAssignmentsForSubscriptionsGet =
 export const ConfigurationAssignmentsForSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        maintenanceConfigurationId: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        filter: Schema.optional(
+          Schema.Struct({
+            resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+            resourceGroups: Schema.optional(Schema.Array(Schema.String)),
+            osTypes: Schema.optional(Schema.Array(Schema.String)),
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            tagSettings: Schema.optional(
+              Schema.Struct({
+                tags: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Array(Schema.String)),
+                ),
+                filterOperator: Schema.optional(
+                  Schema.Literals(["All", "Any"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsForSubscriptionsUpdateInput =
@@ -900,6 +1168,7 @@ export const ConfigurationAssignmentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsGetInput =
@@ -961,6 +1230,7 @@ export const ConfigurationAssignmentsGetParentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsGetParentInput =
@@ -1020,6 +1290,7 @@ export const ConfigurationAssignmentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsListInput =
@@ -1094,6 +1365,7 @@ export const ConfigurationAssignmentsListParentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsListParentInput =
@@ -1163,6 +1435,7 @@ export const ConfigurationAssignmentsWithinSubscriptionListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ConfigurationAssignmentsWithinSubscriptionListInput =
@@ -1222,10 +1495,93 @@ export const MaintenanceConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        namespace: Schema.optional(Schema.String),
+        extensionProperties: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        maintenanceScope: Schema.optional(
+          Schema.Literals([
+            "Host",
+            "Resource",
+            "OSImage",
+            "Extension",
+            "InGuestPatch",
+            "SQLDB",
+            "SQLManagedInstance",
+          ]),
+        ),
+        maintenanceWindow: Schema.optional(
+          Schema.Struct({
+            startDateTime: Schema.optional(Schema.String),
+            expirationDateTime: Schema.optional(Schema.String),
+            duration: Schema.optional(Schema.String),
+            timeZone: Schema.optional(Schema.String),
+            recurEvery: Schema.optional(Schema.String),
+          }),
+        ),
+        visibility: Schema.optional(Schema.Literals(["Custom", "Public"])),
+        installPatches: Schema.optional(
+          Schema.Struct({
+            rebootSetting: Schema.optional(
+              Schema.Literals(["IfRequired", "Never", "Always"]),
+            ),
+            windowsParameters: Schema.optional(
+              Schema.Struct({
+                kbNumbersToExclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                kbNumbersToInclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                classificationsToInclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                excludeKbsRequiringReboot: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            linuxParameters: Schema.optional(
+              Schema.Struct({
+                packageNameMasksToExclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                packageNameMasksToInclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                classificationsToInclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type MaintenanceConfigurationsCreateOrUpdateInput =
@@ -1276,6 +1632,7 @@ export const MaintenanceConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type MaintenanceConfigurationsDeleteInput =
@@ -1325,6 +1682,7 @@ export const MaintenanceConfigurationsForResourceGroupListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations",
+      apiVersion: "2023-04-01",
     }),
   );
 export type MaintenanceConfigurationsForResourceGroupListInput =
@@ -1390,6 +1748,7 @@ export const MaintenanceConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type MaintenanceConfigurationsGetInput =
@@ -1437,6 +1796,7 @@ export const MaintenanceConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/maintenanceConfigurations",
+      apiVersion: "2023-04-01",
     }),
   );
 export type MaintenanceConfigurationsListInput =
@@ -1496,10 +1856,93 @@ export const MaintenanceConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        namespace: Schema.optional(Schema.String),
+        extensionProperties: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        maintenanceScope: Schema.optional(
+          Schema.Literals([
+            "Host",
+            "Resource",
+            "OSImage",
+            "Extension",
+            "InGuestPatch",
+            "SQLDB",
+            "SQLManagedInstance",
+          ]),
+        ),
+        maintenanceWindow: Schema.optional(
+          Schema.Struct({
+            startDateTime: Schema.optional(Schema.String),
+            expirationDateTime: Schema.optional(Schema.String),
+            duration: Schema.optional(Schema.String),
+            timeZone: Schema.optional(Schema.String),
+            recurEvery: Schema.optional(Schema.String),
+          }),
+        ),
+        visibility: Schema.optional(Schema.Literals(["Custom", "Public"])),
+        installPatches: Schema.optional(
+          Schema.Struct({
+            rebootSetting: Schema.optional(
+              Schema.Literals(["IfRequired", "Never", "Always"]),
+            ),
+            windowsParameters: Schema.optional(
+              Schema.Struct({
+                kbNumbersToExclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                kbNumbersToInclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                classificationsToInclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                excludeKbsRequiringReboot: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            linuxParameters: Schema.optional(
+              Schema.Struct({
+                packageNameMasksToExclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                packageNameMasksToInclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                classificationsToInclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type MaintenanceConfigurationsUpdateInput =
@@ -1548,6 +1991,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Maintenance/operations",
+    apiVersion: "2023-04-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1593,6 +2037,7 @@ export const PublicMaintenanceConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/{resourceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type PublicMaintenanceConfigurationsGetInput =
@@ -1639,6 +2084,7 @@ export const PublicMaintenanceConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations",
+      apiVersion: "2023-04-01",
     }),
   );
 export type PublicMaintenanceConfigurationsListInput =
@@ -1703,6 +2149,7 @@ export const UpdatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/updates",
+    apiVersion: "2023-04-01",
   }),
 );
 export type UpdatesListInput = typeof UpdatesListInput.Type;
@@ -1777,6 +2224,7 @@ export const UpdatesListParentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/updates",
+    apiVersion: "2023-04-01",
   }),
 );
 export type UpdatesListParentInput = typeof UpdatesListParentInput.Type;

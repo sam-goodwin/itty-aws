@@ -13,11 +13,49 @@ export const AddressesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   addressName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.Struct({
+    addressClassification: Schema.optional(
+      Schema.Literals(["Shipping", "Site"]),
+    ),
+    shippingAddress: Schema.optional(
+      Schema.Struct({
+        streetAddress1: Schema.optional(Schema.String),
+        streetAddress2: Schema.optional(Schema.String),
+        streetAddress3: Schema.optional(Schema.String),
+        city: Schema.optional(Schema.String),
+        stateOrProvince: Schema.optional(Schema.String),
+        country: Schema.String,
+        postalCode: Schema.optional(Schema.String),
+        zipExtendedCode: Schema.optional(Schema.String),
+        companyName: Schema.optional(Schema.String),
+        addressType: Schema.optional(
+          Schema.Literals(["None", "Residential", "Commercial"]),
+        ),
+      }),
+    ),
+    contactDetails: Schema.optional(
+      Schema.Struct({
+        contactName: Schema.optional(Schema.String),
+        phone: Schema.optional(Schema.String),
+        phoneExtension: Schema.optional(Schema.String),
+        mobile: Schema.optional(Schema.String),
+        emailList: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    addressValidationStatus: Schema.optional(
+      Schema.Literals(["Valid", "Invalid", "Ambiguous"]),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals(["Creating", "Succeeded", "Failed", "Canceled"]),
+    ),
+  }),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
+    apiVersion: "2024-02-01",
   }),
 );
 export type AddressesCreateInput = typeof AddressesCreateInput.Type;
@@ -63,11 +101,11 @@ export const AddressesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   addressName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
+    apiVersion: "2024-02-01",
   }),
 );
 export type AddressesDeleteInput = typeof AddressesDeleteInput.Type;
@@ -94,11 +132,11 @@ export const AddressesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   addressName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
+    apiVersion: "2024-02-01",
   }),
 );
 export type AddressesGetInput = typeof AddressesGetInput.Type;
@@ -143,7 +181,6 @@ export const AddressesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skipToken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -151,6 +188,7 @@ export const AddressesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses",
+      apiVersion: "2024-02-01",
     }),
   );
 export type AddressesListByResourceGroupInput =
@@ -215,7 +253,6 @@ export const AddressesListByResourceGroup =
 export const AddressesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skipToken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -223,6 +260,7 @@ export const AddressesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/addresses",
+      apiVersion: "2024-02-01",
     }),
   );
 export type AddressesListBySubscriptionInput =
@@ -288,11 +326,41 @@ export const AddressesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   addressName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      shippingAddress: Schema.optional(
+        Schema.Struct({
+          streetAddress1: Schema.optional(Schema.String),
+          streetAddress2: Schema.optional(Schema.String),
+          streetAddress3: Schema.optional(Schema.String),
+          city: Schema.optional(Schema.String),
+          stateOrProvince: Schema.optional(Schema.String),
+          country: Schema.String,
+          postalCode: Schema.optional(Schema.String),
+          zipExtendedCode: Schema.optional(Schema.String),
+          companyName: Schema.optional(Schema.String),
+          addressType: Schema.optional(
+            Schema.Literals(["None", "Residential", "Commercial"]),
+          ),
+        }),
+      ),
+      contactDetails: Schema.optional(
+        Schema.Struct({
+          contactName: Schema.optional(Schema.String),
+          phone: Schema.optional(Schema.String),
+          phoneExtension: Schema.optional(Schema.String),
+          mobile: Schema.optional(Schema.String),
+          emailList: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
+    apiVersion: "2024-02-01",
   }),
 );
 export type AddressesUpdateInput = typeof AddressesUpdateInput.Type;
@@ -334,10 +402,14 @@ export const AddressesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddressesUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.EdgeOrder/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.EdgeOrder/operations",
+    apiVersion: "2024-02-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -382,11 +454,12 @@ export const OrderItemsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   orderItemName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  reason: Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}/cancel",
+    apiVersion: "2024-02-01",
   }),
 );
 export type OrderItemsCancelInput = typeof OrderItemsCancelInput.Type;
@@ -413,11 +486,504 @@ export const OrderItemsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   orderItemName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.Struct({
+    orderItemDetails: Schema.Struct({
+      productDetails: Schema.Struct({
+        displayInfo: Schema.optional(
+          Schema.Struct({
+            productFamilyDisplayName: Schema.optional(Schema.String),
+            configurationDisplayName: Schema.optional(Schema.String),
+          }),
+        ),
+        hierarchyInformation: Schema.Struct({
+          productFamilyName: Schema.optional(Schema.String),
+          productLineName: Schema.optional(Schema.String),
+          productName: Schema.optional(Schema.String),
+          configurationName: Schema.optional(Schema.String),
+          configurationIdDisplayName: Schema.optional(Schema.String),
+        }),
+        productDoubleEncryptionStatus: Schema.optional(
+          Schema.Literals(["Disabled", "Enabled"]),
+        ),
+        identificationType: Schema.optional(
+          Schema.Literals(["NotSupported", "SerialNumber"]),
+        ),
+        parentDeviceDetails: Schema.optional(
+          Schema.Struct({
+            serialNumber: Schema.optional(Schema.String),
+            displaySerialNumber: Schema.optional(Schema.String),
+            managementResourceId: Schema.optional(Schema.String),
+            managementResourceTenantId: Schema.optional(Schema.String),
+            provisioningSupport: Schema.optional(
+              Schema.Literals(["CloudBased", "Manual"]),
+            ),
+            provisioningDetails: Schema.optional(
+              Schema.Struct({
+                quantity: Schema.optional(Schema.Number),
+                provisioningArmId: Schema.optional(Schema.String),
+                provisioningEndPoint: Schema.optional(Schema.String),
+                serialNumber: Schema.optional(Schema.String),
+                vendorName: Schema.optional(Schema.String),
+                readyToConnectArmId: Schema.optional(Schema.String),
+                managementResourceArmId: Schema.optional(Schema.String),
+                uniqueDeviceIdentifier: Schema.optional(Schema.String),
+                autoProvisioningStatus: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                devicePresenceVerification: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.optional(
+                      Schema.Literals(["NotInitiated", "Completed"]),
+                    ),
+                    message: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        parentProvisioningDetails: Schema.optional(
+          Schema.Struct({
+            quantity: Schema.optional(Schema.Number),
+            provisioningArmId: Schema.optional(Schema.String),
+            provisioningEndPoint: Schema.optional(Schema.String),
+            serialNumber: Schema.optional(Schema.String),
+            vendorName: Schema.optional(Schema.String),
+            readyToConnectArmId: Schema.optional(Schema.String),
+            managementResourceArmId: Schema.optional(Schema.String),
+            uniqueDeviceIdentifier: Schema.optional(Schema.String),
+            autoProvisioningStatus: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            devicePresenceVerification: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals(["NotInitiated", "Completed"]),
+                ),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        optInAdditionalConfigurations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              hierarchyInformation: Schema.Struct({
+                productFamilyName: Schema.optional(Schema.String),
+                productLineName: Schema.optional(Schema.String),
+                productName: Schema.optional(Schema.String),
+                configurationName: Schema.optional(Schema.String),
+                configurationIdDisplayName: Schema.optional(Schema.String),
+              }),
+              quantity: Schema.Number,
+              provisioningDetails: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    quantity: Schema.optional(Schema.Number),
+                    provisioningArmId: Schema.optional(Schema.String),
+                    provisioningEndPoint: Schema.optional(Schema.String),
+                    serialNumber: Schema.optional(Schema.String),
+                    vendorName: Schema.optional(Schema.String),
+                    readyToConnectArmId: Schema.optional(Schema.String),
+                    managementResourceArmId: Schema.optional(Schema.String),
+                    uniqueDeviceIdentifier: Schema.optional(Schema.String),
+                    autoProvisioningStatus: Schema.optional(
+                      Schema.Literals(["Enabled", "Disabled"]),
+                    ),
+                    devicePresenceVerification: Schema.optional(
+                      Schema.Struct({
+                        status: Schema.optional(
+                          Schema.Literals(["NotInitiated", "Completed"]),
+                        ),
+                        message: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        childConfigurationDeviceDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              displayInfo: Schema.optional(
+                Schema.Struct({
+                  productFamilyDisplayName: Schema.optional(Schema.String),
+                  configurationDisplayName: Schema.optional(Schema.String),
+                }),
+              ),
+              hierarchyInformation: Schema.optional(
+                Schema.Struct({
+                  productFamilyName: Schema.optional(Schema.String),
+                  productLineName: Schema.optional(Schema.String),
+                  productName: Schema.optional(Schema.String),
+                  configurationName: Schema.optional(Schema.String),
+                  configurationIdDisplayName: Schema.optional(Schema.String),
+                }),
+              ),
+              quantity: Schema.optional(Schema.Number),
+              identificationType: Schema.optional(
+                Schema.Literals(["NotSupported", "SerialNumber"]),
+              ),
+              deviceDetails: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    serialNumber: Schema.optional(Schema.String),
+                    displaySerialNumber: Schema.optional(Schema.String),
+                    managementResourceId: Schema.optional(Schema.String),
+                    managementResourceTenantId: Schema.optional(Schema.String),
+                    provisioningSupport: Schema.optional(
+                      Schema.Literals(["CloudBased", "Manual"]),
+                    ),
+                    provisioningDetails: Schema.optional(
+                      Schema.Struct({
+                        quantity: Schema.optional(Schema.Number),
+                        provisioningArmId: Schema.optional(Schema.String),
+                        provisioningEndPoint: Schema.optional(Schema.String),
+                        serialNumber: Schema.optional(Schema.String),
+                        vendorName: Schema.optional(Schema.String),
+                        readyToConnectArmId: Schema.optional(Schema.String),
+                        managementResourceArmId: Schema.optional(Schema.String),
+                        uniqueDeviceIdentifier: Schema.optional(Schema.String),
+                        autoProvisioningStatus: Schema.optional(
+                          Schema.Literals(["Enabled", "Disabled"]),
+                        ),
+                        devicePresenceVerification: Schema.optional(
+                          Schema.Struct({
+                            status: Schema.optional(
+                              Schema.Literals(["NotInitiated", "Completed"]),
+                            ),
+                            message: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              ),
+              termCommitmentInformation: Schema.optional(
+                Schema.Struct({
+                  termCommitmentType: Schema.Literals([
+                    "None",
+                    "Trial",
+                    "Timed",
+                  ]),
+                  termCommitmentTypeDuration: Schema.optional(Schema.String),
+                  pendingDaysForTerm: Schema.optional(Schema.Number),
+                }),
+              ),
+            }),
+          ),
+        ),
+        termCommitmentInformation: Schema.optional(
+          Schema.Struct({
+            termCommitmentType: Schema.Literals(["None", "Trial", "Timed"]),
+            termCommitmentTypeDuration: Schema.optional(Schema.String),
+            pendingDaysForTerm: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+      orderItemType: Schema.Literals(["Purchase", "Rental", "External"]),
+      orderItemMode: Schema.optional(
+        Schema.Literals(["Default", "DoNotFulfill"]),
+      ),
+      siteDetails: Schema.optional(
+        Schema.Struct({
+          siteId: Schema.String,
+        }),
+      ),
+      currentStage: Schema.optional(
+        Schema.Struct({
+          stageStatus: Schema.optional(
+            Schema.Literals([
+              "None",
+              "InProgress",
+              "Succeeded",
+              "Failed",
+              "Cancelled",
+              "Cancelling",
+            ]),
+          ),
+          stageName: Schema.optional(
+            Schema.Literals([
+              "Placed",
+              "InReview",
+              "Confirmed",
+              "ReadyToShip",
+              "Shipped",
+              "Delivered",
+              "ReadyToSetup",
+              "InUse",
+              "ReturnInitiated",
+              "ReturnPickedUp",
+              "ReturnedToMicrosoft",
+              "ReturnCompleted",
+              "Cancelled",
+            ]),
+          ),
+          displayName: Schema.optional(Schema.String),
+          startTime: Schema.optional(Schema.String),
+        }),
+      ),
+      orderItemStageHistory: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            stageStatus: Schema.optional(
+              Schema.Literals([
+                "None",
+                "InProgress",
+                "Succeeded",
+                "Failed",
+                "Cancelled",
+                "Cancelling",
+              ]),
+            ),
+            stageName: Schema.optional(
+              Schema.Literals([
+                "Placed",
+                "InReview",
+                "Confirmed",
+                "ReadyToShip",
+                "Shipped",
+                "Delivered",
+                "ReadyToSetup",
+                "InUse",
+                "ReturnInitiated",
+                "ReturnPickedUp",
+                "ReturnedToMicrosoft",
+                "ReturnCompleted",
+                "Cancelled",
+              ]),
+            ),
+            displayName: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      preferences: Schema.optional(
+        Schema.Struct({
+          notificationPreferences: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                stageName: Schema.Literals(["Shipped", "Delivered"]),
+                sendNotification: Schema.Boolean,
+              }),
+            ),
+          ),
+          transportPreferences: Schema.optional(
+            Schema.Struct({
+              preferredShipmentType: Schema.Literals([
+                "CustomerManaged",
+                "MicrosoftManaged",
+              ]),
+            }),
+          ),
+          encryptionPreferences: Schema.optional(
+            Schema.Struct({
+              doubleEncryptionStatus: Schema.optional(
+                Schema.Literals(["Disabled", "Enabled"]),
+              ),
+            }),
+          ),
+          managementResourcePreferences: Schema.optional(
+            Schema.Struct({
+              preferredManagementResourceId: Schema.optional(Schema.String),
+            }),
+          ),
+          termCommitmentPreferences: Schema.optional(
+            Schema.Struct({
+              preferredTermCommitmentType: Schema.Literals([
+                "None",
+                "Trial",
+                "Timed",
+              ]),
+              preferredTermCommitmentDuration: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      forwardShippingDetails: Schema.optional(
+        Schema.Struct({
+          carrierName: Schema.optional(Schema.String),
+          carrierDisplayName: Schema.optional(Schema.String),
+          trackingId: Schema.optional(Schema.String),
+          trackingUrl: Schema.optional(Schema.String),
+        }),
+      ),
+      reverseShippingDetails: Schema.optional(
+        Schema.Struct({
+          sasKeyForLabel: Schema.optional(Schema.String),
+          carrierName: Schema.optional(Schema.String),
+          carrierDisplayName: Schema.optional(Schema.String),
+          trackingId: Schema.optional(Schema.String),
+          trackingUrl: Schema.optional(Schema.String),
+        }),
+      ),
+      notificationEmailList: Schema.optional(Schema.Array(Schema.String)),
+      cancellationReason: Schema.optional(Schema.String),
+      cancellationStatus: Schema.optional(
+        Schema.Literals([
+          "Cancellable",
+          "CancellableWithFee",
+          "NotCancellable",
+        ]),
+      ),
+      deletionStatus: Schema.optional(
+        Schema.Literals(["Allowed", "NotAllowed"]),
+      ),
+      returnReason: Schema.optional(Schema.String),
+      returnStatus: Schema.optional(
+        Schema.Literals(["Returnable", "ReturnableWithFee", "NotReturnable"]),
+      ),
+      managementRpDetailsList: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourceProviderNamespace: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      error: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          target: Schema.optional(Schema.String),
+          details: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                target: Schema.optional(Schema.String),
+                details: Schema.optional(Schema.Array(Schema.Unknown)),
+                additionalInfo: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      type: Schema.optional(Schema.String),
+                      info: Schema.optional(Schema.Unknown),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          ),
+          additionalInfo: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                info: Schema.optional(Schema.Unknown),
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+    addressDetails: Schema.optional(
+      Schema.Struct({
+        forwardAddress: Schema.Struct({
+          addressClassification: Schema.optional(
+            Schema.Literals(["Shipping", "Site"]),
+          ),
+          shippingAddress: Schema.optional(
+            Schema.Struct({
+              streetAddress1: Schema.optional(Schema.String),
+              streetAddress2: Schema.optional(Schema.String),
+              streetAddress3: Schema.optional(Schema.String),
+              city: Schema.optional(Schema.String),
+              stateOrProvince: Schema.optional(Schema.String),
+              country: Schema.String,
+              postalCode: Schema.optional(Schema.String),
+              zipExtendedCode: Schema.optional(Schema.String),
+              companyName: Schema.optional(Schema.String),
+              addressType: Schema.optional(
+                Schema.Literals(["None", "Residential", "Commercial"]),
+              ),
+            }),
+          ),
+          contactDetails: Schema.optional(
+            Schema.Struct({
+              contactName: Schema.optional(Schema.String),
+              phone: Schema.optional(Schema.String),
+              phoneExtension: Schema.optional(Schema.String),
+              mobile: Schema.optional(Schema.String),
+              emailList: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+          addressValidationStatus: Schema.optional(
+            Schema.Literals(["Valid", "Invalid", "Ambiguous"]),
+          ),
+          provisioningState: Schema.optional(
+            Schema.Literals(["Creating", "Succeeded", "Failed", "Canceled"]),
+          ),
+        }),
+        returnAddress: Schema.optional(
+          Schema.Struct({
+            addressClassification: Schema.optional(
+              Schema.Literals(["Shipping", "Site"]),
+            ),
+            shippingAddress: Schema.optional(
+              Schema.Struct({
+                streetAddress1: Schema.optional(Schema.String),
+                streetAddress2: Schema.optional(Schema.String),
+                streetAddress3: Schema.optional(Schema.String),
+                city: Schema.optional(Schema.String),
+                stateOrProvince: Schema.optional(Schema.String),
+                country: Schema.String,
+                postalCode: Schema.optional(Schema.String),
+                zipExtendedCode: Schema.optional(Schema.String),
+                companyName: Schema.optional(Schema.String),
+                addressType: Schema.optional(
+                  Schema.Literals(["None", "Residential", "Commercial"]),
+                ),
+              }),
+            ),
+            contactDetails: Schema.optional(
+              Schema.Struct({
+                contactName: Schema.optional(Schema.String),
+                phone: Schema.optional(Schema.String),
+                phoneExtension: Schema.optional(Schema.String),
+                mobile: Schema.optional(Schema.String),
+                emailList: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            addressValidationStatus: Schema.optional(
+              Schema.Literals(["Valid", "Invalid", "Ambiguous"]),
+            ),
+            provisioningState: Schema.optional(
+              Schema.Literals(["Creating", "Succeeded", "Failed", "Canceled"]),
+            ),
+          }),
+        ),
+      }),
+    ),
+    startTime: Schema.optional(Schema.String),
+    orderId: Schema.String,
+    provisioningState: Schema.optional(
+      Schema.Literals(["Creating", "Succeeded", "Failed", "Canceled"]),
+    ),
+  }),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
+    apiVersion: "2024-02-01",
   }),
 );
 export type OrderItemsCreateInput = typeof OrderItemsCreateInput.Type;
@@ -465,11 +1031,11 @@ export const OrderItemsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   orderItemName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
+    apiVersion: "2024-02-01",
   }),
 );
 export type OrderItemsDeleteInput = typeof OrderItemsDeleteInput.Type;
@@ -496,12 +1062,12 @@ export const OrderItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   orderItemName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
+    apiVersion: "2024-02-01",
   }),
 );
 export type OrderItemsGetInput = typeof OrderItemsGetInput.Type;
@@ -547,7 +1113,6 @@ export const OrderItemsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
     $skipToken: Schema.optional(Schema.String),
@@ -556,6 +1121,7 @@ export const OrderItemsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems",
+      apiVersion: "2024-02-01",
     }),
   );
 export type OrderItemsListByResourceGroupInput =
@@ -621,7 +1187,6 @@ export const OrderItemsListByResourceGroup =
 export const OrderItemsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
     $skipToken: Schema.optional(Schema.String),
@@ -630,6 +1195,7 @@ export const OrderItemsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/orderItems",
+      apiVersion: "2024-02-01",
     }),
   );
 export type OrderItemsListBySubscriptionInput =
@@ -695,11 +1261,52 @@ export const OrderItemsReturnInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   orderItemName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  returnAddress: Schema.optional(
+    Schema.Struct({
+      addressClassification: Schema.optional(
+        Schema.Literals(["Shipping", "Site"]),
+      ),
+      shippingAddress: Schema.optional(
+        Schema.Struct({
+          streetAddress1: Schema.optional(Schema.String),
+          streetAddress2: Schema.optional(Schema.String),
+          streetAddress3: Schema.optional(Schema.String),
+          city: Schema.optional(Schema.String),
+          stateOrProvince: Schema.optional(Schema.String),
+          country: Schema.String,
+          postalCode: Schema.optional(Schema.String),
+          zipExtendedCode: Schema.optional(Schema.String),
+          companyName: Schema.optional(Schema.String),
+          addressType: Schema.optional(
+            Schema.Literals(["None", "Residential", "Commercial"]),
+          ),
+        }),
+      ),
+      contactDetails: Schema.optional(
+        Schema.Struct({
+          contactName: Schema.optional(Schema.String),
+          phone: Schema.optional(Schema.String),
+          phoneExtension: Schema.optional(Schema.String),
+          mobile: Schema.optional(Schema.String),
+          emailList: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      addressValidationStatus: Schema.optional(
+        Schema.Literals(["Valid", "Invalid", "Ambiguous"]),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Creating", "Succeeded", "Failed", "Canceled"]),
+      ),
+    }),
+  ),
+  returnReason: Schema.String,
+  serviceTag: Schema.optional(Schema.String),
+  shippingBoxRequired: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}/return",
+    apiVersion: "2024-02-01",
   }),
 );
 export type OrderItemsReturnInput = typeof OrderItemsReturnInput.Type;
@@ -726,11 +1333,149 @@ export const OrderItemsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   orderItemName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      forwardAddress: Schema.optional(
+        Schema.Struct({
+          addressClassification: Schema.optional(
+            Schema.Literals(["Shipping", "Site"]),
+          ),
+          shippingAddress: Schema.optional(
+            Schema.Struct({
+              streetAddress1: Schema.optional(Schema.String),
+              streetAddress2: Schema.optional(Schema.String),
+              streetAddress3: Schema.optional(Schema.String),
+              city: Schema.optional(Schema.String),
+              stateOrProvince: Schema.optional(Schema.String),
+              country: Schema.String,
+              postalCode: Schema.optional(Schema.String),
+              zipExtendedCode: Schema.optional(Schema.String),
+              companyName: Schema.optional(Schema.String),
+              addressType: Schema.optional(
+                Schema.Literals(["None", "Residential", "Commercial"]),
+              ),
+            }),
+          ),
+          contactDetails: Schema.optional(
+            Schema.Struct({
+              contactName: Schema.optional(Schema.String),
+              phone: Schema.optional(Schema.String),
+              phoneExtension: Schema.optional(Schema.String),
+              mobile: Schema.optional(Schema.String),
+              emailList: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+          addressValidationStatus: Schema.optional(
+            Schema.Literals(["Valid", "Invalid", "Ambiguous"]),
+          ),
+          provisioningState: Schema.optional(
+            Schema.Literals(["Creating", "Succeeded", "Failed", "Canceled"]),
+          ),
+        }),
+      ),
+      preferences: Schema.optional(
+        Schema.Struct({
+          notificationPreferences: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                stageName: Schema.Literals(["Shipped", "Delivered"]),
+                sendNotification: Schema.Boolean,
+              }),
+            ),
+          ),
+          transportPreferences: Schema.optional(
+            Schema.Struct({
+              preferredShipmentType: Schema.Literals([
+                "CustomerManaged",
+                "MicrosoftManaged",
+              ]),
+            }),
+          ),
+          encryptionPreferences: Schema.optional(
+            Schema.Struct({
+              doubleEncryptionStatus: Schema.optional(
+                Schema.Literals(["Disabled", "Enabled"]),
+              ),
+            }),
+          ),
+          managementResourcePreferences: Schema.optional(
+            Schema.Struct({
+              preferredManagementResourceId: Schema.optional(Schema.String),
+            }),
+          ),
+          termCommitmentPreferences: Schema.optional(
+            Schema.Struct({
+              preferredTermCommitmentType: Schema.Literals([
+                "None",
+                "Trial",
+                "Timed",
+              ]),
+              preferredTermCommitmentDuration: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      notificationEmailList: Schema.optional(Schema.Array(Schema.String)),
+      orderItemDetails: Schema.optional(
+        Schema.Struct({
+          productDetails: Schema.optional(
+            Schema.Struct({
+              parentProvisioningDetails: Schema.optional(
+                Schema.Struct({
+                  quantity: Schema.optional(Schema.Number),
+                  provisioningArmId: Schema.optional(Schema.String),
+                  provisioningEndPoint: Schema.optional(Schema.String),
+                  serialNumber: Schema.optional(Schema.String),
+                  vendorName: Schema.optional(Schema.String),
+                  readyToConnectArmId: Schema.optional(Schema.String),
+                  managementResourceArmId: Schema.optional(Schema.String),
+                  uniqueDeviceIdentifier: Schema.optional(Schema.String),
+                  autoProvisioningStatus: Schema.optional(
+                    Schema.Literals(["Enabled", "Disabled"]),
+                  ),
+                  devicePresenceVerification: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(
+                        Schema.Literals(["NotInitiated", "Completed"]),
+                      ),
+                      message: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+          siteDetails: Schema.optional(
+            Schema.Struct({
+              siteId: Schema.String,
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
+    apiVersion: "2024-02-01",
   }),
 );
 export type OrderItemsUpdateInput = typeof OrderItemsUpdateInput.Type;
@@ -779,11 +1524,11 @@ export const OrdersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   orderName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/locations/{location}/orders/{orderName}",
+    apiVersion: "2024-02-01",
   }),
 );
 export type OrdersGetInput = typeof OrdersGetInput.Type;
@@ -829,13 +1574,13 @@ export const OrdersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $skipToken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orders",
+      apiVersion: "2024-02-01",
     }),
   );
 export type OrdersListByResourceGroupInput =
@@ -900,13 +1645,13 @@ export const OrdersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const OrdersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $skipToken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/orders",
+      apiVersion: "2024-02-01",
     }),
   );
 export type OrdersListBySubscriptionInput =
@@ -970,12 +1715,71 @@ export const OrdersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ProductsAndConfigurationsListConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $skipToken: Schema.optional(Schema.String),
+    configurationFilter: Schema.optional(
+      Schema.Struct({
+        hierarchyInformation: Schema.Struct({
+          productFamilyName: Schema.optional(Schema.String),
+          productLineName: Schema.optional(Schema.String),
+          productName: Schema.optional(Schema.String),
+          configurationName: Schema.optional(Schema.String),
+          configurationIdDisplayName: Schema.optional(Schema.String),
+        }),
+        filterableProperty: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.Literals([
+                "ShipToCountries",
+                "DoubleEncryptionStatus",
+              ]),
+              supportedValues: Schema.Array(Schema.String),
+            }),
+          ),
+        ),
+        childConfigurationFilter: Schema.optional(
+          Schema.Struct({
+            hierarchyInformations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  productFamilyName: Schema.optional(Schema.String),
+                  productLineName: Schema.optional(Schema.String),
+                  productName: Schema.optional(Schema.String),
+                  configurationName: Schema.optional(Schema.String),
+                  configurationIdDisplayName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            childConfigurationTypes: Schema.optional(
+              Schema.Array(
+                Schema.Literals([
+                  "DeviceConfiguration",
+                  "AdditionalConfiguration",
+                ]),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    customerSubscriptionDetails: Schema.optional(
+      Schema.Struct({
+        registeredFeatures: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              state: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        locationPlacementId: Schema.optional(Schema.String),
+        quotaId: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/listConfigurations",
+      apiVersion: "2024-02-01",
     }),
   );
 export type ProductsAndConfigurationsListConfigurationsInput =
@@ -1127,13 +1931,36 @@ export const ProductsAndConfigurationsListConfigurations =
 export const ProductsAndConfigurationsListProductFamiliesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $skipToken: Schema.optional(Schema.String),
+    filterableProperties: Schema.Record(
+      Schema.String,
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.Literals(["ShipToCountries", "DoubleEncryptionStatus"]),
+          supportedValues: Schema.Array(Schema.String),
+        }),
+      ),
+    ),
+    customerSubscriptionDetails: Schema.optional(
+      Schema.Struct({
+        registeredFeatures: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              state: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        locationPlacementId: Schema.optional(Schema.String),
+        quotaId: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/listProductFamilies",
+      apiVersion: "2024-02-01",
     }),
   );
 export type ProductsAndConfigurationsListProductFamiliesInput =
@@ -1286,12 +2113,12 @@ export const ProductsAndConfigurationsListProductFamilies =
 export const ProductsAndConfigurationsListProductFamiliesMetadataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/productFamiliesMetadata",
+      apiVersion: "2024-02-01",
     }),
   );
 export type ProductsAndConfigurationsListProductFamiliesMetadataInput =

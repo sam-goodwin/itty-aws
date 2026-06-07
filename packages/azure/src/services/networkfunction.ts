@@ -13,11 +13,11 @@ export const AzureTrafficCollectorsByResourceGroupListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors",
+      apiVersion: "2022-11-01",
     }),
   );
 export type AzureTrafficCollectorsByResourceGroupListInput =
@@ -79,11 +79,11 @@ export const AzureTrafficCollectorsByResourceGroupList =
 export const AzureTrafficCollectorsBySubscriptionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkFunction/azureTrafficCollectors",
+      apiVersion: "2022-11-01",
     }),
   );
 export type AzureTrafficCollectorsBySubscriptionListInput =
@@ -146,11 +146,33 @@ export const AzureTrafficCollectorsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        collectorPolicies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        virtualHub: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Updating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type AzureTrafficCollectorsCreateOrUpdateInput =
@@ -200,11 +222,11 @@ export const AzureTrafficCollectorsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type AzureTrafficCollectorsDeleteInput =
@@ -236,11 +258,11 @@ export const AzureTrafficCollectorsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type AzureTrafficCollectorsGetInput =
@@ -291,11 +313,12 @@ export const AzureTrafficCollectorsUpdateTagsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type AzureTrafficCollectorsUpdateTagsInput =
@@ -346,11 +369,50 @@ export const CollectorPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
     collectorPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        ingestionPolicy: Schema.optional(
+          Schema.Struct({
+            ingestionType: Schema.optional(Schema.Literals(["IPFIX"])),
+            ingestionSources: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  sourceType: Schema.optional(Schema.Literals(["Resource"])),
+                  resourceId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        emissionPolicies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              emissionType: Schema.optional(Schema.Literals(["IPFIX"])),
+              emissionDestinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    destinationType: Schema.optional(
+                      Schema.Literals(["AzureMonitor"]),
+                    ),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Updating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type CollectorPoliciesCreateOrUpdateInput =
@@ -402,11 +464,11 @@ export const CollectorPoliciesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
     collectorPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type CollectorPoliciesDeleteInput =
@@ -441,11 +503,11 @@ export const CollectorPoliciesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
     collectorPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type CollectorPoliciesGetInput = typeof CollectorPoliciesGetInput.Type;
@@ -495,11 +557,11 @@ export const CollectorPoliciesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies",
+      apiVersion: "2022-11-01",
     }),
   );
 export type CollectorPoliciesListInput = typeof CollectorPoliciesListInput.Type;
@@ -565,11 +627,12 @@ export const CollectorPoliciesUpdateTagsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
     collectorPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type CollectorPoliciesUpdateTagsInput =
@@ -617,12 +680,11 @@ export const CollectorPoliciesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const NetworkFunctionListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.NetworkFunction/operations",
+      apiVersion: "2022-11-01",
     }),
   );
 export type NetworkFunctionListOperationsInput =

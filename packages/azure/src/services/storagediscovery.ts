@@ -9,12 +9,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StorageDiscovery/operations",
+    apiVersion: "2025-09-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -62,11 +63,12 @@ export const ReportGenerateReportInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
     discoveryResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    queries: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports/{discoveryResourceName}/generateReport",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ReportGenerateReportInput = typeof ReportGenerateReportInput.Type;
@@ -113,11 +115,11 @@ export const ReportGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
   discoveryResourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports/{discoveryResourceName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ReportGetInput = typeof ReportGetInput.Type;
@@ -164,11 +166,11 @@ export const ReportListByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ReportListByResourceGroupInput =
@@ -233,11 +235,11 @@ export const ReportListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ReportListBySubscriptionInput =
@@ -302,11 +304,33 @@ export const StorageDiscoveryWorkspacesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        sku: Schema.optional(Schema.Literals(["Standard", "Free"])),
+        description: Schema.optional(Schema.String),
+        workspaceRoots: Schema.Array(Schema.String),
+        scopes: Schema.Array(
+          Schema.Struct({
+            displayName: Schema.String,
+            resourceTypes: Schema.Array(
+              Schema.Literals(["Microsoft.Storage/storageAccounts"]),
+            ),
+            tagKeysOnly: Schema.optional(Schema.Array(Schema.String)),
+            tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageDiscoveryWorkspacesCreateOrUpdateInput =
@@ -356,11 +380,11 @@ export const StorageDiscoveryWorkspacesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageDiscoveryWorkspacesDeleteInput =
@@ -392,11 +416,11 @@ export const StorageDiscoveryWorkspacesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageDiscoveryWorkspacesGetInput =
@@ -445,11 +469,11 @@ export const StorageDiscoveryWorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageDiscoveryWorkspacesListByResourceGroupInput =
@@ -511,11 +535,11 @@ export const StorageDiscoveryWorkspacesListByResourceGroup =
 export const StorageDiscoveryWorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageDiscoveryWorkspacesListBySubscriptionInput =
@@ -578,11 +602,12 @@ export const StorageDiscoveryWorkspacesReportInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    queries: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/report",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageDiscoveryWorkspacesReportInput =
@@ -629,11 +654,33 @@ export const StorageDiscoveryWorkspacesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        sku: Schema.optional(Schema.Literals(["Standard", "Free"])),
+        description: Schema.optional(Schema.String),
+        workspaceRoots: Schema.optional(Schema.Array(Schema.String)),
+        scopes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              displayName: Schema.String,
+              resourceTypes: Schema.Array(
+                Schema.Literals(["Microsoft.Storage/storageAccounts"]),
+              ),
+              tagKeysOnly: Schema.optional(Schema.Array(Schema.String)),
+              tags: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageDiscoveryWorkspacesUpdateInput =

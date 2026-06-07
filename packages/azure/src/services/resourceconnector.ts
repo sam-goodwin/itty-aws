@@ -7,7 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const AppliancesCreateOrUpdateInput =
@@ -15,11 +15,71 @@ export const AppliancesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        distro: Schema.optional(Schema.Literals(["AKSEdge"])),
+        infrastructureConfig: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(
+              Schema.Literals(["VMWare", "HCI", "SCVMM"]),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        publicKey: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Literals([
+            "WaitingForHeartbeat",
+            "Validating",
+            "Connecting",
+            "Connected",
+            "Running",
+            "PreparingForUpgrade",
+            "ETCDSnapshotFailed",
+            "UpgradePrerequisitesCompleted",
+            "ValidatingSFSConnectivity",
+            "ValidatingImageDownload",
+            "ValidatingImageUpload",
+            "ValidatingETCDHealth",
+            "PreUpgrade",
+            "UpgradingKVAIO",
+            "WaitingForKVAIO",
+            "ImagePending",
+            "ImageProvisioning",
+            "ImageProvisioned",
+            "ImageDownloading",
+            "ImageDownloaded",
+            "ImageDeprovisioning",
+            "ImageUnknown",
+            "UpdatingCloudOperator",
+            "WaitingForCloudOperator",
+            "UpdatingCAPI",
+            "UpdatingCluster",
+            "PostUpgrade",
+            "UpgradeComplete",
+            "UpgradeClusterExtensionFailedToDelete",
+            "UpgradeFailed",
+            "Offline",
+            "None",
+          ]),
+        ),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
+      apiVersion: "2022-10-27",
     }),
   );
 export type AppliancesCreateOrUpdateInput =
@@ -71,11 +131,11 @@ export const AppliancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
+    apiVersion: "2022-10-27",
   }),
 );
 export type AppliancesDeleteInput = typeof AppliancesDeleteInput.Type;
@@ -104,11 +164,11 @@ export const AppliancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
+    apiVersion: "2022-10-27",
   }),
 );
 export type AppliancesGetInput = typeof AppliancesGetInput.Type;
@@ -154,11 +214,11 @@ export const AppliancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AppliancesGetTelemetryConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceConnector/telemetryconfig",
+      apiVersion: "2022-10-27",
     }),
   );
 export type AppliancesGetTelemetryConfigInput =
@@ -191,11 +251,11 @@ export const AppliancesGetUpgradeGraphInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     upgradeGraph: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/upgradeGraphs/{upgradeGraph}",
+      apiVersion: "2022-10-27",
     }),
   );
 export type AppliancesGetUpgradeGraphInput =
@@ -263,11 +323,11 @@ export const AppliancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances",
+      apiVersion: "2022-10-27",
     }),
   );
 export type AppliancesListByResourceGroupInput =
@@ -331,11 +391,11 @@ export const AppliancesListByResourceGroup =
 export const AppliancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceConnector/appliances",
+      apiVersion: "2022-10-27",
     }),
   );
 export type AppliancesListBySubscriptionInput =
@@ -400,11 +460,11 @@ export const AppliancesListClusterUserCredentialInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/listClusterUserCredential",
+      apiVersion: "2022-10-27",
     }),
   );
 export type AppliancesListClusterUserCredentialInput =
@@ -457,12 +517,12 @@ export const AppliancesListKeysInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     artifactType: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/listkeys",
+      apiVersion: "2022-10-27",
     }),
   );
 export type AppliancesListKeysInput = typeof AppliancesListKeysInput.Type;
@@ -495,7 +555,7 @@ export const AppliancesListKeysOutput =
           certificate: Schema.optional(Schema.String),
           creationTimeStamp: Schema.optional(Schema.Number),
           expirationTimeStamp: Schema.optional(Schema.Number),
-          privateKey: Schema.optional(SensitiveString),
+          privateKey: Schema.optional(SensitiveOutputString),
           publicKey: Schema.optional(Schema.String),
         }),
       ),
@@ -521,12 +581,11 @@ export const AppliancesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AppliancesListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ResourceConnector/operations",
+      apiVersion: "2022-10-27",
     }),
   );
 export type AppliancesListOperationsInput =
@@ -572,11 +631,12 @@ export const AppliancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
+    apiVersion: "2022-10-27",
   }),
 );
 export type AppliancesUpdateInput = typeof AppliancesUpdateInput.Type;

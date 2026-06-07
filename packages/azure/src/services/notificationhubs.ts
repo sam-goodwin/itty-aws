@@ -7,16 +7,32 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const NamespacesCheckAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.String,
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    isAvailiable: Schema.optional(Schema.Boolean),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["Free", "Basic", "Standard"]),
+        tier: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NotificationHubs/checkNamespaceAvailability",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NamespacesCheckAvailabilityInput =
@@ -64,11 +80,205 @@ export const NamespacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.Struct({
+      name: Schema.Literals(["Free", "Basic", "Standard"]),
+      tier: Schema.optional(Schema.String),
+      size: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+    properties: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "InProgress",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Pending",
+            "Disabled",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Literals(["Created", "Creating", "Suspended", "Deleting"]),
+        ),
+        enabled: Schema.optional(Schema.Boolean),
+        critical: Schema.optional(Schema.Boolean),
+        subscriptionId: Schema.optional(Schema.String),
+        region: Schema.optional(Schema.String),
+        metricId: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        updatedAt: Schema.optional(Schema.String),
+        namespaceType: Schema.optional(
+          Schema.Literals(["Messaging", "NotificationHub"]),
+        ),
+        replicationRegion: Schema.optional(
+          Schema.Literals([
+            "Default",
+            "WestUs2",
+            "NorthEurope",
+            "AustraliaEast",
+            "BrazilSouth",
+            "SouthEastAsia",
+            "SouthAfricaNorth",
+            "None",
+          ]),
+        ),
+        zoneRedundancy: Schema.optional(
+          Schema.Literals(["Disabled", "Enabled"]),
+        ),
+        networkAcls: Schema.optional(
+          Schema.Struct({
+            ipRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  ipMask: Schema.String,
+                  rights: Schema.Array(
+                    Schema.Literals(["Manage", "Send", "Listen"]),
+                  ),
+                }),
+              ),
+            ),
+            publicNetworkRule: Schema.optional(
+              Schema.Struct({
+                rights: Schema.Array(
+                  Schema.Literals(["Manage", "Send", "Listen"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        pnsCredentials: Schema.optional(
+          Schema.Struct({
+            admCredential: Schema.optional(
+              Schema.Struct({
+                properties: Schema.Struct({
+                  clientId: Schema.String,
+                  clientSecret: SensitiveString,
+                  authTokenUrl: Schema.String,
+                }),
+              }),
+            ),
+            apnsCredential: Schema.optional(
+              Schema.Struct({
+                properties: Schema.Struct({
+                  apnsCertificate: Schema.optional(Schema.String),
+                  certificateKey: Schema.optional(Schema.String),
+                  endpoint: Schema.String,
+                  thumbprint: Schema.optional(Schema.String),
+                  keyId: Schema.optional(Schema.String),
+                  appName: Schema.optional(Schema.String),
+                  appId: Schema.optional(Schema.String),
+                  token: Schema.optional(Schema.String),
+                }),
+              }),
+            ),
+            baiduCredential: Schema.optional(
+              Schema.Struct({
+                properties: Schema.Struct({
+                  baiduApiKey: Schema.String,
+                  baiduEndPoint: Schema.String,
+                  baiduSecretKey: SensitiveString,
+                }),
+              }),
+            ),
+            browserCredential: Schema.optional(
+              Schema.Struct({
+                properties: Schema.Struct({
+                  subject: Schema.String,
+                  vapidPrivateKey: Schema.String,
+                  vapidPublicKey: Schema.String,
+                }),
+              }),
+            ),
+            gcmCredential: Schema.optional(
+              Schema.Struct({
+                properties: Schema.Struct({
+                  gcmEndpoint: Schema.optional(Schema.String),
+                  googleApiKey: Schema.String,
+                }),
+              }),
+            ),
+            mpnsCredential: Schema.optional(
+              Schema.Struct({
+                properties: Schema.Struct({
+                  mpnsCertificate: Schema.String,
+                  certificateKey: Schema.String,
+                  thumbprint: Schema.String,
+                }),
+              }),
+            ),
+            wnsCredential: Schema.optional(
+              Schema.Struct({
+                properties: Schema.Struct({
+                  packageSid: Schema.optional(Schema.String),
+                  secretKey: Schema.optional(SensitiveString),
+                  windowsLiveEndpoint: Schema.optional(Schema.String),
+                  certificateKey: Schema.optional(Schema.String),
+                  wnsCertificate: Schema.optional(Schema.String),
+                }),
+              }),
+            ),
+            xiaomiCredential: Schema.optional(
+              Schema.Struct({
+                properties: Schema.Struct({
+                  appSecret: Schema.optional(Schema.String),
+                  endpoint: Schema.optional(Schema.String),
+                }),
+              }),
+            ),
+          }),
+        ),
+        serviceBusEndpoint: Schema.optional(Schema.String),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        scaleUnit: Schema.optional(Schema.String),
+        dataCenter: Schema.optional(Schema.String),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NamespacesCreateOrUpdateInput =
@@ -117,11 +327,26 @@ export const NamespacesCreateOrUpdateAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+        primaryKey: Schema.optional(Schema.String),
+        secondaryKey: Schema.optional(Schema.String),
+        keyName: Schema.optional(Schema.String),
+        modifiedTime: Schema.optional(Schema.String),
+        createdTime: Schema.optional(Schema.String),
+        claimType: Schema.optional(Schema.String),
+        claimValue: Schema.optional(Schema.String),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NamespacesCreateOrUpdateAuthorizationRuleInput =
@@ -168,11 +393,11 @@ export const NamespacesCreateOrUpdateAuthorizationRule =
 export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
+    apiVersion: "2023-09-01",
   }),
 );
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
@@ -198,11 +423,11 @@ export const NamespacesDeleteAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NamespacesDeleteAuthorizationRuleInput =
@@ -231,11 +456,11 @@ export const NamespacesDeleteAuthorizationRule =
 export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
+    apiVersion: "2023-09-01",
   }),
 );
 export type NamespacesGetInput = typeof NamespacesGetInput.Type;
@@ -279,11 +504,11 @@ export const NamespacesGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NamespacesGetAuthorizationRuleInput =
@@ -331,11 +556,11 @@ export const NamespacesGetPnsCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/pnsCredentials",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NamespacesGetPnsCredentialsInput =
@@ -385,11 +610,11 @@ export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   $skipToken: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces",
+    apiVersion: "2023-09-01",
   }),
 );
 export type NamespacesListInput = typeof NamespacesListInput.Type;
@@ -453,12 +678,12 @@ export const NamespacesListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.NotificationHubs/namespaces",
+    apiVersion: "2023-09-01",
   }),
 );
 export type NamespacesListAllInput = typeof NamespacesListAllInput.Type;
@@ -521,11 +746,11 @@ export const NamespacesListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NamespacesListAuthorizationRulesInput =
@@ -590,11 +815,11 @@ export const NamespacesListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NamespacesListKeysInput = typeof NamespacesListKeysInput.Type;
@@ -627,11 +852,12 @@ export const NamespacesRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    policyKey: Schema.Literals(["PrimaryKey", "SecondaryKey"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NamespacesRegenerateKeysInput =
@@ -667,11 +893,204 @@ export const NamespacesRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["Free", "Basic", "Standard"]),
+      tier: Schema.optional(Schema.String),
+      size: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Unknown",
+          "InProgress",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Pending",
+          "Disabled",
+        ]),
+      ),
+      status: Schema.optional(
+        Schema.Literals(["Created", "Creating", "Suspended", "Deleting"]),
+      ),
+      enabled: Schema.optional(Schema.Boolean),
+      critical: Schema.optional(Schema.Boolean),
+      subscriptionId: Schema.optional(Schema.String),
+      region: Schema.optional(Schema.String),
+      metricId: Schema.optional(Schema.String),
+      createdAt: Schema.optional(Schema.String),
+      updatedAt: Schema.optional(Schema.String),
+      namespaceType: Schema.optional(
+        Schema.Literals(["Messaging", "NotificationHub"]),
+      ),
+      replicationRegion: Schema.optional(
+        Schema.Literals([
+          "Default",
+          "WestUs2",
+          "NorthEurope",
+          "AustraliaEast",
+          "BrazilSouth",
+          "SouthEastAsia",
+          "SouthAfricaNorth",
+          "None",
+        ]),
+      ),
+      zoneRedundancy: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+      networkAcls: Schema.optional(
+        Schema.Struct({
+          ipRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                ipMask: Schema.String,
+                rights: Schema.Array(
+                  Schema.Literals(["Manage", "Send", "Listen"]),
+                ),
+              }),
+            ),
+          ),
+          publicNetworkRule: Schema.optional(
+            Schema.Struct({
+              rights: Schema.Array(
+                Schema.Literals(["Manage", "Send", "Listen"]),
+              ),
+            }),
+          ),
+        }),
+      ),
+      pnsCredentials: Schema.optional(
+        Schema.Struct({
+          admCredential: Schema.optional(
+            Schema.Struct({
+              properties: Schema.Struct({
+                clientId: Schema.String,
+                clientSecret: SensitiveString,
+                authTokenUrl: Schema.String,
+              }),
+            }),
+          ),
+          apnsCredential: Schema.optional(
+            Schema.Struct({
+              properties: Schema.Struct({
+                apnsCertificate: Schema.optional(Schema.String),
+                certificateKey: Schema.optional(Schema.String),
+                endpoint: Schema.String,
+                thumbprint: Schema.optional(Schema.String),
+                keyId: Schema.optional(Schema.String),
+                appName: Schema.optional(Schema.String),
+                appId: Schema.optional(Schema.String),
+                token: Schema.optional(Schema.String),
+              }),
+            }),
+          ),
+          baiduCredential: Schema.optional(
+            Schema.Struct({
+              properties: Schema.Struct({
+                baiduApiKey: Schema.String,
+                baiduEndPoint: Schema.String,
+                baiduSecretKey: SensitiveString,
+              }),
+            }),
+          ),
+          browserCredential: Schema.optional(
+            Schema.Struct({
+              properties: Schema.Struct({
+                subject: Schema.String,
+                vapidPrivateKey: Schema.String,
+                vapidPublicKey: Schema.String,
+              }),
+            }),
+          ),
+          gcmCredential: Schema.optional(
+            Schema.Struct({
+              properties: Schema.Struct({
+                gcmEndpoint: Schema.optional(Schema.String),
+                googleApiKey: Schema.String,
+              }),
+            }),
+          ),
+          mpnsCredential: Schema.optional(
+            Schema.Struct({
+              properties: Schema.Struct({
+                mpnsCertificate: Schema.String,
+                certificateKey: Schema.String,
+                thumbprint: Schema.String,
+              }),
+            }),
+          ),
+          wnsCredential: Schema.optional(
+            Schema.Struct({
+              properties: Schema.Struct({
+                packageSid: Schema.optional(Schema.String),
+                secretKey: Schema.optional(SensitiveString),
+                windowsLiveEndpoint: Schema.optional(Schema.String),
+                certificateKey: Schema.optional(Schema.String),
+                wnsCertificate: Schema.optional(Schema.String),
+              }),
+            }),
+          ),
+          xiaomiCredential: Schema.optional(
+            Schema.Struct({
+              properties: Schema.Struct({
+                appSecret: Schema.optional(Schema.String),
+                endpoint: Schema.optional(Schema.String),
+              }),
+            }),
+          ),
+        }),
+      ),
+      serviceBusEndpoint: Schema.optional(Schema.String),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      scaleUnit: Schema.optional(Schema.String),
+      dataCenter: Schema.optional(Schema.String),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
+    apiVersion: "2023-09-01",
   }),
 );
 export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
@@ -717,11 +1136,26 @@ export const NotificationHubsCheckNotificationHubAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.String,
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    isAvailiable: Schema.optional(Schema.Boolean),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["Free", "Basic", "Standard"]),
+        tier: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/checkNotificationHubAvailability",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsCheckNotificationHubAvailabilityInput =
@@ -769,11 +1203,123 @@ export const NotificationHubsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        registrationTtl: Schema.optional(Schema.String),
+        authorizationRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              rights: Schema.Array(
+                Schema.Literals(["Manage", "Send", "Listen"]),
+              ),
+              primaryKey: Schema.optional(Schema.String),
+              secondaryKey: Schema.optional(Schema.String),
+              keyName: Schema.optional(Schema.String),
+              modifiedTime: Schema.optional(Schema.String),
+              createdTime: Schema.optional(Schema.String),
+              claimType: Schema.optional(Schema.String),
+              claimValue: Schema.optional(Schema.String),
+              revision: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        apnsCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              apnsCertificate: Schema.optional(Schema.String),
+              certificateKey: Schema.optional(Schema.String),
+              endpoint: Schema.String,
+              thumbprint: Schema.optional(Schema.String),
+              keyId: Schema.optional(Schema.String),
+              appName: Schema.optional(Schema.String),
+              appId: Schema.optional(Schema.String),
+              token: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+        wnsCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              packageSid: Schema.optional(Schema.String),
+              secretKey: Schema.optional(SensitiveString),
+              windowsLiveEndpoint: Schema.optional(Schema.String),
+              certificateKey: Schema.optional(Schema.String),
+              wnsCertificate: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+        gcmCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              gcmEndpoint: Schema.optional(Schema.String),
+              googleApiKey: Schema.String,
+            }),
+          }),
+        ),
+        mpnsCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              mpnsCertificate: Schema.String,
+              certificateKey: Schema.String,
+              thumbprint: Schema.String,
+            }),
+          }),
+        ),
+        admCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              clientId: Schema.String,
+              clientSecret: SensitiveString,
+              authTokenUrl: Schema.String,
+            }),
+          }),
+        ),
+        baiduCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              baiduApiKey: Schema.String,
+              baiduEndPoint: Schema.String,
+              baiduSecretKey: SensitiveString,
+            }),
+          }),
+        ),
+        browserCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              subject: Schema.String,
+              vapidPrivateKey: Schema.String,
+              vapidPublicKey: Schema.String,
+            }),
+          }),
+        ),
+        xiaomiCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              appSecret: Schema.optional(Schema.String),
+              endpoint: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+        dailyMaxActiveDevices: Schema.optional(Schema.Number),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["Free", "Basic", "Standard"]),
+        tier: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsCreateOrUpdateInput =
@@ -821,11 +1367,26 @@ export const NotificationHubsCreateOrUpdateAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+        primaryKey: Schema.optional(Schema.String),
+        secondaryKey: Schema.optional(Schema.String),
+        keyName: Schema.optional(Schema.String),
+        modifiedTime: Schema.optional(Schema.String),
+        createdTime: Schema.optional(Schema.String),
+        claimType: Schema.optional(Schema.String),
+        claimValue: Schema.optional(Schema.String),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsCreateOrUpdateAuthorizationRuleInput =
@@ -873,11 +1434,11 @@ export const NotificationHubsDebugSendInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/debugsend",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsDebugSendInput =
@@ -926,11 +1487,11 @@ export const NotificationHubsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsDeleteInput =
@@ -961,11 +1522,11 @@ export const NotificationHubsDeleteAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsDeleteAuthorizationRuleInput =
@@ -995,11 +1556,11 @@ export const NotificationHubsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsGetInput = typeof NotificationHubsGetInput.Type;
@@ -1044,11 +1605,11 @@ export const NotificationHubsGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsGetAuthorizationRuleInput =
@@ -1096,11 +1657,11 @@ export const NotificationHubsGetPnsCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/pnsCredentials",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsGetPnsCredentialsInput =
@@ -1150,11 +1711,11 @@ export const NotificationHubsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsListInput = typeof NotificationHubsListInput.Type;
@@ -1220,11 +1781,11 @@ export const NotificationHubsListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsListAuthorizationRulesInput =
@@ -1289,11 +1850,11 @@ export const NotificationHubsListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}/listKeys",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsListKeysInput =
@@ -1330,11 +1891,12 @@ export const NotificationHubsRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    policyKey: Schema.Literals(["PrimaryKey", "SecondaryKey"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsRegenerateKeysInput =
@@ -1370,11 +1932,122 @@ export const NotificationHubsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        registrationTtl: Schema.optional(Schema.String),
+        authorizationRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              rights: Schema.Array(
+                Schema.Literals(["Manage", "Send", "Listen"]),
+              ),
+              primaryKey: Schema.optional(Schema.String),
+              secondaryKey: Schema.optional(Schema.String),
+              keyName: Schema.optional(Schema.String),
+              modifiedTime: Schema.optional(Schema.String),
+              createdTime: Schema.optional(Schema.String),
+              claimType: Schema.optional(Schema.String),
+              claimValue: Schema.optional(Schema.String),
+              revision: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        apnsCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              apnsCertificate: Schema.optional(Schema.String),
+              certificateKey: Schema.optional(Schema.String),
+              endpoint: Schema.String,
+              thumbprint: Schema.optional(Schema.String),
+              keyId: Schema.optional(Schema.String),
+              appName: Schema.optional(Schema.String),
+              appId: Schema.optional(Schema.String),
+              token: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+        wnsCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              packageSid: Schema.optional(Schema.String),
+              secretKey: Schema.optional(SensitiveString),
+              windowsLiveEndpoint: Schema.optional(Schema.String),
+              certificateKey: Schema.optional(Schema.String),
+              wnsCertificate: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+        gcmCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              gcmEndpoint: Schema.optional(Schema.String),
+              googleApiKey: Schema.String,
+            }),
+          }),
+        ),
+        mpnsCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              mpnsCertificate: Schema.String,
+              certificateKey: Schema.String,
+              thumbprint: Schema.String,
+            }),
+          }),
+        ),
+        admCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              clientId: Schema.String,
+              clientSecret: SensitiveString,
+              authTokenUrl: Schema.String,
+            }),
+          }),
+        ),
+        baiduCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              baiduApiKey: Schema.String,
+              baiduEndPoint: Schema.String,
+              baiduSecretKey: SensitiveString,
+            }),
+          }),
+        ),
+        browserCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              subject: Schema.String,
+              vapidPrivateKey: Schema.String,
+              vapidPublicKey: Schema.String,
+            }),
+          }),
+        ),
+        xiaomiCredential: Schema.optional(
+          Schema.Struct({
+            properties: Schema.Struct({
+              appSecret: Schema.optional(Schema.String),
+              endpoint: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+        dailyMaxActiveDevices: Schema.optional(Schema.Number),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["Free", "Basic", "Standard"]),
+        tier: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type NotificationHubsUpdateInput =
@@ -1419,12 +2092,13 @@ export const NotificationHubsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.NotificationHubs/operations",
+    apiVersion: "2023-09-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1504,11 +2178,11 @@ export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1539,11 +2213,11 @@ export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -1593,11 +2267,11 @@ export const PrivateEndpointConnectionsGetGroupIdInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateLinkResources/{subResourceName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type PrivateEndpointConnectionsGetGroupIdInput =
@@ -1650,11 +2324,11 @@ export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections",
+      apiVersion: "2023-09-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -1720,11 +2394,11 @@ export const PrivateEndpointConnectionsListGroupIdsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateLinkResources",
+      apiVersion: "2023-09-01",
     }),
   );
 export type PrivateEndpointConnectionsListGroupIdsInput =
@@ -1793,11 +2467,47 @@ export const PrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Creating",
+            "Updating",
+            "UpdatingByProxy",
+            "Deleting",
+            "DeletingByProxy",
+            "Deleted",
+          ]),
+        ),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Disconnected",
+                "Pending",
+                "Approved",
+                "Rejected",
+              ]),
+            ),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2023-09-01",
     }),
   );
 export type PrivateEndpointConnectionsUpdateInput =

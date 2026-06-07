@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AccountsChangeKeyVaultInput =
@@ -14,11 +15,20 @@ export const AccountsChangeKeyVaultInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keyVaultUri: Schema.String,
+    keyName: Schema.String,
+    keyVaultResourceId: Schema.optional(Schema.String),
+    keyVaultPrivateEndpoints: Schema.Array(
+      Schema.Struct({
+        virtualNetworkId: Schema.optional(Schema.String),
+        privateEndpointId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/changeKeyVault",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AccountsChangeKeyVaultInput =
@@ -51,11 +61,119 @@ export const AccountsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        activeDirectories: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              activeDirectoryId: Schema.optional(Schema.NullOr(Schema.String)),
+              username: Schema.optional(Schema.String),
+              password: Schema.optional(SensitiveString),
+              domain: Schema.optional(Schema.String),
+              dns: Schema.optional(Schema.String),
+              status: Schema.optional(
+                Schema.Literals([
+                  "Created",
+                  "InUse",
+                  "Deleted",
+                  "Error",
+                  "Updating",
+                ]),
+              ),
+              statusDetails: Schema.optional(Schema.String),
+              smbServerName: Schema.optional(Schema.String),
+              organizationalUnit: Schema.optional(Schema.String),
+              site: Schema.optional(Schema.String),
+              backupOperators: Schema.optional(Schema.Array(Schema.String)),
+              administrators: Schema.optional(Schema.Array(Schema.String)),
+              kdcIP: Schema.optional(Schema.String),
+              adName: Schema.optional(Schema.String),
+              serverRootCACertificate: Schema.optional(Schema.String),
+              aesEncryption: Schema.optional(Schema.Boolean),
+              ldapSigning: Schema.optional(Schema.Boolean),
+              securityOperators: Schema.optional(Schema.Array(Schema.String)),
+              ldapOverTLS: Schema.optional(Schema.Boolean),
+              allowLocalNfsUsersWithLdap: Schema.optional(Schema.Boolean),
+              encryptDCConnections: Schema.optional(Schema.Boolean),
+              ldapSearchScope: Schema.optional(
+                Schema.Struct({
+                  userDN: Schema.optional(Schema.String),
+                  groupDN: Schema.optional(Schema.String),
+                  groupMembershipFilter: Schema.optional(Schema.String),
+                }),
+              ),
+              preferredServersForLdapClient: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            keySource: Schema.optional(
+              Schema.Literals(["Microsoft.NetApp", "Microsoft.KeyVault"]),
+            ),
+            keyVaultProperties: Schema.optional(
+              Schema.Struct({
+                keyVaultId: Schema.optional(Schema.String),
+                keyVaultUri: Schema.String,
+                keyName: Schema.String,
+                keyVaultResourceId: Schema.optional(Schema.String),
+                status: Schema.optional(
+                  Schema.Literals([
+                    "Created",
+                    "InUse",
+                    "Deleted",
+                    "Error",
+                    "Updating",
+                  ]),
+                ),
+              }),
+            ),
+            identity: Schema.optional(
+              Schema.Struct({
+                principalId: Schema.optional(Schema.String),
+                userAssignedIdentity: Schema.optional(Schema.String),
+                federatedClientId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        disableShowmount: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        nfsV4IDDomain: Schema.optional(Schema.String),
+        multiAdStatus: Schema.optional(
+          Schema.Literals(["Disabled", "Enabled"]),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AccountsCreateOrUpdateInput =
@@ -105,11 +223,11 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -136,11 +254,11 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AccountsGetInput = typeof AccountsGetInput.Type;
@@ -186,11 +304,11 @@ export const AccountsGetChangeKeyVaultInformationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/getKeyVaultStatus",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AccountsGetChangeKeyVaultInformationInput =
@@ -236,11 +354,11 @@ export const AccountsGetChangeKeyVaultInformation =
 export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AccountsListInput = typeof AccountsListInput.Type;
@@ -288,11 +406,11 @@ export const AccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/netAppAccounts",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AccountsListBySubscriptionInput =
@@ -356,11 +474,11 @@ export const AccountsRenewCredentialsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/renewCredentials",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AccountsRenewCredentialsInput =
@@ -393,11 +511,13 @@ export const AccountsTransitionToCmkInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    virtualNetworkId: Schema.String,
+    privateEndpointId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/transitiontocmk",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AccountsTransitionToCmkInput =
@@ -429,11 +549,119 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  location: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(Schema.String),
+      activeDirectories: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            activeDirectoryId: Schema.optional(Schema.NullOr(Schema.String)),
+            username: Schema.optional(Schema.String),
+            password: Schema.optional(SensitiveString),
+            domain: Schema.optional(Schema.String),
+            dns: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Literals([
+                "Created",
+                "InUse",
+                "Deleted",
+                "Error",
+                "Updating",
+              ]),
+            ),
+            statusDetails: Schema.optional(Schema.String),
+            smbServerName: Schema.optional(Schema.String),
+            organizationalUnit: Schema.optional(Schema.String),
+            site: Schema.optional(Schema.String),
+            backupOperators: Schema.optional(Schema.Array(Schema.String)),
+            administrators: Schema.optional(Schema.Array(Schema.String)),
+            kdcIP: Schema.optional(Schema.String),
+            adName: Schema.optional(Schema.String),
+            serverRootCACertificate: Schema.optional(Schema.String),
+            aesEncryption: Schema.optional(Schema.Boolean),
+            ldapSigning: Schema.optional(Schema.Boolean),
+            securityOperators: Schema.optional(Schema.Array(Schema.String)),
+            ldapOverTLS: Schema.optional(Schema.Boolean),
+            allowLocalNfsUsersWithLdap: Schema.optional(Schema.Boolean),
+            encryptDCConnections: Schema.optional(Schema.Boolean),
+            ldapSearchScope: Schema.optional(
+              Schema.Struct({
+                userDN: Schema.optional(Schema.String),
+                groupDN: Schema.optional(Schema.String),
+                groupMembershipFilter: Schema.optional(Schema.String),
+              }),
+            ),
+            preferredServersForLdapClient: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      encryption: Schema.optional(
+        Schema.Struct({
+          keySource: Schema.optional(
+            Schema.Literals(["Microsoft.NetApp", "Microsoft.KeyVault"]),
+          ),
+          keyVaultProperties: Schema.optional(
+            Schema.Struct({
+              keyVaultId: Schema.optional(Schema.String),
+              keyVaultUri: Schema.String,
+              keyName: Schema.String,
+              keyVaultResourceId: Schema.optional(Schema.String),
+              status: Schema.optional(
+                Schema.Literals([
+                  "Created",
+                  "InUse",
+                  "Deleted",
+                  "Error",
+                  "Updating",
+                ]),
+              ),
+            }),
+          ),
+          identity: Schema.optional(
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              userAssignedIdentity: Schema.optional(Schema.String),
+              federatedClientId: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      disableShowmount: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      nfsV4IDDomain: Schema.optional(Schema.String),
+      multiAdStatus: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -480,11 +708,33 @@ export const BackupPoliciesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     backupPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      backupPolicyId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      dailyBackupsToKeep: Schema.optional(Schema.Number),
+      weeklyBackupsToKeep: Schema.optional(Schema.Number),
+      monthlyBackupsToKeep: Schema.optional(Schema.Number),
+      volumesAssigned: Schema.optional(Schema.Number),
+      enabled: Schema.optional(Schema.Boolean),
+      volumeBackups: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            volumeName: Schema.optional(Schema.String),
+            volumeResourceId: Schema.optional(Schema.String),
+            backupsCount: Schema.optional(Schema.Number),
+            policyEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupPoliciesCreateInput = typeof BackupPoliciesCreateInput.Type;
@@ -535,11 +785,11 @@ export const BackupPoliciesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     backupPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupPoliciesDeleteInput = typeof BackupPoliciesDeleteInput.Type;
@@ -572,12 +822,12 @@ export const BackupPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     backupPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type BackupPoliciesGetInput = typeof BackupPoliciesGetInput.Type;
@@ -625,11 +875,11 @@ export const BackupPoliciesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupPoliciesListInput = typeof BackupPoliciesListInput.Type;
@@ -692,11 +942,37 @@ export const BackupPoliciesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     backupPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    location: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        backupPolicyId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        dailyBackupsToKeep: Schema.optional(Schema.Number),
+        weeklyBackupsToKeep: Schema.optional(Schema.Number),
+        monthlyBackupsToKeep: Schema.optional(Schema.Number),
+        volumesAssigned: Schema.optional(Schema.Number),
+        enabled: Schema.optional(Schema.Boolean),
+        volumeBackups: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              volumeName: Schema.optional(Schema.String),
+              volumeResourceId: Schema.optional(Schema.String),
+              backupsCount: Schema.optional(Schema.Number),
+              policyEnabled: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupPoliciesUpdateInput = typeof BackupPoliciesUpdateInput.Type;
@@ -747,11 +1023,27 @@ export const BackupsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountName: Schema.String.pipe(T.PathParam()),
   backupVaultName: Schema.String.pipe(T.PathParam()),
   backupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.Struct({
+    backupId: Schema.optional(Schema.String),
+    creationDate: Schema.optional(Schema.String),
+    snapshotCreationDate: Schema.optional(Schema.NullOr(Schema.String)),
+    completionDate: Schema.optional(Schema.NullOr(Schema.String)),
+    provisioningState: Schema.optional(Schema.String),
+    size: Schema.optional(Schema.Number),
+    label: Schema.optional(Schema.String),
+    backupType: Schema.optional(Schema.Literals(["Manual", "Scheduled"])),
+    failureReason: Schema.optional(Schema.String),
+    volumeResourceId: Schema.String,
+    useExistingSnapshot: Schema.optional(Schema.Boolean),
+    snapshotName: Schema.optional(Schema.String),
+    backupPolicyResourceId: Schema.optional(Schema.String),
+    isLargeVolume: Schema.optional(Schema.Boolean),
+  }),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type BackupsCreateInput = typeof BackupsCreateInput.Type;
@@ -800,11 +1092,11 @@ export const BackupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountName: Schema.String.pipe(T.PathParam()),
   backupVaultName: Schema.String.pipe(T.PathParam()),
   backupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type BackupsDeleteInput = typeof BackupsDeleteInput.Type;
@@ -835,11 +1127,11 @@ export const BackupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountName: Schema.String.pipe(T.PathParam()),
   backupVaultName: Schema.String.pipe(T.PathParam()),
   backupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type BackupsGetInput = typeof BackupsGetInput.Type;
@@ -889,11 +1181,11 @@ export const BackupsGetLatestStatusInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestBackupStatus/current",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupsGetLatestStatusInput =
@@ -944,11 +1236,11 @@ export const BackupsGetVolumeLatestRestoreStatusInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestRestoreStatus/current",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupsGetVolumeLatestRestoreStatusInput =
@@ -994,12 +1286,12 @@ export const BackupsListByVaultInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     backupVaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupsListByVaultInput = typeof BackupsListByVaultInput.Type;
@@ -1063,11 +1355,12 @@ export const BackupsUnderAccountMigrateBackupsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    backupVaultId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/migrateBackups",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupsUnderAccountMigrateBackupsInput =
@@ -1101,11 +1394,14 @@ export const BackupsUnderBackupVaultRestoreFilesInput =
     accountName: Schema.String.pipe(T.PathParam()),
     backupVaultName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    fileList: Schema.Array(Schema.String),
+    restoreFilePath: Schema.optional(Schema.String),
+    destinationVolumeId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}/restoreFiles",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupsUnderBackupVaultRestoreFilesInput =
@@ -1141,11 +1437,12 @@ export const BackupsUnderVolumeMigrateBackupsInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    backupVaultId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/migrateBackups",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupsUnderVolumeMigrateBackupsInput =
@@ -1180,11 +1477,16 @@ export const BackupsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountName: Schema.String.pipe(T.PathParam()),
   backupVaultName: Schema.String.pipe(T.PathParam()),
   backupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      label: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type BackupsUpdateInput = typeof BackupsUpdateInput.Type;
@@ -1233,11 +1535,18 @@ export const BackupVaultsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     backupVaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupVaultsCreateOrUpdateInput =
@@ -1290,11 +1599,11 @@ export const BackupVaultsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     backupVaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupVaultsDeleteInput = typeof BackupVaultsDeleteInput.Type;
@@ -1323,11 +1632,11 @@ export const BackupVaultsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   backupVaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type BackupVaultsGetInput = typeof BackupVaultsGetInput.Type;
@@ -1374,11 +1683,11 @@ export const BackupVaultsListByNetAppAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupVaultsListByNetAppAccountInput =
@@ -1444,11 +1753,12 @@ export const BackupVaultsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     backupVaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type BackupVaultsUpdateInput = typeof BackupVaultsUpdateInput.Type;
@@ -1495,11 +1805,14 @@ export const NetAppResourceCheckFilePathAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    subnetId: Schema.String,
+    availabilityZone: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/checkFilePathAvailability",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceCheckFilePathAvailabilityInput =
@@ -1535,11 +1848,21 @@ export const NetAppResourceCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals([
+      "Microsoft.NetApp/netAppAccounts",
+      "Microsoft.NetApp/netAppAccounts/capacityPools",
+      "Microsoft.NetApp/netAppAccounts/capacityPools/volumes",
+      "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots",
+      "Microsoft.NetApp/netAppAccounts/backupVaults/backups",
+      "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups",
+    ]),
+    resourceGroup: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/checkNameAvailability",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceCheckNameAvailabilityInput =
@@ -1575,11 +1898,21 @@ export const NetAppResourceCheckQuotaAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals([
+      "Microsoft.NetApp/netAppAccounts",
+      "Microsoft.NetApp/netAppAccounts/capacityPools",
+      "Microsoft.NetApp/netAppAccounts/capacityPools/volumes",
+      "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots",
+      "Microsoft.NetApp/netAppAccounts/backupVaults/backups",
+      "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups",
+    ]),
+    resourceGroup: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/checkQuotaAvailability",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceCheckQuotaAvailabilityInput =
@@ -1615,11 +1948,13 @@ export const NetAppResourceQueryNetworkSiblingSetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    networkSiblingSetId: Schema.String,
+    subnetId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/queryNetworkSiblingSet",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceQueryNetworkSiblingSetInput =
@@ -1674,11 +2009,11 @@ export const NetAppResourceQueryRegionInfoInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfo",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceQueryRegionInfoInput =
@@ -1733,11 +2068,11 @@ export const NetAppResourceQuotaLimitsAccountGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     quotaLimitName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/quotaLimits/{quotaLimitName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceQuotaLimitsAccountGetInput =
@@ -1788,11 +2123,11 @@ export const NetAppResourceQuotaLimitsAccountListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/quotaLimits",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceQuotaLimitsAccountListInput =
@@ -1857,11 +2192,11 @@ export const NetAppResourceQuotaLimitsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     quotaLimitName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits/{quotaLimitName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceQuotaLimitsGetInput =
@@ -1910,11 +2245,11 @@ export const NetAppResourceQuotaLimitsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceQuotaLimitsListInput =
@@ -1977,11 +2312,11 @@ export const NetAppResourceRegionInfosGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos/default",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceRegionInfosGetInput =
@@ -2029,11 +2364,11 @@ export const NetAppResourceRegionInfosListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceRegionInfosListInput =
@@ -2096,11 +2431,20 @@ export const NetAppResourceUpdateNetworkSiblingSetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    networkSiblingSetId: Schema.String,
+    subnetId: Schema.String,
+    networkSiblingSetStateId: Schema.String,
+    networkFeatures: Schema.Literals([
+      "Basic",
+      "Standard",
+      "Basic_Standard",
+      "Standard_Basic",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/updateNetworkSiblingSet",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceUpdateNetworkSiblingSetInput =
@@ -2156,11 +2500,11 @@ export const NetAppResourceUsagesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     usageType: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages/{usageType}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceUsagesGetInput =
@@ -2209,11 +2553,11 @@ export const NetAppResourceUsagesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages",
+      apiVersion: "2025-12-01",
     }),
   );
 export type NetAppResourceUsagesListInput =
@@ -2262,10 +2606,14 @@ export const NetAppResourceUsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.NetApp/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.NetApp/operations",
+    apiVersion: "2025-12-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -2357,11 +2705,34 @@ export const PoolsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      poolId: Schema.optional(Schema.String),
+      size: Schema.Number,
+      serviceLevel: Schema.Literals([
+        "Standard",
+        "Premium",
+        "Ultra",
+        "StandardZRS",
+        "Flexible",
+      ]),
+      provisioningState: Schema.optional(Schema.String),
+      totalThroughputMibps: Schema.optional(Schema.Number),
+      utilizedThroughputMibps: Schema.optional(Schema.Number),
+      customThroughputMibps: Schema.optional(Schema.NullOr(Schema.Number)),
+      qosType: Schema.optional(Schema.Literals(["Auto", "Manual"])),
+      coolAccess: Schema.optional(Schema.Boolean),
+      encryptionType: Schema.optional(
+        Schema.NullOr(Schema.Literals(["Single", "Double"])),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type PoolsCreateOrUpdateInput = typeof PoolsCreateOrUpdateInput.Type;
@@ -2409,11 +2780,11 @@ export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type PoolsDeleteInput = typeof PoolsDeleteInput.Type;
@@ -2442,11 +2813,11 @@ export const PoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type PoolsGetInput = typeof PoolsGetInput.Type;
@@ -2492,11 +2863,11 @@ export const PoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools",
+    apiVersion: "2025-12-01",
   }),
 );
 export type PoolsListInput = typeof PoolsListInput.Type;
@@ -2547,11 +2918,24 @@ export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  location: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      size: Schema.optional(Schema.Number),
+      qosType: Schema.optional(Schema.Literals(["Auto", "Manual"])),
+      coolAccess: Schema.optional(Schema.Boolean),
+      customThroughputMibps: Schema.optional(Schema.NullOr(Schema.Number)),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type PoolsUpdateInput = typeof PoolsUpdateInput.Type;
@@ -2601,11 +2985,13 @@ export const RansomwareReportsClearSuspectsInput =
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
     ransomwareReportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    resolution: Schema.Literals(["PotentialThreat", "FalsePositive"]),
+    extensions: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}/clearSuspects",
+      apiVersion: "2025-12-01",
     }),
   );
 export type RansomwareReportsClearSuspectsInput =
@@ -2644,11 +3030,11 @@ export const RansomwareReportsGetInput =
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
     ransomwareReportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type RansomwareReportsGetInput = typeof RansomwareReportsGetInput.Type;
@@ -2704,11 +3090,11 @@ export const RansomwareReportsListInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports",
+      apiVersion: "2025-12-01",
     }),
   );
 export type RansomwareReportsListInput = typeof RansomwareReportsListInput.Type;
@@ -2779,11 +3165,51 @@ export const SnapshotPoliciesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     snapshotPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      hourlySchedule: Schema.optional(
+        Schema.Struct({
+          snapshotsToKeep: Schema.optional(Schema.Number),
+          minute: Schema.optional(Schema.Number),
+          usedBytes: Schema.optional(Schema.Number),
+        }),
+      ),
+      dailySchedule: Schema.optional(
+        Schema.Struct({
+          snapshotsToKeep: Schema.optional(Schema.Number),
+          hour: Schema.optional(Schema.Number),
+          minute: Schema.optional(Schema.Number),
+          usedBytes: Schema.optional(Schema.Number),
+        }),
+      ),
+      weeklySchedule: Schema.optional(
+        Schema.Struct({
+          snapshotsToKeep: Schema.optional(Schema.Number),
+          day: Schema.optional(Schema.String),
+          hour: Schema.optional(Schema.Number),
+          minute: Schema.optional(Schema.Number),
+          usedBytes: Schema.optional(Schema.Number),
+        }),
+      ),
+      monthlySchedule: Schema.optional(
+        Schema.Struct({
+          snapshotsToKeep: Schema.optional(Schema.Number),
+          daysOfMonth: Schema.optional(Schema.String),
+          hour: Schema.optional(Schema.Number),
+          minute: Schema.optional(Schema.Number),
+          usedBytes: Schema.optional(Schema.Number),
+        }),
+      ),
+      enabled: Schema.optional(Schema.Boolean),
+      provisioningState: Schema.optional(Schema.String),
+    }),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SnapshotPoliciesCreateInput =
@@ -2836,11 +3262,11 @@ export const SnapshotPoliciesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     snapshotPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SnapshotPoliciesDeleteInput =
@@ -2875,11 +3301,11 @@ export const SnapshotPoliciesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     snapshotPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SnapshotPoliciesGetInput = typeof SnapshotPoliciesGetInput.Type;
@@ -2927,11 +3353,11 @@ export const SnapshotPoliciesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SnapshotPoliciesListInput = typeof SnapshotPoliciesListInput.Type;
@@ -2996,11 +3422,11 @@ export const SnapshotPoliciesListVolumesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     snapshotPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}/volumes",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SnapshotPoliciesListVolumesInput =
@@ -3068,11 +3494,55 @@ export const SnapshotPoliciesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     snapshotPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    location: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        hourlySchedule: Schema.optional(
+          Schema.Struct({
+            snapshotsToKeep: Schema.optional(Schema.Number),
+            minute: Schema.optional(Schema.Number),
+            usedBytes: Schema.optional(Schema.Number),
+          }),
+        ),
+        dailySchedule: Schema.optional(
+          Schema.Struct({
+            snapshotsToKeep: Schema.optional(Schema.Number),
+            hour: Schema.optional(Schema.Number),
+            minute: Schema.optional(Schema.Number),
+            usedBytes: Schema.optional(Schema.Number),
+          }),
+        ),
+        weeklySchedule: Schema.optional(
+          Schema.Struct({
+            snapshotsToKeep: Schema.optional(Schema.Number),
+            day: Schema.optional(Schema.String),
+            hour: Schema.optional(Schema.Number),
+            minute: Schema.optional(Schema.Number),
+            usedBytes: Schema.optional(Schema.Number),
+          }),
+        ),
+        monthlySchedule: Schema.optional(
+          Schema.Struct({
+            snapshotsToKeep: Schema.optional(Schema.Number),
+            daysOfMonth: Schema.optional(Schema.String),
+            hour: Schema.optional(Schema.Number),
+            minute: Schema.optional(Schema.Number),
+            usedBytes: Schema.optional(Schema.Number),
+          }),
+        ),
+        enabled: Schema.optional(Schema.Boolean),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SnapshotPoliciesUpdateInput =
@@ -3126,11 +3596,19 @@ export const SnapshotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      snapshotId: Schema.optional(Schema.String),
+      created: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+    }),
+  ),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type SnapshotsCreateInput = typeof SnapshotsCreateInput.Type;
@@ -3181,11 +3659,11 @@ export const SnapshotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type SnapshotsDeleteInput = typeof SnapshotsDeleteInput.Type;
@@ -3218,11 +3696,11 @@ export const SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type SnapshotsGetInput = typeof SnapshotsGetInput.Type;
@@ -3272,11 +3750,11 @@ export const SnapshotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots",
+    apiVersion: "2025-12-01",
   }),
 );
 export type SnapshotsListInput = typeof SnapshotsListInput.Type;
@@ -3332,11 +3810,13 @@ export const SnapshotsRestoreFilesInput =
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
     snapshotName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    filePaths: Schema.Array(Schema.String),
+    destinationPath: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}/restoreFiles",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SnapshotsRestoreFilesInput = typeof SnapshotsRestoreFilesInput.Type;
@@ -3373,11 +3853,11 @@ export const SnapshotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type SnapshotsUpdateInput = typeof SnapshotsUpdateInput.Type;
@@ -3428,11 +3908,19 @@ export const SubvolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
   subvolumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      path: Schema.optional(Schema.String),
+      size: Schema.optional(Schema.NullOr(Schema.Number)),
+      parentPath: Schema.optional(Schema.NullOr(Schema.String)),
+      provisioningState: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type SubvolumesCreateInput = typeof SubvolumesCreateInput.Type;
@@ -3485,11 +3973,11 @@ export const SubvolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
   subvolumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type SubvolumesDeleteInput = typeof SubvolumesDeleteInput.Type;
@@ -3522,11 +4010,11 @@ export const SubvolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
   subvolumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type SubvolumesGetInput = typeof SubvolumesGetInput.Type;
@@ -3578,11 +4066,11 @@ export const SubvolumesGetMetadataInput =
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
     subvolumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}/getMetadata",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SubvolumesGetMetadataInput = typeof SubvolumesGetMetadataInput.Type;
@@ -3637,11 +4125,11 @@ export const SubvolumesListByVolumeInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes",
+      apiVersion: "2025-12-01",
     }),
   );
 export type SubvolumesListByVolumeInput =
@@ -3711,11 +4199,17 @@ export const SubvolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
   subvolumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      size: Schema.optional(Schema.NullOr(Schema.Number)),
+      path: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type SubvolumesUpdateInput = typeof SubvolumesUpdateInput.Type;
@@ -3767,11 +4261,275 @@ export const VolumeGroupsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     volumeGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        groupMetaData: Schema.optional(
+          Schema.Struct({
+            groupDescription: Schema.optional(Schema.String),
+            applicationType: Schema.optional(
+              Schema.Literals(["SAP-HANA", "ORACLE"]),
+            ),
+            applicationIdentifier: Schema.optional(Schema.String),
+            globalPlacementRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+            ),
+            volumesCount: Schema.optional(Schema.Number),
+          }),
+        ),
+        volumes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              tags: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              zones: Schema.optional(Schema.Array(Schema.String)),
+              properties: Schema.Struct({
+                fileSystemId: Schema.optional(Schema.String),
+                creationToken: Schema.String,
+                serviceLevel: Schema.optional(
+                  Schema.Literals([
+                    "Standard",
+                    "Premium",
+                    "Ultra",
+                    "StandardZRS",
+                    "Flexible",
+                  ]),
+                ),
+                usageThreshold: Schema.Number,
+                exportPolicy: Schema.optional(
+                  Schema.Struct({
+                    rules: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          ruleIndex: Schema.optional(Schema.Number),
+                          unixReadOnly: Schema.optional(Schema.Boolean),
+                          unixReadWrite: Schema.optional(Schema.Boolean),
+                          kerberos5ReadOnly: Schema.optional(Schema.Boolean),
+                          kerberos5ReadWrite: Schema.optional(Schema.Boolean),
+                          kerberos5iReadOnly: Schema.optional(Schema.Boolean),
+                          kerberos5iReadWrite: Schema.optional(Schema.Boolean),
+                          kerberos5pReadOnly: Schema.optional(Schema.Boolean),
+                          kerberos5pReadWrite: Schema.optional(Schema.Boolean),
+                          cifs: Schema.optional(Schema.Boolean),
+                          nfsv3: Schema.optional(Schema.Boolean),
+                          nfsv41: Schema.optional(Schema.Boolean),
+                          allowedClients: Schema.optional(Schema.String),
+                          hasRootAccess: Schema.optional(Schema.Boolean),
+                          chownMode: Schema.optional(
+                            Schema.Literals(["Restricted", "Unrestricted"]),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                protocolTypes: Schema.optional(Schema.Array(Schema.String)),
+                provisioningState: Schema.optional(Schema.String),
+                snapshotId: Schema.optional(Schema.NullOr(Schema.String)),
+                deleteBaseSnapshot: Schema.optional(Schema.Boolean),
+                backupId: Schema.optional(Schema.NullOr(Schema.String)),
+                baremetalTenantId: Schema.optional(Schema.String),
+                subnetId: Schema.String,
+                networkFeatures: Schema.optional(
+                  Schema.Literals([
+                    "Basic",
+                    "Standard",
+                    "Basic_Standard",
+                    "Standard_Basic",
+                  ]),
+                ),
+                effectiveNetworkFeatures: Schema.optional(
+                  Schema.Literals([
+                    "Basic",
+                    "Standard",
+                    "Basic_Standard",
+                    "Standard_Basic",
+                  ]),
+                ),
+                networkSiblingSetId: Schema.optional(Schema.String),
+                storageToNetworkProximity: Schema.optional(
+                  Schema.Literals(["Default", "T1", "T2", "AcrossT2"]),
+                ),
+                mountTargets: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      mountTargetId: Schema.optional(Schema.String),
+                      fileSystemId: Schema.String,
+                      ipAddress: Schema.optional(Schema.String),
+                      smbServerFqdn: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                volumeType: Schema.optional(Schema.String),
+                dataProtection: Schema.optional(
+                  Schema.Struct({
+                    backup: Schema.optional(
+                      Schema.Struct({
+                        backupPolicyId: Schema.optional(Schema.String),
+                        policyEnforced: Schema.optional(Schema.Boolean),
+                        backupVaultId: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    replication: Schema.optional(
+                      Schema.Struct({
+                        replicationId: Schema.optional(Schema.String),
+                        endpointType: Schema.optional(
+                          Schema.Literals(["src", "dst"]),
+                        ),
+                        replicationSchedule: Schema.optional(
+                          Schema.Literals(["_10minutely", "hourly", "daily"]),
+                        ),
+                        remoteVolumeResourceId: Schema.optional(Schema.String),
+                        remotePath: Schema.optional(
+                          Schema.Struct({
+                            externalHostName: Schema.String,
+                            serverName: Schema.String,
+                            volumeName: Schema.String,
+                          }),
+                        ),
+                        remoteVolumeRegion: Schema.optional(Schema.String),
+                        destinationReplications: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              resourceId: Schema.optional(Schema.String),
+                              replicationType: Schema.optional(
+                                Schema.Literals([
+                                  "CrossRegionReplication",
+                                  "CrossZoneReplication",
+                                ]),
+                              ),
+                              region: Schema.optional(Schema.String),
+                              zone: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    snapshot: Schema.optional(
+                      Schema.Struct({
+                        snapshotPolicyId: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    volumeRelocation: Schema.optional(
+                      Schema.Struct({
+                        relocationRequested: Schema.optional(Schema.Boolean),
+                        readyToBeFinalized: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    ransomwareProtection: Schema.optional(
+                      Schema.Struct({
+                        desiredRansomwareProtectionState: Schema.optional(
+                          Schema.Literals(["Disabled", "Enabled"]),
+                        ),
+                        actualRansomwareProtectionState: Schema.optional(
+                          Schema.Literals([
+                            "Disabled",
+                            "Enabled",
+                            "Learning",
+                            "Paused",
+                          ]),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+                acceptGrowCapacityPoolForShortTermCloneSplit: Schema.optional(
+                  Schema.Literals(["Accepted", "Declined"]),
+                ),
+                isRestoring: Schema.optional(Schema.Boolean),
+                snapshotDirectoryVisible: Schema.optional(Schema.Boolean),
+                kerberosEnabled: Schema.optional(Schema.Boolean),
+                securityStyle: Schema.optional(
+                  Schema.Literals(["ntfs", "unix"]),
+                ),
+                smbEncryption: Schema.optional(Schema.Boolean),
+                smbAccessBasedEnumeration: Schema.optional(
+                  Schema.Literals(["Disabled", "Enabled"]),
+                ),
+                smbNonBrowsable: Schema.optional(
+                  Schema.Literals(["Disabled", "Enabled"]),
+                ),
+                smbContinuouslyAvailable: Schema.optional(Schema.Boolean),
+                throughputMibps: Schema.optional(Schema.NullOr(Schema.Number)),
+                actualThroughputMibps: Schema.optional(Schema.Number),
+                encryptionKeySource: Schema.optional(
+                  Schema.Literals(["Microsoft.NetApp", "Microsoft.KeyVault"]),
+                ),
+                keyVaultPrivateEndpointResourceId: Schema.optional(
+                  Schema.String,
+                ),
+                ldapEnabled: Schema.optional(Schema.Boolean),
+                coolAccess: Schema.optional(Schema.Boolean),
+                coolnessPeriod: Schema.optional(Schema.Number),
+                coolAccessRetrievalPolicy: Schema.optional(
+                  Schema.Literals(["Default", "OnRead", "Never"]),
+                ),
+                coolAccessTieringPolicy: Schema.optional(
+                  Schema.Literals(["Auto", "SnapshotOnly"]),
+                ),
+                unixPermissions: Schema.optional(Schema.String),
+                cloneProgress: Schema.optional(Schema.NullOr(Schema.Number)),
+                fileAccessLogs: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                avsDataStore: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                dataStoreResourceId: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                isDefaultQuotaEnabled: Schema.optional(Schema.Boolean),
+                defaultUserQuotaInKiBs: Schema.optional(Schema.Number),
+                defaultGroupQuotaInKiBs: Schema.optional(Schema.Number),
+                maximumNumberOfFiles: Schema.optional(Schema.Number),
+                volumeGroupName: Schema.optional(Schema.String),
+                capacityPoolResourceId: Schema.optional(Schema.String),
+                proximityPlacementGroup: Schema.optional(Schema.String),
+                t2Network: Schema.optional(Schema.String),
+                volumeSpecName: Schema.optional(Schema.String),
+                encrypted: Schema.optional(Schema.Boolean),
+                placementRules: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.String,
+                      value: Schema.String,
+                    }),
+                  ),
+                ),
+                enableSubvolumes: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                provisionedAvailabilityZone: Schema.optional(
+                  Schema.NullOr(Schema.String),
+                ),
+                isLargeVolume: Schema.optional(Schema.Boolean),
+                originatingResourceId: Schema.optional(
+                  Schema.NullOr(Schema.String),
+                ),
+                inheritedSizeInBytes: Schema.optional(
+                  Schema.NullOr(Schema.Number),
+                ),
+              }),
+            }),
+          ),
+        ),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumeGroupsCreateInput = typeof VolumeGroupsCreateInput.Type;
@@ -3820,11 +4578,11 @@ export const VolumeGroupsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     volumeGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumeGroupsDeleteInput = typeof VolumeGroupsDeleteInput.Type;
@@ -3853,11 +4611,11 @@ export const VolumeGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   volumeGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type VolumeGroupsGetInput = typeof VolumeGroupsGetInput.Type;
@@ -3904,11 +4662,11 @@ export const VolumeGroupsListByNetAppAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumeGroupsListByNetAppAccountInput =
@@ -3976,11 +4734,39 @@ export const VolumeQuotaRulesCreateInput =
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
     volumeQuotaRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Creating",
+            "Patching",
+            "Updating",
+            "Deleting",
+            "Moving",
+            "Failed",
+            "Succeeded",
+          ]),
+        ),
+        quotaSizeInKiBs: Schema.optional(Schema.Number),
+        quotaType: Schema.optional(
+          Schema.Literals([
+            "DefaultUserQuota",
+            "DefaultGroupQuota",
+            "IndividualUserQuota",
+            "IndividualGroupQuota",
+          ]),
+        ),
+        quotaTarget: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumeQuotaRulesCreateInput =
@@ -4037,11 +4823,11 @@ export const VolumeQuotaRulesDeleteInput =
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
     volumeQuotaRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumeQuotaRulesDeleteInput =
@@ -4080,11 +4866,11 @@ export const VolumeQuotaRulesGetInput =
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
     volumeQuotaRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumeQuotaRulesGetInput = typeof VolumeQuotaRulesGetInput.Type;
@@ -4136,11 +4922,11 @@ export const VolumeQuotaRulesListByVolumeInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumeQuotaRulesListByVolumeInput =
@@ -4210,11 +4996,38 @@ export const VolumeQuotaRulesUpdateInput =
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
     volumeQuotaRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Creating",
+            "Patching",
+            "Updating",
+            "Deleting",
+            "Moving",
+            "Failed",
+            "Succeeded",
+          ]),
+        ),
+        quotaSizeInKiBs: Schema.optional(Schema.Number),
+        quotaType: Schema.optional(
+          Schema.Literals([
+            "DefaultUserQuota",
+            "DefaultGroupQuota",
+            "IndividualUserQuota",
+            "IndividualGroupQuota",
+          ]),
+        ),
+        quotaTarget: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumeQuotaRulesUpdateInput =
@@ -4270,11 +5083,11 @@ export const VolumesAuthorizeExternalReplicationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeExternalReplication",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesAuthorizeExternalReplicationInput =
@@ -4312,11 +5125,12 @@ export const VolumesAuthorizeReplicationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    remoteVolumeResourceId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeReplication",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesAuthorizeReplicationInput =
@@ -4353,11 +5167,13 @@ export const VolumesBreakFileLocksInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    clientIp: Schema.optional(Schema.String),
+    confirmRunningDisruptiveOperation: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakFileLocks",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesBreakFileLocksInput = typeof VolumesBreakFileLocksInput.Type;
@@ -4393,11 +5209,12 @@ export const VolumesBreakReplicationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    forceBreakReplication: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakReplication",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesBreakReplicationInput =
@@ -4434,11 +5251,221 @@ export const VolumesCreateOrUpdateInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      fileSystemId: Schema.optional(Schema.String),
+      creationToken: Schema.String,
+      serviceLevel: Schema.optional(
+        Schema.Literals([
+          "Standard",
+          "Premium",
+          "Ultra",
+          "StandardZRS",
+          "Flexible",
+        ]),
+      ),
+      usageThreshold: Schema.Number,
+      exportPolicy: Schema.optional(
+        Schema.Struct({
+          rules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                ruleIndex: Schema.optional(Schema.Number),
+                unixReadOnly: Schema.optional(Schema.Boolean),
+                unixReadWrite: Schema.optional(Schema.Boolean),
+                kerberos5ReadOnly: Schema.optional(Schema.Boolean),
+                kerberos5ReadWrite: Schema.optional(Schema.Boolean),
+                kerberos5iReadOnly: Schema.optional(Schema.Boolean),
+                kerberos5iReadWrite: Schema.optional(Schema.Boolean),
+                kerberos5pReadOnly: Schema.optional(Schema.Boolean),
+                kerberos5pReadWrite: Schema.optional(Schema.Boolean),
+                cifs: Schema.optional(Schema.Boolean),
+                nfsv3: Schema.optional(Schema.Boolean),
+                nfsv41: Schema.optional(Schema.Boolean),
+                allowedClients: Schema.optional(Schema.String),
+                hasRootAccess: Schema.optional(Schema.Boolean),
+                chownMode: Schema.optional(
+                  Schema.Literals(["Restricted", "Unrestricted"]),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      protocolTypes: Schema.optional(Schema.Array(Schema.String)),
+      provisioningState: Schema.optional(Schema.String),
+      snapshotId: Schema.optional(Schema.NullOr(Schema.String)),
+      deleteBaseSnapshot: Schema.optional(Schema.Boolean),
+      backupId: Schema.optional(Schema.NullOr(Schema.String)),
+      baremetalTenantId: Schema.optional(Schema.String),
+      subnetId: Schema.String,
+      networkFeatures: Schema.optional(
+        Schema.Literals([
+          "Basic",
+          "Standard",
+          "Basic_Standard",
+          "Standard_Basic",
+        ]),
+      ),
+      effectiveNetworkFeatures: Schema.optional(
+        Schema.Literals([
+          "Basic",
+          "Standard",
+          "Basic_Standard",
+          "Standard_Basic",
+        ]),
+      ),
+      networkSiblingSetId: Schema.optional(Schema.String),
+      storageToNetworkProximity: Schema.optional(
+        Schema.Literals(["Default", "T1", "T2", "AcrossT2"]),
+      ),
+      mountTargets: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            mountTargetId: Schema.optional(Schema.String),
+            fileSystemId: Schema.String,
+            ipAddress: Schema.optional(Schema.String),
+            smbServerFqdn: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      volumeType: Schema.optional(Schema.String),
+      dataProtection: Schema.optional(
+        Schema.Struct({
+          backup: Schema.optional(
+            Schema.Struct({
+              backupPolicyId: Schema.optional(Schema.String),
+              policyEnforced: Schema.optional(Schema.Boolean),
+              backupVaultId: Schema.optional(Schema.String),
+            }),
+          ),
+          replication: Schema.optional(
+            Schema.Struct({
+              replicationId: Schema.optional(Schema.String),
+              endpointType: Schema.optional(Schema.Literals(["src", "dst"])),
+              replicationSchedule: Schema.optional(
+                Schema.Literals(["_10minutely", "hourly", "daily"]),
+              ),
+              remoteVolumeResourceId: Schema.optional(Schema.String),
+              remotePath: Schema.optional(
+                Schema.Struct({
+                  externalHostName: Schema.String,
+                  serverName: Schema.String,
+                  volumeName: Schema.String,
+                }),
+              ),
+              remoteVolumeRegion: Schema.optional(Schema.String),
+              destinationReplications: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    resourceId: Schema.optional(Schema.String),
+                    replicationType: Schema.optional(
+                      Schema.Literals([
+                        "CrossRegionReplication",
+                        "CrossZoneReplication",
+                      ]),
+                    ),
+                    region: Schema.optional(Schema.String),
+                    zone: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+          snapshot: Schema.optional(
+            Schema.Struct({
+              snapshotPolicyId: Schema.optional(Schema.String),
+            }),
+          ),
+          volumeRelocation: Schema.optional(
+            Schema.Struct({
+              relocationRequested: Schema.optional(Schema.Boolean),
+              readyToBeFinalized: Schema.optional(Schema.Boolean),
+            }),
+          ),
+          ransomwareProtection: Schema.optional(
+            Schema.Struct({
+              desiredRansomwareProtectionState: Schema.optional(
+                Schema.Literals(["Disabled", "Enabled"]),
+              ),
+              actualRansomwareProtectionState: Schema.optional(
+                Schema.Literals(["Disabled", "Enabled", "Learning", "Paused"]),
+              ),
+            }),
+          ),
+        }),
+      ),
+      acceptGrowCapacityPoolForShortTermCloneSplit: Schema.optional(
+        Schema.Literals(["Accepted", "Declined"]),
+      ),
+      isRestoring: Schema.optional(Schema.Boolean),
+      snapshotDirectoryVisible: Schema.optional(Schema.Boolean),
+      kerberosEnabled: Schema.optional(Schema.Boolean),
+      securityStyle: Schema.optional(Schema.Literals(["ntfs", "unix"])),
+      smbEncryption: Schema.optional(Schema.Boolean),
+      smbAccessBasedEnumeration: Schema.optional(
+        Schema.Literals(["Disabled", "Enabled"]),
+      ),
+      smbNonBrowsable: Schema.optional(
+        Schema.Literals(["Disabled", "Enabled"]),
+      ),
+      smbContinuouslyAvailable: Schema.optional(Schema.Boolean),
+      throughputMibps: Schema.optional(Schema.NullOr(Schema.Number)),
+      actualThroughputMibps: Schema.optional(Schema.Number),
+      encryptionKeySource: Schema.optional(
+        Schema.Literals(["Microsoft.NetApp", "Microsoft.KeyVault"]),
+      ),
+      keyVaultPrivateEndpointResourceId: Schema.optional(Schema.String),
+      ldapEnabled: Schema.optional(Schema.Boolean),
+      coolAccess: Schema.optional(Schema.Boolean),
+      coolnessPeriod: Schema.optional(Schema.Number),
+      coolAccessRetrievalPolicy: Schema.optional(
+        Schema.Literals(["Default", "OnRead", "Never"]),
+      ),
+      coolAccessTieringPolicy: Schema.optional(
+        Schema.Literals(["Auto", "SnapshotOnly"]),
+      ),
+      unixPermissions: Schema.optional(Schema.String),
+      cloneProgress: Schema.optional(Schema.NullOr(Schema.Number)),
+      fileAccessLogs: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      avsDataStore: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      dataStoreResourceId: Schema.optional(Schema.Array(Schema.String)),
+      isDefaultQuotaEnabled: Schema.optional(Schema.Boolean),
+      defaultUserQuotaInKiBs: Schema.optional(Schema.Number),
+      defaultGroupQuotaInKiBs: Schema.optional(Schema.Number),
+      maximumNumberOfFiles: Schema.optional(Schema.Number),
+      volumeGroupName: Schema.optional(Schema.String),
+      capacityPoolResourceId: Schema.optional(Schema.String),
+      proximityPlacementGroup: Schema.optional(Schema.String),
+      t2Network: Schema.optional(Schema.String),
+      volumeSpecName: Schema.optional(Schema.String),
+      encrypted: Schema.optional(Schema.Boolean),
+      placementRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            key: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+      ),
+      enableSubvolumes: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      provisionedAvailabilityZone: Schema.optional(
+        Schema.NullOr(Schema.String),
+      ),
+      isLargeVolume: Schema.optional(Schema.Boolean),
+      originatingResourceId: Schema.optional(Schema.NullOr(Schema.String)),
+      inheritedSizeInBytes: Schema.optional(Schema.NullOr(Schema.Number)),
+    }),
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesCreateOrUpdateInput = typeof VolumesCreateOrUpdateInput.Type;
@@ -4491,12 +5518,12 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   forceDelete: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;
@@ -4529,11 +5556,11 @@ export const VolumesDeleteReplicationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/deleteReplication",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesDeleteReplicationInput =
@@ -4570,11 +5597,11 @@ export const VolumesFinalizeExternalReplicationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/finalizeExternalReplication",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesFinalizeExternalReplicationInput =
@@ -4610,11 +5637,11 @@ export const VolumesFinalizeRelocationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/finalizeRelocation",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesFinalizeRelocationInput =
@@ -4650,11 +5677,11 @@ export const VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type VolumesGetInput = typeof VolumesGetInput.Type;
@@ -4702,11 +5729,11 @@ export const VolumesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes",
+    apiVersion: "2025-12-01",
   }),
 );
 export type VolumesListInput = typeof VolumesListInput.Type;
@@ -4760,11 +5787,12 @@ export const VolumesListGetGroupIdListForLdapUserInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    username: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/getGroupIdListForLdapUser",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesListGetGroupIdListForLdapUserInput =
@@ -4802,11 +5830,21 @@ export const VolumesListQuotaReportInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    quotaType: Schema.optional(
+      Schema.Literals([
+        "DefaultUserQuota",
+        "DefaultGroupQuota",
+        "IndividualUserQuota",
+        "IndividualGroupQuota",
+      ]),
+    ),
+    quotaTarget: Schema.optional(Schema.String),
+    usageThresholdPercentage: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listQuotaReport",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesListQuotaReportInput =
@@ -4867,11 +5905,12 @@ export const VolumesListReplicationsInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    exclude: Schema.optional(Schema.Literals(["None", "Deleted"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listReplications",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesListReplicationsInput =
@@ -4926,11 +5965,12 @@ export const VolumesPeerExternalClusterInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    peerIpAddresses: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/peerExternalCluster",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesPeerExternalClusterInput =
@@ -4969,11 +6009,11 @@ export const VolumesPerformReplicationTransferInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/performReplicationTransfer",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesPerformReplicationTransferInput =
@@ -5009,12 +6049,13 @@ export const VolumesPoolChangeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    newPoolResourceId: Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/poolChange",
+    apiVersion: "2025-12-01",
   }),
 );
 export type VolumesPoolChangeInput = typeof VolumesPoolChangeInput.Type;
@@ -5046,11 +6087,11 @@ export const VolumesPopulateAvailabilityZoneInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/populateAvailabilityZone",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesPopulateAvailabilityZoneInput =
@@ -5104,11 +6145,12 @@ export const VolumesReestablishReplicationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sourceVolumeId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reestablishReplication",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesReestablishReplicationInput =
@@ -5144,11 +6186,11 @@ export const VolumesReInitializeReplicationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reinitializeReplication",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesReInitializeReplicationInput =
@@ -5183,11 +6225,12 @@ export const VolumesRelocateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  creationToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/relocate",
+    apiVersion: "2025-12-01",
   }),
 );
 export type VolumesRelocateInput = typeof VolumesRelocateInput.Type;
@@ -5219,11 +6262,11 @@ export const VolumesReplicationStatusInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/replicationStatus",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesReplicationStatusInput =
@@ -5270,11 +6313,11 @@ export const VolumesResetCifsPasswordInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resetCifsPassword",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesResetCifsPasswordInput =
@@ -5311,11 +6354,11 @@ export const VolumesResyncReplicationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resyncReplication",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesResyncReplicationInput =
@@ -5351,11 +6394,12 @@ export const VolumesRevertInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  snapshotId: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revert",
+    apiVersion: "2025-12-01",
   }),
 );
 export type VolumesRevertInput = typeof VolumesRevertInput.Type;
@@ -5387,11 +6431,11 @@ export const VolumesRevertRelocationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revertRelocation",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesRevertRelocationInput =
@@ -5428,11 +6472,11 @@ export const VolumesSplitCloneFromParentInput =
     accountName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/splitCloneFromParent",
+      apiVersion: "2025-12-01",
     }),
   );
 export type VolumesSplitCloneFromParentInput =
@@ -5486,11 +6530,101 @@ export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  location: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      serviceLevel: Schema.optional(
+        Schema.Literals([
+          "Standard",
+          "Premium",
+          "Ultra",
+          "StandardZRS",
+          "Flexible",
+        ]),
+      ),
+      usageThreshold: Schema.optional(Schema.Number),
+      exportPolicy: Schema.optional(
+        Schema.Struct({
+          rules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                ruleIndex: Schema.optional(Schema.Number),
+                unixReadOnly: Schema.optional(Schema.Boolean),
+                unixReadWrite: Schema.optional(Schema.Boolean),
+                kerberos5ReadOnly: Schema.optional(Schema.Boolean),
+                kerberos5ReadWrite: Schema.optional(Schema.Boolean),
+                kerberos5iReadOnly: Schema.optional(Schema.Boolean),
+                kerberos5iReadWrite: Schema.optional(Schema.Boolean),
+                kerberos5pReadOnly: Schema.optional(Schema.Boolean),
+                kerberos5pReadWrite: Schema.optional(Schema.Boolean),
+                cifs: Schema.optional(Schema.Boolean),
+                nfsv3: Schema.optional(Schema.Boolean),
+                nfsv41: Schema.optional(Schema.Boolean),
+                allowedClients: Schema.optional(Schema.String),
+                hasRootAccess: Schema.optional(Schema.Boolean),
+                chownMode: Schema.optional(
+                  Schema.Literals(["Restricted", "Unrestricted"]),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      protocolTypes: Schema.optional(Schema.Array(Schema.String)),
+      throughputMibps: Schema.optional(Schema.Number),
+      dataProtection: Schema.optional(
+        Schema.Struct({
+          backup: Schema.optional(
+            Schema.Struct({
+              backupPolicyId: Schema.optional(Schema.String),
+              policyEnforced: Schema.optional(Schema.Boolean),
+              backupVaultId: Schema.optional(Schema.String),
+            }),
+          ),
+          snapshot: Schema.optional(
+            Schema.Struct({
+              snapshotPolicyId: Schema.optional(Schema.String),
+            }),
+          ),
+          ransomwareProtection: Schema.optional(
+            Schema.Struct({
+              desiredRansomwareProtectionState: Schema.optional(
+                Schema.Literals(["Disabled", "Enabled"]),
+              ),
+            }),
+          ),
+        }),
+      ),
+      isDefaultQuotaEnabled: Schema.optional(Schema.Boolean),
+      defaultUserQuotaInKiBs: Schema.optional(Schema.Number),
+      defaultGroupQuotaInKiBs: Schema.optional(Schema.Number),
+      unixPermissions: Schema.optional(Schema.String),
+      coolAccess: Schema.optional(Schema.Boolean),
+      coolnessPeriod: Schema.optional(Schema.Number),
+      coolAccessRetrievalPolicy: Schema.optional(
+        Schema.Literals(["Default", "OnRead", "Never"]),
+      ),
+      coolAccessTieringPolicy: Schema.optional(
+        Schema.Literals(["Auto", "SnapshotOnly"]),
+      ),
+      snapshotDirectoryVisible: Schema.optional(Schema.Boolean),
+      smbAccessBasedEnumeration: Schema.optional(
+        Schema.Literals(["Disabled", "Enabled"]),
+      ),
+      smbNonBrowsable: Schema.optional(
+        Schema.Literals(["Disabled", "Enabled"]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type VolumesUpdateInput = typeof VolumesUpdateInput.Type;

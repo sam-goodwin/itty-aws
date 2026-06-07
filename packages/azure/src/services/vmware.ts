@@ -7,7 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AddonsCreateOrUpdateInput =
@@ -16,11 +16,27 @@ export const AddonsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     addonName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        addonType: Schema.Literals(["SRM", "VR", "HCX", "Arc"]),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Cancelled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/addons/{addonName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type AddonsCreateOrUpdateInput = typeof AddonsCreateOrUpdateInput.Type;
@@ -70,11 +86,11 @@ export const AddonsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
   addonName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/addons/{addonName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type AddonsDeleteInput = typeof AddonsDeleteInput.Type;
@@ -103,11 +119,11 @@ export const AddonsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
   addonName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/addons/{addonName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type AddonsGetInput = typeof AddonsGetInput.Type;
@@ -153,11 +169,11 @@ export const AddonsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/addons",
+    apiVersion: "2025-09-01",
   }),
 );
 export type AddonsListInput = typeof AddonsListInput.Type;
@@ -209,11 +225,21 @@ export const AuthorizationsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     authorizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "Updating"]),
+        ),
+        expressRouteAuthorizationId: Schema.optional(Schema.String),
+        expressRouteAuthorizationKey: Schema.optional(Schema.String),
+        expressRouteId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type AuthorizationsCreateOrUpdateInput =
@@ -265,11 +291,11 @@ export const AuthorizationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     authorizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type AuthorizationsDeleteInput = typeof AuthorizationsDeleteInput.Type;
@@ -302,12 +328,12 @@ export const AuthorizationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     authorizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type AuthorizationsGetInput = typeof AuthorizationsGetInput.Type;
@@ -355,11 +381,11 @@ export const AuthorizationsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations",
+      apiVersion: "2025-09-01",
     }),
   );
 export type AuthorizationsListInput = typeof AuthorizationsListInput.Type;
@@ -422,11 +448,28 @@ export const CloudLinksCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     cloudLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Active",
+            "Building",
+            "Deleting",
+            "Failed",
+            "Disconnected",
+          ]),
+        ),
+        linkedCloud: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks/{cloudLinkName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type CloudLinksCreateOrUpdateInput =
@@ -478,11 +521,11 @@ export const CloudLinksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
   cloudLinkName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks/{cloudLinkName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type CloudLinksDeleteInput = typeof CloudLinksDeleteInput.Type;
@@ -511,11 +554,11 @@ export const CloudLinksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
   cloudLinkName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks/{cloudLinkName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type CloudLinksGetInput = typeof CloudLinksGetInput.Type;
@@ -561,11 +604,11 @@ export const CloudLinksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks",
+    apiVersion: "2025-09-01",
   }),
 );
 export type CloudLinksListInput = typeof CloudLinksListInput.Type;
@@ -617,11 +660,38 @@ export const ClustersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        clusterSize: Schema.optional(Schema.Number),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Cancelled",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        clusterId: Schema.optional(Schema.Number),
+        hosts: Schema.optional(Schema.Array(Schema.String)),
+        vsanDatastoreName: Schema.optional(Schema.String),
+      }),
+    ),
+    sku: Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(
+        Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+      ),
+      size: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -673,11 +743,11 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -706,11 +776,11 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ClustersGetInput = typeof ClustersGetInput.Type;
@@ -756,11 +826,11 @@ export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ClustersListInput = typeof ClustersListInput.Type;
@@ -812,12 +882,12 @@ export const ClustersListZonesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/listZones",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ClustersListZonesInput = typeof ClustersListZonesInput.Type;
@@ -856,11 +926,28 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(
+        Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+      ),
+      size: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      clusterSize: Schema.optional(Schema.Number),
+      hosts: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -909,11 +996,62 @@ export const DatastoresCreateOrUpdateInput =
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     datastoreName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Cancelled",
+            "Pending",
+            "Creating",
+            "Updating",
+            "Deleting",
+          ]),
+        ),
+        netAppVolume: Schema.optional(
+          Schema.Struct({
+            id: Schema.String,
+          }),
+        ),
+        diskPoolVolume: Schema.optional(
+          Schema.Struct({
+            targetId: Schema.String,
+            lunName: Schema.String,
+            mountOption: Schema.optional(Schema.Literals(["MOUNT", "ATTACH"])),
+            path: Schema.optional(Schema.String),
+          }),
+        ),
+        elasticSanVolume: Schema.optional(
+          Schema.Struct({
+            targetId: Schema.String,
+          }),
+        ),
+        pureStorageVolume: Schema.optional(
+          Schema.Struct({
+            storagePoolId: Schema.String,
+            sizeGb: Schema.Number,
+          }),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Accessible",
+            "Inaccessible",
+            "Attached",
+            "Detached",
+            "LostCommunication",
+            "DeadOrError",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type DatastoresCreateOrUpdateInput =
@@ -967,11 +1105,11 @@ export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   privateCloudName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   datastoreName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type DatastoresDeleteInput = typeof DatastoresDeleteInput.Type;
@@ -1002,11 +1140,11 @@ export const DatastoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   privateCloudName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   datastoreName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type DatastoresGetInput = typeof DatastoresGetInput.Type;
@@ -1054,11 +1192,11 @@ export const DatastoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores",
+    apiVersion: "2025-09-01",
   }),
 );
 export type DatastoresListInput = typeof DatastoresListInput.Type;
@@ -1111,11 +1249,25 @@ export const GlobalReachConnectionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     globalReachConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "Updating"]),
+        ),
+        addressPrefix: Schema.optional(Schema.String),
+        authorizationKey: Schema.optional(Schema.String),
+        circuitConnectionStatus: Schema.optional(
+          Schema.Literals(["Connected", "Connecting", "Disconnected"]),
+        ),
+        peerExpressRouteCircuit: Schema.optional(Schema.String),
+        expressRouteId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GlobalReachConnectionsCreateOrUpdateInput =
@@ -1167,11 +1319,11 @@ export const GlobalReachConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     globalReachConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GlobalReachConnectionsDeleteInput =
@@ -1205,11 +1357,11 @@ export const GlobalReachConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     globalReachConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GlobalReachConnectionsGetInput =
@@ -1261,11 +1413,11 @@ export const GlobalReachConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GlobalReachConnectionsListInput =
@@ -1332,11 +1484,22 @@ export const HcxEnterpriseSitesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     hcxEnterpriseSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+        activationKey: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Literals(["Available", "Consumed", "Deactivated", "Deleted"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites/{hcxEnterpriseSiteName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type HcxEnterpriseSitesCreateOrUpdateInput =
@@ -1388,11 +1551,11 @@ export const HcxEnterpriseSitesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     hcxEnterpriseSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites/{hcxEnterpriseSiteName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type HcxEnterpriseSitesDeleteInput =
@@ -1427,11 +1590,11 @@ export const HcxEnterpriseSitesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     hcxEnterpriseSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites/{hcxEnterpriseSiteName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type HcxEnterpriseSitesGetInput = typeof HcxEnterpriseSitesGetInput.Type;
@@ -1482,11 +1645,11 @@ export const HcxEnterpriseSitesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites",
+      apiVersion: "2025-09-01",
     }),
   );
 export type HcxEnterpriseSitesListInput =
@@ -1553,11 +1716,11 @@ export const HostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   privateCloudName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   hostId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/hosts/{hostId}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type HostsGetInput = typeof HostsGetInput.Type;
@@ -1605,11 +1768,11 @@ export const HostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/hosts",
+    apiVersion: "2025-09-01",
   }),
 );
 export type HostsListInput = typeof HostsListInput.Type;
@@ -1661,11 +1824,27 @@ export const IscsiPathsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Pending",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        networkBlock: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/iscsiPaths/default",
+      apiVersion: "2025-09-01",
     }),
   );
 export type IscsiPathsCreateOrUpdateInput =
@@ -1715,11 +1894,11 @@ export const IscsiPathsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/iscsiPaths/default",
+    apiVersion: "2025-09-01",
   }),
 );
 export type IscsiPathsDeleteInput = typeof IscsiPathsDeleteInput.Type;
@@ -1746,11 +1925,11 @@ export const IscsiPathsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/iscsiPaths/default",
+    apiVersion: "2025-09-01",
   }),
 );
 export type IscsiPathsGetInput = typeof IscsiPathsGetInput.Type;
@@ -1796,11 +1975,11 @@ export const IscsiPathsListByPrivateCloudInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/iscsiPaths",
+      apiVersion: "2025-09-01",
     }),
   );
 export type IscsiPathsListByPrivateCloudInput =
@@ -1866,11 +2045,19 @@ export const LicensesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     licenseName: Schema.Literals(["VmwareFirewall"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        kind: Schema.Literals(["VmwareFirewall"]),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses/{licenseName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type LicensesCreateOrUpdateInput =
@@ -1922,11 +2109,11 @@ export const LicensesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
   licenseName: Schema.Literals(["VmwareFirewall"]).pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses/{licenseName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type LicensesDeleteInput = typeof LicensesDeleteInput.Type;
@@ -1955,11 +2142,11 @@ export const LicensesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
   licenseName: Schema.Literals(["VmwareFirewall"]).pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses/{licenseName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type LicensesGetInput = typeof LicensesGetInput.Type;
@@ -2007,11 +2194,11 @@ export const LicensesGetPropertiesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     licenseName: Schema.Literals(["VmwareFirewall"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses/{licenseName}/getProperties",
+      apiVersion: "2025-09-01",
     }),
   );
 export type LicensesGetPropertiesInput = typeof LicensesGetPropertiesInput.Type;
@@ -2048,11 +2235,11 @@ export const LicensesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses",
+    apiVersion: "2025-09-01",
   }),
 );
 export type LicensesListInput = typeof LicensesListInput.Type;
@@ -2102,11 +2289,11 @@ export const LocationsCheckQuotaAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/checkQuotaAvailability",
+      apiVersion: "2025-09-01",
     }),
   );
 export type LocationsCheckQuotaAvailabilityInput =
@@ -2141,7 +2328,6 @@ export const LocationsCheckTrialAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     name: Schema.String,
     tier: Schema.optional(
       Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
@@ -2153,6 +2339,7 @@ export const LocationsCheckTrialAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/checkTrialAvailability",
+      apiVersion: "2025-09-01",
     }),
   );
 export type LocationsCheckTrialAvailabilityInput =
@@ -2192,11 +2379,11 @@ export const MaintenancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
   maintenanceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances/{maintenanceName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type MaintenancesGetInput = typeof MaintenancesGetInput.Type;
@@ -2244,11 +2431,11 @@ export const MaintenancesInitiateChecksInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     maintenanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances/{maintenanceName}/initiateChecks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MaintenancesInitiateChecksInput =
@@ -2299,7 +2486,6 @@ export const MaintenancesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   stateName: Schema.optional(
     Schema.Literals([
       "NotScheduled",
@@ -2317,6 +2503,7 @@ export const MaintenancesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances",
+    apiVersion: "2025-09-01",
   }),
 );
 export type MaintenancesListInput = typeof MaintenancesListInput.Type;
@@ -2384,11 +2571,13 @@ export const MaintenancesRescheduleInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     maintenanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    rescheduleTime: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances/{maintenanceName}/reschedule",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MaintenancesRescheduleInput =
@@ -2441,11 +2630,13 @@ export const MaintenancesScheduleInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     maintenanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    scheduleTime: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances/{maintenanceName}/schedule",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MaintenancesScheduleInput = typeof MaintenancesScheduleInput.Type;
@@ -2490,9 +2681,15 @@ export const MaintenancesSchedule = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(T.Http({ method: "GET", path: "/providers/Microsoft.AVS/operations" }));
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.AVS/operations",
+    apiVersion: "2025-09-01",
+  }),
+);
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
@@ -2539,11 +2736,28 @@ export const PlacementPoliciesCreateOrUpdateInput =
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     placementPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals(["VmVm", "VmHost"]),
+        state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        displayName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlacementPoliciesCreateOrUpdateInput =
@@ -2597,11 +2811,11 @@ export const PlacementPoliciesDeleteInput =
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     placementPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlacementPoliciesDeleteInput =
@@ -2638,11 +2852,11 @@ export const PlacementPoliciesGetInput =
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     placementPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlacementPoliciesGetInput = typeof PlacementPoliciesGetInput.Type;
@@ -2694,11 +2908,11 @@ export const PlacementPoliciesListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlacementPoliciesListInput = typeof PlacementPoliciesListInput.Type;
@@ -2766,11 +2980,22 @@ export const PlacementPoliciesUpdateInput =
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     placementPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        vmMembers: Schema.optional(Schema.Array(Schema.String)),
+        hostMembers: Schema.optional(Schema.Array(Schema.String)),
+        affinityStrength: Schema.optional(Schema.Literals(["Should", "Must"])),
+        azureHybridBenefitType: Schema.optional(
+          Schema.Literals(["SqlHost", "None"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlacementPoliciesUpdateInput =
@@ -2823,11 +3048,156 @@ export const PrivateCloudsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        managementCluster: Schema.Struct({
+          clusterSize: Schema.optional(Schema.Number),
+          provisioningState: Schema.optional(
+            Schema.Literals([
+              "Succeeded",
+              "Failed",
+              "Canceled",
+              "Cancelled",
+              "Deleting",
+              "Updating",
+            ]),
+          ),
+          clusterId: Schema.optional(Schema.Number),
+          hosts: Schema.optional(Schema.Array(Schema.String)),
+          vsanDatastoreName: Schema.optional(Schema.String),
+        }),
+        internet: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        identitySources: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              alias: Schema.optional(Schema.String),
+              domain: Schema.optional(Schema.String),
+              baseUserDN: Schema.optional(Schema.String),
+              baseGroupDN: Schema.optional(Schema.String),
+              primaryServer: Schema.optional(Schema.String),
+              secondaryServer: Schema.optional(Schema.String),
+              ssl: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+              username: Schema.optional(Schema.String),
+              password: Schema.optional(SensitiveString),
+            }),
+          ),
+        ),
+        availability: Schema.optional(
+          Schema.Struct({
+            strategy: Schema.optional(
+              Schema.Literals(["SingleZone", "DualZone"]),
+            ),
+            zone: Schema.optional(Schema.Number),
+            secondaryZone: Schema.optional(Schema.Number),
+          }),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+            keyVaultProperties: Schema.optional(
+              Schema.Struct({
+                keyName: Schema.optional(Schema.String),
+                keyVersion: Schema.optional(Schema.String),
+                autoDetectedKeyVersion: Schema.optional(Schema.String),
+                keyVaultUrl: Schema.optional(Schema.String),
+                keyState: Schema.optional(
+                  Schema.Literals(["Connected", "AccessDenied"]),
+                ),
+                versionType: Schema.optional(
+                  Schema.Literals(["Fixed", "AutoDetected"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        extendedNetworkBlocks: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Cancelled",
+            "Pending",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        circuit: Schema.optional(
+          Schema.Struct({
+            primarySubnet: Schema.optional(Schema.String),
+            secondarySubnet: Schema.optional(Schema.String),
+            expressRouteID: Schema.optional(Schema.String),
+            expressRoutePrivatePeeringID: Schema.optional(Schema.String),
+          }),
+        ),
+        endpoints: Schema.optional(
+          Schema.Struct({
+            nsxtManager: Schema.optional(Schema.String),
+            vcsa: Schema.optional(Schema.String),
+            hcxCloudManager: Schema.optional(Schema.String),
+            nsxtManagerIp: Schema.optional(Schema.String),
+            vcenterIp: Schema.optional(Schema.String),
+            hcxCloudManagerIp: Schema.optional(Schema.String),
+          }),
+        ),
+        networkBlock: Schema.String,
+        managementNetwork: Schema.optional(Schema.String),
+        provisioningNetwork: Schema.optional(Schema.String),
+        vmotionNetwork: Schema.optional(Schema.String),
+        vcenterPassword: Schema.optional(SensitiveString),
+        nsxtPassword: Schema.optional(SensitiveString),
+        vcenterCertificateThumbprint: Schema.optional(Schema.String),
+        nsxtCertificateThumbprint: Schema.optional(Schema.String),
+        externalCloudLinks: Schema.optional(Schema.Array(Schema.String)),
+        secondaryCircuit: Schema.optional(
+          Schema.Struct({
+            primarySubnet: Schema.optional(Schema.String),
+            secondarySubnet: Schema.optional(Schema.String),
+            expressRouteID: Schema.optional(Schema.String),
+            expressRoutePrivatePeeringID: Schema.optional(Schema.String),
+          }),
+        ),
+        nsxPublicIpQuotaRaised: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        virtualNetworkId: Schema.optional(Schema.String),
+        dnsZoneType: Schema.optional(Schema.Literals(["Public", "Private"])),
+        vcfLicense: Schema.optional(
+          Schema.Struct({
+            kind: Schema.Literals(["vcf5"]),
+            provisioningState: Schema.optional(
+              Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+            ),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(
+        Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+      ),
+      size: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned"]),
+      }),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateCloudsCreateOrUpdateInput =
@@ -2878,11 +3248,11 @@ export const PrivateCloudsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateCloudsDeleteInput = typeof PrivateCloudsDeleteInput.Type;
@@ -2910,11 +3280,11 @@ export const PrivateCloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type PrivateCloudsGetInput = typeof PrivateCloudsGetInput.Type;
@@ -2962,11 +3332,11 @@ export const PrivateCloudsGetVcfLicenseInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/getVcfLicense",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateCloudsGetVcfLicenseInput =
@@ -3003,12 +3373,12 @@ export const PrivateCloudsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds",
+    apiVersion: "2025-09-01",
   }),
 );
 export type PrivateCloudsListInput = typeof PrivateCloudsListInput.Type;
@@ -3069,11 +3439,11 @@ export const PrivateCloudsListAdminCredentialsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/listAdminCredentials",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateCloudsListAdminCredentialsInput =
@@ -3083,9 +3453,9 @@ export type PrivateCloudsListAdminCredentialsInput =
 export const PrivateCloudsListAdminCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nsxtUsername: Schema.optional(Schema.String),
-    nsxtPassword: Schema.optional(SensitiveString),
+    nsxtPassword: Schema.optional(SensitiveOutputString),
     vcenterUsername: Schema.optional(Schema.String),
-    vcenterPassword: Schema.optional(SensitiveString),
+    vcenterPassword: Schema.optional(SensitiveOutputString),
   });
 export type PrivateCloudsListAdminCredentialsOutput =
   typeof PrivateCloudsListAdminCredentialsOutput.Type;
@@ -3108,11 +3478,11 @@ export const PrivateCloudsListAdminCredentials =
 export const PrivateCloudsListInSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/privateClouds",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateCloudsListInSubscriptionInput =
@@ -3175,11 +3545,11 @@ export const PrivateCloudsRotateNsxtPasswordInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/rotateNsxtPassword",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateCloudsRotateNsxtPasswordInput =
@@ -3211,11 +3581,11 @@ export const PrivateCloudsRotateVcenterPasswordInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/rotateVcenterPassword",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateCloudsRotateVcenterPasswordInput =
@@ -3247,11 +3617,99 @@ export const PrivateCloudsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned"]),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        managementCluster: Schema.optional(
+          Schema.Struct({
+            clusterSize: Schema.optional(Schema.Number),
+            provisioningState: Schema.optional(
+              Schema.Literals([
+                "Succeeded",
+                "Failed",
+                "Canceled",
+                "Cancelled",
+                "Deleting",
+                "Updating",
+              ]),
+            ),
+            clusterId: Schema.optional(Schema.Number),
+            hosts: Schema.optional(Schema.Array(Schema.String)),
+            vsanDatastoreName: Schema.optional(Schema.String),
+          }),
+        ),
+        internet: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        identitySources: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              alias: Schema.optional(Schema.String),
+              domain: Schema.optional(Schema.String),
+              baseUserDN: Schema.optional(Schema.String),
+              baseGroupDN: Schema.optional(Schema.String),
+              primaryServer: Schema.optional(Schema.String),
+              secondaryServer: Schema.optional(Schema.String),
+              ssl: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+              username: Schema.optional(Schema.String),
+              password: Schema.optional(SensitiveString),
+            }),
+          ),
+        ),
+        availability: Schema.optional(
+          Schema.Struct({
+            strategy: Schema.optional(
+              Schema.Literals(["SingleZone", "DualZone"]),
+            ),
+            zone: Schema.optional(Schema.Number),
+            secondaryZone: Schema.optional(Schema.Number),
+          }),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+            keyVaultProperties: Schema.optional(
+              Schema.Struct({
+                keyName: Schema.optional(Schema.String),
+                keyVersion: Schema.optional(Schema.String),
+                autoDetectedKeyVersion: Schema.optional(Schema.String),
+                keyVaultUrl: Schema.optional(Schema.String),
+                keyState: Schema.optional(
+                  Schema.Literals(["Connected", "AccessDenied"]),
+                ),
+                versionType: Schema.optional(
+                  Schema.Literals(["Fixed", "AutoDetected"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        extendedNetworkBlocks: Schema.optional(Schema.Array(Schema.String)),
+        dnsZoneType: Schema.optional(Schema.Literals(["Public", "Private"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateCloudsUpdateInput = typeof PrivateCloudsUpdateInput.Type;
@@ -3299,11 +3757,11 @@ export const ProvisionedNetworksGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     provisionedNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks/{provisionedNetworkName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ProvisionedNetworksGetInput =
@@ -3355,11 +3813,11 @@ export const ProvisionedNetworksListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ProvisionedNetworksListInput =
@@ -3426,11 +3884,26 @@ export const PureStoragePoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     storagePolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        storagePolicyDefinition: Schema.String,
+        storagePoolId: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PureStoragePoliciesCreateOrUpdateInput =
@@ -3482,11 +3955,11 @@ export const PureStoragePoliciesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     storagePolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PureStoragePoliciesDeleteInput =
@@ -3521,11 +3994,11 @@ export const PureStoragePoliciesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     storagePolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PureStoragePoliciesGetInput =
@@ -3577,11 +4050,11 @@ export const PureStoragePoliciesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PureStoragePoliciesListInput =
@@ -3648,11 +4121,11 @@ export const ScriptCmdletsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   privateCloudName: Schema.String.pipe(T.PathParam()),
   scriptPackageName: Schema.String.pipe(T.PathParam()),
   scriptCmdletName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets/{scriptCmdletName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ScriptCmdletsGetInput = typeof ScriptCmdletsGetInput.Type;
@@ -3703,12 +4176,12 @@ export const ScriptCmdletsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     scriptPackageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ScriptCmdletsListInput = typeof ScriptCmdletsListInput.Type;
@@ -3772,11 +4245,57 @@ export const ScriptExecutionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     scriptExecutionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        scriptCmdletId: Schema.optional(Schema.String),
+        parameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.Literals(["Value", "SecureValue", "Credential"]),
+              name: Schema.String,
+            }),
+          ),
+        ),
+        hiddenParameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.Literals(["Value", "SecureValue", "Credential"]),
+              name: Schema.String,
+            }),
+          ),
+        ),
+        failureReason: Schema.optional(Schema.String),
+        timeout: Schema.String,
+        retention: Schema.optional(Schema.String),
+        submittedAt: Schema.optional(Schema.String),
+        startedAt: Schema.optional(Schema.String),
+        finishedAt: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Pending",
+            "Running",
+            "Cancelling",
+            "Cancelled",
+            "Deleting",
+          ]),
+        ),
+        output: Schema.optional(Schema.Array(Schema.String)),
+        namedOutputs: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        information: Schema.optional(Schema.Array(Schema.String)),
+        warnings: Schema.optional(Schema.Array(Schema.String)),
+        errors: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ScriptExecutionsCreateOrUpdateInput =
@@ -3828,11 +4347,11 @@ export const ScriptExecutionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     scriptExecutionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ScriptExecutionsDeleteInput =
@@ -3867,11 +4386,11 @@ export const ScriptExecutionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     scriptExecutionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ScriptExecutionsGetInput = typeof ScriptExecutionsGetInput.Type;
@@ -3920,11 +4439,11 @@ export const ScriptExecutionsGetExecutionLogsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     scriptExecutionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}/getExecutionLogs",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ScriptExecutionsGetExecutionLogsInput =
@@ -3975,11 +4494,11 @@ export const ScriptExecutionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ScriptExecutionsListInput = typeof ScriptExecutionsListInput.Type;
@@ -4044,12 +4563,12 @@ export const ScriptPackagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     scriptPackageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ScriptPackagesGetInput = typeof ScriptPackagesGetInput.Type;
@@ -4097,11 +4616,11 @@ export const ScriptPackagesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ScriptPackagesListInput = typeof ScriptPackagesListInput.Type;
@@ -4163,11 +4682,11 @@ export const ServiceComponentsCheckAvailabilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     serviceComponentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/serviceComponents/{serviceComponentName}/checkAvailability",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ServiceComponentsCheckAvailabilityInput =
@@ -4196,11 +4715,11 @@ export const ServiceComponentsCheckAvailability =
 // Input Schema
 export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/skus",
+    apiVersion: "2025-09-01",
   }),
 );
 export type SkusListInput = typeof SkusListInput.Type;
@@ -4281,11 +4800,11 @@ export const VirtualMachinesGetInput =
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     virtualMachineId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
@@ -4335,11 +4854,11 @@ export const VirtualMachinesListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesListInput = typeof VirtualMachinesListInput.Type;
@@ -4404,11 +4923,12 @@ export const VirtualMachinesRestrictMovementInput =
     privateCloudName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     virtualMachineId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    restrictMovement: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}/restrictMovement",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesRestrictMovementInput =
@@ -4443,11 +4963,29 @@ export const WorkloadNetworksCreateDhcpInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     dhcpId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        dhcpType: Schema.Literals(["SERVER", "RELAY"]),
+        displayName: Schema.optional(Schema.String),
+        segments: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksCreateDhcpInput =
@@ -4500,11 +5038,34 @@ export const WorkloadNetworksCreateDnsServiceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     dnsServiceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        dnsServiceIp: Schema.optional(Schema.String),
+        defaultDnsZone: Schema.optional(Schema.String),
+        fqdnZones: Schema.optional(Schema.Array(Schema.String)),
+        logLevel: Schema.optional(
+          Schema.Literals(["DEBUG", "INFO", "WARNING", "ERROR", "FATAL"]),
+        ),
+        status: Schema.optional(Schema.Literals(["SUCCESS", "FAILURE"])),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksCreateDnsServiceInput =
@@ -4556,11 +5117,31 @@ export const WorkloadNetworksCreateDnsZoneInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     dnsZoneId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        domain: Schema.optional(Schema.Array(Schema.String)),
+        dnsServerIps: Schema.optional(Schema.Array(Schema.String)),
+        sourceIp: Schema.optional(Schema.String),
+        dnsServices: Schema.optional(Schema.Number),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksCreateDnsZoneInput =
@@ -4612,11 +5193,33 @@ export const WorkloadNetworksCreatePortMirroringInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     portMirroringId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        direction: Schema.optional(
+          Schema.Literals(["INGRESS", "EGRESS", "BIDIRECTIONAL"]),
+        ),
+        source: Schema.optional(Schema.String),
+        destination: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.Literals(["SUCCESS", "FAILURE"])),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/portMirroringProfiles/{portMirroringId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksCreatePortMirroringInput =
@@ -4668,11 +5271,28 @@ export const WorkloadNetworksCreatePublicIPInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     publicIPId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        numberOfPublicIPs: Schema.optional(Schema.Number),
+        publicIPBlock: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs/{publicIPId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksCreatePublicIPInput =
@@ -4724,11 +5344,42 @@ export const WorkloadNetworksCreateSegmentsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     segmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        connectedGateway: Schema.optional(Schema.String),
+        subnet: Schema.optional(
+          Schema.Struct({
+            dhcpRanges: Schema.optional(Schema.Array(Schema.String)),
+            gatewayAddress: Schema.optional(Schema.String),
+          }),
+        ),
+        portVif: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              portName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        status: Schema.optional(Schema.Literals(["SUCCESS", "FAILURE"])),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksCreateSegmentsInput =
@@ -4780,11 +5431,29 @@ export const WorkloadNetworksCreateVMGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     vmGroupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        members: Schema.optional(Schema.Array(Schema.String)),
+        status: Schema.optional(Schema.Literals(["SUCCESS", "FAILURE"])),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksCreateVMGroupInput =
@@ -4836,11 +5505,11 @@ export const WorkloadNetworksDeleteDhcpInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     dhcpId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksDeleteDhcpInput =
@@ -4873,11 +5542,11 @@ export const WorkloadNetworksDeleteDnsServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksDeleteDnsServiceInput =
@@ -4907,11 +5576,11 @@ export const WorkloadNetworksDeleteDnsZoneInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksDeleteDnsZoneInput =
@@ -4941,11 +5610,11 @@ export const WorkloadNetworksDeletePortMirroringInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/portMirroringProfiles/{portMirroringId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksDeletePortMirroringInput =
@@ -4975,11 +5644,11 @@ export const WorkloadNetworksDeletePublicIPInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs/{publicIPId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksDeletePublicIPInput =
@@ -5011,11 +5680,11 @@ export const WorkloadNetworksDeleteSegmentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     segmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksDeleteSegmentInput =
@@ -5047,11 +5716,11 @@ export const WorkloadNetworksDeleteVMGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksDeleteVMGroupInput =
@@ -5082,11 +5751,11 @@ export const WorkloadNetworksGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksGetInput = typeof WorkloadNetworksGetInput.Type;
@@ -5132,11 +5801,11 @@ export const WorkloadNetworksGetDhcpInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksGetDhcpInput =
@@ -5187,11 +5856,11 @@ export const WorkloadNetworksGetDnsServiceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     dnsServiceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksGetDnsServiceInput =
@@ -5243,11 +5912,11 @@ export const WorkloadNetworksGetDnsZoneInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     dnsZoneId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksGetDnsZoneInput =
@@ -5300,11 +5969,11 @@ export const WorkloadNetworksGetGatewayInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/gateways/{gatewayId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksGetGatewayInput =
@@ -5357,11 +6026,11 @@ export const WorkloadNetworksGetPortMirroringInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     portMirroringId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/portMirroringProfiles/{portMirroringId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksGetPortMirroringInput =
@@ -5413,11 +6082,11 @@ export const WorkloadNetworksGetPublicIPInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     publicIPId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs/{publicIPId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksGetPublicIPInput =
@@ -5470,11 +6139,11 @@ export const WorkloadNetworksGetSegmentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     segmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksGetSegmentInput =
@@ -5527,11 +6196,11 @@ export const WorkloadNetworksGetVirtualMachineInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     virtualMachineId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/virtualMachines/{virtualMachineId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksGetVirtualMachineInput =
@@ -5583,11 +6252,11 @@ export const WorkloadNetworksGetVMGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     vmGroupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksGetVMGroupInput =
@@ -5639,11 +6308,11 @@ export const WorkloadNetworksListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksListInput = typeof WorkloadNetworksListInput.Type;
@@ -5707,11 +6376,11 @@ export const WorkloadNetworksListDhcpInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksListDhcpInput =
@@ -5777,11 +6446,11 @@ export const WorkloadNetworksListDnsServicesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksListDnsServicesInput =
@@ -5846,11 +6515,11 @@ export const WorkloadNetworksListDnsZonesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksListDnsZonesInput =
@@ -5915,11 +6584,11 @@ export const WorkloadNetworksListGatewaysInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/gateways",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksListGatewaysInput =
@@ -5984,11 +6653,11 @@ export const WorkloadNetworksListPortMirroringInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/portMirroringProfiles",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksListPortMirroringInput =
@@ -6053,11 +6722,11 @@ export const WorkloadNetworksListPublicIPsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksListPublicIPsInput =
@@ -6122,11 +6791,11 @@ export const WorkloadNetworksListSegmentsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksListSegmentsInput =
@@ -6191,11 +6860,11 @@ export const WorkloadNetworksListVirtualMachinesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/virtualMachines",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksListVirtualMachinesInput =
@@ -6260,11 +6929,11 @@ export const WorkloadNetworksListVMGroupsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksListVMGroupsInput =
@@ -6330,11 +6999,29 @@ export const WorkloadNetworksUpdateDhcpInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     dhcpId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        dhcpType: Schema.Literals(["SERVER", "RELAY"]),
+        displayName: Schema.optional(Schema.String),
+        segments: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations/{dhcpId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksUpdateDhcpInput =
@@ -6387,11 +7074,34 @@ export const WorkloadNetworksUpdateDnsServiceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     dnsServiceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        dnsServiceIp: Schema.optional(Schema.String),
+        defaultDnsZone: Schema.optional(Schema.String),
+        fqdnZones: Schema.optional(Schema.Array(Schema.String)),
+        logLevel: Schema.optional(
+          Schema.Literals(["DEBUG", "INFO", "WARNING", "ERROR", "FATAL"]),
+        ),
+        status: Schema.optional(Schema.Literals(["SUCCESS", "FAILURE"])),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksUpdateDnsServiceInput =
@@ -6443,11 +7153,31 @@ export const WorkloadNetworksUpdateDnsZoneInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     dnsZoneId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        domain: Schema.optional(Schema.Array(Schema.String)),
+        dnsServerIps: Schema.optional(Schema.Array(Schema.String)),
+        sourceIp: Schema.optional(Schema.String),
+        dnsServices: Schema.optional(Schema.Number),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksUpdateDnsZoneInput =
@@ -6499,11 +7229,33 @@ export const WorkloadNetworksUpdatePortMirroringInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     portMirroringId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        direction: Schema.optional(
+          Schema.Literals(["INGRESS", "EGRESS", "BIDIRECTIONAL"]),
+        ),
+        source: Schema.optional(Schema.String),
+        destination: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.Literals(["SUCCESS", "FAILURE"])),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/portMirroringProfiles/{portMirroringId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksUpdatePortMirroringInput =
@@ -6555,11 +7307,42 @@ export const WorkloadNetworksUpdateSegmentsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     segmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        connectedGateway: Schema.optional(Schema.String),
+        subnet: Schema.optional(
+          Schema.Struct({
+            dhcpRanges: Schema.optional(Schema.Array(Schema.String)),
+            gatewayAddress: Schema.optional(Schema.String),
+          }),
+        ),
+        portVif: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              portName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        status: Schema.optional(Schema.Literals(["SUCCESS", "FAILURE"])),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksUpdateSegmentsInput =
@@ -6611,11 +7394,29 @@ export const WorkloadNetworksUpdateVMGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
     vmGroupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        members: Schema.optional(Schema.Array(Schema.String)),
+        status: Schema.optional(Schema.Literals(["SUCCESS", "FAILURE"])),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Building",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        revision: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups/{vmGroupId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type WorkloadNetworksUpdateVMGroupInput =

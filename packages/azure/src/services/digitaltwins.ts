@@ -10,10 +10,14 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DigitalTwinsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.DigitalTwins/digitalTwinsInstances"]),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DigitalTwins/locations/{location}/checkNameAvailability",
+      apiVersion: "2023-01-31",
     }),
   );
 export type DigitalTwinsCheckNameAvailabilityInput =
@@ -42,10 +46,160 @@ export const DigitalTwinsCheckNameAvailability =
   }));
 // Input Schema
 export const DigitalTwinsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        createdTime: Schema.optional(Schema.String),
+        lastUpdatedTime: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Deleting",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Warning",
+            "Suspending",
+            "Restoring",
+            "Moving",
+          ]),
+        ),
+        hostName: Schema.optional(Schema.NullOr(Schema.String)),
+        privateEndpointConnections: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                type: Schema.optional(Schema.String),
+                properties: Schema.Struct({
+                  provisioningState: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Literals([
+                        "Pending",
+                        "Approved",
+                        "Rejected",
+                        "Disconnected",
+                      ]),
+                    ),
+                  ),
+                  privateEndpoint: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  groupIds: Schema.optional(Schema.Array(Schema.String)),
+                  privateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.Literals([
+                        "Pending",
+                        "Approved",
+                        "Rejected",
+                        "Disconnected",
+                      ]),
+                      description: Schema.String,
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+                systemData: Schema.optional(
+                  Schema.Struct({
+                    createdBy: Schema.optional(Schema.NullOr(Schema.String)),
+                    createdByType: Schema.optional(
+                      Schema.NullOr(
+                        Schema.Literals([
+                          "User",
+                          "Application",
+                          "ManagedIdentity",
+                          "Key",
+                        ]),
+                      ),
+                    ),
+                    createdAt: Schema.optional(Schema.NullOr(Schema.String)),
+                    lastModifiedBy: Schema.optional(
+                      Schema.NullOr(Schema.String),
+                    ),
+                    lastModifiedByType: Schema.optional(
+                      Schema.NullOr(
+                        Schema.Literals([
+                          "User",
+                          "Application",
+                          "ManagedIdentity",
+                          "Key",
+                        ]),
+                      ),
+                    ),
+                    lastModifiedAt: Schema.optional(
+                      Schema.NullOr(Schema.String),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.NullOr(Schema.Literals(["Enabled", "Disabled"])),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.String,
+    tags: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+          ]),
+        ),
+        principalId: Schema.optional(Schema.NullOr(Schema.String)),
+        tenantId: Schema.optional(Schema.NullOr(Schema.String)),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                clientId: Schema.optional(Schema.String),
+                principalId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
+        createdByType: Schema.optional(
+          Schema.NullOr(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        ),
+        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
+        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
+        lastModifiedByType: Schema.optional(
+          Schema.NullOr(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        ),
+        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type DigitalTwinsCreateOrUpdateInput =
@@ -124,6 +278,7 @@ export const DigitalTwinsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type DigitalTwinsDeleteInput = typeof DigitalTwinsDeleteInput.Type;
@@ -194,10 +349,68 @@ export const DigitalTwinsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DigitalTwinsEndpointCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.Struct({
+      endpointType: Schema.Literals(["EventHub", "EventGrid", "ServiceBus"]),
+      provisioningState: Schema.optional(
+        Schema.NullOr(
+          Schema.Literals([
+            "Provisioning",
+            "Deleting",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Warning",
+            "Suspending",
+            "Restoring",
+            "Moving",
+            "Disabled",
+          ]),
+        ),
+      ),
+      createdTime: Schema.optional(Schema.NullOr(Schema.String)),
+      authenticationType: Schema.optional(
+        Schema.Literals(["KeyBased", "IdentityBased"]),
+      ),
+      deadLetterSecret: Schema.optional(Schema.NullOr(Schema.String)),
+      deadLetterUri: Schema.optional(Schema.NullOr(Schema.String)),
+      identity: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(
+            Schema.Literals(["SystemAssigned", "UserAssigned"]),
+          ),
+          userAssignedIdentity: Schema.optional(Schema.NullOr(Schema.String)),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
+        createdByType: Schema.optional(
+          Schema.NullOr(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        ),
+        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
+        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
+        lastModifiedByType: Schema.optional(
+          Schema.NullOr(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        ),
+        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type DigitalTwinsEndpointCreateOrUpdateInput =
@@ -246,6 +459,7 @@ export const DigitalTwinsEndpointDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type DigitalTwinsEndpointDeleteInput =
@@ -295,6 +509,7 @@ export const DigitalTwinsEndpointGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type DigitalTwinsEndpointGetInput =
@@ -344,6 +559,7 @@ export const DigitalTwinsEndpointListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints",
+      apiVersion: "2023-01-31",
     }),
   );
 export type DigitalTwinsEndpointListInput =
@@ -411,6 +627,7 @@ export const DigitalTwinsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
+    apiVersion: "2023-01-31",
   }),
 );
 export type DigitalTwinsGetInput = typeof DigitalTwinsGetInput.Type;
@@ -485,6 +702,7 @@ export const DigitalTwinsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DigitalTwins/digitalTwinsInstances",
+    apiVersion: "2023-01-31",
   }),
 );
 export type DigitalTwinsListInput = typeof DigitalTwinsListInput.Type;
@@ -577,6 +795,7 @@ export const DigitalTwinsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances",
+      apiVersion: "2023-01-31",
     }),
   );
 export type DigitalTwinsListByResourceGroupInput =
@@ -667,10 +886,47 @@ export const DigitalTwinsListByResourceGroup =
   }));
 // Input Schema
 export const DigitalTwinsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+          ]),
+        ),
+        principalId: Schema.optional(Schema.NullOr(Schema.String)),
+        tenantId: Schema.optional(Schema.NullOr(Schema.String)),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                clientId: Schema.optional(Schema.String),
+                principalId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        publicNetworkAccess: Schema.optional(
+          Schema.NullOr(Schema.Literals(["Enabled", "Disabled"])),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type DigitalTwinsUpdateInput = typeof DigitalTwinsUpdateInput.Type;
@@ -746,6 +1002,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DigitalTwins/operations",
+    apiVersion: "2023-01-31",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -786,10 +1043,58 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.NullOr(
+          Schema.Literals(["Pending", "Approved", "Rejected", "Disconnected"]),
+        ),
+      ),
+      privateEndpoint: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+      groupIds: Schema.optional(Schema.Array(Schema.String)),
+      privateLinkServiceConnectionState: Schema.optional(
+        Schema.Struct({
+          status: Schema.Literals([
+            "Pending",
+            "Approved",
+            "Rejected",
+            "Disconnected",
+          ]),
+          description: Schema.String,
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
+        createdByType: Schema.optional(
+          Schema.NullOr(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        ),
+        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
+        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
+        lastModifiedByType: Schema.optional(
+          Schema.NullOr(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        ),
+        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -863,6 +1168,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -889,6 +1195,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -962,6 +1269,7 @@ export const PrivateEndpointConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections",
+      apiVersion: "2023-01-31",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -1056,6 +1364,7 @@ export const PrivateLinkResourcesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateLinkResources/{resourceId}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -1092,6 +1401,7 @@ export const PrivateLinkResourcesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateLinkResources",
+      apiVersion: "2023-01-31",
     }),
   );
 export type PrivateLinkResourcesListInput =
@@ -1130,10 +1440,62 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const TimeSeriesDatabaseConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        connectionType: Schema.Literals(["AzureDataExplorer"]),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Deleting",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Warning",
+            "Suspending",
+            "Restoring",
+            "Moving",
+            "Disabled",
+          ]),
+        ),
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+            userAssignedIdentity: Schema.optional(Schema.NullOr(Schema.String)),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
+        createdByType: Schema.optional(
+          Schema.NullOr(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        ),
+        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
+        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
+        lastModifiedByType: Schema.optional(
+          Schema.NullOr(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+        ),
+        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type TimeSeriesDatabaseConnectionsCreateOrUpdateInput =
@@ -1182,6 +1544,7 @@ export const TimeSeriesDatabaseConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type TimeSeriesDatabaseConnectionsDeleteInput =
@@ -1230,6 +1593,7 @@ export const TimeSeriesDatabaseConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}",
+      apiVersion: "2023-01-31",
     }),
   );
 export type TimeSeriesDatabaseConnectionsGetInput =
@@ -1278,6 +1642,7 @@ export const TimeSeriesDatabaseConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections",
+      apiVersion: "2023-01-31",
     }),
   );
 export type TimeSeriesDatabaseConnectionsListInput =

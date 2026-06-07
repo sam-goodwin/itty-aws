@@ -15,6 +15,7 @@ export const AdvisorScoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/advisorScore/{name}",
+    apiVersion: "2025-01-01",
   }),
 );
 export type AdvisorScoresGetInput = typeof AdvisorScoresGetInput.Type;
@@ -60,6 +61,7 @@ export const AdvisorScoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/advisorScore",
+    apiVersion: "2025-01-01",
   }),
 );
 export type AdvisorScoresListInput = typeof AdvisorScoresListInput.Type;
@@ -116,10 +118,61 @@ export const ConfigurationsCreateInResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationName: Schema.Literals(["default"]).pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        exclude: Schema.optional(Schema.Boolean),
+        lowCpuThreshold: Schema.optional(
+          Schema.Literals(["5", "10", "15", "20"]),
+        ),
+        duration: Schema.optional(
+          Schema.Literals(["7", "14", "21", "30", "60", "90"]),
+        ),
+        digests: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              actionGroupResourceId: Schema.optional(Schema.String),
+              frequency: Schema.optional(Schema.Number),
+              categories: Schema.optional(
+                Schema.Array(
+                  Schema.Literals([
+                    "HighAvailability",
+                    "Security",
+                    "Performance",
+                    "Cost",
+                    "OperationalExcellence",
+                  ]),
+                ),
+              ),
+              language: Schema.optional(Schema.String),
+              state: Schema.optional(Schema.Literals(["Active", "Disabled"])),
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Advisor/configurations/{configurationName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type ConfigurationsCreateInResourceGroupInput =
@@ -165,10 +218,61 @@ export const ConfigurationsCreateInResourceGroup =
 export const ConfigurationsCreateInSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationName: Schema.Literals(["default"]).pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        exclude: Schema.optional(Schema.Boolean),
+        lowCpuThreshold: Schema.optional(
+          Schema.Literals(["5", "10", "15", "20"]),
+        ),
+        duration: Schema.optional(
+          Schema.Literals(["7", "14", "21", "30", "60", "90"]),
+        ),
+        digests: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              actionGroupResourceId: Schema.optional(Schema.String),
+              frequency: Schema.optional(Schema.Number),
+              categories: Schema.optional(
+                Schema.Array(
+                  Schema.Literals([
+                    "HighAvailability",
+                    "Security",
+                    "Performance",
+                    "Cost",
+                    "OperationalExcellence",
+                  ]),
+                ),
+              ),
+              language: Schema.optional(Schema.String),
+              state: Schema.optional(Schema.Literals(["Active", "Disabled"])),
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/configurations/{configurationName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type ConfigurationsCreateInSubscriptionInput =
@@ -219,6 +323,7 @@ export const ConfigurationsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Advisor/configurations",
+      apiVersion: "2025-01-01",
     }),
   );
 export type ConfigurationsListByResourceGroupInput =
@@ -282,6 +387,7 @@ export const ConfigurationsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/configurations",
+      apiVersion: "2025-01-01",
     }),
   );
 export type ConfigurationsListBySubscriptionInput =
@@ -343,7 +449,11 @@ export const ConfigurationsListBySubscription =
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Advisor/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Advisor/operations",
+    apiVersion: "2025-01-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -377,10 +487,20 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
-export const PredictInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const PredictInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      predictionType: Schema.optional(
+        Schema.Literals(["PredictiveRightsizing"]),
+      ),
+      extendedProperties: Schema.optional(Schema.Unknown),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/predict",
+    apiVersion: "2025-01-01",
   }),
 );
 export type PredictInput = typeof PredictInput.Type;
@@ -432,6 +552,7 @@ export const RecommendationMetadataGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Advisor/metadata/{name}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type RecommendationMetadataGetInput =
@@ -481,7 +602,11 @@ export const RecommendationMetadataListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
   }).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Advisor/metadata" }),
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Advisor/metadata",
+      apiVersion: "2025-01-01",
+    }),
   );
 export type RecommendationMetadataListInput =
   typeof RecommendationMetadataListInput.Type;
@@ -538,6 +663,7 @@ export const RecommendationsGenerateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/generateRecommendations",
+      apiVersion: "2025-01-01",
     }),
   );
 export type RecommendationsGenerateInput =
@@ -568,6 +694,7 @@ export const RecommendationsGetInput =
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type RecommendationsGetInput = typeof RecommendationsGetInput.Type;
@@ -614,6 +741,7 @@ export const RecommendationsGetGenerateStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/generateRecommendations/{operationId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type RecommendationsGetGenerateStatusInput =
@@ -646,6 +774,7 @@ export const RecommendationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/recommendations",
+      apiVersion: "2025-01-01",
     }),
   );
 export type RecommendationsListInput = typeof RecommendationsListInput.Type;
@@ -708,10 +837,34 @@ export const SuppressionsCreateInput =
     resourceUri: Schema.String.pipe(T.PathParam()),
     recommendationId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        suppressionId: Schema.optional(Schema.String),
+        ttl: Schema.optional(Schema.String),
+        expirationTimeStamp: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type SuppressionsCreateInput = typeof SuppressionsCreateInput.Type;
@@ -761,6 +914,7 @@ export const SuppressionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type SuppressionsDeleteInput = typeof SuppressionsDeleteInput.Type;
@@ -790,6 +944,7 @@ export const SuppressionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}",
+    apiVersion: "2025-01-01",
   }),
 );
 export type SuppressionsGetInput = typeof SuppressionsGetInput.Type;
@@ -836,6 +991,7 @@ export const SuppressionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/suppressions",
+    apiVersion: "2025-01-01",
   }),
 );
 export type SuppressionsListInput = typeof SuppressionsListInput.Type;

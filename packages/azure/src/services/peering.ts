@@ -12,12 +12,12 @@ import * as T from "../traits.ts";
 export const CdnPeeringPrefixesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     peeringLocation: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/cdnPeeringPrefixes",
+      apiVersion: "2025-05-01",
     }),
   );
 export type CdnPeeringPrefixesListInput =
@@ -80,11 +80,13 @@ export const CdnPeeringPrefixesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CheckServiceProviderAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    peeringServiceLocation: Schema.optional(Schema.String),
+    peeringServiceProvider: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/checkServiceProviderAvailability",
+      apiVersion: "2025-05-01",
     }),
   );
 export type CheckServiceProviderAvailabilityInput =
@@ -115,11 +117,30 @@ export const ConnectionMonitorTestsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
     connectionMonitorTestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        sourceAgent: Schema.optional(Schema.String),
+        destination: Schema.optional(Schema.String),
+        destinationPort: Schema.optional(Schema.Number),
+        testFrequencyInSec: Schema.optional(Schema.Number),
+        isTestSuccessful: Schema.optional(Schema.Boolean),
+        path: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Updating",
+            "Deleting",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests/{connectionMonitorTestName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ConnectionMonitorTestsCreateOrUpdateInput =
@@ -171,11 +192,11 @@ export const ConnectionMonitorTestsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
     connectionMonitorTestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests/{connectionMonitorTestName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ConnectionMonitorTestsDeleteInput =
@@ -209,11 +230,11 @@ export const ConnectionMonitorTestsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
     connectionMonitorTestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests/{connectionMonitorTestName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ConnectionMonitorTestsGetInput =
@@ -265,11 +286,11 @@ export const ConnectionMonitorTestsListByPeeringServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ConnectionMonitorTestsListByPeeringServiceInput =
@@ -332,7 +353,6 @@ export const ConnectionMonitorTestsListByPeeringService =
 export const LegacyPeeringsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     peeringLocation: Schema.String,
     kind: Schema.Literals(["Direct", "Exchange"]),
     asn: Schema.optional(Schema.Number),
@@ -353,6 +373,7 @@ export const LegacyPeeringsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/legacyPeerings",
+      apiVersion: "2025-05-01",
     }),
   );
 export type LegacyPeeringsListInput = typeof LegacyPeeringsListInput.Type;
@@ -414,7 +435,6 @@ export const LegacyPeeringsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const LookingGlassInvokeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     command: Schema.Literals(["Traceroute", "Ping", "BgpRoute"]),
     sourceType: Schema.Literals(["EdgeSite", "AzureRegion"]),
     sourceLocation: Schema.String,
@@ -423,6 +443,7 @@ export const LookingGlassInvokeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/lookingGlass",
+      apiVersion: "2025-05-01",
     }),
   );
 export type LookingGlassInvokeInput = typeof LookingGlassInvokeInput.Type;
@@ -453,10 +474,14 @@ export const LookingGlassInvoke = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LookingGlassInvokeOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Peering/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Peering/operations",
+    apiVersion: "2025-05-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -527,11 +552,39 @@ export const PeerAsnsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     peerAsnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        peerAsn: Schema.optional(Schema.Number),
+        peerContactDetail: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              role: Schema.optional(
+                Schema.Literals([
+                  "Noc",
+                  "Policy",
+                  "Technical",
+                  "Service",
+                  "Escalation",
+                  "Other",
+                ]),
+              ),
+              email: Schema.optional(Schema.String),
+              phone: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        peerName: Schema.optional(Schema.String),
+        validationState: Schema.optional(
+          Schema.Literals(["None", "Pending", "Approved", "Failed"]),
+        ),
+        errorMessage: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns/{peerAsnName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeerAsnsCreateOrUpdateInput =
@@ -579,11 +632,11 @@ export const PeerAsnsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PeerAsnsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   peerAsnName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns/{peerAsnName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type PeerAsnsDeleteInput = typeof PeerAsnsDeleteInput.Type;
@@ -608,11 +661,11 @@ export const PeerAsnsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PeerAsnsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   peerAsnName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns/{peerAsnName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type PeerAsnsGetInput = typeof PeerAsnsGetInput.Type;
@@ -655,11 +708,11 @@ export const PeerAsnsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PeerAsnsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeerAsnsListBySubscriptionInput =
@@ -721,7 +774,6 @@ export const PeerAsnsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PeeringLocationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     kind: Schema.Literals(["Direct", "Exchange"]),
     directPeeringType: Schema.optional(
       Schema.Literals([
@@ -740,6 +792,7 @@ export const PeeringLocationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringLocations",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringLocationsListInput = typeof PeeringLocationsListInput.Type;
@@ -803,11 +856,229 @@ export const PeeringsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        direct: Schema.optional(
+          Schema.Struct({
+            connections: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  bandwidthInMbps: Schema.optional(Schema.Number),
+                  provisionedBandwidthInMbps: Schema.optional(Schema.Number),
+                  sessionAddressProvider: Schema.optional(
+                    Schema.Literals(["Microsoft", "Peer"]),
+                  ),
+                  useForPeeringService: Schema.optional(Schema.Boolean),
+                  microsoftTrackingId: Schema.optional(Schema.String),
+                  peeringDBFacilityId: Schema.optional(Schema.Number),
+                  connectionState: Schema.optional(
+                    Schema.Literals([
+                      "None",
+                      "PendingApproval",
+                      "Approved",
+                      "ProvisioningStarted",
+                      "ProvisioningFailed",
+                      "ProvisioningCompleted",
+                      "Validating",
+                      "Active",
+                      "TypeChangeRequested",
+                      "TypeChangeInProgress",
+                      "ExternalBlocker",
+                    ]),
+                  ),
+                  bgpSession: Schema.optional(
+                    Schema.Struct({
+                      sessionPrefixV4: Schema.optional(Schema.String),
+                      sessionPrefixV6: Schema.optional(Schema.String),
+                      microsoftSessionIPv4Address: Schema.optional(
+                        Schema.String,
+                      ),
+                      microsoftSessionIPv6Address: Schema.optional(
+                        Schema.String,
+                      ),
+                      peerSessionIPv4Address: Schema.optional(Schema.String),
+                      peerSessionIPv6Address: Schema.optional(Schema.String),
+                      sessionStateV4: Schema.optional(
+                        Schema.Literals([
+                          "None",
+                          "Idle",
+                          "Connect",
+                          "Active",
+                          "OpenSent",
+                          "OpenConfirm",
+                          "OpenReceived",
+                          "Established",
+                          "PendingAdd",
+                          "PendingUpdate",
+                          "PendingRemove",
+                        ]),
+                      ),
+                      sessionStateV6: Schema.optional(
+                        Schema.Literals([
+                          "None",
+                          "Idle",
+                          "Connect",
+                          "Active",
+                          "OpenSent",
+                          "OpenConfirm",
+                          "OpenReceived",
+                          "Established",
+                          "PendingAdd",
+                          "PendingUpdate",
+                          "PendingRemove",
+                        ]),
+                      ),
+                      maxPrefixesAdvertisedV4: Schema.optional(Schema.Number),
+                      maxPrefixesAdvertisedV6: Schema.optional(Schema.Number),
+                      md5AuthenticationKey: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  connectionIdentifier: Schema.optional(Schema.String),
+                  errorMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            useForPeeringService: Schema.optional(Schema.Boolean),
+            peerAsn: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+            directPeeringType: Schema.optional(
+              Schema.Literals([
+                "Edge",
+                "Transit",
+                "Cdn",
+                "Internal",
+                "Ix",
+                "IxRs",
+                "Voice",
+                "EdgeZoneForOperators",
+                "PeerProp",
+              ]),
+            ),
+          }),
+        ),
+        exchange: Schema.optional(
+          Schema.Struct({
+            connections: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  peeringDBFacilityId: Schema.optional(Schema.Number),
+                  connectionState: Schema.optional(
+                    Schema.Literals([
+                      "None",
+                      "PendingApproval",
+                      "Approved",
+                      "ProvisioningStarted",
+                      "ProvisioningFailed",
+                      "ProvisioningCompleted",
+                      "Validating",
+                      "Active",
+                      "TypeChangeRequested",
+                      "TypeChangeInProgress",
+                      "ExternalBlocker",
+                    ]),
+                  ),
+                  bgpSession: Schema.optional(
+                    Schema.Struct({
+                      sessionPrefixV4: Schema.optional(Schema.String),
+                      sessionPrefixV6: Schema.optional(Schema.String),
+                      microsoftSessionIPv4Address: Schema.optional(
+                        Schema.String,
+                      ),
+                      microsoftSessionIPv6Address: Schema.optional(
+                        Schema.String,
+                      ),
+                      peerSessionIPv4Address: Schema.optional(Schema.String),
+                      peerSessionIPv6Address: Schema.optional(Schema.String),
+                      sessionStateV4: Schema.optional(
+                        Schema.Literals([
+                          "None",
+                          "Idle",
+                          "Connect",
+                          "Active",
+                          "OpenSent",
+                          "OpenConfirm",
+                          "OpenReceived",
+                          "Established",
+                          "PendingAdd",
+                          "PendingUpdate",
+                          "PendingRemove",
+                        ]),
+                      ),
+                      sessionStateV6: Schema.optional(
+                        Schema.Literals([
+                          "None",
+                          "Idle",
+                          "Connect",
+                          "Active",
+                          "OpenSent",
+                          "OpenConfirm",
+                          "OpenReceived",
+                          "Established",
+                          "PendingAdd",
+                          "PendingUpdate",
+                          "PendingRemove",
+                        ]),
+                      ),
+                      maxPrefixesAdvertisedV4: Schema.optional(Schema.Number),
+                      maxPrefixesAdvertisedV6: Schema.optional(Schema.Number),
+                      md5AuthenticationKey: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  connectionIdentifier: Schema.optional(Schema.String),
+                  errorMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            peerAsn: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        connectivityProbes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              endpoint: Schema.optional(Schema.String),
+              azureRegion: Schema.optional(Schema.String),
+              protocol: Schema.optional(
+                Schema.Literals(["None", "ICMP", "TCP"]),
+              ),
+              prefixesToAccesslist: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+            }),
+          ),
+        ),
+        peeringLocation: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Updating",
+            "Deleting",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    sku: Schema.Struct({
+      name: Schema.optional(Schema.String),
+      tier: Schema.optional(Schema.Literals(["Basic", "Premium"])),
+      family: Schema.optional(Schema.Literals(["Direct", "Exchange"])),
+      size: Schema.optional(Schema.Literals(["Free", "Metered", "Unlimited"])),
+    }),
+    kind: Schema.Literals(["Direct", "Exchange"]),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringsCreateOrUpdateInput =
@@ -857,11 +1128,11 @@ export const PeeringsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   peeringName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type PeeringsDeleteInput = typeof PeeringsDeleteInput.Type;
@@ -887,11 +1158,11 @@ export const PeeringsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PeeringServiceCountriesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServiceCountries",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringServiceCountriesListInput =
@@ -953,12 +1224,12 @@ export const PeeringServiceCountriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PeeringServiceLocationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     country: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServiceLocations",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringServiceLocationsListInput =
@@ -1021,11 +1292,11 @@ export const PeeringServiceLocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PeeringServiceProvidersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServiceProviders",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringServiceProvidersListInput =
@@ -1089,11 +1360,42 @@ export const PeeringServicesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        peeringServiceLocation: Schema.optional(Schema.String),
+        peeringServiceProvider: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Updating",
+            "Deleting",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        providerPrimaryPeeringLocation: Schema.optional(Schema.String),
+        providerBackupPeeringLocation: Schema.optional(Schema.String),
+        logAnalyticsWorkspaceProperties: Schema.optional(
+          Schema.Struct({
+            workspaceID: Schema.optional(Schema.String),
+            key: Schema.optional(Schema.String),
+            connectedAgents: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringServicesCreateOrUpdateInput =
@@ -1143,11 +1445,11 @@ export const PeeringServicesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringServicesDeleteInput = typeof PeeringServicesDeleteInput.Type;
@@ -1179,11 +1481,11 @@ export const PeeringServicesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringServicesGetInput = typeof PeeringServicesGetInput.Type;
@@ -1228,11 +1530,11 @@ export const PeeringServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PeeringServicesInitializeConnectionMonitorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/initializeConnectionMonitor",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringServicesInitializeConnectionMonitorInput =
@@ -1261,11 +1563,11 @@ export const PeeringServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringServicesListByResourceGroupInput =
@@ -1327,11 +1629,11 @@ export const PeeringServicesListByResourceGroup =
 export const PeeringServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServices",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringServicesListBySubscriptionInput =
@@ -1394,11 +1696,12 @@ export const PeeringServicesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringServicesUpdateInput = typeof PeeringServicesUpdateInput.Type;
@@ -1447,11 +1750,11 @@ export const PeeringsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   peeringName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type PeeringsGetInput = typeof PeeringsGetInput.Type;
@@ -1496,11 +1799,11 @@ export const PeeringsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringsListByResourceGroupInput =
@@ -1563,11 +1866,11 @@ export const PeeringsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PeeringsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerings",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PeeringsListBySubscriptionInput =
@@ -1630,11 +1933,12 @@ export const PeeringsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   peeringName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type PeeringsUpdateInput = typeof PeeringsUpdateInput.Type;
@@ -1681,11 +1985,52 @@ export const PrefixesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
     prefixName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        prefix: Schema.optional(Schema.String),
+        prefixValidationState: Schema.optional(
+          Schema.Literals([
+            "None",
+            "Invalid",
+            "Verified",
+            "Failed",
+            "Pending",
+            "Warning",
+            "Unknown",
+          ]),
+        ),
+        learnedType: Schema.optional(
+          Schema.Literals(["None", "ViaServiceProvider", "ViaSession"]),
+        ),
+        errorMessage: Schema.optional(Schema.String),
+        events: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              eventTimestamp: Schema.optional(Schema.String),
+              eventType: Schema.optional(Schema.String),
+              eventSummary: Schema.optional(Schema.String),
+              eventLevel: Schema.optional(Schema.String),
+              eventDescription: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        peeringServicePrefixKey: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Updating",
+            "Deleting",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes/{prefixName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PrefixesCreateOrUpdateInput =
@@ -1737,11 +2082,11 @@ export const PrefixesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   peeringServiceName: Schema.String.pipe(T.PathParam()),
   prefixName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes/{prefixName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type PrefixesDeleteInput = typeof PrefixesDeleteInput.Type;
@@ -1770,12 +2115,12 @@ export const PrefixesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   peeringServiceName: Schema.String.pipe(T.PathParam()),
   prefixName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes/{prefixName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type PrefixesGetInput = typeof PrefixesGetInput.Type;
@@ -1823,12 +2168,12 @@ export const PrefixesListByPeeringServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes",
+      apiVersion: "2025-05-01",
     }),
   );
 export type PrefixesListByPeeringServiceInput =
@@ -1894,7 +2239,6 @@ export const ReceivedRoutesListByPeeringInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     prefix: Schema.optional(Schema.String),
     asPath: Schema.optional(Schema.String),
     originAsValidationState: Schema.optional(Schema.String),
@@ -1904,6 +2248,7 @@ export const ReceivedRoutesListByPeeringInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/receivedRoutes",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ReceivedRoutesListByPeeringInput =
@@ -1955,11 +2300,26 @@ export const RegisteredAsnsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
     registeredAsnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        asn: Schema.optional(Schema.Number),
+        peeringServicePrefixKey: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Updating",
+            "Deleting",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredAsns/{registeredAsnName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type RegisteredAsnsCreateOrUpdateInput =
@@ -2011,11 +2371,11 @@ export const RegisteredAsnsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
     registeredAsnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredAsns/{registeredAsnName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type RegisteredAsnsDeleteInput = typeof RegisteredAsnsDeleteInput.Type;
@@ -2048,12 +2408,12 @@ export const RegisteredAsnsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
     registeredAsnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredAsns/{registeredAsnName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type RegisteredAsnsGetInput = typeof RegisteredAsnsGetInput.Type;
@@ -2101,11 +2461,11 @@ export const RegisteredAsnsListByPeeringInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredAsns",
+      apiVersion: "2025-05-01",
     }),
   );
 export type RegisteredAsnsListByPeeringInput =
@@ -2172,11 +2532,38 @@ export const RegisteredPrefixesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
     registeredPrefixName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        prefix: Schema.optional(Schema.String),
+        prefixValidationState: Schema.optional(
+          Schema.Literals([
+            "None",
+            "Invalid",
+            "Verified",
+            "Failed",
+            "Pending",
+            "Warning",
+            "Unknown",
+          ]),
+        ),
+        peeringServicePrefixKey: Schema.optional(Schema.String),
+        errorMessage: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Updating",
+            "Deleting",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes/{registeredPrefixName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type RegisteredPrefixesCreateOrUpdateInput =
@@ -2228,11 +2615,11 @@ export const RegisteredPrefixesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
     registeredPrefixName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes/{registeredPrefixName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type RegisteredPrefixesDeleteInput =
@@ -2267,11 +2654,11 @@ export const RegisteredPrefixesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
     registeredPrefixName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes/{registeredPrefixName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type RegisteredPrefixesGetInput = typeof RegisteredPrefixesGetInput.Type;
@@ -2322,11 +2709,11 @@ export const RegisteredPrefixesListByPeeringInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes",
+      apiVersion: "2025-05-01",
     }),
   );
 export type RegisteredPrefixesListByPeeringInput =
@@ -2392,11 +2779,11 @@ export const RegisteredPrefixesValidateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
     registeredPrefixName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes/{registeredPrefixName}/validate",
+      apiVersion: "2025-05-01",
     }),
   );
 export type RegisteredPrefixesValidateInput =
@@ -2448,12 +2835,12 @@ export const RpUnbilledPrefixesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     consolidate: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/rpUnbilledPrefixes",
+      apiVersion: "2025-05-01",
     }),
   );
 export type RpUnbilledPrefixesListInput =

@@ -16,11 +16,11 @@ export const AccountQuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   quotaName: Schema.Literals(["ScalableExecution", "Reporting"]).pipe(
     T.PathParam(),
   ),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}/quotas/{quotaName}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type AccountQuotasGetInput = typeof AccountQuotasGetInput.Type;
@@ -69,11 +69,11 @@ export const AccountQuotasListByAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}/quotas",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AccountQuotasListByAccountInput =
@@ -137,13 +137,13 @@ export const AccountQuotasListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/checkNameAvailability",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AccountsCheckNameAvailabilityInput =
@@ -179,11 +179,36 @@ export const AccountsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        dashboardUri: Schema.optional(Schema.String),
+        regionalAffinity: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        scalableExecution: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        reporting: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        localAuth: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AccountsCreateOrUpdateInput =
@@ -233,11 +258,11 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -264,11 +289,11 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type AccountsGetInput = typeof AccountsGetInput.Type;
@@ -313,11 +338,11 @@ export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AccountsListByResourceGroupInput =
@@ -380,11 +405,11 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/accounts",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AccountsListBySubscriptionInput =
@@ -447,11 +472,24 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      regionalAffinity: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      scalableExecution: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      reporting: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      localAuth: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -492,12 +530,13 @@ export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzurePlaywrightService/operations",
+    apiVersion: "2024-12-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -545,11 +584,11 @@ export const QuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   quotaName: Schema.Literals(["ScalableExecution", "Reporting"]).pipe(
     T.PathParam(),
   ),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/locations/{location}/quotas/{quotaName}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type QuotasGetInput = typeof QuotasGetInput.Type;
@@ -594,11 +633,11 @@ export const QuotasListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/locations/{location}/quotas",
+      apiVersion: "2024-12-01",
     }),
   );
 export type QuotasListBySubscriptionInput =

@@ -14,11 +14,31 @@ export const EmployeesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     employeeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        age: Schema.optional(Schema.Number),
+        city: Schema.optional(Schema.String),
+        profile: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees/{employeeName}",
+      apiVersion: "2021-11-01",
     }),
   );
 export type EmployeesCreateOrUpdateInput =
@@ -68,11 +88,11 @@ export const EmployeesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   employeeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees/{employeeName}",
+    apiVersion: "2021-11-01",
   }),
 );
 export type EmployeesDeleteInput = typeof EmployeesDeleteInput.Type;
@@ -99,11 +119,11 @@ export const EmployeesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   employeeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees/{employeeName}",
+    apiVersion: "2021-11-01",
   }),
 );
 export type EmployeesGetInput = typeof EmployeesGetInput.Type;
@@ -148,11 +168,11 @@ export const EmployeesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees",
+      apiVersion: "2021-11-01",
     }),
   );
 export type EmployeesListByResourceGroupInput =
@@ -214,11 +234,11 @@ export const EmployeesListByResourceGroup =
 export const EmployeesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Contoso/employees",
+      apiVersion: "2021-11-01",
     }),
   );
 export type EmployeesListBySubscriptionInput =
@@ -281,11 +301,30 @@ export const EmployeesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   employeeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      age: Schema.optional(Schema.Number),
+      city: Schema.optional(Schema.String),
+      profile: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Updating",
+          "Deleting",
+          "Accepted",
+        ]),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees/{employeeName}",
+    apiVersion: "2021-11-01",
   }),
 );
 export type EmployeesUpdateInput = typeof EmployeesUpdateInput.Type;
@@ -326,10 +365,14 @@ export const EmployeesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EmployeesUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Contoso/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Contoso/operations",
+    apiVersion: "2021-11-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 

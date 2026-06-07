@@ -12,11 +12,11 @@ import * as T from "../traits.ts";
 export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}",
+    apiVersion: "2023-04-01",
   }),
 );
 export type MonitorsCreateInput = typeof MonitorsCreateInput.Type;
@@ -61,11 +61,11 @@ export const monitorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}",
+    apiVersion: "2023-04-01",
   }),
 );
 export type MonitorsDeleteInput = typeof MonitorsDeleteInput.Type;
@@ -144,11 +144,11 @@ export const monitorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const MonitorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}",
+    apiVersion: "2023-04-01",
   }),
 );
 export type MonitorsGetInput = typeof MonitorsGetInput.Type;
@@ -192,11 +192,11 @@ export const monitorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const MonitorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/monitors",
+    apiVersion: "2023-04-01",
   }),
 );
 export type MonitorsListInput = typeof MonitorsListInput.Type;
@@ -258,11 +258,11 @@ export const MonitorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors",
+      apiVersion: "2023-04-01",
     }),
   );
 export type MonitorsListByResourceGroupInput =
@@ -329,11 +329,28 @@ export const monitorsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.Literals(["None", "UserAssigned"]),
+      userAssignedIdentities: Schema.optional(
+        Schema.NullOr(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}",
+    apiVersion: "2023-04-01",
   }),
 );
 export type MonitorsUpdateInput = typeof MonitorsUpdateInput.Type;
@@ -375,10 +392,14 @@ export const monitorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorsUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Workloads/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Workloads/operations",
+    apiVersion: "2023-04-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -423,11 +444,11 @@ export const ProviderInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances/{providerInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ProviderInstancesCreateInput =
@@ -478,11 +499,11 @@ export const ProviderInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances/{providerInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ProviderInstancesDeleteInput =
@@ -567,11 +588,11 @@ export const ProviderInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances/{providerInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ProviderInstancesGetInput = typeof ProviderInstancesGetInput.Type;
@@ -620,11 +641,11 @@ export const ProviderInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ProviderInstancesListInput = typeof ProviderInstancesListInput.Type;
@@ -691,11 +712,82 @@ export const SAPApplicationServerInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        instanceNo: Schema.optional(Schema.String),
+        subnet: Schema.optional(Schema.String),
+        hostname: Schema.optional(Schema.String),
+        kernelVersion: Schema.optional(Schema.String),
+        kernelPatch: Schema.optional(Schema.String),
+        ipAddress: Schema.optional(Schema.String),
+        gatewayPort: Schema.optional(Schema.NullOr(Schema.Number)),
+        icmHttpPort: Schema.optional(Schema.NullOr(Schema.Number)),
+        icmHttpsPort: Schema.optional(Schema.NullOr(Schema.Number)),
+        loadBalancerDetails: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        vmDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Active", "Standby", "Unknown"]),
+              ),
+              virtualMachineId: Schema.optional(Schema.String),
+              storageDetails: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Starting",
+            "Running",
+            "Stopping",
+            "Offline",
+            "PartiallyRunning",
+            "Unavailable",
+            "SoftShutdown",
+          ]),
+        ),
+        health: Schema.optional(
+          Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Updating",
+            "Creating",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+        errors: Schema.optional(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                details: Schema.optional(Schema.Array(Schema.Unknown)),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPApplicationServerInstancesCreateInput =
@@ -743,11 +835,11 @@ export const SAPApplicationServerInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPApplicationServerInstancesDeleteInput =
@@ -829,11 +921,11 @@ export const SAPApplicationServerInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPApplicationServerInstancesGetInput =
@@ -881,11 +973,11 @@ export const SAPApplicationServerInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPApplicationServerInstancesListInput =
@@ -952,11 +1044,12 @@ export const SapApplicationServerInstancesStartInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     applicationInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    startVm: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/start",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapApplicationServerInstancesStartInput =
@@ -1042,11 +1135,11 @@ export const SAPApplicationServerInstancesStartInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/start",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPApplicationServerInstancesStartInstanceInput =
@@ -1130,11 +1223,13 @@ export const SapApplicationServerInstancesStopInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     applicationInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    softStopTimeoutSeconds: Schema.optional(Schema.Number),
+    deallocateVm: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/stop",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapApplicationServerInstancesStopInput =
@@ -1220,11 +1315,12 @@ export const SAPApplicationServerInstancesStopInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    softStopTimeoutSeconds: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/stop",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPApplicationServerInstancesStopInstanceInput =
@@ -1306,11 +1402,12 @@ export const SAPApplicationServerInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPApplicationServerInstancesUpdateInput =
@@ -1358,11 +1455,14 @@ export const SAPAvailabilityZoneDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    appLocation: Schema.String,
+    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
+    databaseType: Schema.Literals(["HANA", "DB2"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getAvailabilityZoneDetails",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPAvailabilityZoneDetailsInput =
@@ -1402,11 +1502,131 @@ export const SAPCentralInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        instanceNo: Schema.optional(Schema.String),
+        subnet: Schema.optional(Schema.String),
+        messageServerProperties: Schema.optional(
+          Schema.Struct({
+            msPort: Schema.optional(Schema.NullOr(Schema.Number)),
+            internalMsPort: Schema.optional(Schema.NullOr(Schema.Number)),
+            httpPort: Schema.optional(Schema.NullOr(Schema.Number)),
+            httpsPort: Schema.optional(Schema.NullOr(Schema.Number)),
+            hostname: Schema.optional(Schema.String),
+            ipAddress: Schema.optional(Schema.String),
+            health: Schema.optional(
+              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
+            ),
+          }),
+        ),
+        enqueueServerProperties: Schema.optional(
+          Schema.Struct({
+            hostname: Schema.optional(Schema.String),
+            ipAddress: Schema.optional(Schema.String),
+            port: Schema.optional(Schema.NullOr(Schema.Number)),
+            health: Schema.optional(
+              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
+            ),
+          }),
+        ),
+        gatewayServerProperties: Schema.optional(
+          Schema.Struct({
+            port: Schema.optional(Schema.NullOr(Schema.Number)),
+            health: Schema.optional(
+              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
+            ),
+          }),
+        ),
+        enqueueReplicationServerProperties: Schema.optional(
+          Schema.Struct({
+            ersVersion: Schema.optional(
+              Schema.Literals(["EnqueueReplicator1", "EnqueueReplicator2"]),
+            ),
+            instanceNo: Schema.optional(Schema.String),
+            hostname: Schema.optional(Schema.String),
+            kernelVersion: Schema.optional(Schema.String),
+            kernelPatch: Schema.optional(Schema.String),
+            ipAddress: Schema.optional(Schema.String),
+            health: Schema.optional(
+              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
+            ),
+          }),
+        ),
+        kernelVersion: Schema.optional(Schema.NullOr(Schema.String)),
+        kernelPatch: Schema.optional(Schema.NullOr(Schema.String)),
+        loadBalancerDetails: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        vmDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals([
+                  "Primary",
+                  "Secondary",
+                  "Unknown",
+                  "ASCS",
+                  "ERSInactive",
+                  "ERS",
+                  "Standby",
+                ]),
+              ),
+              virtualMachineId: Schema.optional(Schema.String),
+              storageDetails: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Starting",
+            "Running",
+            "Stopping",
+            "Offline",
+            "PartiallyRunning",
+            "Unavailable",
+            "SoftShutdown",
+          ]),
+        ),
+        health: Schema.optional(
+          Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Updating",
+            "Creating",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+        errors: Schema.optional(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                details: Schema.optional(Schema.Array(Schema.Unknown)),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPCentralInstancesCreateInput =
@@ -1455,11 +1675,11 @@ export const SAPCentralInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPCentralInstancesDeleteInput =
@@ -1542,11 +1762,11 @@ export const SAPCentralInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPCentralInstancesGetInput =
@@ -1595,11 +1815,11 @@ export const SAPCentralInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPCentralInstancesListInput =
@@ -1665,11 +1885,11 @@ export const SAPCentralInstancesStartInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/start",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPCentralInstancesStartInstanceInput =
@@ -1751,11 +1971,12 @@ export const SAPCentralInstancesStopInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    softStopTimeoutSeconds: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/stop",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPCentralInstancesStopInstanceInput =
@@ -1837,11 +2058,12 @@ export const SAPCentralInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPCentralInstancesUpdateInput =
@@ -1892,11 +2114,132 @@ export const SapCentralServerInstancesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     centralInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        instanceNo: Schema.optional(Schema.String),
+        subnet: Schema.optional(Schema.String),
+        messageServerProperties: Schema.optional(
+          Schema.Struct({
+            msPort: Schema.optional(Schema.Number),
+            internalMsPort: Schema.optional(Schema.Number),
+            httpPort: Schema.optional(Schema.Number),
+            httpsPort: Schema.optional(Schema.Number),
+            hostname: Schema.optional(Schema.String),
+            ipAddress: Schema.optional(Schema.String),
+            health: Schema.optional(
+              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
+            ),
+          }),
+        ),
+        enqueueServerProperties: Schema.optional(
+          Schema.Struct({
+            hostname: Schema.optional(Schema.String),
+            ipAddress: Schema.optional(Schema.String),
+            port: Schema.optional(Schema.Number),
+            health: Schema.optional(
+              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
+            ),
+          }),
+        ),
+        gatewayServerProperties: Schema.optional(
+          Schema.Struct({
+            port: Schema.optional(Schema.Number),
+            health: Schema.optional(
+              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
+            ),
+          }),
+        ),
+        enqueueReplicationServerProperties: Schema.optional(
+          Schema.Struct({
+            ersVersion: Schema.optional(
+              Schema.Literals(["EnqueueReplicator1", "EnqueueReplicator2"]),
+            ),
+            instanceNo: Schema.optional(Schema.String),
+            hostname: Schema.optional(Schema.String),
+            kernelVersion: Schema.optional(Schema.String),
+            kernelPatch: Schema.optional(Schema.String),
+            ipAddress: Schema.optional(Schema.String),
+            health: Schema.optional(
+              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
+            ),
+          }),
+        ),
+        kernelVersion: Schema.optional(Schema.String),
+        kernelPatch: Schema.optional(Schema.String),
+        loadBalancerDetails: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        vmDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals([
+                  "Primary",
+                  "Secondary",
+                  "Unknown",
+                  "ASCS",
+                  "ERSInactive",
+                  "ERS",
+                  "Standby",
+                ]),
+              ),
+              virtualMachineId: Schema.optional(Schema.String),
+              storageDetails: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Starting",
+            "Running",
+            "Stopping",
+            "Offline",
+            "PartiallyRunning",
+            "Unavailable",
+            "SoftShutdown",
+          ]),
+        ),
+        health: Schema.optional(
+          Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Updating",
+            "Creating",
+            "Failed",
+            "Deleting",
+            "Canceled",
+          ]),
+        ),
+        errors: Schema.optional(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                details: Schema.optional(Schema.Array(Schema.Unknown)),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapCentralServerInstancesCreateInput =
@@ -1948,11 +2291,11 @@ export const SapCentralServerInstancesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     centralInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapCentralServerInstancesDeleteInput =
@@ -1986,11 +2329,11 @@ export const SapCentralServerInstancesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     centralInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapCentralServerInstancesGetInput =
@@ -2041,11 +2384,11 @@ export const SapCentralServerInstancesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapCentralServerInstancesListInput =
@@ -2111,11 +2454,12 @@ export const SapCentralServerInstancesStartInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     centralInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    startVm: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/start",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapCentralServerInstancesStartInput =
@@ -2203,11 +2547,13 @@ export const SapCentralServerInstancesStopInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     centralInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    softStopTimeoutSeconds: Schema.optional(Schema.Number),
+    deallocateVm: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/stop",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapCentralServerInstancesStopInput =
@@ -2295,11 +2641,12 @@ export const SapCentralServerInstancesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     centralInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapCentralServerInstancesUpdateInput =
@@ -2349,11 +2696,82 @@ export const SAPDatabaseInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        subnet: Schema.optional(Schema.String),
+        databaseSid: Schema.optional(Schema.String),
+        databaseType: Schema.optional(Schema.String),
+        ipAddress: Schema.optional(Schema.String),
+        loadBalancerDetails: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        vmDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              virtualMachineId: Schema.optional(Schema.String),
+              status: Schema.optional(
+                Schema.Literals([
+                  "Starting",
+                  "Running",
+                  "Stopping",
+                  "Offline",
+                  "PartiallyRunning",
+                  "Unavailable",
+                  "SoftShutdown",
+                ]),
+              ),
+              storageDetails: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Starting",
+            "Running",
+            "Stopping",
+            "Offline",
+            "PartiallyRunning",
+            "Unavailable",
+            "SoftShutdown",
+          ]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Updating",
+            "Creating",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+        errors: Schema.optional(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                details: Schema.optional(Schema.Array(Schema.Unknown)),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPDatabaseInstancesCreateInput =
@@ -2402,11 +2820,11 @@ export const SAPDatabaseInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPDatabaseInstancesDeleteInput =
@@ -2489,11 +2907,11 @@ export const SAPDatabaseInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPDatabaseInstancesGetInput =
@@ -2542,11 +2960,11 @@ export const SAPDatabaseInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPDatabaseInstancesListInput =
@@ -2614,11 +3032,12 @@ export const SapDatabaseInstancesStartInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     databaseInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    startVm: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/start",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapDatabaseInstancesStartInput =
@@ -2705,11 +3124,11 @@ export const SAPDatabaseInstancesStartInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/start",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPDatabaseInstancesStartInstanceInput =
@@ -2793,11 +3212,13 @@ export const SapDatabaseInstancesStopInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     databaseInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    softStopTimeoutSeconds: Schema.optional(Schema.Number),
+    deallocateVm: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/stop",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapDatabaseInstancesStopInput =
@@ -2884,11 +3305,12 @@ export const SAPDatabaseInstancesStopInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    softStopTimeoutSeconds: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/stop",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPDatabaseInstancesStopInstanceInput =
@@ -2970,11 +3392,12 @@ export const SAPDatabaseInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPDatabaseInstancesUpdateInput =
@@ -3023,11 +3446,17 @@ export const SAPDiskConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    appLocation: Schema.String,
+    environment: Schema.Literals(["NonProd", "Prod"]),
+    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
+    databaseType: Schema.Literals(["HANA", "DB2"]),
+    deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
+    dbVmSku: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getDiskConfigurations",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPDiskConfigurationsInput = typeof SAPDiskConfigurationsInput.Type;
@@ -3113,11 +3542,11 @@ export const SapLandscapeMonitorCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor/default",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SapLandscapeMonitorCreateInput =
@@ -3168,11 +3597,11 @@ export const SapLandscapeMonitorDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor/default",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SapLandscapeMonitorDeleteInput =
@@ -3205,11 +3634,11 @@ export const SapLandscapeMonitorGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor/default",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SapLandscapeMonitorGetInput =
@@ -3260,11 +3689,11 @@ export const SapLandscapeMonitorListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SapLandscapeMonitorListInput =
@@ -3332,11 +3761,11 @@ export const SapLandscapeMonitorUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor/default",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SapLandscapeMonitorUpdateInput =
@@ -3387,11 +3816,22 @@ export const SAPSizingRecommendationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    appLocation: Schema.String,
+    environment: Schema.Literals(["NonProd", "Prod"]),
+    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
+    deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
+    saps: Schema.Number,
+    dbMemory: Schema.Number,
+    databaseType: Schema.Literals(["HANA", "DB2"]),
+    dbScaleMethod: Schema.optional(Schema.Literals(["ScaleUp"])),
+    highAvailabilityType: Schema.optional(
+      Schema.Literals(["AvailabilitySet", "AvailabilityZone"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getSizingRecommendations",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPSizingRecommendationsInput =
@@ -3423,11 +3863,19 @@ export const SAPSizingRecommendations = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SAPSupportedSkuInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  appLocation: Schema.String,
+  environment: Schema.Literals(["NonProd", "Prod"]),
+  sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
+  deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
+  databaseType: Schema.Literals(["HANA", "DB2"]),
+  highAvailabilityType: Schema.optional(
+    Schema.Literals(["AvailabilitySet", "AvailabilityZone"]),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getSapSupportedSku",
+    apiVersion: "2023-04-01",
   }),
 );
 export type SAPSupportedSkuInput = typeof SAPSupportedSkuInput.Type;
@@ -3463,11 +3911,95 @@ export const SAPVirtualInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals(["None", "UserAssigned"]),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                principalId: Schema.optional(Schema.String),
+                clientId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.Struct({
+      environment: Schema.Literals(["NonProd", "Prod"]),
+      sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
+      configuration: Schema.Struct({
+        configurationType: Schema.Literals([
+          "Deployment",
+          "Discovery",
+          "DeploymentWithOSConfig",
+        ]),
+      }),
+      managedResourceGroupConfiguration: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      status: Schema.optional(
+        Schema.Literals([
+          "Starting",
+          "Running",
+          "Stopping",
+          "Offline",
+          "PartiallyRunning",
+          "Unavailable",
+          "SoftShutdown",
+        ]),
+      ),
+      health: Schema.optional(
+        Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
+      ),
+      state: Schema.optional(
+        Schema.Literals([
+          "InfrastructureDeploymentPending",
+          "InfrastructureDeploymentInProgress",
+          "InfrastructureDeploymentFailed",
+          "SoftwareInstallationPending",
+          "SoftwareInstallationInProgress",
+          "SoftwareInstallationFailed",
+          "SoftwareDetectionInProgress",
+          "SoftwareDetectionFailed",
+          "DiscoveryPending",
+          "DiscoveryInProgress",
+          "DiscoveryFailed",
+          "RegistrationComplete",
+        ]),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Updating",
+          "Creating",
+          "Failed",
+          "Deleting",
+        ]),
+      ),
+      errors: Schema.optional(
+        Schema.Struct({
+          properties: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+            }),
+          ),
+        }),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPVirtualInstancesCreateInput =
@@ -3516,11 +4048,11 @@ export const SAPVirtualInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPVirtualInstancesDeleteInput =
@@ -3603,11 +4135,11 @@ export const SAPVirtualInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPVirtualInstancesGetInput =
@@ -3656,11 +4188,14 @@ export const SapVirtualInstancesInvokeAvailabilityZoneDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    appLocation: Schema.String,
+    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
+    databaseType: Schema.Literals(["HANA", "DB2"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getAvailabilityZoneDetails",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapVirtualInstancesInvokeAvailabilityZoneDetailsInput =
@@ -3699,11 +4234,17 @@ export const SapVirtualInstancesInvokeDiskConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    appLocation: Schema.String,
+    environment: Schema.Literals(["NonProd", "Prod"]),
+    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
+    databaseType: Schema.Literals(["HANA", "DB2"]),
+    deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
+    dbVmSku: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getDiskConfigurations",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapVirtualInstancesInvokeDiskConfigurationsInput =
@@ -3789,11 +4330,19 @@ export const SapVirtualInstancesInvokeSapSupportedSkuInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    appLocation: Schema.String,
+    environment: Schema.Literals(["NonProd", "Prod"]),
+    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
+    deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
+    databaseType: Schema.Literals(["HANA", "DB2"]),
+    highAvailabilityType: Schema.optional(
+      Schema.Literals(["AvailabilitySet", "AvailabilityZone"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getSapSupportedSku",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapVirtualInstancesInvokeSapSupportedSkuInput =
@@ -3833,11 +4382,22 @@ export const SapVirtualInstancesInvokeSizingRecommendationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    appLocation: Schema.String,
+    environment: Schema.Literals(["NonProd", "Prod"]),
+    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
+    deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
+    saps: Schema.Number,
+    dbMemory: Schema.Number,
+    databaseType: Schema.Literals(["HANA", "DB2"]),
+    dbScaleMethod: Schema.optional(Schema.Literals(["ScaleUp"])),
+    highAvailabilityType: Schema.optional(
+      Schema.Literals(["AvailabilitySet", "AvailabilityZone"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getSizingRecommendations",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SapVirtualInstancesInvokeSizingRecommendationsInput =
@@ -3869,11 +4429,11 @@ export const SAPVirtualInstancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPVirtualInstancesListByResourceGroupInput =
@@ -3937,11 +4497,11 @@ export const SAPVirtualInstancesListByResourceGroup =
 export const SAPVirtualInstancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/sapVirtualInstances",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPVirtualInstancesListBySubscriptionInput =
@@ -4005,11 +4565,11 @@ export const SAPVirtualInstancesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/start",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPVirtualInstancesStartInput =
@@ -4092,11 +4652,12 @@ export const SAPVirtualInstancesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    softStopTimeoutSeconds: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/stop",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPVirtualInstancesStopInput =
@@ -4179,11 +4740,28 @@ export const SAPVirtualInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals(["None", "UserAssigned"]),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                principalId: Schema.optional(Schema.String),
+                clientId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type SAPVirtualInstancesUpdateInput =

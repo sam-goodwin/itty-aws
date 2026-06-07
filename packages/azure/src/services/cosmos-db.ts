@@ -7,18 +7,108 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const CassandraClustersCreateUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        restoreFromBackupId: Schema.optional(Schema.String),
+        delegatedManagementSubnetId: Schema.optional(Schema.String),
+        cassandraVersion: Schema.optional(Schema.String),
+        clusterNameOverride: Schema.optional(Schema.String),
+        authenticationMethod: Schema.optional(
+          Schema.Literals(["None", "Cassandra", "Ldap"]),
+        ),
+        initialCassandraAdminPassword: Schema.optional(SensitiveString),
+        prometheusEndpoint: Schema.optional(
+          Schema.Struct({
+            ipAddress: Schema.optional(Schema.String),
+          }),
+        ),
+        repairEnabled: Schema.optional(Schema.Boolean),
+        clientCertificates: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              pem: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        externalGossipCertificates: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              pem: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        gossipCertificates: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              pem: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        externalSeedNodes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipAddress: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        seedNodes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipAddress: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        hoursBetweenBackups: Schema.optional(Schema.Number),
+        deallocated: Schema.optional(Schema.Boolean),
+        cassandraAuditLoggingEnabled: Schema.optional(Schema.Boolean),
+        provisionError: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            additionalErrorInfo: Schema.optional(Schema.String),
+          }),
+        ),
+        azureConnectionMethod: Schema.optional(
+          Schema.Literals(["None", "VPN"]),
+        ),
+        privateLinkResourceId: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraClustersCreateUpdateInput =
@@ -61,11 +151,11 @@ export const CassandraClustersDeallocateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/deallocate",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraClustersDeallocateInput =
@@ -96,11 +186,11 @@ export const CassandraClustersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraClustersDeleteInput =
@@ -131,11 +221,11 @@ export const CassandraClustersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraClustersGetInput = typeof CassandraClustersGetInput.Type;
@@ -177,11 +267,16 @@ export const CassandraClustersInvokeCommandInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    command: Schema.String,
+    arguments: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    host: Schema.String,
+    "cassandra-stop-start": Schema.optional(Schema.Boolean),
+    readwrite: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/invokeCommand",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraClustersInvokeCommandInput =
@@ -211,11 +306,11 @@ export const CassandraClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraClustersListByResourceGroupInput =
@@ -265,11 +360,11 @@ export const CassandraClustersListByResourceGroup =
 export const CassandraClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/cassandraClusters",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraClustersListBySubscriptionInput =
@@ -319,11 +414,11 @@ export const CassandraClustersStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/start",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraClustersStartInput =
@@ -354,11 +449,11 @@ export const CassandraClustersStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/status",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraClustersStatusInput =
@@ -471,11 +566,101 @@ export const CassandraClustersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        restoreFromBackupId: Schema.optional(Schema.String),
+        delegatedManagementSubnetId: Schema.optional(Schema.String),
+        cassandraVersion: Schema.optional(Schema.String),
+        clusterNameOverride: Schema.optional(Schema.String),
+        authenticationMethod: Schema.optional(
+          Schema.Literals(["None", "Cassandra", "Ldap"]),
+        ),
+        initialCassandraAdminPassword: Schema.optional(SensitiveString),
+        prometheusEndpoint: Schema.optional(
+          Schema.Struct({
+            ipAddress: Schema.optional(Schema.String),
+          }),
+        ),
+        repairEnabled: Schema.optional(Schema.Boolean),
+        clientCertificates: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              pem: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        externalGossipCertificates: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              pem: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        gossipCertificates: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              pem: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        externalSeedNodes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipAddress: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        seedNodes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipAddress: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        hoursBetweenBackups: Schema.optional(Schema.Number),
+        deallocated: Schema.optional(Schema.Boolean),
+        cassandraAuditLoggingEnabled: Schema.optional(Schema.Boolean),
+        provisionError: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            additionalErrorInfo: Schema.optional(Schema.String),
+          }),
+        ),
+        azureConnectionMethod: Schema.optional(
+          Schema.Literals(["None", "VPN"]),
+        ),
+        privateLinkResourceId: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraClustersUpdateInput =
@@ -519,11 +704,73 @@ export const CassandraDataCentersCreateUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        dataCenterLocation: Schema.optional(Schema.String),
+        delegatedSubnetId: Schema.optional(Schema.String),
+        nodeCount: Schema.optional(Schema.Number),
+        seedNodes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipAddress: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        base64EncodedCassandraYamlFragment: Schema.optional(Schema.String),
+        managedDiskCustomerKeyUri: Schema.optional(Schema.String),
+        backupStorageCustomerKeyUri: Schema.optional(Schema.String),
+        sku: Schema.optional(Schema.String),
+        diskSku: Schema.optional(Schema.String),
+        diskCapacity: Schema.optional(Schema.Number),
+        availabilityZone: Schema.optional(Schema.Boolean),
+        authenticationMethodLdapProperties: Schema.optional(
+          Schema.Struct({
+            serverHostname: Schema.optional(Schema.String),
+            serverPort: Schema.optional(Schema.Number),
+            serviceUserDistinguishedName: Schema.optional(Schema.String),
+            serviceUserPassword: Schema.optional(SensitiveString),
+            searchBaseDistinguishedName: Schema.optional(Schema.String),
+            searchFilterTemplate: Schema.optional(Schema.String),
+            serverCertificates: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  pem: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            connectionTimeoutInMs: Schema.optional(Schema.Number),
+          }),
+        ),
+        deallocated: Schema.optional(Schema.Boolean),
+        provisionError: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            additionalErrorInfo: Schema.optional(Schema.String),
+          }),
+        ),
+        privateEndpointIpAddress: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraDataCentersCreateUpdateInput =
@@ -557,11 +804,11 @@ export const CassandraDataCentersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraDataCentersDeleteInput =
@@ -592,11 +839,11 @@ export const CassandraDataCentersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraDataCentersGetInput =
@@ -631,11 +878,11 @@ export const CassandraDataCentersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraDataCentersListInput =
@@ -676,11 +923,73 @@ export const CassandraDataCentersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        dataCenterLocation: Schema.optional(Schema.String),
+        delegatedSubnetId: Schema.optional(Schema.String),
+        nodeCount: Schema.optional(Schema.Number),
+        seedNodes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipAddress: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        base64EncodedCassandraYamlFragment: Schema.optional(Schema.String),
+        managedDiskCustomerKeyUri: Schema.optional(Schema.String),
+        backupStorageCustomerKeyUri: Schema.optional(Schema.String),
+        sku: Schema.optional(Schema.String),
+        diskSku: Schema.optional(Schema.String),
+        diskCapacity: Schema.optional(Schema.Number),
+        availabilityZone: Schema.optional(Schema.Boolean),
+        authenticationMethodLdapProperties: Schema.optional(
+          Schema.Struct({
+            serverHostname: Schema.optional(Schema.String),
+            serverPort: Schema.optional(Schema.Number),
+            serviceUserDistinguishedName: Schema.optional(Schema.String),
+            serviceUserPassword: Schema.optional(SensitiveString),
+            searchBaseDistinguishedName: Schema.optional(Schema.String),
+            searchFilterTemplate: Schema.optional(Schema.String),
+            serverCertificates: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  pem: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            connectionTimeoutInMs: Schema.optional(Schema.Number),
+          }),
+        ),
+        deallocated: Schema.optional(Schema.Boolean),
+        provisionError: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            additionalErrorInfo: Schema.optional(Schema.String),
+          }),
+        ),
+        privateEndpointIpAddress: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraDataCentersUpdateInput =
@@ -715,11 +1024,31 @@ export const CassandraResourcesCreateUpdateCassandraKeyspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.String,
+      }),
+      options: Schema.optional(
+        Schema.Struct({
+          throughput: Schema.optional(Schema.Number),
+          autoscaleSettings: Schema.optional(
+            Schema.Struct({
+              maxThroughput: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesCreateUpdateCassandraKeyspaceInput =
@@ -755,11 +1084,60 @@ export const CassandraResourcesCreateUpdateCassandraTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.String,
+        defaultTtl: Schema.optional(Schema.Number),
+        schema: Schema.optional(
+          Schema.Struct({
+            columns: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            partitionKeys: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            clusterKeys: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  orderBy: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        analyticalStorageTtl: Schema.optional(Schema.Number),
+      }),
+      options: Schema.optional(
+        Schema.Struct({
+          throughput: Schema.optional(Schema.Number),
+          autoscaleSettings: Schema.optional(
+            Schema.Struct({
+              maxThroughput: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesCreateUpdateCassandraTableInput =
@@ -795,11 +1173,11 @@ export const CassandraResourcesDeleteCassandraKeyspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesDeleteCassandraKeyspaceInput =
@@ -829,11 +1207,11 @@ export const CassandraResourcesDeleteCassandraTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesDeleteCassandraTableInput =
@@ -863,11 +1241,11 @@ export const CassandraResourcesGetCassandraKeyspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesGetCassandraKeyspaceInput =
@@ -903,11 +1281,11 @@ export const CassandraResourcesGetCassandraKeyspaceThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesGetCassandraKeyspaceThroughputInput =
@@ -943,11 +1321,11 @@ export const CassandraResourcesGetCassandraTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesGetCassandraTableInput =
@@ -983,11 +1361,11 @@ export const CassandraResourcesGetCassandraTableThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesGetCassandraTableThroughputInput =
@@ -1023,11 +1401,11 @@ export const CassandraResourcesListCassandraKeyspacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesListCassandraKeyspacesInput =
@@ -1069,11 +1447,11 @@ export const CassandraResourcesListCassandraTablesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesListCassandraTablesInput =
@@ -1115,11 +1493,11 @@ export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default/migrateToAutoscale",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput =
@@ -1155,11 +1533,11 @@ export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default/migrateToManualThroughput",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput =
@@ -1197,11 +1575,11 @@ export const CassandraResourcesMigrateCassandraTableToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default/migrateToAutoscale",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesMigrateCassandraTableToAutoscaleInput =
@@ -1237,11 +1615,11 @@ export const CassandraResourcesMigrateCassandraTableToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default/migrateToManualThroughput",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesMigrateCassandraTableToManualThroughputInput =
@@ -1278,11 +1656,41 @@ export const CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        throughput: Schema.optional(Schema.Number),
+        autoscaleSettings: Schema.optional(
+          Schema.Struct({
+            maxThroughput: Schema.Number,
+            autoUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                throughputPolicy: Schema.optional(
+                  Schema.Struct({
+                    isEnabled: Schema.optional(Schema.Boolean),
+                    incrementPercent: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            targetMaxThroughput: Schema.optional(Schema.Number),
+          }),
+        ),
+        minimumThroughput: Schema.optional(Schema.String),
+        offerReplacePending: Schema.optional(Schema.String),
+        instantMaximumThroughput: Schema.optional(Schema.String),
+        softAllowedMaximumThroughput: Schema.optional(Schema.String),
+      }),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
@@ -1318,11 +1726,41 @@ export const CassandraResourcesUpdateCassandraTableThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        throughput: Schema.optional(Schema.Number),
+        autoscaleSettings: Schema.optional(
+          Schema.Struct({
+            maxThroughput: Schema.Number,
+            autoUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                throughputPolicy: Schema.optional(
+                  Schema.Struct({
+                    isEnabled: Schema.optional(Schema.Boolean),
+                    incrementPercent: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            targetMaxThroughput: Schema.optional(Schema.Number),
+          }),
+        ),
+        minimumThroughput: Schema.optional(Schema.String),
+        offerReplacePending: Schema.optional(Schema.String),
+        instantMaximumThroughput: Schema.optional(Schema.String),
+        softAllowedMaximumThroughput: Schema.optional(Schema.String),
+      }),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CassandraResourcesUpdateCassandraTableThroughputInput =
@@ -1358,11 +1796,11 @@ export const CollectionListMetricDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metricDefinitions",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CollectionListMetricDefinitionsInput =
@@ -1435,11 +1873,11 @@ export const CollectionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metrics",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CollectionListMetricsInput = typeof CollectionListMetricsInput.Type;
@@ -1508,11 +1946,11 @@ export const CollectionListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/usages",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CollectionListUsagesInput = typeof CollectionListUsagesInput.Type;
@@ -1568,11 +2006,11 @@ export const CollectionPartitionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CollectionPartitionListMetricsInput =
@@ -1641,11 +2079,11 @@ export const CollectionPartitionListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/usages",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CollectionPartitionListUsagesInput =
@@ -1702,11 +2140,11 @@ export const CollectionPartitionRegionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CollectionPartitionRegionListMetricsInput =
@@ -1775,11 +2213,11 @@ export const CollectionRegionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/metrics",
+      apiVersion: "2025-10-15",
     }),
   );
 export type CollectionRegionListMetricsInput =
@@ -1849,11 +2287,11 @@ export const DatabaseAccountRegionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/metrics",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountRegionListMetricsInput =
@@ -1922,11 +2360,200 @@ export const DatabaseAccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    kind: Schema.optional(
+      Schema.Literals(["GlobalDocumentDB", "MongoDB", "Parse"]),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.Struct({
+      consistencyPolicy: Schema.optional(
+        Schema.Struct({
+          defaultConsistencyLevel: Schema.Literals([
+            "Eventual",
+            "Session",
+            "BoundedStaleness",
+            "Strong",
+            "ConsistentPrefix",
+          ]),
+          maxStalenessPrefix: Schema.optional(Schema.Number),
+          maxIntervalInSeconds: Schema.optional(Schema.Number),
+        }),
+      ),
+      locations: Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          locationName: Schema.optional(Schema.String),
+          documentEndpoint: Schema.optional(Schema.String),
+          provisioningState: Schema.optional(Schema.String),
+          failoverPriority: Schema.optional(Schema.Number),
+          isZoneRedundant: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      databaseAccountOfferType: Schema.Literals(["Standard"]),
+      ipRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            ipAddressOrRange: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      isVirtualNetworkFilterEnabled: Schema.optional(Schema.Boolean),
+      enableAutomaticFailover: Schema.optional(Schema.Boolean),
+      capabilities: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      virtualNetworkRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            ignoreMissingVNetServiceEndpoint: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      ),
+      enableMultipleWriteLocations: Schema.optional(Schema.Boolean),
+      enableCassandraConnector: Schema.optional(Schema.Boolean),
+      connectorOffer: Schema.optional(Schema.Literals(["Small"])),
+      disableKeyBasedMetadataWriteAccess: Schema.optional(Schema.Boolean),
+      keyVaultKeyUri: Schema.optional(Schema.String),
+      defaultIdentity: Schema.optional(Schema.String),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+      ),
+      enableFreeTier: Schema.optional(Schema.Boolean),
+      apiProperties: Schema.optional(
+        Schema.Struct({
+          serverVersion: Schema.optional(
+            Schema.Literals(["3.2", "3.6", "4.0", "4.2", "5.0", "6.0", "7.0"]),
+          ),
+        }),
+      ),
+      enableAnalyticalStorage: Schema.optional(Schema.Boolean),
+      analyticalStorageConfiguration: Schema.optional(
+        Schema.Struct({
+          schemaType: Schema.optional(
+            Schema.Literals(["WellDefined", "FullFidelity"]),
+          ),
+        }),
+      ),
+      createMode: Schema.optional(Schema.Literals(["Default", "Restore"])),
+      backupPolicy: Schema.optional(
+        Schema.Struct({
+          type: Schema.Literals(["Periodic", "Continuous"]),
+          migrationState: Schema.optional(
+            Schema.Struct({
+              status: Schema.optional(
+                Schema.Literals([
+                  "Invalid",
+                  "InProgress",
+                  "Completed",
+                  "Failed",
+                ]),
+              ),
+              targetType: Schema.optional(
+                Schema.Literals(["Periodic", "Continuous"]),
+              ),
+              startTime: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      cors: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            allowedOrigins: Schema.String,
+            allowedMethods: Schema.optional(Schema.String),
+            allowedHeaders: Schema.optional(Schema.String),
+            exposedHeaders: Schema.optional(Schema.String),
+            maxAgeInSeconds: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
+      networkAclBypass: Schema.optional(
+        Schema.Literals(["None", "AzureServices"]),
+      ),
+      networkAclBypassResourceIds: Schema.optional(Schema.Array(Schema.String)),
+      disableLocalAuth: Schema.optional(Schema.Boolean),
+      restoreParameters: Schema.optional(
+        Schema.Struct({
+          restoreSource: Schema.optional(Schema.String),
+          restoreTimestampInUtc: Schema.optional(Schema.String),
+          restoreWithTtlDisabled: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      capacity: Schema.optional(
+        Schema.Struct({
+          totalThroughputLimit: Schema.optional(Schema.Number),
+        }),
+      ),
+      keysMetadata: Schema.optional(
+        Schema.Struct({
+          primaryMasterKey: Schema.optional(
+            Schema.Struct({
+              generationTime: Schema.optional(Schema.String),
+            }),
+          ),
+          secondaryMasterKey: Schema.optional(
+            Schema.Struct({
+              generationTime: Schema.optional(Schema.String),
+            }),
+          ),
+          primaryReadonlyMasterKey: Schema.optional(
+            Schema.Struct({
+              generationTime: Schema.optional(Schema.String),
+            }),
+          ),
+          secondaryReadonlyMasterKey: Schema.optional(
+            Schema.Struct({
+              generationTime: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      enablePartitionMerge: Schema.optional(Schema.Boolean),
+      minimalTlsVersion: Schema.optional(
+        Schema.Literals(["Tls", "Tls11", "Tls12"]),
+      ),
+      enableBurstCapacity: Schema.optional(Schema.Boolean),
+      customerManagedKeyStatus: Schema.optional(Schema.String),
+      enablePerRegionPerPartitionAutoscale: Schema.optional(Schema.Boolean),
+      enablePriorityBasedExecution: Schema.optional(Schema.Boolean),
+      defaultPriorityLevel: Schema.optional(Schema.Literals(["High", "Low"])),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsCreateOrUpdateInput =
@@ -1962,11 +2589,11 @@ export const DatabaseAccountsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsDeleteInput =
@@ -1997,11 +2624,18 @@ export const DatabaseAccountsFailoverPriorityChangeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    failoverPolicies: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        locationName: Schema.optional(Schema.String),
+        failoverPriority: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/failoverPriorityChange",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsFailoverPriorityChangeInput =
@@ -2031,11 +2665,11 @@ export const DatabaseAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsGetInput = typeof DatabaseAccountsGetInput.Type;
@@ -2068,11 +2702,11 @@ export const DatabaseAccountsGetReadOnlyKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsGetReadOnlyKeysInput =
@@ -2104,11 +2738,11 @@ export const DatabaseAccountsGetReadOnlyKeys =
 export const DatabaseAccountsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/databaseAccounts",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsListInput = typeof DatabaseAccountsListInput.Type;
@@ -2148,11 +2782,11 @@ export const DatabaseAccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsListByResourceGroupInput =
@@ -2194,11 +2828,11 @@ export const DatabaseAccountsListConnectionStringsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listConnectionStrings",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsListConnectionStringsInput =
@@ -2210,7 +2844,7 @@ export const DatabaseAccountsListConnectionStringsOutput =
     connectionStrings: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          connectionString: Schema.optional(SensitiveString),
+          connectionString: Schema.optional(SensitiveOutputString),
           description: Schema.optional(Schema.String),
           keyKind: Schema.optional(
             Schema.Literals([
@@ -2258,11 +2892,11 @@ export const DatabaseAccountsListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listKeys",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsListKeysInput =
@@ -2296,11 +2930,11 @@ export const DatabaseAccountsListMetricDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/metricDefinitions",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsListMetricDefinitionsInput =
@@ -2373,11 +3007,11 @@ export const DatabaseAccountsListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/metrics",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsListMetricsInput =
@@ -2447,11 +3081,11 @@ export const DatabaseAccountsListReadOnlyKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsListReadOnlyKeysInput =
@@ -2484,11 +3118,11 @@ export const DatabaseAccountsListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/usages",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsListUsagesInput =
@@ -2546,11 +3180,12 @@ export const DatabaseAccountsOfflineRegionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    region: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/offlineRegion",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsOfflineRegionInput =
@@ -2580,11 +3215,12 @@ export const DatabaseAccountsOnlineRegionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    region: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/onlineRegion",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsOnlineRegionInput =
@@ -2614,11 +3250,17 @@ export const DatabaseAccountsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keyKind: Schema.Literals([
+      "primary",
+      "secondary",
+      "primaryReadonly",
+      "secondaryReadonly",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/regenerateKey",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsRegenerateKeyInput =
@@ -2648,11 +3290,199 @@ export const DatabaseAccountsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        consistencyPolicy: Schema.optional(
+          Schema.Struct({
+            defaultConsistencyLevel: Schema.Literals([
+              "Eventual",
+              "Session",
+              "BoundedStaleness",
+              "Strong",
+              "ConsistentPrefix",
+            ]),
+            maxStalenessPrefix: Schema.optional(Schema.Number),
+            maxIntervalInSeconds: Schema.optional(Schema.Number),
+          }),
+        ),
+        locations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              locationName: Schema.optional(Schema.String),
+              documentEndpoint: Schema.optional(Schema.String),
+              provisioningState: Schema.optional(Schema.String),
+              failoverPriority: Schema.optional(Schema.Number),
+              isZoneRedundant: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+        ipRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipAddressOrRange: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        isVirtualNetworkFilterEnabled: Schema.optional(Schema.Boolean),
+        enableAutomaticFailover: Schema.optional(Schema.Boolean),
+        capabilities: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        virtualNetworkRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              ignoreMissingVNetServiceEndpoint: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+        enableMultipleWriteLocations: Schema.optional(Schema.Boolean),
+        enableCassandraConnector: Schema.optional(Schema.Boolean),
+        connectorOffer: Schema.optional(Schema.Literals(["Small"])),
+        disableKeyBasedMetadataWriteAccess: Schema.optional(Schema.Boolean),
+        keyVaultKeyUri: Schema.optional(Schema.String),
+        defaultIdentity: Schema.optional(Schema.String),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+        ),
+        enableFreeTier: Schema.optional(Schema.Boolean),
+        apiProperties: Schema.optional(
+          Schema.Struct({
+            serverVersion: Schema.optional(
+              Schema.Literals([
+                "3.2",
+                "3.6",
+                "4.0",
+                "4.2",
+                "5.0",
+                "6.0",
+                "7.0",
+              ]),
+            ),
+          }),
+        ),
+        enableAnalyticalStorage: Schema.optional(Schema.Boolean),
+        analyticalStorageConfiguration: Schema.optional(
+          Schema.Struct({
+            schemaType: Schema.optional(
+              Schema.Literals(["WellDefined", "FullFidelity"]),
+            ),
+          }),
+        ),
+        backupPolicy: Schema.optional(
+          Schema.Struct({
+            type: Schema.Literals(["Periodic", "Continuous"]),
+            migrationState: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "Invalid",
+                    "InProgress",
+                    "Completed",
+                    "Failed",
+                  ]),
+                ),
+                targetType: Schema.optional(
+                  Schema.Literals(["Periodic", "Continuous"]),
+                ),
+                startTime: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        cors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              allowedOrigins: Schema.String,
+              allowedMethods: Schema.optional(Schema.String),
+              allowedHeaders: Schema.optional(Schema.String),
+              exposedHeaders: Schema.optional(Schema.String),
+              maxAgeInSeconds: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        networkAclBypass: Schema.optional(
+          Schema.Literals(["None", "AzureServices"]),
+        ),
+        networkAclBypassResourceIds: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+        capacity: Schema.optional(
+          Schema.Struct({
+            totalThroughputLimit: Schema.optional(Schema.Number),
+          }),
+        ),
+        keysMetadata: Schema.optional(
+          Schema.Struct({
+            primaryMasterKey: Schema.optional(
+              Schema.Struct({
+                generationTime: Schema.optional(Schema.String),
+              }),
+            ),
+            secondaryMasterKey: Schema.optional(
+              Schema.Struct({
+                generationTime: Schema.optional(Schema.String),
+              }),
+            ),
+            primaryReadonlyMasterKey: Schema.optional(
+              Schema.Struct({
+                generationTime: Schema.optional(Schema.String),
+              }),
+            ),
+            secondaryReadonlyMasterKey: Schema.optional(
+              Schema.Struct({
+                generationTime: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        enablePartitionMerge: Schema.optional(Schema.Boolean),
+        minimalTlsVersion: Schema.optional(
+          Schema.Literals(["Tls", "Tls11", "Tls12"]),
+        ),
+        enableBurstCapacity: Schema.optional(Schema.Boolean),
+        customerManagedKeyStatus: Schema.optional(Schema.String),
+        enablePerRegionPerPartitionAutoscale: Schema.optional(Schema.Boolean),
+        enablePriorityBasedExecution: Schema.optional(Schema.Boolean),
+        defaultPriorityLevel: Schema.optional(Schema.Literals(["High", "Low"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseAccountsUpdateInput =
@@ -2689,11 +3519,11 @@ export const DatabaseListMetricDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metricDefinitions",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseListMetricDefinitionsInput =
@@ -2766,11 +3596,11 @@ export const DatabaseListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metrics",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseListMetricsInput = typeof DatabaseListMetricsInput.Type;
@@ -2836,11 +3666,11 @@ export const DatabaseListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/usages",
+      apiVersion: "2025-10-15",
     }),
   );
 export type DatabaseListUsagesInput = typeof DatabaseListUsagesInput.Type;
@@ -2893,11 +3723,26 @@ export const DatabaseListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Updating",
+        ]),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
+    apiVersion: "2025-10-15",
   }),
 );
 export type FleetCreateInput = typeof FleetCreateInput.Type;
@@ -2940,11 +3785,11 @@ export const FleetCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
+    apiVersion: "2025-10-15",
   }),
 );
 export type FleetDeleteInput = typeof FleetDeleteInput.Type;
@@ -2969,11 +3814,11 @@ export const FleetDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
+    apiVersion: "2025-10-15",
   }),
 );
 export type FleetGetInput = typeof FleetGetInput.Type;
@@ -3015,11 +3860,11 @@ export const FleetGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const FleetListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/fleets",
+    apiVersion: "2025-10-15",
   }),
 );
 export type FleetListInput = typeof FleetListInput.Type;
@@ -3079,11 +3924,11 @@ export const FleetListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets",
+      apiVersion: "2025-10-15",
     }),
   );
 export type FleetListByResourceGroupInput =
@@ -3149,11 +3994,30 @@ export const FleetspaceAccountCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Updating",
+          ]),
+        ),
+        globalDatabaseAccountProperties: Schema.optional(
+          Schema.Struct({
+            resourceId: Schema.optional(Schema.String),
+            armLocation: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type FleetspaceAccountCreateInput =
@@ -3202,11 +4066,11 @@ export const FleetspaceAccountDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type FleetspaceAccountDeleteInput =
@@ -3237,11 +4101,11 @@ export const FleetspaceAccountGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type FleetspaceAccountGetInput = typeof FleetspaceAccountGetInput.Type;
@@ -3288,11 +4152,11 @@ export const FleetspaceAccountListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts",
+      apiVersion: "2025-10-15",
     }),
   );
 export type FleetspaceAccountListInput = typeof FleetspaceAccountListInput.Type;
@@ -3356,11 +4220,35 @@ export const FleetspaceAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const FleetspaceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Updating",
+        ]),
+      ),
+      fleetspaceApiKind: Schema.optional(Schema.Literals(["NoSQL"])),
+      serviceTier: Schema.optional(
+        Schema.Literals(["GeneralPurpose", "BusinessCritical"]),
+      ),
+      dataRegions: Schema.optional(Schema.Array(Schema.String)),
+      throughputPoolConfiguration: Schema.optional(
+        Schema.Struct({
+          minThroughput: Schema.optional(Schema.Number),
+          maxThroughput: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
+    apiVersion: "2025-10-15",
   }),
 );
 export type FleetspaceCreateInput = typeof FleetspaceCreateInput.Type;
@@ -3405,11 +4293,11 @@ export const FleetspaceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetspaceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
+    apiVersion: "2025-10-15",
   }),
 );
 export type FleetspaceDeleteInput = typeof FleetspaceDeleteInput.Type;
@@ -3434,11 +4322,11 @@ export const FleetspaceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetspaceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
+    apiVersion: "2025-10-15",
   }),
 );
 export type FleetspaceGetInput = typeof FleetspaceGetInput.Type;
@@ -3481,11 +4369,11 @@ export const FleetspaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetspaceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces",
+    apiVersion: "2025-10-15",
   }),
 );
 export type FleetspaceListInput = typeof FleetspaceListInput.Type;
@@ -3545,11 +4433,35 @@ export const FleetspaceList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Updating",
+        ]),
+      ),
+      fleetspaceApiKind: Schema.optional(Schema.Literals(["NoSQL"])),
+      serviceTier: Schema.optional(
+        Schema.Literals(["GeneralPurpose", "BusinessCritical"]),
+      ),
+      dataRegions: Schema.optional(Schema.Array(Schema.String)),
+      throughputPoolConfiguration: Schema.optional(
+        Schema.Struct({
+          minThroughput: Schema.optional(Schema.Number),
+          maxThroughput: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
+    apiVersion: "2025-10-15",
   }),
 );
 export type FleetspaceUpdateInput = typeof FleetspaceUpdateInput.Type;
@@ -3594,11 +4506,24 @@ export const FleetspaceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FleetUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Updating",
+        ]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
+    apiVersion: "2025-10-15",
   }),
 );
 export type FleetUpdateInput = typeof FleetUpdateInput.Type;
@@ -3642,11 +4567,39 @@ export const GremlinResourcesCreateUpdateGremlinDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.String,
+        restoreParameters: Schema.optional(
+          Schema.Struct({
+            restoreSource: Schema.optional(Schema.String),
+            restoreTimestampInUtc: Schema.optional(Schema.String),
+            restoreWithTtlDisabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        createMode: Schema.optional(Schema.Literals(["Default", "Restore"])),
+      }),
+      options: Schema.optional(
+        Schema.Struct({
+          throughput: Schema.optional(Schema.Number),
+          autoscaleSettings: Schema.optional(
+            Schema.Struct({
+              maxThroughput: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesCreateUpdateGremlinDatabaseInput =
@@ -3682,11 +4635,162 @@ export const GremlinResourcesCreateUpdateGremlinGraphInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.String,
+        indexingPolicy: Schema.optional(
+          Schema.Struct({
+            automatic: Schema.optional(Schema.Boolean),
+            indexingMode: Schema.optional(
+              Schema.Literals(["consistent", "lazy", "none"]),
+            ),
+            includedPaths: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.optional(Schema.String),
+                  indexes: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        dataType: Schema.optional(
+                          Schema.Literals([
+                            "String",
+                            "Number",
+                            "Point",
+                            "Polygon",
+                            "LineString",
+                            "MultiPolygon",
+                          ]),
+                        ),
+                        precision: Schema.optional(Schema.Number),
+                        kind: Schema.optional(
+                          Schema.Literals(["Hash", "Range", "Spatial"]),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            excludedPaths: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            compositeIndexes: Schema.optional(
+              Schema.Array(
+                Schema.Array(
+                  Schema.Struct({
+                    path: Schema.optional(Schema.String),
+                    order: Schema.optional(
+                      Schema.Literals(["ascending", "descending"]),
+                    ),
+                  }),
+                ),
+              ),
+            ),
+            spatialIndexes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.optional(Schema.String),
+                  types: Schema.optional(
+                    Schema.Array(
+                      Schema.Literals([
+                        "Point",
+                        "LineString",
+                        "Polygon",
+                        "MultiPolygon",
+                      ]),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            vectorIndexes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.String,
+                  type: Schema.Literals(["flat", "diskANN", "quantizedFlat"]),
+                  quantizationByteSize: Schema.optional(Schema.Number),
+                  indexingSearchListSize: Schema.optional(Schema.Number),
+                  vectorIndexShardKey: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                }),
+              ),
+            ),
+            fullTextIndexes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+        partitionKey: Schema.optional(
+          Schema.Struct({
+            paths: Schema.optional(Schema.Array(Schema.String)),
+            kind: Schema.optional(
+              Schema.Literals(["Hash", "Range", "MultiHash"]),
+            ),
+            version: Schema.optional(Schema.Number),
+            systemKey: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        defaultTtl: Schema.optional(Schema.Number),
+        uniqueKeyPolicy: Schema.optional(
+          Schema.Struct({
+            uniqueKeys: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  paths: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+          }),
+        ),
+        conflictResolutionPolicy: Schema.optional(
+          Schema.Struct({
+            mode: Schema.optional(
+              Schema.Literals(["LastWriterWins", "Custom"]),
+            ),
+            conflictResolutionPath: Schema.optional(Schema.String),
+            conflictResolutionProcedure: Schema.optional(Schema.String),
+          }),
+        ),
+        analyticalStorageTtl: Schema.optional(Schema.Number),
+        restoreParameters: Schema.optional(
+          Schema.Struct({
+            restoreSource: Schema.optional(Schema.String),
+            restoreTimestampInUtc: Schema.optional(Schema.String),
+            restoreWithTtlDisabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        createMode: Schema.optional(Schema.Literals(["Default", "Restore"])),
+      }),
+      options: Schema.optional(
+        Schema.Struct({
+          throughput: Schema.optional(Schema.Number),
+          autoscaleSettings: Schema.optional(
+            Schema.Struct({
+              maxThroughput: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesCreateUpdateGremlinGraphInput =
@@ -3722,11 +4826,11 @@ export const GremlinResourcesDeleteGremlinDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesDeleteGremlinDatabaseInput =
@@ -3756,11 +4860,11 @@ export const GremlinResourcesDeleteGremlinGraphInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesDeleteGremlinGraphInput =
@@ -3790,11 +4894,11 @@ export const GremlinResourcesGetGremlinDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesGetGremlinDatabaseInput =
@@ -3830,11 +4934,11 @@ export const GremlinResourcesGetGremlinDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesGetGremlinDatabaseThroughputInput =
@@ -3870,11 +4974,11 @@ export const GremlinResourcesGetGremlinGraphInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesGetGremlinGraphInput =
@@ -3910,11 +5014,11 @@ export const GremlinResourcesGetGremlinGraphThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesGetGremlinGraphThroughputInput =
@@ -3950,11 +5054,11 @@ export const GremlinResourcesListGremlinDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesListGremlinDatabasesInput =
@@ -3996,11 +5100,11 @@ export const GremlinResourcesListGremlinGraphsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesListGremlinGraphsInput =
@@ -4042,11 +5146,11 @@ export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput =
@@ -4082,11 +5186,11 @@ export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput =
@@ -4123,11 +5227,11 @@ export const GremlinResourcesMigrateGremlinGraphToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default/migrateToAutoscale",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesMigrateGremlinGraphToAutoscaleInput =
@@ -4163,11 +5267,11 @@ export const GremlinResourcesMigrateGremlinGraphToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default/migrateToManualThroughput",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesMigrateGremlinGraphToManualThroughputInput =
@@ -4206,11 +5310,12 @@ export const GremlinResourcesRetrieveContinuousBackupInformationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     graphName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/retrieveContinuousBackupInformation",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesRetrieveContinuousBackupInformationInput =
@@ -4249,11 +5354,41 @@ export const GremlinResourcesUpdateGremlinDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        throughput: Schema.optional(Schema.Number),
+        autoscaleSettings: Schema.optional(
+          Schema.Struct({
+            maxThroughput: Schema.Number,
+            autoUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                throughputPolicy: Schema.optional(
+                  Schema.Struct({
+                    isEnabled: Schema.optional(Schema.Boolean),
+                    incrementPercent: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            targetMaxThroughput: Schema.optional(Schema.Number),
+          }),
+        ),
+        minimumThroughput: Schema.optional(Schema.String),
+        offerReplacePending: Schema.optional(Schema.String),
+        instantMaximumThroughput: Schema.optional(Schema.String),
+        softAllowedMaximumThroughput: Schema.optional(Schema.String),
+      }),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesUpdateGremlinDatabaseThroughputInput =
@@ -4289,11 +5424,41 @@ export const GremlinResourcesUpdateGremlinGraphThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        throughput: Schema.optional(Schema.Number),
+        autoscaleSettings: Schema.optional(
+          Schema.Struct({
+            maxThroughput: Schema.Number,
+            autoUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                throughputPolicy: Schema.optional(
+                  Schema.Struct({
+                    isEnabled: Schema.optional(Schema.Boolean),
+                    incrementPercent: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            targetMaxThroughput: Schema.optional(Schema.Number),
+          }),
+        ),
+        minimumThroughput: Schema.optional(Schema.String),
+        offerReplacePending: Schema.optional(Schema.String),
+        instantMaximumThroughput: Schema.optional(Schema.String),
+        softAllowedMaximumThroughput: Schema.optional(Schema.String),
+      }),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type GremlinResourcesUpdateGremlinGraphThroughputInput =
@@ -4327,11 +5492,11 @@ export const GremlinResourcesUpdateGremlinGraphThroughput =
 // Input Schema
 export const LocationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}",
+    apiVersion: "2025-10-15",
   }),
 );
 export type LocationsGetInput = typeof LocationsGetInput.Type;
@@ -4358,11 +5523,11 @@ export const LocationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LocationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations",
+    apiVersion: "2025-10-15",
   }),
 );
 export type LocationsListInput = typeof LocationsListInput.Type;
@@ -4397,11 +5562,58 @@ export const MongoDBResourcesCreateUpdateMongoDBCollectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.String,
+        shardKey: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        indexes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(
+                Schema.Struct({
+                  keys: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+              options: Schema.optional(
+                Schema.Struct({
+                  expireAfterSeconds: Schema.optional(Schema.Number),
+                  unique: Schema.optional(Schema.Boolean),
+                }),
+              ),
+            }),
+          ),
+        ),
+        analyticalStorageTtl: Schema.optional(Schema.Number),
+        restoreParameters: Schema.optional(
+          Schema.Struct({
+            restoreSource: Schema.optional(Schema.String),
+            restoreTimestampInUtc: Schema.optional(Schema.String),
+            restoreWithTtlDisabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        createMode: Schema.optional(Schema.Literals(["Default", "Restore"])),
+      }),
+      options: Schema.optional(
+        Schema.Struct({
+          throughput: Schema.optional(Schema.Number),
+          autoscaleSettings: Schema.optional(
+            Schema.Struct({
+              maxThroughput: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesCreateUpdateMongoDBCollectionInput =
@@ -4437,11 +5649,39 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.String,
+        restoreParameters: Schema.optional(
+          Schema.Struct({
+            restoreSource: Schema.optional(Schema.String),
+            restoreTimestampInUtc: Schema.optional(Schema.String),
+            restoreWithTtlDisabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        createMode: Schema.optional(Schema.Literals(["Default", "Restore"])),
+      }),
+      options: Schema.optional(
+        Schema.Struct({
+          throughput: Schema.optional(Schema.Number),
+          autoscaleSettings: Schema.optional(
+            Schema.Struct({
+              maxThroughput: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
@@ -4478,11 +5718,39 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        roleName: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["BuiltInRole", "CustomRole"])),
+        databaseName: Schema.optional(Schema.String),
+        privileges: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              resource: Schema.optional(
+                Schema.Struct({
+                  db: Schema.optional(Schema.String),
+                  collection: Schema.optional(Schema.String),
+                }),
+              ),
+              actions: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+        roles: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              db: Schema.optional(Schema.String),
+              role: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
@@ -4518,11 +5786,28 @@ export const MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        userName: Schema.optional(Schema.String),
+        password: Schema.optional(SensitiveString),
+        databaseName: Schema.optional(Schema.String),
+        customData: Schema.optional(Schema.String),
+        roles: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              db: Schema.optional(Schema.String),
+              role: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        mechanisms: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
@@ -4557,11 +5842,11 @@ export const MongoDBResourcesDeleteMongoDBCollectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesDeleteMongoDBCollectionInput =
@@ -4591,11 +5876,11 @@ export const MongoDBResourcesDeleteMongoDBDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesDeleteMongoDBDatabaseInput =
@@ -4626,11 +5911,11 @@ export const MongoDBResourcesDeleteMongoRoleDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesDeleteMongoRoleDefinitionInput =
@@ -4662,11 +5947,11 @@ export const MongoDBResourcesDeleteMongoUserDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesDeleteMongoUserDefinitionInput =
@@ -4697,11 +5982,11 @@ export const MongoDBResourcesGetMongoDBCollectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesGetMongoDBCollectionInput =
@@ -4737,11 +6022,11 @@ export const MongoDBResourcesGetMongoDBCollectionThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesGetMongoDBCollectionThroughputInput =
@@ -4777,11 +6062,11 @@ export const MongoDBResourcesGetMongoDBDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesGetMongoDBDatabaseInput =
@@ -4817,11 +6102,11 @@ export const MongoDBResourcesGetMongoDBDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesGetMongoDBDatabaseThroughputInput =
@@ -4858,11 +6143,11 @@ export const MongoDBResourcesGetMongoRoleDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesGetMongoRoleDefinitionInput =
@@ -4898,11 +6183,11 @@ export const MongoDBResourcesGetMongoUserDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesGetMongoUserDefinitionInput =
@@ -4937,11 +6222,11 @@ export const MongoDBResourcesListMongoDBCollectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesListMongoDBCollectionsInput =
@@ -4983,11 +6268,11 @@ export const MongoDBResourcesListMongoDBDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesListMongoDBDatabasesInput =
@@ -5030,11 +6315,11 @@ export const MongoDBResourcesListMongoRoleDefinitionsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesListMongoRoleDefinitionsInput =
@@ -5076,11 +6361,11 @@ export const MongoDBResourcesListMongoUserDefinitionsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesListMongoUserDefinitionsInput =
@@ -5121,11 +6406,11 @@ export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default/migrateToAutoscale",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput =
@@ -5161,11 +6446,11 @@ export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default/migrateToManualThroughput",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput =
@@ -5203,11 +6488,11 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput =
@@ -5243,11 +6528,11 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput =
@@ -5287,11 +6572,12 @@ export const MongoDBResourcesRetrieveContinuousBackupInformationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     collectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/retrieveContinuousBackupInformation",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesRetrieveContinuousBackupInformationInput =
@@ -5330,11 +6616,41 @@ export const MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        throughput: Schema.optional(Schema.Number),
+        autoscaleSettings: Schema.optional(
+          Schema.Struct({
+            maxThroughput: Schema.Number,
+            autoUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                throughputPolicy: Schema.optional(
+                  Schema.Struct({
+                    isEnabled: Schema.optional(Schema.Boolean),
+                    incrementPercent: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            targetMaxThroughput: Schema.optional(Schema.Number),
+          }),
+        ),
+        minimumThroughput: Schema.optional(Schema.String),
+        offerReplacePending: Schema.optional(Schema.String),
+        instantMaximumThroughput: Schema.optional(Schema.String),
+        softAllowedMaximumThroughput: Schema.optional(Schema.String),
+      }),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
@@ -5370,11 +6686,41 @@ export const MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        throughput: Schema.optional(Schema.Number),
+        autoscaleSettings: Schema.optional(
+          Schema.Struct({
+            maxThroughput: Schema.Number,
+            autoUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                throughputPolicy: Schema.optional(
+                  Schema.Struct({
+                    isEnabled: Schema.optional(Schema.Boolean),
+                    incrementPercent: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            targetMaxThroughput: Schema.optional(Schema.Number),
+          }),
+        ),
+        minimumThroughput: Schema.optional(Schema.String),
+        offerReplacePending: Schema.optional(Schema.String),
+        instantMaximumThroughput: Schema.optional(Schema.String),
+        softAllowedMaximumThroughput: Schema.optional(Schema.String),
+      }),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
@@ -5410,11 +6756,14 @@ export const NotebookWorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type NotebookWorkspacesCreateOrUpdateInput =
@@ -5448,11 +6797,11 @@ export const NotebookWorkspacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type NotebookWorkspacesDeleteInput =
@@ -5483,11 +6832,11 @@ export const NotebookWorkspacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type NotebookWorkspacesGetInput = typeof NotebookWorkspacesGetInput.Type;
@@ -5521,11 +6870,11 @@ export const NotebookWorkspacesListByDatabaseAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces",
+      apiVersion: "2025-10-15",
     }),
   );
 export type NotebookWorkspacesListByDatabaseAccountInput =
@@ -5565,11 +6914,11 @@ export const NotebookWorkspacesListConnectionInfoInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/listConnectionInfo",
+      apiVersion: "2025-10-15",
     }),
   );
 export type NotebookWorkspacesListConnectionInfoInput =
@@ -5602,11 +6951,11 @@ export const NotebookWorkspacesRegenerateAuthTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/regenerateAuthToken",
+      apiVersion: "2025-10-15",
     }),
   );
 export type NotebookWorkspacesRegenerateAuthTokenInput =
@@ -5636,11 +6985,11 @@ export const NotebookWorkspacesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/start",
+      apiVersion: "2025-10-15",
     }),
   );
 export type NotebookWorkspacesStartInput =
@@ -5667,10 +7016,14 @@ export const NotebookWorkspacesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.DocumentDB/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.DocumentDB/operations",
+    apiVersion: "2025-10-15",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -5710,11 +7063,11 @@ export const PartitionKeyRangeIdListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitionKeyRangeId/{partitionKeyRangeId}/metrics",
+      apiVersion: "2025-10-15",
     }),
   );
 export type PartitionKeyRangeIdListMetricsInput =
@@ -5783,11 +7136,11 @@ export const PartitionKeyRangeIdRegionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/partitionKeyRangeId/{partitionKeyRangeId}/metrics",
+      apiVersion: "2025-10-15",
     }),
   );
 export type PartitionKeyRangeIdRegionListMetricsInput =
@@ -5856,11 +7209,11 @@ export const PercentileListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/percentile/metrics",
+      apiVersion: "2025-10-15",
     }),
   );
 export type PercentileListMetricsInput = typeof PercentileListMetricsInput.Type;
@@ -5929,11 +7282,11 @@ export const PercentileSourceTargetListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sourceRegion/{sourceRegion}/targetRegion/{targetRegion}/percentile/metrics",
+      apiVersion: "2025-10-15",
     }),
   );
 export type PercentileSourceTargetListMetricsInput =
@@ -6002,11 +7355,11 @@ export const PercentileTargetListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/targetRegion/{targetRegion}/percentile/metrics",
+      apiVersion: "2025-10-15",
     }),
   );
 export type PercentileTargetListMetricsInput =
@@ -6076,11 +7429,29 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+        groupId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -6114,11 +7485,11 @@ export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -6148,11 +7519,11 @@ export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -6186,11 +7557,11 @@ export const PrivateEndpointConnectionsListByDatabaseAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections",
+      apiVersion: "2025-10-15",
     }),
   );
 export type PrivateEndpointConnectionsListByDatabaseAccountInput =
@@ -6230,11 +7601,11 @@ export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateLinkResources/{groupName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -6269,11 +7640,11 @@ export const PrivateLinkResourcesListByDatabaseAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateLinkResources",
+      apiVersion: "2025-10-15",
     }),
   );
 export type PrivateLinkResourcesListByDatabaseAccountInput =
@@ -6312,11 +7683,11 @@ export const PrivateLinkResourcesListByDatabaseAccount =
 export const RestorableDatabaseAccountsGetByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableDatabaseAccountsGetByLocationInput =
@@ -6377,11 +7748,11 @@ export const RestorableDatabaseAccountsGetByLocation =
 export const RestorableDatabaseAccountsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableDatabaseAccountsListInput =
@@ -6450,11 +7821,11 @@ export const RestorableDatabaseAccountsList =
 export const RestorableDatabaseAccountsListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableDatabaseAccountsListByLocationInput =
@@ -6523,11 +7894,11 @@ export const RestorableDatabaseAccountsListByLocation =
 export const RestorableGremlinDatabasesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinDatabases",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableGremlinDatabasesListInput =
@@ -6588,11 +7959,11 @@ export const RestorableGremlinDatabasesList =
 export const RestorableGremlinGraphsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGraphs",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableGremlinGraphsListInput =
@@ -6654,11 +8025,11 @@ export const RestorableGremlinGraphsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RestorableGremlinResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinResources",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableGremlinResourcesListInput =
@@ -6698,11 +8069,11 @@ export const RestorableGremlinResourcesList =
 export const RestorableMongodbCollectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbCollections",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableMongodbCollectionsListInput =
@@ -6763,11 +8134,11 @@ export const RestorableMongodbCollectionsList =
 export const RestorableMongodbDatabasesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbDatabases",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableMongodbDatabasesListInput =
@@ -6828,11 +8199,11 @@ export const RestorableMongodbDatabasesList =
 export const RestorableMongodbResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbResources",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableMongodbResourcesListInput =
@@ -6872,11 +8243,11 @@ export const RestorableMongodbResourcesList =
 export const RestorableSqlContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlContainers",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableSqlContainersListInput =
@@ -7159,11 +8530,11 @@ export const RestorableSqlContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RestorableSqlDatabasesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlDatabases",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableSqlDatabasesListInput =
@@ -7245,11 +8616,11 @@ export const RestorableSqlDatabasesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RestorableSqlResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlResources",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableSqlResourcesListInput =
@@ -7290,11 +8661,11 @@ export const RestorableSqlResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RestorableTableResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTableResources",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableTableResourcesListInput =
@@ -7332,11 +8703,11 @@ export const RestorableTableResourcesList =
 export const RestorableTablesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTables",
+      apiVersion: "2025-10-15",
     }),
   );
 export type RestorableTablesListInput = typeof RestorableTablesListInput.Type;
@@ -7396,11 +8767,25 @@ export const RestorableTablesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ServiceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      instanceSize: Schema.optional(
+        Schema.Literals(["Cosmos.D4s", "Cosmos.D8s", "Cosmos.D16s"]),
+      ),
+      instanceCount: Schema.optional(Schema.Number),
+      serviceType: Schema.Literals([
+        "SqlDedicatedGateway",
+        "DataTransfer",
+        "GraphAPICompute",
+        "MaterializedViewsBuilder",
+      ]),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
+    apiVersion: "2025-10-15",
   }),
 );
 export type ServiceCreateInput = typeof ServiceCreateInput.Type;
@@ -7429,11 +8814,11 @@ export const ServiceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
+    apiVersion: "2025-10-15",
   }),
 );
 export type ServiceDeleteInput = typeof ServiceDeleteInput.Type;
@@ -7458,11 +8843,11 @@ export const ServiceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
+    apiVersion: "2025-10-15",
   }),
 );
 export type ServiceGetInput = typeof ServiceGetInput.Type;
@@ -7491,11 +8876,11 @@ export const ServiceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServiceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services",
+    apiVersion: "2025-10-15",
   }),
 );
 export type ServiceListInput = typeof ServiceListInput.Type;
@@ -7531,11 +8916,26 @@ export const SqlResourcesCreateUpdateClientEncryptionKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.optional(Schema.String),
+        encryptionAlgorithm: Schema.optional(Schema.String),
+        wrappedDataEncryptionKey: Schema.optional(Schema.String),
+        keyWrapMetadata: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+            algorithm: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys/{clientEncryptionKeyName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesCreateUpdateClientEncryptionKeyInput =
@@ -7569,11 +8969,219 @@ export const SqlResourcesCreateUpdateSqlContainerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.String,
+        indexingPolicy: Schema.optional(
+          Schema.Struct({
+            automatic: Schema.optional(Schema.Boolean),
+            indexingMode: Schema.optional(
+              Schema.Literals(["consistent", "lazy", "none"]),
+            ),
+            includedPaths: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.optional(Schema.String),
+                  indexes: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        dataType: Schema.optional(
+                          Schema.Literals([
+                            "String",
+                            "Number",
+                            "Point",
+                            "Polygon",
+                            "LineString",
+                            "MultiPolygon",
+                          ]),
+                        ),
+                        precision: Schema.optional(Schema.Number),
+                        kind: Schema.optional(
+                          Schema.Literals(["Hash", "Range", "Spatial"]),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            excludedPaths: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            compositeIndexes: Schema.optional(
+              Schema.Array(
+                Schema.Array(
+                  Schema.Struct({
+                    path: Schema.optional(Schema.String),
+                    order: Schema.optional(
+                      Schema.Literals(["ascending", "descending"]),
+                    ),
+                  }),
+                ),
+              ),
+            ),
+            spatialIndexes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.optional(Schema.String),
+                  types: Schema.optional(
+                    Schema.Array(
+                      Schema.Literals([
+                        "Point",
+                        "LineString",
+                        "Polygon",
+                        "MultiPolygon",
+                      ]),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            vectorIndexes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.String,
+                  type: Schema.Literals(["flat", "diskANN", "quantizedFlat"]),
+                  quantizationByteSize: Schema.optional(Schema.Number),
+                  indexingSearchListSize: Schema.optional(Schema.Number),
+                  vectorIndexShardKey: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                }),
+              ),
+            ),
+            fullTextIndexes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+        partitionKey: Schema.optional(
+          Schema.Struct({
+            paths: Schema.optional(Schema.Array(Schema.String)),
+            kind: Schema.optional(
+              Schema.Literals(["Hash", "Range", "MultiHash"]),
+            ),
+            version: Schema.optional(Schema.Number),
+            systemKey: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        defaultTtl: Schema.optional(Schema.Number),
+        uniqueKeyPolicy: Schema.optional(
+          Schema.Struct({
+            uniqueKeys: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  paths: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+          }),
+        ),
+        conflictResolutionPolicy: Schema.optional(
+          Schema.Struct({
+            mode: Schema.optional(
+              Schema.Literals(["LastWriterWins", "Custom"]),
+            ),
+            conflictResolutionPath: Schema.optional(Schema.String),
+            conflictResolutionProcedure: Schema.optional(Schema.String),
+          }),
+        ),
+        clientEncryptionPolicy: Schema.optional(
+          Schema.Struct({
+            includedPaths: Schema.Array(
+              Schema.Struct({
+                path: Schema.String,
+                clientEncryptionKeyId: Schema.String,
+                encryptionType: Schema.String,
+                encryptionAlgorithm: Schema.String,
+              }),
+            ),
+            policyFormatVersion: Schema.Number,
+          }),
+        ),
+        analyticalStorageTtl: Schema.optional(Schema.Number),
+        restoreParameters: Schema.optional(
+          Schema.Struct({
+            restoreSource: Schema.optional(Schema.String),
+            restoreTimestampInUtc: Schema.optional(Schema.String),
+            restoreWithTtlDisabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        createMode: Schema.optional(Schema.Literals(["Default", "Restore"])),
+        computedProperties: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              query: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        vectorEmbeddingPolicy: Schema.optional(
+          Schema.Struct({
+            vectorEmbeddings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.String,
+                  dataType: Schema.Literals([
+                    "float32",
+                    "uint8",
+                    "int8",
+                    "float16",
+                  ]),
+                  distanceFunction: Schema.Literals([
+                    "euclidean",
+                    "cosine",
+                    "dotproduct",
+                  ]),
+                  dimensions: Schema.Number,
+                }),
+              ),
+            ),
+          }),
+        ),
+        fullTextPolicy: Schema.optional(
+          Schema.Struct({
+            defaultLanguage: Schema.optional(Schema.String),
+            fullTextPaths: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.String,
+                  language: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+      options: Schema.optional(
+        Schema.Struct({
+          throughput: Schema.optional(Schema.Number),
+          autoscaleSettings: Schema.optional(
+            Schema.Struct({
+              maxThroughput: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlContainerInput =
@@ -7609,11 +9217,39 @@ export const SqlResourcesCreateUpdateSqlDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.String,
+        restoreParameters: Schema.optional(
+          Schema.Struct({
+            restoreSource: Schema.optional(Schema.String),
+            restoreTimestampInUtc: Schema.optional(Schema.String),
+            restoreWithTtlDisabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        createMode: Schema.optional(Schema.Literals(["Default", "Restore"])),
+      }),
+      options: Schema.optional(
+        Schema.Struct({
+          throughput: Schema.optional(Schema.Number),
+          autoscaleSettings: Schema.optional(
+            Schema.Struct({
+              maxThroughput: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlDatabaseInput =
@@ -7650,11 +9286,18 @@ export const SqlResourcesCreateUpdateSqlRoleAssignmentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        roleDefinitionId: Schema.optional(Schema.String),
+        scope: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlRoleAssignmentInput =
@@ -7690,11 +9333,26 @@ export const SqlResourcesCreateUpdateSqlRoleDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        roleName: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["BuiltInRole", "CustomRole"])),
+        assignableScopes: Schema.optional(Schema.Array(Schema.String)),
+        permissions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              dataActions: Schema.optional(Schema.Array(Schema.String)),
+              notDataActions: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlRoleDefinitionInput =
@@ -7729,11 +9387,32 @@ export const SqlResourcesCreateUpdateSqlStoredProcedureInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.String,
+        body: Schema.optional(Schema.String),
+      }),
+      options: Schema.optional(
+        Schema.Struct({
+          throughput: Schema.optional(Schema.Number),
+          autoscaleSettings: Schema.optional(
+            Schema.Struct({
+              maxThroughput: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlStoredProcedureInput =
@@ -7769,11 +9448,36 @@ export const SqlResourcesCreateUpdateSqlTriggerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.String,
+        body: Schema.optional(Schema.String),
+        triggerType: Schema.optional(Schema.Literals(["Pre", "Post"])),
+        triggerOperation: Schema.optional(
+          Schema.Literals(["All", "Create", "Update", "Delete", "Replace"]),
+        ),
+      }),
+      options: Schema.optional(
+        Schema.Struct({
+          throughput: Schema.optional(Schema.Number),
+          autoscaleSettings: Schema.optional(
+            Schema.Struct({
+              maxThroughput: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlTriggerInput =
@@ -7809,11 +9513,32 @@ export const SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.String,
+        body: Schema.optional(Schema.String),
+      }),
+      options: Schema.optional(
+        Schema.Struct({
+          throughput: Schema.optional(Schema.Number),
+          autoscaleSettings: Schema.optional(
+            Schema.Struct({
+              maxThroughput: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
@@ -7849,11 +9574,11 @@ export const SqlResourcesDeleteSqlContainerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesDeleteSqlContainerInput =
@@ -7883,11 +9608,11 @@ export const SqlResourcesDeleteSqlDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesDeleteSqlDatabaseInput =
@@ -7918,11 +9643,11 @@ export const SqlResourcesDeleteSqlRoleAssignmentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesDeleteSqlRoleAssignmentInput =
@@ -7954,11 +9679,11 @@ export const SqlResourcesDeleteSqlRoleDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesDeleteSqlRoleDefinitionInput =
@@ -7989,11 +9714,11 @@ export const SqlResourcesDeleteSqlStoredProcedureInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesDeleteSqlStoredProcedureInput =
@@ -8023,11 +9748,11 @@ export const SqlResourcesDeleteSqlTriggerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesDeleteSqlTriggerInput =
@@ -8057,11 +9782,11 @@ export const SqlResourcesDeleteSqlUserDefinedFunctionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesDeleteSqlUserDefinedFunctionInput =
@@ -8091,11 +9816,11 @@ export const SqlResourcesGetClientEncryptionKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys/{clientEncryptionKeyName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesGetClientEncryptionKeyInput =
@@ -8129,11 +9854,11 @@ export const SqlResourcesGetSqlContainerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesGetSqlContainerInput =
@@ -8170,11 +9895,11 @@ export const SqlResourcesGetSqlContainerThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesGetSqlContainerThroughputInput =
@@ -8210,11 +9935,11 @@ export const SqlResourcesGetSqlDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesGetSqlDatabaseInput =
@@ -8251,11 +9976,11 @@ export const SqlResourcesGetSqlDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesGetSqlDatabaseThroughputInput =
@@ -8292,11 +10017,11 @@ export const SqlResourcesGetSqlRoleAssignmentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesGetSqlRoleAssignmentInput =
@@ -8332,11 +10057,11 @@ export const SqlResourcesGetSqlRoleDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesGetSqlRoleDefinitionInput =
@@ -8371,11 +10096,11 @@ export const SqlResourcesGetSqlStoredProcedureInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesGetSqlStoredProcedureInput =
@@ -8411,11 +10136,11 @@ export const SqlResourcesGetSqlTriggerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesGetSqlTriggerInput =
@@ -8452,11 +10177,11 @@ export const SqlResourcesGetSqlUserDefinedFunctionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesGetSqlUserDefinedFunctionInput =
@@ -8492,11 +10217,11 @@ export const SqlResourcesListClientEncryptionKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesListClientEncryptionKeysInput =
@@ -8536,11 +10261,11 @@ export const SqlResourcesListSqlContainersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesListSqlContainersInput =
@@ -8582,11 +10307,11 @@ export const SqlResourcesListSqlDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesListSqlDatabasesInput =
@@ -8629,11 +10354,11 @@ export const SqlResourcesListSqlRoleAssignmentsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesListSqlRoleAssignmentsInput =
@@ -8675,11 +10400,11 @@ export const SqlResourcesListSqlRoleDefinitionsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesListSqlRoleDefinitionsInput =
@@ -8720,11 +10445,11 @@ export const SqlResourcesListSqlStoredProceduresInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesListSqlStoredProceduresInput =
@@ -8766,11 +10491,11 @@ export const SqlResourcesListSqlTriggersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesListSqlTriggersInput =
@@ -8813,11 +10538,11 @@ export const SqlResourcesListSqlUserDefinedFunctionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesListSqlUserDefinedFunctionsInput =
@@ -8859,11 +10584,11 @@ export const SqlResourcesMigrateSqlContainerToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default/migrateToAutoscale",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesMigrateSqlContainerToAutoscaleInput =
@@ -8899,11 +10624,11 @@ export const SqlResourcesMigrateSqlContainerToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default/migrateToManualThroughput",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesMigrateSqlContainerToManualThroughputInput =
@@ -8939,11 +10664,11 @@ export const SqlResourcesMigrateSqlDatabaseToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesMigrateSqlDatabaseToAutoscaleInput =
@@ -8979,11 +10704,11 @@ export const SqlResourcesMigrateSqlDatabaseToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesMigrateSqlDatabaseToManualThroughputInput =
@@ -9022,11 +10747,12 @@ export const SqlResourcesRetrieveContinuousBackupInformationInput =
     accountName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/retrieveContinuousBackupInformation",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesRetrieveContinuousBackupInformationInput =
@@ -9065,11 +10791,41 @@ export const SqlResourcesUpdateSqlContainerThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        throughput: Schema.optional(Schema.Number),
+        autoscaleSettings: Schema.optional(
+          Schema.Struct({
+            maxThroughput: Schema.Number,
+            autoUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                throughputPolicy: Schema.optional(
+                  Schema.Struct({
+                    isEnabled: Schema.optional(Schema.Boolean),
+                    incrementPercent: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            targetMaxThroughput: Schema.optional(Schema.Number),
+          }),
+        ),
+        minimumThroughput: Schema.optional(Schema.String),
+        offerReplacePending: Schema.optional(Schema.String),
+        instantMaximumThroughput: Schema.optional(Schema.String),
+        softAllowedMaximumThroughput: Schema.optional(Schema.String),
+      }),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesUpdateSqlContainerThroughputInput =
@@ -9105,11 +10861,41 @@ export const SqlResourcesUpdateSqlDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        throughput: Schema.optional(Schema.Number),
+        autoscaleSettings: Schema.optional(
+          Schema.Struct({
+            maxThroughput: Schema.Number,
+            autoUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                throughputPolicy: Schema.optional(
+                  Schema.Struct({
+                    isEnabled: Schema.optional(Schema.Boolean),
+                    incrementPercent: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            targetMaxThroughput: Schema.optional(Schema.Number),
+          }),
+        ),
+        minimumThroughput: Schema.optional(Schema.String),
+        offerReplacePending: Schema.optional(Schema.String),
+        instantMaximumThroughput: Schema.optional(Schema.String),
+        softAllowedMaximumThroughput: Schema.optional(Schema.String),
+      }),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type SqlResourcesUpdateSqlDatabaseThroughputInput =
@@ -9145,11 +10931,39 @@ export const TableResourcesCreateUpdateTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        id: Schema.String,
+        restoreParameters: Schema.optional(
+          Schema.Struct({
+            restoreSource: Schema.optional(Schema.String),
+            restoreTimestampInUtc: Schema.optional(Schema.String),
+            restoreWithTtlDisabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        createMode: Schema.optional(Schema.Literals(["Default", "Restore"])),
+      }),
+      options: Schema.optional(
+        Schema.Struct({
+          throughput: Schema.optional(Schema.Number),
+          autoscaleSettings: Schema.optional(
+            Schema.Struct({
+              maxThroughput: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type TableResourcesCreateUpdateTableInput =
@@ -9185,11 +10999,11 @@ export const TableResourcesDeleteTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type TableResourcesDeleteTableInput =
@@ -9220,11 +11034,11 @@ export const TableResourcesGetTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
+      apiVersion: "2025-10-15",
     }),
   );
 export type TableResourcesGetTableInput =
@@ -9261,11 +11075,11 @@ export const TableResourcesGetTableThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type TableResourcesGetTableThroughputInput =
@@ -9301,11 +11115,11 @@ export const TableResourcesListTablesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables",
+      apiVersion: "2025-10-15",
     }),
   );
 export type TableResourcesListTablesInput =
@@ -9348,11 +11162,11 @@ export const TableResourcesMigrateTableToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default/migrateToAutoscale",
+      apiVersion: "2025-10-15",
     }),
   );
 export type TableResourcesMigrateTableToAutoscaleInput =
@@ -9388,11 +11202,11 @@ export const TableResourcesMigrateTableToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default/migrateToManualThroughput",
+      apiVersion: "2025-10-15",
     }),
   );
 export type TableResourcesMigrateTableToManualThroughputInput =
@@ -9430,11 +11244,12 @@ export const TableResourcesRetrieveContinuousBackupInformationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/retrieveContinuousBackupInformation",
+      apiVersion: "2025-10-15",
     }),
   );
 export type TableResourcesRetrieveContinuousBackupInformationInput =
@@ -9472,11 +11287,41 @@ export const TableResourcesUpdateTableThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resource: Schema.Struct({
+        throughput: Schema.optional(Schema.Number),
+        autoscaleSettings: Schema.optional(
+          Schema.Struct({
+            maxThroughput: Schema.Number,
+            autoUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                throughputPolicy: Schema.optional(
+                  Schema.Struct({
+                    isEnabled: Schema.optional(Schema.Boolean),
+                    incrementPercent: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            targetMaxThroughput: Schema.optional(Schema.Number),
+          }),
+        ),
+        minimumThroughput: Schema.optional(Schema.String),
+        offerReplacePending: Schema.optional(Schema.String),
+        instantMaximumThroughput: Schema.optional(Schema.String),
+        softAllowedMaximumThroughput: Schema.optional(Schema.String),
+      }),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default",
+      apiVersion: "2025-10-15",
     }),
   );
 export type TableResourcesUpdateTableThroughputInput =

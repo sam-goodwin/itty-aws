@@ -7,7 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const FirewallRulesCreateOrUpdateInput =
@@ -16,11 +16,27 @@ export const FirewallRulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "InProgress",
+            "Updating",
+            "Dropping",
+          ]),
+        ),
+        startIpAddress: Schema.String,
+        endIpAddress: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type FirewallRulesCreateOrUpdateInput =
@@ -73,11 +89,11 @@ export const FirewallRulesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
@@ -107,11 +123,11 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   mongoClusterName: Schema.String.pipe(T.PathParam()),
   firewallRuleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
@@ -160,11 +176,11 @@ export const FirewallRulesListByMongoClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules",
+      apiVersion: "2025-09-01",
     }),
   );
 export type FirewallRulesListByMongoClusterInput =
@@ -228,13 +244,13 @@ export const MongoClustersCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/checkMongoClusterNameAvailability",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MongoClustersCheckNameAvailabilityInput =
@@ -271,11 +287,210 @@ export const MongoClustersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        createMode: Schema.optional(
+          Schema.Literals([
+            "Default",
+            "PointInTimeRestore",
+            "GeoReplica",
+            "Replica",
+          ]),
+        ),
+        restoreParameters: Schema.optional(
+          Schema.Struct({
+            pointInTimeUTC: Schema.optional(Schema.String),
+            sourceResourceId: Schema.optional(Schema.String),
+          }),
+        ),
+        replicaParameters: Schema.optional(
+          Schema.Struct({
+            sourceResourceId: Schema.String,
+            sourceLocation: Schema.String,
+          }),
+        ),
+        administrator: Schema.optional(
+          Schema.Struct({
+            userName: Schema.optional(Schema.String),
+            password: Schema.optional(SensitiveString),
+          }),
+        ),
+        serverVersion: Schema.optional(Schema.String),
+        connectionString: Schema.optional(SensitiveString),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "InProgress",
+            "Updating",
+            "Dropping",
+          ]),
+        ),
+        clusterStatus: Schema.optional(
+          Schema.Literals([
+            "Ready",
+            "Provisioning",
+            "Updating",
+            "Starting",
+            "Stopping",
+            "Stopped",
+            "Dropping",
+          ]),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        highAvailability: Schema.optional(
+          Schema.Struct({
+            targetMode: Schema.optional(
+              Schema.Literals([
+                "Disabled",
+                "SameZone",
+                "ZoneRedundantPreferred",
+              ]),
+            ),
+          }),
+        ),
+        storage: Schema.optional(
+          Schema.Struct({
+            sizeGb: Schema.optional(Schema.Number),
+            type: Schema.optional(
+              Schema.Literals(["PremiumSSD", "PremiumSSDv2"]),
+            ),
+          }),
+        ),
+        sharding: Schema.optional(
+          Schema.Struct({
+            shardCount: Schema.optional(Schema.Number),
+          }),
+        ),
+        compute: Schema.optional(
+          Schema.Struct({
+            tier: Schema.optional(Schema.String),
+          }),
+        ),
+        backup: Schema.optional(
+          Schema.Struct({
+            earliestRestoreTime: Schema.optional(Schema.String),
+          }),
+        ),
+        dataApi: Schema.optional(
+          Schema.Struct({
+            mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          }),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        previewFeatures: Schema.optional(
+          Schema.Array(Schema.Literals(["GeoReplicas"])),
+        ),
+        replica: Schema.optional(
+          Schema.Struct({
+            sourceResourceId: Schema.optional(Schema.String),
+            role: Schema.optional(
+              Schema.Literals(["Primary", "AsyncReplica", "GeoAsyncReplica"]),
+            ),
+            replicationState: Schema.optional(
+              Schema.Literals([
+                "Active",
+                "Catchup",
+                "Provisioning",
+                "Updating",
+                "Broken",
+                "Reconfiguring",
+              ]),
+            ),
+          }),
+        ),
+        infrastructureVersion: Schema.optional(Schema.String),
+        authConfig: Schema.optional(
+          Schema.Struct({
+            allowedModes: Schema.optional(
+              Schema.Array(Schema.Literals(["NativeAuth", "MicrosoftEntraID"])),
+            ),
+          }),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            customerManagedKeyEncryption: Schema.optional(
+              Schema.Struct({
+                keyEncryptionKeyIdentity: Schema.optional(
+                  Schema.Struct({
+                    identityType: Schema.optional(
+                      Schema.Literals(["UserAssignedIdentity"]),
+                    ),
+                    userAssignedIdentityResourceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                keyEncryptionKeyUrl: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MongoClustersCreateOrUpdateInput =
@@ -326,11 +541,11 @@ export const MongoClustersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MongoClustersDeleteInput = typeof MongoClustersDeleteInput.Type;
@@ -358,11 +573,11 @@ export const MongoClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   mongoClusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type MongoClustersGetInput = typeof MongoClustersGetInput.Type;
@@ -408,12 +623,12 @@ export const MongoClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const MongoClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/mongoClusters",
+    apiVersion: "2025-09-01",
   }),
 );
 export type MongoClustersListInput = typeof MongoClustersListInput.Type;
@@ -472,11 +687,11 @@ export const MongoClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MongoClustersListByResourceGroupInput =
@@ -540,11 +755,11 @@ export const MongoClustersListConnectionStringsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/listConnectionStrings",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MongoClustersListConnectionStringsInput =
@@ -556,7 +771,7 @@ export const MongoClustersListConnectionStringsOutput =
     connectionStrings: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          connectionString: Schema.optional(SensitiveString),
+          connectionString: Schema.optional(SensitiveOutputString),
           description: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
         }),
@@ -586,11 +801,13 @@ export const MongoClustersPromoteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    promoteOption: Schema.Literals(["Forced"]),
+    mode: Schema.optional(Schema.Literals(["Switchover"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/promote",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MongoClustersPromoteInput = typeof MongoClustersPromoteInput.Type;
@@ -621,11 +838,115 @@ export const MongoClustersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        administrator: Schema.optional(
+          Schema.Struct({
+            userName: Schema.optional(Schema.String),
+            password: Schema.optional(SensitiveString),
+          }),
+        ),
+        serverVersion: Schema.optional(Schema.String),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        highAvailability: Schema.optional(
+          Schema.Struct({
+            targetMode: Schema.optional(
+              Schema.Literals([
+                "Disabled",
+                "SameZone",
+                "ZoneRedundantPreferred",
+              ]),
+            ),
+          }),
+        ),
+        storage: Schema.optional(
+          Schema.Struct({
+            sizeGb: Schema.optional(Schema.Number),
+            type: Schema.optional(
+              Schema.Literals(["PremiumSSD", "PremiumSSDv2"]),
+            ),
+          }),
+        ),
+        sharding: Schema.optional(
+          Schema.Struct({
+            shardCount: Schema.optional(Schema.Number),
+          }),
+        ),
+        compute: Schema.optional(
+          Schema.Struct({
+            tier: Schema.optional(Schema.String),
+          }),
+        ),
+        backup: Schema.optional(
+          Schema.Struct({
+            earliestRestoreTime: Schema.optional(Schema.String),
+          }),
+        ),
+        dataApi: Schema.optional(
+          Schema.Struct({
+            mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          }),
+        ),
+        previewFeatures: Schema.optional(
+          Schema.Array(Schema.Literals(["GeoReplicas"])),
+        ),
+        authConfig: Schema.optional(
+          Schema.Struct({
+            allowedModes: Schema.optional(
+              Schema.Array(Schema.Literals(["NativeAuth", "MicrosoftEntraID"])),
+            ),
+          }),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            customerManagedKeyEncryption: Schema.optional(
+              Schema.Struct({
+                keyEncryptionKeyIdentity: Schema.optional(
+                  Schema.Struct({
+                    identityType: Schema.optional(
+                      Schema.Literals(["UserAssignedIdentity"]),
+                    ),
+                    userAssignedIdentityResourceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                keyEncryptionKeyUrl: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MongoClustersUpdateInput = typeof MongoClustersUpdateInput.Type;
@@ -667,10 +988,14 @@ export const MongoClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MongoClustersUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.DocumentDB/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.DocumentDB/operations",
+    apiVersion: "2025-09-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -717,11 +1042,31 @@ export const PrivateEndpointConnectionsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -773,11 +1118,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -811,11 +1156,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -866,11 +1211,11 @@ export const PrivateEndpointConnectionsListByMongoClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateEndpointConnectionsListByMongoClusterInput =
@@ -935,11 +1280,11 @@ export const PrivateLinksListByMongoClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateLinkResources",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateLinksListByMongoClusterInput =
@@ -1004,11 +1349,11 @@ export const ReplicasListByParentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/replicas",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ReplicasListByParentInput = typeof ReplicasListByParentInput.Type;
@@ -1073,11 +1418,38 @@ export const UsersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "InProgress",
+            "Updating",
+            "Dropping",
+          ]),
+        ),
+        identityProvider: Schema.optional(
+          Schema.Struct({
+            type: Schema.Literals(["MicrosoftEntraID"]),
+          }),
+        ),
+        roles: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              db: Schema.String,
+              role: Schema.Literals(["root"]),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
@@ -1125,11 +1497,11 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   mongoClusterName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;
@@ -1158,11 +1530,11 @@ export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   mongoClusterName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type UsersGetInput = typeof UsersGetInput.Type;
@@ -1209,11 +1581,11 @@ export const UsersListByMongoClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users",
+      apiVersion: "2025-09-01",
     }),
   );
 export type UsersListByMongoClusterInput =

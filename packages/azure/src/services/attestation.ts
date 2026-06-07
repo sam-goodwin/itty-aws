@@ -14,11 +14,48 @@ export const AttestationProvidersCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.Struct({
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      policySigningCertificates: Schema.optional(
+        Schema.Struct({
+          keys: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                alg: Schema.optional(Schema.String),
+                crv: Schema.optional(Schema.String),
+                d: Schema.optional(Schema.String),
+                dp: Schema.optional(Schema.String),
+                dq: Schema.optional(Schema.String),
+                e: Schema.optional(Schema.String),
+                k: Schema.optional(Schema.String),
+                kid: Schema.optional(Schema.String),
+                kty: Schema.String,
+                n: Schema.optional(Schema.String),
+                p: Schema.optional(Schema.String),
+                q: Schema.optional(Schema.String),
+                qi: Schema.optional(Schema.String),
+                use: Schema.optional(Schema.String),
+                x: Schema.optional(Schema.String),
+                x5c: Schema.optional(Schema.Array(Schema.String)),
+                y: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      tpmAttestationAuthentication: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AttestationProvidersCreateInput =
@@ -69,11 +106,11 @@ export const AttestationProvidersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AttestationProvidersDeleteInput =
@@ -106,11 +143,11 @@ export const AttestationProvidersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AttestationProvidersGetInput =
@@ -160,11 +197,11 @@ export const AttestationProvidersGetDefaultByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Attestation/locations/{location}/defaultProvider",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AttestationProvidersGetDefaultByLocationInput =
@@ -211,11 +248,11 @@ export const AttestationProvidersGetDefaultByLocation =
 export const AttestationProvidersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Attestation/attestationProviders",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AttestationProvidersListInput =
@@ -293,11 +330,11 @@ export const AttestationProvidersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AttestationProvidersListByResourceGroupInput =
@@ -374,11 +411,11 @@ export const AttestationProvidersListByResourceGroup =
 export const AttestationProvidersListDefaultInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Attestation/defaultProviders",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AttestationProvidersListDefaultInput =
@@ -456,11 +493,22 @@ export const AttestationProvidersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        tpmAttestationAuthentication: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AttestationProvidersUpdateInput =
@@ -506,12 +554,13 @@ export const AttestationProvidersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Attestation/operations",
+    apiVersion: "2021-06-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -583,7 +632,6 @@ export const PrivateEndpointConnectionsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         privateEndpoint: Schema.optional(
@@ -603,10 +651,28 @@ export const PrivateEndpointConnectionsCreateInput =
         ),
       }),
     ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -659,11 +725,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -697,11 +763,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -752,11 +818,11 @@ export const PrivateEndpointConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -821,11 +887,11 @@ export const PrivateLinkResourcesListByProviderInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateLinkResources",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkResourcesListByProviderInput =

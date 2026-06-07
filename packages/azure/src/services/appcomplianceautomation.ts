@@ -13,11 +13,32 @@ export const EvidenceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     evidenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      evidenceType: Schema.optional(
+        Schema.Literals(["File", "AutoCollectedEvidence", "Data"]),
+      ),
+      filePath: Schema.String,
+      extraData: Schema.optional(Schema.String),
+      controlId: Schema.optional(Schema.String),
+      responsibilityId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Fixing",
+          "Verifying",
+          "Updating",
+        ]),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}",
+      apiVersion: "2024-06-27",
     }),
   );
 export type EvidenceCreateOrUpdateInput =
@@ -65,11 +86,11 @@ export const EvidenceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const EvidenceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   evidenceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}",
+    apiVersion: "2024-06-27",
   }),
 );
 export type EvidenceDeleteInput = typeof EvidenceDeleteInput.Type;
@@ -94,11 +115,13 @@ export const EvidenceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EvidenceDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   evidenceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  reportCreatorTenantId: Schema.optional(Schema.String),
+  offerGuid: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}/download",
+    apiVersion: "2024-06-27",
   }),
 );
 export type EvidenceDownloadInput = typeof EvidenceDownloadInput.Type;
@@ -131,11 +154,11 @@ export const EvidenceDownload = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EvidenceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   evidenceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}",
+    apiVersion: "2024-06-27",
   }),
 );
 export type EvidenceGetInput = typeof EvidenceGetInput.Type;
@@ -178,11 +201,11 @@ export const EvidenceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EvidenceListByReportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences",
+      apiVersion: "2024-06-27",
     }),
   );
 export type EvidenceListByReportInput = typeof EvidenceListByReportInput.Type;
@@ -239,12 +262,13 @@ export const EvidenceListByReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppComplianceAutomation/operations",
+    apiVersion: "2024-06-27",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -288,13 +312,13 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ProviderActionsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.AppComplianceAutomation/checkNameAvailability",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ProviderActionsCheckNameAvailabilityInput =
@@ -326,11 +350,12 @@ export const ProviderActionsCheckNameAvailability =
 // Input Schema
 export const ProviderActionsGetCollectionCountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.AppComplianceAutomation/getCollectionCount",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ProviderActionsGetCollectionCountInput =
@@ -358,11 +383,12 @@ export const ProviderActionsGetCollectionCount =
 // Input Schema
 export const ProviderActionsGetOverviewStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.AppComplianceAutomation/getOverviewStatus",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ProviderActionsGetOverviewStatusInput =
@@ -397,11 +423,12 @@ export const ProviderActionsGetOverviewStatus =
 // Input Schema
 export const ProviderActionsListInUseStorageAccountsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.AppComplianceAutomation/listInUseStorageAccounts",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ProviderActionsListInUseStorageAccountsInput =
@@ -438,11 +465,12 @@ export const ProviderActionsListInUseStorageAccounts =
 // Input Schema
 export const ProviderActionsOnboardInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    subscriptionIds: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.AppComplianceAutomation/onboard",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ProviderActionsOnboardInput =
@@ -471,11 +499,12 @@ export const ProviderActionsOnboard = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ProviderActionsTriggerEvaluationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    resourceIds: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.AppComplianceAutomation/triggerEvaluation",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ProviderActionsTriggerEvaluationInput =
@@ -525,11 +554,85 @@ export const ProviderActionsTriggerEvaluation =
 export const ReportCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      triggerTime: Schema.String,
+      timeZone: Schema.String,
+      resources: Schema.Array(
+        Schema.Struct({
+          resourceId: Schema.String,
+          resourceType: Schema.optional(Schema.String),
+          resourceKind: Schema.optional(Schema.String),
+          resourceOrigin: Schema.optional(
+            Schema.Literals(["Azure", "AWS", "GCP"]),
+          ),
+          accountId: Schema.optional(Schema.String),
+        }),
+      ),
+      status: Schema.optional(
+        Schema.Literals(["Active", "Failed", "Reviewing", "Disabled"]),
+      ),
+      errors: Schema.optional(Schema.Array(Schema.String)),
+      tenantId: Schema.optional(Schema.String),
+      offerGuid: Schema.optional(Schema.String),
+      nextTriggerTime: Schema.optional(Schema.String),
+      lastTriggerTime: Schema.optional(Schema.String),
+      subscriptions: Schema.optional(Schema.Array(Schema.String)),
+      complianceStatus: Schema.optional(
+        Schema.Struct({
+          m365: Schema.optional(
+            Schema.Struct({
+              passedCount: Schema.optional(Schema.Number),
+              failedCount: Schema.optional(Schema.Number),
+              manualCount: Schema.optional(Schema.Number),
+              notApplicableCount: Schema.optional(Schema.Number),
+              pendingCount: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+      storageInfo: Schema.optional(
+        Schema.Struct({
+          subscriptionId: Schema.optional(Schema.String),
+          resourceGroup: Schema.optional(Schema.String),
+          accountName: Schema.optional(Schema.String),
+          location: Schema.optional(Schema.String),
+        }),
+      ),
+      certRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            offerGuid: Schema.optional(Schema.String),
+            certificationStatus: Schema.optional(Schema.String),
+            ingestionStatus: Schema.optional(Schema.String),
+            controls: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  controlId: Schema.optional(Schema.String),
+                  controlStatus: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Fixing",
+          "Verifying",
+          "Updating",
+        ]),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ReportCreateOrUpdateInput = typeof ReportCreateOrUpdateInput.Type;
@@ -573,11 +676,11 @@ export const ReportCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ReportDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
+    apiVersion: "2024-06-27",
   }),
 );
 export type ReportDeleteInput = typeof ReportDeleteInput.Type;
@@ -600,11 +703,11 @@ export const ReportDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ReportFixInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/fix",
+    apiVersion: "2024-06-27",
   }),
 );
 export type ReportFixInput = typeof ReportFixInput.Type;
@@ -630,11 +733,11 @@ export const ReportFix = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ReportGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
+    apiVersion: "2024-06-27",
   }),
 );
 export type ReportGetInput = typeof ReportGetInput.Type;
@@ -676,11 +779,11 @@ export const ReportGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ReportGetScopingQuestionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/getScopingQuestions",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ReportGetScopingQuestionsInput =
@@ -755,12 +858,13 @@ export const ReportGetScopingQuestions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ReportListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const ReportListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppComplianceAutomation/reports",
+    apiVersion: "2024-06-27",
   }),
 );
 export type ReportListInput = typeof ReportListInput.Type;
@@ -806,13 +910,13 @@ export const ReportList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ReportNestedResourceCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/checkNameAvailability",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ReportNestedResourceCheckNameAvailabilityInput =
@@ -846,11 +950,24 @@ export const ReportNestedResourceCheckNameAvailability =
 export const ReportSyncCertRecordInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    certRecord: Schema.Struct({
+      offerGuid: Schema.optional(Schema.String),
+      certificationStatus: Schema.optional(Schema.String),
+      ingestionStatus: Schema.optional(Schema.String),
+      controls: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            controlId: Schema.optional(Schema.String),
+            controlStatus: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/syncCertRecord",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ReportSyncCertRecordInput = typeof ReportSyncCertRecordInput.Type;
@@ -892,11 +1009,89 @@ export const ReportSyncCertRecord = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ReportUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      triggerTime: Schema.optional(Schema.String),
+      timeZone: Schema.optional(Schema.String),
+      resources: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourceId: Schema.String,
+            resourceType: Schema.optional(Schema.String),
+            resourceKind: Schema.optional(Schema.String),
+            resourceOrigin: Schema.optional(
+              Schema.Literals(["Azure", "AWS", "GCP"]),
+            ),
+            accountId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      status: Schema.optional(
+        Schema.Literals(["Active", "Failed", "Reviewing", "Disabled"]),
+      ),
+      errors: Schema.optional(Schema.Array(Schema.String)),
+      tenantId: Schema.optional(Schema.String),
+      offerGuid: Schema.optional(Schema.String),
+      nextTriggerTime: Schema.optional(Schema.String),
+      lastTriggerTime: Schema.optional(Schema.String),
+      subscriptions: Schema.optional(Schema.Array(Schema.String)),
+      complianceStatus: Schema.optional(
+        Schema.Struct({
+          m365: Schema.optional(
+            Schema.Struct({
+              passedCount: Schema.optional(Schema.Number),
+              failedCount: Schema.optional(Schema.Number),
+              manualCount: Schema.optional(Schema.Number),
+              notApplicableCount: Schema.optional(Schema.Number),
+              pendingCount: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+      storageInfo: Schema.optional(
+        Schema.Struct({
+          subscriptionId: Schema.optional(Schema.String),
+          resourceGroup: Schema.optional(Schema.String),
+          accountName: Schema.optional(Schema.String),
+          location: Schema.optional(Schema.String),
+        }),
+      ),
+      certRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            offerGuid: Schema.optional(Schema.String),
+            certificationStatus: Schema.optional(Schema.String),
+            ingestionStatus: Schema.optional(Schema.String),
+            controls: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  controlId: Schema.optional(Schema.String),
+                  controlStatus: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Fixing",
+          "Verifying",
+          "Updating",
+        ]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
+    apiVersion: "2024-06-27",
   }),
 );
 export type ReportUpdateInput = typeof ReportUpdateInput.Type;
@@ -937,11 +1132,11 @@ export const ReportUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ReportVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/verify",
+    apiVersion: "2024-06-27",
   }),
 );
 export type ReportVerifyInput = typeof ReportVerifyInput.Type;
@@ -969,11 +1164,33 @@ export const ScopingConfigurationCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     scopingConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      answers: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            questionId: Schema.String,
+            answers: Schema.Array(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Fixing",
+          "Verifying",
+          "Updating",
+        ]),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ScopingConfigurationCreateOrUpdateInput =
@@ -1021,11 +1238,11 @@ export const ScopingConfigurationDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     scopingConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ScopingConfigurationDeleteInput =
@@ -1056,11 +1273,11 @@ export const ScopingConfigurationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     scopingConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ScopingConfigurationGetInput =
@@ -1108,11 +1325,11 @@ export const ScopingConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ScopingConfigurationListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations",
+      apiVersion: "2024-06-27",
     }),
   );
 export type ScopingConfigurationListInput =
@@ -1174,11 +1391,19 @@ export const ScopingConfigurationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SnapshotDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  reportCreatorTenantId: Schema.optional(Schema.String),
+  downloadType: Schema.Literals([
+    "ComplianceReport",
+    "CompliancePdfReport",
+    "ComplianceDetailedPdfReport",
+    "ResourceList",
+  ]),
+  offerGuid: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/snapshots/{snapshotName}/download",
+    apiVersion: "2024-06-27",
   }),
 );
 export type SnapshotDownloadInput = typeof SnapshotDownloadInput.Type;
@@ -1255,11 +1480,11 @@ export const SnapshotDownload = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SnapshotGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/snapshots/{snapshotName}",
+    apiVersion: "2024-06-27",
   }),
 );
 export type SnapshotGetInput = typeof SnapshotGetInput.Type;
@@ -1301,11 +1526,11 @@ export const SnapshotGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SnapshotListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/snapshots",
+    apiVersion: "2024-06-27",
   }),
 );
 export type SnapshotListInput = typeof SnapshotListInput.Type;
@@ -1353,11 +1578,51 @@ export const WebhookCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     webhookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      webhookId: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      tenantId: Schema.optional(Schema.String),
+      sendAllEvents: Schema.optional(Schema.Literals(["true", "false"])),
+      events: Schema.optional(
+        Schema.Array(
+          Schema.Literals([
+            "generate_snapshot_success",
+            "generate_snapshot_failed",
+            "assessment_failure",
+            "report_configuration_changes",
+            "report_deletion",
+          ]),
+        ),
+      ),
+      payloadUrl: Schema.optional(Schema.String),
+      contentType: Schema.optional(Schema.Literals(["application/json"])),
+      webhookKey: Schema.optional(Schema.String),
+      updateWebhookKey: Schema.optional(Schema.Literals(["true", "false"])),
+      webhookKeyEnabled: Schema.optional(Schema.Literals(["true", "false"])),
+      enableSslVerification: Schema.optional(
+        Schema.Literals(["true", "false"]),
+      ),
+      deliveryStatus: Schema.optional(
+        Schema.Literals(["Succeeded", "Failed", "NotStarted"]),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Fixing",
+          "Verifying",
+          "Updating",
+        ]),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
+      apiVersion: "2024-06-27",
     }),
   );
 export type WebhookCreateOrUpdateInput = typeof WebhookCreateOrUpdateInput.Type;
@@ -1404,11 +1669,11 @@ export const WebhookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
+    apiVersion: "2024-06-27",
   }),
 );
 export type WebhookDeleteInput = typeof WebhookDeleteInput.Type;
@@ -1433,11 +1698,11 @@ export const WebhookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
+    apiVersion: "2024-06-27",
   }),
 );
 export type WebhookGetInput = typeof WebhookGetInput.Type;
@@ -1479,11 +1744,11 @@ export const WebhookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WebhookListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks",
+    apiVersion: "2024-06-27",
   }),
 );
 export type WebhookListInput = typeof WebhookListInput.Type;
@@ -1530,11 +1795,53 @@ export const WebhookList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      webhookId: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      tenantId: Schema.optional(Schema.String),
+      sendAllEvents: Schema.optional(Schema.Literals(["true", "false"])),
+      events: Schema.optional(
+        Schema.Array(
+          Schema.Literals([
+            "generate_snapshot_success",
+            "generate_snapshot_failed",
+            "assessment_failure",
+            "report_configuration_changes",
+            "report_deletion",
+          ]),
+        ),
+      ),
+      payloadUrl: Schema.optional(Schema.String),
+      contentType: Schema.optional(Schema.Literals(["application/json"])),
+      webhookKey: Schema.optional(Schema.String),
+      updateWebhookKey: Schema.optional(Schema.Literals(["true", "false"])),
+      webhookKeyEnabled: Schema.optional(Schema.Literals(["true", "false"])),
+      enableSslVerification: Schema.optional(
+        Schema.Literals(["true", "false"]),
+      ),
+      deliveryStatus: Schema.optional(
+        Schema.Literals(["Succeeded", "Failed", "NotStarted"]),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Fixing",
+          "Verifying",
+          "Updating",
+        ]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
+    apiVersion: "2024-06-27",
   }),
 );
 export type WebhookUpdateInput = typeof WebhookUpdateInput.Type;

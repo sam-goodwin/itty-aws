@@ -22,6 +22,7 @@ export const AdDomainServiceMembersListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addomainservicemembers",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AdDomainServiceMembersListInput =
@@ -156,6 +157,7 @@ export const AddsServiceGetMetricsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServiceGetMetricsInput = typeof AddsServiceGetMetricsInput.Type;
@@ -203,6 +205,7 @@ export const AddsServiceMembersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServiceMembersDeleteInput =
@@ -237,6 +240,7 @@ export const AddsServiceMembersGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServiceMembersGetInput = typeof AddsServiceMembersGetInput.Type;
@@ -298,6 +302,7 @@ export const AddsServiceMembersListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addsservicemembers",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServiceMembersListInput =
@@ -424,6 +429,7 @@ export const AddsServiceMembersListCredentialsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}/credentials",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServiceMembersListCredentialsInput =
@@ -459,12 +465,36 @@ export const addsServiceMembersListCredentials =
     outputSchema: AddsServiceMembersListCredentialsOutput,
   }));
 // Input Schema
-export const AddsServicesAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AddsServicesAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  activeAlerts: Schema.optional(Schema.Number),
+  additionalInformation: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+  customNotificationEmails: Schema.optional(Schema.Array(Schema.String)),
+  disabled: Schema.optional(Schema.Boolean),
+  displayName: Schema.optional(Schema.String),
+  health: Schema.optional(Schema.String),
+  lastDisabled: Schema.optional(Schema.String),
+  lastUpdated: Schema.optional(Schema.String),
+  monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
+  monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
+  notificationEmailEnabled: Schema.optional(Schema.Boolean),
+  notificationEmailEnabledForGlobalAdmins: Schema.optional(Schema.Boolean),
+  notificationEmailsEnabledForGlobalAdmins: Schema.optional(Schema.Boolean),
+  notificationEmails: Schema.optional(Schema.Array(Schema.String)),
+  originalDisabledState: Schema.optional(Schema.Boolean),
+  resolvedAlerts: Schema.optional(Schema.Number),
+  serviceId: Schema.optional(Schema.String),
+  serviceName: Schema.optional(Schema.String),
+  signature: Schema.optional(Schema.String),
+  simpleProperties: Schema.optional(Schema.Unknown),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.ADHybridHealthService/addsservices",
+    apiVersion: "2014-01-01",
   }),
 );
 export type AddsServicesAddInput = typeof AddsServicesAddInput.Type;
@@ -515,6 +545,7 @@ export const AddsServicesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesDeleteInput = typeof AddsServicesDeleteInput.Type;
@@ -541,6 +572,7 @@ export const AddsServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
+    apiVersion: "2014-01-01",
   }),
 );
 export type AddsServicesGetInput = typeof AddsServicesGetInput.Type;
@@ -592,6 +624,7 @@ export const AddsServicesGetForestSummaryInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/forestsummary",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesGetForestSummaryInput =
@@ -631,6 +664,7 @@ export const AddsServicesGetMetricMetadataInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesGetMetricMetadataInput =
@@ -687,6 +721,7 @@ export const AddsServicesGetMetricMetadataForGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}/groups/{groupName}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesGetMetricMetadataForGroupInput =
@@ -734,6 +769,7 @@ export const AddsServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/addsservices",
+    apiVersion: "2014-01-01",
   }),
 );
 export type AddsServicesListInput = typeof AddsServicesListInput.Type;
@@ -807,6 +843,7 @@ export const AddsServicesListMetricMetadataInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesListMetricMetadataInput =
@@ -870,6 +907,7 @@ export const AddsServicesListMetricsAverageInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesListMetricsAverageInput =
@@ -916,6 +954,7 @@ export const AddsServicesListMetricsSumInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/sum",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesListMetricsSumInput =
@@ -964,6 +1003,7 @@ export const AddsServicesListPremiumServicesInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/premiumCheck",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesListPremiumServicesInput =
@@ -1039,6 +1079,7 @@ export const AddsServicesListReplicationDetailsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationdetails",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesListReplicationDetailsInput =
@@ -1112,6 +1153,7 @@ export const AddsServicesListReplicationSummaryInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationsummary",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesListReplicationSummaryInput =
@@ -1185,6 +1227,7 @@ export const AddsServicesListServerAlertsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}/alerts",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesListServerAlertsInput =
@@ -1289,6 +1332,7 @@ export const AddsServicesReplicationStatusGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationstatus",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesReplicationStatusGetInput =
@@ -1319,10 +1363,39 @@ export const addsServicesReplicationStatusGet =
 export const AddsServicesServiceMembersAddInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
+    serviceMemberId: Schema.optional(Schema.String),
+    serviceId: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    activeAlerts: Schema.optional(Schema.Number),
+    additionalInformation: Schema.optional(Schema.String),
+    createdDate: Schema.optional(Schema.String),
+    dimensions: Schema.optional(Schema.Unknown),
+    disabled: Schema.optional(Schema.Boolean),
+    disabledReason: Schema.optional(Schema.Number),
+    installedQfes: Schema.optional(Schema.Unknown),
+    lastDisabled: Schema.optional(Schema.String),
+    lastReboot: Schema.optional(Schema.String),
+    lastServerReportedMonitoringLevelChange: Schema.optional(Schema.String),
+    lastUpdated: Schema.optional(Schema.String),
+    machineId: Schema.optional(Schema.String),
+    machineName: Schema.optional(Schema.String),
+    monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
+    monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
+    osName: Schema.optional(Schema.String),
+    osVersion: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.Unknown),
+    recommendedQfes: Schema.optional(Schema.Unknown),
+    resolvedAlerts: Schema.optional(Schema.Number),
+    role: Schema.optional(Schema.String),
+    serverReportedMonitoringLevel: Schema.optional(
+      Schema.Literals(["Partial", "Full", "Off"]),
+    ),
+    status: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesServiceMembersAddInput =
@@ -1385,6 +1458,7 @@ export const AddsServicesServiceMembersListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesServiceMembersListInput =
@@ -1454,10 +1528,34 @@ export const addsServicesServiceMembersList =
 export const AddsServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
+    id: Schema.optional(Schema.String),
+    activeAlerts: Schema.optional(Schema.Number),
+    additionalInformation: Schema.optional(Schema.String),
+    createdDate: Schema.optional(Schema.String),
+    customNotificationEmails: Schema.optional(Schema.Array(Schema.String)),
+    disabled: Schema.optional(Schema.Boolean),
+    displayName: Schema.optional(Schema.String),
+    health: Schema.optional(Schema.String),
+    lastDisabled: Schema.optional(Schema.String),
+    lastUpdated: Schema.optional(Schema.String),
+    monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
+    monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
+    notificationEmailEnabled: Schema.optional(Schema.Boolean),
+    notificationEmailEnabledForGlobalAdmins: Schema.optional(Schema.Boolean),
+    notificationEmailsEnabledForGlobalAdmins: Schema.optional(Schema.Boolean),
+    notificationEmails: Schema.optional(Schema.Array(Schema.String)),
+    originalDisabledState: Schema.optional(Schema.Boolean),
+    resolvedAlerts: Schema.optional(Schema.Number),
+    serviceId: Schema.optional(Schema.String),
+    signature: Schema.optional(Schema.String),
+    simpleProperties: Schema.optional(Schema.Unknown),
+    tenantId: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesUpdateInput = typeof AddsServicesUpdateInput.Type;
@@ -1507,10 +1605,12 @@ export const AddsServicesUserPreferenceAddInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     featureName: Schema.String.pipe(T.PathParam()),
+    metricNames: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesUserPreferenceAddInput =
@@ -1543,6 +1643,7 @@ export const AddsServicesUserPreferenceDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesUserPreferenceDeleteInput =
@@ -1575,6 +1676,7 @@ export const AddsServicesUserPreferenceGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AddsServicesUserPreferenceGetInput =
@@ -1612,6 +1714,7 @@ export const AlertsListAddsAlertsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/alerts",
+      apiVersion: "2014-01-01",
     }),
   );
 export type AlertsListAddsAlertsInput = typeof AlertsListAddsAlertsInput.Type;
@@ -1713,6 +1816,7 @@ export const ConfigurationAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.ADHybridHealthService/configuration",
+    apiVersion: "2014-01-01",
   }),
 );
 export type ConfigurationAddInput = typeof ConfigurationAddInput.Type;
@@ -1760,6 +1864,7 @@ export const ConfigurationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/configuration",
+    apiVersion: "2014-01-01",
   }),
 );
 export type ConfigurationGetInput = typeof ConfigurationGetInput.Type;
@@ -1809,6 +1914,7 @@ export const ConfigurationListAddsConfigurationsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/configuration",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ConfigurationListAddsConfigurationsInput =
@@ -1846,10 +1952,33 @@ export const configurationListAddsConfigurations =
   }));
 // Input Schema
 export const ConfigurationUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tenantId: Schema.optional(Schema.String),
+    aadLicense: Schema.optional(Schema.String),
+    aadPremium: Schema.optional(Schema.Boolean),
+    agentAutoUpdate: Schema.optional(Schema.Boolean),
+    alertSuppressionTimeInMins: Schema.optional(Schema.Number),
+    consentedToMicrosoftDevOps: Schema.optional(Schema.Boolean),
+    countryLetterCode: Schema.optional(Schema.String),
+    createdDate: Schema.optional(Schema.String),
+    devOpsTtl: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+    disabledReason: Schema.optional(Schema.Number),
+    globalAdminsEmail: Schema.optional(Schema.Array(Schema.String)),
+    initialDomain: Schema.optional(Schema.String),
+    lastDisabled: Schema.optional(Schema.String),
+    lastVerified: Schema.optional(Schema.String),
+    onboardingAllowed: Schema.optional(Schema.Boolean),
+    onboarded: Schema.optional(Schema.Boolean),
+    pksCertificate: Schema.optional(Schema.Unknown),
+    privatePreviewTenant: Schema.optional(Schema.Boolean),
+    tenantInQuarantine: Schema.optional(Schema.Boolean),
+    tenantName: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.ADHybridHealthService/configuration",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ConfigurationUpdateInput = typeof ConfigurationUpdateInput.Type;
@@ -1898,6 +2027,7 @@ export const DimensionsListAddsDimensionsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/dimensions/{dimension}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type DimensionsListAddsDimensionsInput =
@@ -1957,6 +2087,7 @@ export const ListIPAddressAggregatesByServiceInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregates",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ListIPAddressAggregatesByServiceInput =
@@ -2015,6 +2146,7 @@ export const ListIPAddressAggregateSettingsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregateSettings",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ListIPAddressAggregateSettingsInput =
@@ -2055,6 +2187,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/operations",
+    apiVersion: "2014-01-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -2090,6 +2223,7 @@ export const ReportsGetDevOpsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/reports/DevOps/IsDevOps",
+    apiVersion: "2014-01-01",
   }),
 );
 export type ReportsGetDevOpsInput = typeof ReportsGetDevOpsInput.Type;
@@ -2124,6 +2258,7 @@ export const ServiceGetMetricsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}",
+    apiVersion: "2014-01-01",
   }),
 );
 export type ServiceGetMetricsInput = typeof ServiceGetMetricsInput.Type;
@@ -2162,11 +2297,40 @@ export const serviceGetMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServiceMembersAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     serviceName: Schema.String.pipe(T.PathParam()),
+    serviceMemberId: Schema.optional(Schema.String),
+    serviceId: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    activeAlerts: Schema.optional(Schema.Number),
+    additionalInformation: Schema.optional(Schema.String),
+    createdDate: Schema.optional(Schema.String),
+    dimensions: Schema.optional(Schema.Unknown),
+    disabled: Schema.optional(Schema.Boolean),
+    disabledReason: Schema.optional(Schema.Number),
+    installedQfes: Schema.optional(Schema.Unknown),
+    lastDisabled: Schema.optional(Schema.String),
+    lastReboot: Schema.optional(Schema.String),
+    lastServerReportedMonitoringLevelChange: Schema.optional(Schema.String),
+    lastUpdated: Schema.optional(Schema.String),
+    machineId: Schema.optional(Schema.String),
+    machineName: Schema.optional(Schema.String),
+    monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
+    monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
+    osName: Schema.optional(Schema.String),
+    osVersion: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.Unknown),
+    recommendedQfes: Schema.optional(Schema.Unknown),
+    resolvedAlerts: Schema.optional(Schema.Number),
+    role: Schema.optional(Schema.String),
+    serverReportedMonitoringLevel: Schema.optional(
+      Schema.Literals(["Partial", "Full", "Off"]),
+    ),
+    status: Schema.optional(Schema.String),
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
+    apiVersion: "2014-01-01",
   }),
 );
 export type ServiceMembersAddInput = typeof ServiceMembersAddInput.Type;
@@ -2225,6 +2389,7 @@ export const ServiceMembersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServiceMembersDeleteInput = typeof ServiceMembersDeleteInput.Type;
@@ -2257,6 +2422,7 @@ export const ServiceMembersDeleteDataInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/data",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServiceMembersDeleteDataInput =
@@ -2291,6 +2457,7 @@ export const ServiceMembersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
+    apiVersion: "2014-01-01",
   }),
 );
 export type ServiceMembersGetInput = typeof ServiceMembersGetInput.Type;
@@ -2350,6 +2517,7 @@ export const ServiceMembersGetConnectorMetadataInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServiceMembersGetConnectorMetadataInput =
@@ -2398,6 +2566,7 @@ export const ServiceMembersGetMetricsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}/groups/{groupName}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServiceMembersGetMetricsInput =
@@ -2446,6 +2615,7 @@ export const ServiceMembersGetServiceConfigurationInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/serviceconfiguration",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServiceMembersGetServiceConfigurationInput =
@@ -2490,6 +2660,7 @@ export const ServiceMembersListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServiceMembersListInput = typeof ServiceMembersListInput.Type;
@@ -2565,6 +2736,7 @@ export const ServiceMembersListAlertsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/alerts",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServiceMembersListAlertsInput =
@@ -2671,6 +2843,7 @@ export const ServiceMembersListConnectorsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/service/{serviceName}/servicemembers/{serviceMemberId}/connectors",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServiceMembersListConnectorsInput =
@@ -2771,6 +2944,7 @@ export const ServiceMembersListCredentialsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/credentials",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServiceMembersListCredentialsInput =
@@ -2814,6 +2988,7 @@ export const ServiceMembersListDataFreshnessInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/datafreshness",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServiceMembersListDataFreshnessInput =
@@ -2855,6 +3030,7 @@ export const ServiceMembersListExportStatusInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/exportstatus",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServiceMembersListExportStatusInput =
@@ -2901,6 +3077,7 @@ export const ServiceMembersListGlobalConfigurationInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/globalconfiguration",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServiceMembersListGlobalConfigurationInput =
@@ -2944,12 +3121,36 @@ export const serviceMembersListGlobalConfiguration =
     outputSchema: ServiceMembersListGlobalConfigurationOutput,
   }));
 // Input Schema
-export const ServicesAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  activeAlerts: Schema.optional(Schema.Number),
+  additionalInformation: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+  customNotificationEmails: Schema.optional(Schema.Array(Schema.String)),
+  disabled: Schema.optional(Schema.Boolean),
+  displayName: Schema.optional(Schema.String),
+  health: Schema.optional(Schema.String),
+  lastDisabled: Schema.optional(Schema.String),
+  lastUpdated: Schema.optional(Schema.String),
+  monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
+  monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
+  notificationEmailEnabled: Schema.optional(Schema.Boolean),
+  notificationEmailEnabledForGlobalAdmins: Schema.optional(Schema.Boolean),
+  notificationEmailsEnabledForGlobalAdmins: Schema.optional(Schema.Boolean),
+  notificationEmails: Schema.optional(Schema.Array(Schema.String)),
+  originalDisabledState: Schema.optional(Schema.Boolean),
+  resolvedAlerts: Schema.optional(Schema.Number),
+  serviceId: Schema.optional(Schema.String),
+  serviceName: Schema.optional(Schema.String),
+  signature: Schema.optional(Schema.String),
+  simpleProperties: Schema.optional(Schema.Unknown),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.ADHybridHealthService/services",
+    apiVersion: "2014-01-01",
   }),
 );
 export type ServicesAddInput = typeof ServicesAddInput.Type;
@@ -2995,10 +3196,19 @@ export const servicesAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServicesAddAlertFeedbackInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
+    level: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    shortName: Schema.optional(Schema.String),
+    feedback: Schema.optional(Schema.String),
+    comment: Schema.optional(Schema.String),
+    consentedToShare: Schema.optional(Schema.Boolean),
+    serviceMemberId: Schema.optional(Schema.String),
+    createdDate: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/feedbacktype/alerts/feedback",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesAddAlertFeedbackInput =
@@ -3039,6 +3249,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
+    apiVersion: "2014-01-01",
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -3065,6 +3276,7 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
+    apiVersion: "2014-01-01",
   }),
 );
 export type ServicesGetInput = typeof ServicesGetInput.Type;
@@ -3117,6 +3329,7 @@ export const ServicesGetFeatureAvailibilityInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/checkServiceFeatureAvailibility/{featureName}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesGetFeatureAvailibilityInput =
@@ -3151,6 +3364,7 @@ export const ServicesGetMetricMetadataInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesGetMetricMetadataInput =
@@ -3208,6 +3422,7 @@ export const ServicesGetMetricMetadataForGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}/groups/{groupName}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesGetMetricMetadataForGroupInput =
@@ -3254,6 +3469,7 @@ export const ServicesGetTenantWhitelistingInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/TenantWhitelisting/{featureName}",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesGetTenantWhitelistingInput =
@@ -3289,6 +3505,7 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/services",
+    apiVersion: "2014-01-01",
   }),
 );
 export type ServicesListInput = typeof ServicesListInput.Type;
@@ -3357,6 +3574,7 @@ export const ServicesListAlertFeedbackInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/feedbacktype/alerts/{shortName}/alertfeedback",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListAlertFeedbackInput =
@@ -3408,6 +3626,7 @@ export const ServicesListAlertsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/alerts",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListAlertsInput = typeof ServicesListAlertsInput.Type;
@@ -3508,6 +3727,7 @@ export const ServicesListAllRiskyIpDownloadReportInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/reports/riskyIp/blobUris",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListAllRiskyIpDownloadReportInput =
@@ -3551,6 +3771,7 @@ export const ServicesListCurrentRiskyIpDownloadReportInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/reports/riskyIp/generateBlobUri",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListCurrentRiskyIpDownloadReportInput =
@@ -3594,6 +3815,7 @@ export const ServicesListExportErrorsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exporterrors/counts",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListExportErrorsInput =
@@ -3636,6 +3858,7 @@ export const ServicesListExportErrorsV2Input =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exporterrors/listV2",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListExportErrorsV2Input =
@@ -3727,6 +3950,7 @@ export const ServicesListExportStatusInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exportstatus",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListExportStatusInput =
@@ -3774,6 +3998,7 @@ export const ServicesListMetricMetadataInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListMetricMetadataInput =
@@ -3838,6 +4063,7 @@ export const ServicesListMetricsAverageInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListMetricsAverageInput =
@@ -3885,6 +4111,7 @@ export const ServicesListMetricsSumInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}/sum",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListMetricsSumInput =
@@ -3930,6 +4157,7 @@ export const ServicesListMonitoringConfigurationsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/monitoringconfigurations",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListMonitoringConfigurationsInput =
@@ -3972,6 +4200,7 @@ export const ServicesListPremiumInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/premiumCheck",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListPremiumInput = typeof ServicesListPremiumInput.Type;
@@ -4043,6 +4272,7 @@ export const ServicesListUserBadPasswordReportInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/reports/badpassword/details/user",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesListUserBadPasswordReportInput =
@@ -4081,10 +4311,34 @@ export const servicesListUserBadPasswordReport =
 // Input Schema
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
+  id: Schema.optional(Schema.String),
+  activeAlerts: Schema.optional(Schema.Number),
+  additionalInformation: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+  customNotificationEmails: Schema.optional(Schema.Array(Schema.String)),
+  disabled: Schema.optional(Schema.Boolean),
+  displayName: Schema.optional(Schema.String),
+  health: Schema.optional(Schema.String),
+  lastDisabled: Schema.optional(Schema.String),
+  lastUpdated: Schema.optional(Schema.String),
+  monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
+  monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
+  notificationEmailEnabled: Schema.optional(Schema.Boolean),
+  notificationEmailEnabledForGlobalAdmins: Schema.optional(Schema.Boolean),
+  notificationEmailsEnabledForGlobalAdmins: Schema.optional(Schema.Boolean),
+  notificationEmails: Schema.optional(Schema.Array(Schema.String)),
+  originalDisabledState: Schema.optional(Schema.Boolean),
+  resolvedAlerts: Schema.optional(Schema.Number),
+  serviceId: Schema.optional(Schema.String),
+  signature: Schema.optional(Schema.String),
+  simpleProperties: Schema.optional(Schema.Unknown),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
+    apiVersion: "2014-01-01",
   }),
 );
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
@@ -4132,10 +4386,13 @@ export const servicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServicesUpdateMonitoringConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
+    key: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/monitoringconfiguration",
+      apiVersion: "2014-01-01",
     }),
   );
 export type ServicesUpdateMonitoringConfigurationInput =
@@ -4162,10 +4419,21 @@ export const servicesUpdateMonitoringConfiguration =
 export const UpdateIPAddressAggregateSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
+    id: Schema.optional(Schema.String),
+    badPasswordAndExtranetLockoutCombinedDailyThreshold: Schema.optional(
+      Schema.Number,
+    ),
+    badPasswordAndExtranetLockoutCombinedHourlyThreshold: Schema.optional(
+      Schema.Number,
+    ),
+    extranetLockoutDailyThreshold: Schema.optional(Schema.Number),
+    extranetLockoutHourlyThreshold: Schema.optional(Schema.Number),
+    emailNotificationEnabled: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregateSettings",
+      apiVersion: "2014-01-01",
     }),
   );
 export type UpdateIPAddressAggregateSettingsInput =

@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const JobsBookShipmentPickUpInput =
@@ -14,11 +15,14 @@ export const JobsBookShipmentPickUpInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    startTime: Schema.String,
+    endTime: Schema.String,
+    shipmentLocation: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/bookShipmentPickUp",
+      apiVersion: "2025-07-01",
     }),
   );
 export type JobsBookShipmentPickUpInput =
@@ -53,11 +57,12 @@ export const JobsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  reason: Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/cancel",
+    apiVersion: "2025-07-01",
   }),
 );
 export type JobsCancelInput = typeof JobsCancelInput.Type;
@@ -84,11 +89,616 @@ export const JobsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.Struct({
+    transferType: Schema.Literals(["ImportToAzure", "ExportFromAzure"]),
+    isCancellable: Schema.optional(Schema.Boolean),
+    isDeletable: Schema.optional(Schema.Boolean),
+    isShippingAddressEditable: Schema.optional(Schema.Boolean),
+    reverseShippingDetailsUpdate: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled", "NotSupported"]),
+    ),
+    reverseTransportPreferenceUpdate: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled", "NotSupported"]),
+    ),
+    isPrepareToShipEnabled: Schema.optional(Schema.Boolean),
+    status: Schema.optional(
+      Schema.Literals([
+        "DeviceOrdered",
+        "DevicePrepared",
+        "Dispatched",
+        "Delivered",
+        "PickedUp",
+        "AtAzureDC",
+        "DataCopy",
+        "Completed",
+        "CompletedWithErrors",
+        "Cancelled",
+        "Failed_IssueReportedAtCustomer",
+        "Failed_IssueDetectedAtAzureDC",
+        "Aborted",
+        "CompletedWithWarnings",
+        "ReadyToDispatchFromAzureDC",
+        "ReadyToReceiveAtAzureDC",
+        "Created",
+        "ShippedToAzureDC",
+        "AwaitingShipmentDetails",
+        "PreparingToShipFromAzureDC",
+        "ShippedToCustomer",
+      ]),
+    ),
+    delayedStage: Schema.optional(
+      Schema.Literals([
+        "DeviceOrdered",
+        "DevicePrepared",
+        "Dispatched",
+        "Delivered",
+        "PickedUp",
+        "AtAzureDC",
+        "DataCopy",
+        "Completed",
+        "CompletedWithErrors",
+        "Cancelled",
+        "Failed_IssueReportedAtCustomer",
+        "Failed_IssueDetectedAtAzureDC",
+        "Aborted",
+        "CompletedWithWarnings",
+        "ReadyToDispatchFromAzureDC",
+        "ReadyToReceiveAtAzureDC",
+        "Created",
+        "ShippedToAzureDC",
+        "AwaitingShipmentDetails",
+        "PreparingToShipFromAzureDC",
+        "ShippedToCustomer",
+      ]),
+    ),
+    startTime: Schema.optional(Schema.String),
+    error: Schema.optional(
+      Schema.Struct({
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              info: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        code: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+      }),
+    ),
+    details: Schema.optional(
+      Schema.Struct({
+        jobStages: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              stageName: Schema.optional(
+                Schema.Literals([
+                  "DeviceOrdered",
+                  "DevicePrepared",
+                  "Dispatched",
+                  "Delivered",
+                  "PickedUp",
+                  "AtAzureDC",
+                  "DataCopy",
+                  "Completed",
+                  "CompletedWithErrors",
+                  "Cancelled",
+                  "Failed_IssueReportedAtCustomer",
+                  "Failed_IssueDetectedAtAzureDC",
+                  "Aborted",
+                  "CompletedWithWarnings",
+                  "ReadyToDispatchFromAzureDC",
+                  "ReadyToReceiveAtAzureDC",
+                  "Created",
+                  "ShippedToAzureDC",
+                  "AwaitingShipmentDetails",
+                  "PreparingToShipFromAzureDC",
+                  "ShippedToCustomer",
+                ]),
+              ),
+              displayName: Schema.optional(Schema.String),
+              stageStatus: Schema.optional(
+                Schema.Literals([
+                  "None",
+                  "InProgress",
+                  "Succeeded",
+                  "Failed",
+                  "Cancelled",
+                  "Cancelling",
+                  "SucceededWithErrors",
+                  "WaitingForCustomerAction",
+                  "SucceededWithWarnings",
+                  "WaitingForCustomerActionForKek",
+                  "WaitingForCustomerActionForCleanUp",
+                  "CustomerActionPerformedForCleanUp",
+                  "CustomerActionPerformed",
+                ]),
+              ),
+              stageTime: Schema.optional(Schema.String),
+              jobStageDetails: Schema.optional(Schema.Unknown),
+              delayInformation: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    status: Schema.optional(
+                      Schema.Literals(["Active", "Resolved"]),
+                    ),
+                    errorCode: Schema.optional(
+                      Schema.Literals([
+                        "InternalIssueDelay",
+                        "ActiveOrderLimitBreachedDelay",
+                        "HighDemandDelay",
+                        "LargeNumberOfFilesDelay",
+                      ]),
+                    ),
+                    description: Schema.optional(Schema.String),
+                    startTime: Schema.optional(Schema.String),
+                    resolutionTime: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        contactDetails: Schema.Struct({
+          contactName: Schema.String,
+          phone: Schema.String,
+          phoneExtension: Schema.optional(Schema.String),
+          mobile: Schema.optional(Schema.String),
+          emailList: Schema.Array(Schema.String),
+          notificationPreference: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                stageName: Schema.Literals([
+                  "DevicePrepared",
+                  "Dispatched",
+                  "Delivered",
+                  "PickedUp",
+                  "AtAzureDC",
+                  "DataCopy",
+                  "Created",
+                  "ShippedToCustomer",
+                ]),
+                sendNotification: Schema.Boolean,
+              }),
+            ),
+          ),
+        }),
+        shippingAddress: Schema.optional(
+          Schema.Struct({
+            streetAddress1: Schema.String,
+            streetAddress2: Schema.optional(Schema.String),
+            streetAddress3: Schema.optional(Schema.String),
+            city: Schema.optional(Schema.String),
+            stateOrProvince: Schema.optional(Schema.String),
+            country: Schema.String,
+            postalCode: Schema.optional(Schema.String),
+            zipExtendedCode: Schema.optional(Schema.String),
+            companyName: Schema.optional(Schema.String),
+            addressType: Schema.optional(
+              Schema.Literals(["None", "Residential", "Commercial"]),
+            ),
+            skipAddressValidation: Schema.optional(Schema.Boolean),
+            taxIdentificationNumber: Schema.optional(Schema.String),
+          }),
+        ),
+        deliveryPackage: Schema.optional(
+          Schema.Struct({
+            trackingUrl: Schema.optional(Schema.String),
+            carrierName: Schema.optional(Schema.String),
+            trackingId: Schema.optional(Schema.String),
+          }),
+        ),
+        returnPackage: Schema.optional(
+          Schema.Struct({
+            trackingUrl: Schema.optional(Schema.String),
+            carrierName: Schema.optional(Schema.String),
+            trackingId: Schema.optional(Schema.String),
+          }),
+        ),
+        dataImportDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              accountDetails: Schema.Struct({
+                dataAccountType: Schema.Literals([
+                  "StorageAccount",
+                  "ManagedDisk",
+                ]),
+                sharePassword: Schema.optional(SensitiveString),
+              }),
+              logCollectionLevel: Schema.optional(
+                Schema.Literals(["Error", "Verbose"]),
+              ),
+            }),
+          ),
+        ),
+        dataExportDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              transferConfiguration: Schema.Struct({
+                transferConfigurationType: Schema.Literals([
+                  "TransferAll",
+                  "TransferUsingFilter",
+                ]),
+                transferFilterDetails: Schema.optional(
+                  Schema.Struct({
+                    include: Schema.optional(
+                      Schema.Struct({
+                        dataAccountType: Schema.Literals([
+                          "StorageAccount",
+                          "ManagedDisk",
+                        ]),
+                        blobFilterDetails: Schema.optional(
+                          Schema.Struct({
+                            blobPrefixList: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            blobPathList: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            containerList: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        azureFileFilterDetails: Schema.optional(
+                          Schema.Struct({
+                            filePrefixList: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            filePathList: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            fileShareList: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        filterFileDetails: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              filterFileType: Schema.Literals([
+                                "AzureBlob",
+                                "AzureFile",
+                              ]),
+                              filterFilePath: Schema.String,
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+                transferAllDetails: Schema.optional(
+                  Schema.Struct({
+                    include: Schema.optional(
+                      Schema.Struct({
+                        dataAccountType: Schema.Literals([
+                          "StorageAccount",
+                          "ManagedDisk",
+                        ]),
+                        transferAllBlobs: Schema.optional(Schema.Boolean),
+                        transferAllFiles: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+              logCollectionLevel: Schema.optional(
+                Schema.Literals(["Error", "Verbose"]),
+              ),
+              accountDetails: Schema.Struct({
+                dataAccountType: Schema.Literals([
+                  "StorageAccount",
+                  "ManagedDisk",
+                ]),
+                sharePassword: Schema.optional(SensitiveString),
+              }),
+            }),
+          ),
+        ),
+        jobDetailsType: Schema.Literals([
+          "DataBox",
+          "DataBoxDisk",
+          "DataBoxHeavy",
+          "DataBoxCustomerDisk",
+        ]),
+        preferences: Schema.optional(
+          Schema.Struct({
+            preferredDataCenterRegion: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            transportPreferences: Schema.optional(
+              Schema.Struct({
+                preferredShipmentType: Schema.Literals([
+                  "CustomerManaged",
+                  "MicrosoftManaged",
+                ]),
+                isUpdated: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            reverseTransportPreferences: Schema.optional(
+              Schema.Struct({
+                preferredShipmentType: Schema.Literals([
+                  "CustomerManaged",
+                  "MicrosoftManaged",
+                ]),
+                isUpdated: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            encryptionPreferences: Schema.optional(
+              Schema.Struct({
+                doubleEncryption: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                hardwareEncryption: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+              }),
+            ),
+            storageAccountAccessTierPreferences: Schema.optional(
+              Schema.Array(Schema.Literals(["Archive"])),
+            ),
+          }),
+        ),
+        reverseShippingDetails: Schema.optional(
+          Schema.Struct({
+            contactDetails: Schema.optional(
+              Schema.Struct({
+                contactName: Schema.String,
+                phone: Schema.String,
+                phoneExtension: Schema.optional(Schema.String),
+                mobile: Schema.optional(Schema.String),
+              }),
+            ),
+            shippingAddress: Schema.optional(
+              Schema.Struct({
+                streetAddress1: Schema.String,
+                streetAddress2: Schema.optional(Schema.String),
+                streetAddress3: Schema.optional(Schema.String),
+                city: Schema.optional(Schema.String),
+                stateOrProvince: Schema.optional(Schema.String),
+                country: Schema.String,
+                postalCode: Schema.optional(Schema.String),
+                zipExtendedCode: Schema.optional(Schema.String),
+                companyName: Schema.optional(Schema.String),
+                addressType: Schema.optional(
+                  Schema.Literals(["None", "Residential", "Commercial"]),
+                ),
+                skipAddressValidation: Schema.optional(Schema.Boolean),
+                taxIdentificationNumber: Schema.optional(Schema.String),
+              }),
+            ),
+            isUpdated: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        copyLogDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              copyLogDetailsType: Schema.Literals([
+                "DataBox",
+                "DataBoxDisk",
+                "DataBoxHeavy",
+                "DataBoxCustomerDisk",
+              ]),
+            }),
+          ),
+        ),
+        reverseShipmentLabelSasKey: Schema.optional(Schema.String),
+        chainOfCustodySasKey: Schema.optional(Schema.String),
+        deviceErasureDetails: Schema.optional(
+          Schema.Struct({
+            deviceErasureStatus: Schema.optional(
+              Schema.Literals([
+                "None",
+                "InProgress",
+                "Succeeded",
+                "Failed",
+                "Cancelled",
+                "Cancelling",
+                "SucceededWithErrors",
+                "WaitingForCustomerAction",
+                "SucceededWithWarnings",
+                "WaitingForCustomerActionForKek",
+                "WaitingForCustomerActionForCleanUp",
+                "CustomerActionPerformedForCleanUp",
+                "CustomerActionPerformed",
+              ]),
+            ),
+            erasureOrDestructionCertificateSasKey: Schema.optional(
+              Schema.String,
+            ),
+            secureErasureCertificateSasKey: Schema.optional(Schema.String),
+          }),
+        ),
+        keyEncryptionKey: Schema.optional(
+          Schema.Struct({
+            kekType: Schema.Literals(["MicrosoftManaged", "CustomerManaged"]),
+            identityProperties: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                userAssigned: Schema.optional(
+                  Schema.Struct({
+                    resourceId: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            kekUrl: Schema.optional(Schema.String),
+            kekVaultResourceID: Schema.optional(Schema.String),
+          }),
+        ),
+        expectedDataSizeInTeraBytes: Schema.optional(Schema.Number),
+        actions: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "None",
+              "MoveToCleanUpDevice",
+              "Resume",
+              "Restart",
+              "ReachOutToOperation",
+            ]),
+          ),
+        ),
+        lastMitigationActionOnJob: Schema.optional(
+          Schema.Struct({
+            actionDateTimeInUtc: Schema.optional(Schema.String),
+            isPerformedByCustomer: Schema.optional(Schema.Boolean),
+            customerResolution: Schema.optional(
+              Schema.Literals([
+                "None",
+                "MoveToCleanUpDevice",
+                "Resume",
+                "Restart",
+                "ReachOutToOperation",
+              ]),
+            ),
+          }),
+        ),
+        datacenterAddress: Schema.optional(
+          Schema.Struct({
+            datacenterAddressType: Schema.Literals([
+              "DatacenterAddressLocation",
+              "DatacenterAddressInstruction",
+            ]),
+            supportedCarriersForReturnShipment: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            dataCenterAzureLocation: Schema.optional(Schema.String),
+          }),
+        ),
+        dataCenterCode: Schema.optional(
+          Schema.Literals([
+            "Invalid",
+            "BY2",
+            "BY1",
+            "ORK70",
+            "AM2",
+            "AMS20",
+            "BY21",
+            "BY24",
+            "MWH01",
+            "AMS06",
+            "SSE90",
+            "SYD03",
+            "SYD23",
+            "CBR20",
+            "YTO20",
+            "CWL20",
+            "LON24",
+            "BOM01",
+            "BL20",
+            "BL7",
+            "SEL20",
+            "TYO01",
+            "BN1",
+            "SN5",
+            "CYS04",
+            "TYO22",
+            "YTO21",
+            "YQB20",
+            "FRA22",
+            "MAA01",
+            "CPQ02",
+            "CPQ20",
+            "SIN20",
+            "HKG20",
+            "SG2",
+            "MEL23",
+            "SEL21",
+            "OSA20",
+            "SHA03",
+            "BJB",
+            "JNB22",
+            "JNB21",
+            "MNZ21",
+            "SN8",
+            "AUH20",
+            "ZRH20",
+            "PUS20",
+            "AdHoc",
+            "CH1",
+            "DSM05",
+            "DUB07",
+            "PNQ01",
+            "SVG20",
+            "OSA02",
+            "OSA22",
+            "PAR22",
+            "BN7",
+            "SN6",
+            "BJS20",
+            "BL24",
+            "IDC5",
+            "TYO23",
+            "NTG20",
+            "DXB23",
+            "DSM11",
+            "AMS25",
+            "CPQ21",
+            "OSA23",
+          ]),
+        ),
+      }),
+    ),
+    cancellationReason: Schema.optional(Schema.String),
+    deliveryType: Schema.optional(
+      Schema.Literals(["NonScheduled", "Scheduled"]),
+    ),
+    deliveryInfo: Schema.optional(
+      Schema.Struct({
+        scheduledDateTime: Schema.optional(Schema.String),
+      }),
+    ),
+    isCancellableWithoutFee: Schema.optional(Schema.Boolean),
+    allDevicesLost: Schema.optional(Schema.Boolean),
+  }),
+  sku: Schema.Struct({
+    name: Schema.Literals([
+      "DataBox",
+      "DataBoxDisk",
+      "DataBoxHeavy",
+      "DataBoxCustomerDisk",
+    ]),
+    displayName: Schema.optional(Schema.String),
+    family: Schema.optional(Schema.String),
+    model: Schema.optional(
+      Schema.Literals([
+        "DataBox",
+        "DataBoxDisk",
+        "DataBoxHeavy",
+        "DataBoxCustomerDisk",
+        "AzureDataBox120",
+        "AzureDataBox525",
+      ]),
+    ),
+  }),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type JobsCreateInput = typeof JobsCreateInput.Type;
@@ -133,11 +743,11 @@ export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type JobsDeleteInput = typeof JobsDeleteInput.Type;
@@ -164,12 +774,12 @@ export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type JobsGetInput = typeof JobsGetInput.Type;
@@ -213,12 +823,12 @@ export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $skipToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/jobs",
+    apiVersion: "2025-07-01",
   }),
 );
 export type JobsListInput = typeof JobsListInput.Type;
@@ -267,12 +877,12 @@ export const JobsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs",
+      apiVersion: "2025-07-01",
     }),
   );
 export type JobsListByResourceGroupInput =
@@ -338,11 +948,11 @@ export const JobsListCredentialsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/listCredentials",
+      apiVersion: "2025-07-01",
     }),
   );
 export type JobsListCredentialsInput = typeof JobsListCredentialsInput.Type;
@@ -412,11 +1022,15 @@ export const JobsMarkDevicesShippedInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    deliverToDcPackageDetails: Schema.Struct({
+      carrierName: Schema.optional(Schema.String),
+      trackingId: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/markDevicesShipped",
+      apiVersion: "2025-07-01",
     }),
   );
 export type JobsMarkDevicesShippedInput =
@@ -448,11 +1062,173 @@ export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      details: Schema.optional(
+        Schema.Struct({
+          contactDetails: Schema.optional(
+            Schema.Struct({
+              contactName: Schema.String,
+              phone: Schema.String,
+              phoneExtension: Schema.optional(Schema.String),
+              mobile: Schema.optional(Schema.String),
+              emailList: Schema.Array(Schema.String),
+              notificationPreference: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    stageName: Schema.Literals([
+                      "DevicePrepared",
+                      "Dispatched",
+                      "Delivered",
+                      "PickedUp",
+                      "AtAzureDC",
+                      "DataCopy",
+                      "Created",
+                      "ShippedToCustomer",
+                    ]),
+                    sendNotification: Schema.Boolean,
+                  }),
+                ),
+              ),
+            }),
+          ),
+          shippingAddress: Schema.optional(
+            Schema.Struct({
+              streetAddress1: Schema.String,
+              streetAddress2: Schema.optional(Schema.String),
+              streetAddress3: Schema.optional(Schema.String),
+              city: Schema.optional(Schema.String),
+              stateOrProvince: Schema.optional(Schema.String),
+              country: Schema.String,
+              postalCode: Schema.optional(Schema.String),
+              zipExtendedCode: Schema.optional(Schema.String),
+              companyName: Schema.optional(Schema.String),
+              addressType: Schema.optional(
+                Schema.Literals(["None", "Residential", "Commercial"]),
+              ),
+              skipAddressValidation: Schema.optional(Schema.Boolean),
+              taxIdentificationNumber: Schema.optional(Schema.String),
+            }),
+          ),
+          reverseShippingDetails: Schema.optional(
+            Schema.Struct({
+              contactDetails: Schema.optional(
+                Schema.Struct({
+                  contactName: Schema.String,
+                  phone: Schema.String,
+                  phoneExtension: Schema.optional(Schema.String),
+                  mobile: Schema.optional(Schema.String),
+                }),
+              ),
+              shippingAddress: Schema.optional(
+                Schema.Struct({
+                  streetAddress1: Schema.String,
+                  streetAddress2: Schema.optional(Schema.String),
+                  streetAddress3: Schema.optional(Schema.String),
+                  city: Schema.optional(Schema.String),
+                  stateOrProvince: Schema.optional(Schema.String),
+                  country: Schema.String,
+                  postalCode: Schema.optional(Schema.String),
+                  zipExtendedCode: Schema.optional(Schema.String),
+                  companyName: Schema.optional(Schema.String),
+                  addressType: Schema.optional(
+                    Schema.Literals(["None", "Residential", "Commercial"]),
+                  ),
+                  skipAddressValidation: Schema.optional(Schema.Boolean),
+                  taxIdentificationNumber: Schema.optional(Schema.String),
+                }),
+              ),
+              isUpdated: Schema.optional(Schema.Boolean),
+            }),
+          ),
+          preferences: Schema.optional(
+            Schema.Struct({
+              preferredDataCenterRegion: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              transportPreferences: Schema.optional(
+                Schema.Struct({
+                  preferredShipmentType: Schema.Literals([
+                    "CustomerManaged",
+                    "MicrosoftManaged",
+                  ]),
+                  isUpdated: Schema.optional(Schema.Boolean),
+                }),
+              ),
+              reverseTransportPreferences: Schema.optional(
+                Schema.Struct({
+                  preferredShipmentType: Schema.Literals([
+                    "CustomerManaged",
+                    "MicrosoftManaged",
+                  ]),
+                  isUpdated: Schema.optional(Schema.Boolean),
+                }),
+              ),
+              encryptionPreferences: Schema.optional(
+                Schema.Struct({
+                  doubleEncryption: Schema.optional(
+                    Schema.Literals(["Enabled", "Disabled"]),
+                  ),
+                  hardwareEncryption: Schema.optional(
+                    Schema.Literals(["Enabled", "Disabled"]),
+                  ),
+                }),
+              ),
+              storageAccountAccessTierPreferences: Schema.optional(
+                Schema.Array(Schema.Literals(["Archive"])),
+              ),
+            }),
+          ),
+          keyEncryptionKey: Schema.optional(
+            Schema.Struct({
+              kekType: Schema.Literals(["MicrosoftManaged", "CustomerManaged"]),
+              identityProperties: Schema.optional(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  userAssigned: Schema.optional(
+                    Schema.Struct({
+                      resourceId: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+              kekUrl: Schema.optional(Schema.String),
+              kekVaultResourceID: Schema.optional(Schema.String),
+            }),
+          ),
+          returnToCustomerPackageDetails: Schema.optional(
+            Schema.Struct({
+              carrierAccountNumber: Schema.optional(Schema.String),
+              carrierName: Schema.optional(Schema.String),
+              trackingId: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type JobsUpdateInput = typeof JobsUpdateInput.Type;
@@ -498,11 +1274,32 @@ export const MitigateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  customerResolutionCode: Schema.optional(
+    Schema.Literals([
+      "None",
+      "MoveToCleanUpDevice",
+      "Resume",
+      "Restart",
+      "ReachOutToOperation",
+    ]),
+  ),
+  serialNumberCustomerResolutionMap: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.Literals([
+        "None",
+        "MoveToCleanUpDevice",
+        "Resume",
+        "Restart",
+        "ReachOutToOperation",
+      ]),
+    ),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/mitigate",
+    apiVersion: "2025-07-01",
   }),
 );
 export type MitigateInput = typeof MitigateInput.Type;
@@ -525,10 +1322,14 @@ export const Mitigate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MitigateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.DataBox/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.DataBox/operations",
+    apiVersion: "2025-07-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -572,11 +1373,23 @@ export const ServiceListAvailableSkusByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    transferType: Schema.Literals(["ImportToAzure", "ExportFromAzure"]),
+    country: Schema.String,
+    skuNames: Schema.optional(
+      Schema.Array(
+        Schema.Literals([
+          "DataBox",
+          "DataBoxDisk",
+          "DataBoxHeavy",
+          "DataBoxCustomerDisk",
+        ]),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/availableSkus",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceListAvailableSkusByResourceGroupInput =
@@ -680,11 +1493,98 @@ export const ServiceRegionConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    scheduleAvailabilityRequest: Schema.optional(
+      Schema.Struct({
+        storageLocation: Schema.String,
+        skuName: Schema.Literals([
+          "DataBox",
+          "DataBoxDisk",
+          "DataBoxHeavy",
+          "DataBoxCustomerDisk",
+        ]),
+        country: Schema.optional(Schema.String),
+        model: Schema.optional(
+          Schema.Literals([
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy",
+            "DataBoxCustomerDisk",
+            "AzureDataBox120",
+            "AzureDataBox525",
+          ]),
+        ),
+      }),
+    ),
+    transportAvailabilityRequest: Schema.optional(
+      Schema.Struct({
+        skuName: Schema.optional(
+          Schema.Literals([
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy",
+            "DataBoxCustomerDisk",
+          ]),
+        ),
+        model: Schema.optional(
+          Schema.Literals([
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy",
+            "DataBoxCustomerDisk",
+            "AzureDataBox120",
+            "AzureDataBox525",
+          ]),
+        ),
+      }),
+    ),
+    datacenterAddressRequest: Schema.optional(
+      Schema.Struct({
+        storageLocation: Schema.String,
+        skuName: Schema.Literals([
+          "DataBox",
+          "DataBoxDisk",
+          "DataBoxHeavy",
+          "DataBoxCustomerDisk",
+        ]),
+        model: Schema.optional(
+          Schema.Literals([
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy",
+            "DataBoxCustomerDisk",
+            "AzureDataBox120",
+            "AzureDataBox525",
+          ]),
+        ),
+      }),
+    ),
+    deviceCapabilityRequest: Schema.optional(
+      Schema.Struct({
+        skuName: Schema.optional(
+          Schema.Literals([
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy",
+            "DataBoxCustomerDisk",
+          ]),
+        ),
+        model: Schema.optional(
+          Schema.Literals([
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy",
+            "DataBoxCustomerDisk",
+            "AzureDataBox120",
+            "AzureDataBox525",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/regionConfiguration",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceRegionConfigurationInput =
@@ -760,11 +1660,98 @@ export const ServiceRegionConfigurationByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    scheduleAvailabilityRequest: Schema.optional(
+      Schema.Struct({
+        storageLocation: Schema.String,
+        skuName: Schema.Literals([
+          "DataBox",
+          "DataBoxDisk",
+          "DataBoxHeavy",
+          "DataBoxCustomerDisk",
+        ]),
+        country: Schema.optional(Schema.String),
+        model: Schema.optional(
+          Schema.Literals([
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy",
+            "DataBoxCustomerDisk",
+            "AzureDataBox120",
+            "AzureDataBox525",
+          ]),
+        ),
+      }),
+    ),
+    transportAvailabilityRequest: Schema.optional(
+      Schema.Struct({
+        skuName: Schema.optional(
+          Schema.Literals([
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy",
+            "DataBoxCustomerDisk",
+          ]),
+        ),
+        model: Schema.optional(
+          Schema.Literals([
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy",
+            "DataBoxCustomerDisk",
+            "AzureDataBox120",
+            "AzureDataBox525",
+          ]),
+        ),
+      }),
+    ),
+    datacenterAddressRequest: Schema.optional(
+      Schema.Struct({
+        storageLocation: Schema.String,
+        skuName: Schema.Literals([
+          "DataBox",
+          "DataBoxDisk",
+          "DataBoxHeavy",
+          "DataBoxCustomerDisk",
+        ]),
+        model: Schema.optional(
+          Schema.Literals([
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy",
+            "DataBoxCustomerDisk",
+            "AzureDataBox120",
+            "AzureDataBox525",
+          ]),
+        ),
+      }),
+    ),
+    deviceCapabilityRequest: Schema.optional(
+      Schema.Struct({
+        skuName: Schema.optional(
+          Schema.Literals([
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy",
+            "DataBoxCustomerDisk",
+          ]),
+        ),
+        model: Schema.optional(
+          Schema.Literals([
+            "DataBox",
+            "DataBoxDisk",
+            "DataBoxHeavy",
+            "DataBoxCustomerDisk",
+            "AzureDataBox120",
+            "AzureDataBox525",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/regionConfiguration",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceRegionConfigurationByResourceGroupInput =
@@ -839,11 +1826,24 @@ export const ServiceValidateInputsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    validationCategory: Schema.Literals(["JobCreationValidation"]),
+    individualRequestDetails: Schema.Array(
+      Schema.Struct({
+        validationType: Schema.Literals([
+          "ValidateAddress",
+          "ValidateSubscriptionIsAllowedToCreateJob",
+          "ValidatePreferences",
+          "ValidateCreateOrderLimit",
+          "ValidateSkuAvailability",
+          "ValidateDataTransferDetails",
+        ]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/validateInputs",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceValidateInputsInput = typeof ServiceValidateInputsInput.Type;
@@ -918,11 +1918,24 @@ export const ServiceValidateInputsByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    validationCategory: Schema.Literals(["JobCreationValidation"]),
+    individualRequestDetails: Schema.Array(
+      Schema.Struct({
+        validationType: Schema.Literals([
+          "ValidateAddress",
+          "ValidateSubscriptionIsAllowedToCreateJob",
+          "ValidatePreferences",
+          "ValidateCreateOrderLimit",
+          "ValidateSkuAvailability",
+          "ValidateDataTransferDetails",
+        ]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/validateInputs",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ServiceValidateInputsByResourceGroupInput =

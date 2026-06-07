@@ -10,12 +10,11 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const CarbonServiceQueryCarbonEmissionDataAvailableDateRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Carbon/queryCarbonEmissionDataAvailableDateRange",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CarbonServiceQueryCarbonEmissionDataAvailableDateRangeInput =
@@ -44,11 +43,29 @@ export const CarbonServiceQueryCarbonEmissionDataAvailableDateRange =
 // Input Schema
 export const CarbonServiceQueryCarbonEmissionReportsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    reportType: Schema.Literals([
+      "OverallSummaryReport",
+      "MonthlySummaryReport",
+      "TopItemsSummaryReport",
+      "TopItemsMonthlySummaryReport",
+      "ItemDetailsReport",
+    ]),
+    dateRange: Schema.Struct({
+      start: Schema.String,
+      end: Schema.String,
+    }),
+    subscriptionList: Schema.Array(Schema.String),
+    resourceGroupUrlList: Schema.optional(Schema.Array(Schema.String)),
+    resourceTypeList: Schema.optional(Schema.Array(Schema.String)),
+    locationList: Schema.optional(Schema.Array(Schema.String)),
+    carbonScopeList: Schema.Array(
+      Schema.Literals(["Scope1", "Scope2", "Scope3"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Carbon/carbonEmissionReports",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CarbonServiceQueryCarbonEmissionReportsInput =
@@ -104,10 +121,14 @@ export const CarbonServiceQueryCarbonEmissionReports =
     outputSchema: CarbonServiceQueryCarbonEmissionReportsOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Carbon/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Carbon/operations",
+    apiVersion: "2025-04-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 

@@ -7,7 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AvailabilitySetsCancelMigrationToVirtualMachineScaleSetInput =
@@ -15,11 +15,11 @@ export const AvailabilitySetsCancelMigrationToVirtualMachineScaleSetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/cancelMigrationToVirtualMachineScaleSet",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AvailabilitySetsCancelMigrationToVirtualMachineScaleSetInput =
@@ -51,11 +51,12 @@ export const AvailabilitySetsConvertToVirtualMachineScaleSetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    virtualMachineScaleSetName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/convertToVirtualMachineScaleSet",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AvailabilitySetsConvertToVirtualMachineScaleSetInput =
@@ -87,11 +88,99 @@ export const AvailabilitySetsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        platformUpdateDomainCount: Schema.optional(Schema.Number),
+        platformFaultDomainCount: Schema.optional(Schema.Number),
+        virtualMachines: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        proximityPlacementGroup: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        statuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              level: Schema.optional(
+                Schema.Literals(["Info", "Warning", "Error"]),
+              ),
+              displayStatus: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        scheduledEventsPolicy: Schema.optional(
+          Schema.Struct({
+            userInitiatedRedeploy: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            userInitiatedReboot: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            scheduledEventsAdditionalPublishingTargets: Schema.optional(
+              Schema.Struct({
+                eventGridAndResourceGraph: Schema.optional(
+                  Schema.Struct({
+                    enable: Schema.optional(Schema.Boolean),
+                    scheduledEventsApiVersion: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            allInstancesDown: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        virtualMachineScaleSetMigrationInfo: Schema.optional(
+          Schema.Struct({
+            defaultVirtualMachineScaleSetInfo: Schema.optional(
+              Schema.Struct({
+                constrainedMaximumCapacity: Schema.optional(Schema.Boolean),
+                defaultVirtualMachineScaleSet: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            migrateToVirtualMachineScaleSet: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AvailabilitySetsCreateOrUpdateInput =
@@ -141,11 +230,11 @@ export const AvailabilitySetsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AvailabilitySetsDeleteInput =
@@ -178,11 +267,11 @@ export const AvailabilitySetsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AvailabilitySetsGetInput = typeof AvailabilitySetsGetInput.Type;
@@ -228,11 +317,11 @@ export const AvailabilitySetsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AvailabilitySetsListInput = typeof AvailabilitySetsListInput.Type;
@@ -295,11 +384,11 @@ export const AvailabilitySetsListAvailableSizesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/vmSizes",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AvailabilitySetsListAvailableSizesInput =
@@ -343,12 +432,12 @@ export const AvailabilitySetsListAvailableSizes =
 export const AvailabilitySetsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/availabilitySets",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AvailabilitySetsListBySubscriptionInput =
@@ -412,11 +501,14 @@ export const AvailabilitySetsStartMigrationToVirtualMachineScaleSetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    virtualMachineScaleSetFlexible: Schema.Struct({
+      id: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/startMigrationToVirtualMachineScaleSet",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AvailabilitySetsStartMigrationToVirtualMachineScaleSetInput =
@@ -448,11 +540,98 @@ export const AvailabilitySetsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        platformUpdateDomainCount: Schema.optional(Schema.Number),
+        platformFaultDomainCount: Schema.optional(Schema.Number),
+        virtualMachines: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        proximityPlacementGroup: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        statuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              level: Schema.optional(
+                Schema.Literals(["Info", "Warning", "Error"]),
+              ),
+              displayStatus: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        scheduledEventsPolicy: Schema.optional(
+          Schema.Struct({
+            userInitiatedRedeploy: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            userInitiatedReboot: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            scheduledEventsAdditionalPublishingTargets: Schema.optional(
+              Schema.Struct({
+                eventGridAndResourceGraph: Schema.optional(
+                  Schema.Struct({
+                    enable: Schema.optional(Schema.Boolean),
+                    scheduledEventsApiVersion: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            allInstancesDown: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        virtualMachineScaleSetMigrationInfo: Schema.optional(
+          Schema.Struct({
+            defaultVirtualMachineScaleSetInfo: Schema.optional(
+              Schema.Struct({
+                constrainedMaximumCapacity: Schema.optional(Schema.Boolean),
+                defaultVirtualMachineScaleSet: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            migrateToVirtualMachineScaleSet: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AvailabilitySetsUpdateInput =
@@ -503,11 +682,14 @@ export const AvailabilitySetsValidateMigrationToVirtualMachineScaleSetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    virtualMachineScaleSetFlexible: Schema.Struct({
+      id: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/validateMigrationToVirtualMachineScaleSet",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AvailabilitySetsValidateMigrationToVirtualMachineScaleSetInput =
@@ -540,11 +722,88 @@ export const CapacityReservationGroupsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        capacityReservations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        virtualMachinesAssociated: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            capacityReservations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  utilizationInfo: Schema.optional(
+                    Schema.Struct({
+                      currentCapacity: Schema.optional(Schema.Number),
+                      virtualMachinesAllocated: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            id: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  statuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            sharedSubscriptionIds: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        sharingProfile: Schema.optional(
+          Schema.Struct({
+            subscriptionIds: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        reservationType: Schema.optional(
+          Schema.Literals(["Targeted", "Block"]),
+        ),
+      }),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CapacityReservationGroupsCreateOrUpdateInput =
@@ -594,11 +853,11 @@ export const CapacityReservationGroupsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CapacityReservationGroupsDeleteInput =
@@ -630,12 +889,12 @@ export const CapacityReservationGroupsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.Literals(["instanceView"])),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CapacityReservationGroupsGetInput =
@@ -685,7 +944,6 @@ export const CapacityReservationGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(
       Schema.Literals([
         "virtualMachineScaleSetVMs/$ref",
@@ -696,6 +954,7 @@ export const CapacityReservationGroupsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CapacityReservationGroupsListByResourceGroupInput =
@@ -758,7 +1017,6 @@ export const CapacityReservationGroupsListByResourceGroup =
 export const CapacityReservationGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(
       Schema.Literals([
         "virtualMachineScaleSetVMs/$ref",
@@ -776,6 +1034,7 @@ export const CapacityReservationGroupsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/capacityReservationGroups",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CapacityReservationGroupsListBySubscriptionInput =
@@ -840,11 +1099,86 @@ export const CapacityReservationGroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        capacityReservations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        virtualMachinesAssociated: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            capacityReservations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  utilizationInfo: Schema.optional(
+                    Schema.Struct({
+                      currentCapacity: Schema.optional(Schema.Number),
+                      virtualMachinesAllocated: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            id: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  statuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            sharedSubscriptionIds: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        sharingProfile: Schema.optional(
+          Schema.Struct({
+            subscriptionIds: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        reservationType: Schema.optional(
+          Schema.Literals(["Targeted", "Block"]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CapacityReservationGroupsUpdateInput =
@@ -895,11 +1229,70 @@ export const CapacityReservationsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        reservationId: Schema.optional(Schema.String),
+        platformFaultDomainCount: Schema.optional(Schema.Number),
+        virtualMachinesAssociated: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        provisioningTime: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            utilizationInfo: Schema.optional(
+              Schema.Struct({
+                currentCapacity: Schema.optional(Schema.Number),
+                virtualMachinesAllocated: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        timeCreated: Schema.optional(Schema.String),
+        scheduleProfile: Schema.optional(
+          Schema.Struct({
+            start: Schema.optional(Schema.String),
+            end: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.Struct({
+      name: Schema.optional(Schema.String),
+      tier: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CapacityReservationsCreateOrUpdateInput =
@@ -951,11 +1344,11 @@ export const CapacityReservationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CapacityReservationsDeleteInput =
@@ -990,12 +1383,12 @@ export const CapacityReservationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.Literals(["instanceView"])),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CapacityReservationsGetInput =
@@ -1048,7 +1441,6 @@ export const CapacityReservationsListByCapacityReservationGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(
       Schema.Literals([
         "virtualMachineScaleSetVMs/$ref",
@@ -1059,6 +1451,7 @@ export const CapacityReservationsListByCapacityReservationGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CapacityReservationsListByCapacityReservationGroupInput =
@@ -1125,11 +1518,70 @@ export const CapacityReservationsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        reservationId: Schema.optional(Schema.String),
+        platformFaultDomainCount: Schema.optional(Schema.Number),
+        virtualMachinesAssociated: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        provisioningTime: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            utilizationInfo: Schema.optional(
+              Schema.Struct({
+                currentCapacity: Schema.optional(Schema.Number),
+                virtualMachinesAllocated: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        timeCreated: Schema.optional(Schema.String),
+        scheduleProfile: Schema.optional(
+          Schema.Struct({
+            start: Schema.optional(Schema.String),
+            end: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type CapacityReservationsUpdateInput =
@@ -1180,10 +1632,128 @@ export const ContainerServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerServiceName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        orchestratorProfile: Schema.optional(
+          Schema.Struct({
+            orchestratorType: Schema.Literals([
+              "Swarm",
+              "DCOS",
+              "Custom",
+              "Kubernetes",
+            ]),
+          }),
+        ),
+        customProfile: Schema.optional(
+          Schema.Struct({
+            orchestrator: Schema.String,
+          }),
+        ),
+        servicePrincipalProfile: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.String,
+            secret: SensitiveString,
+          }),
+        ),
+        masterProfile: Schema.Struct({
+          count: Schema.optional(Schema.Literals([1, 3, 5])),
+          dnsPrefix: Schema.String,
+          fqdn: Schema.optional(Schema.String),
+        }),
+        agentPoolProfiles: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            count: Schema.Number,
+            vmSize: Schema.Literals([
+              "Standard_A0",
+              "Standard_A1",
+              "Standard_A2",
+              "Standard_A3",
+              "Standard_A4",
+              "Standard_A5",
+              "Standard_A6",
+              "Standard_A7",
+              "Standard_A8",
+              "Standard_A9",
+              "Standard_A10",
+              "Standard_A11",
+              "Standard_D1",
+              "Standard_D2",
+              "Standard_D3",
+              "Standard_D4",
+              "Standard_D11",
+              "Standard_D12",
+              "Standard_D13",
+              "Standard_D14",
+              "Standard_D1_v2",
+              "Standard_D2_v2",
+              "Standard_D3_v2",
+              "Standard_D4_v2",
+              "Standard_D5_v2",
+              "Standard_D11_v2",
+              "Standard_D12_v2",
+              "Standard_D13_v2",
+              "Standard_D14_v2",
+              "Standard_G1",
+              "Standard_G2",
+              "Standard_G3",
+              "Standard_G4",
+              "Standard_G5",
+              "Standard_DS1",
+              "Standard_DS2",
+              "Standard_DS3",
+              "Standard_DS4",
+              "Standard_DS11",
+              "Standard_DS12",
+              "Standard_DS13",
+              "Standard_DS14",
+              "Standard_GS1",
+              "Standard_GS2",
+              "Standard_GS3",
+              "Standard_GS4",
+              "Standard_GS5",
+            ]),
+            dnsPrefix: Schema.String,
+            fqdn: Schema.optional(Schema.String),
+          }),
+        ),
+        windowsProfile: Schema.optional(
+          Schema.Struct({
+            adminUsername: Schema.String,
+            adminPassword: SensitiveString,
+          }),
+        ),
+        linuxProfile: Schema.Struct({
+          adminUsername: Schema.String,
+          ssh: Schema.Struct({
+            publicKeys: Schema.Array(
+              Schema.Struct({
+                keyData: Schema.String,
+              }),
+            ),
+          }),
+        }),
+        diagnosticsProfile: Schema.optional(
+          Schema.Struct({
+            vmDiagnostics: Schema.Struct({
+              enabled: Schema.Boolean,
+              storageUri: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
+      apiVersion: "2017-01-31",
     }),
   );
 export type ContainerServicesCreateOrUpdateInput =
@@ -1224,6 +1794,7 @@ export const ContainerServicesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
+      apiVersion: "2017-01-31",
     }),
   );
 export type ContainerServicesDeleteInput =
@@ -1259,6 +1830,7 @@ export const ContainerServicesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
+      apiVersion: "2017-01-31",
     }),
   );
 export type ContainerServicesGetInput = typeof ContainerServicesGetInput.Type;
@@ -1295,6 +1867,7 @@ export const ContainerServicesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/containerServices",
+      apiVersion: "2017-01-31",
     }),
   );
 export type ContainerServicesListInput = typeof ContainerServicesListInput.Type;
@@ -1338,6 +1911,7 @@ export const ContainerServicesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices",
+      apiVersion: "2017-01-31",
     }),
   );
 export type ContainerServicesListByResourceGroupInput =
@@ -1381,11 +1955,68 @@ export const DedicatedHostGroupsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        platformFaultDomainCount: Schema.Number,
+        hosts: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            hosts: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  assetId: Schema.optional(Schema.String),
+                  availableCapacity: Schema.optional(
+                    Schema.Struct({
+                      allocatableVMs: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            vmSize: Schema.optional(Schema.String),
+                            count: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  statuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        supportAutomaticPlacement: Schema.optional(Schema.Boolean),
+        additionalCapabilities: Schema.optional(
+          Schema.Struct({
+            ultraSSDEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      }),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostGroupsCreateOrUpdateInput =
@@ -1435,11 +2066,11 @@ export const DedicatedHostGroupsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostGroupsDeleteInput =
@@ -1472,7 +2103,6 @@ export const DedicatedHostGroupsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(
       Schema.Literals(["instanceView", "userData", "resiliencyView"]),
     ),
@@ -1480,6 +2110,7 @@ export const DedicatedHostGroupsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostGroupsGetInput =
@@ -1530,11 +2161,11 @@ export const DedicatedHostGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostGroupsListByResourceGroupInput =
@@ -1596,11 +2227,11 @@ export const DedicatedHostGroupsListByResourceGroup =
 export const DedicatedHostGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/hostGroups",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostGroupsListBySubscriptionInput =
@@ -1663,11 +2294,67 @@ export const DedicatedHostGroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        platformFaultDomainCount: Schema.Number,
+        hosts: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            hosts: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  assetId: Schema.optional(Schema.String),
+                  availableCapacity: Schema.optional(
+                    Schema.Struct({
+                      allocatableVMs: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            vmSize: Schema.optional(Schema.String),
+                            count: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  statuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        supportAutomaticPlacement: Schema.optional(Schema.Boolean),
+        additionalCapabilities: Schema.optional(
+          Schema.Struct({
+            ultraSSDEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      }),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostGroupsUpdateInput =
@@ -1719,11 +2406,72 @@ export const DedicatedHostsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        platformFaultDomain: Schema.optional(Schema.Number),
+        autoReplaceOnFailure: Schema.optional(Schema.Boolean),
+        hostId: Schema.optional(Schema.String),
+        virtualMachines: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        licenseType: Schema.optional(
+          Schema.Literals([
+            "None",
+            "Windows_Server_Hybrid",
+            "Windows_Server_Perpetual",
+          ]),
+        ),
+        provisioningTime: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            assetId: Schema.optional(Schema.String),
+            availableCapacity: Schema.optional(
+              Schema.Struct({
+                allocatableVMs: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      vmSize: Schema.optional(Schema.String),
+                      count: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        timeCreated: Schema.optional(Schema.String),
+      }),
+    ),
+    sku: Schema.Struct({
+      name: Schema.optional(Schema.String),
+      tier: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostsCreateOrUpdateInput =
@@ -1775,11 +2523,11 @@ export const DedicatedHostsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostsDeleteInput = typeof DedicatedHostsDeleteInput.Type;
@@ -1812,7 +2560,6 @@ export const DedicatedHostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(
       Schema.Literals(["instanceView", "userData", "resiliencyView"]),
     ),
@@ -1821,6 +2568,7 @@ export const DedicatedHostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
+    apiVersion: "2025-04-01",
   }),
 );
 export type DedicatedHostsGetInput = typeof DedicatedHostsGetInput.Type;
@@ -1870,11 +2618,11 @@ export const DedicatedHostsListAvailableSizesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/hostSizes",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostsListAvailableSizesInput =
@@ -1910,11 +2658,11 @@ export const DedicatedHostsListByHostGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostsListByHostGroupInput =
@@ -1980,11 +2728,11 @@ export const DedicatedHostsRedeployInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/redeploy",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostsRedeployInput =
@@ -2019,11 +2767,11 @@ export const DedicatedHostsRestartInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/restart",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostsRestartInput = typeof DedicatedHostsRestartInput.Type;
@@ -2057,11 +2805,73 @@ export const DedicatedHostsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        platformFaultDomain: Schema.optional(Schema.Number),
+        autoReplaceOnFailure: Schema.optional(Schema.Boolean),
+        hostId: Schema.optional(Schema.String),
+        virtualMachines: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        licenseType: Schema.optional(
+          Schema.Literals([
+            "None",
+            "Windows_Server_Hybrid",
+            "Windows_Server_Perpetual",
+          ]),
+        ),
+        provisioningTime: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            assetId: Schema.optional(Schema.String),
+            availableCapacity: Schema.optional(
+              Schema.Struct({
+                allocatableVMs: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      vmSize: Schema.optional(Schema.String),
+                      count: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        timeCreated: Schema.optional(Schema.String),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type DedicatedHostsUpdateInput = typeof DedicatedHostsUpdateInput.Type;
@@ -2111,11 +2921,107 @@ export const ImagesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        sourceVirtualMachine: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        storageProfile: Schema.optional(
+          Schema.Struct({
+            osDisk: Schema.optional(
+              Schema.Struct({
+                snapshot: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                managedDisk: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                blobUri: Schema.optional(Schema.String),
+                caching: Schema.optional(
+                  Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                ),
+                diskSizeGB: Schema.optional(Schema.Number),
+                storageAccountType: Schema.optional(
+                  Schema.Literals([
+                    "Standard_LRS",
+                    "Premium_LRS",
+                    "StandardSSD_LRS",
+                    "UltraSSD_LRS",
+                    "Premium_ZRS",
+                    "StandardSSD_ZRS",
+                    "PremiumV2_LRS",
+                  ]),
+                ),
+                diskEncryptionSet: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            dataDisks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  snapshot: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  managedDisk: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  blobUri: Schema.optional(Schema.String),
+                  caching: Schema.optional(
+                    Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                  ),
+                  diskSizeGB: Schema.optional(Schema.Number),
+                  storageAccountType: Schema.optional(
+                    Schema.Literals([
+                      "Standard_LRS",
+                      "Premium_LRS",
+                      "StandardSSD_LRS",
+                      "UltraSSD_LRS",
+                      "Premium_ZRS",
+                      "StandardSSD_ZRS",
+                      "PremiumV2_LRS",
+                    ]),
+                  ),
+                  diskEncryptionSet: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            zoneResilient: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["EdgeZone"])),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type ImagesCreateOrUpdateInput = typeof ImagesCreateOrUpdateInput.Type;
@@ -2163,11 +3069,11 @@ export const ImagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   imageName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}",
+    apiVersion: "2025-04-01",
   }),
 );
 export type ImagesDeleteInput = typeof ImagesDeleteInput.Type;
@@ -2194,12 +3100,12 @@ export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   imageName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}",
+    apiVersion: "2025-04-01",
   }),
 );
 export type ImagesGetInput = typeof ImagesGetInput.Type;
@@ -2243,11 +3149,11 @@ export const ImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/images",
+    apiVersion: "2025-04-01",
   }),
 );
 export type ImagesListInput = typeof ImagesListInput.Type;
@@ -2295,11 +3201,11 @@ export const ImagesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images",
+      apiVersion: "2025-04-01",
     }),
   );
 export type ImagesListByResourceGroupInput =
@@ -2363,11 +3269,100 @@ export const ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   imageName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      sourceVirtualMachine: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+      storageProfile: Schema.optional(
+        Schema.Struct({
+          osDisk: Schema.optional(
+            Schema.Struct({
+              snapshot: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+              managedDisk: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+              blobUri: Schema.optional(Schema.String),
+              caching: Schema.optional(
+                Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+              ),
+              diskSizeGB: Schema.optional(Schema.Number),
+              storageAccountType: Schema.optional(
+                Schema.Literals([
+                  "Standard_LRS",
+                  "Premium_LRS",
+                  "StandardSSD_LRS",
+                  "UltraSSD_LRS",
+                  "Premium_ZRS",
+                  "StandardSSD_ZRS",
+                  "PremiumV2_LRS",
+                ]),
+              ),
+              diskEncryptionSet: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+          dataDisks: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                snapshot: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                managedDisk: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                blobUri: Schema.optional(Schema.String),
+                caching: Schema.optional(
+                  Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                ),
+                diskSizeGB: Schema.optional(Schema.Number),
+                storageAccountType: Schema.optional(
+                  Schema.Literals([
+                    "Standard_LRS",
+                    "Premium_LRS",
+                    "StandardSSD_LRS",
+                    "UltraSSD_LRS",
+                    "Premium_ZRS",
+                    "StandardSSD_ZRS",
+                    "PremiumV2_LRS",
+                  ]),
+                ),
+                diskEncryptionSet: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          zoneResilient: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}",
+    apiVersion: "2025-04-01",
   }),
 );
 export type ImagesUpdateInput = typeof ImagesUpdateInput.Type;
@@ -2412,11 +3407,25 @@ export const LogAnalyticsExportRequestRateByIntervalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    intervalLength: Schema.Literals([
+      "ThreeMins",
+      "FiveMins",
+      "ThirtyMins",
+      "SixtyMins",
+    ]),
+    blobContainerSasUri: Schema.String,
+    fromTime: Schema.String,
+    toTime: Schema.String,
+    groupByThrottlePolicy: Schema.optional(Schema.Boolean),
+    groupByOperationName: Schema.optional(Schema.Boolean),
+    groupByResourceName: Schema.optional(Schema.Boolean),
+    groupByClientApplicationId: Schema.optional(Schema.Boolean),
+    groupByUserAgent: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getRequestRateByInterval",
+      apiVersion: "2025-04-01",
     }),
   );
 export type LogAnalyticsExportRequestRateByIntervalInput =
@@ -2452,11 +3461,19 @@ export const LogAnalyticsExportThrottledRequestsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    blobContainerSasUri: Schema.String,
+    fromTime: Schema.String,
+    toTime: Schema.String,
+    groupByThrottlePolicy: Schema.optional(Schema.Boolean),
+    groupByOperationName: Schema.optional(Schema.Boolean),
+    groupByResourceName: Schema.optional(Schema.Boolean),
+    groupByClientApplicationId: Schema.optional(Schema.Boolean),
+    groupByUserAgent: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getThrottledRequests",
+      apiVersion: "2025-04-01",
     }),
   );
 export type LogAnalyticsExportThrottledRequestsInput =
@@ -2488,10 +3505,14 @@ export const LogAnalyticsExportThrottledRequests =
     outputSchema: LogAnalyticsExportThrottledRequestsOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Compute/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Compute/operations",
+    apiVersion: "2025-06-05",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -2537,11 +3558,58 @@ export const ProximityPlacementGroupsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        proximityPlacementGroupType: Schema.optional(
+          Schema.Literals(["Standard", "Ultra"]),
+        ),
+        virtualMachines: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        virtualMachineScaleSets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        availabilitySets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        colocationStatus: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            level: Schema.optional(
+              Schema.Literals(["Info", "Warning", "Error"]),
+            ),
+            displayStatus: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+        intent: Schema.optional(
+          Schema.Struct({
+            vmSizes: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type ProximityPlacementGroupsCreateOrUpdateInput =
@@ -2591,11 +3659,11 @@ export const ProximityPlacementGroupsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type ProximityPlacementGroupsDeleteInput =
@@ -2627,12 +3695,12 @@ export const ProximityPlacementGroupsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeColocationStatus: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type ProximityPlacementGroupsGetInput =
@@ -2683,11 +3751,11 @@ export const ProximityPlacementGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups",
+      apiVersion: "2025-04-01",
     }),
   );
 export type ProximityPlacementGroupsListByResourceGroupInput =
@@ -2749,11 +3817,11 @@ export const ProximityPlacementGroupsListByResourceGroup =
 export const ProximityPlacementGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/proximityPlacementGroups",
+      apiVersion: "2025-04-01",
     }),
   );
 export type ProximityPlacementGroupsListBySubscriptionInput =
@@ -2816,11 +3884,12 @@ export const ProximityPlacementGroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type ProximityPlacementGroupsUpdateInput =
@@ -2870,11 +3939,59 @@ export const RestorePointCollectionsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.optional(
+          Schema.Struct({
+            location: Schema.optional(Schema.String),
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        restorePointCollectionId: Schema.optional(Schema.String),
+        restorePoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        instantAccess: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type RestorePointCollectionsCreateOrUpdateInput =
@@ -2924,11 +4041,11 @@ export const RestorePointCollectionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type RestorePointCollectionsDeleteInput =
@@ -2960,12 +4077,12 @@ export const RestorePointCollectionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.Literals(["restorePoints"])),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type RestorePointCollectionsGetInput =
@@ -3016,11 +4133,11 @@ export const RestorePointCollectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections",
+      apiVersion: "2025-04-01",
     }),
   );
 export type RestorePointCollectionsListInput =
@@ -3083,11 +4200,11 @@ export const RestorePointCollectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RestorePointCollectionsListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/restorePointCollections",
+      apiVersion: "2025-04-01",
     }),
   );
 export type RestorePointCollectionsListAllInput =
@@ -3150,11 +4267,58 @@ export const RestorePointCollectionsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.optional(
+          Schema.Struct({
+            location: Schema.optional(Schema.String),
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        restorePointCollectionId: Schema.optional(Schema.String),
+        restorePoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        instantAccess: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type RestorePointCollectionsUpdateInput =
@@ -3205,11 +4369,567 @@ export const RestorePointsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
     restorePointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        excludeDisks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        sourceMetadata: Schema.optional(
+          Schema.Struct({
+            hardwareProfile: Schema.optional(
+              Schema.Struct({
+                vmSize: Schema.optional(
+                  Schema.Literals([
+                    "Basic_A0",
+                    "Basic_A1",
+                    "Basic_A2",
+                    "Basic_A3",
+                    "Basic_A4",
+                    "Standard_A0",
+                    "Standard_A1",
+                    "Standard_A2",
+                    "Standard_A3",
+                    "Standard_A4",
+                    "Standard_A5",
+                    "Standard_A6",
+                    "Standard_A7",
+                    "Standard_A8",
+                    "Standard_A9",
+                    "Standard_A10",
+                    "Standard_A11",
+                    "Standard_A1_v2",
+                    "Standard_A2_v2",
+                    "Standard_A4_v2",
+                    "Standard_A8_v2",
+                    "Standard_A2m_v2",
+                    "Standard_A4m_v2",
+                    "Standard_A8m_v2",
+                    "Standard_B1s",
+                    "Standard_B1ms",
+                    "Standard_B2s",
+                    "Standard_B2ms",
+                    "Standard_B4ms",
+                    "Standard_B8ms",
+                    "Standard_D1",
+                    "Standard_D2",
+                    "Standard_D3",
+                    "Standard_D4",
+                    "Standard_D11",
+                    "Standard_D12",
+                    "Standard_D13",
+                    "Standard_D14",
+                    "Standard_D1_v2",
+                    "Standard_D2_v2",
+                    "Standard_D3_v2",
+                    "Standard_D4_v2",
+                    "Standard_D5_v2",
+                    "Standard_D2_v3",
+                    "Standard_D4_v3",
+                    "Standard_D8_v3",
+                    "Standard_D16_v3",
+                    "Standard_D32_v3",
+                    "Standard_D64_v3",
+                    "Standard_D2s_v3",
+                    "Standard_D4s_v3",
+                    "Standard_D8s_v3",
+                    "Standard_D16s_v3",
+                    "Standard_D32s_v3",
+                    "Standard_D64s_v3",
+                    "Standard_D11_v2",
+                    "Standard_D12_v2",
+                    "Standard_D13_v2",
+                    "Standard_D14_v2",
+                    "Standard_D15_v2",
+                    "Standard_DS1",
+                    "Standard_DS2",
+                    "Standard_DS3",
+                    "Standard_DS4",
+                    "Standard_DS11",
+                    "Standard_DS12",
+                    "Standard_DS13",
+                    "Standard_DS14",
+                    "Standard_DS1_v2",
+                    "Standard_DS2_v2",
+                    "Standard_DS3_v2",
+                    "Standard_DS4_v2",
+                    "Standard_DS5_v2",
+                    "Standard_DS11_v2",
+                    "Standard_DS12_v2",
+                    "Standard_DS13_v2",
+                    "Standard_DS14_v2",
+                    "Standard_DS15_v2",
+                    "Standard_DS13-4_v2",
+                    "Standard_DS13-2_v2",
+                    "Standard_DS14-8_v2",
+                    "Standard_DS14-4_v2",
+                    "Standard_E2_v3",
+                    "Standard_E4_v3",
+                    "Standard_E8_v3",
+                    "Standard_E16_v3",
+                    "Standard_E32_v3",
+                    "Standard_E64_v3",
+                    "Standard_E2s_v3",
+                    "Standard_E4s_v3",
+                    "Standard_E8s_v3",
+                    "Standard_E16s_v3",
+                    "Standard_E32s_v3",
+                    "Standard_E64s_v3",
+                    "Standard_E32-16_v3",
+                    "Standard_E32-8s_v3",
+                    "Standard_E64-32s_v3",
+                    "Standard_E64-16s_v3",
+                    "Standard_F1",
+                    "Standard_F2",
+                    "Standard_F4",
+                    "Standard_F8",
+                    "Standard_F16",
+                    "Standard_F1s",
+                    "Standard_F2s",
+                    "Standard_F4s",
+                    "Standard_F8s",
+                    "Standard_F16s",
+                    "Standard_F2s_v2",
+                    "Standard_F4s_v2",
+                    "Standard_F8s_v2",
+                    "Standard_F16s_v2",
+                    "Standard_F32s_v2",
+                    "Standard_F64s_v2",
+                    "Standard_F72s_v2",
+                    "Standard_G1",
+                    "Standard_G2",
+                    "Standard_G3",
+                    "Standard_G4",
+                    "Standard_G5",
+                    "Standard_GS1",
+                    "Standard_GS2",
+                    "Standard_GS3",
+                    "Standard_GS4",
+                    "Standard_GS5",
+                    "Standard_GS4-8",
+                    "Standard_GS4-4",
+                    "Standard_GS5-16",
+                    "Standard_GS5-8",
+                    "Standard_H8",
+                    "Standard_H16",
+                    "Standard_H8m",
+                    "Standard_H16m",
+                    "Standard_H16r",
+                    "Standard_H16mr",
+                    "Standard_L4s",
+                    "Standard_L8s",
+                    "Standard_L16s",
+                    "Standard_L32s",
+                    "Standard_M64s",
+                    "Standard_M64ms",
+                    "Standard_M128s",
+                    "Standard_M128ms",
+                    "Standard_M64-32ms",
+                    "Standard_M64-16ms",
+                    "Standard_M128-64ms",
+                    "Standard_M128-32ms",
+                    "Standard_NC6",
+                    "Standard_NC12",
+                    "Standard_NC24",
+                    "Standard_NC24r",
+                    "Standard_NC6s_v2",
+                    "Standard_NC12s_v2",
+                    "Standard_NC24s_v2",
+                    "Standard_NC24rs_v2",
+                    "Standard_NC6s_v3",
+                    "Standard_NC12s_v3",
+                    "Standard_NC24s_v3",
+                    "Standard_NC24rs_v3",
+                    "Standard_ND6s",
+                    "Standard_ND12s",
+                    "Standard_ND24s",
+                    "Standard_ND24rs",
+                    "Standard_NV6",
+                    "Standard_NV12",
+                    "Standard_NV24",
+                  ]),
+                ),
+                vmSizeProperties: Schema.optional(
+                  Schema.Struct({
+                    vCPUsAvailable: Schema.optional(Schema.Number),
+                    vCPUsPerCore: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            storageProfile: Schema.optional(
+              Schema.Struct({
+                osDisk: Schema.optional(
+                  Schema.Struct({
+                    osType: Schema.optional(
+                      Schema.Literals(["Windows", "Linux"]),
+                    ),
+                    encryptionSettings: Schema.optional(
+                      Schema.Struct({
+                        diskEncryptionKey: Schema.optional(
+                          Schema.Struct({
+                            secretUrl: Schema.String,
+                            sourceVault: Schema.Struct({
+                              id: Schema.optional(Schema.String),
+                            }),
+                          }),
+                        ),
+                        keyEncryptionKey: Schema.optional(
+                          Schema.Struct({
+                            keyUrl: Schema.String,
+                            sourceVault: Schema.Struct({
+                              id: Schema.optional(Schema.String),
+                            }),
+                          }),
+                        ),
+                        enabled: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    name: Schema.optional(Schema.String),
+                    caching: Schema.optional(
+                      Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                    ),
+                    diskSizeGB: Schema.optional(Schema.Number),
+                    managedDisk: Schema.optional(
+                      Schema.Struct({
+                        id: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    diskRestorePoint: Schema.optional(
+                      Schema.Struct({
+                        id: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                dataDisks: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      lun: Schema.optional(Schema.Number),
+                      name: Schema.optional(Schema.String),
+                      caching: Schema.optional(
+                        Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                      ),
+                      diskSizeGB: Schema.optional(Schema.Number),
+                      managedDisk: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      diskRestorePoint: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+                    }),
+                  ),
+                ),
+                diskControllerType: Schema.optional(
+                  Schema.Literals(["SCSI", "NVMe"]),
+                ),
+              }),
+            ),
+            osProfile: Schema.optional(
+              Schema.Struct({
+                computerName: Schema.optional(Schema.String),
+                adminUsername: Schema.optional(Schema.String),
+                adminPassword: Schema.optional(SensitiveString),
+                customData: Schema.optional(Schema.String),
+                windowsConfiguration: Schema.optional(
+                  Schema.Struct({
+                    provisionVMAgent: Schema.optional(Schema.Boolean),
+                    enableAutomaticUpdates: Schema.optional(Schema.Boolean),
+                    timeZone: Schema.optional(Schema.String),
+                    additionalUnattendContent: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          passName: Schema.optional(
+                            Schema.Literals(["OobeSystem"]),
+                          ),
+                          componentName: Schema.optional(
+                            Schema.Literals(["Microsoft-Windows-Shell-Setup"]),
+                          ),
+                          settingName: Schema.optional(
+                            Schema.Literals([
+                              "AutoLogon",
+                              "FirstLogonCommands",
+                            ]),
+                          ),
+                          content: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    patchSettings: Schema.optional(
+                      Schema.Struct({
+                        patchMode: Schema.optional(
+                          Schema.Literals([
+                            "Manual",
+                            "AutomaticByOS",
+                            "AutomaticByPlatform",
+                          ]),
+                        ),
+                        enableHotpatching: Schema.optional(Schema.Boolean),
+                        assessmentMode: Schema.optional(
+                          Schema.Literals([
+                            "ImageDefault",
+                            "AutomaticByPlatform",
+                          ]),
+                        ),
+                        automaticByPlatformSettings: Schema.optional(
+                          Schema.Struct({
+                            rebootSetting: Schema.optional(
+                              Schema.Literals([
+                                "Unknown",
+                                "IfRequired",
+                                "Never",
+                                "Always",
+                              ]),
+                            ),
+                            bypassPlatformSafetyChecksOnUserSchedule:
+                              Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                      }),
+                    ),
+                    winRM: Schema.optional(
+                      Schema.Struct({
+                        listeners: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              protocol: Schema.optional(
+                                Schema.Literals(["Http", "Https"]),
+                              ),
+                              certificateUrl: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    enableVMAgentPlatformUpdates: Schema.optional(
+                      Schema.Boolean,
+                    ),
+                  }),
+                ),
+                linuxConfiguration: Schema.optional(
+                  Schema.Struct({
+                    disablePasswordAuthentication: Schema.optional(
+                      Schema.Boolean,
+                    ),
+                    ssh: Schema.optional(
+                      Schema.Struct({
+                        publicKeys: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              path: Schema.optional(Schema.String),
+                              keyData: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    provisionVMAgent: Schema.optional(Schema.Boolean),
+                    patchSettings: Schema.optional(
+                      Schema.Struct({
+                        patchMode: Schema.optional(
+                          Schema.Literals([
+                            "ImageDefault",
+                            "AutomaticByPlatform",
+                          ]),
+                        ),
+                        assessmentMode: Schema.optional(
+                          Schema.Literals([
+                            "ImageDefault",
+                            "AutomaticByPlatform",
+                          ]),
+                        ),
+                        automaticByPlatformSettings: Schema.optional(
+                          Schema.Struct({
+                            rebootSetting: Schema.optional(
+                              Schema.Literals([
+                                "Unknown",
+                                "IfRequired",
+                                "Never",
+                                "Always",
+                              ]),
+                            ),
+                            bypassPlatformSafetyChecksOnUserSchedule:
+                              Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                      }),
+                    ),
+                    enableVMAgentPlatformUpdates: Schema.optional(
+                      Schema.Boolean,
+                    ),
+                  }),
+                ),
+                secrets: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      sourceVault: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      vaultCertificates: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            certificateUrl: Schema.optional(Schema.String),
+                            certificateStore: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                ),
+                allowExtensionOperations: Schema.optional(Schema.Boolean),
+                requireGuestProvisionSignal: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            diagnosticsProfile: Schema.optional(
+              Schema.Struct({
+                bootDiagnostics: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    storageUri: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            licenseType: Schema.optional(Schema.String),
+            vmId: Schema.optional(Schema.String),
+            securityProfile: Schema.optional(
+              Schema.Struct({
+                uefiSettings: Schema.optional(
+                  Schema.Struct({
+                    secureBootEnabled: Schema.optional(Schema.Boolean),
+                    vTpmEnabled: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                encryptionAtHost: Schema.optional(Schema.Boolean),
+                securityType: Schema.optional(
+                  Schema.Literals(["TrustedLaunch", "ConfidentialVM"]),
+                ),
+                encryptionIdentity: Schema.optional(
+                  Schema.Struct({
+                    userAssignedIdentityResourceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                proxyAgentSettings: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    mode: Schema.optional(
+                      Schema.Literals(["Audit", "Enforce"]),
+                    ),
+                    keyIncarnationId: Schema.optional(Schema.Number),
+                    wireServer: Schema.optional(
+                      Schema.Struct({
+                        mode: Schema.optional(
+                          Schema.Literals(["Audit", "Enforce", "Disabled"]),
+                        ),
+                        inVMAccessControlProfileReferenceId: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                    imds: Schema.optional(
+                      Schema.Struct({
+                        mode: Schema.optional(
+                          Schema.Literals(["Audit", "Enforce", "Disabled"]),
+                        ),
+                        inVMAccessControlProfileReferenceId: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                    addProxyAgentExtension: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              }),
+            ),
+            location: Schema.optional(Schema.String),
+            userData: Schema.optional(Schema.String),
+            hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        consistencyMode: Schema.optional(
+          Schema.Literals([
+            "CrashConsistent",
+            "FileSystemConsistent",
+            "ApplicationConsistent",
+          ]),
+        ),
+        timeCreated: Schema.optional(Schema.String),
+        sourceRestorePoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            diskRestorePoints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  snapshotAccessState: Schema.optional(
+                    Schema.Literals([
+                      "Unknown",
+                      "Pending",
+                      "Available",
+                      "InstantAccess",
+                      "AvailableWithInstantAccess",
+                    ]),
+                  ),
+                  replicationStatus: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(
+                        Schema.Struct({
+                          code: Schema.optional(Schema.String),
+                          level: Schema.optional(
+                            Schema.Literals(["Info", "Warning", "Error"]),
+                          ),
+                          displayStatus: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          time: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      completionPercent: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        instantAccessDurationMinutes: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type RestorePointsCreateInput = typeof RestorePointsCreateInput.Type;
@@ -3258,11 +4978,11 @@ export const RestorePointsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
     restorePointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type RestorePointsDeleteInput = typeof RestorePointsDeleteInput.Type;
@@ -3292,12 +5012,12 @@ export const RestorePointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   restorePointCollectionName: Schema.String.pipe(T.PathParam()),
   restorePointName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.Literals(["instanceView"])),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{restorePointName}",
+    apiVersion: "2025-04-01",
   }),
 );
 export type RestorePointsGetInput = typeof RestorePointsGetInput.Type;
@@ -3346,11 +5066,11 @@ export const SpotPlacementScoresGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot",
+      apiVersion: "2025-06-05",
     }),
   );
 export type SpotPlacementScoresGetInput =
@@ -3399,11 +5119,21 @@ export const SpotPlacementScoresPostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    desiredLocations: Schema.optional(Schema.Array(Schema.String)),
+    desiredSizes: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          sku: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    desiredCount: Schema.optional(Schema.Number),
+    availabilityZones: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate",
+      apiVersion: "2025-06-05",
     }),
   );
 export type SpotPlacementScoresPostInput =
@@ -3457,11 +5187,18 @@ export const SshPublicKeysCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sshPublicKeyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        publicKey: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type SshPublicKeysCreateInput = typeof SshPublicKeysCreateInput.Type;
@@ -3508,11 +5245,11 @@ export const SshPublicKeysDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sshPublicKeyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type SshPublicKeysDeleteInput = typeof SshPublicKeysDeleteInput.Type;
@@ -3541,11 +5278,12 @@ export const SshPublicKeysGenerateKeyPairInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sshPublicKeyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    encryptionType: Schema.optional(Schema.Literals(["RSA", "Ed25519"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}/generateKeyPair",
+      apiVersion: "2025-04-01",
     }),
   );
 export type SshPublicKeysGenerateKeyPairInput =
@@ -3554,7 +5292,7 @@ export type SshPublicKeysGenerateKeyPairInput =
 // Output Schema
 export const SshPublicKeysGenerateKeyPairOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    privateKey: SensitiveString,
+    privateKey: SensitiveOutputString,
     publicKey: Schema.String,
     id: Schema.String,
   });
@@ -3580,11 +5318,11 @@ export const SshPublicKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   sshPublicKeyName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
+    apiVersion: "2025-04-01",
   }),
 );
 export type SshPublicKeysGetInput = typeof SshPublicKeysGetInput.Type;
@@ -3631,11 +5369,11 @@ export const SshPublicKeysListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys",
+      apiVersion: "2025-04-01",
     }),
   );
 export type SshPublicKeysListByResourceGroupInput =
@@ -3697,11 +5435,11 @@ export const SshPublicKeysListByResourceGroup =
 export const SshPublicKeysListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/sshPublicKeys",
+      apiVersion: "2025-04-01",
     }),
   );
 export type SshPublicKeysListBySubscriptionInput =
@@ -3764,11 +5502,17 @@ export const SshPublicKeysUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sshPublicKeyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        publicKey: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type SshPublicKeysUpdateInput = typeof SshPublicKeysUpdateInput.Type;
@@ -3813,11 +5557,11 @@ export const SshPublicKeysUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const UsageListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/usages",
+    apiVersion: "2025-04-01",
   }),
 );
 export type UsageListInput = typeof UsageListInput.Type;
@@ -3859,11 +5603,11 @@ export const VirtualMachineExtensionImagesGetInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     type: Schema.String.pipe(T.PathParam()),
     version: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions/{version}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineExtensionImagesGetInput =
@@ -3912,11 +5656,11 @@ export const VirtualMachineExtensionImagesListTypesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineExtensionImagesListTypesInput =
@@ -3968,7 +5712,6 @@ export const VirtualMachineExtensionImagesListVersionsInput =
     location: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     type: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $orderby: Schema.optional(Schema.String),
@@ -3976,6 +5719,7 @@ export const VirtualMachineExtensionImagesListVersionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineExtensionImagesListVersionsInput =
@@ -4028,11 +5772,69 @@ export const VirtualMachineExtensionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     vmExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        forceUpdateTag: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        typeHandlerVersion: Schema.optional(Schema.String),
+        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+        settings: Schema.optional(Schema.Unknown),
+        protectedSettings: Schema.optional(Schema.Unknown),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            typeHandlerVersion: Schema.optional(Schema.String),
+            substatuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        suppressFailures: Schema.optional(Schema.Boolean),
+        protectedSettingsFromKeyVault: Schema.optional(
+          Schema.Struct({
+            secretUrl: Schema.String,
+            sourceVault: Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+        provisionAfterExtensions: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineExtensionsCreateOrUpdateInput =
@@ -4084,11 +5886,11 @@ export const VirtualMachineExtensionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     vmExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineExtensionsDeleteInput =
@@ -4122,12 +5924,12 @@ export const VirtualMachineExtensionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     vmExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineExtensionsGetInput =
@@ -4180,12 +5982,12 @@ export const VirtualMachineExtensionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineExtensionsListInput =
@@ -4253,11 +6055,33 @@ export const VirtualMachineExtensionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     vmExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        forceUpdateTag: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        typeHandlerVersion: Schema.optional(Schema.String),
+        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+        settings: Schema.optional(Schema.Unknown),
+        protectedSettings: Schema.optional(Schema.Unknown),
+        suppressFailures: Schema.optional(Schema.Boolean),
+        protectedSettingsFromKeyVault: Schema.optional(
+          Schema.Struct({
+            secretUrl: Schema.String,
+            sourceVault: Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineExtensionsUpdateInput =
@@ -4312,11 +6136,11 @@ export const VirtualMachineImagesEdgeZoneGetInput =
     skus: Schema.String.pipe(T.PathParam()),
     version: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineImagesEdgeZoneGetInput =
@@ -4357,7 +6181,6 @@ export const VirtualMachineImagesEdgeZoneListInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     offer: Schema.String.pipe(T.PathParam()),
     skus: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $orderby: Schema.optional(Schema.String),
@@ -4365,6 +6188,7 @@ export const VirtualMachineImagesEdgeZoneListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineImagesEdgeZoneListInput =
@@ -4407,11 +6231,11 @@ export const VirtualMachineImagesEdgeZoneListOffersInput =
     location: Schema.String.pipe(T.PathParam()),
     edgeZone: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineImagesEdgeZoneListOffersInput =
@@ -4448,11 +6272,11 @@ export const VirtualMachineImagesEdgeZoneListPublishersInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     edgeZone: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineImagesEdgeZoneListPublishersInput =
@@ -4490,11 +6314,11 @@ export const VirtualMachineImagesEdgeZoneListSkusInput =
     edgeZone: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     offer: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineImagesEdgeZoneListSkusInput =
@@ -4535,11 +6359,11 @@ export const VirtualMachineImagesGetInput =
     skus: Schema.String.pipe(T.PathParam()),
     version: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineImagesGetInput =
@@ -4579,7 +6403,6 @@ export const VirtualMachineImagesListInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     offer: Schema.String.pipe(T.PathParam()),
     skus: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $orderby: Schema.optional(Schema.String),
@@ -4587,6 +6410,7 @@ export const VirtualMachineImagesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineImagesListInput =
@@ -4626,11 +6450,11 @@ export const VirtualMachineImagesListByEdgeZoneInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     edgeZone: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/vmimages",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineImagesListByEdgeZoneInput =
@@ -4671,11 +6495,11 @@ export const VirtualMachineImagesListOffersInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineImagesListOffersInput =
@@ -4710,11 +6534,11 @@ export const VirtualMachineImagesListPublishersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineImagesListPublishersInput =
@@ -4750,11 +6574,11 @@ export const VirtualMachineImagesListSkusInput =
     location: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     offer: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineImagesListSkusInput =
@@ -4792,11 +6616,104 @@ export const VirtualMachineRunCommandsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.optional(
+          Schema.Struct({
+            script: Schema.optional(Schema.String),
+            scriptUri: Schema.optional(Schema.String),
+            commandId: Schema.optional(Schema.String),
+            scriptUriManagedIdentity: Schema.optional(
+              Schema.Struct({
+                clientId: Schema.optional(Schema.String),
+                objectId: Schema.optional(Schema.String),
+              }),
+            ),
+            scriptShell: Schema.optional(
+              Schema.Literals(["Default", "Powershell7"]),
+            ),
+            galleryScriptReferenceId: Schema.optional(Schema.String),
+          }),
+        ),
+        parameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        protectedParameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        asyncExecution: Schema.optional(Schema.Boolean),
+        runAsUser: Schema.optional(Schema.String),
+        runAsPassword: Schema.optional(SensitiveString),
+        timeoutInSeconds: Schema.optional(Schema.Number),
+        outputBlobUri: Schema.optional(Schema.String),
+        errorBlobUri: Schema.optional(Schema.String),
+        outputBlobManagedIdentity: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
+        ),
+        errorBlobManagedIdentity: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            executionState: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "Pending",
+                "Running",
+                "Failed",
+                "Succeeded",
+                "TimedOut",
+                "Canceled",
+              ]),
+            ),
+            executionMessage: Schema.optional(Schema.String),
+            exitCode: Schema.optional(Schema.Number),
+            output: Schema.optional(Schema.String),
+            error: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        treatFailureAsDeploymentFailure: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineRunCommandsCreateOrUpdateInput =
@@ -4848,11 +6765,11 @@ export const VirtualMachineRunCommandsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineRunCommandsDeleteInput =
@@ -4885,11 +6802,11 @@ export const VirtualMachineRunCommandsGetInput =
     location: Schema.String.pipe(T.PathParam()),
     commandId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands/{commandId}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineRunCommandsGetInput =
@@ -4928,12 +6845,12 @@ export const VirtualMachineRunCommandsGetByVirtualMachineInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineRunCommandsGetByVirtualMachineInput =
@@ -4984,11 +6901,11 @@ export const VirtualMachineRunCommandsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineRunCommandsListInput =
@@ -5030,12 +6947,12 @@ export const VirtualMachineRunCommandsListByVirtualMachineInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineRunCommandsListByVirtualMachineInput =
@@ -5102,11 +7019,103 @@ export const VirtualMachineRunCommandsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.optional(
+          Schema.Struct({
+            script: Schema.optional(Schema.String),
+            scriptUri: Schema.optional(Schema.String),
+            commandId: Schema.optional(Schema.String),
+            scriptUriManagedIdentity: Schema.optional(
+              Schema.Struct({
+                clientId: Schema.optional(Schema.String),
+                objectId: Schema.optional(Schema.String),
+              }),
+            ),
+            scriptShell: Schema.optional(
+              Schema.Literals(["Default", "Powershell7"]),
+            ),
+            galleryScriptReferenceId: Schema.optional(Schema.String),
+          }),
+        ),
+        parameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        protectedParameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        asyncExecution: Schema.optional(Schema.Boolean),
+        runAsUser: Schema.optional(Schema.String),
+        runAsPassword: Schema.optional(SensitiveString),
+        timeoutInSeconds: Schema.optional(Schema.Number),
+        outputBlobUri: Schema.optional(Schema.String),
+        errorBlobUri: Schema.optional(Schema.String),
+        outputBlobManagedIdentity: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
+        ),
+        errorBlobManagedIdentity: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            executionState: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "Pending",
+                "Running",
+                "Failed",
+                "Succeeded",
+                "TimedOut",
+                "Canceled",
+              ]),
+            ),
+            executionMessage: Schema.optional(Schema.String),
+            exitCode: Schema.optional(Schema.Number),
+            output: Schema.optional(Schema.String),
+            error: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        treatFailureAsDeploymentFailure: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineRunCommandsUpdateInput =
@@ -5157,11 +7166,11 @@ export const VirtualMachinesAssessPatchesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/assessPatches",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesAssessPatchesInput =
@@ -5255,11 +7264,37 @@ export const VirtualMachinesAttachDetachDataDisksInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    dataDisksToAttach: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          diskId: Schema.String,
+          lun: Schema.optional(Schema.Number),
+          caching: Schema.optional(
+            Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+          ),
+          deleteOption: Schema.optional(Schema.Literals(["Delete", "Detach"])),
+          diskEncryptionSet: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+          writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+        }),
+      ),
+    ),
+    dataDisksToDetach: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          diskId: Schema.String,
+          detachOption: Schema.optional(Schema.Literals(["ForceDetach"])),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/attachDetachDataDisks",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesAttachDetachDataDisksInput =
@@ -5408,11 +7443,37 @@ export const VirtualMachineScaleSetExtensionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     vmssExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        forceUpdateTag: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        typeHandlerVersion: Schema.optional(Schema.String),
+        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+        settings: Schema.optional(Schema.Unknown),
+        protectedSettings: Schema.optional(Schema.Unknown),
+        provisioningState: Schema.optional(Schema.String),
+        provisionAfterExtensions: Schema.optional(Schema.Array(Schema.String)),
+        suppressFailures: Schema.optional(Schema.Boolean),
+        protectedSettingsFromKeyVault: Schema.optional(
+          Schema.Struct({
+            secretUrl: Schema.String,
+            sourceVault: Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+      }),
+    ),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetExtensionsCreateOrUpdateInput =
@@ -5448,11 +7509,11 @@ export const VirtualMachineScaleSetExtensionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     vmssExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetExtensionsDeleteInput =
@@ -5486,12 +7547,12 @@ export const VirtualMachineScaleSetExtensionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     vmssExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetExtensionsGetInput =
@@ -5527,11 +7588,11 @@ export const VirtualMachineScaleSetExtensionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetExtensionsListInput =
@@ -5571,11 +7632,37 @@ export const VirtualMachineScaleSetExtensionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     vmssExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        forceUpdateTag: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        typeHandlerVersion: Schema.optional(Schema.String),
+        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+        settings: Schema.optional(Schema.Unknown),
+        protectedSettings: Schema.optional(Schema.Unknown),
+        provisioningState: Schema.optional(Schema.String),
+        provisionAfterExtensions: Schema.optional(Schema.Array(Schema.String)),
+        suppressFailures: Schema.optional(Schema.Boolean),
+        protectedSettingsFromKeyVault: Schema.optional(
+          Schema.Struct({
+            secretUrl: Schema.String,
+            sourceVault: Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetExtensionsUpdateInput =
@@ -5610,11 +7697,11 @@ export const VirtualMachineScaleSetRollingUpgradesCancelInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/cancel",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetRollingUpgradesCancelInput =
@@ -5646,11 +7733,11 @@ export const VirtualMachineScaleSetRollingUpgradesGetLatestInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/latest",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetRollingUpgradesGetLatestInput =
@@ -5700,11 +7787,11 @@ export const VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensionRollingUpgrade",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeInput =
@@ -5738,11 +7825,11 @@ export const VirtualMachineScaleSetRollingUpgradesStartOSUpgradeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osRollingUpgrade",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetRollingUpgradesStartOSUpgradeInput =
@@ -5774,11 +7861,12 @@ export const VirtualMachineScaleSetsApproveRollingUpgradeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    instanceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/approveRollingUpgrade",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsApproveRollingUpgradeInput =
@@ -5810,11 +7898,12 @@ export const VirtualMachineScaleSetsConvertToSinglePlacementGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    activePlacementGroupId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/convertToSinglePlacementGroup",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsConvertToSinglePlacementGroupInput =
@@ -5846,11 +7935,900 @@ export const VirtualMachineScaleSetsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        product: Schema.optional(Schema.String),
+        promotionCode: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        upgradePolicy: Schema.optional(
+          Schema.Struct({
+            mode: Schema.optional(
+              Schema.Literals(["Automatic", "Manual", "Rolling"]),
+            ),
+            rollingUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                maxBatchInstancePercent: Schema.optional(Schema.Number),
+                maxUnhealthyInstancePercent: Schema.optional(Schema.Number),
+                maxUnhealthyUpgradedInstancePercent: Schema.optional(
+                  Schema.Number,
+                ),
+                pauseTimeBetweenBatches: Schema.optional(Schema.String),
+                enableCrossZoneUpgrade: Schema.optional(Schema.Boolean),
+                prioritizeUnhealthyInstances: Schema.optional(Schema.Boolean),
+                rollbackFailedInstancesOnPolicyBreach: Schema.optional(
+                  Schema.Boolean,
+                ),
+                maxSurge: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            automaticOSUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                enableAutomaticOSUpgrade: Schema.optional(Schema.Boolean),
+                disableAutomaticRollback: Schema.optional(Schema.Boolean),
+                useRollingUpgradePolicy: Schema.optional(Schema.Boolean),
+                osRollingUpgradeDeferral: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        scheduledEventsPolicy: Schema.optional(
+          Schema.Struct({
+            userInitiatedRedeploy: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            userInitiatedReboot: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            scheduledEventsAdditionalPublishingTargets: Schema.optional(
+              Schema.Struct({
+                eventGridAndResourceGraph: Schema.optional(
+                  Schema.Struct({
+                    enable: Schema.optional(Schema.Boolean),
+                    scheduledEventsApiVersion: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            allInstancesDown: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        automaticRepairsPolicy: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            gracePeriod: Schema.optional(Schema.String),
+            repairAction: Schema.optional(
+              Schema.Literals(["Replace", "Restart", "Reimage"]),
+            ),
+          }),
+        ),
+        virtualMachineProfile: Schema.optional(
+          Schema.Struct({
+            osProfile: Schema.optional(
+              Schema.Struct({
+                computerNamePrefix: Schema.optional(Schema.String),
+                adminUsername: Schema.optional(Schema.String),
+                adminPassword: Schema.optional(SensitiveString),
+                customData: Schema.optional(Schema.String),
+                windowsConfiguration: Schema.optional(
+                  Schema.Struct({
+                    provisionVMAgent: Schema.optional(Schema.Boolean),
+                    enableAutomaticUpdates: Schema.optional(Schema.Boolean),
+                    timeZone: Schema.optional(Schema.String),
+                    additionalUnattendContent: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          passName: Schema.optional(
+                            Schema.Literals(["OobeSystem"]),
+                          ),
+                          componentName: Schema.optional(
+                            Schema.Literals(["Microsoft-Windows-Shell-Setup"]),
+                          ),
+                          settingName: Schema.optional(
+                            Schema.Literals([
+                              "AutoLogon",
+                              "FirstLogonCommands",
+                            ]),
+                          ),
+                          content: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    patchSettings: Schema.optional(
+                      Schema.Struct({
+                        patchMode: Schema.optional(
+                          Schema.Literals([
+                            "Manual",
+                            "AutomaticByOS",
+                            "AutomaticByPlatform",
+                          ]),
+                        ),
+                        enableHotpatching: Schema.optional(Schema.Boolean),
+                        assessmentMode: Schema.optional(
+                          Schema.Literals([
+                            "ImageDefault",
+                            "AutomaticByPlatform",
+                          ]),
+                        ),
+                        automaticByPlatformSettings: Schema.optional(
+                          Schema.Struct({
+                            rebootSetting: Schema.optional(
+                              Schema.Literals([
+                                "Unknown",
+                                "IfRequired",
+                                "Never",
+                                "Always",
+                              ]),
+                            ),
+                            bypassPlatformSafetyChecksOnUserSchedule:
+                              Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                      }),
+                    ),
+                    winRM: Schema.optional(
+                      Schema.Struct({
+                        listeners: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              protocol: Schema.optional(
+                                Schema.Literals(["Http", "Https"]),
+                              ),
+                              certificateUrl: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    enableVMAgentPlatformUpdates: Schema.optional(
+                      Schema.Boolean,
+                    ),
+                  }),
+                ),
+                linuxConfiguration: Schema.optional(
+                  Schema.Struct({
+                    disablePasswordAuthentication: Schema.optional(
+                      Schema.Boolean,
+                    ),
+                    ssh: Schema.optional(
+                      Schema.Struct({
+                        publicKeys: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              path: Schema.optional(Schema.String),
+                              keyData: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    provisionVMAgent: Schema.optional(Schema.Boolean),
+                    patchSettings: Schema.optional(
+                      Schema.Struct({
+                        patchMode: Schema.optional(
+                          Schema.Literals([
+                            "ImageDefault",
+                            "AutomaticByPlatform",
+                          ]),
+                        ),
+                        assessmentMode: Schema.optional(
+                          Schema.Literals([
+                            "ImageDefault",
+                            "AutomaticByPlatform",
+                          ]),
+                        ),
+                        automaticByPlatformSettings: Schema.optional(
+                          Schema.Struct({
+                            rebootSetting: Schema.optional(
+                              Schema.Literals([
+                                "Unknown",
+                                "IfRequired",
+                                "Never",
+                                "Always",
+                              ]),
+                            ),
+                            bypassPlatformSafetyChecksOnUserSchedule:
+                              Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                      }),
+                    ),
+                    enableVMAgentPlatformUpdates: Schema.optional(
+                      Schema.Boolean,
+                    ),
+                  }),
+                ),
+                secrets: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      sourceVault: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      vaultCertificates: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            certificateUrl: Schema.optional(Schema.String),
+                            certificateStore: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                ),
+                allowExtensionOperations: Schema.optional(Schema.Boolean),
+                requireGuestProvisionSignal: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            storageProfile: Schema.optional(
+              Schema.Struct({
+                imageReference: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                osDisk: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    caching: Schema.optional(
+                      Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                    ),
+                    writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+                    createOption: Schema.Literals([
+                      "FromImage",
+                      "Empty",
+                      "Attach",
+                      "Copy",
+                      "Restore",
+                    ]),
+                    diffDiskSettings: Schema.optional(
+                      Schema.Struct({
+                        option: Schema.optional(Schema.Literals(["Local"])),
+                        placement: Schema.optional(
+                          Schema.Literals([
+                            "CacheDisk",
+                            "ResourceDisk",
+                            "NvmeDisk",
+                          ]),
+                        ),
+                      }),
+                    ),
+                    diskSizeGB: Schema.optional(Schema.Number),
+                    osType: Schema.optional(
+                      Schema.Literals(["Windows", "Linux"]),
+                    ),
+                    image: Schema.optional(
+                      Schema.Struct({
+                        uri: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    vhdContainers: Schema.optional(Schema.Array(Schema.String)),
+                    managedDisk: Schema.optional(
+                      Schema.Struct({
+                        storageAccountType: Schema.optional(
+                          Schema.Literals([
+                            "Standard_LRS",
+                            "Premium_LRS",
+                            "StandardSSD_LRS",
+                            "UltraSSD_LRS",
+                            "Premium_ZRS",
+                            "StandardSSD_ZRS",
+                            "PremiumV2_LRS",
+                          ]),
+                        ),
+                        diskEncryptionSet: Schema.optional(
+                          Schema.Struct({
+                            id: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        securityProfile: Schema.optional(
+                          Schema.Struct({
+                            securityEncryptionType: Schema.optional(
+                              Schema.Literals([
+                                "VMGuestStateOnly",
+                                "DiskWithVMGuestState",
+                                "NonPersistedTPM",
+                              ]),
+                            ),
+                            diskEncryptionSet: Schema.optional(
+                              Schema.Struct({
+                                id: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                    deleteOption: Schema.optional(
+                      Schema.Literals(["Delete", "Detach"]),
+                    ),
+                  }),
+                ),
+                dataDisks: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      lun: Schema.Number,
+                      caching: Schema.optional(
+                        Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                      ),
+                      writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+                      createOption: Schema.Literals([
+                        "FromImage",
+                        "Empty",
+                        "Attach",
+                        "Copy",
+                        "Restore",
+                      ]),
+                      diskSizeGB: Schema.optional(Schema.Number),
+                      managedDisk: Schema.optional(
+                        Schema.Struct({
+                          storageAccountType: Schema.optional(
+                            Schema.Literals([
+                              "Standard_LRS",
+                              "Premium_LRS",
+                              "StandardSSD_LRS",
+                              "UltraSSD_LRS",
+                              "Premium_ZRS",
+                              "StandardSSD_ZRS",
+                              "PremiumV2_LRS",
+                            ]),
+                          ),
+                          diskEncryptionSet: Schema.optional(
+                            Schema.Struct({
+                              id: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          securityProfile: Schema.optional(
+                            Schema.Struct({
+                              securityEncryptionType: Schema.optional(
+                                Schema.Literals([
+                                  "VMGuestStateOnly",
+                                  "DiskWithVMGuestState",
+                                  "NonPersistedTPM",
+                                ]),
+                              ),
+                              diskEncryptionSet: Schema.optional(
+                                Schema.Struct({
+                                  id: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                      diskIOPSReadWrite: Schema.optional(Schema.Number),
+                      diskMBpsReadWrite: Schema.optional(Schema.Number),
+                      deleteOption: Schema.optional(
+                        Schema.Literals(["Delete", "Detach"]),
+                      ),
+                    }),
+                  ),
+                ),
+                diskControllerType: Schema.optional(
+                  Schema.Literals(["SCSI", "NVMe"]),
+                ),
+              }),
+            ),
+            networkProfile: Schema.optional(
+              Schema.Struct({
+                healthProbe: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                networkInterfaceConfigurations: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.String,
+                      properties: Schema.optional(
+                        Schema.Struct({
+                          primary: Schema.optional(Schema.Boolean),
+                          enableAcceleratedNetworking: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          disableTcpStateTracking: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          enableFpga: Schema.optional(Schema.Boolean),
+                          networkSecurityGroup: Schema.optional(
+                            Schema.Struct({
+                              id: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          dnsSettings: Schema.optional(
+                            Schema.Struct({
+                              dnsServers: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          ipConfigurations: Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              properties: Schema.optional(
+                                Schema.Struct({
+                                  subnet: Schema.optional(
+                                    Schema.Struct({
+                                      id: Schema.optional(Schema.String),
+                                    }),
+                                  ),
+                                  primary: Schema.optional(Schema.Boolean),
+                                  publicIPAddressConfiguration: Schema.optional(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      properties: Schema.optional(
+                                        Schema.Struct({
+                                          idleTimeoutInMinutes: Schema.optional(
+                                            Schema.Number,
+                                          ),
+                                          dnsSettings: Schema.optional(
+                                            Schema.Struct({
+                                              domainNameLabel: Schema.String,
+                                              domainNameLabelScope:
+                                                Schema.optional(
+                                                  Schema.Literals([
+                                                    "TenantReuse",
+                                                    "SubscriptionReuse",
+                                                    "ResourceGroupReuse",
+                                                    "NoReuse",
+                                                  ]),
+                                                ),
+                                            }),
+                                          ),
+                                          ipTags: Schema.optional(
+                                            Schema.Array(
+                                              Schema.Struct({
+                                                ipTagType: Schema.optional(
+                                                  Schema.String,
+                                                ),
+                                                tag: Schema.optional(
+                                                  Schema.String,
+                                                ),
+                                              }),
+                                            ),
+                                          ),
+                                          publicIPPrefix: Schema.optional(
+                                            Schema.Struct({
+                                              id: Schema.optional(
+                                                Schema.String,
+                                              ),
+                                            }),
+                                          ),
+                                          publicIPAddressVersion:
+                                            Schema.optional(
+                                              Schema.Literals(["IPv4", "IPv6"]),
+                                            ),
+                                          deleteOption: Schema.optional(
+                                            Schema.Literals([
+                                              "Delete",
+                                              "Detach",
+                                            ]),
+                                          ),
+                                        }),
+                                      ),
+                                      sku: Schema.optional(
+                                        Schema.Struct({
+                                          name: Schema.optional(
+                                            Schema.Literals([
+                                              "Basic",
+                                              "Standard",
+                                            ]),
+                                          ),
+                                          tier: Schema.optional(
+                                            Schema.Literals([
+                                              "Regional",
+                                              "Global",
+                                            ]),
+                                          ),
+                                        }),
+                                      ),
+                                      tags: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  privateIPAddressVersion: Schema.optional(
+                                    Schema.Literals(["IPv4", "IPv6"]),
+                                  ),
+                                  applicationGatewayBackendAddressPools:
+                                    Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          id: Schema.optional(Schema.String),
+                                        }),
+                                      ),
+                                    ),
+                                  applicationSecurityGroups: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        id: Schema.optional(Schema.String),
+                                      }),
+                                    ),
+                                  ),
+                                  loadBalancerBackendAddressPools:
+                                    Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          id: Schema.optional(Schema.String),
+                                        }),
+                                      ),
+                                    ),
+                                  loadBalancerInboundNatPools: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        id: Schema.optional(Schema.String),
+                                      }),
+                                    ),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                          enableIPForwarding: Schema.optional(Schema.Boolean),
+                          deleteOption: Schema.optional(
+                            Schema.Literals(["Delete", "Detach"]),
+                          ),
+                          auxiliaryMode: Schema.optional(
+                            Schema.Literals([
+                              "None",
+                              "AcceleratedConnections",
+                              "Floating",
+                            ]),
+                          ),
+                          auxiliarySku: Schema.optional(
+                            Schema.Literals(["None", "A1", "A2", "A4", "A8"]),
+                          ),
+                        }),
+                      ),
+                      tags: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                    }),
+                  ),
+                ),
+                networkApiVersion: Schema.optional(
+                  Schema.Literals(["2020-11-01", "2022-11-01"]),
+                ),
+              }),
+            ),
+            securityProfile: Schema.optional(
+              Schema.Struct({
+                uefiSettings: Schema.optional(
+                  Schema.Struct({
+                    secureBootEnabled: Schema.optional(Schema.Boolean),
+                    vTpmEnabled: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                encryptionAtHost: Schema.optional(Schema.Boolean),
+                securityType: Schema.optional(
+                  Schema.Literals(["TrustedLaunch", "ConfidentialVM"]),
+                ),
+                encryptionIdentity: Schema.optional(
+                  Schema.Struct({
+                    userAssignedIdentityResourceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                proxyAgentSettings: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    mode: Schema.optional(
+                      Schema.Literals(["Audit", "Enforce"]),
+                    ),
+                    keyIncarnationId: Schema.optional(Schema.Number),
+                    wireServer: Schema.optional(
+                      Schema.Struct({
+                        mode: Schema.optional(
+                          Schema.Literals(["Audit", "Enforce", "Disabled"]),
+                        ),
+                        inVMAccessControlProfileReferenceId: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                    imds: Schema.optional(
+                      Schema.Struct({
+                        mode: Schema.optional(
+                          Schema.Literals(["Audit", "Enforce", "Disabled"]),
+                        ),
+                        inVMAccessControlProfileReferenceId: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                    addProxyAgentExtension: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              }),
+            ),
+            diagnosticsProfile: Schema.optional(
+              Schema.Struct({
+                bootDiagnostics: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    storageUri: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            extensionProfile: Schema.optional(
+              Schema.Struct({
+                extensions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                extensionsTimeBudget: Schema.optional(Schema.String),
+              }),
+            ),
+            licenseType: Schema.optional(Schema.String),
+            priority: Schema.optional(
+              Schema.Literals(["Regular", "Low", "Spot"]),
+            ),
+            evictionPolicy: Schema.optional(
+              Schema.Literals(["Deallocate", "Delete"]),
+            ),
+            billingProfile: Schema.optional(
+              Schema.Struct({
+                maxPrice: Schema.optional(Schema.Number),
+              }),
+            ),
+            scheduledEventsProfile: Schema.optional(
+              Schema.Struct({
+                terminateNotificationProfile: Schema.optional(
+                  Schema.Struct({
+                    notBeforeTimeout: Schema.optional(Schema.String),
+                    enable: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                osImageNotificationProfile: Schema.optional(
+                  Schema.Struct({
+                    notBeforeTimeout: Schema.optional(Schema.String),
+                    enable: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              }),
+            ),
+            userData: Schema.optional(Schema.String),
+            capacityReservation: Schema.optional(
+              Schema.Struct({
+                capacityReservationGroup: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            applicationProfile: Schema.optional(
+              Schema.Struct({
+                galleryApplications: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      tags: Schema.optional(Schema.String),
+                      order: Schema.optional(Schema.Number),
+                      packageReferenceId: Schema.String,
+                      configurationReference: Schema.optional(Schema.String),
+                      treatFailureAsDeploymentFailure: Schema.optional(
+                        Schema.Boolean,
+                      ),
+                      enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            hardwareProfile: Schema.optional(
+              Schema.Struct({
+                vmSizeProperties: Schema.optional(
+                  Schema.Struct({
+                    vCPUsAvailable: Schema.optional(Schema.Number),
+                    vCPUsPerCore: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            serviceArtifactReference: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+            securityPostureReference: Schema.optional(
+              Schema.Struct({
+                id: Schema.String,
+                excludeExtensions: Schema.optional(Schema.Array(Schema.String)),
+                isOverridable: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            timeCreated: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        overprovision: Schema.optional(Schema.Boolean),
+        doNotRunExtensionsOnOverprovisionedVMs: Schema.optional(Schema.Boolean),
+        uniqueId: Schema.optional(Schema.String),
+        singlePlacementGroup: Schema.optional(Schema.Boolean),
+        zoneBalance: Schema.optional(Schema.Boolean),
+        platformFaultDomainCount: Schema.optional(Schema.Number),
+        proximityPlacementGroup: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        hostGroup: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        additionalCapabilities: Schema.optional(
+          Schema.Struct({
+            ultraSSDEnabled: Schema.optional(Schema.Boolean),
+            hibernationEnabled: Schema.optional(Schema.Boolean),
+            enableFips1403Encryption: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        scaleInPolicy: Schema.optional(
+          Schema.Struct({
+            rules: Schema.optional(
+              Schema.Array(
+                Schema.Literals(["Default", "OldestVM", "NewestVM"]),
+              ),
+            ),
+            forceDeletion: Schema.optional(Schema.Boolean),
+            prioritizeUnhealthyVMs: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        orchestrationMode: Schema.optional(
+          Schema.Literals(["Uniform", "Flexible"]),
+        ),
+        spotRestorePolicy: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            restoreTimeout: Schema.optional(Schema.String),
+          }),
+        ),
+        priorityMixPolicy: Schema.optional(
+          Schema.Struct({
+            baseRegularPriorityCount: Schema.optional(Schema.Number),
+            regularPriorityPercentageAboveBase: Schema.optional(Schema.Number),
+          }),
+        ),
+        timeCreated: Schema.optional(Schema.String),
+        constrainedMaximumCapacity: Schema.optional(Schema.Boolean),
+        resiliencyPolicy: Schema.optional(
+          Schema.Struct({
+            resilientVMCreationPolicy: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            resilientVMDeletionPolicy: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            automaticZoneRebalancingPolicy: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                rebalanceStrategy: Schema.optional(
+                  Schema.Literals(["Recreate"]),
+                ),
+                rebalanceBehavior: Schema.optional(
+                  Schema.Literals(["CreateBeforeDelete"]),
+                ),
+              }),
+            ),
+            zoneAllocationPolicy: Schema.optional(
+              Schema.Struct({
+                maxZoneCount: Schema.optional(Schema.Number),
+                maxInstancePercentPerZonePolicy: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    value: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        zonalPlatformFaultDomainAlignMode: Schema.optional(
+          Schema.Literals(["Aligned", "Unaligned"]),
+        ),
+        skuProfile: Schema.optional(
+          Schema.Struct({
+            vmSizes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  rank: Schema.optional(Schema.Number),
+                }),
+              ),
+            ),
+            allocationStrategy: Schema.optional(
+              Schema.Literals([
+                "LowestPrice",
+                "CapacityOptimized",
+                "Prioritized",
+              ]),
+            ),
+          }),
+        ),
+        highSpeedInterconnectPlacement: Schema.optional(
+          Schema.Literals(["None", "Trunk"]),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["EdgeZone"])),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    placement: Schema.optional(
+      Schema.Struct({
+        zonePlacementPolicy: Schema.optional(Schema.Literals(["Any", "Auto"])),
+        includeZones: Schema.optional(Schema.Array(Schema.String)),
+        excludeZones: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsCreateOrUpdateInput =
@@ -5902,12 +8880,13 @@ export const VirtualMachineScaleSetsDeallocateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     hibernate: Schema.optional(Schema.Boolean),
+    instanceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/deallocate",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsDeallocateInput =
@@ -5940,12 +8919,12 @@ export const VirtualMachineScaleSetsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     forceDeletion: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsDeleteInput =
@@ -5978,12 +8957,13 @@ export const VirtualMachineScaleSetsDeleteInstancesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     forceDeletion: Schema.optional(Schema.Boolean),
+    instanceIds: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/delete",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsDeleteInstancesInput =
@@ -6016,7 +8996,6 @@ export const VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDoma
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     platformUpdateDomain: Schema.Number,
     zone: Schema.optional(Schema.String),
     placementGroupId: Schema.optional(Schema.String),
@@ -6024,6 +9003,7 @@ export const VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDoma
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/forceRecoveryServiceFabricPlatformUpdateDomainWalk",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalkInput =
@@ -6063,12 +9043,12 @@ export const VirtualMachineScaleSetsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.Literals(["userData"])),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsGetInput =
@@ -6120,11 +9100,11 @@ export const VirtualMachineScaleSetsGetInstanceViewInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsGetInstanceViewInput =
@@ -6211,11 +9191,11 @@ export const VirtualMachineScaleSetsGetOSUpgradeHistoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osUpgradeHistory",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsGetOSUpgradeHistoryInput =
@@ -6340,11 +9320,11 @@ export const VirtualMachineScaleSetsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsListInput =
@@ -6407,11 +9387,11 @@ export const VirtualMachineScaleSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const VirtualMachineScaleSetsListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachineScaleSets",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsListAllInput =
@@ -6473,11 +9453,11 @@ export const VirtualMachineScaleSetsListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/virtualMachineScaleSets",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsListByLocationInput =
@@ -6541,11 +9521,11 @@ export const VirtualMachineScaleSetsListSkusInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/skus",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsListSkusInput =
@@ -6599,11 +9579,12 @@ export const VirtualMachineScaleSetsPerformMaintenanceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    instanceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/performMaintenance",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsPerformMaintenanceInput =
@@ -6635,12 +9616,13 @@ export const VirtualMachineScaleSetsPowerOffInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     skipShutdown: Schema.optional(Schema.Boolean),
+    instanceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/poweroff",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsPowerOffInput =
@@ -6673,11 +9655,11 @@ export const VirtualMachineScaleSetsReapplyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reapply",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsReapplyInput =
@@ -6709,11 +9691,12 @@ export const VirtualMachineScaleSetsRedeployInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    instanceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/redeploy",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsRedeployInput =
@@ -6745,11 +9728,13 @@ export const VirtualMachineScaleSetsReimageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    instanceIds: Schema.optional(Schema.Array(Schema.String)),
+    forceUpdateOSDiskForEphemeral: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsReimageInput =
@@ -6781,11 +9766,12 @@ export const VirtualMachineScaleSetsReimageAllInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    instanceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimageall",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsReimageAllInput =
@@ -6817,11 +9803,12 @@ export const VirtualMachineScaleSetsRestartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    instanceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/restart",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsRestartInput =
@@ -6853,11 +9840,17 @@ export const VirtualMachineScaleSetsScaleOutInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    capacity: Schema.Number,
+    properties: Schema.optional(
+      Schema.Struct({
+        zone: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/scaleOut",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsScaleOutInput =
@@ -6889,11 +9882,16 @@ export const VirtualMachineScaleSetsSetOrchestrationServiceStateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    serviceName: Schema.Literals([
+      "AutomaticRepairs",
+      "AutomaticZoneRebalancing",
+    ]),
+    action: Schema.Literals(["Resume", "Suspend"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/setOrchestrationServiceState",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsSetOrchestrationServiceStateInput =
@@ -6925,11 +9923,12 @@ export const VirtualMachineScaleSetsStartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    instanceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/start",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsStartInput =
@@ -6961,11 +9960,756 @@ export const VirtualMachineScaleSetsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        product: Schema.optional(Schema.String),
+        promotionCode: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        upgradePolicy: Schema.optional(
+          Schema.Struct({
+            mode: Schema.optional(
+              Schema.Literals(["Automatic", "Manual", "Rolling"]),
+            ),
+            rollingUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                maxBatchInstancePercent: Schema.optional(Schema.Number),
+                maxUnhealthyInstancePercent: Schema.optional(Schema.Number),
+                maxUnhealthyUpgradedInstancePercent: Schema.optional(
+                  Schema.Number,
+                ),
+                pauseTimeBetweenBatches: Schema.optional(Schema.String),
+                enableCrossZoneUpgrade: Schema.optional(Schema.Boolean),
+                prioritizeUnhealthyInstances: Schema.optional(Schema.Boolean),
+                rollbackFailedInstancesOnPolicyBreach: Schema.optional(
+                  Schema.Boolean,
+                ),
+                maxSurge: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            automaticOSUpgradePolicy: Schema.optional(
+              Schema.Struct({
+                enableAutomaticOSUpgrade: Schema.optional(Schema.Boolean),
+                disableAutomaticRollback: Schema.optional(Schema.Boolean),
+                useRollingUpgradePolicy: Schema.optional(Schema.Boolean),
+                osRollingUpgradeDeferral: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        automaticRepairsPolicy: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            gracePeriod: Schema.optional(Schema.String),
+            repairAction: Schema.optional(
+              Schema.Literals(["Replace", "Restart", "Reimage"]),
+            ),
+          }),
+        ),
+        virtualMachineProfile: Schema.optional(
+          Schema.Struct({
+            osProfile: Schema.optional(
+              Schema.Struct({
+                customData: Schema.optional(Schema.String),
+                windowsConfiguration: Schema.optional(
+                  Schema.Struct({
+                    provisionVMAgent: Schema.optional(Schema.Boolean),
+                    enableAutomaticUpdates: Schema.optional(Schema.Boolean),
+                    timeZone: Schema.optional(Schema.String),
+                    additionalUnattendContent: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          passName: Schema.optional(
+                            Schema.Literals(["OobeSystem"]),
+                          ),
+                          componentName: Schema.optional(
+                            Schema.Literals(["Microsoft-Windows-Shell-Setup"]),
+                          ),
+                          settingName: Schema.optional(
+                            Schema.Literals([
+                              "AutoLogon",
+                              "FirstLogonCommands",
+                            ]),
+                          ),
+                          content: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    patchSettings: Schema.optional(
+                      Schema.Struct({
+                        patchMode: Schema.optional(
+                          Schema.Literals([
+                            "Manual",
+                            "AutomaticByOS",
+                            "AutomaticByPlatform",
+                          ]),
+                        ),
+                        enableHotpatching: Schema.optional(Schema.Boolean),
+                        assessmentMode: Schema.optional(
+                          Schema.Literals([
+                            "ImageDefault",
+                            "AutomaticByPlatform",
+                          ]),
+                        ),
+                        automaticByPlatformSettings: Schema.optional(
+                          Schema.Struct({
+                            rebootSetting: Schema.optional(
+                              Schema.Literals([
+                                "Unknown",
+                                "IfRequired",
+                                "Never",
+                                "Always",
+                              ]),
+                            ),
+                            bypassPlatformSafetyChecksOnUserSchedule:
+                              Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                      }),
+                    ),
+                    winRM: Schema.optional(
+                      Schema.Struct({
+                        listeners: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              protocol: Schema.optional(
+                                Schema.Literals(["Http", "Https"]),
+                              ),
+                              certificateUrl: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    enableVMAgentPlatformUpdates: Schema.optional(
+                      Schema.Boolean,
+                    ),
+                  }),
+                ),
+                linuxConfiguration: Schema.optional(
+                  Schema.Struct({
+                    disablePasswordAuthentication: Schema.optional(
+                      Schema.Boolean,
+                    ),
+                    ssh: Schema.optional(
+                      Schema.Struct({
+                        publicKeys: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              path: Schema.optional(Schema.String),
+                              keyData: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    provisionVMAgent: Schema.optional(Schema.Boolean),
+                    patchSettings: Schema.optional(
+                      Schema.Struct({
+                        patchMode: Schema.optional(
+                          Schema.Literals([
+                            "ImageDefault",
+                            "AutomaticByPlatform",
+                          ]),
+                        ),
+                        assessmentMode: Schema.optional(
+                          Schema.Literals([
+                            "ImageDefault",
+                            "AutomaticByPlatform",
+                          ]),
+                        ),
+                        automaticByPlatformSettings: Schema.optional(
+                          Schema.Struct({
+                            rebootSetting: Schema.optional(
+                              Schema.Literals([
+                                "Unknown",
+                                "IfRequired",
+                                "Never",
+                                "Always",
+                              ]),
+                            ),
+                            bypassPlatformSafetyChecksOnUserSchedule:
+                              Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                      }),
+                    ),
+                    enableVMAgentPlatformUpdates: Schema.optional(
+                      Schema.Boolean,
+                    ),
+                  }),
+                ),
+                secrets: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      sourceVault: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      vaultCertificates: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            certificateUrl: Schema.optional(Schema.String),
+                            certificateStore: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            storageProfile: Schema.optional(
+              Schema.Struct({
+                imageReference: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                osDisk: Schema.optional(
+                  Schema.Struct({
+                    caching: Schema.optional(
+                      Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                    ),
+                    writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+                    diffDiskSettings: Schema.optional(
+                      Schema.Struct({
+                        option: Schema.optional(Schema.Literals(["Local"])),
+                        placement: Schema.optional(
+                          Schema.Literals([
+                            "CacheDisk",
+                            "ResourceDisk",
+                            "NvmeDisk",
+                          ]),
+                        ),
+                      }),
+                    ),
+                    diskSizeGB: Schema.optional(Schema.Number),
+                    image: Schema.optional(
+                      Schema.Struct({
+                        uri: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    vhdContainers: Schema.optional(Schema.Array(Schema.String)),
+                    managedDisk: Schema.optional(
+                      Schema.Struct({
+                        storageAccountType: Schema.optional(
+                          Schema.Literals([
+                            "Standard_LRS",
+                            "Premium_LRS",
+                            "StandardSSD_LRS",
+                            "UltraSSD_LRS",
+                            "Premium_ZRS",
+                            "StandardSSD_ZRS",
+                            "PremiumV2_LRS",
+                          ]),
+                        ),
+                        diskEncryptionSet: Schema.optional(
+                          Schema.Struct({
+                            id: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        securityProfile: Schema.optional(
+                          Schema.Struct({
+                            securityEncryptionType: Schema.optional(
+                              Schema.Literals([
+                                "VMGuestStateOnly",
+                                "DiskWithVMGuestState",
+                                "NonPersistedTPM",
+                              ]),
+                            ),
+                            diskEncryptionSet: Schema.optional(
+                              Schema.Struct({
+                                id: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                    deleteOption: Schema.optional(
+                      Schema.Literals(["Delete", "Detach"]),
+                    ),
+                  }),
+                ),
+                dataDisks: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      lun: Schema.Number,
+                      caching: Schema.optional(
+                        Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                      ),
+                      writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+                      createOption: Schema.Literals([
+                        "FromImage",
+                        "Empty",
+                        "Attach",
+                        "Copy",
+                        "Restore",
+                      ]),
+                      diskSizeGB: Schema.optional(Schema.Number),
+                      managedDisk: Schema.optional(
+                        Schema.Struct({
+                          storageAccountType: Schema.optional(
+                            Schema.Literals([
+                              "Standard_LRS",
+                              "Premium_LRS",
+                              "StandardSSD_LRS",
+                              "UltraSSD_LRS",
+                              "Premium_ZRS",
+                              "StandardSSD_ZRS",
+                              "PremiumV2_LRS",
+                            ]),
+                          ),
+                          diskEncryptionSet: Schema.optional(
+                            Schema.Struct({
+                              id: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          securityProfile: Schema.optional(
+                            Schema.Struct({
+                              securityEncryptionType: Schema.optional(
+                                Schema.Literals([
+                                  "VMGuestStateOnly",
+                                  "DiskWithVMGuestState",
+                                  "NonPersistedTPM",
+                                ]),
+                              ),
+                              diskEncryptionSet: Schema.optional(
+                                Schema.Struct({
+                                  id: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                      diskIOPSReadWrite: Schema.optional(Schema.Number),
+                      diskMBpsReadWrite: Schema.optional(Schema.Number),
+                      deleteOption: Schema.optional(
+                        Schema.Literals(["Delete", "Detach"]),
+                      ),
+                    }),
+                  ),
+                ),
+                diskControllerType: Schema.optional(
+                  Schema.Literals(["SCSI", "NVMe"]),
+                ),
+              }),
+            ),
+            networkProfile: Schema.optional(
+              Schema.Struct({
+                healthProbe: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                networkInterfaceConfigurations: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      properties: Schema.optional(
+                        Schema.Struct({
+                          primary: Schema.optional(Schema.Boolean),
+                          enableAcceleratedNetworking: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          disableTcpStateTracking: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          enableFpga: Schema.optional(Schema.Boolean),
+                          networkSecurityGroup: Schema.optional(
+                            Schema.Struct({
+                              id: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          dnsSettings: Schema.optional(
+                            Schema.Struct({
+                              dnsServers: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          ipConfigurations: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                properties: Schema.optional(
+                                  Schema.Struct({
+                                    subnet: Schema.optional(
+                                      Schema.Struct({
+                                        id: Schema.optional(Schema.String),
+                                      }),
+                                    ),
+                                    primary: Schema.optional(Schema.Boolean),
+                                    publicIPAddressConfiguration:
+                                      Schema.optional(
+                                        Schema.Struct({
+                                          name: Schema.optional(Schema.String),
+                                          properties: Schema.optional(
+                                            Schema.Struct({
+                                              idleTimeoutInMinutes:
+                                                Schema.optional(Schema.Number),
+                                              dnsSettings: Schema.optional(
+                                                Schema.Struct({
+                                                  domainNameLabel:
+                                                    Schema.String,
+                                                  domainNameLabelScope:
+                                                    Schema.optional(
+                                                      Schema.Literals([
+                                                        "TenantReuse",
+                                                        "SubscriptionReuse",
+                                                        "ResourceGroupReuse",
+                                                        "NoReuse",
+                                                      ]),
+                                                    ),
+                                                }),
+                                              ),
+                                              publicIPPrefix: Schema.optional(
+                                                Schema.Struct({
+                                                  id: Schema.optional(
+                                                    Schema.String,
+                                                  ),
+                                                }),
+                                              ),
+                                              deleteOption: Schema.optional(
+                                                Schema.Literals([
+                                                  "Delete",
+                                                  "Detach",
+                                                ]),
+                                              ),
+                                            }),
+                                          ),
+                                          tags: Schema.optional(
+                                            Schema.Record(
+                                              Schema.String,
+                                              Schema.String,
+                                            ),
+                                          ),
+                                        }),
+                                      ),
+                                    privateIPAddressVersion: Schema.optional(
+                                      Schema.Literals(["IPv4", "IPv6"]),
+                                    ),
+                                    applicationGatewayBackendAddressPools:
+                                      Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            id: Schema.optional(Schema.String),
+                                          }),
+                                        ),
+                                      ),
+                                    applicationSecurityGroups: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          id: Schema.optional(Schema.String),
+                                        }),
+                                      ),
+                                    ),
+                                    loadBalancerBackendAddressPools:
+                                      Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            id: Schema.optional(Schema.String),
+                                          }),
+                                        ),
+                                      ),
+                                    loadBalancerInboundNatPools:
+                                      Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            id: Schema.optional(Schema.String),
+                                          }),
+                                        ),
+                                      ),
+                                  }),
+                                ),
+                              }),
+                            ),
+                          ),
+                          enableIPForwarding: Schema.optional(Schema.Boolean),
+                          deleteOption: Schema.optional(
+                            Schema.Literals(["Delete", "Detach"]),
+                          ),
+                          auxiliaryMode: Schema.optional(
+                            Schema.Literals([
+                              "None",
+                              "AcceleratedConnections",
+                              "Floating",
+                            ]),
+                          ),
+                          auxiliarySku: Schema.optional(
+                            Schema.Literals(["None", "A1", "A2", "A4", "A8"]),
+                          ),
+                        }),
+                      ),
+                      tags: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                    }),
+                  ),
+                ),
+                networkApiVersion: Schema.optional(
+                  Schema.Literals(["2020-11-01", "2022-11-01"]),
+                ),
+              }),
+            ),
+            securityPostureReference: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                excludeExtensions: Schema.optional(Schema.Array(Schema.String)),
+                isOverridable: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            securityProfile: Schema.optional(
+              Schema.Struct({
+                uefiSettings: Schema.optional(
+                  Schema.Struct({
+                    secureBootEnabled: Schema.optional(Schema.Boolean),
+                    vTpmEnabled: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                encryptionAtHost: Schema.optional(Schema.Boolean),
+                securityType: Schema.optional(
+                  Schema.Literals(["TrustedLaunch", "ConfidentialVM"]),
+                ),
+                encryptionIdentity: Schema.optional(
+                  Schema.Struct({
+                    userAssignedIdentityResourceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                proxyAgentSettings: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    mode: Schema.optional(
+                      Schema.Literals(["Audit", "Enforce"]),
+                    ),
+                    keyIncarnationId: Schema.optional(Schema.Number),
+                    wireServer: Schema.optional(
+                      Schema.Struct({
+                        mode: Schema.optional(
+                          Schema.Literals(["Audit", "Enforce", "Disabled"]),
+                        ),
+                        inVMAccessControlProfileReferenceId: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                    imds: Schema.optional(
+                      Schema.Struct({
+                        mode: Schema.optional(
+                          Schema.Literals(["Audit", "Enforce", "Disabled"]),
+                        ),
+                        inVMAccessControlProfileReferenceId: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                    addProxyAgentExtension: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              }),
+            ),
+            diagnosticsProfile: Schema.optional(
+              Schema.Struct({
+                bootDiagnostics: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    storageUri: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            extensionProfile: Schema.optional(
+              Schema.Struct({
+                extensions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                extensionsTimeBudget: Schema.optional(Schema.String),
+              }),
+            ),
+            licenseType: Schema.optional(Schema.String),
+            billingProfile: Schema.optional(
+              Schema.Struct({
+                maxPrice: Schema.optional(Schema.Number),
+              }),
+            ),
+            scheduledEventsProfile: Schema.optional(
+              Schema.Struct({
+                terminateNotificationProfile: Schema.optional(
+                  Schema.Struct({
+                    notBeforeTimeout: Schema.optional(Schema.String),
+                    enable: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                osImageNotificationProfile: Schema.optional(
+                  Schema.Struct({
+                    notBeforeTimeout: Schema.optional(Schema.String),
+                    enable: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              }),
+            ),
+            userData: Schema.optional(Schema.String),
+            hardwareProfile: Schema.optional(
+              Schema.Struct({
+                vmSizeProperties: Schema.optional(
+                  Schema.Struct({
+                    vCPUsAvailable: Schema.optional(Schema.Number),
+                    vCPUsPerCore: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        overprovision: Schema.optional(Schema.Boolean),
+        doNotRunExtensionsOnOverprovisionedVMs: Schema.optional(Schema.Boolean),
+        singlePlacementGroup: Schema.optional(Schema.Boolean),
+        additionalCapabilities: Schema.optional(
+          Schema.Struct({
+            ultraSSDEnabled: Schema.optional(Schema.Boolean),
+            hibernationEnabled: Schema.optional(Schema.Boolean),
+            enableFips1403Encryption: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        scaleInPolicy: Schema.optional(
+          Schema.Struct({
+            rules: Schema.optional(
+              Schema.Array(
+                Schema.Literals(["Default", "OldestVM", "NewestVM"]),
+              ),
+            ),
+            forceDeletion: Schema.optional(Schema.Boolean),
+            prioritizeUnhealthyVMs: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        proximityPlacementGroup: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        priorityMixPolicy: Schema.optional(
+          Schema.Struct({
+            baseRegularPriorityCount: Schema.optional(Schema.Number),
+            regularPriorityPercentageAboveBase: Schema.optional(Schema.Number),
+          }),
+        ),
+        spotRestorePolicy: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            restoreTimeout: Schema.optional(Schema.String),
+          }),
+        ),
+        resiliencyPolicy: Schema.optional(
+          Schema.Struct({
+            resilientVMCreationPolicy: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            resilientVMDeletionPolicy: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            automaticZoneRebalancingPolicy: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                rebalanceStrategy: Schema.optional(
+                  Schema.Literals(["Recreate"]),
+                ),
+                rebalanceBehavior: Schema.optional(
+                  Schema.Literals(["CreateBeforeDelete"]),
+                ),
+              }),
+            ),
+            zoneAllocationPolicy: Schema.optional(
+              Schema.Struct({
+                maxZoneCount: Schema.optional(Schema.Number),
+                maxInstancePercentPerZonePolicy: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    value: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        zonalPlatformFaultDomainAlignMode: Schema.optional(
+          Schema.Literals(["Aligned", "Unaligned"]),
+        ),
+        skuProfile: Schema.optional(
+          Schema.Struct({
+            vmSizes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  rank: Schema.optional(Schema.Number),
+                }),
+              ),
+            ),
+            allocationStrategy: Schema.optional(
+              Schema.Literals([
+                "LowestPrice",
+                "CapacityOptimized",
+                "Prioritized",
+              ]),
+            ),
+          }),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsUpdateInput =
@@ -7017,11 +10761,12 @@ export const VirtualMachineScaleSetsUpdateInstancesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    instanceIds: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/manualupgrade",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetsUpdateInstancesInput =
@@ -7055,11 +10800,71 @@ export const VirtualMachineScaleSetVMExtensionsCreateOrUpdateInput =
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
     vmExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        forceUpdateTag: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        typeHandlerVersion: Schema.optional(Schema.String),
+        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+        settings: Schema.optional(Schema.Unknown),
+        protectedSettings: Schema.optional(Schema.Unknown),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            typeHandlerVersion: Schema.optional(Schema.String),
+            substatuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        suppressFailures: Schema.optional(Schema.Boolean),
+        protectedSettingsFromKeyVault: Schema.optional(
+          Schema.Struct({
+            secretUrl: Schema.String,
+            sourceVault: Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+        provisionAfterExtensions: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMExtensionsCreateOrUpdateInput =
@@ -7097,11 +10902,11 @@ export const VirtualMachineScaleSetVMExtensionsDeleteInput =
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
     vmExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMExtensionsDeleteInput =
@@ -7137,12 +10942,12 @@ export const VirtualMachineScaleSetVMExtensionsGetInput =
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
     vmExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMExtensionsGetInput =
@@ -7180,12 +10985,12 @@ export const VirtualMachineScaleSetVMExtensionsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMExtensionsListInput =
@@ -7229,11 +11034,35 @@ export const VirtualMachineScaleSetVMExtensionsUpdateInput =
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
     vmExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        forceUpdateTag: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        typeHandlerVersion: Schema.optional(Schema.String),
+        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+        settings: Schema.optional(Schema.Unknown),
+        protectedSettings: Schema.optional(Schema.Unknown),
+        suppressFailures: Schema.optional(Schema.Boolean),
+        protectedSettingsFromKeyVault: Schema.optional(
+          Schema.Struct({
+            secretUrl: Schema.String,
+            sourceVault: Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMExtensionsUpdateInput =
@@ -7271,11 +11100,104 @@ export const VirtualMachineScaleSetVMRunCommandsCreateOrUpdateInput =
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.optional(
+          Schema.Struct({
+            script: Schema.optional(Schema.String),
+            scriptUri: Schema.optional(Schema.String),
+            commandId: Schema.optional(Schema.String),
+            scriptUriManagedIdentity: Schema.optional(
+              Schema.Struct({
+                clientId: Schema.optional(Schema.String),
+                objectId: Schema.optional(Schema.String),
+              }),
+            ),
+            scriptShell: Schema.optional(
+              Schema.Literals(["Default", "Powershell7"]),
+            ),
+            galleryScriptReferenceId: Schema.optional(Schema.String),
+          }),
+        ),
+        parameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        protectedParameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        asyncExecution: Schema.optional(Schema.Boolean),
+        runAsUser: Schema.optional(Schema.String),
+        runAsPassword: Schema.optional(SensitiveString),
+        timeoutInSeconds: Schema.optional(Schema.Number),
+        outputBlobUri: Schema.optional(Schema.String),
+        errorBlobUri: Schema.optional(Schema.String),
+        outputBlobManagedIdentity: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
+        ),
+        errorBlobManagedIdentity: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            executionState: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "Pending",
+                "Running",
+                "Failed",
+                "Succeeded",
+                "TimedOut",
+                "Canceled",
+              ]),
+            ),
+            executionMessage: Schema.optional(Schema.String),
+            exitCode: Schema.optional(Schema.Number),
+            output: Schema.optional(Schema.String),
+            error: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        treatFailureAsDeploymentFailure: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMRunCommandsCreateOrUpdateInput =
@@ -7329,11 +11251,11 @@ export const VirtualMachineScaleSetVMRunCommandsDeleteInput =
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMRunCommandsDeleteInput =
@@ -7369,12 +11291,12 @@ export const VirtualMachineScaleSetVMRunCommandsGetInput =
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMRunCommandsGetInput =
@@ -7428,12 +11350,12 @@ export const VirtualMachineScaleSetVMRunCommandsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMRunCommandsListInput =
@@ -7502,11 +11424,103 @@ export const VirtualMachineScaleSetVMRunCommandsUpdateInput =
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.optional(
+          Schema.Struct({
+            script: Schema.optional(Schema.String),
+            scriptUri: Schema.optional(Schema.String),
+            commandId: Schema.optional(Schema.String),
+            scriptUriManagedIdentity: Schema.optional(
+              Schema.Struct({
+                clientId: Schema.optional(Schema.String),
+                objectId: Schema.optional(Schema.String),
+              }),
+            ),
+            scriptShell: Schema.optional(
+              Schema.Literals(["Default", "Powershell7"]),
+            ),
+            galleryScriptReferenceId: Schema.optional(Schema.String),
+          }),
+        ),
+        parameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        protectedParameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        asyncExecution: Schema.optional(Schema.Boolean),
+        runAsUser: Schema.optional(Schema.String),
+        runAsPassword: Schema.optional(SensitiveString),
+        timeoutInSeconds: Schema.optional(Schema.Number),
+        outputBlobUri: Schema.optional(Schema.String),
+        errorBlobUri: Schema.optional(Schema.String),
+        outputBlobManagedIdentity: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
+        ),
+        errorBlobManagedIdentity: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            executionState: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "Pending",
+                "Running",
+                "Failed",
+                "Succeeded",
+                "TimedOut",
+                "Canceled",
+              ]),
+            ),
+            executionMessage: Schema.optional(Schema.String),
+            exitCode: Schema.optional(Schema.Number),
+            output: Schema.optional(Schema.String),
+            error: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        treatFailureAsDeploymentFailure: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMRunCommandsUpdateInput =
@@ -7559,11 +11573,11 @@ export const VirtualMachineScaleSetVMsApproveRollingUpgradeInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/approveRollingUpgrade",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsApproveRollingUpgradeInput =
@@ -7597,11 +11611,37 @@ export const VirtualMachineScaleSetVMsAttachDetachDataDisksInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    dataDisksToAttach: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          diskId: Schema.String,
+          lun: Schema.optional(Schema.Number),
+          caching: Schema.optional(
+            Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+          ),
+          deleteOption: Schema.optional(Schema.Literals(["Delete", "Detach"])),
+          diskEncryptionSet: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+          writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+        }),
+      ),
+    ),
+    dataDisksToDetach: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          diskId: Schema.String,
+          detachOption: Schema.optional(Schema.Literals(["ForceDetach"])),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/attachDetachDataDisks",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsAttachDetachDataDisksInput =
@@ -7751,11 +11791,11 @@ export const VirtualMachineScaleSetVMsDeallocateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/deallocate",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsDeallocateInput =
@@ -7789,12 +11829,12 @@ export const VirtualMachineScaleSetVMsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     forceDeletion: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsDeleteInput =
@@ -7829,7 +11869,6 @@ export const VirtualMachineScaleSetVMsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(
       Schema.Literals(["instanceView", "userData", "resiliencyView"]),
     ),
@@ -7837,6 +11876,7 @@ export const VirtualMachineScaleSetVMsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsGetInput =
@@ -7889,11 +11929,11 @@ export const VirtualMachineScaleSetVMsGetInstanceViewInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/instanceView",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsGetInstanceViewInput =
@@ -8112,7 +12152,6 @@ export const VirtualMachineScaleSetVMsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineScaleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $select: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
@@ -8120,6 +12159,7 @@ export const VirtualMachineScaleSetVMsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsListInput =
@@ -8188,11 +12228,11 @@ export const VirtualMachineScaleSetVMsPerformMaintenanceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/performMaintenance",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsPerformMaintenanceInput =
@@ -8226,12 +12266,12 @@ export const VirtualMachineScaleSetVMsPowerOffInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     skipShutdown: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/powerOff",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsPowerOffInput =
@@ -8266,11 +12306,11 @@ export const VirtualMachineScaleSetVMsRedeployInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/redeploy",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsRedeployInput =
@@ -8304,11 +12344,20 @@ export const VirtualMachineScaleSetVMsReimageInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    forceUpdateOSDiskForEphemeral: Schema.optional(Schema.Boolean),
+    tempDisk: Schema.optional(Schema.Boolean),
+    exactVersion: Schema.optional(Schema.String),
+    osProfile: Schema.optional(
+      Schema.Struct({
+        adminPassword: Schema.optional(SensitiveString),
+        customData: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimage",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsReimageInput =
@@ -8342,11 +12391,11 @@ export const VirtualMachineScaleSetVMsReimageAllInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimageall",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsReimageAllInput =
@@ -8380,11 +12429,11 @@ export const VirtualMachineScaleSetVMsRestartInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/restart",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsRestartInput =
@@ -8418,12 +12467,12 @@ export const VirtualMachineScaleSetVMsRetrieveBootDiagnosticsDataInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     sasUriExpirationTimeInMinutes: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/retrieveBootDiagnosticsData",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsRetrieveBootDiagnosticsDataInput =
@@ -8461,11 +12510,21 @@ export const VirtualMachineScaleSetVMsRunCommandInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    commandId: Schema.String,
+    script: Schema.optional(Schema.Array(Schema.String)),
+    parameters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          value: Schema.String,
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommand",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsRunCommandInput =
@@ -8511,11 +12570,11 @@ export const VirtualMachineScaleSetVMsSimulateEvictionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/simulateEviction",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsSimulateEvictionInput =
@@ -8549,11 +12608,11 @@ export const VirtualMachineScaleSetVMsStartInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/start",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsStartInput =
@@ -8587,11 +12646,1141 @@ export const VirtualMachineScaleSetVMsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        latestModelApplied: Schema.optional(Schema.Boolean),
+        vmId: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            platformUpdateDomain: Schema.optional(Schema.Number),
+            platformFaultDomain: Schema.optional(Schema.Number),
+            rdpThumbPrint: Schema.optional(Schema.String),
+            vmAgent: Schema.optional(
+              Schema.Struct({
+                vmAgentVersion: Schema.optional(Schema.String),
+                extensionHandlers: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      type: Schema.optional(Schema.String),
+                      typeHandlerVersion: Schema.optional(Schema.String),
+                      status: Schema.optional(
+                        Schema.Struct({
+                          code: Schema.optional(Schema.String),
+                          level: Schema.optional(
+                            Schema.Literals(["Info", "Warning", "Error"]),
+                          ),
+                          displayStatus: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          time: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                statuses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.optional(Schema.String),
+                      level: Schema.optional(
+                        Schema.Literals(["Info", "Warning", "Error"]),
+                      ),
+                      displayStatus: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                      time: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            maintenanceRedeployStatus: Schema.optional(
+              Schema.Struct({
+                isCustomerInitiatedMaintenanceAllowed: Schema.optional(
+                  Schema.Boolean,
+                ),
+                preMaintenanceWindowStartTime: Schema.optional(Schema.String),
+                preMaintenanceWindowEndTime: Schema.optional(Schema.String),
+                maintenanceWindowStartTime: Schema.optional(Schema.String),
+                maintenanceWindowEndTime: Schema.optional(Schema.String),
+                lastOperationResultCode: Schema.optional(
+                  Schema.Literals([
+                    "None",
+                    "RetryLater",
+                    "MaintenanceAborted",
+                    "MaintenanceCompleted",
+                  ]),
+                ),
+                lastOperationMessage: Schema.optional(Schema.String),
+              }),
+            ),
+            disks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  encryptionSettings: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        diskEncryptionKey: Schema.optional(
+                          Schema.Struct({
+                            secretUrl: Schema.String,
+                            sourceVault: Schema.Struct({
+                              id: Schema.optional(Schema.String),
+                            }),
+                          }),
+                        ),
+                        keyEncryptionKey: Schema.optional(
+                          Schema.Struct({
+                            keyUrl: Schema.String,
+                            sourceVault: Schema.Struct({
+                              id: Schema.optional(Schema.String),
+                            }),
+                          }),
+                        ),
+                        enabled: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  ),
+                  statuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            extensions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                  typeHandlerVersion: Schema.optional(Schema.String),
+                  substatuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  statuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            vmHealth: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    level: Schema.optional(
+                      Schema.Literals(["Info", "Warning", "Error"]),
+                    ),
+                    displayStatus: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    time: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            bootDiagnostics: Schema.optional(
+              Schema.Struct({
+                consoleScreenshotBlobUri: Schema.optional(Schema.String),
+                serialConsoleLogBlobUri: Schema.optional(Schema.String),
+                status: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    level: Schema.optional(
+                      Schema.Literals(["Info", "Warning", "Error"]),
+                    ),
+                    displayStatus: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    time: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            assignedHost: Schema.optional(Schema.String),
+            placementGroupId: Schema.optional(Schema.String),
+            computerName: Schema.optional(Schema.String),
+            osName: Schema.optional(Schema.String),
+            osVersion: Schema.optional(Schema.String),
+            hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
+          }),
+        ),
+        hardwareProfile: Schema.optional(
+          Schema.Struct({
+            vmSize: Schema.optional(
+              Schema.Literals([
+                "Basic_A0",
+                "Basic_A1",
+                "Basic_A2",
+                "Basic_A3",
+                "Basic_A4",
+                "Standard_A0",
+                "Standard_A1",
+                "Standard_A2",
+                "Standard_A3",
+                "Standard_A4",
+                "Standard_A5",
+                "Standard_A6",
+                "Standard_A7",
+                "Standard_A8",
+                "Standard_A9",
+                "Standard_A10",
+                "Standard_A11",
+                "Standard_A1_v2",
+                "Standard_A2_v2",
+                "Standard_A4_v2",
+                "Standard_A8_v2",
+                "Standard_A2m_v2",
+                "Standard_A4m_v2",
+                "Standard_A8m_v2",
+                "Standard_B1s",
+                "Standard_B1ms",
+                "Standard_B2s",
+                "Standard_B2ms",
+                "Standard_B4ms",
+                "Standard_B8ms",
+                "Standard_D1",
+                "Standard_D2",
+                "Standard_D3",
+                "Standard_D4",
+                "Standard_D11",
+                "Standard_D12",
+                "Standard_D13",
+                "Standard_D14",
+                "Standard_D1_v2",
+                "Standard_D2_v2",
+                "Standard_D3_v2",
+                "Standard_D4_v2",
+                "Standard_D5_v2",
+                "Standard_D2_v3",
+                "Standard_D4_v3",
+                "Standard_D8_v3",
+                "Standard_D16_v3",
+                "Standard_D32_v3",
+                "Standard_D64_v3",
+                "Standard_D2s_v3",
+                "Standard_D4s_v3",
+                "Standard_D8s_v3",
+                "Standard_D16s_v3",
+                "Standard_D32s_v3",
+                "Standard_D64s_v3",
+                "Standard_D11_v2",
+                "Standard_D12_v2",
+                "Standard_D13_v2",
+                "Standard_D14_v2",
+                "Standard_D15_v2",
+                "Standard_DS1",
+                "Standard_DS2",
+                "Standard_DS3",
+                "Standard_DS4",
+                "Standard_DS11",
+                "Standard_DS12",
+                "Standard_DS13",
+                "Standard_DS14",
+                "Standard_DS1_v2",
+                "Standard_DS2_v2",
+                "Standard_DS3_v2",
+                "Standard_DS4_v2",
+                "Standard_DS5_v2",
+                "Standard_DS11_v2",
+                "Standard_DS12_v2",
+                "Standard_DS13_v2",
+                "Standard_DS14_v2",
+                "Standard_DS15_v2",
+                "Standard_DS13-4_v2",
+                "Standard_DS13-2_v2",
+                "Standard_DS14-8_v2",
+                "Standard_DS14-4_v2",
+                "Standard_E2_v3",
+                "Standard_E4_v3",
+                "Standard_E8_v3",
+                "Standard_E16_v3",
+                "Standard_E32_v3",
+                "Standard_E64_v3",
+                "Standard_E2s_v3",
+                "Standard_E4s_v3",
+                "Standard_E8s_v3",
+                "Standard_E16s_v3",
+                "Standard_E32s_v3",
+                "Standard_E64s_v3",
+                "Standard_E32-16_v3",
+                "Standard_E32-8s_v3",
+                "Standard_E64-32s_v3",
+                "Standard_E64-16s_v3",
+                "Standard_F1",
+                "Standard_F2",
+                "Standard_F4",
+                "Standard_F8",
+                "Standard_F16",
+                "Standard_F1s",
+                "Standard_F2s",
+                "Standard_F4s",
+                "Standard_F8s",
+                "Standard_F16s",
+                "Standard_F2s_v2",
+                "Standard_F4s_v2",
+                "Standard_F8s_v2",
+                "Standard_F16s_v2",
+                "Standard_F32s_v2",
+                "Standard_F64s_v2",
+                "Standard_F72s_v2",
+                "Standard_G1",
+                "Standard_G2",
+                "Standard_G3",
+                "Standard_G4",
+                "Standard_G5",
+                "Standard_GS1",
+                "Standard_GS2",
+                "Standard_GS3",
+                "Standard_GS4",
+                "Standard_GS5",
+                "Standard_GS4-8",
+                "Standard_GS4-4",
+                "Standard_GS5-16",
+                "Standard_GS5-8",
+                "Standard_H8",
+                "Standard_H16",
+                "Standard_H8m",
+                "Standard_H16m",
+                "Standard_H16r",
+                "Standard_H16mr",
+                "Standard_L4s",
+                "Standard_L8s",
+                "Standard_L16s",
+                "Standard_L32s",
+                "Standard_M64s",
+                "Standard_M64ms",
+                "Standard_M128s",
+                "Standard_M128ms",
+                "Standard_M64-32ms",
+                "Standard_M64-16ms",
+                "Standard_M128-64ms",
+                "Standard_M128-32ms",
+                "Standard_NC6",
+                "Standard_NC12",
+                "Standard_NC24",
+                "Standard_NC24r",
+                "Standard_NC6s_v2",
+                "Standard_NC12s_v2",
+                "Standard_NC24s_v2",
+                "Standard_NC24rs_v2",
+                "Standard_NC6s_v3",
+                "Standard_NC12s_v3",
+                "Standard_NC24s_v3",
+                "Standard_NC24rs_v3",
+                "Standard_ND6s",
+                "Standard_ND12s",
+                "Standard_ND24s",
+                "Standard_ND24rs",
+                "Standard_NV6",
+                "Standard_NV12",
+                "Standard_NV24",
+              ]),
+            ),
+            vmSizeProperties: Schema.optional(
+              Schema.Struct({
+                vCPUsAvailable: Schema.optional(Schema.Number),
+                vCPUsPerCore: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        resilientVMDeletionStatus: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "InProgress", "Failed"]),
+        ),
+        storageProfile: Schema.optional(
+          Schema.Struct({
+            imageReference: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+            osDisk: Schema.optional(
+              Schema.Struct({
+                osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+                encryptionSettings: Schema.optional(
+                  Schema.Struct({
+                    diskEncryptionKey: Schema.optional(
+                      Schema.Struct({
+                        secretUrl: Schema.String,
+                        sourceVault: Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      }),
+                    ),
+                    keyEncryptionKey: Schema.optional(
+                      Schema.Struct({
+                        keyUrl: Schema.String,
+                        sourceVault: Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      }),
+                    ),
+                    enabled: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                name: Schema.optional(Schema.String),
+                vhd: Schema.optional(
+                  Schema.Struct({
+                    uri: Schema.optional(Schema.String),
+                  }),
+                ),
+                image: Schema.optional(
+                  Schema.Struct({
+                    uri: Schema.optional(Schema.String),
+                  }),
+                ),
+                caching: Schema.optional(
+                  Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                ),
+                writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+                diffDiskSettings: Schema.optional(
+                  Schema.Struct({
+                    option: Schema.optional(Schema.Literals(["Local"])),
+                    placement: Schema.optional(
+                      Schema.Literals([
+                        "CacheDisk",
+                        "ResourceDisk",
+                        "NvmeDisk",
+                      ]),
+                    ),
+                  }),
+                ),
+                createOption: Schema.Literals([
+                  "FromImage",
+                  "Empty",
+                  "Attach",
+                  "Copy",
+                  "Restore",
+                ]),
+                diskSizeGB: Schema.optional(Schema.Number),
+                managedDisk: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                deleteOption: Schema.optional(
+                  Schema.Literals(["Delete", "Detach"]),
+                ),
+              }),
+            ),
+            dataDisks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  lun: Schema.Number,
+                  name: Schema.optional(Schema.String),
+                  vhd: Schema.optional(
+                    Schema.Struct({
+                      uri: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  image: Schema.optional(
+                    Schema.Struct({
+                      uri: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  caching: Schema.optional(
+                    Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                  ),
+                  writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+                  createOption: Schema.Literals([
+                    "FromImage",
+                    "Empty",
+                    "Attach",
+                    "Copy",
+                    "Restore",
+                  ]),
+                  diskSizeGB: Schema.optional(Schema.Number),
+                  managedDisk: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  sourceResource: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  toBeDetached: Schema.optional(Schema.Boolean),
+                  diskIOPSReadWrite: Schema.optional(Schema.Number),
+                  diskMBpsReadWrite: Schema.optional(Schema.Number),
+                  detachOption: Schema.optional(
+                    Schema.Literals(["ForceDetach"]),
+                  ),
+                  deleteOption: Schema.optional(
+                    Schema.Literals(["Delete", "Detach"]),
+                  ),
+                }),
+              ),
+            ),
+            diskControllerType: Schema.optional(
+              Schema.Literals(["SCSI", "NVMe"]),
+            ),
+            alignRegionalDisksToVMZone: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        additionalCapabilities: Schema.optional(
+          Schema.Struct({
+            ultraSSDEnabled: Schema.optional(Schema.Boolean),
+            hibernationEnabled: Schema.optional(Schema.Boolean),
+            enableFips1403Encryption: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        osProfile: Schema.optional(
+          Schema.Struct({
+            computerName: Schema.optional(Schema.String),
+            adminUsername: Schema.optional(Schema.String),
+            adminPassword: Schema.optional(SensitiveString),
+            customData: Schema.optional(Schema.String),
+            windowsConfiguration: Schema.optional(
+              Schema.Struct({
+                provisionVMAgent: Schema.optional(Schema.Boolean),
+                enableAutomaticUpdates: Schema.optional(Schema.Boolean),
+                timeZone: Schema.optional(Schema.String),
+                additionalUnattendContent: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      passName: Schema.optional(
+                        Schema.Literals(["OobeSystem"]),
+                      ),
+                      componentName: Schema.optional(
+                        Schema.Literals(["Microsoft-Windows-Shell-Setup"]),
+                      ),
+                      settingName: Schema.optional(
+                        Schema.Literals(["AutoLogon", "FirstLogonCommands"]),
+                      ),
+                      content: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                patchSettings: Schema.optional(
+                  Schema.Struct({
+                    patchMode: Schema.optional(
+                      Schema.Literals([
+                        "Manual",
+                        "AutomaticByOS",
+                        "AutomaticByPlatform",
+                      ]),
+                    ),
+                    enableHotpatching: Schema.optional(Schema.Boolean),
+                    assessmentMode: Schema.optional(
+                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                    ),
+                    automaticByPlatformSettings: Schema.optional(
+                      Schema.Struct({
+                        rebootSetting: Schema.optional(
+                          Schema.Literals([
+                            "Unknown",
+                            "IfRequired",
+                            "Never",
+                            "Always",
+                          ]),
+                        ),
+                        bypassPlatformSafetyChecksOnUserSchedule:
+                          Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  }),
+                ),
+                winRM: Schema.optional(
+                  Schema.Struct({
+                    listeners: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          protocol: Schema.optional(
+                            Schema.Literals(["Http", "Https"]),
+                          ),
+                          certificateUrl: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            linuxConfiguration: Schema.optional(
+              Schema.Struct({
+                disablePasswordAuthentication: Schema.optional(Schema.Boolean),
+                ssh: Schema.optional(
+                  Schema.Struct({
+                    publicKeys: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          path: Schema.optional(Schema.String),
+                          keyData: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                provisionVMAgent: Schema.optional(Schema.Boolean),
+                patchSettings: Schema.optional(
+                  Schema.Struct({
+                    patchMode: Schema.optional(
+                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                    ),
+                    assessmentMode: Schema.optional(
+                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                    ),
+                    automaticByPlatformSettings: Schema.optional(
+                      Schema.Struct({
+                        rebootSetting: Schema.optional(
+                          Schema.Literals([
+                            "Unknown",
+                            "IfRequired",
+                            "Never",
+                            "Always",
+                          ]),
+                        ),
+                        bypassPlatformSafetyChecksOnUserSchedule:
+                          Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  }),
+                ),
+                enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            secrets: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  sourceVault: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  vaultCertificates: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        certificateUrl: Schema.optional(Schema.String),
+                        certificateStore: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            allowExtensionOperations: Schema.optional(Schema.Boolean),
+            requireGuestProvisionSignal: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        securityProfile: Schema.optional(
+          Schema.Struct({
+            uefiSettings: Schema.optional(
+              Schema.Struct({
+                secureBootEnabled: Schema.optional(Schema.Boolean),
+                vTpmEnabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            encryptionAtHost: Schema.optional(Schema.Boolean),
+            securityType: Schema.optional(
+              Schema.Literals(["TrustedLaunch", "ConfidentialVM"]),
+            ),
+            encryptionIdentity: Schema.optional(
+              Schema.Struct({
+                userAssignedIdentityResourceId: Schema.optional(Schema.String),
+              }),
+            ),
+            proxyAgentSettings: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                mode: Schema.optional(Schema.Literals(["Audit", "Enforce"])),
+                keyIncarnationId: Schema.optional(Schema.Number),
+                wireServer: Schema.optional(
+                  Schema.Struct({
+                    mode: Schema.optional(
+                      Schema.Literals(["Audit", "Enforce", "Disabled"]),
+                    ),
+                    inVMAccessControlProfileReferenceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                imds: Schema.optional(
+                  Schema.Struct({
+                    mode: Schema.optional(
+                      Schema.Literals(["Audit", "Enforce", "Disabled"]),
+                    ),
+                    inVMAccessControlProfileReferenceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                addProxyAgentExtension: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        networkProfile: Schema.optional(
+          Schema.Struct({
+            networkInterfaces: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            networkApiVersion: Schema.optional(
+              Schema.Literals(["2020-11-01", "2022-11-01"]),
+            ),
+            networkInterfaceConfigurations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  properties: Schema.optional(
+                    Schema.Struct({
+                      primary: Schema.optional(Schema.Boolean),
+                      deleteOption: Schema.optional(
+                        Schema.Literals(["Delete", "Detach"]),
+                      ),
+                      enableAcceleratedNetworking: Schema.optional(
+                        Schema.Boolean,
+                      ),
+                      disableTcpStateTracking: Schema.optional(Schema.Boolean),
+                      enableFpga: Schema.optional(Schema.Boolean),
+                      enableIPForwarding: Schema.optional(Schema.Boolean),
+                      networkSecurityGroup: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      dnsSettings: Schema.optional(
+                        Schema.Struct({
+                          dnsServers: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                      ipConfigurations: Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          properties: Schema.optional(
+                            Schema.Struct({
+                              subnet: Schema.optional(
+                                Schema.Struct({
+                                  id: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              primary: Schema.optional(Schema.Boolean),
+                              publicIPAddressConfiguration: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  properties: Schema.optional(
+                                    Schema.Struct({
+                                      idleTimeoutInMinutes: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      deleteOption: Schema.optional(
+                                        Schema.Literals(["Delete", "Detach"]),
+                                      ),
+                                      dnsSettings: Schema.optional(
+                                        Schema.Struct({
+                                          domainNameLabel: Schema.String,
+                                          domainNameLabelScope: Schema.optional(
+                                            Schema.Literals([
+                                              "TenantReuse",
+                                              "SubscriptionReuse",
+                                              "ResourceGroupReuse",
+                                              "NoReuse",
+                                            ]),
+                                          ),
+                                        }),
+                                      ),
+                                      ipTags: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            ipTagType: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            tag: Schema.optional(Schema.String),
+                                          }),
+                                        ),
+                                      ),
+                                      publicIPPrefix: Schema.optional(
+                                        Schema.Struct({
+                                          id: Schema.optional(Schema.String),
+                                        }),
+                                      ),
+                                      publicIPAddressVersion: Schema.optional(
+                                        Schema.Literals(["IPv4", "IPv6"]),
+                                      ),
+                                      publicIPAllocationMethod: Schema.optional(
+                                        Schema.Literals(["Dynamic", "Static"]),
+                                      ),
+                                    }),
+                                  ),
+                                  sku: Schema.optional(
+                                    Schema.Struct({
+                                      name: Schema.optional(
+                                        Schema.Literals(["Basic", "Standard"]),
+                                      ),
+                                      tier: Schema.optional(
+                                        Schema.Literals(["Regional", "Global"]),
+                                      ),
+                                    }),
+                                  ),
+                                  tags: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              privateIPAddressVersion: Schema.optional(
+                                Schema.Literals(["IPv4", "IPv6"]),
+                              ),
+                              applicationSecurityGroups: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    id: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                              applicationGatewayBackendAddressPools:
+                                Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      id: Schema.optional(Schema.String),
+                                    }),
+                                  ),
+                                ),
+                              loadBalancerBackendAddressPools: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    id: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                      dscpConfiguration: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      auxiliaryMode: Schema.optional(
+                        Schema.Literals([
+                          "None",
+                          "AcceleratedConnections",
+                          "Floating",
+                        ]),
+                      ),
+                      auxiliarySku: Schema.optional(
+                        Schema.Literals(["None", "A1", "A2", "A4", "A8"]),
+                      ),
+                    }),
+                  ),
+                  tags: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        networkProfileConfiguration: Schema.optional(
+          Schema.Struct({
+            networkInterfaceConfigurations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  properties: Schema.optional(
+                    Schema.Struct({
+                      primary: Schema.optional(Schema.Boolean),
+                      enableAcceleratedNetworking: Schema.optional(
+                        Schema.Boolean,
+                      ),
+                      disableTcpStateTracking: Schema.optional(Schema.Boolean),
+                      enableFpga: Schema.optional(Schema.Boolean),
+                      networkSecurityGroup: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      dnsSettings: Schema.optional(
+                        Schema.Struct({
+                          dnsServers: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                      ipConfigurations: Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          properties: Schema.optional(
+                            Schema.Struct({
+                              subnet: Schema.optional(
+                                Schema.Struct({
+                                  id: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              primary: Schema.optional(Schema.Boolean),
+                              publicIPAddressConfiguration: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  properties: Schema.optional(
+                                    Schema.Struct({
+                                      idleTimeoutInMinutes: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      dnsSettings: Schema.optional(
+                                        Schema.Struct({
+                                          domainNameLabel: Schema.String,
+                                          domainNameLabelScope: Schema.optional(
+                                            Schema.Literals([
+                                              "TenantReuse",
+                                              "SubscriptionReuse",
+                                              "ResourceGroupReuse",
+                                              "NoReuse",
+                                            ]),
+                                          ),
+                                        }),
+                                      ),
+                                      ipTags: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            ipTagType: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            tag: Schema.optional(Schema.String),
+                                          }),
+                                        ),
+                                      ),
+                                      publicIPPrefix: Schema.optional(
+                                        Schema.Struct({
+                                          id: Schema.optional(Schema.String),
+                                        }),
+                                      ),
+                                      publicIPAddressVersion: Schema.optional(
+                                        Schema.Literals(["IPv4", "IPv6"]),
+                                      ),
+                                      deleteOption: Schema.optional(
+                                        Schema.Literals(["Delete", "Detach"]),
+                                      ),
+                                    }),
+                                  ),
+                                  sku: Schema.optional(
+                                    Schema.Struct({
+                                      name: Schema.optional(
+                                        Schema.Literals(["Basic", "Standard"]),
+                                      ),
+                                      tier: Schema.optional(
+                                        Schema.Literals(["Regional", "Global"]),
+                                      ),
+                                    }),
+                                  ),
+                                  tags: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              privateIPAddressVersion: Schema.optional(
+                                Schema.Literals(["IPv4", "IPv6"]),
+                              ),
+                              applicationGatewayBackendAddressPools:
+                                Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      id: Schema.optional(Schema.String),
+                                    }),
+                                  ),
+                                ),
+                              applicationSecurityGroups: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    id: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                              loadBalancerBackendAddressPools: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    id: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                              loadBalancerInboundNatPools: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    id: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                      enableIPForwarding: Schema.optional(Schema.Boolean),
+                      deleteOption: Schema.optional(
+                        Schema.Literals(["Delete", "Detach"]),
+                      ),
+                      auxiliaryMode: Schema.optional(
+                        Schema.Literals([
+                          "None",
+                          "AcceleratedConnections",
+                          "Floating",
+                        ]),
+                      ),
+                      auxiliarySku: Schema.optional(
+                        Schema.Literals(["None", "A1", "A2", "A4", "A8"]),
+                      ),
+                    }),
+                  ),
+                  tags: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        diagnosticsProfile: Schema.optional(
+          Schema.Struct({
+            bootDiagnostics: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                storageUri: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        availabilitySet: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        licenseType: Schema.optional(Schema.String),
+        modelDefinitionApplied: Schema.optional(Schema.String),
+        protectionPolicy: Schema.optional(
+          Schema.Struct({
+            protectFromScaleIn: Schema.optional(Schema.Boolean),
+            protectFromScaleSetActions: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        userData: Schema.optional(Schema.String),
+        timeCreated: Schema.optional(Schema.String),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        product: Schema.optional(Schema.String),
+        promotionCode: Schema.optional(Schema.String),
+      }),
+    ),
+    resources: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineScaleSetVMsUpdateInput =
@@ -8644,11 +13833,14 @@ export const VirtualMachinesCaptureInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    vhdPrefix: Schema.String,
+    destinationContainerName: Schema.String,
+    overwriteVhds: Schema.Boolean,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/capture",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesCaptureInput =
@@ -8683,11 +13875,11 @@ export const VirtualMachinesConvertToManagedDisksInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/convertToManagedDisks",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesConvertToManagedDisksInput =
@@ -8719,11 +13911,1188 @@ export const VirtualMachinesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        hardwareProfile: Schema.optional(
+          Schema.Struct({
+            vmSize: Schema.optional(
+              Schema.Literals([
+                "Basic_A0",
+                "Basic_A1",
+                "Basic_A2",
+                "Basic_A3",
+                "Basic_A4",
+                "Standard_A0",
+                "Standard_A1",
+                "Standard_A2",
+                "Standard_A3",
+                "Standard_A4",
+                "Standard_A5",
+                "Standard_A6",
+                "Standard_A7",
+                "Standard_A8",
+                "Standard_A9",
+                "Standard_A10",
+                "Standard_A11",
+                "Standard_A1_v2",
+                "Standard_A2_v2",
+                "Standard_A4_v2",
+                "Standard_A8_v2",
+                "Standard_A2m_v2",
+                "Standard_A4m_v2",
+                "Standard_A8m_v2",
+                "Standard_B1s",
+                "Standard_B1ms",
+                "Standard_B2s",
+                "Standard_B2ms",
+                "Standard_B4ms",
+                "Standard_B8ms",
+                "Standard_D1",
+                "Standard_D2",
+                "Standard_D3",
+                "Standard_D4",
+                "Standard_D11",
+                "Standard_D12",
+                "Standard_D13",
+                "Standard_D14",
+                "Standard_D1_v2",
+                "Standard_D2_v2",
+                "Standard_D3_v2",
+                "Standard_D4_v2",
+                "Standard_D5_v2",
+                "Standard_D2_v3",
+                "Standard_D4_v3",
+                "Standard_D8_v3",
+                "Standard_D16_v3",
+                "Standard_D32_v3",
+                "Standard_D64_v3",
+                "Standard_D2s_v3",
+                "Standard_D4s_v3",
+                "Standard_D8s_v3",
+                "Standard_D16s_v3",
+                "Standard_D32s_v3",
+                "Standard_D64s_v3",
+                "Standard_D11_v2",
+                "Standard_D12_v2",
+                "Standard_D13_v2",
+                "Standard_D14_v2",
+                "Standard_D15_v2",
+                "Standard_DS1",
+                "Standard_DS2",
+                "Standard_DS3",
+                "Standard_DS4",
+                "Standard_DS11",
+                "Standard_DS12",
+                "Standard_DS13",
+                "Standard_DS14",
+                "Standard_DS1_v2",
+                "Standard_DS2_v2",
+                "Standard_DS3_v2",
+                "Standard_DS4_v2",
+                "Standard_DS5_v2",
+                "Standard_DS11_v2",
+                "Standard_DS12_v2",
+                "Standard_DS13_v2",
+                "Standard_DS14_v2",
+                "Standard_DS15_v2",
+                "Standard_DS13-4_v2",
+                "Standard_DS13-2_v2",
+                "Standard_DS14-8_v2",
+                "Standard_DS14-4_v2",
+                "Standard_E2_v3",
+                "Standard_E4_v3",
+                "Standard_E8_v3",
+                "Standard_E16_v3",
+                "Standard_E32_v3",
+                "Standard_E64_v3",
+                "Standard_E2s_v3",
+                "Standard_E4s_v3",
+                "Standard_E8s_v3",
+                "Standard_E16s_v3",
+                "Standard_E32s_v3",
+                "Standard_E64s_v3",
+                "Standard_E32-16_v3",
+                "Standard_E32-8s_v3",
+                "Standard_E64-32s_v3",
+                "Standard_E64-16s_v3",
+                "Standard_F1",
+                "Standard_F2",
+                "Standard_F4",
+                "Standard_F8",
+                "Standard_F16",
+                "Standard_F1s",
+                "Standard_F2s",
+                "Standard_F4s",
+                "Standard_F8s",
+                "Standard_F16s",
+                "Standard_F2s_v2",
+                "Standard_F4s_v2",
+                "Standard_F8s_v2",
+                "Standard_F16s_v2",
+                "Standard_F32s_v2",
+                "Standard_F64s_v2",
+                "Standard_F72s_v2",
+                "Standard_G1",
+                "Standard_G2",
+                "Standard_G3",
+                "Standard_G4",
+                "Standard_G5",
+                "Standard_GS1",
+                "Standard_GS2",
+                "Standard_GS3",
+                "Standard_GS4",
+                "Standard_GS5",
+                "Standard_GS4-8",
+                "Standard_GS4-4",
+                "Standard_GS5-16",
+                "Standard_GS5-8",
+                "Standard_H8",
+                "Standard_H16",
+                "Standard_H8m",
+                "Standard_H16m",
+                "Standard_H16r",
+                "Standard_H16mr",
+                "Standard_L4s",
+                "Standard_L8s",
+                "Standard_L16s",
+                "Standard_L32s",
+                "Standard_M64s",
+                "Standard_M64ms",
+                "Standard_M128s",
+                "Standard_M128ms",
+                "Standard_M64-32ms",
+                "Standard_M64-16ms",
+                "Standard_M128-64ms",
+                "Standard_M128-32ms",
+                "Standard_NC6",
+                "Standard_NC12",
+                "Standard_NC24",
+                "Standard_NC24r",
+                "Standard_NC6s_v2",
+                "Standard_NC12s_v2",
+                "Standard_NC24s_v2",
+                "Standard_NC24rs_v2",
+                "Standard_NC6s_v3",
+                "Standard_NC12s_v3",
+                "Standard_NC24s_v3",
+                "Standard_NC24rs_v3",
+                "Standard_ND6s",
+                "Standard_ND12s",
+                "Standard_ND24s",
+                "Standard_ND24rs",
+                "Standard_NV6",
+                "Standard_NV12",
+                "Standard_NV24",
+              ]),
+            ),
+            vmSizeProperties: Schema.optional(
+              Schema.Struct({
+                vCPUsAvailable: Schema.optional(Schema.Number),
+                vCPUsPerCore: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        scheduledEventsPolicy: Schema.optional(
+          Schema.Struct({
+            userInitiatedRedeploy: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            userInitiatedReboot: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            scheduledEventsAdditionalPublishingTargets: Schema.optional(
+              Schema.Struct({
+                eventGridAndResourceGraph: Schema.optional(
+                  Schema.Struct({
+                    enable: Schema.optional(Schema.Boolean),
+                    scheduledEventsApiVersion: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            allInstancesDown: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        storageProfile: Schema.optional(
+          Schema.Struct({
+            imageReference: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+            osDisk: Schema.optional(
+              Schema.Struct({
+                osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+                encryptionSettings: Schema.optional(
+                  Schema.Struct({
+                    diskEncryptionKey: Schema.optional(
+                      Schema.Struct({
+                        secretUrl: Schema.String,
+                        sourceVault: Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      }),
+                    ),
+                    keyEncryptionKey: Schema.optional(
+                      Schema.Struct({
+                        keyUrl: Schema.String,
+                        sourceVault: Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      }),
+                    ),
+                    enabled: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                name: Schema.optional(Schema.String),
+                vhd: Schema.optional(
+                  Schema.Struct({
+                    uri: Schema.optional(Schema.String),
+                  }),
+                ),
+                image: Schema.optional(
+                  Schema.Struct({
+                    uri: Schema.optional(Schema.String),
+                  }),
+                ),
+                caching: Schema.optional(
+                  Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                ),
+                writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+                diffDiskSettings: Schema.optional(
+                  Schema.Struct({
+                    option: Schema.optional(Schema.Literals(["Local"])),
+                    placement: Schema.optional(
+                      Schema.Literals([
+                        "CacheDisk",
+                        "ResourceDisk",
+                        "NvmeDisk",
+                      ]),
+                    ),
+                  }),
+                ),
+                createOption: Schema.Literals([
+                  "FromImage",
+                  "Empty",
+                  "Attach",
+                  "Copy",
+                  "Restore",
+                ]),
+                diskSizeGB: Schema.optional(Schema.Number),
+                managedDisk: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                deleteOption: Schema.optional(
+                  Schema.Literals(["Delete", "Detach"]),
+                ),
+              }),
+            ),
+            dataDisks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  lun: Schema.Number,
+                  name: Schema.optional(Schema.String),
+                  vhd: Schema.optional(
+                    Schema.Struct({
+                      uri: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  image: Schema.optional(
+                    Schema.Struct({
+                      uri: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  caching: Schema.optional(
+                    Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                  ),
+                  writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+                  createOption: Schema.Literals([
+                    "FromImage",
+                    "Empty",
+                    "Attach",
+                    "Copy",
+                    "Restore",
+                  ]),
+                  diskSizeGB: Schema.optional(Schema.Number),
+                  managedDisk: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  sourceResource: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  toBeDetached: Schema.optional(Schema.Boolean),
+                  diskIOPSReadWrite: Schema.optional(Schema.Number),
+                  diskMBpsReadWrite: Schema.optional(Schema.Number),
+                  detachOption: Schema.optional(
+                    Schema.Literals(["ForceDetach"]),
+                  ),
+                  deleteOption: Schema.optional(
+                    Schema.Literals(["Delete", "Detach"]),
+                  ),
+                }),
+              ),
+            ),
+            diskControllerType: Schema.optional(
+              Schema.Literals(["SCSI", "NVMe"]),
+            ),
+            alignRegionalDisksToVMZone: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        additionalCapabilities: Schema.optional(
+          Schema.Struct({
+            ultraSSDEnabled: Schema.optional(Schema.Boolean),
+            hibernationEnabled: Schema.optional(Schema.Boolean),
+            enableFips1403Encryption: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        osProfile: Schema.optional(
+          Schema.Struct({
+            computerName: Schema.optional(Schema.String),
+            adminUsername: Schema.optional(Schema.String),
+            adminPassword: Schema.optional(SensitiveString),
+            customData: Schema.optional(Schema.String),
+            windowsConfiguration: Schema.optional(
+              Schema.Struct({
+                provisionVMAgent: Schema.optional(Schema.Boolean),
+                enableAutomaticUpdates: Schema.optional(Schema.Boolean),
+                timeZone: Schema.optional(Schema.String),
+                additionalUnattendContent: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      passName: Schema.optional(
+                        Schema.Literals(["OobeSystem"]),
+                      ),
+                      componentName: Schema.optional(
+                        Schema.Literals(["Microsoft-Windows-Shell-Setup"]),
+                      ),
+                      settingName: Schema.optional(
+                        Schema.Literals(["AutoLogon", "FirstLogonCommands"]),
+                      ),
+                      content: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                patchSettings: Schema.optional(
+                  Schema.Struct({
+                    patchMode: Schema.optional(
+                      Schema.Literals([
+                        "Manual",
+                        "AutomaticByOS",
+                        "AutomaticByPlatform",
+                      ]),
+                    ),
+                    enableHotpatching: Schema.optional(Schema.Boolean),
+                    assessmentMode: Schema.optional(
+                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                    ),
+                    automaticByPlatformSettings: Schema.optional(
+                      Schema.Struct({
+                        rebootSetting: Schema.optional(
+                          Schema.Literals([
+                            "Unknown",
+                            "IfRequired",
+                            "Never",
+                            "Always",
+                          ]),
+                        ),
+                        bypassPlatformSafetyChecksOnUserSchedule:
+                          Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  }),
+                ),
+                winRM: Schema.optional(
+                  Schema.Struct({
+                    listeners: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          protocol: Schema.optional(
+                            Schema.Literals(["Http", "Https"]),
+                          ),
+                          certificateUrl: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            linuxConfiguration: Schema.optional(
+              Schema.Struct({
+                disablePasswordAuthentication: Schema.optional(Schema.Boolean),
+                ssh: Schema.optional(
+                  Schema.Struct({
+                    publicKeys: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          path: Schema.optional(Schema.String),
+                          keyData: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                provisionVMAgent: Schema.optional(Schema.Boolean),
+                patchSettings: Schema.optional(
+                  Schema.Struct({
+                    patchMode: Schema.optional(
+                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                    ),
+                    assessmentMode: Schema.optional(
+                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                    ),
+                    automaticByPlatformSettings: Schema.optional(
+                      Schema.Struct({
+                        rebootSetting: Schema.optional(
+                          Schema.Literals([
+                            "Unknown",
+                            "IfRequired",
+                            "Never",
+                            "Always",
+                          ]),
+                        ),
+                        bypassPlatformSafetyChecksOnUserSchedule:
+                          Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  }),
+                ),
+                enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            secrets: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  sourceVault: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  vaultCertificates: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        certificateUrl: Schema.optional(Schema.String),
+                        certificateStore: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            allowExtensionOperations: Schema.optional(Schema.Boolean),
+            requireGuestProvisionSignal: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        networkProfile: Schema.optional(
+          Schema.Struct({
+            networkInterfaces: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            networkApiVersion: Schema.optional(
+              Schema.Literals(["2020-11-01", "2022-11-01"]),
+            ),
+            networkInterfaceConfigurations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  properties: Schema.optional(
+                    Schema.Struct({
+                      primary: Schema.optional(Schema.Boolean),
+                      deleteOption: Schema.optional(
+                        Schema.Literals(["Delete", "Detach"]),
+                      ),
+                      enableAcceleratedNetworking: Schema.optional(
+                        Schema.Boolean,
+                      ),
+                      disableTcpStateTracking: Schema.optional(Schema.Boolean),
+                      enableFpga: Schema.optional(Schema.Boolean),
+                      enableIPForwarding: Schema.optional(Schema.Boolean),
+                      networkSecurityGroup: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      dnsSettings: Schema.optional(
+                        Schema.Struct({
+                          dnsServers: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                      ipConfigurations: Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          properties: Schema.optional(
+                            Schema.Struct({
+                              subnet: Schema.optional(
+                                Schema.Struct({
+                                  id: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              primary: Schema.optional(Schema.Boolean),
+                              publicIPAddressConfiguration: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  properties: Schema.optional(
+                                    Schema.Struct({
+                                      idleTimeoutInMinutes: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      deleteOption: Schema.optional(
+                                        Schema.Literals(["Delete", "Detach"]),
+                                      ),
+                                      dnsSettings: Schema.optional(
+                                        Schema.Struct({
+                                          domainNameLabel: Schema.String,
+                                          domainNameLabelScope: Schema.optional(
+                                            Schema.Literals([
+                                              "TenantReuse",
+                                              "SubscriptionReuse",
+                                              "ResourceGroupReuse",
+                                              "NoReuse",
+                                            ]),
+                                          ),
+                                        }),
+                                      ),
+                                      ipTags: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            ipTagType: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            tag: Schema.optional(Schema.String),
+                                          }),
+                                        ),
+                                      ),
+                                      publicIPPrefix: Schema.optional(
+                                        Schema.Struct({
+                                          id: Schema.optional(Schema.String),
+                                        }),
+                                      ),
+                                      publicIPAddressVersion: Schema.optional(
+                                        Schema.Literals(["IPv4", "IPv6"]),
+                                      ),
+                                      publicIPAllocationMethod: Schema.optional(
+                                        Schema.Literals(["Dynamic", "Static"]),
+                                      ),
+                                    }),
+                                  ),
+                                  sku: Schema.optional(
+                                    Schema.Struct({
+                                      name: Schema.optional(
+                                        Schema.Literals(["Basic", "Standard"]),
+                                      ),
+                                      tier: Schema.optional(
+                                        Schema.Literals(["Regional", "Global"]),
+                                      ),
+                                    }),
+                                  ),
+                                  tags: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              privateIPAddressVersion: Schema.optional(
+                                Schema.Literals(["IPv4", "IPv6"]),
+                              ),
+                              applicationSecurityGroups: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    id: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                              applicationGatewayBackendAddressPools:
+                                Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      id: Schema.optional(Schema.String),
+                                    }),
+                                  ),
+                                ),
+                              loadBalancerBackendAddressPools: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    id: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                      dscpConfiguration: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      auxiliaryMode: Schema.optional(
+                        Schema.Literals([
+                          "None",
+                          "AcceleratedConnections",
+                          "Floating",
+                        ]),
+                      ),
+                      auxiliarySku: Schema.optional(
+                        Schema.Literals(["None", "A1", "A2", "A4", "A8"]),
+                      ),
+                    }),
+                  ),
+                  tags: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        securityProfile: Schema.optional(
+          Schema.Struct({
+            uefiSettings: Schema.optional(
+              Schema.Struct({
+                secureBootEnabled: Schema.optional(Schema.Boolean),
+                vTpmEnabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            encryptionAtHost: Schema.optional(Schema.Boolean),
+            securityType: Schema.optional(
+              Schema.Literals(["TrustedLaunch", "ConfidentialVM"]),
+            ),
+            encryptionIdentity: Schema.optional(
+              Schema.Struct({
+                userAssignedIdentityResourceId: Schema.optional(Schema.String),
+              }),
+            ),
+            proxyAgentSettings: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                mode: Schema.optional(Schema.Literals(["Audit", "Enforce"])),
+                keyIncarnationId: Schema.optional(Schema.Number),
+                wireServer: Schema.optional(
+                  Schema.Struct({
+                    mode: Schema.optional(
+                      Schema.Literals(["Audit", "Enforce", "Disabled"]),
+                    ),
+                    inVMAccessControlProfileReferenceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                imds: Schema.optional(
+                  Schema.Struct({
+                    mode: Schema.optional(
+                      Schema.Literals(["Audit", "Enforce", "Disabled"]),
+                    ),
+                    inVMAccessControlProfileReferenceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                addProxyAgentExtension: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        diagnosticsProfile: Schema.optional(
+          Schema.Struct({
+            bootDiagnostics: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                storageUri: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        availabilitySet: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        virtualMachineScaleSet: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        proximityPlacementGroup: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        priority: Schema.optional(Schema.Literals(["Regular", "Low", "Spot"])),
+        evictionPolicy: Schema.optional(
+          Schema.Literals(["Deallocate", "Delete"]),
+        ),
+        billingProfile: Schema.optional(
+          Schema.Struct({
+            maxPrice: Schema.optional(Schema.Number),
+          }),
+        ),
+        host: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        hostGroup: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            platformUpdateDomain: Schema.optional(Schema.Number),
+            platformFaultDomain: Schema.optional(Schema.Number),
+            computerName: Schema.optional(Schema.String),
+            osName: Schema.optional(Schema.String),
+            osVersion: Schema.optional(Schema.String),
+            hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
+            rdpThumbPrint: Schema.optional(Schema.String),
+            vmAgent: Schema.optional(
+              Schema.Struct({
+                vmAgentVersion: Schema.optional(Schema.String),
+                extensionHandlers: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      type: Schema.optional(Schema.String),
+                      typeHandlerVersion: Schema.optional(Schema.String),
+                      status: Schema.optional(
+                        Schema.Struct({
+                          code: Schema.optional(Schema.String),
+                          level: Schema.optional(
+                            Schema.Literals(["Info", "Warning", "Error"]),
+                          ),
+                          displayStatus: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          time: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                statuses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.optional(Schema.String),
+                      level: Schema.optional(
+                        Schema.Literals(["Info", "Warning", "Error"]),
+                      ),
+                      displayStatus: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                      time: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            maintenanceRedeployStatus: Schema.optional(
+              Schema.Struct({
+                isCustomerInitiatedMaintenanceAllowed: Schema.optional(
+                  Schema.Boolean,
+                ),
+                preMaintenanceWindowStartTime: Schema.optional(Schema.String),
+                preMaintenanceWindowEndTime: Schema.optional(Schema.String),
+                maintenanceWindowStartTime: Schema.optional(Schema.String),
+                maintenanceWindowEndTime: Schema.optional(Schema.String),
+                lastOperationResultCode: Schema.optional(
+                  Schema.Literals([
+                    "None",
+                    "RetryLater",
+                    "MaintenanceAborted",
+                    "MaintenanceCompleted",
+                  ]),
+                ),
+                lastOperationMessage: Schema.optional(Schema.String),
+              }),
+            ),
+            disks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  encryptionSettings: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        diskEncryptionKey: Schema.optional(
+                          Schema.Struct({
+                            secretUrl: Schema.String,
+                            sourceVault: Schema.Struct({
+                              id: Schema.optional(Schema.String),
+                            }),
+                          }),
+                        ),
+                        keyEncryptionKey: Schema.optional(
+                          Schema.Struct({
+                            keyUrl: Schema.String,
+                            sourceVault: Schema.Struct({
+                              id: Schema.optional(Schema.String),
+                            }),
+                          }),
+                        ),
+                        enabled: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  ),
+                  statuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            extensions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                  typeHandlerVersion: Schema.optional(Schema.String),
+                  substatuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  statuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            vmHealth: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    level: Schema.optional(
+                      Schema.Literals(["Info", "Warning", "Error"]),
+                    ),
+                    displayStatus: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    time: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            bootDiagnostics: Schema.optional(
+              Schema.Struct({
+                consoleScreenshotBlobUri: Schema.optional(Schema.String),
+                serialConsoleLogBlobUri: Schema.optional(Schema.String),
+                status: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    level: Schema.optional(
+                      Schema.Literals(["Info", "Warning", "Error"]),
+                    ),
+                    displayStatus: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    time: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            assignedHost: Schema.optional(Schema.String),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            patchStatus: Schema.optional(
+              Schema.Struct({
+                availablePatchSummary: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.optional(
+                      Schema.Literals([
+                        "Unknown",
+                        "InProgress",
+                        "Failed",
+                        "Succeeded",
+                        "CompletedWithWarnings",
+                      ]),
+                    ),
+                    assessmentActivityId: Schema.optional(Schema.String),
+                    rebootPending: Schema.optional(Schema.Boolean),
+                    criticalAndSecurityPatchCount: Schema.optional(
+                      Schema.Number,
+                    ),
+                    otherPatchCount: Schema.optional(Schema.Number),
+                    startTime: Schema.optional(Schema.String),
+                    lastModifiedTime: Schema.optional(Schema.String),
+                    error: Schema.optional(
+                      Schema.Struct({
+                        details: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              code: Schema.optional(Schema.String),
+                              target: Schema.optional(Schema.String),
+                              message: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        innererror: Schema.optional(
+                          Schema.Struct({
+                            exceptiontype: Schema.optional(Schema.String),
+                            errordetail: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        code: Schema.optional(Schema.String),
+                        target: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+                lastPatchInstallationSummary: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.optional(
+                      Schema.Literals([
+                        "Unknown",
+                        "InProgress",
+                        "Failed",
+                        "Succeeded",
+                        "CompletedWithWarnings",
+                      ]),
+                    ),
+                    installationActivityId: Schema.optional(Schema.String),
+                    maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
+                    notSelectedPatchCount: Schema.optional(Schema.Number),
+                    excludedPatchCount: Schema.optional(Schema.Number),
+                    pendingPatchCount: Schema.optional(Schema.Number),
+                    installedPatchCount: Schema.optional(Schema.Number),
+                    failedPatchCount: Schema.optional(Schema.Number),
+                    startTime: Schema.optional(Schema.String),
+                    lastModifiedTime: Schema.optional(Schema.String),
+                    error: Schema.optional(
+                      Schema.Struct({
+                        details: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              code: Schema.optional(Schema.String),
+                              target: Schema.optional(Schema.String),
+                              message: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        innererror: Schema.optional(
+                          Schema.Struct({
+                            exceptiontype: Schema.optional(Schema.String),
+                            errordetail: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        code: Schema.optional(Schema.String),
+                        target: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+                configurationStatuses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.optional(Schema.String),
+                      level: Schema.optional(
+                        Schema.Literals(["Info", "Warning", "Error"]),
+                      ),
+                      displayStatus: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                      time: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            isVMInStandbyPool: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        licenseType: Schema.optional(Schema.String),
+        vmId: Schema.optional(Schema.String),
+        extensionsTimeBudget: Schema.optional(Schema.String),
+        platformFaultDomain: Schema.optional(Schema.Number),
+        scheduledEventsProfile: Schema.optional(
+          Schema.Struct({
+            terminateNotificationProfile: Schema.optional(
+              Schema.Struct({
+                notBeforeTimeout: Schema.optional(Schema.String),
+                enable: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            osImageNotificationProfile: Schema.optional(
+              Schema.Struct({
+                notBeforeTimeout: Schema.optional(Schema.String),
+                enable: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        userData: Schema.optional(Schema.String),
+        capacityReservation: Schema.optional(
+          Schema.Struct({
+            capacityReservationGroup: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        applicationProfile: Schema.optional(
+          Schema.Struct({
+            galleryApplications: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  tags: Schema.optional(Schema.String),
+                  order: Schema.optional(Schema.Number),
+                  packageReferenceId: Schema.String,
+                  configurationReference: Schema.optional(Schema.String),
+                  treatFailureAsDeploymentFailure: Schema.optional(
+                    Schema.Boolean,
+                  ),
+                  enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+                }),
+              ),
+            ),
+          }),
+        ),
+        timeCreated: Schema.optional(Schema.String),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        product: Schema.optional(Schema.String),
+        promotionCode: Schema.optional(Schema.String),
+      }),
+    ),
+    resources: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["EdgeZone"])),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    placement: Schema.optional(
+      Schema.Struct({
+        zonePlacementPolicy: Schema.optional(Schema.Literals(["Any", "Auto"])),
+        includeZones: Schema.optional(Schema.Array(Schema.String)),
+        excludeZones: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesCreateOrUpdateInput =
@@ -8775,12 +15144,12 @@ export const VirtualMachinesDeallocateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     hibernate: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesDeallocateInput =
@@ -8814,12 +15183,12 @@ export const VirtualMachinesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     forceDeletion: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
@@ -8852,11 +15221,11 @@ export const VirtualMachinesGeneralizeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/generalize",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesGeneralizeInput =
@@ -8889,7 +15258,6 @@ export const VirtualMachinesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(
       Schema.Literals(["instanceView", "userData", "resiliencyView"]),
     ),
@@ -8897,6 +15265,7 @@ export const VirtualMachinesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
@@ -8944,11 +15313,47 @@ export const VirtualMachinesInstallPatchesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    maximumDuration: Schema.optional(Schema.String),
+    rebootSetting: Schema.Literals(["IfRequired", "Never", "Always"]),
+    windowsParameters: Schema.optional(
+      Schema.Struct({
+        classificationsToInclude: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "Critical",
+              "Security",
+              "UpdateRollUp",
+              "FeaturePack",
+              "ServicePack",
+              "Definition",
+              "Tools",
+              "Updates",
+            ]),
+          ),
+        ),
+        kbNumbersToInclude: Schema.optional(Schema.Array(Schema.String)),
+        kbNumbersToExclude: Schema.optional(Schema.Array(Schema.String)),
+        excludeKbsRequiringReboot: Schema.optional(Schema.Boolean),
+        maxPatchPublishDate: Schema.optional(Schema.String),
+        patchNameMasksToInclude: Schema.optional(Schema.Array(Schema.String)),
+        patchNameMasksToExclude: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    linuxParameters: Schema.optional(
+      Schema.Struct({
+        classificationsToInclude: Schema.optional(
+          Schema.Array(Schema.Literals(["Critical", "Security", "Other"])),
+        ),
+        packageNameMasksToInclude: Schema.optional(Schema.Array(Schema.String)),
+        packageNameMasksToExclude: Schema.optional(Schema.Array(Schema.String)),
+        maintenanceRunId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/installPatches",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesInstallPatchesInput =
@@ -9051,11 +15456,11 @@ export const VirtualMachinesInstanceViewInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesInstanceViewInput =
@@ -9375,11 +15780,11 @@ export const VirtualMachineSizesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachineSizesListInput =
@@ -9424,13 +15829,13 @@ export const VirtualMachinesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.Literals(["instanceView"])),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesListInput = typeof VirtualMachinesListInput.Type;
@@ -9491,7 +15896,6 @@ export const VirtualMachinesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const VirtualMachinesListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     statusOnly: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.Literals(["instanceView"])),
@@ -9499,6 +15903,7 @@ export const VirtualMachinesListAllInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesListAllInput =
@@ -9565,11 +15970,11 @@ export const VirtualMachinesListAvailableSizesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/vmSizes",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesListAvailableSizesInput =
@@ -9614,11 +16019,11 @@ export const VirtualMachinesListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/virtualMachines",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesListByLocationInput =
@@ -9682,11 +16087,14 @@ export const VirtualMachinesMigrateToVMScaleSetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    targetZone: Schema.optional(Schema.String),
+    targetFaultDomain: Schema.optional(Schema.Number),
+    targetVMSize: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/migrateToVirtualMachineScaleSet",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesMigrateToVMScaleSetInput =
@@ -9718,11 +16126,11 @@ export const VirtualMachinesPerformMaintenanceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/performMaintenance",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesPerformMaintenanceInput =
@@ -9754,12 +16162,12 @@ export const VirtualMachinesPowerOffInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     skipShutdown: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/powerOff",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesPowerOffInput =
@@ -9793,11 +16201,11 @@ export const VirtualMachinesReapplyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reapply",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesReapplyInput =
@@ -9830,11 +16238,11 @@ export const VirtualMachinesRedeployInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/redeploy",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesRedeployInput =
@@ -9867,11 +16275,19 @@ export const VirtualMachinesReimageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tempDisk: Schema.optional(Schema.Boolean),
+    exactVersion: Schema.optional(Schema.String),
+    osProfile: Schema.optional(
+      Schema.Struct({
+        adminPassword: Schema.optional(SensitiveString),
+        customData: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reimage",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesReimageInput =
@@ -9904,11 +16320,11 @@ export const VirtualMachinesRestartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesRestartInput =
@@ -9941,12 +16357,12 @@ export const VirtualMachinesRetrieveBootDiagnosticsDataInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     sasUriExpirationTimeInMinutes: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/retrieveBootDiagnosticsData",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesRetrieveBootDiagnosticsDataInput =
@@ -9982,11 +16398,21 @@ export const VirtualMachinesRunCommandInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    commandId: Schema.String,
+    script: Schema.optional(Schema.Array(Schema.String)),
+    parameters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          value: Schema.String,
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesRunCommandInput =
@@ -10031,11 +16457,11 @@ export const VirtualMachinesSimulateEvictionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesSimulateEvictionInput =
@@ -10067,11 +16493,11 @@ export const VirtualMachinesStartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/start",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
@@ -10102,11 +16528,1139 @@ export const VirtualMachinesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        product: Schema.optional(Schema.String),
+        promotionCode: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        hardwareProfile: Schema.optional(
+          Schema.Struct({
+            vmSize: Schema.optional(
+              Schema.Literals([
+                "Basic_A0",
+                "Basic_A1",
+                "Basic_A2",
+                "Basic_A3",
+                "Basic_A4",
+                "Standard_A0",
+                "Standard_A1",
+                "Standard_A2",
+                "Standard_A3",
+                "Standard_A4",
+                "Standard_A5",
+                "Standard_A6",
+                "Standard_A7",
+                "Standard_A8",
+                "Standard_A9",
+                "Standard_A10",
+                "Standard_A11",
+                "Standard_A1_v2",
+                "Standard_A2_v2",
+                "Standard_A4_v2",
+                "Standard_A8_v2",
+                "Standard_A2m_v2",
+                "Standard_A4m_v2",
+                "Standard_A8m_v2",
+                "Standard_B1s",
+                "Standard_B1ms",
+                "Standard_B2s",
+                "Standard_B2ms",
+                "Standard_B4ms",
+                "Standard_B8ms",
+                "Standard_D1",
+                "Standard_D2",
+                "Standard_D3",
+                "Standard_D4",
+                "Standard_D11",
+                "Standard_D12",
+                "Standard_D13",
+                "Standard_D14",
+                "Standard_D1_v2",
+                "Standard_D2_v2",
+                "Standard_D3_v2",
+                "Standard_D4_v2",
+                "Standard_D5_v2",
+                "Standard_D2_v3",
+                "Standard_D4_v3",
+                "Standard_D8_v3",
+                "Standard_D16_v3",
+                "Standard_D32_v3",
+                "Standard_D64_v3",
+                "Standard_D2s_v3",
+                "Standard_D4s_v3",
+                "Standard_D8s_v3",
+                "Standard_D16s_v3",
+                "Standard_D32s_v3",
+                "Standard_D64s_v3",
+                "Standard_D11_v2",
+                "Standard_D12_v2",
+                "Standard_D13_v2",
+                "Standard_D14_v2",
+                "Standard_D15_v2",
+                "Standard_DS1",
+                "Standard_DS2",
+                "Standard_DS3",
+                "Standard_DS4",
+                "Standard_DS11",
+                "Standard_DS12",
+                "Standard_DS13",
+                "Standard_DS14",
+                "Standard_DS1_v2",
+                "Standard_DS2_v2",
+                "Standard_DS3_v2",
+                "Standard_DS4_v2",
+                "Standard_DS5_v2",
+                "Standard_DS11_v2",
+                "Standard_DS12_v2",
+                "Standard_DS13_v2",
+                "Standard_DS14_v2",
+                "Standard_DS15_v2",
+                "Standard_DS13-4_v2",
+                "Standard_DS13-2_v2",
+                "Standard_DS14-8_v2",
+                "Standard_DS14-4_v2",
+                "Standard_E2_v3",
+                "Standard_E4_v3",
+                "Standard_E8_v3",
+                "Standard_E16_v3",
+                "Standard_E32_v3",
+                "Standard_E64_v3",
+                "Standard_E2s_v3",
+                "Standard_E4s_v3",
+                "Standard_E8s_v3",
+                "Standard_E16s_v3",
+                "Standard_E32s_v3",
+                "Standard_E64s_v3",
+                "Standard_E32-16_v3",
+                "Standard_E32-8s_v3",
+                "Standard_E64-32s_v3",
+                "Standard_E64-16s_v3",
+                "Standard_F1",
+                "Standard_F2",
+                "Standard_F4",
+                "Standard_F8",
+                "Standard_F16",
+                "Standard_F1s",
+                "Standard_F2s",
+                "Standard_F4s",
+                "Standard_F8s",
+                "Standard_F16s",
+                "Standard_F2s_v2",
+                "Standard_F4s_v2",
+                "Standard_F8s_v2",
+                "Standard_F16s_v2",
+                "Standard_F32s_v2",
+                "Standard_F64s_v2",
+                "Standard_F72s_v2",
+                "Standard_G1",
+                "Standard_G2",
+                "Standard_G3",
+                "Standard_G4",
+                "Standard_G5",
+                "Standard_GS1",
+                "Standard_GS2",
+                "Standard_GS3",
+                "Standard_GS4",
+                "Standard_GS5",
+                "Standard_GS4-8",
+                "Standard_GS4-4",
+                "Standard_GS5-16",
+                "Standard_GS5-8",
+                "Standard_H8",
+                "Standard_H16",
+                "Standard_H8m",
+                "Standard_H16m",
+                "Standard_H16r",
+                "Standard_H16mr",
+                "Standard_L4s",
+                "Standard_L8s",
+                "Standard_L16s",
+                "Standard_L32s",
+                "Standard_M64s",
+                "Standard_M64ms",
+                "Standard_M128s",
+                "Standard_M128ms",
+                "Standard_M64-32ms",
+                "Standard_M64-16ms",
+                "Standard_M128-64ms",
+                "Standard_M128-32ms",
+                "Standard_NC6",
+                "Standard_NC12",
+                "Standard_NC24",
+                "Standard_NC24r",
+                "Standard_NC6s_v2",
+                "Standard_NC12s_v2",
+                "Standard_NC24s_v2",
+                "Standard_NC24rs_v2",
+                "Standard_NC6s_v3",
+                "Standard_NC12s_v3",
+                "Standard_NC24s_v3",
+                "Standard_NC24rs_v3",
+                "Standard_ND6s",
+                "Standard_ND12s",
+                "Standard_ND24s",
+                "Standard_ND24rs",
+                "Standard_NV6",
+                "Standard_NV12",
+                "Standard_NV24",
+              ]),
+            ),
+            vmSizeProperties: Schema.optional(
+              Schema.Struct({
+                vCPUsAvailable: Schema.optional(Schema.Number),
+                vCPUsPerCore: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        scheduledEventsPolicy: Schema.optional(
+          Schema.Struct({
+            userInitiatedRedeploy: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            userInitiatedReboot: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            scheduledEventsAdditionalPublishingTargets: Schema.optional(
+              Schema.Struct({
+                eventGridAndResourceGraph: Schema.optional(
+                  Schema.Struct({
+                    enable: Schema.optional(Schema.Boolean),
+                    scheduledEventsApiVersion: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            allInstancesDown: Schema.optional(
+              Schema.Struct({
+                automaticallyApprove: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        storageProfile: Schema.optional(
+          Schema.Struct({
+            imageReference: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+            osDisk: Schema.optional(
+              Schema.Struct({
+                osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+                encryptionSettings: Schema.optional(
+                  Schema.Struct({
+                    diskEncryptionKey: Schema.optional(
+                      Schema.Struct({
+                        secretUrl: Schema.String,
+                        sourceVault: Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      }),
+                    ),
+                    keyEncryptionKey: Schema.optional(
+                      Schema.Struct({
+                        keyUrl: Schema.String,
+                        sourceVault: Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      }),
+                    ),
+                    enabled: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                name: Schema.optional(Schema.String),
+                vhd: Schema.optional(
+                  Schema.Struct({
+                    uri: Schema.optional(Schema.String),
+                  }),
+                ),
+                image: Schema.optional(
+                  Schema.Struct({
+                    uri: Schema.optional(Schema.String),
+                  }),
+                ),
+                caching: Schema.optional(
+                  Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                ),
+                writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+                diffDiskSettings: Schema.optional(
+                  Schema.Struct({
+                    option: Schema.optional(Schema.Literals(["Local"])),
+                    placement: Schema.optional(
+                      Schema.Literals([
+                        "CacheDisk",
+                        "ResourceDisk",
+                        "NvmeDisk",
+                      ]),
+                    ),
+                  }),
+                ),
+                createOption: Schema.Literals([
+                  "FromImage",
+                  "Empty",
+                  "Attach",
+                  "Copy",
+                  "Restore",
+                ]),
+                diskSizeGB: Schema.optional(Schema.Number),
+                managedDisk: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                deleteOption: Schema.optional(
+                  Schema.Literals(["Delete", "Detach"]),
+                ),
+              }),
+            ),
+            dataDisks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  lun: Schema.Number,
+                  name: Schema.optional(Schema.String),
+                  vhd: Schema.optional(
+                    Schema.Struct({
+                      uri: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  image: Schema.optional(
+                    Schema.Struct({
+                      uri: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  caching: Schema.optional(
+                    Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                  ),
+                  writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+                  createOption: Schema.Literals([
+                    "FromImage",
+                    "Empty",
+                    "Attach",
+                    "Copy",
+                    "Restore",
+                  ]),
+                  diskSizeGB: Schema.optional(Schema.Number),
+                  managedDisk: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  sourceResource: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  toBeDetached: Schema.optional(Schema.Boolean),
+                  diskIOPSReadWrite: Schema.optional(Schema.Number),
+                  diskMBpsReadWrite: Schema.optional(Schema.Number),
+                  detachOption: Schema.optional(
+                    Schema.Literals(["ForceDetach"]),
+                  ),
+                  deleteOption: Schema.optional(
+                    Schema.Literals(["Delete", "Detach"]),
+                  ),
+                }),
+              ),
+            ),
+            diskControllerType: Schema.optional(
+              Schema.Literals(["SCSI", "NVMe"]),
+            ),
+            alignRegionalDisksToVMZone: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        additionalCapabilities: Schema.optional(
+          Schema.Struct({
+            ultraSSDEnabled: Schema.optional(Schema.Boolean),
+            hibernationEnabled: Schema.optional(Schema.Boolean),
+            enableFips1403Encryption: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        osProfile: Schema.optional(
+          Schema.Struct({
+            computerName: Schema.optional(Schema.String),
+            adminUsername: Schema.optional(Schema.String),
+            adminPassword: Schema.optional(SensitiveString),
+            customData: Schema.optional(Schema.String),
+            windowsConfiguration: Schema.optional(
+              Schema.Struct({
+                provisionVMAgent: Schema.optional(Schema.Boolean),
+                enableAutomaticUpdates: Schema.optional(Schema.Boolean),
+                timeZone: Schema.optional(Schema.String),
+                additionalUnattendContent: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      passName: Schema.optional(
+                        Schema.Literals(["OobeSystem"]),
+                      ),
+                      componentName: Schema.optional(
+                        Schema.Literals(["Microsoft-Windows-Shell-Setup"]),
+                      ),
+                      settingName: Schema.optional(
+                        Schema.Literals(["AutoLogon", "FirstLogonCommands"]),
+                      ),
+                      content: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                patchSettings: Schema.optional(
+                  Schema.Struct({
+                    patchMode: Schema.optional(
+                      Schema.Literals([
+                        "Manual",
+                        "AutomaticByOS",
+                        "AutomaticByPlatform",
+                      ]),
+                    ),
+                    enableHotpatching: Schema.optional(Schema.Boolean),
+                    assessmentMode: Schema.optional(
+                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                    ),
+                    automaticByPlatformSettings: Schema.optional(
+                      Schema.Struct({
+                        rebootSetting: Schema.optional(
+                          Schema.Literals([
+                            "Unknown",
+                            "IfRequired",
+                            "Never",
+                            "Always",
+                          ]),
+                        ),
+                        bypassPlatformSafetyChecksOnUserSchedule:
+                          Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  }),
+                ),
+                winRM: Schema.optional(
+                  Schema.Struct({
+                    listeners: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          protocol: Schema.optional(
+                            Schema.Literals(["Http", "Https"]),
+                          ),
+                          certificateUrl: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            linuxConfiguration: Schema.optional(
+              Schema.Struct({
+                disablePasswordAuthentication: Schema.optional(Schema.Boolean),
+                ssh: Schema.optional(
+                  Schema.Struct({
+                    publicKeys: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          path: Schema.optional(Schema.String),
+                          keyData: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                provisionVMAgent: Schema.optional(Schema.Boolean),
+                patchSettings: Schema.optional(
+                  Schema.Struct({
+                    patchMode: Schema.optional(
+                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                    ),
+                    assessmentMode: Schema.optional(
+                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                    ),
+                    automaticByPlatformSettings: Schema.optional(
+                      Schema.Struct({
+                        rebootSetting: Schema.optional(
+                          Schema.Literals([
+                            "Unknown",
+                            "IfRequired",
+                            "Never",
+                            "Always",
+                          ]),
+                        ),
+                        bypassPlatformSafetyChecksOnUserSchedule:
+                          Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  }),
+                ),
+                enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            secrets: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  sourceVault: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  vaultCertificates: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        certificateUrl: Schema.optional(Schema.String),
+                        certificateStore: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            allowExtensionOperations: Schema.optional(Schema.Boolean),
+            requireGuestProvisionSignal: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        networkProfile: Schema.optional(
+          Schema.Struct({
+            networkInterfaces: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            networkApiVersion: Schema.optional(
+              Schema.Literals(["2020-11-01", "2022-11-01"]),
+            ),
+            networkInterfaceConfigurations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  properties: Schema.optional(
+                    Schema.Struct({
+                      primary: Schema.optional(Schema.Boolean),
+                      deleteOption: Schema.optional(
+                        Schema.Literals(["Delete", "Detach"]),
+                      ),
+                      enableAcceleratedNetworking: Schema.optional(
+                        Schema.Boolean,
+                      ),
+                      disableTcpStateTracking: Schema.optional(Schema.Boolean),
+                      enableFpga: Schema.optional(Schema.Boolean),
+                      enableIPForwarding: Schema.optional(Schema.Boolean),
+                      networkSecurityGroup: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      dnsSettings: Schema.optional(
+                        Schema.Struct({
+                          dnsServers: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                      ipConfigurations: Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          properties: Schema.optional(
+                            Schema.Struct({
+                              subnet: Schema.optional(
+                                Schema.Struct({
+                                  id: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              primary: Schema.optional(Schema.Boolean),
+                              publicIPAddressConfiguration: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  properties: Schema.optional(
+                                    Schema.Struct({
+                                      idleTimeoutInMinutes: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      deleteOption: Schema.optional(
+                                        Schema.Literals(["Delete", "Detach"]),
+                                      ),
+                                      dnsSettings: Schema.optional(
+                                        Schema.Struct({
+                                          domainNameLabel: Schema.String,
+                                          domainNameLabelScope: Schema.optional(
+                                            Schema.Literals([
+                                              "TenantReuse",
+                                              "SubscriptionReuse",
+                                              "ResourceGroupReuse",
+                                              "NoReuse",
+                                            ]),
+                                          ),
+                                        }),
+                                      ),
+                                      ipTags: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            ipTagType: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            tag: Schema.optional(Schema.String),
+                                          }),
+                                        ),
+                                      ),
+                                      publicIPPrefix: Schema.optional(
+                                        Schema.Struct({
+                                          id: Schema.optional(Schema.String),
+                                        }),
+                                      ),
+                                      publicIPAddressVersion: Schema.optional(
+                                        Schema.Literals(["IPv4", "IPv6"]),
+                                      ),
+                                      publicIPAllocationMethod: Schema.optional(
+                                        Schema.Literals(["Dynamic", "Static"]),
+                                      ),
+                                    }),
+                                  ),
+                                  sku: Schema.optional(
+                                    Schema.Struct({
+                                      name: Schema.optional(
+                                        Schema.Literals(["Basic", "Standard"]),
+                                      ),
+                                      tier: Schema.optional(
+                                        Schema.Literals(["Regional", "Global"]),
+                                      ),
+                                    }),
+                                  ),
+                                  tags: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              privateIPAddressVersion: Schema.optional(
+                                Schema.Literals(["IPv4", "IPv6"]),
+                              ),
+                              applicationSecurityGroups: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    id: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                              applicationGatewayBackendAddressPools:
+                                Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      id: Schema.optional(Schema.String),
+                                    }),
+                                  ),
+                                ),
+                              loadBalancerBackendAddressPools: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    id: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                      dscpConfiguration: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      auxiliaryMode: Schema.optional(
+                        Schema.Literals([
+                          "None",
+                          "AcceleratedConnections",
+                          "Floating",
+                        ]),
+                      ),
+                      auxiliarySku: Schema.optional(
+                        Schema.Literals(["None", "A1", "A2", "A4", "A8"]),
+                      ),
+                    }),
+                  ),
+                  tags: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        securityProfile: Schema.optional(
+          Schema.Struct({
+            uefiSettings: Schema.optional(
+              Schema.Struct({
+                secureBootEnabled: Schema.optional(Schema.Boolean),
+                vTpmEnabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            encryptionAtHost: Schema.optional(Schema.Boolean),
+            securityType: Schema.optional(
+              Schema.Literals(["TrustedLaunch", "ConfidentialVM"]),
+            ),
+            encryptionIdentity: Schema.optional(
+              Schema.Struct({
+                userAssignedIdentityResourceId: Schema.optional(Schema.String),
+              }),
+            ),
+            proxyAgentSettings: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                mode: Schema.optional(Schema.Literals(["Audit", "Enforce"])),
+                keyIncarnationId: Schema.optional(Schema.Number),
+                wireServer: Schema.optional(
+                  Schema.Struct({
+                    mode: Schema.optional(
+                      Schema.Literals(["Audit", "Enforce", "Disabled"]),
+                    ),
+                    inVMAccessControlProfileReferenceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                imds: Schema.optional(
+                  Schema.Struct({
+                    mode: Schema.optional(
+                      Schema.Literals(["Audit", "Enforce", "Disabled"]),
+                    ),
+                    inVMAccessControlProfileReferenceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                addProxyAgentExtension: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        diagnosticsProfile: Schema.optional(
+          Schema.Struct({
+            bootDiagnostics: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                storageUri: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        availabilitySet: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        virtualMachineScaleSet: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        proximityPlacementGroup: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        priority: Schema.optional(Schema.Literals(["Regular", "Low", "Spot"])),
+        evictionPolicy: Schema.optional(
+          Schema.Literals(["Deallocate", "Delete"]),
+        ),
+        billingProfile: Schema.optional(
+          Schema.Struct({
+            maxPrice: Schema.optional(Schema.Number),
+          }),
+        ),
+        host: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        hostGroup: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            platformUpdateDomain: Schema.optional(Schema.Number),
+            platformFaultDomain: Schema.optional(Schema.Number),
+            computerName: Schema.optional(Schema.String),
+            osName: Schema.optional(Schema.String),
+            osVersion: Schema.optional(Schema.String),
+            hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
+            rdpThumbPrint: Schema.optional(Schema.String),
+            vmAgent: Schema.optional(
+              Schema.Struct({
+                vmAgentVersion: Schema.optional(Schema.String),
+                extensionHandlers: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      type: Schema.optional(Schema.String),
+                      typeHandlerVersion: Schema.optional(Schema.String),
+                      status: Schema.optional(
+                        Schema.Struct({
+                          code: Schema.optional(Schema.String),
+                          level: Schema.optional(
+                            Schema.Literals(["Info", "Warning", "Error"]),
+                          ),
+                          displayStatus: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          time: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                statuses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.optional(Schema.String),
+                      level: Schema.optional(
+                        Schema.Literals(["Info", "Warning", "Error"]),
+                      ),
+                      displayStatus: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                      time: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            maintenanceRedeployStatus: Schema.optional(
+              Schema.Struct({
+                isCustomerInitiatedMaintenanceAllowed: Schema.optional(
+                  Schema.Boolean,
+                ),
+                preMaintenanceWindowStartTime: Schema.optional(Schema.String),
+                preMaintenanceWindowEndTime: Schema.optional(Schema.String),
+                maintenanceWindowStartTime: Schema.optional(Schema.String),
+                maintenanceWindowEndTime: Schema.optional(Schema.String),
+                lastOperationResultCode: Schema.optional(
+                  Schema.Literals([
+                    "None",
+                    "RetryLater",
+                    "MaintenanceAborted",
+                    "MaintenanceCompleted",
+                  ]),
+                ),
+                lastOperationMessage: Schema.optional(Schema.String),
+              }),
+            ),
+            disks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  encryptionSettings: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        diskEncryptionKey: Schema.optional(
+                          Schema.Struct({
+                            secretUrl: Schema.String,
+                            sourceVault: Schema.Struct({
+                              id: Schema.optional(Schema.String),
+                            }),
+                          }),
+                        ),
+                        keyEncryptionKey: Schema.optional(
+                          Schema.Struct({
+                            keyUrl: Schema.String,
+                            sourceVault: Schema.Struct({
+                              id: Schema.optional(Schema.String),
+                            }),
+                          }),
+                        ),
+                        enabled: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  ),
+                  statuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            extensions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                  typeHandlerVersion: Schema.optional(Schema.String),
+                  substatuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  statuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        code: Schema.optional(Schema.String),
+                        level: Schema.optional(
+                          Schema.Literals(["Info", "Warning", "Error"]),
+                        ),
+                        displayStatus: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            vmHealth: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    level: Schema.optional(
+                      Schema.Literals(["Info", "Warning", "Error"]),
+                    ),
+                    displayStatus: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    time: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            bootDiagnostics: Schema.optional(
+              Schema.Struct({
+                consoleScreenshotBlobUri: Schema.optional(Schema.String),
+                serialConsoleLogBlobUri: Schema.optional(Schema.String),
+                status: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    level: Schema.optional(
+                      Schema.Literals(["Info", "Warning", "Error"]),
+                    ),
+                    displayStatus: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    time: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            assignedHost: Schema.optional(Schema.String),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            patchStatus: Schema.optional(
+              Schema.Struct({
+                availablePatchSummary: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.optional(
+                      Schema.Literals([
+                        "Unknown",
+                        "InProgress",
+                        "Failed",
+                        "Succeeded",
+                        "CompletedWithWarnings",
+                      ]),
+                    ),
+                    assessmentActivityId: Schema.optional(Schema.String),
+                    rebootPending: Schema.optional(Schema.Boolean),
+                    criticalAndSecurityPatchCount: Schema.optional(
+                      Schema.Number,
+                    ),
+                    otherPatchCount: Schema.optional(Schema.Number),
+                    startTime: Schema.optional(Schema.String),
+                    lastModifiedTime: Schema.optional(Schema.String),
+                    error: Schema.optional(
+                      Schema.Struct({
+                        details: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              code: Schema.optional(Schema.String),
+                              target: Schema.optional(Schema.String),
+                              message: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        innererror: Schema.optional(
+                          Schema.Struct({
+                            exceptiontype: Schema.optional(Schema.String),
+                            errordetail: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        code: Schema.optional(Schema.String),
+                        target: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+                lastPatchInstallationSummary: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.optional(
+                      Schema.Literals([
+                        "Unknown",
+                        "InProgress",
+                        "Failed",
+                        "Succeeded",
+                        "CompletedWithWarnings",
+                      ]),
+                    ),
+                    installationActivityId: Schema.optional(Schema.String),
+                    maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
+                    notSelectedPatchCount: Schema.optional(Schema.Number),
+                    excludedPatchCount: Schema.optional(Schema.Number),
+                    pendingPatchCount: Schema.optional(Schema.Number),
+                    installedPatchCount: Schema.optional(Schema.Number),
+                    failedPatchCount: Schema.optional(Schema.Number),
+                    startTime: Schema.optional(Schema.String),
+                    lastModifiedTime: Schema.optional(Schema.String),
+                    error: Schema.optional(
+                      Schema.Struct({
+                        details: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              code: Schema.optional(Schema.String),
+                              target: Schema.optional(Schema.String),
+                              message: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        innererror: Schema.optional(
+                          Schema.Struct({
+                            exceptiontype: Schema.optional(Schema.String),
+                            errordetail: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        code: Schema.optional(Schema.String),
+                        target: Schema.optional(Schema.String),
+                        message: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+                configurationStatuses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.optional(Schema.String),
+                      level: Schema.optional(
+                        Schema.Literals(["Info", "Warning", "Error"]),
+                      ),
+                      displayStatus: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                      time: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            isVMInStandbyPool: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        licenseType: Schema.optional(Schema.String),
+        vmId: Schema.optional(Schema.String),
+        extensionsTimeBudget: Schema.optional(Schema.String),
+        platformFaultDomain: Schema.optional(Schema.Number),
+        scheduledEventsProfile: Schema.optional(
+          Schema.Struct({
+            terminateNotificationProfile: Schema.optional(
+              Schema.Struct({
+                notBeforeTimeout: Schema.optional(Schema.String),
+                enable: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            osImageNotificationProfile: Schema.optional(
+              Schema.Struct({
+                notBeforeTimeout: Schema.optional(Schema.String),
+                enable: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        userData: Schema.optional(Schema.String),
+        capacityReservation: Schema.optional(
+          Schema.Struct({
+            capacityReservationGroup: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        applicationProfile: Schema.optional(
+          Schema.Struct({
+            galleryApplications: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  tags: Schema.optional(Schema.String),
+                  order: Schema.optional(Schema.Number),
+                  packageReferenceId: Schema.String,
+                  configurationReference: Schema.optional(Schema.String),
+                  treatFailureAsDeploymentFailure: Schema.optional(
+                    Schema.Boolean,
+                  ),
+                  enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+                }),
+              ),
+            ),
+          }),
+        ),
+        timeCreated: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;

@@ -14,11 +14,15 @@ export const AttachedDatabaseConfigurationsCheckNameAvailabilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals([
+      "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurationCheckNameAvailability",
+      apiVersion: "2025-02-14",
     }),
   );
 export type AttachedDatabaseConfigurationsCheckNameAvailabilityInput =
@@ -56,11 +60,57 @@ export const AttachedDatabaseConfigurationsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     attachedDatabaseConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Running",
+            "Creating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Moving",
+            "Canceled",
+          ]),
+        ),
+        databaseName: Schema.String,
+        clusterResourceId: Schema.String,
+        attachedDatabaseNames: Schema.optional(Schema.Array(Schema.String)),
+        defaultPrincipalsModificationKind: Schema.Literals([
+          "Union",
+          "Replace",
+          "None",
+        ]),
+        tableLevelSharingProperties: Schema.optional(
+          Schema.Struct({
+            tablesToInclude: Schema.optional(Schema.Array(Schema.String)),
+            tablesToExclude: Schema.optional(Schema.Array(Schema.String)),
+            externalTablesToInclude: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            externalTablesToExclude: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            materializedViewsToInclude: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            materializedViewsToExclude: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            functionsToInclude: Schema.optional(Schema.Array(Schema.String)),
+            functionsToExclude: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        databaseNameOverride: Schema.optional(Schema.String),
+        databaseNamePrefix: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type AttachedDatabaseConfigurationsCreateOrUpdateInput =
@@ -112,11 +162,11 @@ export const AttachedDatabaseConfigurationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     attachedDatabaseConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type AttachedDatabaseConfigurationsDeleteInput =
@@ -150,11 +200,11 @@ export const AttachedDatabaseConfigurationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     attachedDatabaseConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type AttachedDatabaseConfigurationsGetInput =
@@ -205,11 +255,11 @@ export const AttachedDatabaseConfigurationsListByClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations",
+      apiVersion: "2025-02-14",
     }),
   );
 export type AttachedDatabaseConfigurationsListByClusterInput =
@@ -276,11 +326,13 @@ export const ClusterPrincipalAssignmentsCheckNameAvailabilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.Kusto/clusters/principalAssignments"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/checkPrincipalAssignmentNameAvailability",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClusterPrincipalAssignmentsCheckNameAvailabilityInput =
@@ -318,11 +370,37 @@ export const ClusterPrincipalAssignmentsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     principalAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.String,
+        role: Schema.Literals([
+          "AllDatabasesAdmin",
+          "AllDatabasesViewer",
+          "AllDatabasesMonitor",
+        ]),
+        tenantId: Schema.optional(Schema.String),
+        principalType: Schema.Literals(["App", "Group", "User"]),
+        tenantName: Schema.optional(Schema.String),
+        principalName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Running",
+            "Creating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Moving",
+            "Canceled",
+          ]),
+        ),
+        aadObjectId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments/{principalAssignmentName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClusterPrincipalAssignmentsCreateOrUpdateInput =
@@ -374,11 +452,11 @@ export const ClusterPrincipalAssignmentsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     principalAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments/{principalAssignmentName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClusterPrincipalAssignmentsDeleteInput =
@@ -412,11 +490,11 @@ export const ClusterPrincipalAssignmentsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     principalAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments/{principalAssignmentName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClusterPrincipalAssignmentsGetInput =
@@ -467,11 +545,11 @@ export const ClusterPrincipalAssignmentsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClusterPrincipalAssignmentsListInput =
@@ -538,11 +616,34 @@ export const ClustersAddCalloutPoliciesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    value: Schema.Array(
+      Schema.Struct({
+        calloutUriRegex: Schema.optional(Schema.String),
+        calloutType: Schema.optional(
+          Schema.Literals([
+            "kusto",
+            "sql",
+            "cosmosdb",
+            "external_data",
+            "azure_digital_twins",
+            "sandbox_artifacts",
+            "webapi",
+            "mysql",
+            "postgresql",
+            "genevametrics",
+            "azure_openai",
+          ]),
+        ),
+        outboundAccess: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+        calloutId: Schema.optional(Schema.String),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/addCalloutPolicies",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersAddCalloutPoliciesInput =
@@ -575,11 +676,33 @@ export const ClustersAddLanguageExtensionsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          languageExtensionName: Schema.optional(
+            Schema.Literals(["PYTHON", "R"]),
+          ),
+          languageExtensionImageName: Schema.optional(
+            Schema.Literals([
+              "R",
+              "Python3_6_5",
+              "Python3_10_8",
+              "Python3_10_8_DL",
+              "PythonCustomImage",
+              "Python3_11_7",
+              "Python3_11_7_DL",
+            ]),
+          ),
+          languageExtensionCustomImageName: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/addLanguageExtensions",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersAddLanguageExtensionsInput =
@@ -610,11 +733,13 @@ export const ClustersCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.Kusto/clusters"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/locations/{location}/checkNameAvailability",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersCheckNameAvailabilityInput =
@@ -650,11 +775,291 @@ export const ClustersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        state: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Unavailable",
+            "Running",
+            "Deleting",
+            "Deleted",
+            "Stopping",
+            "Stopped",
+            "Starting",
+            "Updating",
+            "Migrated",
+          ]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Running",
+            "Creating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Moving",
+            "Canceled",
+          ]),
+        ),
+        uri: Schema.optional(Schema.String),
+        dataIngestionUri: Schema.optional(Schema.String),
+        stateReason: Schema.optional(Schema.String),
+        trustedExternalTenants: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        optimizedAutoscale: Schema.optional(
+          Schema.Struct({
+            version: Schema.Number,
+            isEnabled: Schema.Boolean,
+            minimum: Schema.Number,
+            maximum: Schema.Number,
+          }),
+        ),
+        enableDiskEncryption: Schema.optional(Schema.Boolean),
+        enableStreamingIngest: Schema.optional(Schema.Boolean),
+        virtualNetworkConfiguration: Schema.optional(
+          Schema.Struct({
+            subnetId: Schema.String,
+            enginePublicIpId: Schema.String,
+            dataManagementPublicIpId: Schema.String,
+            state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          }),
+        ),
+        keyVaultProperties: Schema.optional(
+          Schema.Struct({
+            keyName: Schema.optional(Schema.String),
+            keyVersion: Schema.optional(Schema.String),
+            keyVaultUri: Schema.optional(Schema.String),
+            userIdentity: Schema.optional(Schema.String),
+            federatedIdentityClientId: Schema.optional(Schema.String),
+          }),
+        ),
+        enablePurge: Schema.optional(Schema.Boolean),
+        languageExtensions: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  languageExtensionName: Schema.optional(
+                    Schema.Literals(["PYTHON", "R"]),
+                  ),
+                  languageExtensionImageName: Schema.optional(
+                    Schema.Literals([
+                      "R",
+                      "Python3_6_5",
+                      "Python3_10_8",
+                      "Python3_10_8_DL",
+                      "PythonCustomImage",
+                      "Python3_11_7",
+                      "Python3_11_7_DL",
+                    ]),
+                  ),
+                  languageExtensionCustomImageName: Schema.optional(
+                    Schema.String,
+                  ),
+                }),
+              ),
+            ),
+            nextLink: Schema.optional(Schema.String),
+          }),
+        ),
+        enableDoubleEncryption: Schema.optional(Schema.Boolean),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+        ),
+        allowedIpRangeList: Schema.optional(Schema.Array(Schema.String)),
+        engineType: Schema.optional(Schema.Literals(["V2", "V3"])),
+        acceptedAudiences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        enableAutoStop: Schema.optional(Schema.Boolean),
+        restrictOutboundNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        allowedFqdnList: Schema.optional(Schema.Array(Schema.String)),
+        calloutPolicies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              calloutUriRegex: Schema.optional(Schema.String),
+              calloutType: Schema.optional(
+                Schema.Literals([
+                  "kusto",
+                  "sql",
+                  "cosmosdb",
+                  "external_data",
+                  "azure_digital_twins",
+                  "sandbox_artifacts",
+                  "webapi",
+                  "mysql",
+                  "postgresql",
+                  "genevametrics",
+                  "azure_openai",
+                ]),
+              ),
+              outboundAccess: Schema.optional(
+                Schema.Literals(["Allow", "Deny"]),
+              ),
+              calloutId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        publicIPType: Schema.optional(Schema.Literals(["IPv4", "DualStack"])),
+        virtualClusterGraduationProperties: Schema.optional(Schema.String),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        migrationCluster: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            uri: Schema.optional(Schema.String),
+            dataIngestionUri: Schema.optional(Schema.String),
+            role: Schema.optional(Schema.Literals(["Source", "Destination"])),
+          }),
+        ),
+        zoneStatus: Schema.optional(
+          Schema.Literals(["NonZonal", "ZonalInconsistency", "Zonal"]),
+        ),
+      }),
+    ),
+    sku: Schema.Struct({
+      name: Schema.Literals([
+        "Dev(No SLA)_Standard_D11_v2",
+        "Dev(No SLA)_Standard_E2a_v4",
+        "Standard_D11_v2",
+        "Standard_D12_v2",
+        "Standard_D13_v2",
+        "Standard_D14_v2",
+        "Standard_D32d_v4",
+        "Standard_D16d_v5",
+        "Standard_D32d_v5",
+        "Standard_DS13_v2+1TB_PS",
+        "Standard_DS13_v2+2TB_PS",
+        "Standard_DS14_v2+3TB_PS",
+        "Standard_DS14_v2+4TB_PS",
+        "Standard_L4s",
+        "Standard_L8s",
+        "Standard_L16s",
+        "Standard_L8s_v2",
+        "Standard_L16s_v2",
+        "Standard_L8s_v3",
+        "Standard_L16s_v3",
+        "Standard_L32s_v3",
+        "Standard_L8as_v3",
+        "Standard_L16as_v3",
+        "Standard_L32as_v3",
+        "Standard_E64i_v3",
+        "Standard_E80ids_v4",
+        "Standard_E2a_v4",
+        "Standard_E4a_v4",
+        "Standard_E8a_v4",
+        "Standard_E16a_v4",
+        "Standard_E8as_v4+1TB_PS",
+        "Standard_E8as_v4+2TB_PS",
+        "Standard_E16as_v4+3TB_PS",
+        "Standard_E16as_v4+4TB_PS",
+        "Standard_E8as_v5+1TB_PS",
+        "Standard_E8as_v5+2TB_PS",
+        "Standard_E16as_v5+3TB_PS",
+        "Standard_E16as_v5+4TB_PS",
+        "Standard_E2ads_v5",
+        "Standard_E4ads_v5",
+        "Standard_E8ads_v5",
+        "Standard_E16ads_v5",
+        "Standard_EC8as_v5+1TB_PS",
+        "Standard_EC8as_v5+2TB_PS",
+        "Standard_EC16as_v5+3TB_PS",
+        "Standard_EC16as_v5+4TB_PS",
+        "Standard_EC8ads_v5",
+        "Standard_EC16ads_v5",
+        "Standard_E8s_v4+1TB_PS",
+        "Standard_E8s_v4+2TB_PS",
+        "Standard_E16s_v4+3TB_PS",
+        "Standard_E16s_v4+4TB_PS",
+        "Standard_E8s_v5+1TB_PS",
+        "Standard_E8s_v5+2TB_PS",
+        "Standard_E16s_v5+3TB_PS",
+        "Standard_E16s_v5+4TB_PS",
+        "Standard_E2d_v4",
+        "Standard_E4d_v4",
+        "Standard_E8d_v4",
+        "Standard_E16d_v4",
+        "Standard_E2d_v5",
+        "Standard_E4d_v5",
+        "Standard_E8d_v5",
+        "Standard_E16d_v5",
+      ]),
+      capacity: Schema.optional(Schema.Number),
+      tier: Schema.Literals(["Basic", "Standard"]),
+    }),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -706,11 +1111,11 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
+    apiVersion: "2025-02-14",
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -738,11 +1143,33 @@ export const ClustersDetachFollowerDatabasesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    clusterResourceId: Schema.String,
+    attachedDatabaseConfigurationName: Schema.String,
+    databaseName: Schema.optional(Schema.String),
+    tableLevelSharingProperties: Schema.optional(
+      Schema.Struct({
+        tablesToInclude: Schema.optional(Schema.Array(Schema.String)),
+        tablesToExclude: Schema.optional(Schema.Array(Schema.String)),
+        externalTablesToInclude: Schema.optional(Schema.Array(Schema.String)),
+        externalTablesToExclude: Schema.optional(Schema.Array(Schema.String)),
+        materializedViewsToInclude: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        materializedViewsToExclude: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        functionsToInclude: Schema.optional(Schema.Array(Schema.String)),
+        functionsToExclude: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    databaseShareOrigin: Schema.optional(
+      Schema.Literals(["Direct", "DataShare", "Other"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/detachFollowerDatabases",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersDetachFollowerDatabasesInput =
@@ -774,11 +1201,11 @@ export const ClustersDiagnoseVirtualNetworkInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/diagnoseVirtualNetwork",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersDiagnoseVirtualNetworkInput =
@@ -811,11 +1238,11 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
+    apiVersion: "2025-02-14",
   }),
 );
 export type ClustersGetInput = typeof ClustersGetInput.Type;
@@ -858,11 +1285,11 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/clusters",
+    apiVersion: "2025-02-14",
   }),
 );
 export type ClustersListInput = typeof ClustersListInput.Type;
@@ -922,11 +1349,11 @@ export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersListByResourceGroupInput =
@@ -993,11 +1420,11 @@ export const ClustersListCalloutPoliciesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/listCalloutPolicies",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersListCalloutPoliciesInput =
@@ -1054,11 +1481,11 @@ export const ClustersListFollowerDatabasesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/listFollowerDatabases",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersListFollowerDatabasesInput =
@@ -1124,11 +1551,11 @@ export const ClustersListFollowerDatabasesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/listFollowerDatabases",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersListFollowerDatabasesGetInput =
@@ -1200,11 +1627,11 @@ export const ClustersListLanguageExtensionsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/listLanguageExtensions",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersListLanguageExtensionsInput =
@@ -1259,11 +1686,11 @@ export const ClustersListOutboundNetworkDependenciesEndpointsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/outboundNetworkDependenciesEndpoints",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersListOutboundNetworkDependenciesEndpointsInput =
@@ -1325,11 +1752,11 @@ export const ClustersListOutboundNetworkDependenciesEndpoints =
 // Input Schema
 export const ClustersListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/skus",
+    apiVersion: "2025-02-14",
   }),
 );
 export type ClustersListSkusInput = typeof ClustersListSkusInput.Type;
@@ -1393,11 +1820,11 @@ export const ClustersListSkusByResourceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/skus",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersListSkusByResourceInput =
@@ -1518,11 +1945,12 @@ export const ClustersMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  clusterResourceId: Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/migrate",
+    apiVersion: "2025-02-14",
   }),
 );
 export type ClustersMigrateInput = typeof ClustersMigrateInput.Type;
@@ -1550,11 +1978,12 @@ export const ClustersRemoveCalloutPolicyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    calloutId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/removeCalloutPolicy",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersRemoveCalloutPolicyInput =
@@ -1587,11 +2016,33 @@ export const ClustersRemoveLanguageExtensionsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          languageExtensionName: Schema.optional(
+            Schema.Literals(["PYTHON", "R"]),
+          ),
+          languageExtensionImageName: Schema.optional(
+            Schema.Literals([
+              "R",
+              "Python3_6_5",
+              "Python3_10_8",
+              "Python3_10_8_DL",
+              "PythonCustomImage",
+              "Python3_11_7",
+              "Python3_11_7_DL",
+            ]),
+          ),
+          languageExtensionCustomImageName: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/removeLanguageExtensions",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ClustersRemoveLanguageExtensionsInput =
@@ -1622,11 +2073,11 @@ export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/start",
+    apiVersion: "2025-02-14",
   }),
 );
 export type ClustersStartInput = typeof ClustersStartInput.Type;
@@ -1653,11 +2104,11 @@ export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/stop",
+    apiVersion: "2025-02-14",
   }),
 );
 export type ClustersStopInput = typeof ClustersStopInput.Type;
@@ -1684,11 +2135,307 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals([
+        "Dev(No SLA)_Standard_D11_v2",
+        "Dev(No SLA)_Standard_E2a_v4",
+        "Standard_D11_v2",
+        "Standard_D12_v2",
+        "Standard_D13_v2",
+        "Standard_D14_v2",
+        "Standard_D32d_v4",
+        "Standard_D16d_v5",
+        "Standard_D32d_v5",
+        "Standard_DS13_v2+1TB_PS",
+        "Standard_DS13_v2+2TB_PS",
+        "Standard_DS14_v2+3TB_PS",
+        "Standard_DS14_v2+4TB_PS",
+        "Standard_L4s",
+        "Standard_L8s",
+        "Standard_L16s",
+        "Standard_L8s_v2",
+        "Standard_L16s_v2",
+        "Standard_L8s_v3",
+        "Standard_L16s_v3",
+        "Standard_L32s_v3",
+        "Standard_L8as_v3",
+        "Standard_L16as_v3",
+        "Standard_L32as_v3",
+        "Standard_E64i_v3",
+        "Standard_E80ids_v4",
+        "Standard_E2a_v4",
+        "Standard_E4a_v4",
+        "Standard_E8a_v4",
+        "Standard_E16a_v4",
+        "Standard_E8as_v4+1TB_PS",
+        "Standard_E8as_v4+2TB_PS",
+        "Standard_E16as_v4+3TB_PS",
+        "Standard_E16as_v4+4TB_PS",
+        "Standard_E8as_v5+1TB_PS",
+        "Standard_E8as_v5+2TB_PS",
+        "Standard_E16as_v5+3TB_PS",
+        "Standard_E16as_v5+4TB_PS",
+        "Standard_E2ads_v5",
+        "Standard_E4ads_v5",
+        "Standard_E8ads_v5",
+        "Standard_E16ads_v5",
+        "Standard_EC8as_v5+1TB_PS",
+        "Standard_EC8as_v5+2TB_PS",
+        "Standard_EC16as_v5+3TB_PS",
+        "Standard_EC16as_v5+4TB_PS",
+        "Standard_EC8ads_v5",
+        "Standard_EC16ads_v5",
+        "Standard_E8s_v4+1TB_PS",
+        "Standard_E8s_v4+2TB_PS",
+        "Standard_E16s_v4+3TB_PS",
+        "Standard_E16s_v4+4TB_PS",
+        "Standard_E8s_v5+1TB_PS",
+        "Standard_E8s_v5+2TB_PS",
+        "Standard_E16s_v5+3TB_PS",
+        "Standard_E16s_v5+4TB_PS",
+        "Standard_E2d_v4",
+        "Standard_E4d_v4",
+        "Standard_E8d_v4",
+        "Standard_E16d_v4",
+        "Standard_E2d_v5",
+        "Standard_E4d_v5",
+        "Standard_E8d_v5",
+        "Standard_E16d_v5",
+      ]),
+      capacity: Schema.optional(Schema.Number),
+      tier: Schema.Literals(["Basic", "Standard"]),
+    }),
+  ),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned, UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      state: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Unavailable",
+          "Running",
+          "Deleting",
+          "Deleted",
+          "Stopping",
+          "Stopped",
+          "Starting",
+          "Updating",
+          "Migrated",
+        ]),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Running",
+          "Creating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Moving",
+          "Canceled",
+        ]),
+      ),
+      uri: Schema.optional(Schema.String),
+      dataIngestionUri: Schema.optional(Schema.String),
+      stateReason: Schema.optional(Schema.String),
+      trustedExternalTenants: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      optimizedAutoscale: Schema.optional(
+        Schema.Struct({
+          version: Schema.Number,
+          isEnabled: Schema.Boolean,
+          minimum: Schema.Number,
+          maximum: Schema.Number,
+        }),
+      ),
+      enableDiskEncryption: Schema.optional(Schema.Boolean),
+      enableStreamingIngest: Schema.optional(Schema.Boolean),
+      virtualNetworkConfiguration: Schema.optional(
+        Schema.Struct({
+          subnetId: Schema.String,
+          enginePublicIpId: Schema.String,
+          dataManagementPublicIpId: Schema.String,
+          state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        }),
+      ),
+      keyVaultProperties: Schema.optional(
+        Schema.Struct({
+          keyName: Schema.optional(Schema.String),
+          keyVersion: Schema.optional(Schema.String),
+          keyVaultUri: Schema.optional(Schema.String),
+          userIdentity: Schema.optional(Schema.String),
+          federatedIdentityClientId: Schema.optional(Schema.String),
+        }),
+      ),
+      enablePurge: Schema.optional(Schema.Boolean),
+      languageExtensions: Schema.optional(
+        Schema.Struct({
+          value: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                languageExtensionName: Schema.optional(
+                  Schema.Literals(["PYTHON", "R"]),
+                ),
+                languageExtensionImageName: Schema.optional(
+                  Schema.Literals([
+                    "R",
+                    "Python3_6_5",
+                    "Python3_10_8",
+                    "Python3_10_8_DL",
+                    "PythonCustomImage",
+                    "Python3_11_7",
+                    "Python3_11_7_DL",
+                  ]),
+                ),
+                languageExtensionCustomImageName: Schema.optional(
+                  Schema.String,
+                ),
+              }),
+            ),
+          ),
+          nextLink: Schema.optional(Schema.String),
+        }),
+      ),
+      enableDoubleEncryption: Schema.optional(Schema.Boolean),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+      ),
+      allowedIpRangeList: Schema.optional(Schema.Array(Schema.String)),
+      engineType: Schema.optional(Schema.Literals(["V2", "V3"])),
+      acceptedAudiences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      enableAutoStop: Schema.optional(Schema.Boolean),
+      restrictOutboundNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      allowedFqdnList: Schema.optional(Schema.Array(Schema.String)),
+      calloutPolicies: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            calloutUriRegex: Schema.optional(Schema.String),
+            calloutType: Schema.optional(
+              Schema.Literals([
+                "kusto",
+                "sql",
+                "cosmosdb",
+                "external_data",
+                "azure_digital_twins",
+                "sandbox_artifacts",
+                "webapi",
+                "mysql",
+                "postgresql",
+                "genevametrics",
+                "azure_openai",
+              ]),
+            ),
+            outboundAccess: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+            calloutId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      publicIPType: Schema.optional(Schema.Literals(["IPv4", "DualStack"])),
+      virtualClusterGraduationProperties: Schema.optional(Schema.String),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      migrationCluster: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          uri: Schema.optional(Schema.String),
+          dataIngestionUri: Schema.optional(Schema.String),
+          role: Schema.optional(Schema.Literals(["Source", "Destination"])),
+        }),
+      ),
+      zoneStatus: Schema.optional(
+        Schema.Literals(["NonZonal", "ZonalInconsistency", "Zonal"]),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
+    apiVersion: "2025-02-14",
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -1736,11 +2483,28 @@ export const DatabaseInviteFollowerInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    inviteeEmail: Schema.String,
+    tableLevelSharingProperties: Schema.optional(
+      Schema.Struct({
+        tablesToInclude: Schema.optional(Schema.Array(Schema.String)),
+        tablesToExclude: Schema.optional(Schema.Array(Schema.String)),
+        externalTablesToInclude: Schema.optional(Schema.Array(Schema.String)),
+        externalTablesToExclude: Schema.optional(Schema.Array(Schema.String)),
+        materializedViewsToInclude: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        materializedViewsToExclude: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        functionsToInclude: Schema.optional(Schema.Array(Schema.String)),
+        functionsToExclude: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/inviteFollower",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DatabaseInviteFollowerInput =
@@ -1777,11 +2541,15 @@ export const DatabasePrincipalAssignmentsCheckNameAvailabilityInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals([
+      "Microsoft.Kusto/clusters/databases/principalAssignments",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/checkPrincipalAssignmentNameAvailability",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DatabasePrincipalAssignmentsCheckNameAvailabilityInput =
@@ -1821,11 +2589,40 @@ export const DatabasePrincipalAssignmentsCreateOrUpdateInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     principalAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.String,
+        role: Schema.Literals([
+          "Admin",
+          "Ingestor",
+          "Monitor",
+          "User",
+          "UnrestrictedViewer",
+          "Viewer",
+        ]),
+        tenantId: Schema.optional(Schema.String),
+        principalType: Schema.Literals(["App", "Group", "User"]),
+        tenantName: Schema.optional(Schema.String),
+        principalName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Running",
+            "Creating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Moving",
+            "Canceled",
+          ]),
+        ),
+        aadObjectId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/principalAssignments/{principalAssignmentName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DatabasePrincipalAssignmentsCreateOrUpdateInput =
@@ -1879,11 +2676,11 @@ export const DatabasePrincipalAssignmentsDeleteInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     principalAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/principalAssignments/{principalAssignmentName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DatabasePrincipalAssignmentsDeleteInput =
@@ -1919,11 +2716,11 @@ export const DatabasePrincipalAssignmentsGetInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     principalAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/principalAssignments/{principalAssignmentName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DatabasePrincipalAssignmentsGetInput =
@@ -1976,11 +2773,11 @@ export const DatabasePrincipalAssignmentsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/principalAssignments",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DatabasePrincipalAssignmentsListInput =
@@ -2049,11 +2846,31 @@ export const DatabasesAddPrincipalsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          role: Schema.Literals([
+            "Admin",
+            "Ingestor",
+            "Monitor",
+            "User",
+            "UnrestrictedViewer",
+            "Viewer",
+          ]),
+          name: Schema.String,
+          type: Schema.Literals(["App", "Group", "User"]),
+          fqn: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          appId: Schema.optional(Schema.String),
+          tenantName: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/addPrincipals",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DatabasesAddPrincipalsInput =
@@ -2109,11 +2926,16 @@ export const DatabasesCheckNameAvailabilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals([
+      "Microsoft.Kusto/clusters/databases",
+      "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/checkNameAvailability",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DatabasesCheckNameAvailabilityInput =
@@ -2151,12 +2973,14 @@ export const DatabasesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     callerRole: Schema.optional(Schema.Literals(["Admin", "None"])),
+    location: Schema.optional(Schema.String),
+    kind: Schema.Literals(["ReadWrite", "ReadOnlyFollowing"]),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DatabasesCreateOrUpdateInput =
@@ -2209,11 +3033,11 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}",
+    apiVersion: "2025-02-14",
   }),
 );
 export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
@@ -2242,11 +3066,11 @@ export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}",
+    apiVersion: "2025-02-14",
   }),
 );
 export type DatabasesGetInput = typeof DatabasesGetInput.Type;
@@ -2293,13 +3117,13 @@ export const DatabasesListByClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DatabasesListByClusterInput =
@@ -2368,11 +3192,11 @@ export const DatabasesListPrincipalsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/listPrincipals",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DatabasesListPrincipalsInput =
@@ -2429,11 +3253,31 @@ export const DatabasesRemovePrincipalsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          role: Schema.Literals([
+            "Admin",
+            "Ingestor",
+            "Monitor",
+            "User",
+            "UnrestrictedViewer",
+            "Viewer",
+          ]),
+          name: Schema.String,
+          type: Schema.Literals(["App", "Group", "User"]),
+          fqn: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          appId: Schema.optional(Schema.String),
+          tenantName: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/removePrincipals",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DatabasesRemovePrincipalsInput =
@@ -2489,12 +3333,14 @@ export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   callerRole: Schema.optional(Schema.Literals(["Admin", "None"])),
+  location: Schema.optional(Schema.String),
+  kind: Schema.Literals(["ReadWrite", "ReadOnlyFollowing"]),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}",
+    apiVersion: "2025-02-14",
   }),
 );
 export type DatabasesUpdateInput = typeof DatabasesUpdateInput.Type;
@@ -2543,11 +3389,15 @@ export const DataConnectionsCheckNameAvailabilityInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals([
+      "Microsoft.Kusto/clusters/databases/dataConnections",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/checkNameAvailability",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DataConnectionsCheckNameAvailabilityInput =
@@ -2587,11 +3437,20 @@ export const DataConnectionsCreateOrUpdateInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     dataConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    location: Schema.optional(Schema.String),
+    kind: Schema.Literals([
+      "EventHub",
+      "EventGrid",
+      "IotHub",
+      "CosmosDb",
+      "EventHubWithManagedIdentity",
+      "EventGridWithManagedIdentity",
+    ]),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DataConnectionsCreateOrUpdateInput =
@@ -2644,11 +3503,43 @@ export const DataConnectionsDataConnectionValidationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    dataConnectionName: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnectionValidation",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DataConnectionsDataConnectionValidationInput =
@@ -2691,11 +3582,11 @@ export const DataConnectionsDeleteInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     dataConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DataConnectionsDeleteInput = typeof DataConnectionsDeleteInput.Type;
@@ -2731,11 +3622,11 @@ export const DataConnectionsGetInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     dataConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DataConnectionsGetInput = typeof DataConnectionsGetInput.Type;
@@ -2785,11 +3676,11 @@ export const DataConnectionsListByDatabaseInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DataConnectionsListByDatabaseInput =
@@ -2859,11 +3750,20 @@ export const DataConnectionsUpdateInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     dataConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    location: Schema.optional(Schema.String),
+    kind: Schema.Literals([
+      "EventHub",
+      "EventGrid",
+      "IotHub",
+      "CosmosDb",
+      "EventHubWithManagedIdentity",
+      "EventGridWithManagedIdentity",
+    ]),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type DataConnectionsUpdateInput = typeof DataConnectionsUpdateInput.Type;
@@ -2915,11 +3815,13 @@ export const ManagedPrivateEndpointsCheckNameAvailabilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.Kusto/clusters/managedPrivateEndpoints"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpointsCheckNameAvailability",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ManagedPrivateEndpointsCheckNameAvailabilityInput =
@@ -2957,11 +3859,30 @@ export const ManagedPrivateEndpointsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     managedPrivateEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateLinkResourceId: Schema.String,
+        privateLinkResourceRegion: Schema.optional(Schema.String),
+        groupId: Schema.String,
+        requestMessage: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Running",
+            "Creating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Moving",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ManagedPrivateEndpointsCreateOrUpdateInput =
@@ -3013,11 +3934,11 @@ export const ManagedPrivateEndpointsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     managedPrivateEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ManagedPrivateEndpointsDeleteInput =
@@ -3051,11 +3972,11 @@ export const ManagedPrivateEndpointsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     managedPrivateEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ManagedPrivateEndpointsGetInput =
@@ -3107,11 +4028,11 @@ export const ManagedPrivateEndpointsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ManagedPrivateEndpointsListInput =
@@ -3180,11 +4101,30 @@ export const ManagedPrivateEndpointsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     managedPrivateEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateLinkResourceId: Schema.String,
+        privateLinkResourceRegion: Schema.optional(Schema.String),
+        groupId: Schema.String,
+        requestMessage: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Running",
+            "Creating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Moving",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ManagedPrivateEndpointsUpdateInput =
@@ -3230,10 +4170,14 @@ export const ManagedPrivateEndpointsUpdate =
     outputSchema: ManagedPrivateEndpointsUpdateOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Kusto/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Kusto/operations",
+    apiVersion: "2025-02-14",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -3276,11 +4220,11 @@ export const OperationsResultsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operationId}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type OperationsResultsGetInput = typeof OperationsResultsGetInput.Type;
@@ -3344,11 +4288,27 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        groupId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -3400,11 +4360,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -3438,11 +4398,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -3493,11 +4453,11 @@ export const PrivateEndpointConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections",
+      apiVersion: "2025-02-14",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -3565,11 +4525,11 @@ export const PrivateLinkResourcesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     privateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -3621,11 +4581,11 @@ export const PrivateLinkResourcesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateLinkResources",
+      apiVersion: "2025-02-14",
     }),
   );
 export type PrivateLinkResourcesListInput =
@@ -3693,11 +4653,13 @@ export const SandboxCustomImagesCheckNameAvailabilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.Kusto/clusters/sandboxCustomImages"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImagesCheckNameAvailability",
+      apiVersion: "2025-02-14",
     }),
   );
 export type SandboxCustomImagesCheckNameAvailabilityInput =
@@ -3735,11 +4697,30 @@ export const SandboxCustomImagesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     sandboxCustomImageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        language: Schema.Literals(["Python"]),
+        languageVersion: Schema.optional(Schema.String),
+        baseImageName: Schema.optional(Schema.String),
+        requirementsFileContent: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Running",
+            "Creating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Moving",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type SandboxCustomImagesCreateOrUpdateInput =
@@ -3791,11 +4772,11 @@ export const SandboxCustomImagesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     sandboxCustomImageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type SandboxCustomImagesDeleteInput =
@@ -3830,11 +4811,11 @@ export const SandboxCustomImagesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     sandboxCustomImageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type SandboxCustomImagesGetInput =
@@ -3886,11 +4867,11 @@ export const SandboxCustomImagesListByClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages",
+      apiVersion: "2025-02-14",
     }),
   );
 export type SandboxCustomImagesListByClusterInput =
@@ -3956,11 +4937,30 @@ export const SandboxCustomImagesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     sandboxCustomImageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        language: Schema.Literals(["Python"]),
+        languageVersion: Schema.optional(Schema.String),
+        baseImageName: Schema.optional(Schema.String),
+        requirementsFileContent: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Running",
+            "Creating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Moving",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type SandboxCustomImagesUpdateInput =
@@ -4013,11 +5013,13 @@ export const ScriptsCheckNameAvailabilityInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.Kusto/clusters/databases/scripts"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scriptsCheckNameAvailability",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ScriptsCheckNameAvailabilityInput =
@@ -4057,11 +5059,39 @@ export const ScriptsCreateOrUpdateInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        scriptUrl: Schema.optional(Schema.String),
+        scriptUrlSasToken: Schema.optional(Schema.String),
+        scriptContent: Schema.optional(Schema.String),
+        forceUpdateTag: Schema.optional(Schema.String),
+        continueOnErrors: Schema.optional(Schema.Boolean),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Running",
+            "Creating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Moving",
+            "Canceled",
+          ]),
+        ),
+        scriptLevel: Schema.optional(Schema.Literals(["Database", "Cluster"])),
+        principalPermissionsAction: Schema.optional(
+          Schema.Literals([
+            "RetainPermissionOnScriptCompletion",
+            "RemovePermissionOnScriptCompletion",
+          ]),
+        ),
+        managedIdentityResourceId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ScriptsCreateOrUpdateInput = typeof ScriptsCreateOrUpdateInput.Type;
@@ -4114,11 +5144,11 @@ export const ScriptsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
   scriptName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
+    apiVersion: "2025-02-14",
   }),
 );
 export type ScriptsDeleteInput = typeof ScriptsDeleteInput.Type;
@@ -4149,11 +5179,11 @@ export const ScriptsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
   scriptName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
+    apiVersion: "2025-02-14",
   }),
 );
 export type ScriptsGetInput = typeof ScriptsGetInput.Type;
@@ -4202,11 +5232,11 @@ export const ScriptsListByDatabaseInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts",
+      apiVersion: "2025-02-14",
     }),
   );
 export type ScriptsListByDatabaseInput = typeof ScriptsListByDatabaseInput.Type;
@@ -4275,11 +5305,39 @@ export const ScriptsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
   scriptName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      scriptUrl: Schema.optional(Schema.String),
+      scriptUrlSasToken: Schema.optional(Schema.String),
+      scriptContent: Schema.optional(Schema.String),
+      forceUpdateTag: Schema.optional(Schema.String),
+      continueOnErrors: Schema.optional(Schema.Boolean),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Running",
+          "Creating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Moving",
+          "Canceled",
+        ]),
+      ),
+      scriptLevel: Schema.optional(Schema.Literals(["Database", "Cluster"])),
+      principalPermissionsAction: Schema.optional(
+        Schema.Literals([
+          "RetainPermissionOnScriptCompletion",
+          "RemovePermissionOnScriptCompletion",
+        ]),
+      ),
+      managedIdentityResourceId: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
+    apiVersion: "2025-02-14",
   }),
 );
 export type ScriptsUpdateInput = typeof ScriptsUpdateInput.Type;
@@ -4325,11 +5383,11 @@ export const ScriptsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/locations/{location}/skus",
+    apiVersion: "2025-02-14",
   }),
 );
 export type SkusListInput = typeof SkusListInput.Type;

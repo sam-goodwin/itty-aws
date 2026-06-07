@@ -16,11 +16,63 @@ export const AkriConnectorCreateOrUpdateInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        allocatedDevices: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              deviceInboundEndpointName: Schema.String,
+              deviceName: Schema.String,
+            }),
+          ),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            healthState: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "Available",
+                    "Degraded",
+                    "Unavailable",
+                    "Unknown",
+                  ]),
+                ),
+                lastTransitionTime: Schema.optional(Schema.String),
+                lastUpdateTime: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                reasonCode: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        healthState: Schema.optional(
+          Schema.Literals(["Available", "Degraded", "Unavailable", "Unknown"]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["CustomLocation"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AkriConnectorCreateOrUpdateInput =
@@ -75,11 +127,11 @@ export const AkriConnectorDeleteInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AkriConnectorDeleteInput = typeof AkriConnectorDeleteInput.Type;
@@ -111,11 +163,11 @@ export const AkriConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   instanceName: Schema.String.pipe(T.PathParam()),
   akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
   connectorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type AkriConnectorGetInput = typeof AkriConnectorGetInput.Type;
@@ -166,11 +218,11 @@ export const AkriConnectorListByTemplateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AkriConnectorListByTemplateInput =
@@ -238,11 +290,81 @@ export const AkriConnectorTemplateCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        aioMetadata: Schema.optional(
+          Schema.Struct({
+            aioMinVersion: Schema.optional(Schema.String),
+            aioMaxVersion: Schema.optional(Schema.String),
+          }),
+        ),
+        runtimeConfiguration: Schema.Struct({
+          runtimeConfigurationType: Schema.Literals(["ManagedConfiguration"]),
+        }),
+        diagnostics: Schema.optional(
+          Schema.Struct({
+            logs: Schema.Struct({
+              level: Schema.optional(Schema.String),
+            }),
+          }),
+        ),
+        deviceInboundEndpointTypes: Schema.Array(
+          Schema.Struct({
+            displayName: Schema.optional(Schema.String),
+            endpointType: Schema.String,
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+        mqttConnectionConfiguration: Schema.optional(
+          Schema.Struct({
+            authentication: Schema.optional(
+              Schema.Struct({
+                method: Schema.Literals(["ServiceAccountToken"]),
+              }),
+            ),
+            host: Schema.optional(Schema.String),
+            protocol: Schema.optional(Schema.Literals(["Mqtt"])),
+            keepAliveSeconds: Schema.optional(Schema.Number),
+            maxInflightMessages: Schema.optional(Schema.Number),
+            sessionExpirySeconds: Schema.optional(Schema.Number),
+            tls: Schema.optional(
+              Schema.Struct({
+                mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+                trustedCaCertificateConfigMapRef: Schema.optional(
+                  Schema.String,
+                ),
+              }),
+            ),
+          }),
+        ),
+        connectorMetadataRef: Schema.optional(Schema.String),
+        healthState: Schema.optional(
+          Schema.Literals(["Available", "Degraded", "Unavailable", "Unknown"]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["CustomLocation"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AkriConnectorTemplateCreateOrUpdateInput =
@@ -294,11 +416,11 @@ export const AkriConnectorTemplateDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AkriConnectorTemplateDeleteInput =
@@ -333,11 +455,11 @@ export const AkriConnectorTemplateGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     akriConnectorTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AkriConnectorTemplateGetInput =
@@ -389,11 +511,11 @@ export const AkriConnectorTemplateListByInstanceResourceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AkriConnectorTemplateListByInstanceResourceInput =
@@ -459,11 +581,52 @@ export const AkriServiceCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     akriServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            healthState: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "Available",
+                    "Degraded",
+                    "Unavailable",
+                    "Unknown",
+                  ]),
+                ),
+                lastTransitionTime: Schema.optional(Schema.String),
+                lastUpdateTime: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                reasonCode: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["CustomLocation"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AkriServiceCreateOrUpdateInput =
@@ -516,12 +679,12 @@ export const AkriServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     akriServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type AkriServiceDeleteInput = typeof AkriServiceDeleteInput.Type;
@@ -550,11 +713,11 @@ export const AkriServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
   akriServiceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type AkriServiceGetInput = typeof AkriServiceGetInput.Type;
@@ -601,11 +764,11 @@ export const AkriServiceListByInstanceResourceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AkriServiceListByInstanceResourceInput =
@@ -672,11 +835,78 @@ export const BrokerAuthenticationCreateOrUpdateInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
     authenticationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        authenticationMethods: Schema.Array(
+          Schema.Struct({
+            method: Schema.Literals(["Custom", "ServiceAccountToken", "X509"]),
+            customSettings: Schema.optional(
+              Schema.Struct({
+                auth: Schema.optional(
+                  Schema.Struct({
+                    x509: Schema.Struct({
+                      secretRef: Schema.String,
+                    }),
+                  }),
+                ),
+                caCertConfigMap: Schema.optional(Schema.String),
+                endpoint: Schema.String,
+                headers: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+              }),
+            ),
+            serviceAccountTokenSettings: Schema.optional(
+              Schema.Struct({
+                audiences: Schema.Array(Schema.String),
+              }),
+            ),
+            x509Settings: Schema.optional(
+              Schema.Struct({
+                authorizationAttributes: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      attributes: Schema.Record(Schema.String, Schema.String),
+                      subject: Schema.String,
+                    }),
+                  ),
+                ),
+                trustedClientCaCert: Schema.optional(Schema.String),
+                additionalValidation: Schema.optional(
+                  Schema.Literals(["None", "AzureDeviceRegistry"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        healthState: Schema.optional(
+          Schema.Literals(["Available", "Degraded", "Unavailable", "Unknown"]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["CustomLocation"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerAuthenticationCreateOrUpdateInput =
@@ -730,11 +960,11 @@ export const BrokerAuthenticationDeleteInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
     authenticationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerAuthenticationDeleteInput =
@@ -771,11 +1001,11 @@ export const BrokerAuthenticationGetInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
     authenticationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerAuthenticationGetInput =
@@ -829,11 +1059,11 @@ export const BrokerAuthenticationListByResourceGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerAuthenticationListByResourceGroupInput =
@@ -901,11 +1131,71 @@ export const BrokerAuthorizationCreateOrUpdateInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
     authorizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        authorizationPolicies: Schema.Struct({
+          cache: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          rules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                brokerResources: Schema.Array(
+                  Schema.Struct({
+                    method: Schema.Literals([
+                      "Connect",
+                      "Publish",
+                      "Subscribe",
+                    ]),
+                    clientIds: Schema.optional(Schema.Array(Schema.String)),
+                    topics: Schema.optional(Schema.Array(Schema.String)),
+                  }),
+                ),
+                principals: Schema.Struct({
+                  attributes: Schema.optional(
+                    Schema.Array(Schema.Record(Schema.String, Schema.String)),
+                  ),
+                  clientIds: Schema.optional(Schema.Array(Schema.String)),
+                  usernames: Schema.optional(Schema.Array(Schema.String)),
+                }),
+                stateStoreResources: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      keyType: Schema.Literals(["Pattern", "String", "Binary"]),
+                      keys: Schema.Array(Schema.String),
+                      method: Schema.Literals(["Read", "Write", "ReadWrite"]),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          ),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        healthState: Schema.optional(
+          Schema.Literals(["Available", "Degraded", "Unavailable", "Unknown"]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["CustomLocation"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerAuthorizationCreateOrUpdateInput =
@@ -959,11 +1249,11 @@ export const BrokerAuthorizationDeleteInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
     authorizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerAuthorizationDeleteInput =
@@ -1000,11 +1290,11 @@ export const BrokerAuthorizationGetInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
     authorizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerAuthorizationGetInput =
@@ -1058,11 +1348,11 @@ export const BrokerAuthorizationListByResourceGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerAuthorizationListByResourceGroupInput =
@@ -1129,11 +1419,367 @@ export const BrokerCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        advanced: Schema.optional(
+          Schema.Struct({
+            clients: Schema.optional(
+              Schema.Struct({
+                maxSessionExpirySeconds: Schema.optional(Schema.Number),
+                maxMessageExpirySeconds: Schema.optional(Schema.Number),
+                maxPacketSizeBytes: Schema.optional(Schema.Number),
+                subscriberQueueLimit: Schema.optional(
+                  Schema.Struct({
+                    length: Schema.optional(Schema.Number),
+                    strategy: Schema.optional(
+                      Schema.Literals(["None", "DropOldest"]),
+                    ),
+                  }),
+                ),
+                maxReceiveMaximum: Schema.optional(Schema.Number),
+                maxKeepAliveSeconds: Schema.optional(Schema.Number),
+              }),
+            ),
+            encryptInternalTraffic: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            internalCerts: Schema.optional(
+              Schema.Struct({
+                duration: Schema.String,
+                renewBefore: Schema.String,
+                privateKey: Schema.Struct({
+                  algorithm: Schema.Literals([
+                    "Ec256",
+                    "Ec384",
+                    "Ec521",
+                    "Ed25519",
+                    "Rsa2048",
+                    "Rsa4096",
+                    "Rsa8192",
+                  ]),
+                  rotationPolicy: Schema.Literals(["Always", "Never"]),
+                }),
+              }),
+            ),
+          }),
+        ),
+        cardinality: Schema.optional(
+          Schema.Struct({
+            backendChain: Schema.Struct({
+              partitions: Schema.Number,
+              redundancyFactor: Schema.Number,
+              workers: Schema.optional(Schema.Number),
+            }),
+            frontend: Schema.Struct({
+              replicas: Schema.Number,
+              workers: Schema.optional(Schema.Number),
+            }),
+          }),
+        ),
+        diagnostics: Schema.optional(
+          Schema.Struct({
+            logs: Schema.optional(
+              Schema.Struct({
+                level: Schema.optional(Schema.String),
+              }),
+            ),
+            metrics: Schema.optional(
+              Schema.Struct({
+                prometheusPort: Schema.optional(Schema.Number),
+              }),
+            ),
+            selfCheck: Schema.optional(
+              Schema.Struct({
+                mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+                intervalSeconds: Schema.optional(Schema.Number),
+                timeoutSeconds: Schema.optional(Schema.Number),
+              }),
+            ),
+            traces: Schema.optional(
+              Schema.Struct({
+                mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+                cacheSizeMegabytes: Schema.optional(Schema.Number),
+                selfTracing: Schema.optional(
+                  Schema.Struct({
+                    mode: Schema.optional(
+                      Schema.Literals(["Enabled", "Disabled"]),
+                    ),
+                    intervalSeconds: Schema.optional(Schema.Number),
+                  }),
+                ),
+                spanChannelCapacity: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        diskBackedMessageBuffer: Schema.optional(
+          Schema.Struct({
+            maxSize: Schema.String,
+            ephemeralVolumeClaimSpec: Schema.optional(
+              Schema.Struct({
+                volumeName: Schema.optional(Schema.String),
+                volumeMode: Schema.optional(Schema.String),
+                storageClassName: Schema.optional(Schema.String),
+                accessModes: Schema.optional(Schema.Array(Schema.String)),
+                dataSource: Schema.optional(
+                  Schema.Struct({
+                    apiGroup: Schema.optional(Schema.String),
+                    kind: Schema.String,
+                    name: Schema.String,
+                  }),
+                ),
+                dataSourceRef: Schema.optional(
+                  Schema.Struct({
+                    apiGroup: Schema.optional(Schema.String),
+                    kind: Schema.String,
+                    name: Schema.String,
+                    namespace: Schema.optional(Schema.String),
+                  }),
+                ),
+                resources: Schema.optional(
+                  Schema.Struct({
+                    limits: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                    requests: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                    claims: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                selector: Schema.optional(
+                  Schema.Struct({
+                    matchExpressions: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          key: Schema.String,
+                          operator: Schema.Literals([
+                            "In",
+                            "NotIn",
+                            "Exists",
+                            "DoesNotExist",
+                          ]),
+                          values: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                    ),
+                    matchLabels: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            persistentVolumeClaimSpec: Schema.optional(
+              Schema.Struct({
+                volumeName: Schema.optional(Schema.String),
+                volumeMode: Schema.optional(Schema.String),
+                storageClassName: Schema.optional(Schema.String),
+                accessModes: Schema.optional(Schema.Array(Schema.String)),
+                dataSource: Schema.optional(
+                  Schema.Struct({
+                    apiGroup: Schema.optional(Schema.String),
+                    kind: Schema.String,
+                    name: Schema.String,
+                  }),
+                ),
+                dataSourceRef: Schema.optional(
+                  Schema.Struct({
+                    apiGroup: Schema.optional(Schema.String),
+                    kind: Schema.String,
+                    name: Schema.String,
+                    namespace: Schema.optional(Schema.String),
+                  }),
+                ),
+                resources: Schema.optional(
+                  Schema.Struct({
+                    limits: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                    requests: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                    claims: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                selector: Schema.optional(
+                  Schema.Struct({
+                    matchExpressions: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          key: Schema.String,
+                          operator: Schema.Literals([
+                            "In",
+                            "NotIn",
+                            "Exists",
+                            "DoesNotExist",
+                          ]),
+                          values: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                    ),
+                    matchLabels: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        generateResourceLimits: Schema.optional(
+          Schema.Struct({
+            cpu: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          }),
+        ),
+        memoryProfile: Schema.optional(
+          Schema.Literals(["Tiny", "Low", "Medium", "High"]),
+        ),
+        persistence: Schema.optional(
+          Schema.Struct({
+            maxSize: Schema.String,
+            persistentVolumeClaimSpec: Schema.optional(
+              Schema.Struct({
+                volumeName: Schema.optional(Schema.String),
+                volumeMode: Schema.optional(Schema.String),
+                storageClassName: Schema.optional(Schema.String),
+                accessModes: Schema.optional(Schema.Array(Schema.String)),
+                dataSource: Schema.optional(
+                  Schema.Struct({
+                    apiGroup: Schema.optional(Schema.String),
+                    kind: Schema.String,
+                    name: Schema.String,
+                  }),
+                ),
+                dataSourceRef: Schema.optional(
+                  Schema.Struct({
+                    apiGroup: Schema.optional(Schema.String),
+                    kind: Schema.String,
+                    name: Schema.String,
+                    namespace: Schema.optional(Schema.String),
+                  }),
+                ),
+                resources: Schema.optional(
+                  Schema.Struct({
+                    limits: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                    requests: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                    claims: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                selector: Schema.optional(
+                  Schema.Struct({
+                    matchExpressions: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          key: Schema.String,
+                          operator: Schema.Literals([
+                            "In",
+                            "NotIn",
+                            "Exists",
+                            "DoesNotExist",
+                          ]),
+                          values: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                    ),
+                    matchLabels: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            retain: Schema.optional(
+              Schema.Struct({
+                mode: Schema.Literals(["All", "None", "Custom"]),
+              }),
+            ),
+            stateStore: Schema.optional(
+              Schema.Struct({
+                mode: Schema.Literals(["All", "None", "Custom"]),
+              }),
+            ),
+            subscriberQueue: Schema.optional(
+              Schema.Struct({
+                mode: Schema.Literals(["All", "None", "Custom"]),
+              }),
+            ),
+            encryption: Schema.optional(
+              Schema.Struct({
+                mode: Schema.Literals(["Enabled", "Disabled"]),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            healthState: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "Available",
+                    "Degraded",
+                    "Unavailable",
+                    "Unknown",
+                  ]),
+                ),
+                lastTransitionTime: Schema.optional(Schema.String),
+                lastUpdateTime: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                reasonCode: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        healthState: Schema.optional(
+          Schema.Literals(["Available", "Degraded", "Unavailable", "Unknown"]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["CustomLocation"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerCreateOrUpdateInput = typeof BrokerCreateOrUpdateInput.Type;
@@ -1183,11 +1829,11 @@ export const BrokerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
   brokerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type BrokerDeleteInput = typeof BrokerDeleteInput.Type;
@@ -1216,11 +1862,11 @@ export const BrokerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
   brokerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type BrokerGetInput = typeof BrokerGetInput.Type;
@@ -1267,11 +1913,11 @@ export const BrokerListByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerListByResourceGroupInput =
@@ -1339,11 +1985,90 @@ export const BrokerListenerCreateOrUpdateInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
     listenerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        serviceName: Schema.optional(Schema.String),
+        ports: Schema.Array(
+          Schema.Struct({
+            authenticationRef: Schema.optional(Schema.String),
+            authorizationRef: Schema.optional(Schema.String),
+            nodePort: Schema.optional(Schema.Number),
+            port: Schema.Number,
+            protocol: Schema.optional(Schema.Literals(["Mqtt", "WebSockets"])),
+            tls: Schema.optional(
+              Schema.Struct({
+                mode: Schema.Literals(["Automatic", "Manual"]),
+                certManagerCertificateSpec: Schema.optional(
+                  Schema.Struct({
+                    duration: Schema.optional(Schema.String),
+                    secretName: Schema.optional(Schema.String),
+                    renewBefore: Schema.optional(Schema.String),
+                    issuerRef: Schema.Struct({
+                      group: Schema.String,
+                      kind: Schema.Literals(["Issuer", "ClusterIssuer"]),
+                      name: Schema.String,
+                    }),
+                    privateKey: Schema.optional(
+                      Schema.Struct({
+                        algorithm: Schema.Literals([
+                          "Ec256",
+                          "Ec384",
+                          "Ec521",
+                          "Ed25519",
+                          "Rsa2048",
+                          "Rsa4096",
+                          "Rsa8192",
+                        ]),
+                        rotationPolicy: Schema.Literals(["Always", "Never"]),
+                      }),
+                    ),
+                    san: Schema.optional(
+                      Schema.Struct({
+                        dns: Schema.Array(Schema.String),
+                        ip: Schema.Array(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+                manual: Schema.optional(
+                  Schema.Struct({
+                    secretRef: Schema.String,
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        serviceType: Schema.optional(
+          Schema.Literals(["ClusterIp", "LoadBalancer", "NodePort"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        healthState: Schema.optional(
+          Schema.Literals(["Available", "Degraded", "Unavailable", "Unknown"]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["CustomLocation"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerListenerCreateOrUpdateInput =
@@ -1397,11 +2122,11 @@ export const BrokerListenerDeleteInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
     listenerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerListenerDeleteInput = typeof BrokerListenerDeleteInput.Type;
@@ -1436,12 +2161,12 @@ export const BrokerListenerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
     listenerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type BrokerListenerGetInput = typeof BrokerListenerGetInput.Type;
@@ -1491,11 +2216,11 @@ export const BrokerListenerListByResourceGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     brokerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BrokerListenerListByResourceGroupInput =
@@ -1563,11 +2288,143 @@ export const DataflowCreateOrUpdateInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     dataflowProfileName: Schema.String.pipe(T.PathParam()),
     dataflowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        requestDiskPersistence: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        operations: Schema.Array(
+          Schema.Struct({
+            operationType: Schema.Literals([
+              "Source",
+              "Destination",
+              "BuiltInTransformation",
+            ]),
+            name: Schema.optional(Schema.String),
+            sourceSettings: Schema.optional(
+              Schema.Struct({
+                endpointRef: Schema.String,
+                assetRef: Schema.optional(Schema.String),
+                serializationFormat: Schema.optional(Schema.Literals(["Json"])),
+                schemaRef: Schema.optional(Schema.String),
+                dataSources: Schema.Array(Schema.String),
+              }),
+            ),
+            builtInTransformationSettings: Schema.optional(
+              Schema.Struct({
+                serializationFormat: Schema.optional(
+                  Schema.Literals(["Delta", "Json", "Parquet"]),
+                ),
+                schemaRef: Schema.optional(Schema.String),
+                datasets: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.String,
+                      description: Schema.optional(Schema.String),
+                      schemaRef: Schema.optional(Schema.String),
+                      inputs: Schema.Array(Schema.String),
+                      expression: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                filter: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      type: Schema.optional(Schema.Literals(["Filter"])),
+                      description: Schema.optional(Schema.String),
+                      inputs: Schema.Array(Schema.String),
+                      expression: Schema.String,
+                    }),
+                  ),
+                ),
+                map: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      type: Schema.optional(
+                        Schema.Literals([
+                          "NewProperties",
+                          "Rename",
+                          "Compute",
+                          "PassThrough",
+                          "BuiltInFunction",
+                        ]),
+                      ),
+                      description: Schema.optional(Schema.String),
+                      inputs: Schema.Array(Schema.String),
+                      expression: Schema.optional(Schema.String),
+                      output: Schema.String,
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            destinationSettings: Schema.optional(
+              Schema.Struct({
+                endpointRef: Schema.String,
+                dataDestination: Schema.String,
+                headers: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      actionType: Schema.Literals([
+                        "AddIfNotPresent",
+                        "Remove",
+                        "AddOrReplace",
+                      ]),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            healthState: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "Available",
+                    "Degraded",
+                    "Unavailable",
+                    "Unknown",
+                  ]),
+                ),
+                lastTransitionTime: Schema.optional(Schema.String),
+                lastUpdateTime: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                reasonCode: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        healthState: Schema.optional(
+          Schema.Literals(["Available", "Degraded", "Unavailable", "Unknown"]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["CustomLocation"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowCreateOrUpdateInput =
@@ -1621,11 +2478,11 @@ export const DataflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   instanceName: Schema.String.pipe(T.PathParam()),
   dataflowProfileName: Schema.String.pipe(T.PathParam()),
   dataflowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DataflowDeleteInput = typeof DataflowDeleteInput.Type;
@@ -1656,11 +2513,309 @@ export const DataflowEndpointCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     dataflowEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        endpointType: Schema.Literals([
+          "DataExplorer",
+          "DataLakeStorage",
+          "FabricOneLake",
+          "Kafka",
+          "LocalStorage",
+          "Mqtt",
+          "OpenTelemetry",
+        ]),
+        hostType: Schema.optional(
+          Schema.Literals([
+            "FabricRT",
+            "EventGrid",
+            "LocalBroker",
+            "Eventhub",
+            "CustomMqtt",
+            "CustomKafka",
+          ]),
+        ),
+        dataExplorerSettings: Schema.optional(
+          Schema.Struct({
+            authentication: Schema.Struct({
+              method: Schema.Literals([
+                "SystemAssignedManagedIdentity",
+                "UserAssignedManagedIdentity",
+              ]),
+              systemAssignedManagedIdentitySettings: Schema.optional(
+                Schema.Struct({
+                  audience: Schema.optional(Schema.String),
+                }),
+              ),
+              userAssignedManagedIdentitySettings: Schema.optional(
+                Schema.Struct({
+                  clientId: Schema.String,
+                  scope: Schema.optional(Schema.String),
+                  tenantId: Schema.String,
+                }),
+              ),
+            }),
+            database: Schema.String,
+            host: Schema.String,
+            batching: Schema.optional(
+              Schema.Struct({
+                latencySeconds: Schema.optional(Schema.Number),
+                maxMessages: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        dataLakeStorageSettings: Schema.optional(
+          Schema.Struct({
+            authentication: Schema.Struct({
+              method: Schema.Literals([
+                "SystemAssignedManagedIdentity",
+                "UserAssignedManagedIdentity",
+                "AccessToken",
+              ]),
+              accessTokenSettings: Schema.optional(
+                Schema.Struct({
+                  secretRef: Schema.String,
+                }),
+              ),
+              systemAssignedManagedIdentitySettings: Schema.optional(
+                Schema.Struct({
+                  audience: Schema.optional(Schema.String),
+                }),
+              ),
+              userAssignedManagedIdentitySettings: Schema.optional(
+                Schema.Struct({
+                  clientId: Schema.String,
+                  scope: Schema.optional(Schema.String),
+                  tenantId: Schema.String,
+                }),
+              ),
+            }),
+            host: Schema.String,
+            batching: Schema.optional(
+              Schema.Struct({
+                latencySeconds: Schema.optional(Schema.Number),
+                maxMessages: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        fabricOneLakeSettings: Schema.optional(
+          Schema.Struct({
+            authentication: Schema.Struct({
+              method: Schema.Literals([
+                "SystemAssignedManagedIdentity",
+                "UserAssignedManagedIdentity",
+              ]),
+              systemAssignedManagedIdentitySettings: Schema.optional(
+                Schema.Struct({
+                  audience: Schema.optional(Schema.String),
+                }),
+              ),
+              userAssignedManagedIdentitySettings: Schema.optional(
+                Schema.Struct({
+                  clientId: Schema.String,
+                  scope: Schema.optional(Schema.String),
+                  tenantId: Schema.String,
+                }),
+              ),
+            }),
+            names: Schema.Struct({
+              lakehouseName: Schema.String,
+              workspaceName: Schema.String,
+            }),
+            oneLakePathType: Schema.Literals(["Files", "Tables"]),
+            host: Schema.String,
+            batching: Schema.optional(
+              Schema.Struct({
+                latencySeconds: Schema.optional(Schema.Number),
+                maxMessages: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        kafkaSettings: Schema.optional(
+          Schema.Struct({
+            authentication: Schema.Struct({
+              method: Schema.Literals([
+                "SystemAssignedManagedIdentity",
+                "UserAssignedManagedIdentity",
+                "Sasl",
+                "X509Certificate",
+                "Anonymous",
+              ]),
+              systemAssignedManagedIdentitySettings: Schema.optional(
+                Schema.Struct({
+                  audience: Schema.optional(Schema.String),
+                }),
+              ),
+              userAssignedManagedIdentitySettings: Schema.optional(
+                Schema.Struct({
+                  clientId: Schema.String,
+                  scope: Schema.optional(Schema.String),
+                  tenantId: Schema.String,
+                }),
+              ),
+              saslSettings: Schema.optional(
+                Schema.Struct({
+                  saslType: Schema.Literals([
+                    "Plain",
+                    "ScramSha256",
+                    "ScramSha512",
+                  ]),
+                  secretRef: Schema.String,
+                }),
+              ),
+              x509CertificateSettings: Schema.optional(
+                Schema.Struct({
+                  secretRef: Schema.String,
+                }),
+              ),
+            }),
+            consumerGroupId: Schema.optional(Schema.String),
+            host: Schema.String,
+            batching: Schema.optional(
+              Schema.Struct({
+                mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+                latencyMs: Schema.optional(Schema.Number),
+                maxBytes: Schema.optional(Schema.Number),
+                maxMessages: Schema.optional(Schema.Number),
+              }),
+            ),
+            copyMqttProperties: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            compression: Schema.optional(
+              Schema.Literals(["None", "Gzip", "Snappy", "Lz4"]),
+            ),
+            kafkaAcks: Schema.optional(Schema.Literals(["Zero", "One", "All"])),
+            partitionStrategy: Schema.optional(
+              Schema.Literals(["Default", "Static", "Topic", "Property"]),
+            ),
+            tls: Schema.optional(
+              Schema.Struct({
+                mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+                trustedCaCertificateConfigMapRef: Schema.optional(
+                  Schema.String,
+                ),
+              }),
+            ),
+            cloudEventAttributes: Schema.optional(
+              Schema.Literals(["Propagate", "CreateOrRemap"]),
+            ),
+          }),
+        ),
+        localStorageSettings: Schema.optional(
+          Schema.Struct({
+            persistentVolumeClaimRef: Schema.String,
+          }),
+        ),
+        mqttSettings: Schema.optional(
+          Schema.Struct({
+            authentication: Schema.Struct({
+              method: Schema.Literals([
+                "SystemAssignedManagedIdentity",
+                "UserAssignedManagedIdentity",
+                "ServiceAccountToken",
+                "X509Certificate",
+                "Anonymous",
+              ]),
+              systemAssignedManagedIdentitySettings: Schema.optional(
+                Schema.Struct({
+                  audience: Schema.optional(Schema.String),
+                }),
+              ),
+              userAssignedManagedIdentitySettings: Schema.optional(
+                Schema.Struct({
+                  clientId: Schema.String,
+                  scope: Schema.optional(Schema.String),
+                  tenantId: Schema.String,
+                }),
+              ),
+              serviceAccountTokenSettings: Schema.optional(
+                Schema.Struct({
+                  audience: Schema.String,
+                }),
+              ),
+              x509CertificateSettings: Schema.optional(
+                Schema.Struct({
+                  secretRef: Schema.String,
+                }),
+              ),
+            }),
+            clientIdPrefix: Schema.optional(Schema.String),
+            host: Schema.optional(Schema.String),
+            protocol: Schema.optional(Schema.Literals(["Mqtt", "WebSockets"])),
+            keepAliveSeconds: Schema.optional(Schema.Number),
+            retain: Schema.optional(Schema.Literals(["Keep", "Never"])),
+            maxInflightMessages: Schema.optional(Schema.Number),
+            qos: Schema.optional(Schema.Number),
+            sessionExpirySeconds: Schema.optional(Schema.Number),
+            tls: Schema.optional(
+              Schema.Struct({
+                mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+                trustedCaCertificateConfigMapRef: Schema.optional(
+                  Schema.String,
+                ),
+              }),
+            ),
+            cloudEventAttributes: Schema.optional(
+              Schema.Literals(["Propagate", "CreateOrRemap"]),
+            ),
+          }),
+        ),
+        openTelemetrySettings: Schema.optional(
+          Schema.Struct({
+            host: Schema.String,
+            batching: Schema.optional(
+              Schema.Struct({
+                latencySeconds: Schema.optional(Schema.Number),
+                maxMessages: Schema.optional(Schema.Number),
+              }),
+            ),
+            tls: Schema.optional(
+              Schema.Struct({
+                mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+                trustedCaCertificateConfigMapRef: Schema.optional(
+                  Schema.String,
+                ),
+              }),
+            ),
+            authentication: Schema.Struct({
+              method: Schema.Literals([
+                "ServiceAccountToken",
+                "X509Certificate",
+                "Anonymous",
+              ]),
+            }),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        healthState: Schema.optional(
+          Schema.Literals(["Available", "Degraded", "Unavailable", "Unknown"]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["CustomLocation"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowEndpointCreateOrUpdateInput =
@@ -1712,11 +2867,11 @@ export const DataflowEndpointDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     dataflowEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowEndpointDeleteInput =
@@ -1751,11 +2906,11 @@ export const DataflowEndpointGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     dataflowEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowEndpointGetInput = typeof DataflowEndpointGetInput.Type;
@@ -1803,11 +2958,11 @@ export const DataflowEndpointListByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowEndpointListByResourceGroupInput =
@@ -1873,11 +3028,11 @@ export const DataflowGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   instanceName: Schema.String.pipe(T.PathParam()),
   dataflowProfileName: Schema.String.pipe(T.PathParam()),
   dataflowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DataflowGetInput = typeof DataflowGetInput.Type;
@@ -1927,11 +3082,83 @@ export const DataflowGraphCreateOrUpdateInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     dataflowProfileName: Schema.String.pipe(T.PathParam()),
     dataflowGraphName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        requestDiskPersistence: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        nodes: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            nodeType: Schema.Literals(["Source", "Graph", "Destination"]),
+          }),
+        ),
+        nodeConnections: Schema.Array(
+          Schema.Struct({
+            from: Schema.Struct({
+              name: Schema.String,
+              schema: Schema.optional(
+                Schema.Struct({
+                  serializationFormat: Schema.optional(
+                    Schema.Literals(["Delta", "Json", "Parquet", "Avro"]),
+                  ),
+                  schemaRef: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+            to: Schema.Struct({
+              name: Schema.String,
+            }),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            healthState: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "Available",
+                    "Degraded",
+                    "Unavailable",
+                    "Unknown",
+                  ]),
+                ),
+                lastTransitionTime: Schema.optional(Schema.String),
+                lastUpdateTime: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                reasonCode: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        healthState: Schema.optional(
+          Schema.Literals(["Available", "Degraded", "Unavailable", "Unknown"]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["CustomLocation"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowGraphCreateOrUpdateInput =
@@ -1986,11 +3213,11 @@ export const DataflowGraphDeleteInput =
     instanceName: Schema.String.pipe(T.PathParam()),
     dataflowProfileName: Schema.String.pipe(T.PathParam()),
     dataflowGraphName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowGraphDeleteInput = typeof DataflowGraphDeleteInput.Type;
@@ -2022,11 +3249,11 @@ export const DataflowGraphGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   instanceName: Schema.String.pipe(T.PathParam()),
   dataflowProfileName: Schema.String.pipe(T.PathParam()),
   dataflowGraphName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DataflowGraphGetInput = typeof DataflowGraphGetInput.Type;
@@ -2077,11 +3304,11 @@ export const DataflowGraphListByDataflowProfileInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     dataflowProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowGraphListByDataflowProfileInput =
@@ -2148,11 +3375,11 @@ export const DataflowListByProfileResourceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     dataflowProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowListByProfileResourceInput =
@@ -2219,11 +3446,70 @@ export const DataflowProfileCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     dataflowProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        diagnostics: Schema.optional(
+          Schema.Struct({
+            logs: Schema.optional(
+              Schema.Struct({
+                level: Schema.optional(Schema.String),
+              }),
+            ),
+            metrics: Schema.optional(
+              Schema.Struct({
+                prometheusPort: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        instanceCount: Schema.optional(Schema.Number),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            healthState: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "Available",
+                    "Degraded",
+                    "Unavailable",
+                    "Unknown",
+                  ]),
+                ),
+                lastTransitionTime: Schema.optional(Schema.String),
+                lastUpdateTime: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                reasonCode: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        healthState: Schema.optional(
+          Schema.Literals(["Available", "Degraded", "Unavailable", "Unknown"]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["CustomLocation"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowProfileCreateOrUpdateInput =
@@ -2275,11 +3561,11 @@ export const DataflowProfileDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     dataflowProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowProfileDeleteInput = typeof DataflowProfileDeleteInput.Type;
@@ -2313,11 +3599,11 @@ export const DataflowProfileGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     dataflowProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowProfileGetInput = typeof DataflowProfileGetInput.Type;
@@ -2365,11 +3651,11 @@ export const DataflowProfileListByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataflowProfileListByResourceGroupInput =
@@ -2434,11 +3720,87 @@ export const InstanceCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        version: Schema.optional(Schema.String),
+        schemaRegistryRef: Schema.Struct({
+          resourceId: Schema.String,
+        }),
+        defaultSecretProviderClassRef: Schema.optional(
+          Schema.Struct({
+            resourceId: Schema.String,
+          }),
+        ),
+        features: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              mode: Schema.optional(
+                Schema.Literals(["Stable", "Preview", "Disabled"]),
+              ),
+              settings: Schema.optional(
+                Schema.Record(
+                  Schema.String,
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+              ),
+            }),
+          ),
+        ),
+        adrNamespaceRef: Schema.optional(
+          Schema.Struct({
+            resourceId: Schema.String,
+          }),
+        ),
+        healthState: Schema.optional(
+          Schema.Literals(["Available", "Degraded", "Unavailable", "Unknown"]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["CustomLocation"]),
+    }),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type InstanceCreateOrUpdateInput =
@@ -2488,11 +3850,11 @@ export const InstanceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type InstanceDeleteInput = typeof InstanceDeleteInput.Type;
@@ -2519,11 +3881,11 @@ export const InstanceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type InstanceGetInput = typeof InstanceGetInput.Type;
@@ -2568,11 +3930,11 @@ export const InstanceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances",
+      apiVersion: "2026-03-01",
     }),
   );
 export type InstanceListByResourceGroupInput =
@@ -2635,11 +3997,11 @@ export const InstanceListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const InstanceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTOperations/instances",
+      apiVersion: "2026-03-01",
     }),
   );
 export type InstanceListBySubscriptionInput =
@@ -2702,11 +4064,33 @@ export const InstanceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type InstanceUpdateInput = typeof InstanceUpdateInput.Type;
@@ -2747,12 +4131,13 @@ export const InstanceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InstanceUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.IoTOperations/operations",
+    apiVersion: "2026-03-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -2800,11 +4185,51 @@ export const RegistryEndpointCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     registryEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        host: Schema.String,
+        authentication: Schema.Struct({
+          method: Schema.Literals([
+            "SystemAssignedManagedIdentity",
+            "UserAssignedManagedIdentity",
+            "Anonymous",
+            "ArtifactPullSecret",
+          ]),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        healthState: Schema.optional(
+          Schema.Literals(["Available", "Degraded", "Unavailable", "Unknown"]),
+        ),
+        codeSigningCas: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.Literals(["Secret", "ConfigMap"]),
+            }),
+          ),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["CustomLocation"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryEndpointCreateOrUpdateInput =
@@ -2856,11 +4281,11 @@ export const RegistryEndpointDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     registryEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryEndpointDeleteInput =
@@ -2895,11 +4320,11 @@ export const RegistryEndpointGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     registryEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryEndpointGetInput = typeof RegistryEndpointGetInput.Type;
@@ -2947,11 +4372,11 @@ export const RegistryEndpointListByInstanceResourceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RegistryEndpointListByInstanceResourceInput =

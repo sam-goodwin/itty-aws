@@ -12,11 +12,114 @@ import * as T from "../traits.ts";
 export const DicomServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+            "Moving",
+            "Suspended",
+            "Warned",
+            "SystemMaintenance",
+          ]),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.Struct({
+            authority: Schema.optional(Schema.String),
+            audiences: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.Struct({
+            origins: Schema.optional(Schema.Array(Schema.String)),
+            headers: Schema.optional(Schema.Array(Schema.String)),
+            methods: Schema.optional(Schema.Array(Schema.String)),
+            maxAge: Schema.optional(Schema.Number),
+            allowCredentials: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        serviceUrl: Schema.optional(Schema.String),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        eventState: Schema.optional(
+          Schema.Literals(["Disabled", "Enabled", "Updating"]),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            customerManagedKeyEncryption: Schema.optional(
+              Schema.Struct({
+                keyEncryptionKeyUrl: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        storageConfiguration: Schema.optional(
+          Schema.Struct({
+            storageResourceId: Schema.optional(Schema.String),
+            fileSystemName: Schema.optional(Schema.String),
+          }),
+        ),
+        enableDataPartitions: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type DicomServicesCreateOrUpdateInput =
@@ -67,11 +170,11 @@ export const DicomServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DicomServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type DicomServicesDeleteInput = typeof DicomServicesDeleteInput.Type;
@@ -95,11 +198,11 @@ export const DicomServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DicomServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
+    apiVersion: "2024-03-31",
   }),
 );
 export type DicomServicesGetInput = typeof DicomServicesGetInput.Type;
@@ -147,11 +250,11 @@ export const DicomServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DicomServicesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices",
+      apiVersion: "2024-03-31",
     }),
   );
 export type DicomServicesListByWorkspaceInput =
@@ -208,11 +311,33 @@ export const DicomServicesListByWorkspace =
 export const DicomServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type DicomServicesUpdateInput = typeof DicomServicesUpdateInput.Type;
@@ -259,11 +384,11 @@ export const DicomServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FhirDestinationsListByIotConnectorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations",
+      apiVersion: "2024-03-31",
     }),
   );
 export type FhirDestinationsListByIotConnectorInput =
@@ -303,11 +428,174 @@ export const FhirDestinationsListByIotConnector =
 export const FhirServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    kind: Schema.optional(Schema.Literals(["fhir-Stu3", "fhir-R4"])),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+            "Moving",
+            "Suspended",
+            "Warned",
+            "SystemMaintenance",
+          ]),
+        ),
+        acrConfiguration: Schema.optional(
+          Schema.Struct({
+            loginServers: Schema.optional(Schema.Array(Schema.String)),
+            ociArtifacts: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  loginServer: Schema.optional(Schema.String),
+                  imageName: Schema.optional(Schema.String),
+                  digest: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.Struct({
+            authority: Schema.optional(Schema.String),
+            audience: Schema.optional(Schema.String),
+            smartProxyEnabled: Schema.optional(Schema.Boolean),
+            smartIdentityProviders: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  authority: Schema.optional(Schema.String),
+                  applications: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        clientId: Schema.optional(Schema.String),
+                        audience: Schema.optional(Schema.String),
+                        allowedDataActions: Schema.optional(
+                          Schema.Array(Schema.Literals(["Read"])),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.Struct({
+            origins: Schema.optional(Schema.Array(Schema.String)),
+            headers: Schema.optional(Schema.Array(Schema.String)),
+            methods: Schema.optional(Schema.Array(Schema.String)),
+            maxAge: Schema.optional(Schema.Number),
+            allowCredentials: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.Struct({
+            storageAccountName: Schema.optional(Schema.String),
+          }),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        eventState: Schema.optional(
+          Schema.Literals(["Disabled", "Enabled", "Updating"]),
+        ),
+        resourceVersionPolicyConfiguration: Schema.optional(
+          Schema.Struct({
+            default: Schema.optional(
+              Schema.Literals(["no-version", "versioned", "versioned-update"]),
+            ),
+            resourceTypeOverrides: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Literals([
+                  "no-version",
+                  "versioned",
+                  "versioned-update",
+                ]),
+              ),
+            ),
+          }),
+        ),
+        importConfiguration: Schema.optional(
+          Schema.Struct({
+            integrationDataStore: Schema.optional(Schema.String),
+            initialImportMode: Schema.optional(Schema.Boolean),
+            enabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        implementationGuidesConfiguration: Schema.optional(
+          Schema.Struct({
+            usCoreMissingData: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            customerManagedKeyEncryption: Schema.optional(
+              Schema.Struct({
+                keyEncryptionKeyUrl: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type FhirServicesCreateOrUpdateInput =
@@ -358,11 +646,11 @@ export const FhirServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const FhirServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type FhirServicesDeleteInput = typeof FhirServicesDeleteInput.Type;
@@ -385,11 +673,11 @@ export const FhirServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const FhirServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
+    apiVersion: "2024-03-31",
   }),
 );
 export type FhirServicesGetInput = typeof FhirServicesGetInput.Type;
@@ -435,11 +723,11 @@ export const FhirServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FhirServicesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices",
+      apiVersion: "2024-03-31",
     }),
   );
 export type FhirServicesListByWorkspaceInput =
@@ -497,11 +785,33 @@ export const FhirServicesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const FhirServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type FhirServicesUpdateInput = typeof FhirServicesUpdateInput.Type;
@@ -548,11 +858,45 @@ export const FhirServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const IotConnectorFhirDestinationCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Deleting",
+          "Succeeded",
+          "Creating",
+          "Accepted",
+          "Verifying",
+          "Updating",
+          "Failed",
+          "Canceled",
+          "Deprovisioned",
+          "Moving",
+          "Suspended",
+          "Warned",
+          "SystemMaintenance",
+        ]),
+      ),
+    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type IotConnectorFhirDestinationCreateOrUpdateInput =
@@ -585,11 +929,11 @@ export const IotConnectorFhirDestinationCreateOrUpdate =
 export const IotConnectorFhirDestinationDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type IotConnectorFhirDestinationDeleteInput =
@@ -617,11 +961,11 @@ export const IotConnectorFhirDestinationDelete =
 export const IotConnectorFhirDestinationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type IotConnectorFhirDestinationGetInput =
@@ -654,11 +998,79 @@ export const IotConnectorFhirDestinationGet =
 export const IotConnectorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+            "Moving",
+            "Suspended",
+            "Warned",
+            "SystemMaintenance",
+          ]),
+        ),
+        ingestionEndpointConfiguration: Schema.optional(
+          Schema.Struct({
+            eventHubName: Schema.optional(Schema.String),
+            consumerGroup: Schema.optional(Schema.String),
+            fullyQualifiedEventHubNamespace: Schema.optional(Schema.String),
+          }),
+        ),
+        deviceMapping: Schema.optional(
+          Schema.Struct({
+            content: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type IotConnectorsCreateOrUpdateInput =
@@ -709,11 +1121,11 @@ export const IotConnectorsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const IotConnectorsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type IotConnectorsDeleteInput = typeof IotConnectorsDeleteInput.Type;
@@ -737,11 +1149,11 @@ export const IotConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const IotConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
+    apiVersion: "2024-03-31",
   }),
 );
 export type IotConnectorsGetInput = typeof IotConnectorsGetInput.Type;
@@ -789,11 +1201,11 @@ export const IotConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const IotConnectorsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors",
+      apiVersion: "2024-03-31",
     }),
   );
 export type IotConnectorsListByWorkspaceInput =
@@ -850,11 +1262,33 @@ export const IotConnectorsListByWorkspace =
 export const IotConnectorsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type IotConnectorsUpdateInput = typeof IotConnectorsUpdateInput.Type;
@@ -901,11 +1335,11 @@ export const IotConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const OperationResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/locations/{locationName}/operationresults/{operationResultId}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type OperationResultsGetInput = typeof OperationResultsGetInput.Type;
@@ -942,12 +1376,13 @@ export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationResultsGetOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HealthcareApis/operations",
+    apiVersion: "2024-03-31",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1046,7 +1481,6 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         privateEndpoint: Schema.optional(
@@ -1066,10 +1500,14 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
         ),
       }),
     ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1104,11 +1542,11 @@ export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1138,11 +1576,11 @@ export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -1175,11 +1613,11 @@ export const PrivateEndpointConnectionsGet =
 export const PrivateEndpointConnectionsListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections",
+      apiVersion: "2024-03-31",
     }),
   );
 export type PrivateEndpointConnectionsListByServiceInput =
@@ -1218,11 +1656,11 @@ export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateLinkResources/{groupName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -1256,11 +1694,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PrivateLinkResourcesListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateLinkResources",
+      apiVersion: "2024-03-31",
     }),
   );
 export type PrivateLinkResourcesListByServiceInput =
@@ -1298,11 +1736,13 @@ export const PrivateLinkResourcesListByService =
 export const ServicesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/checkNameAvailability",
+      apiVersion: "2024-03-31",
     }),
   );
 export type ServicesCheckNameAvailabilityInput =
@@ -1334,11 +1774,128 @@ export const ServicesCheckNameAvailability =
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+            "Moving",
+            "Suspended",
+            "Warned",
+            "SystemMaintenance",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              objectId: Schema.String,
+            }),
+          ),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.Struct({
+            offerThroughput: Schema.optional(Schema.Number),
+            keyVaultKeyUri: Schema.optional(Schema.String),
+            crossTenantCmkApplicationId: Schema.optional(Schema.String),
+          }),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.Struct({
+            authority: Schema.optional(Schema.String),
+            audience: Schema.optional(Schema.String),
+            smartProxyEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.Struct({
+            origins: Schema.optional(Schema.Array(Schema.String)),
+            headers: Schema.optional(Schema.Array(Schema.String)),
+            methods: Schema.optional(Schema.Array(Schema.String)),
+            maxAge: Schema.optional(Schema.Number),
+            allowCredentials: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.Struct({
+            storageAccountName: Schema.optional(Schema.String),
+          }),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        acrConfiguration: Schema.optional(
+          Schema.Struct({
+            loginServers: Schema.optional(Schema.Array(Schema.String)),
+            ociArtifacts: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  loginServer: Schema.optional(Schema.String),
+                  imageName: Schema.optional(Schema.String),
+                  digest: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        importConfiguration: Schema.optional(
+          Schema.Struct({
+            integrationDataStore: Schema.optional(Schema.String),
+            initialImportMode: Schema.optional(Schema.Boolean),
+            enabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -1381,11 +1938,11 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
+    apiVersion: "2024-03-31",
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -1408,11 +1965,11 @@ export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
+    apiVersion: "2024-03-31",
   }),
 );
 export type ServicesGetInput = typeof ServicesGetInput.Type;
@@ -1450,11 +2007,11 @@ export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/services",
+    apiVersion: "2024-03-31",
   }),
 );
 export type ServicesListInput = typeof ServicesListInput.Type;
@@ -1500,11 +2057,11 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services",
+      apiVersion: "2024-03-31",
     }),
   );
 export type ServicesListByResourceGroupInput =
@@ -1556,11 +2113,19 @@ export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
+    apiVersion: "2024-03-31",
   }),
 );
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
@@ -1600,11 +2165,44 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type WorkspacePrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1638,11 +2236,11 @@ export const WorkspacePrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type WorkspacePrivateEndpointConnectionsDeleteInput =
@@ -1672,11 +2270,11 @@ export const WorkspacePrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type WorkspacePrivateEndpointConnectionsGetInput =
@@ -1709,11 +2307,11 @@ export const WorkspacePrivateEndpointConnectionsGet =
 export const WorkspacePrivateEndpointConnectionsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections",
+      apiVersion: "2024-03-31",
     }),
   );
 export type WorkspacePrivateEndpointConnectionsListByWorkspaceInput =
@@ -1752,11 +2350,11 @@ export const WorkspacePrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateLinkResources/{groupName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type WorkspacePrivateLinkResourcesGetInput =
@@ -1789,11 +2387,11 @@ export const WorkspacePrivateLinkResourcesGet =
 export const WorkspacePrivateLinkResourcesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateLinkResources",
+      apiVersion: "2024-03-31",
     }),
   );
 export type WorkspacePrivateLinkResourcesListByWorkspaceInput =
@@ -1831,11 +2429,58 @@ export const WorkspacePrivateLinkResourcesListByWorkspace =
 export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+            "Moving",
+            "Suspended",
+            "Warned",
+            "SystemMaintenance",
+          ]),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
+      apiVersion: "2024-03-31",
     }),
   );
 export type WorkspacesCreateOrUpdateInput =
@@ -1866,11 +2511,11 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
+    apiVersion: "2024-03-31",
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -1893,11 +2538,11 @@ export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
+    apiVersion: "2024-03-31",
   }),
 );
 export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
@@ -1924,11 +2569,11 @@ export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces",
+      apiVersion: "2024-03-31",
     }),
   );
 export type WorkspacesListByResourceGroupInput =
@@ -1966,11 +2611,11 @@ export const WorkspacesListByResourceGroup =
 export const WorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/workspaces",
+      apiVersion: "2024-03-31",
     }),
   );
 export type WorkspacesListBySubscriptionInput =
@@ -2007,11 +2652,12 @@ export const WorkspacesListBySubscription =
 // Input Schema
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
+    apiVersion: "2024-03-31",
   }),
 );
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;

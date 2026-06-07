@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AccessAnalyzerAnalyzersCreateOrReplaceInput =
@@ -14,11 +15,73 @@ export const AccessAnalyzerAnalyzersCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            analyzerConfiguration: Schema.optional(
+              Schema.Struct({
+                unusedAccessAge: Schema.optional(Schema.Number),
+              }),
+            ),
+            analyzerName: Schema.optional(Schema.String),
+            archiveRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  filter: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        contains: Schema.optional(Schema.Array(Schema.String)),
+                        eq: Schema.optional(Schema.Array(Schema.String)),
+                        exists: Schema.optional(Schema.Boolean),
+                        neq: Schema.optional(Schema.Array(Schema.String)),
+                        property: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  ruleName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            arn: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/accessAnalyzerAnalyzers/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AccessAnalyzerAnalyzersCreateOrReplaceInput =
@@ -68,11 +131,11 @@ export const AccessAnalyzerAnalyzersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/accessAnalyzerAnalyzers/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AccessAnalyzerAnalyzersDeleteInput =
@@ -104,11 +167,11 @@ export const AccessAnalyzerAnalyzersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/accessAnalyzerAnalyzers/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AccessAnalyzerAnalyzersGetInput =
@@ -158,11 +221,11 @@ export const AccessAnalyzerAnalyzersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/accessAnalyzerAnalyzers",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AccessAnalyzerAnalyzersListByResourceGroupInput =
@@ -224,11 +287,11 @@ export const AccessAnalyzerAnalyzersListByResourceGroup =
 export const AccessAnalyzerAnalyzersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/accessAnalyzerAnalyzers",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AccessAnalyzerAnalyzersListBySubscriptionInput =
@@ -291,11 +354,12 @@ export const AccessAnalyzerAnalyzersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/accessAnalyzerAnalyzers/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AccessAnalyzerAnalyzersUpdateInput =
@@ -345,11 +409,134 @@ export const AcmCertificateSummariesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            certificateArn: Schema.optional(Schema.String),
+            createdAt: Schema.optional(Schema.String),
+            domainName: Schema.optional(Schema.String),
+            exported: Schema.optional(Schema.Boolean),
+            extendedKeyUsages: Schema.optional(
+              Schema.Array(
+                Schema.Literals([
+                  "ANY",
+                  "CODE_SIGNING",
+                  "CUSTOM",
+                  "EMAIL_PROTECTION",
+                  "IPSEC_END_SYSTEM",
+                  "IPSEC_TUNNEL",
+                  "IPSEC_USER",
+                  "NONE",
+                  "OCSP_SIGNING",
+                  "TIME_STAMPING",
+                  "TLS_WEB_CLIENT_AUTHENTICATION",
+                  "TLS_WEB_SERVER_AUTHENTICATION",
+                ]),
+              ),
+            ),
+            hasAdditionalSubjectAlternativeNames: Schema.optional(
+              Schema.Boolean,
+            ),
+            importedAt: Schema.optional(Schema.String),
+            inUse: Schema.optional(Schema.Boolean),
+            issuedAt: Schema.optional(Schema.String),
+            keyAlgorithm: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "EC_prime256v1",
+                    "EC_secp384r1",
+                    "EC_secp521r1",
+                    "RSA_1024",
+                    "RSA_2048",
+                    "RSA_3072",
+                    "RSA_4096",
+                  ]),
+                ),
+              }),
+            ),
+            keyUsages: Schema.optional(
+              Schema.Array(
+                Schema.Literals([
+                  "ANY",
+                  "CERTIFICATE_SIGNING",
+                  "CRL_SIGNING",
+                  "CUSTOM",
+                  "DATA_ENCIPHERMENT",
+                  "DECIPHER_ONLY",
+                  "DIGITAL_SIGNATURE",
+                  "ENCIPHER_ONLY",
+                  "KEY_AGREEMENT",
+                  "KEY_ENCIPHERMENT",
+                  "NON_REPUDIATION",
+                ]),
+              ),
+            ),
+            notAfter: Schema.optional(Schema.String),
+            notBefore: Schema.optional(Schema.String),
+            renewalEligibility: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["ELIGIBLE", "INELIGIBLE"]),
+                ),
+              }),
+            ),
+            revokedAt: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "EXPIRED",
+                    "FAILED",
+                    "INACTIVE",
+                    "ISSUED",
+                    "PENDING_VALIDATION",
+                    "REVOKED",
+                    "VALIDATION_TIMED_OUT",
+                  ]),
+                ),
+              }),
+            ),
+            subjectAlternativeNameSummaries: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            type: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["AMAZON_ISSUED", "IMPORTED", "PRIVATE"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/acmCertificateSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AcmCertificateSummariesCreateOrReplaceInput =
@@ -399,11 +586,11 @@ export const AcmCertificateSummariesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/acmCertificateSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AcmCertificateSummariesDeleteInput =
@@ -435,11 +622,11 @@ export const AcmCertificateSummariesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/acmCertificateSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AcmCertificateSummariesGetInput =
@@ -489,11 +676,11 @@ export const AcmCertificateSummariesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/acmCertificateSummaries",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AcmCertificateSummariesListByResourceGroupInput =
@@ -555,11 +742,11 @@ export const AcmCertificateSummariesListByResourceGroup =
 export const AcmCertificateSummariesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/acmCertificateSummaries",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AcmCertificateSummariesListBySubscriptionInput =
@@ -622,11 +809,12 @@ export const AcmCertificateSummariesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/acmCertificateSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AcmCertificateSummariesUpdateInput =
@@ -676,11 +864,77 @@ export const ApiGatewayRestApisCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            apiKeySourceType: Schema.optional(Schema.String),
+            binaryMediaTypes: Schema.optional(Schema.Array(Schema.String)),
+            body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+            bodyS3Location: Schema.optional(
+              Schema.Struct({
+                bucket: Schema.optional(Schema.String),
+                eTag: Schema.optional(Schema.String),
+                key: Schema.optional(Schema.String),
+                version: Schema.optional(Schema.String),
+              }),
+            ),
+            cloneFrom: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            disableExecuteApiEndpoint: Schema.optional(Schema.Boolean),
+            endpointConfiguration: Schema.optional(
+              Schema.Struct({
+                types: Schema.optional(Schema.Array(Schema.String)),
+                vpcEndpointIds: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            failOnWarnings: Schema.optional(Schema.Boolean),
+            minimumCompressionSize: Schema.optional(Schema.Number),
+            mode: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            parameters: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            policy: Schema.optional(Schema.String),
+            restApiId: Schema.optional(Schema.String),
+            rootResourceId: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayRestApis/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ApiGatewayRestApisCreateOrReplaceInput =
@@ -730,11 +984,11 @@ export const ApiGatewayRestApisDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayRestApis/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ApiGatewayRestApisDeleteInput =
@@ -767,11 +1021,11 @@ export const ApiGatewayRestApisGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayRestApis/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ApiGatewayRestApisGetInput = typeof ApiGatewayRestApisGetInput.Type;
@@ -820,11 +1074,11 @@ export const ApiGatewayRestApisListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayRestApis",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ApiGatewayRestApisListByResourceGroupInput =
@@ -886,11 +1140,11 @@ export const ApiGatewayRestApisListByResourceGroup =
 export const ApiGatewayRestApisListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/apiGatewayRestApis",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ApiGatewayRestApisListBySubscriptionInput =
@@ -953,11 +1207,12 @@ export const ApiGatewayRestApisUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayRestApis/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ApiGatewayRestApisUpdateInput =
@@ -1008,11 +1263,91 @@ export const ApiGatewayStagesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            accessLogSetting: Schema.optional(
+              Schema.Struct({
+                destinationArn: Schema.optional(Schema.String),
+                format: Schema.optional(Schema.String),
+              }),
+            ),
+            cacheClusterEnabled: Schema.optional(Schema.Boolean),
+            cacheClusterSize: Schema.optional(Schema.String),
+            canarySetting: Schema.optional(
+              Schema.Struct({
+                deploymentId: Schema.optional(Schema.String),
+                percentTraffic: Schema.optional(Schema.Number),
+                stageVariableOverrides: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                useStageCache: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            clientCertificateId: Schema.optional(Schema.String),
+            deploymentId: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            documentationVersion: Schema.optional(Schema.String),
+            methodSettings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  cacheDataEncrypted: Schema.optional(Schema.Boolean),
+                  cacheTtlInSeconds: Schema.optional(Schema.Number),
+                  cachingEnabled: Schema.optional(Schema.Boolean),
+                  dataTraceEnabled: Schema.optional(Schema.Boolean),
+                  httpMethod: Schema.optional(Schema.String),
+                  loggingLevel: Schema.optional(Schema.String),
+                  metricsEnabled: Schema.optional(Schema.Boolean),
+                  resourcePath: Schema.optional(Schema.String),
+                  throttlingBurstLimit: Schema.optional(Schema.Number),
+                  throttlingRateLimit: Schema.optional(Schema.Number),
+                }),
+              ),
+            ),
+            restApiId: Schema.optional(Schema.String),
+            stageName: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            tracingEnabled: Schema.optional(Schema.Boolean),
+            variables: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayStages/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ApiGatewayStagesCreateOrReplaceInput =
@@ -1062,11 +1397,11 @@ export const ApiGatewayStagesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayStages/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ApiGatewayStagesDeleteInput =
@@ -1099,11 +1434,11 @@ export const ApiGatewayStagesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayStages/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ApiGatewayStagesGetInput = typeof ApiGatewayStagesGetInput.Type;
@@ -1149,11 +1484,11 @@ export const ApiGatewayStagesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayStages",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ApiGatewayStagesListByResourceGroupInput =
@@ -1215,11 +1550,11 @@ export const ApiGatewayStagesListByResourceGroup =
 export const ApiGatewayStagesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/apiGatewayStages",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ApiGatewayStagesListBySubscriptionInput =
@@ -1282,11 +1617,12 @@ export const ApiGatewayStagesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/apiGatewayStages/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ApiGatewayStagesUpdateInput =
@@ -1337,11 +1673,198 @@ export const AppSyncGraphqlApisCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            additionalAuthenticationProviders: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  authenticationType: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals([
+                          "AMAZON_COGNITO_USER_POOLS",
+                          "API_KEY",
+                          "AWS_IAM",
+                          "AWS_LAMBDA",
+                          "OPENID_CONNECT",
+                        ]),
+                      ),
+                    }),
+                  ),
+                  lambdaAuthorizerConfig: Schema.optional(
+                    Schema.Struct({
+                      authorizerResultTtlInSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      authorizerUri: Schema.optional(Schema.String),
+                      identityValidationExpression: Schema.optional(
+                        Schema.String,
+                      ),
+                    }),
+                  ),
+                  openIDConnectConfig: Schema.optional(
+                    Schema.Struct({
+                      authTTL: Schema.optional(Schema.Number),
+                      clientId: Schema.optional(Schema.String),
+                      iatTTL: Schema.optional(Schema.Number),
+                      issuer: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  userPoolConfig: Schema.optional(
+                    Schema.Struct({
+                      appIdClientRegex: Schema.optional(Schema.String),
+                      awsRegion: Schema.optional(Schema.String),
+                      userPoolId: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            apiId: Schema.optional(Schema.String),
+            apiType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["GRAPHQL", "MERGED"])),
+              }),
+            ),
+            arn: Schema.optional(Schema.String),
+            authenticationType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "AMAZON_COGNITO_USER_POOLS",
+                    "API_KEY",
+                    "AWS_IAM",
+                    "AWS_LAMBDA",
+                    "OPENID_CONNECT",
+                  ]),
+                ),
+              }),
+            ),
+            dns: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+            enhancedMetricsConfig: Schema.optional(
+              Schema.Struct({
+                dataSourceLevelMetricsBehavior: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "FULL_REQUEST_DATA_SOURCE_METRICS",
+                        "PER_DATA_SOURCE_METRICS",
+                      ]),
+                    ),
+                  }),
+                ),
+                operationLevelMetricsConfig: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["DISABLED", "ENABLED"]),
+                    ),
+                  }),
+                ),
+                resolverLevelMetricsBehavior: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "FULL_REQUEST_RESOLVER_METRICS",
+                        "PER_RESOLVER_METRICS",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            introspectionConfig: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["DISABLED", "ENABLED"]),
+                ),
+              }),
+            ),
+            lambdaAuthorizerConfig: Schema.optional(
+              Schema.Struct({
+                authorizerResultTtlInSeconds: Schema.optional(Schema.Number),
+                authorizerUri: Schema.optional(Schema.String),
+                identityValidationExpression: Schema.optional(Schema.String),
+              }),
+            ),
+            logConfig: Schema.optional(
+              Schema.Struct({
+                cloudWatchLogsRoleArn: Schema.optional(Schema.String),
+                excludeVerboseContent: Schema.optional(Schema.Boolean),
+                fieldLogLevel: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["ALL", "ERROR", "NONE"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            mergedApiExecutionRoleArn: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            openIDConnectConfig: Schema.optional(
+              Schema.Struct({
+                authTTL: Schema.optional(Schema.Number),
+                clientId: Schema.optional(Schema.String),
+                iatTTL: Schema.optional(Schema.Number),
+                issuer: Schema.optional(Schema.String),
+              }),
+            ),
+            owner: Schema.optional(Schema.String),
+            ownerContact: Schema.optional(Schema.String),
+            queryDepthLimit: Schema.optional(Schema.Number),
+            resolverCountLimit: Schema.optional(Schema.Number),
+            tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+            uris: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+            userPoolConfig: Schema.optional(
+              Schema.Struct({
+                appIdClientRegex: Schema.optional(Schema.String),
+                awsRegion: Schema.optional(Schema.String),
+                defaultAction: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.Literals(["ALLOW", "DENY"])),
+                  }),
+                ),
+                userPoolId: Schema.optional(Schema.String),
+              }),
+            ),
+            visibility: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["GLOBAL", "PRIVATE"])),
+              }),
+            ),
+            wafWebAclArn: Schema.optional(Schema.String),
+            xrayEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/appSyncGraphqlApis/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AppSyncGraphqlApisCreateOrReplaceInput =
@@ -1391,11 +1914,11 @@ export const AppSyncGraphqlApisDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/appSyncGraphqlApis/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AppSyncGraphqlApisDeleteInput =
@@ -1428,11 +1951,11 @@ export const AppSyncGraphqlApisGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/appSyncGraphqlApis/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AppSyncGraphqlApisGetInput = typeof AppSyncGraphqlApisGetInput.Type;
@@ -1481,11 +2004,11 @@ export const AppSyncGraphqlApisListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/appSyncGraphqlApis",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AppSyncGraphqlApisListByResourceGroupInput =
@@ -1547,11 +2070,11 @@ export const AppSyncGraphqlApisListByResourceGroup =
 export const AppSyncGraphqlApisListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/appSyncGraphqlApis",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AppSyncGraphqlApisListBySubscriptionInput =
@@ -1614,11 +2137,12 @@ export const AppSyncGraphqlApisUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/appSyncGraphqlApis/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AppSyncGraphqlApisUpdateInput =
@@ -1669,11 +2193,260 @@ export const AutoScalingAutoScalingGroupsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            autoScalingGroupName: Schema.optional(Schema.String),
+            availabilityZones: Schema.optional(Schema.Array(Schema.String)),
+            capacityRebalance: Schema.optional(Schema.Boolean),
+            context: Schema.optional(Schema.String),
+            cooldown: Schema.optional(Schema.String),
+            defaultInstanceWarmup: Schema.optional(Schema.Number),
+            desiredCapacity: Schema.optional(Schema.String),
+            desiredCapacityType: Schema.optional(Schema.String),
+            healthCheckGracePeriod: Schema.optional(Schema.Number),
+            healthCheckType: Schema.optional(Schema.String),
+            instanceId: Schema.optional(Schema.String),
+            instanceMaintenancePolicy: Schema.optional(
+              Schema.Struct({
+                maxHealthyPercentage: Schema.optional(Schema.Number),
+                minHealthyPercentage: Schema.optional(Schema.Number),
+              }),
+            ),
+            launchConfigurationName: Schema.optional(Schema.String),
+            launchTemplate: Schema.optional(
+              Schema.Struct({
+                launchTemplateId: Schema.optional(Schema.String),
+                launchTemplateName: Schema.optional(Schema.String),
+                version: Schema.optional(Schema.String),
+              }),
+            ),
+            lifecycleHookSpecificationList: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  defaultResult: Schema.optional(Schema.String),
+                  heartbeatTimeout: Schema.optional(Schema.Number),
+                  lifecycleHookName: Schema.optional(Schema.String),
+                  lifecycleTransition: Schema.optional(Schema.String),
+                  notificationMetadata: Schema.optional(Schema.String),
+                  notificationTargetARN: Schema.optional(Schema.String),
+                  roleARN: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            loadBalancerNames: Schema.optional(Schema.Array(Schema.String)),
+            maxInstanceLifetime: Schema.optional(Schema.Number),
+            maxSize: Schema.optional(Schema.String),
+            metricsCollection: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  granularity: Schema.optional(Schema.String),
+                  metrics: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            minSize: Schema.optional(Schema.String),
+            mixedInstancesPolicy: Schema.optional(
+              Schema.Struct({
+                instancesDistribution: Schema.optional(
+                  Schema.Struct({
+                    onDemandAllocationStrategy: Schema.optional(Schema.String),
+                    onDemandBaseCapacity: Schema.optional(Schema.Number),
+                    onDemandPercentageAboveBaseCapacity: Schema.optional(
+                      Schema.Number,
+                    ),
+                    spotAllocationStrategy: Schema.optional(Schema.String),
+                    spotInstancePools: Schema.optional(Schema.Number),
+                    spotMaxPrice: Schema.optional(Schema.String),
+                  }),
+                ),
+                launchTemplate: Schema.optional(
+                  Schema.Struct({
+                    launchTemplateSpecification: Schema.optional(
+                      Schema.Struct({
+                        launchTemplateId: Schema.optional(Schema.String),
+                        launchTemplateName: Schema.optional(Schema.String),
+                        version: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    overrides: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          instanceRequirements: Schema.optional(
+                            Schema.Struct({
+                              acceleratorCount: Schema.optional(
+                                Schema.Struct({
+                                  max: Schema.optional(Schema.Number),
+                                  min: Schema.optional(Schema.Number),
+                                }),
+                              ),
+                              acceleratorManufacturers: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              acceleratorNames: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              acceleratorTotalMemoryMiB: Schema.optional(
+                                Schema.Struct({
+                                  max: Schema.optional(Schema.Number),
+                                  min: Schema.optional(Schema.Number),
+                                }),
+                              ),
+                              acceleratorTypes: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              allowedInstanceTypes: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              bareMetal: Schema.optional(Schema.String),
+                              baselineEbsBandwidthMbps: Schema.optional(
+                                Schema.Struct({
+                                  max: Schema.optional(Schema.Number),
+                                  min: Schema.optional(Schema.Number),
+                                }),
+                              ),
+                              burstablePerformance: Schema.optional(
+                                Schema.String,
+                              ),
+                              cpuManufacturers: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              excludedInstanceTypes: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              instanceGenerations: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              localStorage: Schema.optional(Schema.String),
+                              localStorageTypes: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              maxSpotPriceAsPercentageOfOptimalOnDemandPrice:
+                                Schema.optional(Schema.Number),
+                              memoryGiBPerVCpu: Schema.optional(
+                                Schema.Struct({
+                                  max: Schema.optional(Schema.Number),
+                                  min: Schema.optional(Schema.Number),
+                                }),
+                              ),
+                              memoryMiB: Schema.optional(
+                                Schema.Struct({
+                                  max: Schema.optional(Schema.Number),
+                                  min: Schema.optional(Schema.Number),
+                                }),
+                              ),
+                              networkBandwidthGbps: Schema.optional(
+                                Schema.Struct({
+                                  max: Schema.optional(Schema.Number),
+                                  min: Schema.optional(Schema.Number),
+                                }),
+                              ),
+                              networkInterfaceCount: Schema.optional(
+                                Schema.Struct({
+                                  max: Schema.optional(Schema.Number),
+                                  min: Schema.optional(Schema.Number),
+                                }),
+                              ),
+                              onDemandMaxPricePercentageOverLowestPrice:
+                                Schema.optional(Schema.Number),
+                              requireHibernateSupport: Schema.optional(
+                                Schema.Boolean,
+                              ),
+                              spotMaxPricePercentageOverLowestPrice:
+                                Schema.optional(Schema.Number),
+                              totalLocalStorageGB: Schema.optional(
+                                Schema.Struct({
+                                  max: Schema.optional(Schema.Number),
+                                  min: Schema.optional(Schema.Number),
+                                }),
+                              ),
+                              vCpuCount: Schema.optional(
+                                Schema.Struct({
+                                  max: Schema.optional(Schema.Number),
+                                  min: Schema.optional(Schema.Number),
+                                }),
+                              ),
+                            }),
+                          ),
+                          instanceType: Schema.optional(Schema.String),
+                          launchTemplateSpecification: Schema.optional(
+                            Schema.Struct({
+                              launchTemplateId: Schema.optional(Schema.String),
+                              launchTemplateName: Schema.optional(
+                                Schema.String,
+                              ),
+                              version: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          weightedCapacity: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            newInstancesProtectedFromScaleIn: Schema.optional(Schema.Boolean),
+            notificationConfiguration: Schema.optional(
+              Schema.Struct({
+                notificationTypes: Schema.optional(Schema.Array(Schema.String)),
+                topicARN: Schema.optional(Schema.String),
+              }),
+            ),
+            notificationConfigurations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  notificationTypes: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  topicARN: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            placementGroup: Schema.optional(Schema.String),
+            serviceLinkedRoleARN: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  propagateAtLaunch: Schema.optional(Schema.Boolean),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            targetGroupARNs: Schema.optional(Schema.Array(Schema.String)),
+            terminationPolicies: Schema.optional(Schema.Array(Schema.String)),
+            vpcZoneIdentifier: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/autoScalingAutoScalingGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AutoScalingAutoScalingGroupsCreateOrReplaceInput =
@@ -1723,11 +2496,11 @@ export const AutoScalingAutoScalingGroupsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/autoScalingAutoScalingGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AutoScalingAutoScalingGroupsDeleteInput =
@@ -1759,11 +2532,11 @@ export const AutoScalingAutoScalingGroupsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/autoScalingAutoScalingGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AutoScalingAutoScalingGroupsGetInput =
@@ -1812,11 +2585,11 @@ export const AutoScalingAutoScalingGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/autoScalingAutoScalingGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AutoScalingAutoScalingGroupsListByResourceGroupInput =
@@ -1878,11 +2651,11 @@ export const AutoScalingAutoScalingGroupsListByResourceGroup =
 export const AutoScalingAutoScalingGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/autoScalingAutoScalingGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AutoScalingAutoScalingGroupsListBySubscriptionInput =
@@ -1945,11 +2718,12 @@ export const AutoScalingAutoScalingGroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/autoScalingAutoScalingGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type AutoScalingAutoScalingGroupsUpdateInput =
@@ -1999,11 +2773,114 @@ export const CloudFormationStacksCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            capabilities: Schema.optional(
+              Schema.Array(
+                Schema.Literals([
+                  "CAPABILITY_AUTO_EXPAND",
+                  "CAPABILITY_IAM",
+                  "CAPABILITY_NAMED_IAM",
+                ]),
+              ),
+            ),
+            changeSetId: Schema.optional(Schema.String),
+            creationTime: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            disableRollback: Schema.optional(Schema.Boolean),
+            enableTerminationProtection: Schema.optional(Schema.Boolean),
+            lastUpdateTime: Schema.optional(Schema.String),
+            notificationARNs: Schema.optional(Schema.Array(Schema.String)),
+            outputs: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  description: Schema.optional(Schema.String),
+                  exportName: Schema.optional(Schema.String),
+                  outputKey: Schema.optional(Schema.String),
+                  outputValue: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            parameters: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            parentId: Schema.optional(Schema.String),
+            roleARN: Schema.optional(Schema.String),
+            rootId: Schema.optional(Schema.String),
+            stackId: Schema.optional(Schema.String),
+            stackName: Schema.optional(Schema.String),
+            stackPolicyBody: Schema.optional(Schema.Unknown),
+            stackPolicyURL: Schema.optional(Schema.String),
+            stackStatus: Schema.optional(
+              Schema.Literals([
+                "CREATE_COMPLETE",
+                "CREATE_FAILED",
+                "CREATE_IN_PROGRESS",
+                "DELETE_COMPLETE",
+                "DELETE_FAILED",
+                "DELETE_IN_PROGRESS",
+                "IMPORT_COMPLETE",
+                "IMPORT_IN_PROGRESS",
+                "IMPORT_ROLLBACK_COMPLETE",
+                "IMPORT_ROLLBACK_FAILED",
+                "IMPORT_ROLLBACK_IN_PROGRESS",
+                "REVIEW_IN_PROGRESS",
+                "ROLLBACK_COMPLETE",
+                "ROLLBACK_FAILED",
+                "ROLLBACK_IN_PROGRESS",
+                "UPDATE_COMPLETE",
+                "UPDATE_COMPLETE_CLEANUP_IN_PROGRESS",
+                "UPDATE_FAILED",
+                "UPDATE_IN_PROGRESS",
+                "UPDATE_ROLLBACK_COMPLETE",
+                "UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS",
+                "UPDATE_ROLLBACK_FAILED",
+                "UPDATE_ROLLBACK_IN_PROGRESS",
+              ]),
+            ),
+            stackStatusReason: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            templateBody: Schema.optional(Schema.Unknown),
+            templateURL: Schema.optional(Schema.String),
+            timeoutInMinutes: Schema.optional(Schema.Number),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStacks/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFormationStacksCreateOrReplaceInput =
@@ -2053,11 +2930,11 @@ export const CloudFormationStacksDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStacks/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFormationStacksDeleteInput =
@@ -2090,11 +2967,124 @@ export const CloudFormationStackSetsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            administrationRoleARN: Schema.optional(Schema.String),
+            autoDeployment: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                retainStacksOnAccountRemoval: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            callAs: Schema.optional(
+              Schema.Literals(["DELEGATED_ADMIN", "SELF"]),
+            ),
+            capabilities: Schema.optional(Schema.Array(Schema.String)),
+            description: Schema.optional(Schema.String),
+            executionRoleName: Schema.optional(Schema.String),
+            managedExecution: Schema.optional(
+              Schema.Struct({
+                active: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            operationPreferences: Schema.optional(
+              Schema.Struct({
+                failureToleranceCount: Schema.optional(Schema.Number),
+                failureTolerancePercentage: Schema.optional(Schema.Number),
+                maxConcurrentCount: Schema.optional(Schema.Number),
+                maxConcurrentPercentage: Schema.optional(Schema.Number),
+                regionConcurrencyType: Schema.optional(
+                  Schema.Literals(["PARALLEL", "SEQUENTIAL"]),
+                ),
+                regionOrder: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            parameters: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  parameterKey: Schema.optional(Schema.String),
+                  parameterValue: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            permissionModel: Schema.optional(
+              Schema.Literals(["SELF_MANAGED", "SERVICE_MANAGED"]),
+            ),
+            stackInstancesGroup: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  deploymentTargets: Schema.optional(
+                    Schema.Struct({
+                      accountFilterType: Schema.optional(
+                        Schema.Literals([
+                          "DIFFERENCE",
+                          "INTERSECTION",
+                          "NONE",
+                          "UNION",
+                        ]),
+                      ),
+                      accounts: Schema.optional(Schema.Array(Schema.String)),
+                      accountsUrl: Schema.optional(Schema.String),
+                      organizationalUnitIds: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                    }),
+                  ),
+                  parameterOverrides: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        parameterKey: Schema.optional(Schema.String),
+                        parameterValue: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  regions: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            stackSetId: Schema.optional(Schema.String),
+            stackSetName: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            templateBody: Schema.optional(Schema.String),
+            templateURL: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStackSets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFormationStackSetsCreateOrReplaceInput =
@@ -2144,11 +3134,11 @@ export const CloudFormationStackSetsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStackSets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFormationStackSetsDeleteInput =
@@ -2180,11 +3170,11 @@ export const CloudFormationStackSetsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStackSets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFormationStackSetsGetInput =
@@ -2234,11 +3224,11 @@ export const CloudFormationStackSetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStackSets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFormationStackSetsListByResourceGroupInput =
@@ -2300,11 +3290,11 @@ export const CloudFormationStackSetsListByResourceGroup =
 export const CloudFormationStackSetsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/cloudFormationStackSets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFormationStackSetsListBySubscriptionInput =
@@ -2367,11 +3357,12 @@ export const CloudFormationStackSetsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStackSets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFormationStackSetsUpdateInput =
@@ -2421,11 +3412,11 @@ export const CloudFormationStacksGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStacks/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFormationStacksGetInput =
@@ -2475,11 +3466,11 @@ export const CloudFormationStacksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStacks",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFormationStacksListByResourceGroupInput =
@@ -2541,11 +3532,11 @@ export const CloudFormationStacksListByResourceGroup =
 export const CloudFormationStacksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/cloudFormationStacks",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFormationStacksListBySubscriptionInput =
@@ -2608,11 +3599,12 @@ export const CloudFormationStacksUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFormationStacks/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFormationStacksUpdateInput =
@@ -2663,11 +3655,325 @@ export const CloudFrontDistributionsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            distributionConfig: Schema.optional(
+              Schema.Struct({
+                aliases: Schema.optional(Schema.Array(Schema.String)),
+                cnamEs: Schema.optional(Schema.Array(Schema.String)),
+                cacheBehaviors: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      allowedMethods: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      cachePolicyId: Schema.optional(Schema.String),
+                      cachedMethods: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      compress: Schema.optional(Schema.Boolean),
+                      defaultTTL: Schema.optional(Schema.Number),
+                      fieldLevelEncryptionId: Schema.optional(Schema.String),
+                      forwardedValues: Schema.optional(
+                        Schema.Struct({
+                          cookies: Schema.optional(
+                            Schema.Struct({
+                              forward: Schema.optional(Schema.String),
+                              whitelistedNames: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          headers: Schema.optional(Schema.Array(Schema.String)),
+                          queryString: Schema.optional(Schema.Boolean),
+                          queryStringCacheKeys: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                      functionAssociations: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            eventType: Schema.optional(Schema.String),
+                            functionARN: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      lambdaFunctionAssociations: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            eventType: Schema.optional(Schema.String),
+                            includeBody: Schema.optional(Schema.Boolean),
+                            lambdaFunctionARN: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      maxTTL: Schema.optional(Schema.Number),
+                      minTTL: Schema.optional(Schema.Number),
+                      originRequestPolicyId: Schema.optional(Schema.String),
+                      pathPattern: Schema.optional(Schema.String),
+                      realtimeLogConfigArn: Schema.optional(Schema.String),
+                      responseHeadersPolicyId: Schema.optional(Schema.String),
+                      smoothStreaming: Schema.optional(Schema.Boolean),
+                      targetOriginId: Schema.optional(Schema.String),
+                      trustedKeyGroups: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      trustedSigners: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      viewerProtocolPolicy: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                comment: Schema.optional(Schema.String),
+                continuousDeploymentPolicyId: Schema.optional(Schema.String),
+                customErrorResponses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      errorCachingMinTTL: Schema.optional(Schema.Number),
+                      errorCode: Schema.optional(Schema.Number),
+                      responseCode: Schema.optional(Schema.Number),
+                      responsePagePath: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                customOrigin: Schema.optional(
+                  Schema.Struct({
+                    dnsName: Schema.optional(Schema.String),
+                    httpPort: Schema.optional(Schema.Number),
+                    httpsPort: Schema.optional(Schema.Number),
+                    originProtocolPolicy: Schema.optional(Schema.String),
+                    originSSLProtocols: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                  }),
+                ),
+                defaultCacheBehavior: Schema.optional(
+                  Schema.Struct({
+                    allowedMethods: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    cachePolicyId: Schema.optional(Schema.String),
+                    cachedMethods: Schema.optional(Schema.Array(Schema.String)),
+                    compress: Schema.optional(Schema.Boolean),
+                    defaultTTL: Schema.optional(Schema.Number),
+                    fieldLevelEncryptionId: Schema.optional(Schema.String),
+                    forwardedValues: Schema.optional(
+                      Schema.Struct({
+                        cookies: Schema.optional(
+                          Schema.Struct({
+                            forward: Schema.optional(Schema.String),
+                            whitelistedNames: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        headers: Schema.optional(Schema.Array(Schema.String)),
+                        queryString: Schema.optional(Schema.Boolean),
+                        queryStringCacheKeys: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                      }),
+                    ),
+                    functionAssociations: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          eventType: Schema.optional(Schema.String),
+                          functionARN: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    lambdaFunctionAssociations: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          eventType: Schema.optional(Schema.String),
+                          includeBody: Schema.optional(Schema.Boolean),
+                          lambdaFunctionARN: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    maxTTL: Schema.optional(Schema.Number),
+                    minTTL: Schema.optional(Schema.Number),
+                    originRequestPolicyId: Schema.optional(Schema.String),
+                    realtimeLogConfigArn: Schema.optional(Schema.String),
+                    responseHeadersPolicyId: Schema.optional(Schema.String),
+                    smoothStreaming: Schema.optional(Schema.Boolean),
+                    targetOriginId: Schema.optional(Schema.String),
+                    trustedKeyGroups: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    trustedSigners: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    viewerProtocolPolicy: Schema.optional(Schema.String),
+                  }),
+                ),
+                defaultRootObject: Schema.optional(Schema.String),
+                enabled: Schema.optional(Schema.Boolean),
+                httpVersion: Schema.optional(Schema.String),
+                ipV6Enabled: Schema.optional(Schema.Boolean),
+                logging: Schema.optional(
+                  Schema.Struct({
+                    bucket: Schema.optional(Schema.String),
+                    includeCookies: Schema.optional(Schema.Boolean),
+                    prefix: Schema.optional(Schema.String),
+                  }),
+                ),
+                originGroups: Schema.optional(
+                  Schema.Struct({
+                    items: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          failoverCriteria: Schema.optional(
+                            Schema.Struct({
+                              statusCodes: Schema.optional(
+                                Schema.Struct({
+                                  items: Schema.optional(
+                                    Schema.Array(Schema.Number),
+                                  ),
+                                  quantity: Schema.optional(Schema.Number),
+                                }),
+                              ),
+                            }),
+                          ),
+                          id: Schema.optional(Schema.String),
+                          members: Schema.optional(
+                            Schema.Struct({
+                              items: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    originId: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                              quantity: Schema.optional(Schema.Number),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    quantity: Schema.optional(Schema.Number),
+                  }),
+                ),
+                origins: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      connectionAttempts: Schema.optional(Schema.Number),
+                      connectionTimeout: Schema.optional(Schema.Number),
+                      customOriginConfig: Schema.optional(
+                        Schema.Struct({
+                          httpPort: Schema.optional(Schema.Number),
+                          httpsPort: Schema.optional(Schema.Number),
+                          originKeepaliveTimeout: Schema.optional(
+                            Schema.Number,
+                          ),
+                          originProtocolPolicy: Schema.optional(Schema.String),
+                          originReadTimeout: Schema.optional(Schema.Number),
+                          originSSLProtocols: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                      domainName: Schema.optional(Schema.String),
+                      id: Schema.optional(Schema.String),
+                      originAccessControlId: Schema.optional(Schema.String),
+                      originCustomHeaders: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            headerName: Schema.optional(Schema.String),
+                            headerValue: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      originPath: Schema.optional(Schema.String),
+                      originShield: Schema.optional(
+                        Schema.Struct({
+                          enabled: Schema.optional(Schema.Boolean),
+                          originShieldRegion: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      s3OriginConfig: Schema.optional(
+                        Schema.Struct({
+                          originAccessIdentity: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                priceClass: Schema.optional(Schema.String),
+                restrictions: Schema.optional(
+                  Schema.Struct({
+                    geoRestriction: Schema.optional(
+                      Schema.Struct({
+                        locations: Schema.optional(Schema.Array(Schema.String)),
+                        restrictionType: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+                s3Origin: Schema.optional(
+                  Schema.Struct({
+                    dnsName: Schema.optional(Schema.String),
+                    originAccessIdentity: Schema.optional(Schema.String),
+                  }),
+                ),
+                staging: Schema.optional(Schema.Boolean),
+                viewerCertificate: Schema.optional(
+                  Schema.Struct({
+                    acmCertificateArn: Schema.optional(Schema.String),
+                    cloudFrontDefaultCertificate: Schema.optional(
+                      Schema.Boolean,
+                    ),
+                    iamCertificateId: Schema.optional(Schema.String),
+                    minimumProtocolVersion: Schema.optional(Schema.String),
+                    sslSupportMethod: Schema.optional(Schema.String),
+                  }),
+                ),
+                webACLId: Schema.optional(Schema.String),
+              }),
+            ),
+            domainName: Schema.optional(Schema.String),
+            id: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFrontDistributions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFrontDistributionsCreateOrReplaceInput =
@@ -2717,11 +4023,11 @@ export const CloudFrontDistributionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFrontDistributions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFrontDistributionsDeleteInput =
@@ -2753,11 +4059,11 @@ export const CloudFrontDistributionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFrontDistributions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFrontDistributionsGetInput =
@@ -2807,11 +4113,11 @@ export const CloudFrontDistributionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFrontDistributions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFrontDistributionsListByResourceGroupInput =
@@ -2873,11 +4179,11 @@ export const CloudFrontDistributionsListByResourceGroup =
 export const CloudFrontDistributionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/cloudFrontDistributions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFrontDistributionsListBySubscriptionInput =
@@ -2940,11 +4246,12 @@ export const CloudFrontDistributionsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudFrontDistributions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudFrontDistributionsUpdateInput =
@@ -2994,11 +4301,115 @@ export const CloudTrailTrailsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            advancedEventSelectors: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  fieldSelectors: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        endsWith: Schema.optional(Schema.Array(Schema.String)),
+                        equals: Schema.optional(Schema.Array(Schema.String)),
+                        field: Schema.optional(Schema.String),
+                        notEndsWith: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        notEquals: Schema.optional(Schema.Array(Schema.String)),
+                        notStartsWith: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        startsWith: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                      }),
+                    ),
+                  ),
+                  name: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            arn: Schema.optional(Schema.String),
+            cloudWatchLogsLogGroupArn: Schema.optional(Schema.String),
+            cloudWatchLogsRoleArn: Schema.optional(Schema.String),
+            enableLogFileValidation: Schema.optional(Schema.Boolean),
+            eventSelectors: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  dataResources: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.optional(Schema.String),
+                        values: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                  ),
+                  excludeManagementEventSources: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  includeManagementEvents: Schema.optional(Schema.Boolean),
+                  readWriteType: Schema.optional(
+                    Schema.Literals(["All", "ReadOnly", "WriteOnly"]),
+                  ),
+                }),
+              ),
+            ),
+            includeGlobalServiceEvents: Schema.optional(Schema.Boolean),
+            insightSelectors: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  insightType: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            isLogging: Schema.optional(Schema.Boolean),
+            isMultiRegionTrail: Schema.optional(Schema.Boolean),
+            isOrganizationTrail: Schema.optional(Schema.Boolean),
+            kmsKeyId: Schema.optional(Schema.String),
+            s3BucketName: Schema.optional(Schema.String),
+            s3KeyPrefix: Schema.optional(Schema.String),
+            snsTopicArn: Schema.optional(Schema.String),
+            snsTopicName: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            trailName: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudTrailTrails/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudTrailTrailsCreateOrReplaceInput =
@@ -3048,11 +4459,11 @@ export const CloudTrailTrailsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudTrailTrails/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudTrailTrailsDeleteInput =
@@ -3085,11 +4496,11 @@ export const CloudTrailTrailsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudTrailTrails/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudTrailTrailsGetInput = typeof CloudTrailTrailsGetInput.Type;
@@ -3135,11 +4546,11 @@ export const CloudTrailTrailsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudTrailTrails",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudTrailTrailsListByResourceGroupInput =
@@ -3201,11 +4612,11 @@ export const CloudTrailTrailsListByResourceGroup =
 export const CloudTrailTrailsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/cloudTrailTrails",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudTrailTrailsListBySubscriptionInput =
@@ -3268,11 +4679,12 @@ export const CloudTrailTrailsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudTrailTrails/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudTrailTrailsUpdateInput =
@@ -3323,11 +4735,110 @@ export const CloudWatchAlarmsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            actionsEnabled: Schema.optional(Schema.Boolean),
+            alarmActions: Schema.optional(Schema.Array(Schema.String)),
+            alarmDescription: Schema.optional(Schema.String),
+            alarmName: Schema.optional(Schema.String),
+            arn: Schema.optional(Schema.String),
+            comparisonOperator: Schema.optional(Schema.String),
+            datapointsToAlarm: Schema.optional(Schema.Number),
+            dimensions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            evaluateLowSampleCountPercentile: Schema.optional(Schema.String),
+            evaluationPeriods: Schema.optional(Schema.Number),
+            extendedStatistic: Schema.optional(Schema.String),
+            insufficientDataActions: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            metricName: Schema.optional(Schema.String),
+            metrics: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  accountId: Schema.optional(Schema.String),
+                  expression: Schema.optional(Schema.String),
+                  id: Schema.optional(Schema.String),
+                  label: Schema.optional(Schema.String),
+                  metricStat: Schema.optional(
+                    Schema.Struct({
+                      metric: Schema.optional(
+                        Schema.Struct({
+                          dimensions: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                          metricName: Schema.optional(Schema.String),
+                          namespace: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      period: Schema.optional(Schema.Number),
+                      stat: Schema.optional(Schema.String),
+                      unit: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  period: Schema.optional(Schema.Number),
+                  returnData: Schema.optional(Schema.Boolean),
+                }),
+              ),
+            ),
+            namespace: Schema.optional(Schema.String),
+            okActions: Schema.optional(Schema.Array(Schema.String)),
+            period: Schema.optional(Schema.Number),
+            statistic: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            threshold: Schema.optional(Schema.Number),
+            thresholdMetricId: Schema.optional(Schema.String),
+            treatMissingData: Schema.optional(Schema.String),
+            unit: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudWatchAlarms/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudWatchAlarmsCreateOrReplaceInput =
@@ -3377,11 +4888,11 @@ export const CloudWatchAlarmsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudWatchAlarms/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudWatchAlarmsDeleteInput =
@@ -3414,11 +4925,11 @@ export const CloudWatchAlarmsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudWatchAlarms/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudWatchAlarmsGetInput = typeof CloudWatchAlarmsGetInput.Type;
@@ -3464,11 +4975,11 @@ export const CloudWatchAlarmsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudWatchAlarms",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudWatchAlarmsListByResourceGroupInput =
@@ -3530,11 +5041,11 @@ export const CloudWatchAlarmsListByResourceGroup =
 export const CloudWatchAlarmsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/cloudWatchAlarms",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudWatchAlarmsListBySubscriptionInput =
@@ -3597,11 +5108,12 @@ export const CloudWatchAlarmsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/cloudWatchAlarms/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CloudWatchAlarmsUpdateInput =
@@ -3652,11 +5164,492 @@ export const CodeBuildProjectsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            artifacts: Schema.optional(
+              Schema.Struct({
+                artifactIdentifier: Schema.optional(Schema.String),
+                bucketOwnerAccess: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["FULL", "NONE", "READ_ONLY"]),
+                    ),
+                  }),
+                ),
+                encryptionDisabled: Schema.optional(Schema.Boolean),
+                location: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                namespaceType: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["BUILD_ID", "NONE"]),
+                    ),
+                  }),
+                ),
+                overrideArtifactName: Schema.optional(Schema.Boolean),
+                packaging: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.Literals(["NONE", "ZIP"])),
+                  }),
+                ),
+                path: Schema.optional(Schema.String),
+                type: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["CODEPIPELINE", "NO_ARTIFACTS", "S3"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            badge: Schema.optional(
+              Schema.Struct({
+                badgeEnabled: Schema.optional(Schema.Boolean),
+                badgeRequestUrl: Schema.optional(Schema.String),
+              }),
+            ),
+            buildBatchConfig: Schema.optional(
+              Schema.Struct({
+                batchReportMode: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "REPORT_AGGREGATED_BATCH",
+                        "REPORT_INDIVIDUAL_BUILDS",
+                      ]),
+                    ),
+                  }),
+                ),
+                combineArtifacts: Schema.optional(Schema.Boolean),
+                restrictions: Schema.optional(
+                  Schema.Struct({
+                    computeTypesAllowed: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    maximumBuildsAllowed: Schema.optional(Schema.Number),
+                  }),
+                ),
+                serviceRole: Schema.optional(Schema.String),
+                timeoutInMins: Schema.optional(Schema.Number),
+              }),
+            ),
+            cache: Schema.optional(
+              Schema.Struct({
+                location: Schema.optional(Schema.String),
+                modes: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals([
+                      "LOCAL_CUSTOM_CACHE",
+                      "LOCAL_DOCKER_LAYER_CACHE",
+                      "LOCAL_SOURCE_CACHE",
+                    ]),
+                  ),
+                ),
+                type: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["LOCAL", "NO_CACHE", "S3"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            concurrentBuildLimit: Schema.optional(Schema.Number),
+            created: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            encryptionKey: Schema.optional(Schema.String),
+            environment: Schema.optional(
+              Schema.Struct({
+                certificate: Schema.optional(Schema.String),
+                computeType: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "BUILD_GENERAL1_2XLARGE",
+                        "BUILD_GENERAL1_LARGE",
+                        "BUILD_GENERAL1_MEDIUM",
+                        "BUILD_GENERAL1_SMALL",
+                        "BUILD_GENERAL1_XLARGE",
+                        "BUILD_LAMBDA_10GB",
+                        "BUILD_LAMBDA_1GB",
+                        "BUILD_LAMBDA_2GB",
+                        "BUILD_LAMBDA_4GB",
+                        "BUILD_LAMBDA_8GB",
+                      ]),
+                    ),
+                  }),
+                ),
+                environmentVariables: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Struct({
+                          value: Schema.optional(
+                            Schema.Literals([
+                              "PARAMETER_STORE",
+                              "PLAINTEXT",
+                              "SECRETS_MANAGER",
+                            ]),
+                          ),
+                        }),
+                      ),
+                      value: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                fleet: Schema.optional(
+                  Schema.Struct({
+                    fleetArn: Schema.optional(Schema.String),
+                  }),
+                ),
+                image: Schema.optional(Schema.String),
+                imagePullCredentialsType: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["CODEBUILD", "SERVICE_ROLE"]),
+                    ),
+                  }),
+                ),
+                privilegedMode: Schema.optional(Schema.Boolean),
+                registryCredential: Schema.optional(
+                  Schema.Struct({
+                    credential: Schema.optional(Schema.String),
+                    credentialProvider: Schema.optional(
+                      Schema.Struct({
+                        value: Schema.optional(
+                          Schema.Literals(["SECRETS_MANAGER"]),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+                type: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "ARM_CONTAINER",
+                        "ARM_LAMBDA_CONTAINER",
+                        "LINUX_CONTAINER",
+                        "LINUX_GPU_CONTAINER",
+                        "LINUX_LAMBDA_CONTAINER",
+                        "WINDOWS_CONTAINER",
+                        "WINDOWS_SERVER_2019_CONTAINER",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            fileSystemLocations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  identifier: Schema.optional(Schema.String),
+                  location: Schema.optional(Schema.String),
+                  mountOptions: Schema.optional(Schema.String),
+                  mountPoint: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(Schema.Literals(["EFS"])),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            lastModified: Schema.optional(Schema.String),
+            logsConfig: Schema.optional(
+              Schema.Struct({
+                cloudWatchLogs: Schema.optional(
+                  Schema.Struct({
+                    groupName: Schema.optional(Schema.String),
+                    status: Schema.optional(
+                      Schema.Struct({
+                        value: Schema.optional(
+                          Schema.Literals(["DISABLED", "ENABLED"]),
+                        ),
+                      }),
+                    ),
+                    streamName: Schema.optional(Schema.String),
+                  }),
+                ),
+                s3Logs: Schema.optional(
+                  Schema.Struct({
+                    bucketOwnerAccess: Schema.optional(
+                      Schema.Struct({
+                        value: Schema.optional(
+                          Schema.Literals(["FULL", "NONE", "READ_ONLY"]),
+                        ),
+                      }),
+                    ),
+                    encryptionDisabled: Schema.optional(Schema.Boolean),
+                    location: Schema.optional(Schema.String),
+                    status: Schema.optional(
+                      Schema.Struct({
+                        value: Schema.optional(
+                          Schema.Literals(["DISABLED", "ENABLED"]),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            name: Schema.optional(Schema.String),
+            projectVisibility: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["PRIVATE", "PUBLIC_READ"]),
+                ),
+              }),
+            ),
+            publicProjectAlias: Schema.optional(Schema.String),
+            queuedTimeoutInMinutes: Schema.optional(Schema.Number),
+            resourceAccessRole: Schema.optional(Schema.String),
+            secondaryArtifacts: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  artifactIdentifier: Schema.optional(Schema.String),
+                  bucketOwnerAccess: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals(["FULL", "NONE", "READ_ONLY"]),
+                      ),
+                    }),
+                  ),
+                  encryptionDisabled: Schema.optional(Schema.Boolean),
+                  location: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  namespaceType: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals(["BUILD_ID", "NONE"]),
+                      ),
+                    }),
+                  ),
+                  overrideArtifactName: Schema.optional(Schema.Boolean),
+                  packaging: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(Schema.Literals(["NONE", "ZIP"])),
+                    }),
+                  ),
+                  path: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals(["CODEPIPELINE", "NO_ARTIFACTS", "S3"]),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            secondarySourceVersions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  sourceIdentifier: Schema.optional(Schema.String),
+                  sourceVersion: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            secondarySources: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  auth: Schema.optional(
+                    Schema.Struct({
+                      resource: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Struct({
+                          value: Schema.optional(
+                            Schema.Literals(["CODECONNECTIONS", "OAUTH"]),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  buildStatusConfig: Schema.optional(
+                    Schema.Struct({
+                      context: Schema.optional(Schema.String),
+                      targetUrl: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  buildspec: Schema.optional(Schema.String),
+                  gitCloneDepth: Schema.optional(Schema.Number),
+                  gitSubmodulesConfig: Schema.optional(
+                    Schema.Struct({
+                      fetchSubmodules: Schema.optional(Schema.Boolean),
+                    }),
+                  ),
+                  insecureSsl: Schema.optional(Schema.Boolean),
+                  location: Schema.optional(Schema.String),
+                  reportBuildStatus: Schema.optional(Schema.Boolean),
+                  sourceIdentifier: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals([
+                          "BITBUCKET",
+                          "CODECOMMIT",
+                          "CODEPIPELINE",
+                          "GITHUB",
+                          "GITHUB_ENTERPRISE",
+                          "GITLAB",
+                          "GITLAB_SELF_MANAGED",
+                          "NO_SOURCE",
+                          "S3",
+                        ]),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            serviceRole: Schema.optional(Schema.String),
+            source: Schema.optional(
+              Schema.Struct({
+                auth: Schema.optional(
+                  Schema.Struct({
+                    resource: Schema.optional(Schema.String),
+                    type: Schema.optional(
+                      Schema.Struct({
+                        value: Schema.optional(
+                          Schema.Literals(["CODECONNECTIONS", "OAUTH"]),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+                buildStatusConfig: Schema.optional(
+                  Schema.Struct({
+                    context: Schema.optional(Schema.String),
+                    targetUrl: Schema.optional(Schema.String),
+                  }),
+                ),
+                buildspec: Schema.optional(Schema.String),
+                gitCloneDepth: Schema.optional(Schema.Number),
+                gitSubmodulesConfig: Schema.optional(
+                  Schema.Struct({
+                    fetchSubmodules: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                insecureSsl: Schema.optional(Schema.Boolean),
+                location: Schema.optional(Schema.String),
+                reportBuildStatus: Schema.optional(Schema.Boolean),
+                sourceIdentifier: Schema.optional(Schema.String),
+                type: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "BITBUCKET",
+                        "CODECOMMIT",
+                        "CODEPIPELINE",
+                        "GITHUB",
+                        "GITHUB_ENTERPRISE",
+                        "GITLAB",
+                        "GITLAB_SELF_MANAGED",
+                        "NO_SOURCE",
+                        "S3",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            sourceVersion: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            timeoutInMinutes: Schema.optional(Schema.Number),
+            vpcConfig: Schema.optional(
+              Schema.Struct({
+                securityGroupIds: Schema.optional(Schema.Array(Schema.String)),
+                subnets: Schema.optional(Schema.Array(Schema.String)),
+                vpcId: Schema.optional(Schema.String),
+              }),
+            ),
+            webhook: Schema.optional(
+              Schema.Struct({
+                branchFilter: Schema.optional(Schema.String),
+                buildType: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["BUILD", "BUILD_BATCH"]),
+                    ),
+                  }),
+                ),
+                filterGroups: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      webhookFilter: Schema.optional(
+                        Schema.Struct({
+                          excludeMatchedPattern: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          pattern: Schema.optional(Schema.String),
+                          type: Schema.optional(
+                            Schema.Struct({
+                              value: Schema.optional(
+                                Schema.Literals([
+                                  "ACTOR_ACCOUNT_ID",
+                                  "BASE_REF",
+                                  "COMMIT_MESSAGE",
+                                  "EVENT",
+                                  "FILE_PATH",
+                                  "HEAD_REF",
+                                  "RELEASE_NAME",
+                                  "TAG_NAME",
+                                  "WORKFLOW_NAME",
+                                ]),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                lastModifiedSecret: Schema.optional(Schema.String),
+                payloadUrl: Schema.optional(Schema.String),
+                secret: Schema.optional(SensitiveString),
+                url: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildProjects/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CodeBuildProjectsCreateOrReplaceInput =
@@ -3706,11 +5699,11 @@ export const CodeBuildProjectsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildProjects/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CodeBuildProjectsDeleteInput =
@@ -3743,11 +5736,11 @@ export const CodeBuildProjectsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildProjects/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CodeBuildProjectsGetInput = typeof CodeBuildProjectsGetInput.Type;
@@ -3795,11 +5788,11 @@ export const CodeBuildProjectsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildProjects",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CodeBuildProjectsListByResourceGroupInput =
@@ -3861,11 +5854,11 @@ export const CodeBuildProjectsListByResourceGroup =
 export const CodeBuildProjectsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/codeBuildProjects",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CodeBuildProjectsListBySubscriptionInput =
@@ -3928,11 +5921,12 @@ export const CodeBuildProjectsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildProjects/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CodeBuildProjectsUpdateInput =
@@ -3983,11 +5977,66 @@ export const CodeBuildSourceCredentialsInfosCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            authType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "BASIC_AUTH",
+                    "CODECONNECTIONS",
+                    "OAUTH",
+                    "PERSONAL_ACCESS_TOKEN",
+                  ]),
+                ),
+              }),
+            ),
+            resource: Schema.optional(Schema.String),
+            serverType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "BITBUCKET",
+                    "GITHUB",
+                    "GITHUB_ENTERPRISE",
+                    "GITLAB",
+                    "GITLAB_SELF_MANAGED",
+                  ]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildSourceCredentialsInfos/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CodeBuildSourceCredentialsInfosCreateOrReplaceInput =
@@ -4037,11 +6086,11 @@ export const CodeBuildSourceCredentialsInfosDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildSourceCredentialsInfos/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CodeBuildSourceCredentialsInfosDeleteInput =
@@ -4073,11 +6122,11 @@ export const CodeBuildSourceCredentialsInfosGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildSourceCredentialsInfos/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CodeBuildSourceCredentialsInfosGetInput =
@@ -4126,11 +6175,11 @@ export const CodeBuildSourceCredentialsInfosListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildSourceCredentialsInfos",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CodeBuildSourceCredentialsInfosListByResourceGroupInput =
@@ -4192,11 +6241,11 @@ export const CodeBuildSourceCredentialsInfosListByResourceGroup =
 export const CodeBuildSourceCredentialsInfosListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/codeBuildSourceCredentialsInfos",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CodeBuildSourceCredentialsInfosListBySubscriptionInput =
@@ -4259,11 +6308,12 @@ export const CodeBuildSourceCredentialsInfosUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/codeBuildSourceCredentialsInfos/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type CodeBuildSourceCredentialsInfosUpdateInput =
@@ -4313,11 +6363,1330 @@ export const ConfigServiceConfigurationRecordersCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            recordingGroup: Schema.optional(
+              Schema.Struct({
+                allSupported: Schema.optional(Schema.Boolean),
+                exclusionByResourceTypes: Schema.optional(
+                  Schema.Struct({
+                    resourceTypes: Schema.optional(
+                      Schema.Array(
+                        Schema.Literals([
+                          "AWS::ACM::Certificate",
+                          "AWS::ACMPCA::CertificateAuthority",
+                          "AWS::ACMPCA::CertificateAuthorityActivation",
+                          "AWS::APS::RuleGroupsNamespace",
+                          "AWS::AccessAnalyzer::Analyzer",
+                          "AWS::AmazonMQ::Broker",
+                          "AWS::Amplify::App",
+                          "AWS::Amplify::Branch",
+                          "AWS::ApiGateway::RestApi",
+                          "AWS::ApiGateway::Stage",
+                          "AWS::ApiGatewayV2::Api",
+                          "AWS::ApiGatewayV2::Stage",
+                          "AWS::AppConfig::Application",
+                          "AWS::AppConfig::ConfigurationProfile",
+                          "AWS::AppConfig::DeploymentStrategy",
+                          "AWS::AppConfig::Environment",
+                          "AWS::AppConfig::HostedConfigurationVersion",
+                          "AWS::AppFlow::Flow",
+                          "AWS::AppIntegrations::EventIntegration",
+                          "AWS::AppMesh::GatewayRoute",
+                          "AWS::AppMesh::Mesh",
+                          "AWS::AppMesh::Route",
+                          "AWS::AppMesh::VirtualGateway",
+                          "AWS::AppMesh::VirtualNode",
+                          "AWS::AppMesh::VirtualRouter",
+                          "AWS::AppMesh::VirtualService",
+                          "AWS::AppRunner::Service",
+                          "AWS::AppRunner::VpcConnector",
+                          "AWS::AppStream::Application",
+                          "AWS::AppStream::DirectoryConfig",
+                          "AWS::AppStream::Fleet",
+                          "AWS::AppStream::Stack",
+                          "AWS::AppSync::GraphQLApi",
+                          "AWS::Athena::DataCatalog",
+                          "AWS::Athena::PreparedStatement",
+                          "AWS::Athena::WorkGroup",
+                          "AWS::AuditManager::Assessment",
+                          "AWS::AutoScaling::AutoScalingGroup",
+                          "AWS::AutoScaling::LaunchConfiguration",
+                          "AWS::AutoScaling::ScalingPolicy",
+                          "AWS::AutoScaling::ScheduledAction",
+                          "AWS::AutoScaling::WarmPool",
+                          "AWS::Backup::BackupPlan",
+                          "AWS::Backup::BackupSelection",
+                          "AWS::Backup::BackupVault",
+                          "AWS::Backup::RecoveryPoint",
+                          "AWS::Backup::ReportPlan",
+                          "AWS::Batch::ComputeEnvironment",
+                          "AWS::Batch::JobQueue",
+                          "AWS::Batch::SchedulingPolicy",
+                          "AWS::Budgets::BudgetsAction",
+                          "AWS::Cassandra::Keyspace",
+                          "AWS::Cloud9::EnvironmentEC2",
+                          "AWS::CloudFormation::Stack",
+                          "AWS::CloudFront::Distribution",
+                          "AWS::CloudFront::StreamingDistribution",
+                          "AWS::CloudTrail::Trail",
+                          "AWS::CloudWatch::Alarm",
+                          "AWS::CloudWatch::MetricStream",
+                          "AWS::CodeArtifact::Repository",
+                          "AWS::CodeBuild::Project",
+                          "AWS::CodeBuild::ReportGroup",
+                          "AWS::CodeDeploy::Application",
+                          "AWS::CodeDeploy::DeploymentConfig",
+                          "AWS::CodeDeploy::DeploymentGroup",
+                          "AWS::CodeGuruProfiler::ProfilingGroup",
+                          "AWS::CodeGuruReviewer::RepositoryAssociation",
+                          "AWS::CodePipeline::Pipeline",
+                          "AWS::Cognito::UserPool",
+                          "AWS::Cognito::UserPoolClient",
+                          "AWS::Cognito::UserPoolGroup",
+                          "AWS::Config::ConformancePackCompliance",
+                          "AWS::Config::ResourceCompliance",
+                          "AWS::Connect::Instance",
+                          "AWS::Connect::PhoneNumber",
+                          "AWS::Connect::QuickConnect",
+                          "AWS::CustomerProfiles::Domain",
+                          "AWS::CustomerProfiles::ObjectType",
+                          "AWS::DMS::Certificate",
+                          "AWS::DMS::Endpoint",
+                          "AWS::DMS::EventSubscription",
+                          "AWS::DMS::ReplicationSubnetGroup",
+                          "AWS::DataSync::LocationEFS",
+                          "AWS::DataSync::LocationFSxLustre",
+                          "AWS::DataSync::LocationFSxWindows",
+                          "AWS::DataSync::LocationHDFS",
+                          "AWS::DataSync::LocationNFS",
+                          "AWS::DataSync::LocationObjectStorage",
+                          "AWS::DataSync::LocationS3",
+                          "AWS::DataSync::LocationSMB",
+                          "AWS::DataSync::Task",
+                          "AWS::Detective::Graph",
+                          "AWS::DeviceFarm::InstanceProfile",
+                          "AWS::DeviceFarm::Project",
+                          "AWS::DeviceFarm::TestGridProject",
+                          "AWS::DynamoDB::Table",
+                          "AWS::EC2::CapacityReservation",
+                          "AWS::EC2::CarrierGateway",
+                          "AWS::EC2::ClientVpnEndpoint",
+                          "AWS::EC2::CustomerGateway",
+                          "AWS::EC2::DHCPOptions",
+                          "AWS::EC2::EC2Fleet",
+                          "AWS::EC2::EIP",
+                          "AWS::EC2::EgressOnlyInternetGateway",
+                          "AWS::EC2::FlowLog",
+                          "AWS::EC2::Host",
+                          "AWS::EC2::IPAM",
+                          "AWS::EC2::IPAMPool",
+                          "AWS::EC2::IPAMScope",
+                          "AWS::EC2::Instance",
+                          "AWS::EC2::InternetGateway",
+                          "AWS::EC2::LaunchTemplate",
+                          "AWS::EC2::NatGateway",
+                          "AWS::EC2::NetworkAcl",
+                          "AWS::EC2::NetworkInsightsAccessScope",
+                          "AWS::EC2::NetworkInsightsAccessScopeAnalysis",
+                          "AWS::EC2::NetworkInsightsAnalysis",
+                          "AWS::EC2::NetworkInsightsPath",
+                          "AWS::EC2::NetworkInterface",
+                          "AWS::EC2::PrefixList",
+                          "AWS::EC2::RegisteredHAInstance",
+                          "AWS::EC2::RouteTable",
+                          "AWS::EC2::SecurityGroup",
+                          "AWS::EC2::SpotFleet",
+                          "AWS::EC2::Subnet",
+                          "AWS::EC2::SubnetRouteTableAssociation",
+                          "AWS::EC2::TrafficMirrorFilter",
+                          "AWS::EC2::TrafficMirrorSession",
+                          "AWS::EC2::TrafficMirrorTarget",
+                          "AWS::EC2::TransitGateway",
+                          "AWS::EC2::TransitGatewayAttachment",
+                          "AWS::EC2::TransitGatewayConnect",
+                          "AWS::EC2::TransitGatewayMulticastDomain",
+                          "AWS::EC2::TransitGatewayRouteTable",
+                          "AWS::EC2::VPC",
+                          "AWS::EC2::VPCEndpoint",
+                          "AWS::EC2::VPCEndpointService",
+                          "AWS::EC2::VPCPeeringConnection",
+                          "AWS::EC2::VPNConnection",
+                          "AWS::EC2::VPNGateway",
+                          "AWS::EC2::Volume",
+                          "AWS::ECR::PublicRepository",
+                          "AWS::ECR::PullThroughCacheRule",
+                          "AWS::ECR::RegistryPolicy",
+                          "AWS::ECR::Repository",
+                          "AWS::ECS::CapacityProvider",
+                          "AWS::ECS::Cluster",
+                          "AWS::ECS::Service",
+                          "AWS::ECS::TaskDefinition",
+                          "AWS::ECS::TaskSet",
+                          "AWS::EFS::AccessPoint",
+                          "AWS::EFS::FileSystem",
+                          "AWS::EKS::Addon",
+                          "AWS::EKS::Cluster",
+                          "AWS::EKS::FargateProfile",
+                          "AWS::EKS::IdentityProviderConfig",
+                          "AWS::EMR::SecurityConfiguration",
+                          "AWS::ElasticBeanstalk::Application",
+                          "AWS::ElasticBeanstalk::ApplicationVersion",
+                          "AWS::ElasticBeanstalk::Environment",
+                          "AWS::ElasticLoadBalancing::LoadBalancer",
+                          "AWS::ElasticLoadBalancingV2::Listener",
+                          "AWS::ElasticLoadBalancingV2::LoadBalancer",
+                          "AWS::Elasticsearch::Domain",
+                          "AWS::EventSchemas::Discoverer",
+                          "AWS::EventSchemas::Registry",
+                          "AWS::EventSchemas::RegistryPolicy",
+                          "AWS::EventSchemas::Schema",
+                          "AWS::Events::ApiDestination",
+                          "AWS::Events::Archive",
+                          "AWS::Events::Connection",
+                          "AWS::Events::Endpoint",
+                          "AWS::Events::EventBus",
+                          "AWS::Events::Rule",
+                          "AWS::Evidently::Launch",
+                          "AWS::Evidently::Project",
+                          "AWS::FIS::ExperimentTemplate",
+                          "AWS::Forecast::Dataset",
+                          "AWS::Forecast::DatasetGroup",
+                          "AWS::FraudDetector::EntityType",
+                          "AWS::FraudDetector::Label",
+                          "AWS::FraudDetector::Outcome",
+                          "AWS::FraudDetector::Variable",
+                          "AWS::GlobalAccelerator::Accelerator",
+                          "AWS::GlobalAccelerator::EndpointGroup",
+                          "AWS::GlobalAccelerator::Listener",
+                          "AWS::Glue::Classifier",
+                          "AWS::Glue::Job",
+                          "AWS::Glue::MLTransform",
+                          "AWS::Grafana::Workspace",
+                          "AWS::GreengrassV2::ComponentVersion",
+                          "AWS::GroundStation::Config",
+                          "AWS::GroundStation::DataflowEndpointGroup",
+                          "AWS::GroundStation::MissionProfile",
+                          "AWS::GuardDuty::Detector",
+                          "AWS::GuardDuty::Filter",
+                          "AWS::GuardDuty::IPSet",
+                          "AWS::GuardDuty::ThreatIntelSet",
+                          "AWS::HealthLake::FHIRDatastore",
+                          "AWS::IAM::Group",
+                          "AWS::IAM::InstanceProfile",
+                          "AWS::IAM::Policy",
+                          "AWS::IAM::Role",
+                          "AWS::IAM::SAMLProvider",
+                          "AWS::IAM::ServerCertificate",
+                          "AWS::IAM::User",
+                          "AWS::IVS::Channel",
+                          "AWS::IVS::PlaybackKeyPair",
+                          "AWS::IVS::RecordingConfiguration",
+                          "AWS::ImageBuilder::ContainerRecipe",
+                          "AWS::ImageBuilder::DistributionConfiguration",
+                          "AWS::ImageBuilder::ImagePipeline",
+                          "AWS::ImageBuilder::ImageRecipe",
+                          "AWS::ImageBuilder::InfrastructureConfiguration",
+                          "AWS::InspectorV2::Filter",
+                          "AWS::IoT::AccountAuditConfiguration",
+                          "AWS::IoT::Authorizer",
+                          "AWS::IoT::CACertificate",
+                          "AWS::IoT::CustomMetric",
+                          "AWS::IoT::Dimension",
+                          "AWS::IoT::FleetMetric",
+                          "AWS::IoT::JobTemplate",
+                          "AWS::IoT::MitigationAction",
+                          "AWS::IoT::Policy",
+                          "AWS::IoT::ProvisioningTemplate",
+                          "AWS::IoT::RoleAlias",
+                          "AWS::IoT::ScheduledAudit",
+                          "AWS::IoT::SecurityProfile",
+                          "AWS::IoTAnalytics::Channel",
+                          "AWS::IoTAnalytics::Dataset",
+                          "AWS::IoTAnalytics::Datastore",
+                          "AWS::IoTAnalytics::Pipeline",
+                          "AWS::IoTEvents::AlarmModel",
+                          "AWS::IoTEvents::DetectorModel",
+                          "AWS::IoTEvents::Input",
+                          "AWS::IoTSiteWise::AssetModel",
+                          "AWS::IoTSiteWise::Dashboard",
+                          "AWS::IoTSiteWise::Gateway",
+                          "AWS::IoTSiteWise::Portal",
+                          "AWS::IoTSiteWise::Project",
+                          "AWS::IoTTwinMaker::ComponentType",
+                          "AWS::IoTTwinMaker::Entity",
+                          "AWS::IoTTwinMaker::Scene",
+                          "AWS::IoTTwinMaker::SyncJob",
+                          "AWS::IoTTwinMaker::Workspace",
+                          "AWS::IoTWireless::FuotaTask",
+                          "AWS::IoTWireless::MulticastGroup",
+                          "AWS::IoTWireless::ServiceProfile",
+                          "AWS::KMS::Alias",
+                          "AWS::KMS::Key",
+                          "AWS::KafkaConnect::Connector",
+                          "AWS::Kendra::Index",
+                          "AWS::Kinesis::Stream",
+                          "AWS::Kinesis::StreamConsumer",
+                          "AWS::KinesisAnalyticsV2::Application",
+                          "AWS::KinesisFirehose::DeliveryStream",
+                          "AWS::KinesisVideo::SignalingChannel",
+                          "AWS::KinesisVideo::Stream",
+                          "AWS::Lambda::CodeSigningConfig",
+                          "AWS::Lambda::Function",
+                          "AWS::Lex::Bot",
+                          "AWS::Lex::BotAlias",
+                          "AWS::Lightsail::Bucket",
+                          "AWS::Lightsail::Certificate",
+                          "AWS::Lightsail::Disk",
+                          "AWS::Lightsail::StaticIp",
+                          "AWS::Logs::Destination",
+                          "AWS::LookoutMetrics::Alert",
+                          "AWS::LookoutVision::Project",
+                          "AWS::M2::Environment",
+                          "AWS::MSK::BatchScramSecret",
+                          "AWS::MSK::Cluster",
+                          "AWS::MSK::Configuration",
+                          "AWS::MediaConnect::FlowEntitlement",
+                          "AWS::MediaConnect::FlowSource",
+                          "AWS::MediaConnect::FlowVpcInterface",
+                          "AWS::MediaPackage::PackagingConfiguration",
+                          "AWS::MediaPackage::PackagingGroup",
+                          "AWS::MediaTailor::PlaybackConfiguration",
+                          "AWS::NetworkFirewall::Firewall",
+                          "AWS::NetworkFirewall::FirewallPolicy",
+                          "AWS::NetworkFirewall::RuleGroup",
+                          "AWS::NetworkManager::ConnectPeer",
+                          "AWS::NetworkManager::CustomerGatewayAssociation",
+                          "AWS::NetworkManager::Device",
+                          "AWS::NetworkManager::GlobalNetwork",
+                          "AWS::NetworkManager::Link",
+                          "AWS::NetworkManager::LinkAssociation",
+                          "AWS::NetworkManager::Site",
+                          "AWS::NetworkManager::TransitGatewayRegistration",
+                          "AWS::OpenSearch::Domain",
+                          "AWS::Panorama::Package",
+                          "AWS::Personalize::Dataset",
+                          "AWS::Personalize::DatasetGroup",
+                          "AWS::Personalize::Schema",
+                          "AWS::Personalize::Solution",
+                          "AWS::Pinpoint::App",
+                          "AWS::Pinpoint::ApplicationSettings",
+                          "AWS::Pinpoint::Campaign",
+                          "AWS::Pinpoint::EmailChannel",
+                          "AWS::Pinpoint::EmailTemplate",
+                          "AWS::Pinpoint::EventStream",
+                          "AWS::Pinpoint::InAppTemplate",
+                          "AWS::Pinpoint::Segment",
+                          "AWS::QLDB::Ledger",
+                          "AWS::QuickSight::DataSource",
+                          "AWS::QuickSight::Template",
+                          "AWS::QuickSight::Theme",
+                          "AWS::RDS::DBCluster",
+                          "AWS::RDS::DBClusterSnapshot",
+                          "AWS::RDS::DBInstance",
+                          "AWS::RDS::DBSecurityGroup",
+                          "AWS::RDS::DBSnapshot",
+                          "AWS::RDS::DBSubnetGroup",
+                          "AWS::RDS::EventSubscription",
+                          "AWS::RDS::GlobalCluster",
+                          "AWS::RDS::OptionGroup",
+                          "AWS::RUM::AppMonitor",
+                          "AWS::Redshift::Cluster",
+                          "AWS::Redshift::ClusterParameterGroup",
+                          "AWS::Redshift::ClusterSecurityGroup",
+                          "AWS::Redshift::ClusterSnapshot",
+                          "AWS::Redshift::ClusterSubnetGroup",
+                          "AWS::Redshift::EndpointAccess",
+                          "AWS::Redshift::EventSubscription",
+                          "AWS::Redshift::ScheduledAction",
+                          "AWS::ResilienceHub::App",
+                          "AWS::ResilienceHub::ResiliencyPolicy",
+                          "AWS::ResourceExplorer2::Index",
+                          "AWS::RoboMaker::RobotApplication",
+                          "AWS::RoboMaker::RobotApplicationVersion",
+                          "AWS::RoboMaker::SimulationApplication",
+                          "AWS::Route53::HostedZone",
+                          "AWS::Route53RecoveryControl::Cluster",
+                          "AWS::Route53RecoveryControl::ControlPanel",
+                          "AWS::Route53RecoveryControl::RoutingControl",
+                          "AWS::Route53RecoveryControl::SafetyRule",
+                          "AWS::Route53RecoveryReadiness::Cell",
+                          "AWS::Route53RecoveryReadiness::ReadinessCheck",
+                          "AWS::Route53RecoveryReadiness::RecoveryGroup",
+                          "AWS::Route53RecoveryReadiness::ResourceSet",
+                          "AWS::Route53Resolver::FirewallDomainList",
+                          "AWS::Route53Resolver::FirewallRuleGroup",
+                          "AWS::Route53Resolver::FirewallRuleGroupAssociation",
+                          "AWS::Route53Resolver::ResolverEndpoint",
+                          "AWS::Route53Resolver::ResolverQueryLoggingConfig",
+                          "AWS::Route53Resolver::ResolverQueryLoggingConfigAssociation",
+                          "AWS::Route53Resolver::ResolverRule",
+                          "AWS::Route53Resolver::ResolverRuleAssociation",
+                          "AWS::S3::AccessPoint",
+                          "AWS::S3::AccountPublicAccessBlock",
+                          "AWS::S3::Bucket",
+                          "AWS::S3::MultiRegionAccessPoint",
+                          "AWS::S3::StorageLens",
+                          "AWS::SES::ConfigurationSet",
+                          "AWS::SES::ContactList",
+                          "AWS::SES::ReceiptFilter",
+                          "AWS::SES::ReceiptRuleSet",
+                          "AWS::SES::Template",
+                          "AWS::SNS::Topic",
+                          "AWS::SQS::Queue",
+                          "AWS::SSM::AssociationCompliance",
+                          "AWS::SSM::Document",
+                          "AWS::SSM::FileData",
+                          "AWS::SSM::ManagedInstanceInventory",
+                          "AWS::SSM::PatchCompliance",
+                          "AWS::SageMaker::AppImageConfig",
+                          "AWS::SageMaker::CodeRepository",
+                          "AWS::SageMaker::Domain",
+                          "AWS::SageMaker::FeatureGroup",
+                          "AWS::SageMaker::Image",
+                          "AWS::SageMaker::Model",
+                          "AWS::SageMaker::NotebookInstanceLifecycleConfig",
+                          "AWS::SageMaker::Workteam",
+                          "AWS::SecretsManager::Secret",
+                          "AWS::ServiceCatalog::CloudFormationProduct",
+                          "AWS::ServiceCatalog::CloudFormationProvisionedProduct",
+                          "AWS::ServiceCatalog::Portfolio",
+                          "AWS::ServiceDiscovery::HttpNamespace",
+                          "AWS::ServiceDiscovery::Instance",
+                          "AWS::ServiceDiscovery::PublicDnsNamespace",
+                          "AWS::ServiceDiscovery::Service",
+                          "AWS::Shield::Protection",
+                          "AWS::ShieldRegional::Protection",
+                          "AWS::Signer::SigningProfile",
+                          "AWS::StepFunctions::Activity",
+                          "AWS::StepFunctions::StateMachine",
+                          "AWS::Transfer::Agreement",
+                          "AWS::Transfer::Certificate",
+                          "AWS::Transfer::Connector",
+                          "AWS::Transfer::Workflow",
+                          "AWS::WAF::RateBasedRule",
+                          "AWS::WAF::Rule",
+                          "AWS::WAF::RuleGroup",
+                          "AWS::WAF::WebACL",
+                          "AWS::WAFRegional::RateBasedRule",
+                          "AWS::WAFRegional::Rule",
+                          "AWS::WAFRegional::RuleGroup",
+                          "AWS::WAFRegional::WebACL",
+                          "AWS::WAFv2::IPSet",
+                          "AWS::WAFv2::ManagedRuleSet",
+                          "AWS::WAFv2::RegexPatternSet",
+                          "AWS::WAFv2::RuleGroup",
+                          "AWS::WAFv2::WebACL",
+                          "AWS::WorkSpaces::ConnectionAlias",
+                          "AWS::WorkSpaces::Workspace",
+                          "AWS::XRay::EncryptionConfig",
+                        ]),
+                      ),
+                    ),
+                  }),
+                ),
+                includeGlobalResourceTypes: Schema.optional(Schema.Boolean),
+                recordingStrategy: Schema.optional(
+                  Schema.Struct({
+                    useOnly: Schema.optional(
+                      Schema.Struct({
+                        value: Schema.optional(
+                          Schema.Literals([
+                            "ALL_SUPPORTED_RESOURCE_TYPES",
+                            "EXCLUSION_BY_RESOURCE_TYPES",
+                            "INCLUSION_BY_RESOURCE_TYPES",
+                          ]),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+                resourceTypes: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals([
+                      "AWS::ACM::Certificate",
+                      "AWS::ACMPCA::CertificateAuthority",
+                      "AWS::ACMPCA::CertificateAuthorityActivation",
+                      "AWS::APS::RuleGroupsNamespace",
+                      "AWS::AccessAnalyzer::Analyzer",
+                      "AWS::AmazonMQ::Broker",
+                      "AWS::Amplify::App",
+                      "AWS::Amplify::Branch",
+                      "AWS::ApiGateway::RestApi",
+                      "AWS::ApiGateway::Stage",
+                      "AWS::ApiGatewayV2::Api",
+                      "AWS::ApiGatewayV2::Stage",
+                      "AWS::AppConfig::Application",
+                      "AWS::AppConfig::ConfigurationProfile",
+                      "AWS::AppConfig::DeploymentStrategy",
+                      "AWS::AppConfig::Environment",
+                      "AWS::AppConfig::HostedConfigurationVersion",
+                      "AWS::AppFlow::Flow",
+                      "AWS::AppIntegrations::EventIntegration",
+                      "AWS::AppMesh::GatewayRoute",
+                      "AWS::AppMesh::Mesh",
+                      "AWS::AppMesh::Route",
+                      "AWS::AppMesh::VirtualGateway",
+                      "AWS::AppMesh::VirtualNode",
+                      "AWS::AppMesh::VirtualRouter",
+                      "AWS::AppMesh::VirtualService",
+                      "AWS::AppRunner::Service",
+                      "AWS::AppRunner::VpcConnector",
+                      "AWS::AppStream::Application",
+                      "AWS::AppStream::DirectoryConfig",
+                      "AWS::AppStream::Fleet",
+                      "AWS::AppStream::Stack",
+                      "AWS::AppSync::GraphQLApi",
+                      "AWS::Athena::DataCatalog",
+                      "AWS::Athena::PreparedStatement",
+                      "AWS::Athena::WorkGroup",
+                      "AWS::AuditManager::Assessment",
+                      "AWS::AutoScaling::AutoScalingGroup",
+                      "AWS::AutoScaling::LaunchConfiguration",
+                      "AWS::AutoScaling::ScalingPolicy",
+                      "AWS::AutoScaling::ScheduledAction",
+                      "AWS::AutoScaling::WarmPool",
+                      "AWS::Backup::BackupPlan",
+                      "AWS::Backup::BackupSelection",
+                      "AWS::Backup::BackupVault",
+                      "AWS::Backup::RecoveryPoint",
+                      "AWS::Backup::ReportPlan",
+                      "AWS::Batch::ComputeEnvironment",
+                      "AWS::Batch::JobQueue",
+                      "AWS::Batch::SchedulingPolicy",
+                      "AWS::Budgets::BudgetsAction",
+                      "AWS::Cassandra::Keyspace",
+                      "AWS::Cloud9::EnvironmentEC2",
+                      "AWS::CloudFormation::Stack",
+                      "AWS::CloudFront::Distribution",
+                      "AWS::CloudFront::StreamingDistribution",
+                      "AWS::CloudTrail::Trail",
+                      "AWS::CloudWatch::Alarm",
+                      "AWS::CloudWatch::MetricStream",
+                      "AWS::CodeArtifact::Repository",
+                      "AWS::CodeBuild::Project",
+                      "AWS::CodeBuild::ReportGroup",
+                      "AWS::CodeDeploy::Application",
+                      "AWS::CodeDeploy::DeploymentConfig",
+                      "AWS::CodeDeploy::DeploymentGroup",
+                      "AWS::CodeGuruProfiler::ProfilingGroup",
+                      "AWS::CodeGuruReviewer::RepositoryAssociation",
+                      "AWS::CodePipeline::Pipeline",
+                      "AWS::Cognito::UserPool",
+                      "AWS::Cognito::UserPoolClient",
+                      "AWS::Cognito::UserPoolGroup",
+                      "AWS::Config::ConformancePackCompliance",
+                      "AWS::Config::ResourceCompliance",
+                      "AWS::Connect::Instance",
+                      "AWS::Connect::PhoneNumber",
+                      "AWS::Connect::QuickConnect",
+                      "AWS::CustomerProfiles::Domain",
+                      "AWS::CustomerProfiles::ObjectType",
+                      "AWS::DMS::Certificate",
+                      "AWS::DMS::Endpoint",
+                      "AWS::DMS::EventSubscription",
+                      "AWS::DMS::ReplicationSubnetGroup",
+                      "AWS::DataSync::LocationEFS",
+                      "AWS::DataSync::LocationFSxLustre",
+                      "AWS::DataSync::LocationFSxWindows",
+                      "AWS::DataSync::LocationHDFS",
+                      "AWS::DataSync::LocationNFS",
+                      "AWS::DataSync::LocationObjectStorage",
+                      "AWS::DataSync::LocationS3",
+                      "AWS::DataSync::LocationSMB",
+                      "AWS::DataSync::Task",
+                      "AWS::Detective::Graph",
+                      "AWS::DeviceFarm::InstanceProfile",
+                      "AWS::DeviceFarm::Project",
+                      "AWS::DeviceFarm::TestGridProject",
+                      "AWS::DynamoDB::Table",
+                      "AWS::EC2::CapacityReservation",
+                      "AWS::EC2::CarrierGateway",
+                      "AWS::EC2::ClientVpnEndpoint",
+                      "AWS::EC2::CustomerGateway",
+                      "AWS::EC2::DHCPOptions",
+                      "AWS::EC2::EC2Fleet",
+                      "AWS::EC2::EIP",
+                      "AWS::EC2::EgressOnlyInternetGateway",
+                      "AWS::EC2::FlowLog",
+                      "AWS::EC2::Host",
+                      "AWS::EC2::IPAM",
+                      "AWS::EC2::IPAMPool",
+                      "AWS::EC2::IPAMScope",
+                      "AWS::EC2::Instance",
+                      "AWS::EC2::InternetGateway",
+                      "AWS::EC2::LaunchTemplate",
+                      "AWS::EC2::NatGateway",
+                      "AWS::EC2::NetworkAcl",
+                      "AWS::EC2::NetworkInsightsAccessScope",
+                      "AWS::EC2::NetworkInsightsAccessScopeAnalysis",
+                      "AWS::EC2::NetworkInsightsAnalysis",
+                      "AWS::EC2::NetworkInsightsPath",
+                      "AWS::EC2::NetworkInterface",
+                      "AWS::EC2::PrefixList",
+                      "AWS::EC2::RegisteredHAInstance",
+                      "AWS::EC2::RouteTable",
+                      "AWS::EC2::SecurityGroup",
+                      "AWS::EC2::SpotFleet",
+                      "AWS::EC2::Subnet",
+                      "AWS::EC2::SubnetRouteTableAssociation",
+                      "AWS::EC2::TrafficMirrorFilter",
+                      "AWS::EC2::TrafficMirrorSession",
+                      "AWS::EC2::TrafficMirrorTarget",
+                      "AWS::EC2::TransitGateway",
+                      "AWS::EC2::TransitGatewayAttachment",
+                      "AWS::EC2::TransitGatewayConnect",
+                      "AWS::EC2::TransitGatewayMulticastDomain",
+                      "AWS::EC2::TransitGatewayRouteTable",
+                      "AWS::EC2::VPC",
+                      "AWS::EC2::VPCEndpoint",
+                      "AWS::EC2::VPCEndpointService",
+                      "AWS::EC2::VPCPeeringConnection",
+                      "AWS::EC2::VPNConnection",
+                      "AWS::EC2::VPNGateway",
+                      "AWS::EC2::Volume",
+                      "AWS::ECR::PublicRepository",
+                      "AWS::ECR::PullThroughCacheRule",
+                      "AWS::ECR::RegistryPolicy",
+                      "AWS::ECR::Repository",
+                      "AWS::ECS::CapacityProvider",
+                      "AWS::ECS::Cluster",
+                      "AWS::ECS::Service",
+                      "AWS::ECS::TaskDefinition",
+                      "AWS::ECS::TaskSet",
+                      "AWS::EFS::AccessPoint",
+                      "AWS::EFS::FileSystem",
+                      "AWS::EKS::Addon",
+                      "AWS::EKS::Cluster",
+                      "AWS::EKS::FargateProfile",
+                      "AWS::EKS::IdentityProviderConfig",
+                      "AWS::EMR::SecurityConfiguration",
+                      "AWS::ElasticBeanstalk::Application",
+                      "AWS::ElasticBeanstalk::ApplicationVersion",
+                      "AWS::ElasticBeanstalk::Environment",
+                      "AWS::ElasticLoadBalancing::LoadBalancer",
+                      "AWS::ElasticLoadBalancingV2::Listener",
+                      "AWS::ElasticLoadBalancingV2::LoadBalancer",
+                      "AWS::Elasticsearch::Domain",
+                      "AWS::EventSchemas::Discoverer",
+                      "AWS::EventSchemas::Registry",
+                      "AWS::EventSchemas::RegistryPolicy",
+                      "AWS::EventSchemas::Schema",
+                      "AWS::Events::ApiDestination",
+                      "AWS::Events::Archive",
+                      "AWS::Events::Connection",
+                      "AWS::Events::Endpoint",
+                      "AWS::Events::EventBus",
+                      "AWS::Events::Rule",
+                      "AWS::Evidently::Launch",
+                      "AWS::Evidently::Project",
+                      "AWS::FIS::ExperimentTemplate",
+                      "AWS::Forecast::Dataset",
+                      "AWS::Forecast::DatasetGroup",
+                      "AWS::FraudDetector::EntityType",
+                      "AWS::FraudDetector::Label",
+                      "AWS::FraudDetector::Outcome",
+                      "AWS::FraudDetector::Variable",
+                      "AWS::GlobalAccelerator::Accelerator",
+                      "AWS::GlobalAccelerator::EndpointGroup",
+                      "AWS::GlobalAccelerator::Listener",
+                      "AWS::Glue::Classifier",
+                      "AWS::Glue::Job",
+                      "AWS::Glue::MLTransform",
+                      "AWS::Grafana::Workspace",
+                      "AWS::GreengrassV2::ComponentVersion",
+                      "AWS::GroundStation::Config",
+                      "AWS::GroundStation::DataflowEndpointGroup",
+                      "AWS::GroundStation::MissionProfile",
+                      "AWS::GuardDuty::Detector",
+                      "AWS::GuardDuty::Filter",
+                      "AWS::GuardDuty::IPSet",
+                      "AWS::GuardDuty::ThreatIntelSet",
+                      "AWS::HealthLake::FHIRDatastore",
+                      "AWS::IAM::Group",
+                      "AWS::IAM::InstanceProfile",
+                      "AWS::IAM::Policy",
+                      "AWS::IAM::Role",
+                      "AWS::IAM::SAMLProvider",
+                      "AWS::IAM::ServerCertificate",
+                      "AWS::IAM::User",
+                      "AWS::IVS::Channel",
+                      "AWS::IVS::PlaybackKeyPair",
+                      "AWS::IVS::RecordingConfiguration",
+                      "AWS::ImageBuilder::ContainerRecipe",
+                      "AWS::ImageBuilder::DistributionConfiguration",
+                      "AWS::ImageBuilder::ImagePipeline",
+                      "AWS::ImageBuilder::ImageRecipe",
+                      "AWS::ImageBuilder::InfrastructureConfiguration",
+                      "AWS::InspectorV2::Filter",
+                      "AWS::IoT::AccountAuditConfiguration",
+                      "AWS::IoT::Authorizer",
+                      "AWS::IoT::CACertificate",
+                      "AWS::IoT::CustomMetric",
+                      "AWS::IoT::Dimension",
+                      "AWS::IoT::FleetMetric",
+                      "AWS::IoT::JobTemplate",
+                      "AWS::IoT::MitigationAction",
+                      "AWS::IoT::Policy",
+                      "AWS::IoT::ProvisioningTemplate",
+                      "AWS::IoT::RoleAlias",
+                      "AWS::IoT::ScheduledAudit",
+                      "AWS::IoT::SecurityProfile",
+                      "AWS::IoTAnalytics::Channel",
+                      "AWS::IoTAnalytics::Dataset",
+                      "AWS::IoTAnalytics::Datastore",
+                      "AWS::IoTAnalytics::Pipeline",
+                      "AWS::IoTEvents::AlarmModel",
+                      "AWS::IoTEvents::DetectorModel",
+                      "AWS::IoTEvents::Input",
+                      "AWS::IoTSiteWise::AssetModel",
+                      "AWS::IoTSiteWise::Dashboard",
+                      "AWS::IoTSiteWise::Gateway",
+                      "AWS::IoTSiteWise::Portal",
+                      "AWS::IoTSiteWise::Project",
+                      "AWS::IoTTwinMaker::ComponentType",
+                      "AWS::IoTTwinMaker::Entity",
+                      "AWS::IoTTwinMaker::Scene",
+                      "AWS::IoTTwinMaker::SyncJob",
+                      "AWS::IoTTwinMaker::Workspace",
+                      "AWS::IoTWireless::FuotaTask",
+                      "AWS::IoTWireless::MulticastGroup",
+                      "AWS::IoTWireless::ServiceProfile",
+                      "AWS::KMS::Alias",
+                      "AWS::KMS::Key",
+                      "AWS::KafkaConnect::Connector",
+                      "AWS::Kendra::Index",
+                      "AWS::Kinesis::Stream",
+                      "AWS::Kinesis::StreamConsumer",
+                      "AWS::KinesisAnalyticsV2::Application",
+                      "AWS::KinesisFirehose::DeliveryStream",
+                      "AWS::KinesisVideo::SignalingChannel",
+                      "AWS::KinesisVideo::Stream",
+                      "AWS::Lambda::CodeSigningConfig",
+                      "AWS::Lambda::Function",
+                      "AWS::Lex::Bot",
+                      "AWS::Lex::BotAlias",
+                      "AWS::Lightsail::Bucket",
+                      "AWS::Lightsail::Certificate",
+                      "AWS::Lightsail::Disk",
+                      "AWS::Lightsail::StaticIp",
+                      "AWS::Logs::Destination",
+                      "AWS::LookoutMetrics::Alert",
+                      "AWS::LookoutVision::Project",
+                      "AWS::M2::Environment",
+                      "AWS::MSK::BatchScramSecret",
+                      "AWS::MSK::Cluster",
+                      "AWS::MSK::Configuration",
+                      "AWS::MediaConnect::FlowEntitlement",
+                      "AWS::MediaConnect::FlowSource",
+                      "AWS::MediaConnect::FlowVpcInterface",
+                      "AWS::MediaPackage::PackagingConfiguration",
+                      "AWS::MediaPackage::PackagingGroup",
+                      "AWS::MediaTailor::PlaybackConfiguration",
+                      "AWS::NetworkFirewall::Firewall",
+                      "AWS::NetworkFirewall::FirewallPolicy",
+                      "AWS::NetworkFirewall::RuleGroup",
+                      "AWS::NetworkManager::ConnectPeer",
+                      "AWS::NetworkManager::CustomerGatewayAssociation",
+                      "AWS::NetworkManager::Device",
+                      "AWS::NetworkManager::GlobalNetwork",
+                      "AWS::NetworkManager::Link",
+                      "AWS::NetworkManager::LinkAssociation",
+                      "AWS::NetworkManager::Site",
+                      "AWS::NetworkManager::TransitGatewayRegistration",
+                      "AWS::OpenSearch::Domain",
+                      "AWS::Panorama::Package",
+                      "AWS::Personalize::Dataset",
+                      "AWS::Personalize::DatasetGroup",
+                      "AWS::Personalize::Schema",
+                      "AWS::Personalize::Solution",
+                      "AWS::Pinpoint::App",
+                      "AWS::Pinpoint::ApplicationSettings",
+                      "AWS::Pinpoint::Campaign",
+                      "AWS::Pinpoint::EmailChannel",
+                      "AWS::Pinpoint::EmailTemplate",
+                      "AWS::Pinpoint::EventStream",
+                      "AWS::Pinpoint::InAppTemplate",
+                      "AWS::Pinpoint::Segment",
+                      "AWS::QLDB::Ledger",
+                      "AWS::QuickSight::DataSource",
+                      "AWS::QuickSight::Template",
+                      "AWS::QuickSight::Theme",
+                      "AWS::RDS::DBCluster",
+                      "AWS::RDS::DBClusterSnapshot",
+                      "AWS::RDS::DBInstance",
+                      "AWS::RDS::DBSecurityGroup",
+                      "AWS::RDS::DBSnapshot",
+                      "AWS::RDS::DBSubnetGroup",
+                      "AWS::RDS::EventSubscription",
+                      "AWS::RDS::GlobalCluster",
+                      "AWS::RDS::OptionGroup",
+                      "AWS::RUM::AppMonitor",
+                      "AWS::Redshift::Cluster",
+                      "AWS::Redshift::ClusterParameterGroup",
+                      "AWS::Redshift::ClusterSecurityGroup",
+                      "AWS::Redshift::ClusterSnapshot",
+                      "AWS::Redshift::ClusterSubnetGroup",
+                      "AWS::Redshift::EndpointAccess",
+                      "AWS::Redshift::EventSubscription",
+                      "AWS::Redshift::ScheduledAction",
+                      "AWS::ResilienceHub::App",
+                      "AWS::ResilienceHub::ResiliencyPolicy",
+                      "AWS::ResourceExplorer2::Index",
+                      "AWS::RoboMaker::RobotApplication",
+                      "AWS::RoboMaker::RobotApplicationVersion",
+                      "AWS::RoboMaker::SimulationApplication",
+                      "AWS::Route53::HostedZone",
+                      "AWS::Route53RecoveryControl::Cluster",
+                      "AWS::Route53RecoveryControl::ControlPanel",
+                      "AWS::Route53RecoveryControl::RoutingControl",
+                      "AWS::Route53RecoveryControl::SafetyRule",
+                      "AWS::Route53RecoveryReadiness::Cell",
+                      "AWS::Route53RecoveryReadiness::ReadinessCheck",
+                      "AWS::Route53RecoveryReadiness::RecoveryGroup",
+                      "AWS::Route53RecoveryReadiness::ResourceSet",
+                      "AWS::Route53Resolver::FirewallDomainList",
+                      "AWS::Route53Resolver::FirewallRuleGroup",
+                      "AWS::Route53Resolver::FirewallRuleGroupAssociation",
+                      "AWS::Route53Resolver::ResolverEndpoint",
+                      "AWS::Route53Resolver::ResolverQueryLoggingConfig",
+                      "AWS::Route53Resolver::ResolverQueryLoggingConfigAssociation",
+                      "AWS::Route53Resolver::ResolverRule",
+                      "AWS::Route53Resolver::ResolverRuleAssociation",
+                      "AWS::S3::AccessPoint",
+                      "AWS::S3::AccountPublicAccessBlock",
+                      "AWS::S3::Bucket",
+                      "AWS::S3::MultiRegionAccessPoint",
+                      "AWS::S3::StorageLens",
+                      "AWS::SES::ConfigurationSet",
+                      "AWS::SES::ContactList",
+                      "AWS::SES::ReceiptFilter",
+                      "AWS::SES::ReceiptRuleSet",
+                      "AWS::SES::Template",
+                      "AWS::SNS::Topic",
+                      "AWS::SQS::Queue",
+                      "AWS::SSM::AssociationCompliance",
+                      "AWS::SSM::Document",
+                      "AWS::SSM::FileData",
+                      "AWS::SSM::ManagedInstanceInventory",
+                      "AWS::SSM::PatchCompliance",
+                      "AWS::SageMaker::AppImageConfig",
+                      "AWS::SageMaker::CodeRepository",
+                      "AWS::SageMaker::Domain",
+                      "AWS::SageMaker::FeatureGroup",
+                      "AWS::SageMaker::Image",
+                      "AWS::SageMaker::Model",
+                      "AWS::SageMaker::NotebookInstanceLifecycleConfig",
+                      "AWS::SageMaker::Workteam",
+                      "AWS::SecretsManager::Secret",
+                      "AWS::ServiceCatalog::CloudFormationProduct",
+                      "AWS::ServiceCatalog::CloudFormationProvisionedProduct",
+                      "AWS::ServiceCatalog::Portfolio",
+                      "AWS::ServiceDiscovery::HttpNamespace",
+                      "AWS::ServiceDiscovery::Instance",
+                      "AWS::ServiceDiscovery::PublicDnsNamespace",
+                      "AWS::ServiceDiscovery::Service",
+                      "AWS::Shield::Protection",
+                      "AWS::ShieldRegional::Protection",
+                      "AWS::Signer::SigningProfile",
+                      "AWS::StepFunctions::Activity",
+                      "AWS::StepFunctions::StateMachine",
+                      "AWS::Transfer::Agreement",
+                      "AWS::Transfer::Certificate",
+                      "AWS::Transfer::Connector",
+                      "AWS::Transfer::Workflow",
+                      "AWS::WAF::RateBasedRule",
+                      "AWS::WAF::Rule",
+                      "AWS::WAF::RuleGroup",
+                      "AWS::WAF::WebACL",
+                      "AWS::WAFRegional::RateBasedRule",
+                      "AWS::WAFRegional::Rule",
+                      "AWS::WAFRegional::RuleGroup",
+                      "AWS::WAFRegional::WebACL",
+                      "AWS::WAFv2::IPSet",
+                      "AWS::WAFv2::ManagedRuleSet",
+                      "AWS::WAFv2::RegexPatternSet",
+                      "AWS::WAFv2::RuleGroup",
+                      "AWS::WAFv2::WebACL",
+                      "AWS::WorkSpaces::ConnectionAlias",
+                      "AWS::WorkSpaces::Workspace",
+                      "AWS::XRay::EncryptionConfig",
+                    ]),
+                  ),
+                ),
+              }),
+            ),
+            recordingMode: Schema.optional(
+              Schema.Struct({
+                recordingFrequency: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["CONTINUOUS", "DAILY"]),
+                    ),
+                  }),
+                ),
+                recordingModeOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      description: Schema.optional(Schema.String),
+                      recordingFrequency: Schema.optional(
+                        Schema.Struct({
+                          value: Schema.optional(
+                            Schema.Literals(["CONTINUOUS", "DAILY"]),
+                          ),
+                        }),
+                      ),
+                      resourceTypes: Schema.optional(
+                        Schema.Array(
+                          Schema.Literals([
+                            "AWS::ACM::Certificate",
+                            "AWS::ACMPCA::CertificateAuthority",
+                            "AWS::ACMPCA::CertificateAuthorityActivation",
+                            "AWS::APS::RuleGroupsNamespace",
+                            "AWS::AccessAnalyzer::Analyzer",
+                            "AWS::AmazonMQ::Broker",
+                            "AWS::Amplify::App",
+                            "AWS::Amplify::Branch",
+                            "AWS::ApiGateway::RestApi",
+                            "AWS::ApiGateway::Stage",
+                            "AWS::ApiGatewayV2::Api",
+                            "AWS::ApiGatewayV2::Stage",
+                            "AWS::AppConfig::Application",
+                            "AWS::AppConfig::ConfigurationProfile",
+                            "AWS::AppConfig::DeploymentStrategy",
+                            "AWS::AppConfig::Environment",
+                            "AWS::AppConfig::HostedConfigurationVersion",
+                            "AWS::AppFlow::Flow",
+                            "AWS::AppIntegrations::EventIntegration",
+                            "AWS::AppMesh::GatewayRoute",
+                            "AWS::AppMesh::Mesh",
+                            "AWS::AppMesh::Route",
+                            "AWS::AppMesh::VirtualGateway",
+                            "AWS::AppMesh::VirtualNode",
+                            "AWS::AppMesh::VirtualRouter",
+                            "AWS::AppMesh::VirtualService",
+                            "AWS::AppRunner::Service",
+                            "AWS::AppRunner::VpcConnector",
+                            "AWS::AppStream::Application",
+                            "AWS::AppStream::DirectoryConfig",
+                            "AWS::AppStream::Fleet",
+                            "AWS::AppStream::Stack",
+                            "AWS::AppSync::GraphQLApi",
+                            "AWS::Athena::DataCatalog",
+                            "AWS::Athena::PreparedStatement",
+                            "AWS::Athena::WorkGroup",
+                            "AWS::AuditManager::Assessment",
+                            "AWS::AutoScaling::AutoScalingGroup",
+                            "AWS::AutoScaling::LaunchConfiguration",
+                            "AWS::AutoScaling::ScalingPolicy",
+                            "AWS::AutoScaling::ScheduledAction",
+                            "AWS::AutoScaling::WarmPool",
+                            "AWS::Backup::BackupPlan",
+                            "AWS::Backup::BackupSelection",
+                            "AWS::Backup::BackupVault",
+                            "AWS::Backup::RecoveryPoint",
+                            "AWS::Backup::ReportPlan",
+                            "AWS::Batch::ComputeEnvironment",
+                            "AWS::Batch::JobQueue",
+                            "AWS::Batch::SchedulingPolicy",
+                            "AWS::Budgets::BudgetsAction",
+                            "AWS::Cassandra::Keyspace",
+                            "AWS::Cloud9::EnvironmentEC2",
+                            "AWS::CloudFormation::Stack",
+                            "AWS::CloudFront::Distribution",
+                            "AWS::CloudFront::StreamingDistribution",
+                            "AWS::CloudTrail::Trail",
+                            "AWS::CloudWatch::Alarm",
+                            "AWS::CloudWatch::MetricStream",
+                            "AWS::CodeArtifact::Repository",
+                            "AWS::CodeBuild::Project",
+                            "AWS::CodeBuild::ReportGroup",
+                            "AWS::CodeDeploy::Application",
+                            "AWS::CodeDeploy::DeploymentConfig",
+                            "AWS::CodeDeploy::DeploymentGroup",
+                            "AWS::CodeGuruProfiler::ProfilingGroup",
+                            "AWS::CodeGuruReviewer::RepositoryAssociation",
+                            "AWS::CodePipeline::Pipeline",
+                            "AWS::Cognito::UserPool",
+                            "AWS::Cognito::UserPoolClient",
+                            "AWS::Cognito::UserPoolGroup",
+                            "AWS::Config::ConformancePackCompliance",
+                            "AWS::Config::ResourceCompliance",
+                            "AWS::Connect::Instance",
+                            "AWS::Connect::PhoneNumber",
+                            "AWS::Connect::QuickConnect",
+                            "AWS::CustomerProfiles::Domain",
+                            "AWS::CustomerProfiles::ObjectType",
+                            "AWS::DMS::Certificate",
+                            "AWS::DMS::Endpoint",
+                            "AWS::DMS::EventSubscription",
+                            "AWS::DMS::ReplicationSubnetGroup",
+                            "AWS::DataSync::LocationEFS",
+                            "AWS::DataSync::LocationFSxLustre",
+                            "AWS::DataSync::LocationFSxWindows",
+                            "AWS::DataSync::LocationHDFS",
+                            "AWS::DataSync::LocationNFS",
+                            "AWS::DataSync::LocationObjectStorage",
+                            "AWS::DataSync::LocationS3",
+                            "AWS::DataSync::LocationSMB",
+                            "AWS::DataSync::Task",
+                            "AWS::Detective::Graph",
+                            "AWS::DeviceFarm::InstanceProfile",
+                            "AWS::DeviceFarm::Project",
+                            "AWS::DeviceFarm::TestGridProject",
+                            "AWS::DynamoDB::Table",
+                            "AWS::EC2::CapacityReservation",
+                            "AWS::EC2::CarrierGateway",
+                            "AWS::EC2::ClientVpnEndpoint",
+                            "AWS::EC2::CustomerGateway",
+                            "AWS::EC2::DHCPOptions",
+                            "AWS::EC2::EC2Fleet",
+                            "AWS::EC2::EIP",
+                            "AWS::EC2::EgressOnlyInternetGateway",
+                            "AWS::EC2::FlowLog",
+                            "AWS::EC2::Host",
+                            "AWS::EC2::IPAM",
+                            "AWS::EC2::IPAMPool",
+                            "AWS::EC2::IPAMScope",
+                            "AWS::EC2::Instance",
+                            "AWS::EC2::InternetGateway",
+                            "AWS::EC2::LaunchTemplate",
+                            "AWS::EC2::NatGateway",
+                            "AWS::EC2::NetworkAcl",
+                            "AWS::EC2::NetworkInsightsAccessScope",
+                            "AWS::EC2::NetworkInsightsAccessScopeAnalysis",
+                            "AWS::EC2::NetworkInsightsAnalysis",
+                            "AWS::EC2::NetworkInsightsPath",
+                            "AWS::EC2::NetworkInterface",
+                            "AWS::EC2::PrefixList",
+                            "AWS::EC2::RegisteredHAInstance",
+                            "AWS::EC2::RouteTable",
+                            "AWS::EC2::SecurityGroup",
+                            "AWS::EC2::SpotFleet",
+                            "AWS::EC2::Subnet",
+                            "AWS::EC2::SubnetRouteTableAssociation",
+                            "AWS::EC2::TrafficMirrorFilter",
+                            "AWS::EC2::TrafficMirrorSession",
+                            "AWS::EC2::TrafficMirrorTarget",
+                            "AWS::EC2::TransitGateway",
+                            "AWS::EC2::TransitGatewayAttachment",
+                            "AWS::EC2::TransitGatewayConnect",
+                            "AWS::EC2::TransitGatewayMulticastDomain",
+                            "AWS::EC2::TransitGatewayRouteTable",
+                            "AWS::EC2::VPC",
+                            "AWS::EC2::VPCEndpoint",
+                            "AWS::EC2::VPCEndpointService",
+                            "AWS::EC2::VPCPeeringConnection",
+                            "AWS::EC2::VPNConnection",
+                            "AWS::EC2::VPNGateway",
+                            "AWS::EC2::Volume",
+                            "AWS::ECR::PublicRepository",
+                            "AWS::ECR::PullThroughCacheRule",
+                            "AWS::ECR::RegistryPolicy",
+                            "AWS::ECR::Repository",
+                            "AWS::ECS::CapacityProvider",
+                            "AWS::ECS::Cluster",
+                            "AWS::ECS::Service",
+                            "AWS::ECS::TaskDefinition",
+                            "AWS::ECS::TaskSet",
+                            "AWS::EFS::AccessPoint",
+                            "AWS::EFS::FileSystem",
+                            "AWS::EKS::Addon",
+                            "AWS::EKS::Cluster",
+                            "AWS::EKS::FargateProfile",
+                            "AWS::EKS::IdentityProviderConfig",
+                            "AWS::EMR::SecurityConfiguration",
+                            "AWS::ElasticBeanstalk::Application",
+                            "AWS::ElasticBeanstalk::ApplicationVersion",
+                            "AWS::ElasticBeanstalk::Environment",
+                            "AWS::ElasticLoadBalancing::LoadBalancer",
+                            "AWS::ElasticLoadBalancingV2::Listener",
+                            "AWS::ElasticLoadBalancingV2::LoadBalancer",
+                            "AWS::Elasticsearch::Domain",
+                            "AWS::EventSchemas::Discoverer",
+                            "AWS::EventSchemas::Registry",
+                            "AWS::EventSchemas::RegistryPolicy",
+                            "AWS::EventSchemas::Schema",
+                            "AWS::Events::ApiDestination",
+                            "AWS::Events::Archive",
+                            "AWS::Events::Connection",
+                            "AWS::Events::Endpoint",
+                            "AWS::Events::EventBus",
+                            "AWS::Events::Rule",
+                            "AWS::Evidently::Launch",
+                            "AWS::Evidently::Project",
+                            "AWS::FIS::ExperimentTemplate",
+                            "AWS::Forecast::Dataset",
+                            "AWS::Forecast::DatasetGroup",
+                            "AWS::FraudDetector::EntityType",
+                            "AWS::FraudDetector::Label",
+                            "AWS::FraudDetector::Outcome",
+                            "AWS::FraudDetector::Variable",
+                            "AWS::GlobalAccelerator::Accelerator",
+                            "AWS::GlobalAccelerator::EndpointGroup",
+                            "AWS::GlobalAccelerator::Listener",
+                            "AWS::Glue::Classifier",
+                            "AWS::Glue::Job",
+                            "AWS::Glue::MLTransform",
+                            "AWS::Grafana::Workspace",
+                            "AWS::GreengrassV2::ComponentVersion",
+                            "AWS::GroundStation::Config",
+                            "AWS::GroundStation::DataflowEndpointGroup",
+                            "AWS::GroundStation::MissionProfile",
+                            "AWS::GuardDuty::Detector",
+                            "AWS::GuardDuty::Filter",
+                            "AWS::GuardDuty::IPSet",
+                            "AWS::GuardDuty::ThreatIntelSet",
+                            "AWS::HealthLake::FHIRDatastore",
+                            "AWS::IAM::Group",
+                            "AWS::IAM::InstanceProfile",
+                            "AWS::IAM::Policy",
+                            "AWS::IAM::Role",
+                            "AWS::IAM::SAMLProvider",
+                            "AWS::IAM::ServerCertificate",
+                            "AWS::IAM::User",
+                            "AWS::IVS::Channel",
+                            "AWS::IVS::PlaybackKeyPair",
+                            "AWS::IVS::RecordingConfiguration",
+                            "AWS::ImageBuilder::ContainerRecipe",
+                            "AWS::ImageBuilder::DistributionConfiguration",
+                            "AWS::ImageBuilder::ImagePipeline",
+                            "AWS::ImageBuilder::ImageRecipe",
+                            "AWS::ImageBuilder::InfrastructureConfiguration",
+                            "AWS::InspectorV2::Filter",
+                            "AWS::IoT::AccountAuditConfiguration",
+                            "AWS::IoT::Authorizer",
+                            "AWS::IoT::CACertificate",
+                            "AWS::IoT::CustomMetric",
+                            "AWS::IoT::Dimension",
+                            "AWS::IoT::FleetMetric",
+                            "AWS::IoT::JobTemplate",
+                            "AWS::IoT::MitigationAction",
+                            "AWS::IoT::Policy",
+                            "AWS::IoT::ProvisioningTemplate",
+                            "AWS::IoT::RoleAlias",
+                            "AWS::IoT::ScheduledAudit",
+                            "AWS::IoT::SecurityProfile",
+                            "AWS::IoTAnalytics::Channel",
+                            "AWS::IoTAnalytics::Dataset",
+                            "AWS::IoTAnalytics::Datastore",
+                            "AWS::IoTAnalytics::Pipeline",
+                            "AWS::IoTEvents::AlarmModel",
+                            "AWS::IoTEvents::DetectorModel",
+                            "AWS::IoTEvents::Input",
+                            "AWS::IoTSiteWise::AssetModel",
+                            "AWS::IoTSiteWise::Dashboard",
+                            "AWS::IoTSiteWise::Gateway",
+                            "AWS::IoTSiteWise::Portal",
+                            "AWS::IoTSiteWise::Project",
+                            "AWS::IoTTwinMaker::ComponentType",
+                            "AWS::IoTTwinMaker::Entity",
+                            "AWS::IoTTwinMaker::Scene",
+                            "AWS::IoTTwinMaker::SyncJob",
+                            "AWS::IoTTwinMaker::Workspace",
+                            "AWS::IoTWireless::FuotaTask",
+                            "AWS::IoTWireless::MulticastGroup",
+                            "AWS::IoTWireless::ServiceProfile",
+                            "AWS::KMS::Alias",
+                            "AWS::KMS::Key",
+                            "AWS::KafkaConnect::Connector",
+                            "AWS::Kendra::Index",
+                            "AWS::Kinesis::Stream",
+                            "AWS::Kinesis::StreamConsumer",
+                            "AWS::KinesisAnalyticsV2::Application",
+                            "AWS::KinesisFirehose::DeliveryStream",
+                            "AWS::KinesisVideo::SignalingChannel",
+                            "AWS::KinesisVideo::Stream",
+                            "AWS::Lambda::CodeSigningConfig",
+                            "AWS::Lambda::Function",
+                            "AWS::Lex::Bot",
+                            "AWS::Lex::BotAlias",
+                            "AWS::Lightsail::Bucket",
+                            "AWS::Lightsail::Certificate",
+                            "AWS::Lightsail::Disk",
+                            "AWS::Lightsail::StaticIp",
+                            "AWS::Logs::Destination",
+                            "AWS::LookoutMetrics::Alert",
+                            "AWS::LookoutVision::Project",
+                            "AWS::M2::Environment",
+                            "AWS::MSK::BatchScramSecret",
+                            "AWS::MSK::Cluster",
+                            "AWS::MSK::Configuration",
+                            "AWS::MediaConnect::FlowEntitlement",
+                            "AWS::MediaConnect::FlowSource",
+                            "AWS::MediaConnect::FlowVpcInterface",
+                            "AWS::MediaPackage::PackagingConfiguration",
+                            "AWS::MediaPackage::PackagingGroup",
+                            "AWS::MediaTailor::PlaybackConfiguration",
+                            "AWS::NetworkFirewall::Firewall",
+                            "AWS::NetworkFirewall::FirewallPolicy",
+                            "AWS::NetworkFirewall::RuleGroup",
+                            "AWS::NetworkManager::ConnectPeer",
+                            "AWS::NetworkManager::CustomerGatewayAssociation",
+                            "AWS::NetworkManager::Device",
+                            "AWS::NetworkManager::GlobalNetwork",
+                            "AWS::NetworkManager::Link",
+                            "AWS::NetworkManager::LinkAssociation",
+                            "AWS::NetworkManager::Site",
+                            "AWS::NetworkManager::TransitGatewayRegistration",
+                            "AWS::OpenSearch::Domain",
+                            "AWS::Panorama::Package",
+                            "AWS::Personalize::Dataset",
+                            "AWS::Personalize::DatasetGroup",
+                            "AWS::Personalize::Schema",
+                            "AWS::Personalize::Solution",
+                            "AWS::Pinpoint::App",
+                            "AWS::Pinpoint::ApplicationSettings",
+                            "AWS::Pinpoint::Campaign",
+                            "AWS::Pinpoint::EmailChannel",
+                            "AWS::Pinpoint::EmailTemplate",
+                            "AWS::Pinpoint::EventStream",
+                            "AWS::Pinpoint::InAppTemplate",
+                            "AWS::Pinpoint::Segment",
+                            "AWS::QLDB::Ledger",
+                            "AWS::QuickSight::DataSource",
+                            "AWS::QuickSight::Template",
+                            "AWS::QuickSight::Theme",
+                            "AWS::RDS::DBCluster",
+                            "AWS::RDS::DBClusterSnapshot",
+                            "AWS::RDS::DBInstance",
+                            "AWS::RDS::DBSecurityGroup",
+                            "AWS::RDS::DBSnapshot",
+                            "AWS::RDS::DBSubnetGroup",
+                            "AWS::RDS::EventSubscription",
+                            "AWS::RDS::GlobalCluster",
+                            "AWS::RDS::OptionGroup",
+                            "AWS::RUM::AppMonitor",
+                            "AWS::Redshift::Cluster",
+                            "AWS::Redshift::ClusterParameterGroup",
+                            "AWS::Redshift::ClusterSecurityGroup",
+                            "AWS::Redshift::ClusterSnapshot",
+                            "AWS::Redshift::ClusterSubnetGroup",
+                            "AWS::Redshift::EndpointAccess",
+                            "AWS::Redshift::EventSubscription",
+                            "AWS::Redshift::ScheduledAction",
+                            "AWS::ResilienceHub::App",
+                            "AWS::ResilienceHub::ResiliencyPolicy",
+                            "AWS::ResourceExplorer2::Index",
+                            "AWS::RoboMaker::RobotApplication",
+                            "AWS::RoboMaker::RobotApplicationVersion",
+                            "AWS::RoboMaker::SimulationApplication",
+                            "AWS::Route53::HostedZone",
+                            "AWS::Route53RecoveryControl::Cluster",
+                            "AWS::Route53RecoveryControl::ControlPanel",
+                            "AWS::Route53RecoveryControl::RoutingControl",
+                            "AWS::Route53RecoveryControl::SafetyRule",
+                            "AWS::Route53RecoveryReadiness::Cell",
+                            "AWS::Route53RecoveryReadiness::ReadinessCheck",
+                            "AWS::Route53RecoveryReadiness::RecoveryGroup",
+                            "AWS::Route53RecoveryReadiness::ResourceSet",
+                            "AWS::Route53Resolver::FirewallDomainList",
+                            "AWS::Route53Resolver::FirewallRuleGroup",
+                            "AWS::Route53Resolver::FirewallRuleGroupAssociation",
+                            "AWS::Route53Resolver::ResolverEndpoint",
+                            "AWS::Route53Resolver::ResolverQueryLoggingConfig",
+                            "AWS::Route53Resolver::ResolverQueryLoggingConfigAssociation",
+                            "AWS::Route53Resolver::ResolverRule",
+                            "AWS::Route53Resolver::ResolverRuleAssociation",
+                            "AWS::S3::AccessPoint",
+                            "AWS::S3::AccountPublicAccessBlock",
+                            "AWS::S3::Bucket",
+                            "AWS::S3::MultiRegionAccessPoint",
+                            "AWS::S3::StorageLens",
+                            "AWS::SES::ConfigurationSet",
+                            "AWS::SES::ContactList",
+                            "AWS::SES::ReceiptFilter",
+                            "AWS::SES::ReceiptRuleSet",
+                            "AWS::SES::Template",
+                            "AWS::SNS::Topic",
+                            "AWS::SQS::Queue",
+                            "AWS::SSM::AssociationCompliance",
+                            "AWS::SSM::Document",
+                            "AWS::SSM::FileData",
+                            "AWS::SSM::ManagedInstanceInventory",
+                            "AWS::SSM::PatchCompliance",
+                            "AWS::SageMaker::AppImageConfig",
+                            "AWS::SageMaker::CodeRepository",
+                            "AWS::SageMaker::Domain",
+                            "AWS::SageMaker::FeatureGroup",
+                            "AWS::SageMaker::Image",
+                            "AWS::SageMaker::Model",
+                            "AWS::SageMaker::NotebookInstanceLifecycleConfig",
+                            "AWS::SageMaker::Workteam",
+                            "AWS::SecretsManager::Secret",
+                            "AWS::ServiceCatalog::CloudFormationProduct",
+                            "AWS::ServiceCatalog::CloudFormationProvisionedProduct",
+                            "AWS::ServiceCatalog::Portfolio",
+                            "AWS::ServiceDiscovery::HttpNamespace",
+                            "AWS::ServiceDiscovery::Instance",
+                            "AWS::ServiceDiscovery::PublicDnsNamespace",
+                            "AWS::ServiceDiscovery::Service",
+                            "AWS::Shield::Protection",
+                            "AWS::ShieldRegional::Protection",
+                            "AWS::Signer::SigningProfile",
+                            "AWS::StepFunctions::Activity",
+                            "AWS::StepFunctions::StateMachine",
+                            "AWS::Transfer::Agreement",
+                            "AWS::Transfer::Certificate",
+                            "AWS::Transfer::Connector",
+                            "AWS::Transfer::Workflow",
+                            "AWS::WAF::RateBasedRule",
+                            "AWS::WAF::Rule",
+                            "AWS::WAF::RuleGroup",
+                            "AWS::WAF::WebACL",
+                            "AWS::WAFRegional::RateBasedRule",
+                            "AWS::WAFRegional::Rule",
+                            "AWS::WAFRegional::RuleGroup",
+                            "AWS::WAFRegional::WebACL",
+                            "AWS::WAFv2::IPSet",
+                            "AWS::WAFv2::ManagedRuleSet",
+                            "AWS::WAFv2::RegexPatternSet",
+                            "AWS::WAFv2::RuleGroup",
+                            "AWS::WAFv2::WebACL",
+                            "AWS::WorkSpaces::ConnectionAlias",
+                            "AWS::WorkSpaces::Workspace",
+                            "AWS::XRay::EncryptionConfig",
+                          ]),
+                        ),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            roleARN: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorders/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceConfigurationRecordersCreateOrReplaceInput =
@@ -4367,11 +7736,11 @@ export const ConfigServiceConfigurationRecordersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorders/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceConfigurationRecordersDeleteInput =
@@ -4403,11 +7772,11 @@ export const ConfigServiceConfigurationRecordersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorders/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceConfigurationRecordersGetInput =
@@ -4456,11 +7825,11 @@ export const ConfigServiceConfigurationRecordersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorders",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceConfigurationRecordersListByResourceGroupInput =
@@ -4522,11 +7891,11 @@ export const ConfigServiceConfigurationRecordersListByResourceGroup =
 export const ConfigServiceConfigurationRecordersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorders",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceConfigurationRecordersListBySubscriptionInput =
@@ -4589,11 +7958,53 @@ export const ConfigServiceConfigurationRecorderStatusesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            lastErrorCode: Schema.optional(Schema.String),
+            lastErrorMessage: Schema.optional(Schema.String),
+            lastStartTime: Schema.optional(Schema.String),
+            lastStatus: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["Failure", "Pending", "Success"]),
+                ),
+              }),
+            ),
+            lastStatusChangeTime: Schema.optional(Schema.String),
+            lastStopTime: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            recording: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorderStatuses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceConfigurationRecorderStatusesCreateOrReplaceInput =
@@ -4644,11 +8055,11 @@ export const ConfigServiceConfigurationRecorderStatusesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorderStatuses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceConfigurationRecorderStatusesDeleteInput =
@@ -4680,11 +8091,11 @@ export const ConfigServiceConfigurationRecorderStatusesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorderStatuses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceConfigurationRecorderStatusesGetInput =
@@ -4733,11 +8144,11 @@ export const ConfigServiceConfigurationRecorderStatusesListByResourceGroupInput 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorderStatuses",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceConfigurationRecorderStatusesListByResourceGroupInput =
@@ -4801,11 +8212,11 @@ export const ConfigServiceConfigurationRecorderStatusesListByResourceGroup =
 export const ConfigServiceConfigurationRecorderStatusesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorderStatuses",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceConfigurationRecorderStatusesListBySubscriptionInput =
@@ -4870,11 +8281,12 @@ export const ConfigServiceConfigurationRecorderStatusesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorderStatuses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceConfigurationRecorderStatusesUpdateInput =
@@ -4924,11 +8336,12 @@ export const ConfigServiceConfigurationRecordersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceConfigurationRecorders/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceConfigurationRecordersUpdateInput =
@@ -4978,11 +8391,61 @@ export const ConfigServiceDeliveryChannelsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            configSnapshotDeliveryProperties: Schema.optional(
+              Schema.Struct({
+                deliveryFrequency: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "One_Hour",
+                        "Six_Hours",
+                        "Three_Hours",
+                        "Twelve_Hours",
+                        "TwentyFour_Hours",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            name: Schema.optional(Schema.String),
+            s3BucketName: Schema.optional(Schema.String),
+            s3KeyPrefix: Schema.optional(Schema.String),
+            s3KmsKeyArn: Schema.optional(Schema.String),
+            snsTopicARN: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceDeliveryChannels/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceDeliveryChannelsCreateOrReplaceInput =
@@ -5032,11 +8495,11 @@ export const ConfigServiceDeliveryChannelsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceDeliveryChannels/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceDeliveryChannelsDeleteInput =
@@ -5068,11 +8531,11 @@ export const ConfigServiceDeliveryChannelsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceDeliveryChannels/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceDeliveryChannelsGetInput =
@@ -5121,11 +8584,11 @@ export const ConfigServiceDeliveryChannelsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceDeliveryChannels",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceDeliveryChannelsListByResourceGroupInput =
@@ -5187,11 +8650,11 @@ export const ConfigServiceDeliveryChannelsListByResourceGroup =
 export const ConfigServiceDeliveryChannelsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/configServiceDeliveryChannels",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceDeliveryChannelsListBySubscriptionInput =
@@ -5254,11 +8717,12 @@ export const ConfigServiceDeliveryChannelsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/configServiceDeliveryChannels/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ConfigServiceDeliveryChannelsUpdateInput =
@@ -5308,11 +8772,112 @@ export const DatabaseMigrationServiceReplicationInstancesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            allocatedStorage: Schema.optional(Schema.Number),
+            autoMinorVersionUpgrade: Schema.optional(Schema.Boolean),
+            availabilityZone: Schema.optional(Schema.String),
+            dnsNameServers: Schema.optional(Schema.String),
+            engineVersion: Schema.optional(Schema.String),
+            freeUntil: Schema.optional(Schema.String),
+            instanceCreateTime: Schema.optional(Schema.String),
+            kmsKeyId: Schema.optional(Schema.String),
+            multiAZ: Schema.optional(Schema.Boolean),
+            networkType: Schema.optional(Schema.String),
+            pendingModifiedValues: Schema.optional(
+              Schema.Struct({
+                allocatedStorage: Schema.optional(Schema.Number),
+                engineVersion: Schema.optional(Schema.String),
+                multiAZ: Schema.optional(Schema.Boolean),
+                networkType: Schema.optional(Schema.String),
+                replicationInstanceClass: Schema.optional(Schema.String),
+              }),
+            ),
+            preferredMaintenanceWindow: Schema.optional(Schema.String),
+            publiclyAccessible: Schema.optional(Schema.Boolean),
+            replicationInstanceArn: Schema.optional(Schema.String),
+            replicationInstanceClass: Schema.optional(Schema.String),
+            replicationInstanceIdentifier: Schema.optional(Schema.String),
+            replicationInstanceIpv6Addresses: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            replicationInstancePrivateIpAddress: Schema.optional(Schema.String),
+            replicationInstancePrivateIpAddresses: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            replicationInstancePublicIpAddress: Schema.optional(Schema.String),
+            replicationInstancePublicIpAddresses: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            replicationInstanceStatus: Schema.optional(Schema.String),
+            replicationSubnetGroup: Schema.optional(
+              Schema.Struct({
+                replicationSubnetGroupDescription: Schema.optional(
+                  Schema.String,
+                ),
+                replicationSubnetGroupIdentifier: Schema.optional(
+                  Schema.String,
+                ),
+                subnetGroupStatus: Schema.optional(Schema.String),
+                subnets: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      subnetAvailabilityZone: Schema.optional(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      subnetIdentifier: Schema.optional(Schema.String),
+                      subnetStatus: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                supportedNetworkTypes: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                vpcId: Schema.optional(Schema.String),
+              }),
+            ),
+            secondaryAvailabilityZone: Schema.optional(Schema.String),
+            vpcSecurityGroups: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  status: Schema.optional(Schema.String),
+                  vpcSecurityGroupId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/databaseMigrationServiceReplicationInstances/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DatabaseMigrationServiceReplicationInstancesCreateOrReplaceInput =
@@ -5364,11 +8929,11 @@ export const DatabaseMigrationServiceReplicationInstancesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/databaseMigrationServiceReplicationInstances/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DatabaseMigrationServiceReplicationInstancesDeleteInput =
@@ -5400,11 +8965,11 @@ export const DatabaseMigrationServiceReplicationInstancesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/databaseMigrationServiceReplicationInstances/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DatabaseMigrationServiceReplicationInstancesGetInput =
@@ -5453,11 +9018,11 @@ export const DatabaseMigrationServiceReplicationInstancesListByResourceGroupInpu
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/databaseMigrationServiceReplicationInstances",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DatabaseMigrationServiceReplicationInstancesListByResourceGroupInput =
@@ -5521,11 +9086,11 @@ export const DatabaseMigrationServiceReplicationInstancesListByResourceGroup =
 export const DatabaseMigrationServiceReplicationInstancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/databaseMigrationServiceReplicationInstances",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DatabaseMigrationServiceReplicationInstancesListBySubscriptionInput =
@@ -5590,11 +9155,12 @@ export const DatabaseMigrationServiceReplicationInstancesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/databaseMigrationServiceReplicationInstances/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DatabaseMigrationServiceReplicationInstancesUpdateInput =
@@ -5644,11 +9210,117 @@ export const DaxClustersCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            activeNodes: Schema.optional(Schema.Number),
+            clusterArn: Schema.optional(Schema.String),
+            clusterDiscoveryEndpoint: Schema.optional(
+              Schema.Struct({
+                address: Schema.optional(Schema.String),
+                port: Schema.optional(Schema.Number),
+                url: Schema.optional(Schema.String),
+              }),
+            ),
+            clusterEndpointEncryptionType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["NONE", "TLS"])),
+              }),
+            ),
+            clusterName: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            iamRoleArn: Schema.optional(Schema.String),
+            nodeIdsToRemove: Schema.optional(Schema.Array(Schema.String)),
+            nodeType: Schema.optional(Schema.String),
+            nodes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  availabilityZone: Schema.optional(Schema.String),
+                  endpoint: Schema.optional(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                      port: Schema.optional(Schema.Number),
+                      url: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  nodeCreateTime: Schema.optional(Schema.String),
+                  nodeId: Schema.optional(Schema.String),
+                  nodeStatus: Schema.optional(Schema.String),
+                  parameterGroupStatus: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            notificationConfiguration: Schema.optional(
+              Schema.Struct({
+                topicArn: Schema.optional(Schema.String),
+                topicStatus: Schema.optional(Schema.String),
+              }),
+            ),
+            parameterGroup: Schema.optional(
+              Schema.Struct({
+                nodeIdsToReboot: Schema.optional(Schema.Array(Schema.String)),
+                parameterApplyStatus: Schema.optional(Schema.String),
+                parameterGroupName: Schema.optional(Schema.String),
+              }),
+            ),
+            preferredMaintenanceWindow: Schema.optional(Schema.String),
+            sseDescription: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "DISABLED",
+                        "DISABLING",
+                        "ENABLED",
+                        "ENABLING",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            securityGroups: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  securityGroupIdentifier: Schema.optional(Schema.String),
+                  status: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            status: Schema.optional(Schema.String),
+            subnetGroup: Schema.optional(Schema.String),
+            totalNodes: Schema.optional(Schema.Number),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/daxClusters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DaxClustersCreateOrReplaceInput =
@@ -5699,12 +9371,12 @@ export const DaxClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/daxClusters/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type DaxClustersDeleteInput = typeof DaxClustersDeleteInput.Type;
@@ -5731,11 +9403,11 @@ export const DaxClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/daxClusters/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type DaxClustersGetInput = typeof DaxClustersGetInput.Type;
@@ -5780,11 +9452,11 @@ export const DaxClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/daxClusters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DaxClustersListByResourceGroupInput =
@@ -5846,11 +9518,11 @@ export const DaxClustersListByResourceGroup =
 export const DaxClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/daxClusters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DaxClustersListBySubscriptionInput =
@@ -5913,12 +9585,13 @@ export const DaxClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/daxClusters/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type DaxClustersUpdateInput = typeof DaxClustersUpdateInput.Type;
@@ -5965,11 +9638,59 @@ export const DynamoDbContinuousBackupsDescriptionsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            continuousBackupsStatus: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["DISABLED", "ENABLED"]),
+                ),
+              }),
+            ),
+            pointInTimeRecoveryDescription: Schema.optional(
+              Schema.Struct({
+                earliestRestorableDateTime: Schema.optional(Schema.String),
+                latestRestorableDateTime: Schema.optional(Schema.String),
+                pointInTimeRecoveryStatus: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["DISABLED", "ENABLED"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBContinuousBackupsDescriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DynamoDbContinuousBackupsDescriptionsCreateOrReplaceInput =
@@ -6019,11 +9740,11 @@ export const DynamoDbContinuousBackupsDescriptionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBContinuousBackupsDescriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DynamoDbContinuousBackupsDescriptionsDeleteInput =
@@ -6055,11 +9776,11 @@ export const DynamoDbContinuousBackupsDescriptionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBContinuousBackupsDescriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DynamoDbContinuousBackupsDescriptionsGetInput =
@@ -6108,11 +9829,11 @@ export const DynamoDbContinuousBackupsDescriptionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBContinuousBackupsDescriptions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DynamoDbContinuousBackupsDescriptionsListByResourceGroupInput =
@@ -6175,11 +9896,11 @@ export const DynamoDbContinuousBackupsDescriptionsListByResourceGroup =
 export const DynamoDbContinuousBackupsDescriptionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/dynamoDBContinuousBackupsDescriptions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DynamoDbContinuousBackupsDescriptionsListBySubscriptionInput =
@@ -6242,11 +9963,12 @@ export const DynamoDbContinuousBackupsDescriptionsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBContinuousBackupsDescriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DynamoDbContinuousBackupsDescriptionsUpdateInput =
@@ -6296,11 +10018,203 @@ export const DynamoDbTablesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            attributeDefinitions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  attributeName: Schema.optional(Schema.String),
+                  attributeType: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            billingMode: Schema.optional(Schema.String),
+            contributorInsightsSpecification: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            deletionProtectionEnabled: Schema.optional(Schema.Boolean),
+            globalSecondaryIndexes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  contributorInsightsSpecification: Schema.optional(
+                    Schema.Struct({
+                      enabled: Schema.optional(Schema.Boolean),
+                    }),
+                  ),
+                  indexName: Schema.optional(Schema.String),
+                  keySchema: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        attributeName: Schema.optional(Schema.String),
+                        keyType: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  projection: Schema.optional(
+                    Schema.Struct({
+                      nonKeyAttributes: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      projectionType: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  provisionedThroughput: Schema.optional(
+                    Schema.Struct({
+                      readCapacityUnits: Schema.optional(Schema.Number),
+                      writeCapacityUnits: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            importSourceSpecification: Schema.optional(
+              Schema.Struct({
+                inputCompressionType: Schema.optional(Schema.String),
+                inputFormat: Schema.optional(Schema.String),
+                inputFormatOptions: Schema.optional(
+                  Schema.Struct({
+                    csv: Schema.optional(
+                      Schema.Struct({
+                        delimiter: Schema.optional(Schema.String),
+                        headerList: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+                s3BucketSource: Schema.optional(
+                  Schema.Struct({
+                    s3Bucket: Schema.optional(Schema.String),
+                    s3BucketOwner: Schema.optional(Schema.String),
+                    s3KeyPrefix: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            keySchema: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  attributeName: Schema.optional(Schema.String),
+                  keyType: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            kinesisStreamSpecification: Schema.optional(
+              Schema.Struct({
+                approximateCreationDateTimePrecision: Schema.optional(
+                  Schema.Literals(["MICROSECOND", "MILLISECOND"]),
+                ),
+                streamArn: Schema.optional(Schema.String),
+              }),
+            ),
+            localSecondaryIndexes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  indexName: Schema.optional(Schema.String),
+                  keySchema: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        attributeName: Schema.optional(Schema.String),
+                        keyType: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  projection: Schema.optional(
+                    Schema.Struct({
+                      nonKeyAttributes: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      projectionType: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            pointInTimeRecoverySpecification: Schema.optional(
+              Schema.Struct({
+                pointInTimeRecoveryEnabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            provisionedThroughput: Schema.optional(
+              Schema.Struct({
+                readCapacityUnits: Schema.optional(Schema.Number),
+                writeCapacityUnits: Schema.optional(Schema.Number),
+              }),
+            ),
+            resourcePolicy: Schema.optional(
+              Schema.Struct({
+                policyDocument: Schema.optional(Schema.Unknown),
+              }),
+            ),
+            sseSpecification: Schema.optional(
+              Schema.Struct({
+                kmsMasterKeyId: Schema.optional(Schema.String),
+                sseEnabled: Schema.optional(Schema.Boolean),
+                sseType: Schema.optional(Schema.String),
+              }),
+            ),
+            streamArn: Schema.optional(Schema.String),
+            streamSpecification: Schema.optional(
+              Schema.Struct({
+                resourcePolicy: Schema.optional(
+                  Schema.Struct({
+                    policyDocument: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+                streamViewType: Schema.optional(Schema.String),
+              }),
+            ),
+            tableClass: Schema.optional(Schema.String),
+            tableName: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            timeToLiveSpecification: Schema.optional(
+              Schema.Struct({
+                attributeName: Schema.optional(Schema.String),
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBTables/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DynamoDbTablesCreateOrReplaceInput =
@@ -6350,11 +10264,11 @@ export const DynamoDbTablesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBTables/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DynamoDbTablesDeleteInput = typeof DynamoDbTablesDeleteInput.Type;
@@ -6385,12 +10299,12 @@ export const DynamoDbTablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBTables/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type DynamoDbTablesGetInput = typeof DynamoDbTablesGetInput.Type;
@@ -6436,11 +10350,11 @@ export const DynamoDbTablesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBTables",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DynamoDbTablesListByResourceGroupInput =
@@ -6502,11 +10416,11 @@ export const DynamoDbTablesListByResourceGroup =
 export const DynamoDbTablesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/dynamoDBTables",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DynamoDbTablesListBySubscriptionInput =
@@ -6569,11 +10483,12 @@ export const DynamoDbTablesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/dynamoDBTables/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type DynamoDbTablesUpdateInput = typeof DynamoDbTablesUpdateInput.Type;
@@ -6622,11 +10537,47 @@ export const Ec2AccountAttributesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            attributeName: Schema.optional(Schema.String),
+            attributeValues: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  attributeValue: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2AccountAttributes/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2AccountAttributesCreateOrReplaceInput =
@@ -6676,11 +10627,11 @@ export const Ec2AccountAttributesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2AccountAttributes/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2AccountAttributesDeleteInput =
@@ -6713,11 +10664,11 @@ export const Ec2AccountAttributesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2AccountAttributes/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2AccountAttributesGetInput =
@@ -6767,11 +10718,11 @@ export const Ec2AccountAttributesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2AccountAttributes",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2AccountAttributesListByResourceGroupInput =
@@ -6833,11 +10784,11 @@ export const Ec2AccountAttributesListByResourceGroup =
 export const Ec2AccountAttributesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2AccountAttributes",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2AccountAttributesListBySubscriptionInput =
@@ -6900,11 +10851,12 @@ export const Ec2AccountAttributesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2AccountAttributes/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2AccountAttributesUpdateInput =
@@ -6955,11 +10907,64 @@ export const Ec2AddressesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            allocationId: Schema.optional(Schema.String),
+            associationId: Schema.optional(Schema.String),
+            carrierIp: Schema.optional(Schema.String),
+            customerOwnedIp: Schema.optional(Schema.String),
+            customerOwnedIpv4Pool: Schema.optional(Schema.String),
+            domain: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["standard", "vpc"])),
+              }),
+            ),
+            instanceId: Schema.optional(Schema.String),
+            networkBorderGroup: Schema.optional(Schema.String),
+            networkInterfaceId: Schema.optional(Schema.String),
+            networkInterfaceOwnerId: Schema.optional(Schema.String),
+            privateIpAddress: Schema.optional(Schema.String),
+            publicIp: Schema.optional(Schema.String),
+            publicIpv4Pool: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Addresses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2AddressesCreateOrReplaceInput =
@@ -7010,11 +11015,11 @@ export const Ec2AddressesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Addresses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2AddressesDeleteInput = typeof Ec2AddressesDeleteInput.Type;
@@ -7041,11 +11046,11 @@ export const Ec2AddressesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Addresses/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2AddressesGetInput = typeof Ec2AddressesGetInput.Type;
@@ -7090,11 +11095,11 @@ export const Ec2AddressesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Addresses",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2AddressesListByResourceGroupInput =
@@ -7156,11 +11161,11 @@ export const Ec2AddressesListByResourceGroup =
 export const Ec2AddressesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2Addresses",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2AddressesListBySubscriptionInput =
@@ -7223,11 +11228,12 @@ export const Ec2AddressesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Addresses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2AddressesUpdateInput = typeof Ec2AddressesUpdateInput.Type;
@@ -7274,11 +11280,83 @@ export const Ec2FlowLogsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            deliverCrossAccountRole: Schema.optional(Schema.String),
+            deliverLogsPermissionArn: Schema.optional(Schema.String),
+            destinationOptions: Schema.optional(
+              Schema.Struct({
+                fileFormat: Schema.optional(
+                  Schema.Literals(["parquet", "plain-text"]),
+                ),
+                hiveCompatiblePartitions: Schema.optional(Schema.Boolean),
+                perHourPartition: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            id: Schema.optional(Schema.String),
+            logDestination: Schema.optional(Schema.String),
+            logDestinationType: Schema.optional(
+              Schema.Literals([
+                "cloud-watch-logs",
+                "kinesis-data-firehose",
+                "s3",
+              ]),
+            ),
+            logFormat: Schema.optional(Schema.String),
+            logGroupName: Schema.optional(Schema.String),
+            maxAggregationInterval: Schema.optional(Schema.Number),
+            resourceId: Schema.optional(Schema.String),
+            resourceType: Schema.optional(
+              Schema.Literals([
+                "NetworkInterface",
+                "Subnet",
+                "TransitGateway",
+                "TransitGatewayAttachment",
+                "VPC",
+              ]),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            trafficType: Schema.optional(
+              Schema.Literals(["ACCEPT", "ALL", "REJECT"]),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2FlowLogs/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2FlowLogsCreateOrReplaceInput =
@@ -7329,12 +11407,12 @@ export const Ec2FlowLogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2FlowLogs/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2FlowLogsDeleteInput = typeof Ec2FlowLogsDeleteInput.Type;
@@ -7361,11 +11439,11 @@ export const Ec2FlowLogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2FlowLogs/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2FlowLogsGetInput = typeof Ec2FlowLogsGetInput.Type;
@@ -7410,11 +11488,11 @@ export const Ec2FlowLogsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2FlowLogs",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2FlowLogsListByResourceGroupInput =
@@ -7476,11 +11554,11 @@ export const Ec2FlowLogsListByResourceGroup =
 export const Ec2FlowLogsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2FlowLogs",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2FlowLogsListBySubscriptionInput =
@@ -7543,12 +11621,13 @@ export const Ec2FlowLogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2FlowLogs/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2FlowLogsUpdateInput = typeof Ec2FlowLogsUpdateInput.Type;
@@ -7595,11 +11674,197 @@ export const Ec2ImagesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            architecture: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "arm64",
+                    "arm64_mac",
+                    "i386",
+                    "x86_64",
+                    "x86_64_mac",
+                  ]),
+                ),
+              }),
+            ),
+            blockDeviceMappings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  deviceName: Schema.optional(Schema.String),
+                  ebs: Schema.optional(
+                    Schema.Struct({
+                      deleteOnTermination: Schema.optional(Schema.Boolean),
+                      encrypted: Schema.optional(Schema.Boolean),
+                      iops: Schema.optional(Schema.Number),
+                      kmsKeyId: Schema.optional(Schema.String),
+                      outpostArn: Schema.optional(Schema.String),
+                      snapshotId: Schema.optional(Schema.String),
+                      throughput: Schema.optional(Schema.Number),
+                      volumeSize: Schema.optional(Schema.Number),
+                      volumeType: Schema.optional(
+                        Schema.Struct({
+                          value: Schema.optional(
+                            Schema.Literals([
+                              "gp2",
+                              "gp3",
+                              "io1",
+                              "io2",
+                              "sc1",
+                              "st1",
+                              "standard",
+                            ]),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  noDevice: Schema.optional(Schema.String),
+                  virtualName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            bootMode: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["legacy-bios", "uefi", "uefi-preferred"]),
+                ),
+              }),
+            ),
+            creationDate: Schema.optional(Schema.String),
+            deprecationTime: Schema.optional(Schema.String),
+            deregistrationProtection: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            enaSupport: Schema.optional(Schema.Boolean),
+            hypervisor: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["ovm", "xen"])),
+              }),
+            ),
+            imageId: Schema.optional(Schema.String),
+            imageLocation: Schema.optional(Schema.String),
+            imageOwnerAlias: Schema.optional(Schema.String),
+            imageType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["kernel", "machine", "ramdisk"]),
+                ),
+              }),
+            ),
+            imdsSupport: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["v2.0"])),
+              }),
+            ),
+            kernelId: Schema.optional(Schema.String),
+            lastLaunchedTime: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            ownerId: Schema.optional(Schema.String),
+            platform: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["Windows"])),
+              }),
+            ),
+            platformDetails: Schema.optional(Schema.String),
+            productCodes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  productCodeId: Schema.optional(Schema.String),
+                  productCodeType: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals(["devpay", "marketplace"]),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            public: Schema.optional(Schema.Boolean),
+            ramdiskId: Schema.optional(Schema.String),
+            rootDeviceName: Schema.optional(Schema.String),
+            rootDeviceType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["ebs", "instance-store"]),
+                ),
+              }),
+            ),
+            sourceInstanceId: Schema.optional(Schema.String),
+            sriovNetSupport: Schema.optional(Schema.String),
+            state: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "available",
+                    "deregistered",
+                    "disabled",
+                    "error",
+                    "failed",
+                    "invalid",
+                    "pending",
+                    "transient",
+                  ]),
+                ),
+              }),
+            ),
+            stateReason: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            tpmSupport: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["v2.0"])),
+              }),
+            ),
+            usageOperation: Schema.optional(Schema.String),
+            virtualizationType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["hvm", "paravirtual"])),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Images/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2ImagesCreateOrReplaceInput =
@@ -7649,11 +11914,11 @@ export const Ec2ImagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Images/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2ImagesDeleteInput = typeof Ec2ImagesDeleteInput.Type;
@@ -7680,11 +11945,11 @@ export const Ec2ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Images/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2ImagesGetInput = typeof Ec2ImagesGetInput.Type;
@@ -7729,11 +11994,11 @@ export const Ec2ImagesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Images",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2ImagesListByResourceGroupInput =
@@ -7795,11 +12060,11 @@ export const Ec2ImagesListByResourceGroup =
 export const Ec2ImagesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2Images",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2ImagesListBySubscriptionInput =
@@ -7862,11 +12127,12 @@ export const Ec2ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Images/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2ImagesUpdateInput = typeof Ec2ImagesUpdateInput.Type;
@@ -7909,11 +12175,1314 @@ export const Ec2ImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const Ec2InstancesCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            amiLaunchIndex: Schema.optional(Schema.Number),
+            architecture: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "arm64",
+                    "arm64_mac",
+                    "i386",
+                    "x86_64",
+                    "x86_64_mac",
+                  ]),
+                ),
+              }),
+            ),
+            blockDeviceMappings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  deviceName: Schema.optional(Schema.String),
+                  ebs: Schema.optional(
+                    Schema.Struct({
+                      associatedResource: Schema.optional(Schema.String),
+                      attachTime: Schema.optional(Schema.String),
+                      deleteOnTermination: Schema.optional(Schema.Boolean),
+                      status: Schema.optional(
+                        Schema.Struct({
+                          value: Schema.optional(
+                            Schema.Literals([
+                              "attached",
+                              "attaching",
+                              "detached",
+                              "detaching",
+                            ]),
+                          ),
+                        }),
+                      ),
+                      volumeId: Schema.optional(Schema.String),
+                      volumeOwnerId: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            bootMode: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["legacy-bios", "uefi", "uefi-preferred"]),
+                ),
+              }),
+            ),
+            capacityReservationId: Schema.optional(Schema.String),
+            capacityReservationSpecification: Schema.optional(
+              Schema.Struct({
+                capacityReservationPreference: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.Literals(["none", "open"])),
+                  }),
+                ),
+                capacityReservationTarget: Schema.optional(
+                  Schema.Struct({
+                    capacityReservationId: Schema.optional(Schema.String),
+                    capacityReservationResourceGroupArn: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            clientToken: Schema.optional(Schema.String),
+            cpuOptions: Schema.optional(
+              Schema.Struct({
+                amdSevSnp: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["disabled", "enabled"]),
+                    ),
+                  }),
+                ),
+                coreCount: Schema.optional(Schema.Number),
+                threadsPerCore: Schema.optional(Schema.Number),
+              }),
+            ),
+            currentInstanceBootMode: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["legacy-bios", "uefi"]),
+                ),
+              }),
+            ),
+            ebsOptimized: Schema.optional(Schema.Boolean),
+            elasticGpuAssociations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  elasticGpuAssociationId: Schema.optional(Schema.String),
+                  elasticGpuAssociationState: Schema.optional(Schema.String),
+                  elasticGpuAssociationTime: Schema.optional(Schema.String),
+                  elasticGpuId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            elasticInferenceAcceleratorAssociations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  elasticInferenceAcceleratorArn: Schema.optional(
+                    Schema.String,
+                  ),
+                  elasticInferenceAcceleratorAssociationId: Schema.optional(
+                    Schema.String,
+                  ),
+                  elasticInferenceAcceleratorAssociationState: Schema.optional(
+                    Schema.String,
+                  ),
+                  elasticInferenceAcceleratorAssociationTime: Schema.optional(
+                    Schema.String,
+                  ),
+                }),
+              ),
+            ),
+            enaSupport: Schema.optional(Schema.Boolean),
+            enclaveOptions: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            hibernationOptions: Schema.optional(
+              Schema.Struct({
+                configured: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            hypervisor: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["ovm", "xen"])),
+              }),
+            ),
+            iamInstanceProfile: Schema.optional(
+              Schema.Struct({
+                arn: Schema.optional(Schema.String),
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+            imageId: Schema.optional(Schema.String),
+            instanceId: Schema.optional(Schema.String),
+            instanceLifecycle: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["capacity-block", "scheduled", "spot"]),
+                ),
+              }),
+            ),
+            instanceType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "a1.2xlarge",
+                    "a1.4xlarge",
+                    "a1.large",
+                    "a1.medium",
+                    "a1.metal",
+                    "a1.xlarge",
+                    "c1.medium",
+                    "c1.xlarge",
+                    "c3.2xlarge",
+                    "c3.4xlarge",
+                    "c3.8xlarge",
+                    "c3.large",
+                    "c3.xlarge",
+                    "c4.2xlarge",
+                    "c4.4xlarge",
+                    "c4.8xlarge",
+                    "c4.large",
+                    "c4.xlarge",
+                    "c5.12xlarge",
+                    "c5.18xlarge",
+                    "c5.24xlarge",
+                    "c5.2xlarge",
+                    "c5.4xlarge",
+                    "c5.9xlarge",
+                    "c5.large",
+                    "c5.metal",
+                    "c5.xlarge",
+                    "c5a.12xlarge",
+                    "c5a.16xlarge",
+                    "c5a.24xlarge",
+                    "c5a.2xlarge",
+                    "c5a.4xlarge",
+                    "c5a.8xlarge",
+                    "c5a.large",
+                    "c5a.xlarge",
+                    "c5ad.12xlarge",
+                    "c5ad.16xlarge",
+                    "c5ad.24xlarge",
+                    "c5ad.2xlarge",
+                    "c5ad.4xlarge",
+                    "c5ad.8xlarge",
+                    "c5ad.large",
+                    "c5ad.xlarge",
+                    "c5d.12xlarge",
+                    "c5d.18xlarge",
+                    "c5d.24xlarge",
+                    "c5d.2xlarge",
+                    "c5d.4xlarge",
+                    "c5d.9xlarge",
+                    "c5d.large",
+                    "c5d.metal",
+                    "c5d.xlarge",
+                    "c5n.18xlarge",
+                    "c5n.2xlarge",
+                    "c5n.4xlarge",
+                    "c5n.9xlarge",
+                    "c5n.large",
+                    "c5n.metal",
+                    "c5n.xlarge",
+                    "c6a.12xlarge",
+                    "c6a.16xlarge",
+                    "c6a.24xlarge",
+                    "c6a.2xlarge",
+                    "c6a.32xlarge",
+                    "c6a.48xlarge",
+                    "c6a.4xlarge",
+                    "c6a.8xlarge",
+                    "c6a.large",
+                    "c6a.metal",
+                    "c6a.xlarge",
+                    "c6g.12xlarge",
+                    "c6g.16xlarge",
+                    "c6g.2xlarge",
+                    "c6g.4xlarge",
+                    "c6g.8xlarge",
+                    "c6g.large",
+                    "c6g.medium",
+                    "c6g.metal",
+                    "c6g.xlarge",
+                    "c6gd.12xlarge",
+                    "c6gd.16xlarge",
+                    "c6gd.2xlarge",
+                    "c6gd.4xlarge",
+                    "c6gd.8xlarge",
+                    "c6gd.large",
+                    "c6gd.medium",
+                    "c6gd.metal",
+                    "c6gd.xlarge",
+                    "c6gn.12xlarge",
+                    "c6gn.16xlarge",
+                    "c6gn.2xlarge",
+                    "c6gn.4xlarge",
+                    "c6gn.8xlarge",
+                    "c6gn.large",
+                    "c6gn.medium",
+                    "c6gn.xlarge",
+                    "c6i.12xlarge",
+                    "c6i.16xlarge",
+                    "c6i.24xlarge",
+                    "c6i.2xlarge",
+                    "c6i.32xlarge",
+                    "c6i.4xlarge",
+                    "c6i.8xlarge",
+                    "c6i.large",
+                    "c6i.metal",
+                    "c6i.xlarge",
+                    "c6id.12xlarge",
+                    "c6id.16xlarge",
+                    "c6id.24xlarge",
+                    "c6id.2xlarge",
+                    "c6id.32xlarge",
+                    "c6id.4xlarge",
+                    "c6id.8xlarge",
+                    "c6id.large",
+                    "c6id.metal",
+                    "c6id.xlarge",
+                    "c6in.12xlarge",
+                    "c6in.16xlarge",
+                    "c6in.24xlarge",
+                    "c6in.2xlarge",
+                    "c6in.32xlarge",
+                    "c6in.4xlarge",
+                    "c6in.8xlarge",
+                    "c6in.large",
+                    "c6in.metal",
+                    "c6in.xlarge",
+                    "c7a.12xlarge",
+                    "c7a.16xlarge",
+                    "c7a.24xlarge",
+                    "c7a.2xlarge",
+                    "c7a.32xlarge",
+                    "c7a.48xlarge",
+                    "c7a.4xlarge",
+                    "c7a.8xlarge",
+                    "c7a.large",
+                    "c7a.medium",
+                    "c7a.metal-48xl",
+                    "c7a.xlarge",
+                    "c7g.12xlarge",
+                    "c7g.16xlarge",
+                    "c7g.2xlarge",
+                    "c7g.4xlarge",
+                    "c7g.8xlarge",
+                    "c7g.large",
+                    "c7g.medium",
+                    "c7g.metal",
+                    "c7g.xlarge",
+                    "c7gd.12xlarge",
+                    "c7gd.16xlarge",
+                    "c7gd.2xlarge",
+                    "c7gd.4xlarge",
+                    "c7gd.8xlarge",
+                    "c7gd.large",
+                    "c7gd.medium",
+                    "c7gd.metal",
+                    "c7gd.xlarge",
+                    "c7gn.12xlarge",
+                    "c7gn.16xlarge",
+                    "c7gn.2xlarge",
+                    "c7gn.4xlarge",
+                    "c7gn.8xlarge",
+                    "c7gn.large",
+                    "c7gn.medium",
+                    "c7gn.xlarge",
+                    "c7i.12xlarge",
+                    "c7i.16xlarge",
+                    "c7i.24xlarge",
+                    "c7i.2xlarge",
+                    "c7i.48xlarge",
+                    "c7i.4xlarge",
+                    "c7i.8xlarge",
+                    "c7i.large",
+                    "c7i.metal-24xl",
+                    "c7i.metal-48xl",
+                    "c7i.xlarge",
+                    "cc1.4xlarge",
+                    "cc2.8xlarge",
+                    "cg1.4xlarge",
+                    "cr1.8xlarge",
+                    "d2.2xlarge",
+                    "d2.4xlarge",
+                    "d2.8xlarge",
+                    "d2.xlarge",
+                    "d3.2xlarge",
+                    "d3.4xlarge",
+                    "d3.8xlarge",
+                    "d3.xlarge",
+                    "d3en.12xlarge",
+                    "d3en.2xlarge",
+                    "d3en.4xlarge",
+                    "d3en.6xlarge",
+                    "d3en.8xlarge",
+                    "d3en.xlarge",
+                    "dl1.24xlarge",
+                    "dl2q.24xlarge",
+                    "f1.16xlarge",
+                    "f1.2xlarge",
+                    "f1.4xlarge",
+                    "g2.2xlarge",
+                    "g2.8xlarge",
+                    "g3.16xlarge",
+                    "g3.4xlarge",
+                    "g3.8xlarge",
+                    "g3s.xlarge",
+                    "g4ad.16xlarge",
+                    "g4ad.2xlarge",
+                    "g4ad.4xlarge",
+                    "g4ad.8xlarge",
+                    "g4ad.xlarge",
+                    "g4dn.12xlarge",
+                    "g4dn.16xlarge",
+                    "g4dn.2xlarge",
+                    "g4dn.4xlarge",
+                    "g4dn.8xlarge",
+                    "g4dn.metal",
+                    "g4dn.xlarge",
+                    "g5.12xlarge",
+                    "g5.16xlarge",
+                    "g5.24xlarge",
+                    "g5.2xlarge",
+                    "g5.48xlarge",
+                    "g5.4xlarge",
+                    "g5.8xlarge",
+                    "g5.xlarge",
+                    "g5g.16xlarge",
+                    "g5g.2xlarge",
+                    "g5g.4xlarge",
+                    "g5g.8xlarge",
+                    "g5g.metal",
+                    "g5g.xlarge",
+                    "g6.12xlarge",
+                    "g6.16xlarge",
+                    "g6.24xlarge",
+                    "g6.2xlarge",
+                    "g6.48xlarge",
+                    "g6.4xlarge",
+                    "g6.8xlarge",
+                    "g6.xlarge",
+                    "gr6.4xlarge",
+                    "gr6.8xlarge",
+                    "h1.16xlarge",
+                    "h1.2xlarge",
+                    "h1.4xlarge",
+                    "h1.8xlarge",
+                    "hi1.4xlarge",
+                    "hpc6a.48xlarge",
+                    "hpc6id.32xlarge",
+                    "hpc7a.12xlarge",
+                    "hpc7a.24xlarge",
+                    "hpc7a.48xlarge",
+                    "hpc7a.96xlarge",
+                    "hpc7g.16xlarge",
+                    "hpc7g.4xlarge",
+                    "hpc7g.8xlarge",
+                    "hs1.8xlarge",
+                    "i2.2xlarge",
+                    "i2.4xlarge",
+                    "i2.8xlarge",
+                    "i2.xlarge",
+                    "i3.16xlarge",
+                    "i3.2xlarge",
+                    "i3.4xlarge",
+                    "i3.8xlarge",
+                    "i3.large",
+                    "i3.metal",
+                    "i3.xlarge",
+                    "i3en.12xlarge",
+                    "i3en.24xlarge",
+                    "i3en.2xlarge",
+                    "i3en.3xlarge",
+                    "i3en.6xlarge",
+                    "i3en.large",
+                    "i3en.metal",
+                    "i3en.xlarge",
+                    "i4g.16xlarge",
+                    "i4g.2xlarge",
+                    "i4g.4xlarge",
+                    "i4g.8xlarge",
+                    "i4g.large",
+                    "i4g.xlarge",
+                    "i4i.12xlarge",
+                    "i4i.16xlarge",
+                    "i4i.24xlarge",
+                    "i4i.2xlarge",
+                    "i4i.32xlarge",
+                    "i4i.4xlarge",
+                    "i4i.8xlarge",
+                    "i4i.large",
+                    "i4i.metal",
+                    "i4i.xlarge",
+                    "im4gn.16xlarge",
+                    "im4gn.2xlarge",
+                    "im4gn.4xlarge",
+                    "im4gn.8xlarge",
+                    "im4gn.large",
+                    "im4gn.xlarge",
+                    "inf1.24xlarge",
+                    "inf1.2xlarge",
+                    "inf1.6xlarge",
+                    "inf1.xlarge",
+                    "inf2.24xlarge",
+                    "inf2.48xlarge",
+                    "inf2.8xlarge",
+                    "inf2.xlarge",
+                    "is4gen.2xlarge",
+                    "is4gen.4xlarge",
+                    "is4gen.8xlarge",
+                    "is4gen.large",
+                    "is4gen.medium",
+                    "is4gen.xlarge",
+                    "m1.large",
+                    "m1.medium",
+                    "m1.small",
+                    "m1.xlarge",
+                    "m2.2xlarge",
+                    "m2.4xlarge",
+                    "m2.xlarge",
+                    "m3.2xlarge",
+                    "m3.large",
+                    "m3.medium",
+                    "m3.xlarge",
+                    "m4.10xlarge",
+                    "m4.16xlarge",
+                    "m4.2xlarge",
+                    "m4.4xlarge",
+                    "m4.large",
+                    "m4.xlarge",
+                    "m5.12xlarge",
+                    "m5.16xlarge",
+                    "m5.24xlarge",
+                    "m5.2xlarge",
+                    "m5.4xlarge",
+                    "m5.8xlarge",
+                    "m5.large",
+                    "m5.metal",
+                    "m5.xlarge",
+                    "m5a.12xlarge",
+                    "m5a.16xlarge",
+                    "m5a.24xlarge",
+                    "m5a.2xlarge",
+                    "m5a.4xlarge",
+                    "m5a.8xlarge",
+                    "m5a.large",
+                    "m5a.xlarge",
+                    "m5ad.12xlarge",
+                    "m5ad.16xlarge",
+                    "m5ad.24xlarge",
+                    "m5ad.2xlarge",
+                    "m5ad.4xlarge",
+                    "m5ad.8xlarge",
+                    "m5ad.large",
+                    "m5ad.xlarge",
+                    "m5d.12xlarge",
+                    "m5d.16xlarge",
+                    "m5d.24xlarge",
+                    "m5d.2xlarge",
+                    "m5d.4xlarge",
+                    "m5d.8xlarge",
+                    "m5d.large",
+                    "m5d.metal",
+                    "m5d.xlarge",
+                    "m5dn.12xlarge",
+                    "m5dn.16xlarge",
+                    "m5dn.24xlarge",
+                    "m5dn.2xlarge",
+                    "m5dn.4xlarge",
+                    "m5dn.8xlarge",
+                    "m5dn.large",
+                    "m5dn.metal",
+                    "m5dn.xlarge",
+                    "m5n.12xlarge",
+                    "m5n.16xlarge",
+                    "m5n.24xlarge",
+                    "m5n.2xlarge",
+                    "m5n.4xlarge",
+                    "m5n.8xlarge",
+                    "m5n.large",
+                    "m5n.metal",
+                    "m5n.xlarge",
+                    "m5zn.12xlarge",
+                    "m5zn.2xlarge",
+                    "m5zn.3xlarge",
+                    "m5zn.6xlarge",
+                    "m5zn.large",
+                    "m5zn.metal",
+                    "m5zn.xlarge",
+                    "m6a.12xlarge",
+                    "m6a.16xlarge",
+                    "m6a.24xlarge",
+                    "m6a.2xlarge",
+                    "m6a.32xlarge",
+                    "m6a.48xlarge",
+                    "m6a.4xlarge",
+                    "m6a.8xlarge",
+                    "m6a.large",
+                    "m6a.metal",
+                    "m6a.xlarge",
+                    "m6g.12xlarge",
+                    "m6g.16xlarge",
+                    "m6g.2xlarge",
+                    "m6g.4xlarge",
+                    "m6g.8xlarge",
+                    "m6g.large",
+                    "m6g.medium",
+                    "m6g.metal",
+                    "m6g.xlarge",
+                    "m6gd.12xlarge",
+                    "m6gd.16xlarge",
+                    "m6gd.2xlarge",
+                    "m6gd.4xlarge",
+                    "m6gd.8xlarge",
+                    "m6gd.large",
+                    "m6gd.medium",
+                    "m6gd.metal",
+                    "m6gd.xlarge",
+                    "m6i.12xlarge",
+                    "m6i.16xlarge",
+                    "m6i.24xlarge",
+                    "m6i.2xlarge",
+                    "m6i.32xlarge",
+                    "m6i.4xlarge",
+                    "m6i.8xlarge",
+                    "m6i.large",
+                    "m6i.metal",
+                    "m6i.xlarge",
+                    "m6id.12xlarge",
+                    "m6id.16xlarge",
+                    "m6id.24xlarge",
+                    "m6id.2xlarge",
+                    "m6id.32xlarge",
+                    "m6id.4xlarge",
+                    "m6id.8xlarge",
+                    "m6id.large",
+                    "m6id.metal",
+                    "m6id.xlarge",
+                    "m6idn.12xlarge",
+                    "m6idn.16xlarge",
+                    "m6idn.24xlarge",
+                    "m6idn.2xlarge",
+                    "m6idn.32xlarge",
+                    "m6idn.4xlarge",
+                    "m6idn.8xlarge",
+                    "m6idn.large",
+                    "m6idn.metal",
+                    "m6idn.xlarge",
+                    "m6in.12xlarge",
+                    "m6in.16xlarge",
+                    "m6in.24xlarge",
+                    "m6in.2xlarge",
+                    "m6in.32xlarge",
+                    "m6in.4xlarge",
+                    "m6in.8xlarge",
+                    "m6in.large",
+                    "m6in.metal",
+                    "m6in.xlarge",
+                    "m7a.12xlarge",
+                    "m7a.16xlarge",
+                    "m7a.24xlarge",
+                    "m7a.2xlarge",
+                    "m7a.32xlarge",
+                    "m7a.48xlarge",
+                    "m7a.4xlarge",
+                    "m7a.8xlarge",
+                    "m7a.large",
+                    "m7a.medium",
+                    "m7a.metal-48xl",
+                    "m7a.xlarge",
+                    "m7g.12xlarge",
+                    "m7g.16xlarge",
+                    "m7g.2xlarge",
+                    "m7g.4xlarge",
+                    "m7g.8xlarge",
+                    "m7g.large",
+                    "m7g.medium",
+                    "m7g.metal",
+                    "m7g.xlarge",
+                    "m7gd.12xlarge",
+                    "m7gd.16xlarge",
+                    "m7gd.2xlarge",
+                    "m7gd.4xlarge",
+                    "m7gd.8xlarge",
+                    "m7gd.large",
+                    "m7gd.medium",
+                    "m7gd.metal",
+                    "m7gd.xlarge",
+                    "m7i-flex.2xlarge",
+                    "m7i-flex.4xlarge",
+                    "m7i-flex.8xlarge",
+                    "m7i-flex.large",
+                    "m7i-flex.xlarge",
+                    "m7i.12xlarge",
+                    "m7i.16xlarge",
+                    "m7i.24xlarge",
+                    "m7i.2xlarge",
+                    "m7i.48xlarge",
+                    "m7i.4xlarge",
+                    "m7i.8xlarge",
+                    "m7i.large",
+                    "m7i.metal-24xl",
+                    "m7i.metal-48xl",
+                    "m7i.xlarge",
+                    "mac1.metal",
+                    "mac2-m2.metal",
+                    "mac2-m2pro.metal",
+                    "mac2.metal",
+                    "p2.16xlarge",
+                    "p2.8xlarge",
+                    "p2.xlarge",
+                    "p3.16xlarge",
+                    "p3.2xlarge",
+                    "p3.8xlarge",
+                    "p3dn.24xlarge",
+                    "p4d.24xlarge",
+                    "p4de.24xlarge",
+                    "p5.48xlarge",
+                    "r3.2xlarge",
+                    "r3.4xlarge",
+                    "r3.8xlarge",
+                    "r3.large",
+                    "r3.xlarge",
+                    "r4.16xlarge",
+                    "r4.2xlarge",
+                    "r4.4xlarge",
+                    "r4.8xlarge",
+                    "r4.large",
+                    "r4.xlarge",
+                    "r5.12xlarge",
+                    "r5.16xlarge",
+                    "r5.24xlarge",
+                    "r5.2xlarge",
+                    "r5.4xlarge",
+                    "r5.8xlarge",
+                    "r5.large",
+                    "r5.metal",
+                    "r5.xlarge",
+                    "r5a.12xlarge",
+                    "r5a.16xlarge",
+                    "r5a.24xlarge",
+                    "r5a.2xlarge",
+                    "r5a.4xlarge",
+                    "r5a.8xlarge",
+                    "r5a.large",
+                    "r5a.xlarge",
+                    "r5ad.12xlarge",
+                    "r5ad.16xlarge",
+                    "r5ad.24xlarge",
+                    "r5ad.2xlarge",
+                    "r5ad.4xlarge",
+                    "r5ad.8xlarge",
+                    "r5ad.large",
+                    "r5ad.xlarge",
+                    "r5b.12xlarge",
+                    "r5b.16xlarge",
+                    "r5b.24xlarge",
+                    "r5b.2xlarge",
+                    "r5b.4xlarge",
+                    "r5b.8xlarge",
+                    "r5b.large",
+                    "r5b.metal",
+                    "r5b.xlarge",
+                    "r5d.12xlarge",
+                    "r5d.16xlarge",
+                    "r5d.24xlarge",
+                    "r5d.2xlarge",
+                    "r5d.4xlarge",
+                    "r5d.8xlarge",
+                    "r5d.large",
+                    "r5d.metal",
+                    "r5d.xlarge",
+                    "r5dn.12xlarge",
+                    "r5dn.16xlarge",
+                    "r5dn.24xlarge",
+                    "r5dn.2xlarge",
+                    "r5dn.4xlarge",
+                    "r5dn.8xlarge",
+                    "r5dn.large",
+                    "r5dn.metal",
+                    "r5dn.xlarge",
+                    "r5n.12xlarge",
+                    "r5n.16xlarge",
+                    "r5n.24xlarge",
+                    "r5n.2xlarge",
+                    "r5n.4xlarge",
+                    "r5n.8xlarge",
+                    "r5n.large",
+                    "r5n.metal",
+                    "r5n.xlarge",
+                    "r6a.12xlarge",
+                    "r6a.16xlarge",
+                    "r6a.24xlarge",
+                    "r6a.2xlarge",
+                    "r6a.32xlarge",
+                    "r6a.48xlarge",
+                    "r6a.4xlarge",
+                    "r6a.8xlarge",
+                    "r6a.large",
+                    "r6a.metal",
+                    "r6a.xlarge",
+                    "r6g.12xlarge",
+                    "r6g.16xlarge",
+                    "r6g.2xlarge",
+                    "r6g.4xlarge",
+                    "r6g.8xlarge",
+                    "r6g.large",
+                    "r6g.medium",
+                    "r6g.metal",
+                    "r6g.xlarge",
+                    "r6gd.12xlarge",
+                    "r6gd.16xlarge",
+                    "r6gd.2xlarge",
+                    "r6gd.4xlarge",
+                    "r6gd.8xlarge",
+                    "r6gd.large",
+                    "r6gd.medium",
+                    "r6gd.metal",
+                    "r6gd.xlarge",
+                    "r6i.12xlarge",
+                    "r6i.16xlarge",
+                    "r6i.24xlarge",
+                    "r6i.2xlarge",
+                    "r6i.32xlarge",
+                    "r6i.4xlarge",
+                    "r6i.8xlarge",
+                    "r6i.large",
+                    "r6i.metal",
+                    "r6i.xlarge",
+                    "r6id.12xlarge",
+                    "r6id.16xlarge",
+                    "r6id.24xlarge",
+                    "r6id.2xlarge",
+                    "r6id.32xlarge",
+                    "r6id.4xlarge",
+                    "r6id.8xlarge",
+                    "r6id.large",
+                    "r6id.metal",
+                    "r6id.xlarge",
+                    "r6idn.12xlarge",
+                    "r6idn.16xlarge",
+                    "r6idn.24xlarge",
+                    "r6idn.2xlarge",
+                    "r6idn.32xlarge",
+                    "r6idn.4xlarge",
+                    "r6idn.8xlarge",
+                    "r6idn.large",
+                    "r6idn.metal",
+                    "r6idn.xlarge",
+                    "r6in.12xlarge",
+                    "r6in.16xlarge",
+                    "r6in.24xlarge",
+                    "r6in.2xlarge",
+                    "r6in.32xlarge",
+                    "r6in.4xlarge",
+                    "r6in.8xlarge",
+                    "r6in.large",
+                    "r6in.metal",
+                    "r6in.xlarge",
+                    "r7a.12xlarge",
+                    "r7a.16xlarge",
+                    "r7a.24xlarge",
+                    "r7a.2xlarge",
+                    "r7a.32xlarge",
+                    "r7a.48xlarge",
+                    "r7a.4xlarge",
+                    "r7a.8xlarge",
+                    "r7a.large",
+                    "r7a.medium",
+                    "r7a.metal-48xl",
+                    "r7a.xlarge",
+                    "r7g.12xlarge",
+                    "r7g.16xlarge",
+                    "r7g.2xlarge",
+                    "r7g.4xlarge",
+                    "r7g.8xlarge",
+                    "r7g.large",
+                    "r7g.medium",
+                    "r7g.metal",
+                    "r7g.xlarge",
+                    "r7gd.12xlarge",
+                    "r7gd.16xlarge",
+                    "r7gd.2xlarge",
+                    "r7gd.4xlarge",
+                    "r7gd.8xlarge",
+                    "r7gd.large",
+                    "r7gd.medium",
+                    "r7gd.metal",
+                    "r7gd.xlarge",
+                    "r7i.12xlarge",
+                    "r7i.16xlarge",
+                    "r7i.24xlarge",
+                    "r7i.2xlarge",
+                    "r7i.48xlarge",
+                    "r7i.4xlarge",
+                    "r7i.8xlarge",
+                    "r7i.large",
+                    "r7i.metal-24xl",
+                    "r7i.metal-48xl",
+                    "r7i.xlarge",
+                    "r7iz.12xlarge",
+                    "r7iz.16xlarge",
+                    "r7iz.2xlarge",
+                    "r7iz.32xlarge",
+                    "r7iz.4xlarge",
+                    "r7iz.8xlarge",
+                    "r7iz.large",
+                    "r7iz.metal-16xl",
+                    "r7iz.metal-32xl",
+                    "r7iz.xlarge",
+                    "t1.micro",
+                    "t2.2xlarge",
+                    "t2.large",
+                    "t2.medium",
+                    "t2.micro",
+                    "t2.nano",
+                    "t2.small",
+                    "t2.xlarge",
+                    "t3.2xlarge",
+                    "t3.large",
+                    "t3.medium",
+                    "t3.micro",
+                    "t3.nano",
+                    "t3.small",
+                    "t3.xlarge",
+                    "t3a.2xlarge",
+                    "t3a.large",
+                    "t3a.medium",
+                    "t3a.micro",
+                    "t3a.nano",
+                    "t3a.small",
+                    "t3a.xlarge",
+                    "t4g.2xlarge",
+                    "t4g.large",
+                    "t4g.medium",
+                    "t4g.micro",
+                    "t4g.nano",
+                    "t4g.small",
+                    "t4g.xlarge",
+                    "trn1.2xlarge",
+                    "trn1.32xlarge",
+                    "trn1n.32xlarge",
+                    "u-12tb1.112xlarge",
+                    "u-12tb1.metal",
+                    "u-18tb1.112xlarge",
+                    "u-18tb1.metal",
+                    "u-24tb1.112xlarge",
+                    "u-24tb1.metal",
+                    "u-3tb1.56xlarge",
+                    "u-6tb1.112xlarge",
+                    "u-6tb1.56xlarge",
+                    "u-6tb1.metal",
+                    "u-9tb1.112xlarge",
+                    "u-9tb1.metal",
+                    "vt1.24xlarge",
+                    "vt1.3xlarge",
+                    "vt1.6xlarge",
+                    "x1.16xlarge",
+                    "x1.32xlarge",
+                    "x1e.16xlarge",
+                    "x1e.2xlarge",
+                    "x1e.32xlarge",
+                    "x1e.4xlarge",
+                    "x1e.8xlarge",
+                    "x1e.xlarge",
+                    "x2gd.12xlarge",
+                    "x2gd.16xlarge",
+                    "x2gd.2xlarge",
+                    "x2gd.4xlarge",
+                    "x2gd.8xlarge",
+                    "x2gd.large",
+                    "x2gd.medium",
+                    "x2gd.metal",
+                    "x2gd.xlarge",
+                    "x2idn.16xlarge",
+                    "x2idn.24xlarge",
+                    "x2idn.32xlarge",
+                    "x2idn.metal",
+                    "x2iedn.16xlarge",
+                    "x2iedn.24xlarge",
+                    "x2iedn.2xlarge",
+                    "x2iedn.32xlarge",
+                    "x2iedn.4xlarge",
+                    "x2iedn.8xlarge",
+                    "x2iedn.metal",
+                    "x2iedn.xlarge",
+                    "x2iezn.12xlarge",
+                    "x2iezn.2xlarge",
+                    "x2iezn.4xlarge",
+                    "x2iezn.6xlarge",
+                    "x2iezn.8xlarge",
+                    "x2iezn.metal",
+                    "z1d.12xlarge",
+                    "z1d.2xlarge",
+                    "z1d.3xlarge",
+                    "z1d.6xlarge",
+                    "z1d.large",
+                    "z1d.metal",
+                    "z1d.xlarge",
+                  ]),
+                ),
+              }),
+            ),
+            ipv6Address: Schema.optional(Schema.String),
+            kernelId: Schema.optional(Schema.String),
+            keyName: Schema.optional(Schema.String),
+            launchTime: Schema.optional(Schema.String),
+            licenses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  licenseConfigurationArn: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            maintenanceOptions: Schema.optional(
+              Schema.Struct({
+                autoRecovery: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["default", "disabled"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            metadataOptions: Schema.optional(
+              Schema.Struct({
+                httpEndpoint: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["disabled", "enabled"]),
+                    ),
+                  }),
+                ),
+                httpProtocolIpv6: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["disabled", "enabled"]),
+                    ),
+                  }),
+                ),
+                httpPutResponseHopLimit: Schema.optional(Schema.Number),
+                httpTokens: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["optional", "required"]),
+                    ),
+                  }),
+                ),
+                instanceMetadataTags: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["disabled", "enabled"]),
+                    ),
+                  }),
+                ),
+                state: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["applied", "pending"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            monitoring: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "disabled",
+                        "disabling",
+                        "enabled",
+                        "pending",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            networkInterfaces: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  association: Schema.optional(
+                    Schema.Struct({
+                      carrierIp: Schema.optional(Schema.String),
+                      customerOwnedIp: Schema.optional(Schema.String),
+                      ipOwnerId: Schema.optional(Schema.String),
+                      publicDnsName: Schema.optional(Schema.String),
+                      publicIp: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  attachment: Schema.optional(
+                    Schema.Struct({
+                      attachTime: Schema.optional(Schema.String),
+                      attachmentId: Schema.optional(Schema.String),
+                      deleteOnTermination: Schema.optional(Schema.Boolean),
+                      deviceIndex: Schema.optional(Schema.Number),
+                      enaSrdSpecification: Schema.optional(
+                        Schema.Struct({
+                          enaSrdEnabled: Schema.optional(Schema.Boolean),
+                          enaSrdUdpSpecification: Schema.optional(
+                            Schema.Struct({
+                              enaSrdUdpEnabled: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                        }),
+                      ),
+                      networkCardIndex: Schema.optional(Schema.Number),
+                      status: Schema.optional(
+                        Schema.Struct({
+                          value: Schema.optional(
+                            Schema.Literals([
+                              "attached",
+                              "attaching",
+                              "detached",
+                              "detaching",
+                            ]),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  connectionTrackingConfiguration: Schema.optional(
+                    Schema.Struct({
+                      tcpEstablishedTimeout: Schema.optional(Schema.Number),
+                      udpStreamTimeout: Schema.optional(Schema.Number),
+                      udpTimeout: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  description: Schema.optional(Schema.String),
+                  groups: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        groupId: Schema.optional(Schema.String),
+                        groupName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  interfaceType: Schema.optional(Schema.String),
+                  ipv4Prefixes: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        ipv4Prefix: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  ipv6Addresses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        ipv6Address: Schema.optional(Schema.String),
+                        isPrimaryIpv6: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  ),
+                  ipv6Prefixes: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        ipv6Prefix: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  macAddress: Schema.optional(Schema.String),
+                  networkInterfaceId: Schema.optional(Schema.String),
+                  ownerId: Schema.optional(Schema.String),
+                  privateDnsName: Schema.optional(Schema.String),
+                  privateIpAddress: Schema.optional(Schema.String),
+                  privateIpAddresses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        association: Schema.optional(
+                          Schema.Struct({
+                            carrierIp: Schema.optional(Schema.String),
+                            customerOwnedIp: Schema.optional(Schema.String),
+                            ipOwnerId: Schema.optional(Schema.String),
+                            publicDnsName: Schema.optional(Schema.String),
+                            publicIp: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        primary: Schema.optional(Schema.Boolean),
+                        privateDnsName: Schema.optional(Schema.String),
+                        privateIpAddress: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  sourceDestCheck: Schema.optional(Schema.Boolean),
+                  status: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals([
+                          "associated",
+                          "attaching",
+                          "available",
+                          "detaching",
+                          "in-use",
+                        ]),
+                      ),
+                    }),
+                  ),
+                  subnetId: Schema.optional(Schema.String),
+                  vpcId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            outpostArn: Schema.optional(Schema.String),
+            placement: Schema.optional(
+              Schema.Struct({
+                affinity: Schema.optional(Schema.String),
+                availabilityZone: Schema.optional(Schema.String),
+                groupId: Schema.optional(Schema.String),
+                groupName: Schema.optional(Schema.String),
+                hostId: Schema.optional(Schema.String),
+                hostResourceGroupArn: Schema.optional(Schema.String),
+                partitionNumber: Schema.optional(Schema.Number),
+                spreadDomain: Schema.optional(Schema.String),
+                tenancy: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["dedicated", "default", "host"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            platform: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["Windows"])),
+              }),
+            ),
+            platformDetails: Schema.optional(Schema.String),
+            privateDnsName: Schema.optional(Schema.String),
+            privateDnsNameOptions: Schema.optional(
+              Schema.Struct({
+                enableResourceNameDnsAAAARecord: Schema.optional(
+                  Schema.Boolean,
+                ),
+                enableResourceNameDnsARecord: Schema.optional(Schema.Boolean),
+                hostnameType: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["ip-name", "resource-name"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            privateIpAddress: Schema.optional(Schema.String),
+            productCodes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  productCodeId: Schema.optional(Schema.String),
+                  productCodeType: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals(["devpay", "marketplace"]),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            publicDnsName: Schema.optional(Schema.String),
+            publicIpAddress: Schema.optional(Schema.String),
+            ramdiskId: Schema.optional(Schema.String),
+            rootDeviceName: Schema.optional(Schema.String),
+            rootDeviceType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["ebs", "instance-store"]),
+                ),
+              }),
+            ),
+            securityGroups: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  groupId: Schema.optional(Schema.String),
+                  groupName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            sourceDestCheck: Schema.optional(Schema.Boolean),
+            spotInstanceRequestId: Schema.optional(Schema.String),
+            sriovNetSupport: Schema.optional(Schema.String),
+            state: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.Number),
+                name: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "pending",
+                        "running",
+                        "shutting-down",
+                        "stopped",
+                        "stopping",
+                        "terminated",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            stateReason: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+            stateTransitionReason: Schema.optional(Schema.String),
+            subnetId: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            tpmSupport: Schema.optional(Schema.String),
+            usageOperation: Schema.optional(Schema.String),
+            usageOperationUpdateTime: Schema.optional(Schema.String),
+            virtualizationType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["hvm", "paravirtual"])),
+              }),
+            ),
+            vpcId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2InstancesCreateOrReplaceInput =
@@ -7957,12 +13526,11 @@ export const Ec2InstancesCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const Ec2InstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2InstancesDeleteInput = typeof Ec2InstancesDeleteInput.Type;
@@ -7982,12 +13550,13 @@ export const Ec2InstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: Ec2InstancesDeleteOutput,
 }));
 // Input Schema
-export const Ec2InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const Ec2InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2InstancesGetInput = typeof Ec2InstancesGetInput.Type;
@@ -8025,12 +13594,13 @@ export const Ec2InstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: Ec2InstancesGetOutput,
 }));
 // Input Schema
-export const Ec2InstancesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const Ec2InstancesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2InstancesListInput = typeof Ec2InstancesListInput.Type;
@@ -8086,13 +13656,12 @@ export const Ec2InstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const Ec2InstancesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    "api-version": Schema.String,
-  },
+  {},
 ).pipe(
   T.Http({
     method: "POST",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default/start",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2InstancesStartInput = typeof Ec2InstancesStartInput.Type;
@@ -8150,11 +13719,13 @@ export const Ec2InstancesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const Ec2InstancesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
+  force: Schema.optional(Schema.Boolean),
+  hibernate: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default/stop",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2InstancesStopInput = typeof Ec2InstancesStopInput.Type;
@@ -8217,11 +13788,171 @@ export const Ec2InstanceStatusesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            availabilityZone: Schema.optional(Schema.String),
+            events: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals([
+                          "instance-reboot",
+                          "instance-retirement",
+                          "instance-stop",
+                          "system-maintenance",
+                          "system-reboot",
+                        ]),
+                      ),
+                    }),
+                  ),
+                  description: Schema.optional(Schema.String),
+                  instanceEventId: Schema.optional(Schema.String),
+                  notAfter: Schema.optional(Schema.String),
+                  notBefore: Schema.optional(Schema.String),
+                  notBeforeDeadline: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            instanceId: Schema.optional(Schema.String),
+            instanceState: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.Number),
+                name: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "pending",
+                        "running",
+                        "shutting-down",
+                        "stopped",
+                        "stopping",
+                        "terminated",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            instanceStatus: Schema.optional(
+              Schema.Struct({
+                details: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      impairedSince: Schema.optional(Schema.String),
+                      name: Schema.optional(
+                        Schema.Struct({
+                          value: Schema.optional(
+                            Schema.Literals(["reachability"]),
+                          ),
+                        }),
+                      ),
+                      status: Schema.optional(
+                        Schema.Struct({
+                          value: Schema.optional(
+                            Schema.Literals([
+                              "failed",
+                              "initializing",
+                              "insufficient-data",
+                              "passed",
+                            ]),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                status: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "impaired",
+                        "initializing",
+                        "insufficient-data",
+                        "not-applicable",
+                        "ok",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            outpostArn: Schema.optional(Schema.String),
+            systemStatus: Schema.optional(
+              Schema.Struct({
+                details: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      impairedSince: Schema.optional(Schema.String),
+                      name: Schema.optional(
+                        Schema.Struct({
+                          value: Schema.optional(
+                            Schema.Literals(["reachability"]),
+                          ),
+                        }),
+                      ),
+                      status: Schema.optional(
+                        Schema.Struct({
+                          value: Schema.optional(
+                            Schema.Literals([
+                              "failed",
+                              "initializing",
+                              "insufficient-data",
+                              "passed",
+                            ]),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                status: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "impaired",
+                        "initializing",
+                        "insufficient-data",
+                        "not-applicable",
+                        "ok",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2InstanceStatuses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2InstanceStatusesCreateOrReplaceInput =
@@ -8271,11 +14002,11 @@ export const Ec2InstanceStatusesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2InstanceStatuses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2InstanceStatusesDeleteInput =
@@ -8308,11 +14039,11 @@ export const Ec2InstanceStatusesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2InstanceStatuses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2InstanceStatusesGetInput =
@@ -8362,11 +14093,11 @@ export const Ec2InstanceStatusesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2InstanceStatuses",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2InstanceStatusesListByResourceGroupInput =
@@ -8428,11 +14159,11 @@ export const Ec2InstanceStatusesListByResourceGroup =
 export const Ec2InstanceStatusesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2InstanceStatuses",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2InstanceStatusesListBySubscriptionInput =
@@ -8495,11 +14226,12 @@ export const Ec2InstanceStatusesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2InstanceStatuses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2InstanceStatusesUpdateInput =
@@ -8550,11 +14282,93 @@ export const Ec2IpamsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            defaultResourceDiscoveryAssociationId: Schema.optional(
+              Schema.String,
+            ),
+            defaultResourceDiscoveryId: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            ipamArn: Schema.optional(Schema.String),
+            ipamId: Schema.optional(Schema.String),
+            ipamRegion: Schema.optional(Schema.String),
+            operatingRegions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  regionName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            ownerId: Schema.optional(Schema.String),
+            privateDefaultScopeId: Schema.optional(Schema.String),
+            publicDefaultScopeId: Schema.optional(Schema.String),
+            resourceDiscoveryAssociationCount: Schema.optional(Schema.Number),
+            scopeCount: Schema.optional(Schema.Number),
+            state: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "create-complete",
+                    "create-failed",
+                    "create-in-progress",
+                    "delete-complete",
+                    "delete-failed",
+                    "delete-in-progress",
+                    "isolate-complete",
+                    "isolate-in-progress",
+                    "modify-complete",
+                    "modify-failed",
+                    "modify-in-progress",
+                    "restore-in-progress",
+                  ]),
+                ),
+              }),
+            ),
+            stateMessage: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            tier: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["advanced", "free"])),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Ipams/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2IpamsCreateOrReplaceInput =
@@ -8604,11 +14418,11 @@ export const Ec2IpamsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Ipams/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2IpamsDeleteInput = typeof Ec2IpamsDeleteInput.Type;
@@ -8635,11 +14449,11 @@ export const Ec2IpamsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Ipams/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2IpamsGetInput = typeof Ec2IpamsGetInput.Type;
@@ -8684,11 +14498,11 @@ export const Ec2IpamsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Ipams",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2IpamsListByResourceGroupInput =
@@ -8751,11 +14565,11 @@ export const Ec2IpamsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const Ec2IpamsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2Ipams",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2IpamsListBySubscriptionInput =
@@ -8818,11 +14632,12 @@ export const Ec2IpamsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Ipams/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2IpamsUpdateInput = typeof Ec2IpamsUpdateInput.Type;
@@ -8868,11 +14683,53 @@ export const Ec2KeyPairsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            keyFingerprint: Schema.optional(Schema.String),
+            keyFormat: Schema.optional(Schema.Literals(["pem", "ppk"])),
+            keyName: Schema.optional(Schema.String),
+            keyPairId: Schema.optional(Schema.String),
+            keyType: Schema.optional(Schema.Literals(["ed25519", "rsa"])),
+            publicKeyMaterial: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2KeyPairs/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2KeyPairsCreateOrReplaceInput =
@@ -8923,12 +14780,12 @@ export const Ec2KeyPairsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2KeyPairs/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2KeyPairsDeleteInput = typeof Ec2KeyPairsDeleteInput.Type;
@@ -8955,11 +14812,11 @@ export const Ec2KeyPairsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2KeyPairs/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2KeyPairsGetInput = typeof Ec2KeyPairsGetInput.Type;
@@ -9004,11 +14861,11 @@ export const Ec2KeyPairsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2KeyPairs",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2KeyPairsListByResourceGroupInput =
@@ -9070,11 +14927,11 @@ export const Ec2KeyPairsListByResourceGroup =
 export const Ec2KeyPairsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2KeyPairs",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2KeyPairsListBySubscriptionInput =
@@ -9137,12 +14994,13 @@ export const Ec2KeyPairsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2KeyPairs/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2KeyPairsUpdateInput = typeof Ec2KeyPairsUpdateInput.Type;
@@ -9189,11 +15047,49 @@ export const Ec2NetworkAclsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            vpcId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkAcls/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2NetworkAclsCreateOrReplaceInput =
@@ -9243,11 +15139,11 @@ export const Ec2NetworkAclsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkAcls/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2NetworkAclsDeleteInput = typeof Ec2NetworkAclsDeleteInput.Type;
@@ -9278,12 +15174,12 @@ export const Ec2NetworkAclsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkAcls/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2NetworkAclsGetInput = typeof Ec2NetworkAclsGetInput.Type;
@@ -9329,11 +15225,11 @@ export const Ec2NetworkAclsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkAcls",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2NetworkAclsListByResourceGroupInput =
@@ -9395,11 +15291,11 @@ export const Ec2NetworkAclsListByResourceGroup =
 export const Ec2NetworkAclsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2NetworkAcls",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2NetworkAclsListBySubscriptionInput =
@@ -9462,11 +15358,12 @@ export const Ec2NetworkAclsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkAcls/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2NetworkAclsUpdateInput = typeof Ec2NetworkAclsUpdateInput.Type;
@@ -9515,11 +15412,101 @@ export const Ec2NetworkInterfacesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            connectionTrackingSpecification: Schema.optional(
+              Schema.Struct({
+                tcpEstablishedTimeout: Schema.optional(Schema.Number),
+                udpStreamTimeout: Schema.optional(Schema.Number),
+                udpTimeout: Schema.optional(Schema.Number),
+              }),
+            ),
+            description: Schema.optional(Schema.String),
+            enablePrimaryIpv6: Schema.optional(Schema.Boolean),
+            groupSet: Schema.optional(Schema.Array(Schema.String)),
+            id: Schema.optional(Schema.String),
+            interfaceType: Schema.optional(Schema.String),
+            ipv4PrefixCount: Schema.optional(Schema.Number),
+            ipv4Prefixes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  ipv4Prefix: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            ipv6AddressCount: Schema.optional(Schema.Number),
+            ipv6Addresses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  ipv6Address: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            ipv6PrefixCount: Schema.optional(Schema.Number),
+            ipv6Prefixes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  ipv6Prefix: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            primaryIpv6Address: Schema.optional(Schema.String),
+            primaryPrivateIpAddress: Schema.optional(Schema.String),
+            privateIpAddress: Schema.optional(Schema.String),
+            privateIpAddresses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  primary: Schema.optional(Schema.Boolean),
+                  privateIpAddress: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            secondaryPrivateIpAddressCount: Schema.optional(Schema.Number),
+            secondaryPrivateIpAddresses: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            sourceDestCheck: Schema.optional(Schema.Boolean),
+            subnetId: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            vpcId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkInterfaces/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2NetworkInterfacesCreateOrReplaceInput =
@@ -9569,11 +15556,11 @@ export const Ec2NetworkInterfacesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkInterfaces/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2NetworkInterfacesDeleteInput =
@@ -9606,11 +15593,11 @@ export const Ec2NetworkInterfacesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkInterfaces/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2NetworkInterfacesGetInput =
@@ -9660,11 +15647,11 @@ export const Ec2NetworkInterfacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkInterfaces",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2NetworkInterfacesListByResourceGroupInput =
@@ -9726,11 +15713,11 @@ export const Ec2NetworkInterfacesListByResourceGroup =
 export const Ec2NetworkInterfacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2NetworkInterfaces",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2NetworkInterfacesListBySubscriptionInput =
@@ -9793,11 +15780,12 @@ export const Ec2NetworkInterfacesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2NetworkInterfaces/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2NetworkInterfacesUpdateInput =
@@ -9848,11 +15836,49 @@ export const Ec2RouteTablesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            routeTableId: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            vpcId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2RouteTables/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2RouteTablesCreateOrReplaceInput =
@@ -9902,11 +15928,11 @@ export const Ec2RouteTablesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2RouteTables/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2RouteTablesDeleteInput = typeof Ec2RouteTablesDeleteInput.Type;
@@ -9937,12 +15963,12 @@ export const Ec2RouteTablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2RouteTables/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2RouteTablesGetInput = typeof Ec2RouteTablesGetInput.Type;
@@ -9988,11 +16014,11 @@ export const Ec2RouteTablesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2RouteTables",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2RouteTablesListByResourceGroupInput =
@@ -10054,11 +16080,11 @@ export const Ec2RouteTablesListByResourceGroup =
 export const Ec2RouteTablesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2RouteTables",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2RouteTablesListBySubscriptionInput =
@@ -10121,11 +16147,12 @@ export const Ec2RouteTablesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2RouteTables/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2RouteTablesUpdateInput = typeof Ec2RouteTablesUpdateInput.Type;
@@ -10174,11 +16201,144 @@ export const Ec2SecurityGroupsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            groupId: Schema.optional(Schema.String),
+            groupName: Schema.optional(Schema.String),
+            ipPermissions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  fromPort: Schema.optional(Schema.Number),
+                  ipProtocol: Schema.optional(Schema.String),
+                  ipRanges: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cidrIp: Schema.optional(Schema.String),
+                        description: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  ipv6Ranges: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cidrIpv6: Schema.optional(Schema.String),
+                        description: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  prefixListIds: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        description: Schema.optional(Schema.String),
+                        prefixListId: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  toPort: Schema.optional(Schema.Number),
+                  userIdGroupPairs: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        description: Schema.optional(Schema.String),
+                        groupId: Schema.optional(Schema.String),
+                        groupName: Schema.optional(Schema.String),
+                        peeringStatus: Schema.optional(Schema.String),
+                        userId: Schema.optional(Schema.String),
+                        vpcId: Schema.optional(Schema.String),
+                        vpcPeeringConnectionId: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            ipPermissionsEgress: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  fromPort: Schema.optional(Schema.Number),
+                  ipProtocol: Schema.optional(Schema.String),
+                  ipRanges: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cidrIp: Schema.optional(Schema.String),
+                        description: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  ipv6Ranges: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        cidrIpv6: Schema.optional(Schema.String),
+                        description: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  prefixListIds: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        description: Schema.optional(Schema.String),
+                        prefixListId: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  toPort: Schema.optional(Schema.Number),
+                  userIdGroupPairs: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        description: Schema.optional(Schema.String),
+                        groupId: Schema.optional(Schema.String),
+                        groupName: Schema.optional(Schema.String),
+                        peeringStatus: Schema.optional(Schema.String),
+                        userId: Schema.optional(Schema.String),
+                        vpcId: Schema.optional(Schema.String),
+                        vpcPeeringConnectionId: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            ownerId: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            vpcId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2SecurityGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SecurityGroupsCreateOrReplaceInput =
@@ -10228,11 +16388,11 @@ export const Ec2SecurityGroupsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2SecurityGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SecurityGroupsDeleteInput =
@@ -10265,11 +16425,11 @@ export const Ec2SecurityGroupsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2SecurityGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SecurityGroupsGetInput = typeof Ec2SecurityGroupsGetInput.Type;
@@ -10317,11 +16477,11 @@ export const Ec2SecurityGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2SecurityGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SecurityGroupsListByResourceGroupInput =
@@ -10383,11 +16543,11 @@ export const Ec2SecurityGroupsListByResourceGroup =
 export const Ec2SecurityGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2SecurityGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SecurityGroupsListBySubscriptionInput =
@@ -10450,11 +16610,12 @@ export const Ec2SecurityGroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2SecurityGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SecurityGroupsUpdateInput =
@@ -10505,11 +16666,88 @@ export const Ec2SnapshotsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            dataEncryptionKeyId: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            encrypted: Schema.optional(Schema.Boolean),
+            kmsKeyId: Schema.optional(Schema.String),
+            outpostArn: Schema.optional(Schema.String),
+            ownerAlias: Schema.optional(Schema.String),
+            ownerId: Schema.optional(Schema.String),
+            progress: Schema.optional(Schema.String),
+            restoreExpiryTime: Schema.optional(Schema.String),
+            snapshotId: Schema.optional(Schema.String),
+            sseType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["none", "sse-ebs", "sse-kms"]),
+                ),
+              }),
+            ),
+            startTime: Schema.optional(Schema.String),
+            state: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "completed",
+                    "error",
+                    "pending",
+                    "recoverable",
+                    "recovering",
+                  ]),
+                ),
+              }),
+            ),
+            stateMessage: Schema.optional(Schema.String),
+            storageTier: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["archive", "standard"]),
+                ),
+              }),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            volumeId: Schema.optional(Schema.String),
+            volumeSize: Schema.optional(Schema.Number),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Snapshots/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SnapshotsCreateOrReplaceInput =
@@ -10560,11 +16798,11 @@ export const Ec2SnapshotsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Snapshots/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SnapshotsDeleteInput = typeof Ec2SnapshotsDeleteInput.Type;
@@ -10591,11 +16829,11 @@ export const Ec2SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Snapshots/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2SnapshotsGetInput = typeof Ec2SnapshotsGetInput.Type;
@@ -10640,11 +16878,11 @@ export const Ec2SnapshotsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Snapshots",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SnapshotsListByResourceGroupInput =
@@ -10706,11 +16944,11 @@ export const Ec2SnapshotsListByResourceGroup =
 export const Ec2SnapshotsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2Snapshots",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SnapshotsListBySubscriptionInput =
@@ -10773,11 +17011,12 @@ export const Ec2SnapshotsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Snapshots/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SnapshotsUpdateInput = typeof Ec2SnapshotsUpdateInput.Type;
@@ -10824,11 +17063,74 @@ export const Ec2SubnetsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            assignIpv6AddressOnCreation: Schema.optional(Schema.Boolean),
+            availabilityZone: Schema.optional(Schema.String),
+            availabilityZoneId: Schema.optional(Schema.String),
+            cidrBlock: Schema.optional(Schema.String),
+            enableDns64: Schema.optional(Schema.Boolean),
+            enableLniAtDeviceIndex: Schema.optional(Schema.Number),
+            ipv4IpamPoolId: Schema.optional(Schema.String),
+            ipv4NetmaskLength: Schema.optional(Schema.Number),
+            ipv6CidrBlock: Schema.optional(Schema.String),
+            ipv6CidrBlocks: Schema.optional(Schema.Array(Schema.String)),
+            ipv6IpamPoolId: Schema.optional(Schema.String),
+            ipv6Native: Schema.optional(Schema.Boolean),
+            ipv6NetmaskLength: Schema.optional(Schema.Number),
+            mapPublicIpOnLaunch: Schema.optional(Schema.Boolean),
+            networkAclAssociationId: Schema.optional(Schema.String),
+            outpostArn: Schema.optional(Schema.String),
+            privateDnsNameOptionsOnLaunch: Schema.optional(
+              Schema.Struct({
+                enableResourceNameDnsAAAARecord: Schema.optional(
+                  Schema.Boolean,
+                ),
+                enableResourceNameDnsARecord: Schema.optional(Schema.Boolean),
+                hostnameType: Schema.optional(Schema.String),
+              }),
+            ),
+            subnetId: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            vpcId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Subnets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SubnetsCreateOrReplaceInput =
@@ -10878,11 +17180,11 @@ export const Ec2SubnetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Subnets/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2SubnetsDeleteInput = typeof Ec2SubnetsDeleteInput.Type;
@@ -10909,11 +17211,11 @@ export const Ec2SubnetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Subnets/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2SubnetsGetInput = typeof Ec2SubnetsGetInput.Type;
@@ -10958,11 +17260,11 @@ export const Ec2SubnetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Subnets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SubnetsListByResourceGroupInput =
@@ -11024,11 +17326,11 @@ export const Ec2SubnetsListByResourceGroup =
 export const Ec2SubnetsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2Subnets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2SubnetsListBySubscriptionInput =
@@ -11090,11 +17392,12 @@ export const Ec2SubnetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Subnets/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2SubnetsUpdateInput = typeof Ec2SubnetsUpdateInput.Type;
@@ -11142,11 +17445,59 @@ export const Ec2VolumesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            autoEnableIO: Schema.optional(Schema.Boolean),
+            availabilityZone: Schema.optional(Schema.String),
+            encrypted: Schema.optional(Schema.Boolean),
+            iops: Schema.optional(Schema.Number),
+            kmsKeyId: Schema.optional(Schema.String),
+            multiAttachEnabled: Schema.optional(Schema.Boolean),
+            outpostArn: Schema.optional(Schema.String),
+            size: Schema.optional(Schema.Number),
+            snapshotId: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            throughput: Schema.optional(Schema.Number),
+            volumeId: Schema.optional(Schema.String),
+            volumeType: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Volumes/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VolumesCreateOrReplaceInput =
@@ -11196,11 +17547,11 @@ export const Ec2VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Volumes/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2VolumesDeleteInput = typeof Ec2VolumesDeleteInput.Type;
@@ -11227,11 +17578,11 @@ export const Ec2VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Volumes/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2VolumesGetInput = typeof Ec2VolumesGetInput.Type;
@@ -11276,11 +17627,11 @@ export const Ec2VolumesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Volumes",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VolumesListByResourceGroupInput =
@@ -11342,11 +17693,11 @@ export const Ec2VolumesListByResourceGroup =
 export const Ec2VolumesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2Volumes",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VolumesListBySubscriptionInput =
@@ -11408,11 +17759,12 @@ export const Ec2VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Volumes/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2VolumesUpdateInput = typeof Ec2VolumesUpdateInput.Type;
@@ -11460,11 +17812,55 @@ export const Ec2VpcEndpointsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            creationTimestamp: Schema.optional(Schema.String),
+            dnsEntries: Schema.optional(Schema.Array(Schema.String)),
+            id: Schema.optional(Schema.String),
+            networkInterfaceIds: Schema.optional(Schema.Array(Schema.String)),
+            policyDocument: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            privateDnsEnabled: Schema.optional(Schema.Boolean),
+            routeTableIds: Schema.optional(Schema.Array(Schema.String)),
+            securityGroupIds: Schema.optional(Schema.Array(Schema.String)),
+            serviceName: Schema.optional(Schema.String),
+            subnetIds: Schema.optional(Schema.Array(Schema.String)),
+            vpcEndpointType: Schema.optional(
+              Schema.Literals(["Gateway", "GatewayLoadBalancer", "Interface"]),
+            ),
+            vpcId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCEndpoints/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcEndpointsCreateOrReplaceInput =
@@ -11514,11 +17910,11 @@ export const Ec2VpcEndpointsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCEndpoints/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcEndpointsDeleteInput = typeof Ec2VpcEndpointsDeleteInput.Type;
@@ -11550,11 +17946,11 @@ export const Ec2VpcEndpointsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCEndpoints/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcEndpointsGetInput = typeof Ec2VpcEndpointsGetInput.Type;
@@ -11600,11 +17996,11 @@ export const Ec2VpcEndpointsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCEndpoints",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcEndpointsListByResourceGroupInput =
@@ -11666,11 +18062,11 @@ export const Ec2VpcEndpointsListByResourceGroup =
 export const Ec2VpcEndpointsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2VPCEndpoints",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcEndpointsListBySubscriptionInput =
@@ -11733,11 +18129,12 @@ export const Ec2VpcEndpointsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCEndpoints/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcEndpointsUpdateInput = typeof Ec2VpcEndpointsUpdateInput.Type;
@@ -11787,11 +18184,53 @@ export const Ec2VpcPeeringConnectionsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            peerOwnerId: Schema.optional(Schema.String),
+            peerRegion: Schema.optional(Schema.String),
+            peerRoleArn: Schema.optional(Schema.String),
+            peerVpcId: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            vpcId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCPeeringConnections/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcPeeringConnectionsCreateOrReplaceInput =
@@ -11841,11 +18280,11 @@ export const Ec2VpcPeeringConnectionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCPeeringConnections/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcPeeringConnectionsDeleteInput =
@@ -11877,11 +18316,11 @@ export const Ec2VpcPeeringConnectionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCPeeringConnections/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcPeeringConnectionsGetInput =
@@ -11931,11 +18370,11 @@ export const Ec2VpcPeeringConnectionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCPeeringConnections",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcPeeringConnectionsListByResourceGroupInput =
@@ -11997,11 +18436,11 @@ export const Ec2VpcPeeringConnectionsListByResourceGroup =
 export const Ec2VpcPeeringConnectionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2VPCPeeringConnections",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcPeeringConnectionsListBySubscriptionInput =
@@ -12064,11 +18503,12 @@ export const Ec2VpcPeeringConnectionsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2VPCPeeringConnections/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcPeeringConnectionsUpdateInput =
@@ -12118,11 +18558,58 @@ export const Ec2VpcsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            cidrBlock: Schema.optional(Schema.String),
+            cidrBlockAssociations: Schema.optional(Schema.Array(Schema.String)),
+            defaultNetworkAcl: Schema.optional(Schema.String),
+            defaultSecurityGroup: Schema.optional(Schema.String),
+            enableDnsHostnames: Schema.optional(Schema.Boolean),
+            enableDnsSupport: Schema.optional(Schema.Boolean),
+            instanceTenancy: Schema.optional(Schema.String),
+            ipv4IpamPoolId: Schema.optional(Schema.String),
+            ipv4NetmaskLength: Schema.optional(Schema.Number),
+            ipv6CidrBlocks: Schema.optional(Schema.Array(Schema.String)),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            vpcId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Vpcs/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcsCreateOrReplaceInput =
@@ -12172,11 +18659,11 @@ export const Ec2VpcsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Vpcs/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2VpcsDeleteInput = typeof Ec2VpcsDeleteInput.Type;
@@ -12203,11 +18690,11 @@ export const Ec2VpcsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Vpcs/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2VpcsGetInput = typeof Ec2VpcsGetInput.Type;
@@ -12252,11 +18739,11 @@ export const Ec2VpcsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Vpcs",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcsListByResourceGroupInput =
@@ -12319,11 +18806,11 @@ export const Ec2VpcsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const Ec2VpcsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ec2Vpcs",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Ec2VpcsListBySubscriptionInput =
@@ -12386,11 +18873,12 @@ export const Ec2VpcsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ec2Vpcs/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type Ec2VpcsUpdateInput = typeof Ec2VpcsUpdateInput.Type;
@@ -12436,11 +18924,78 @@ export const EcrImageDetailsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            artifactMediaType: Schema.optional(Schema.String),
+            imageDigest: Schema.optional(Schema.String),
+            imageManifestMediaType: Schema.optional(Schema.String),
+            imagePushedAt: Schema.optional(Schema.String),
+            imageScanFindingsSummary: Schema.optional(
+              Schema.Struct({
+                findingSeverityCounts: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Number),
+                ),
+                imageScanCompletedAt: Schema.optional(Schema.String),
+                vulnerabilitySourceUpdatedAt: Schema.optional(Schema.String),
+              }),
+            ),
+            imageScanStatus: Schema.optional(
+              Schema.Struct({
+                description: Schema.optional(Schema.String),
+                status: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "ACTIVE",
+                        "COMPLETE",
+                        "FAILED",
+                        "FINDINGS_UNAVAILABLE",
+                        "IN_PROGRESS",
+                        "PENDING",
+                        "SCAN_ELIGIBILITY_EXPIRED",
+                        "UNSUPPORTED_IMAGE",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            imageSizeInBytes: Schema.optional(Schema.Number),
+            imageTags: Schema.optional(Schema.Array(Schema.String)),
+            lastRecordedPullTime: Schema.optional(Schema.String),
+            registryId: Schema.optional(Schema.String),
+            repositoryName: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrImageDetails/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcrImageDetailsCreateOrReplaceInput =
@@ -12490,11 +19045,11 @@ export const EcrImageDetailsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrImageDetails/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcrImageDetailsDeleteInput = typeof EcrImageDetailsDeleteInput.Type;
@@ -12526,11 +19081,11 @@ export const EcrImageDetailsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrImageDetails/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcrImageDetailsGetInput = typeof EcrImageDetailsGetInput.Type;
@@ -12576,11 +19131,11 @@ export const EcrImageDetailsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrImageDetails",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcrImageDetailsListByResourceGroupInput =
@@ -12642,11 +19197,11 @@ export const EcrImageDetailsListByResourceGroup =
 export const EcrImageDetailsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ecrImageDetails",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcrImageDetailsListBySubscriptionInput =
@@ -12709,11 +19264,12 @@ export const EcrImageDetailsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrImageDetails/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcrImageDetailsUpdateInput = typeof EcrImageDetailsUpdateInput.Type;
@@ -12763,11 +19319,76 @@ export const EcrRepositoriesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            emptyOnDelete: Schema.optional(Schema.Boolean),
+            encryptionConfiguration: Schema.optional(
+              Schema.Struct({
+                encryptionType: Schema.optional(
+                  Schema.Literals(["AES256", "KMS"]),
+                ),
+                kmsKey: Schema.optional(Schema.String),
+              }),
+            ),
+            imageScanningConfiguration: Schema.optional(
+              Schema.Struct({
+                scanOnPush: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            imageTagMutability: Schema.optional(
+              Schema.Literals(["IMMUTABLE", "MUTABLE"]),
+            ),
+            lifecyclePolicy: Schema.optional(
+              Schema.Struct({
+                lifecyclePolicyText: Schema.optional(Schema.String),
+                registryId: Schema.optional(Schema.String),
+              }),
+            ),
+            repositoryName: Schema.optional(Schema.String),
+            repositoryPolicyText: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            repositoryUri: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrRepositories/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcrRepositoriesCreateOrReplaceInput =
@@ -12817,11 +19438,11 @@ export const EcrRepositoriesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrRepositories/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcrRepositoriesDeleteInput = typeof EcrRepositoriesDeleteInput.Type;
@@ -12853,11 +19474,11 @@ export const EcrRepositoriesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrRepositories/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcrRepositoriesGetInput = typeof EcrRepositoriesGetInput.Type;
@@ -12903,11 +19524,11 @@ export const EcrRepositoriesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrRepositories",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcrRepositoriesListByResourceGroupInput =
@@ -12969,11 +19590,11 @@ export const EcrRepositoriesListByResourceGroup =
 export const EcrRepositoriesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ecrRepositories",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcrRepositoriesListBySubscriptionInput =
@@ -13036,11 +19657,12 @@ export const EcrRepositoriesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecrRepositories/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcrRepositoriesUpdateInput = typeof EcrRepositoriesUpdateInput.Type;
@@ -13090,11 +19712,93 @@ export const EcsClustersCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            capacityProviders: Schema.optional(Schema.Array(Schema.String)),
+            clusterName: Schema.optional(Schema.String),
+            clusterSettings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            configuration: Schema.optional(
+              Schema.Struct({
+                executeCommandConfiguration: Schema.optional(
+                  Schema.Struct({
+                    kmsKeyId: Schema.optional(Schema.String),
+                    logConfiguration: Schema.optional(
+                      Schema.Struct({
+                        cloudWatchEncryptionEnabled: Schema.optional(
+                          Schema.Boolean,
+                        ),
+                        cloudWatchLogGroupName: Schema.optional(Schema.String),
+                        s3BucketName: Schema.optional(Schema.String),
+                        s3EncryptionEnabled: Schema.optional(Schema.Boolean),
+                        s3KeyPrefix: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    logging: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            defaultCapacityProviderStrategy: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  base: Schema.optional(Schema.Number),
+                  capacityProvider: Schema.optional(Schema.String),
+                  weight: Schema.optional(Schema.Number),
+                }),
+              ),
+            ),
+            serviceConnectDefaults: Schema.optional(
+              Schema.Struct({
+                namespace: Schema.optional(Schema.String),
+              }),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsClusters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcsClustersCreateOrReplaceInput =
@@ -13145,12 +19849,12 @@ export const EcsClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsClusters/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EcsClustersDeleteInput = typeof EcsClustersDeleteInput.Type;
@@ -13177,11 +19881,11 @@ export const EcsClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsClusters/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EcsClustersGetInput = typeof EcsClustersGetInput.Type;
@@ -13226,11 +19930,11 @@ export const EcsClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsClusters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcsClustersListByResourceGroupInput =
@@ -13292,11 +19996,11 @@ export const EcsClustersListByResourceGroup =
 export const EcsClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ecsClusters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcsClustersListBySubscriptionInput =
@@ -13359,12 +20063,13 @@ export const EcsClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsClusters/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EcsClustersUpdateInput = typeof EcsClustersUpdateInput.Type;
@@ -13411,11 +20116,253 @@ export const EcsServicesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            capacityProviderStrategy: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  base: Schema.optional(Schema.Number),
+                  capacityProvider: Schema.optional(Schema.String),
+                  weight: Schema.optional(Schema.Number),
+                }),
+              ),
+            ),
+            cluster: Schema.optional(Schema.String),
+            deploymentConfiguration: Schema.optional(
+              Schema.Struct({
+                alarms: Schema.optional(
+                  Schema.Struct({
+                    alarmNames: Schema.optional(Schema.Array(Schema.String)),
+                    enable: Schema.optional(Schema.Boolean),
+                    rollback: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                deploymentCircuitBreaker: Schema.optional(
+                  Schema.Struct({
+                    enable: Schema.optional(Schema.Boolean),
+                    rollback: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                maximumPercent: Schema.optional(Schema.Number),
+                minimumHealthyPercent: Schema.optional(Schema.Number),
+              }),
+            ),
+            deploymentController: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["CODE_DEPLOY", "ECS", "EXTERNAL"]),
+                ),
+              }),
+            ),
+            desiredCount: Schema.optional(Schema.Number),
+            enableECSManagedTags: Schema.optional(Schema.Boolean),
+            enableExecuteCommand: Schema.optional(Schema.Boolean),
+            healthCheckGracePeriodSeconds: Schema.optional(Schema.Number),
+            launchType: Schema.optional(
+              Schema.Literals(["EC2", "EXTERNAL", "FARGATE"]),
+            ),
+            loadBalancers: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  containerName: Schema.optional(Schema.String),
+                  containerPort: Schema.optional(Schema.Number),
+                  loadBalancerName: Schema.optional(Schema.String),
+                  targetGroupArn: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            name: Schema.optional(Schema.String),
+            networkConfiguration: Schema.optional(
+              Schema.Struct({
+                awsvpcConfiguration: Schema.optional(
+                  Schema.Struct({
+                    assignPublicIp: Schema.optional(
+                      Schema.Literals(["DISABLED", "ENABLED"]),
+                    ),
+                    securityGroups: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    subnets: Schema.optional(Schema.Array(Schema.String)),
+                  }),
+                ),
+              }),
+            ),
+            placementConstraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  expression: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals(["distinctInstance", "memberOf"]),
+                  ),
+                }),
+              ),
+            ),
+            placementStrategies: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  field: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals(["binpack", "random", "spread"]),
+                  ),
+                }),
+              ),
+            ),
+            platformVersion: Schema.optional(Schema.String),
+            propagateTags: Schema.optional(
+              Schema.Literals(["SERVICE", "TASK_DEFINITION"]),
+            ),
+            role: Schema.optional(Schema.String),
+            schedulingStrategy: Schema.optional(
+              Schema.Literals(["DAEMON", "REPLICA"]),
+            ),
+            serviceArn: Schema.optional(Schema.String),
+            serviceConnectConfiguration: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                logConfiguration: Schema.optional(
+                  Schema.Struct({
+                    logDriver: Schema.optional(Schema.String),
+                    options: Schema.optional(Schema.Unknown),
+                    secretOptions: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          valueFrom: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                namespace: Schema.optional(Schema.String),
+                services: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      clientAliases: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            dnsName: Schema.optional(Schema.String),
+                            port: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                      ),
+                      discoveryName: Schema.optional(Schema.String),
+                      ingressPortOverride: Schema.optional(Schema.Number),
+                      portName: Schema.optional(Schema.String),
+                      timeout: Schema.optional(
+                        Schema.Struct({
+                          idleTimeoutSeconds: Schema.optional(Schema.Number),
+                          perRequestTimeoutSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      tls: Schema.optional(
+                        Schema.Struct({
+                          issuerCertificateAuthority: Schema.optional(
+                            Schema.Struct({
+                              awsPcaAuthorityArn: Schema.optional(
+                                Schema.String,
+                              ),
+                            }),
+                          ),
+                          kmsKey: Schema.optional(Schema.String),
+                          roleArn: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            serviceName: Schema.optional(Schema.String),
+            serviceRegistries: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  containerName: Schema.optional(Schema.String),
+                  containerPort: Schema.optional(Schema.Number),
+                  port: Schema.optional(Schema.Number),
+                  registryArn: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            taskDefinition: Schema.optional(Schema.String),
+            volumeConfigurations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  managedEBSVolume: Schema.optional(
+                    Schema.Struct({
+                      encrypted: Schema.optional(Schema.Boolean),
+                      filesystemType: Schema.optional(Schema.String),
+                      iops: Schema.optional(Schema.Number),
+                      kmsKeyId: Schema.optional(Schema.String),
+                      roleArn: Schema.optional(Schema.String),
+                      sizeInGiB: Schema.optional(Schema.Number),
+                      snapshotId: Schema.optional(Schema.String),
+                      tagSpecifications: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            propagateTags: Schema.optional(
+                              Schema.Literals(["SERVICE", "TASK_DEFINITION"]),
+                            ),
+                            resourceType: Schema.optional(Schema.String),
+                            tags: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  key: Schema.optional(Schema.String),
+                                  value: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      ),
+                      throughput: Schema.optional(Schema.Number),
+                      volumeType: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  name: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsServices/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcsServicesCreateOrReplaceInput =
@@ -13466,12 +20413,12 @@ export const EcsServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsServices/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EcsServicesDeleteInput = typeof EcsServicesDeleteInput.Type;
@@ -13498,11 +20445,11 @@ export const EcsServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsServices/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EcsServicesGetInput = typeof EcsServicesGetInput.Type;
@@ -13547,11 +20494,11 @@ export const EcsServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsServices",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcsServicesListByResourceGroupInput =
@@ -13613,11 +20560,11 @@ export const EcsServicesListByResourceGroup =
 export const EcsServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ecsServices",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcsServicesListBySubscriptionInput =
@@ -13680,12 +20627,13 @@ export const EcsServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsServices/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EcsServicesUpdateInput = typeof EcsServicesUpdateInput.Type;
@@ -13732,11 +20680,352 @@ export const EcsTaskDefinitionsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            containerDefinitions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  command: Schema.optional(Schema.Array(Schema.String)),
+                  cpu: Schema.optional(Schema.Number),
+                  credentialSpecs: Schema.optional(Schema.Array(Schema.String)),
+                  dependsOn: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        condition: Schema.optional(Schema.String),
+                        containerName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  disableNetworking: Schema.optional(Schema.Boolean),
+                  dnsSearchDomains: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  dnsServers: Schema.optional(Schema.Array(Schema.String)),
+                  dockerLabels: Schema.optional(Schema.Unknown),
+                  dockerSecurityOptions: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  entryPoint: Schema.optional(Schema.Array(Schema.String)),
+                  environment: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  environmentFiles: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.optional(Schema.String),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  essential: Schema.optional(Schema.Boolean),
+                  extraHosts: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        hostname: Schema.optional(Schema.String),
+                        ipAddress: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  firelensConfiguration: Schema.optional(
+                    Schema.Struct({
+                      options: Schema.optional(Schema.Unknown),
+                      type: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  healthCheck: Schema.optional(
+                    Schema.Struct({
+                      command: Schema.optional(Schema.Array(Schema.String)),
+                      interval: Schema.optional(Schema.Number),
+                      retries: Schema.optional(Schema.Number),
+                      startPeriod: Schema.optional(Schema.Number),
+                      timeout: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  hostname: Schema.optional(Schema.String),
+                  image: Schema.optional(Schema.String),
+                  interactive: Schema.optional(Schema.Boolean),
+                  links: Schema.optional(Schema.Array(Schema.String)),
+                  linuxParameters: Schema.optional(
+                    Schema.Struct({
+                      capabilities: Schema.optional(
+                        Schema.Struct({
+                          add: Schema.optional(Schema.Array(Schema.String)),
+                          drop: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      devices: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            containerPath: Schema.optional(Schema.String),
+                            hostPath: Schema.optional(Schema.String),
+                            permissions: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                      ),
+                      initProcessEnabled: Schema.optional(Schema.Boolean),
+                      maxSwap: Schema.optional(Schema.Number),
+                      sharedMemorySize: Schema.optional(Schema.Number),
+                      swappiness: Schema.optional(Schema.Number),
+                      tmpfs: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            containerPath: Schema.optional(Schema.String),
+                            mountOptions: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            size: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  logConfiguration: Schema.optional(
+                    Schema.Struct({
+                      logDriver: Schema.optional(Schema.String),
+                      options: Schema.optional(Schema.Unknown),
+                      secretOptions: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            valueFrom: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  memory: Schema.optional(Schema.Number),
+                  memoryReservation: Schema.optional(Schema.Number),
+                  mountPoints: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        containerPath: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        sourceVolume: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  name: Schema.optional(Schema.String),
+                  portMappings: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        appProtocol: Schema.optional(
+                          Schema.Literals(["grpc", "http", "http2"]),
+                        ),
+                        containerPort: Schema.optional(Schema.Number),
+                        containerPortRange: Schema.optional(Schema.String),
+                        hostPort: Schema.optional(Schema.Number),
+                        name: Schema.optional(Schema.String),
+                        protocol: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  privileged: Schema.optional(Schema.Boolean),
+                  pseudoTerminal: Schema.optional(Schema.Boolean),
+                  readonlyRootFilesystem: Schema.optional(Schema.Boolean),
+                  repositoryCredentials: Schema.optional(
+                    Schema.Struct({
+                      credentialsParameter: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  resourceRequirements: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.optional(Schema.String),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  secrets: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                        valueFrom: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  startTimeout: Schema.optional(Schema.Number),
+                  stopTimeout: Schema.optional(Schema.Number),
+                  systemControls: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        namespace: Schema.optional(Schema.String),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  ulimits: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        hardLimit: Schema.optional(Schema.Number),
+                        name: Schema.optional(Schema.String),
+                        softLimit: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                  ),
+                  user: Schema.optional(Schema.String),
+                  volumesFrom: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        readOnly: Schema.optional(Schema.Boolean),
+                        sourceContainer: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  workingDirectory: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            cpu: Schema.optional(Schema.String),
+            ephemeralStorage: Schema.optional(
+              Schema.Struct({
+                sizeInGiB: Schema.optional(Schema.Number),
+              }),
+            ),
+            executionRoleArn: Schema.optional(Schema.String),
+            family: Schema.optional(Schema.String),
+            inferenceAccelerators: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  deviceName: Schema.optional(Schema.String),
+                  deviceType: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            ipcMode: Schema.optional(Schema.String),
+            memory: Schema.optional(Schema.String),
+            networkMode: Schema.optional(Schema.String),
+            pidMode: Schema.optional(Schema.String),
+            placementConstraints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  expression: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            proxyConfiguration: Schema.optional(
+              Schema.Struct({
+                containerName: Schema.optional(Schema.String),
+                proxyConfigurationProperties: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      value: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                type: Schema.optional(Schema.String),
+              }),
+            ),
+            requiresCompatibilities: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            runtimePlatform: Schema.optional(
+              Schema.Struct({
+                cpuArchitecture: Schema.optional(Schema.String),
+                operatingSystemFamily: Schema.optional(Schema.String),
+              }),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            taskDefinitionArn: Schema.optional(Schema.String),
+            taskRoleArn: Schema.optional(Schema.String),
+            volumes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  configuredAtLaunch: Schema.optional(Schema.Boolean),
+                  dockerVolumeConfiguration: Schema.optional(
+                    Schema.Struct({
+                      autoprovision: Schema.optional(Schema.Boolean),
+                      driver: Schema.optional(Schema.String),
+                      driverOpts: Schema.optional(Schema.Unknown),
+                      labels: Schema.optional(Schema.Unknown),
+                      scope: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  efsVolumeConfiguration: Schema.optional(
+                    Schema.Struct({
+                      authorizationConfig: Schema.optional(
+                        Schema.Struct({
+                          accessPointId: Schema.optional(Schema.String),
+                          iam: Schema.optional(
+                            Schema.Literals(["DISABLED", "ENABLED"]),
+                          ),
+                        }),
+                      ),
+                      filesystemId: Schema.optional(Schema.String),
+                      rootDirectory: Schema.optional(Schema.String),
+                      transitEncryption: Schema.optional(
+                        Schema.Literals(["DISABLED", "ENABLED"]),
+                      ),
+                      transitEncryptionPort: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  fSxWindowsFileServerVolumeConfiguration: Schema.optional(
+                    Schema.Struct({
+                      authorizationConfig: Schema.optional(
+                        Schema.Struct({
+                          credentialsParameter: Schema.optional(Schema.String),
+                          domain: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      fileSystemId: Schema.optional(Schema.String),
+                      rootDirectory: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  host: Schema.optional(
+                    Schema.Struct({
+                      sourcePath: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  name: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsTaskDefinitions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcsTaskDefinitionsCreateOrReplaceInput =
@@ -13786,11 +21075,11 @@ export const EcsTaskDefinitionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsTaskDefinitions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcsTaskDefinitionsDeleteInput =
@@ -13823,11 +21112,11 @@ export const EcsTaskDefinitionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsTaskDefinitions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcsTaskDefinitionsGetInput = typeof EcsTaskDefinitionsGetInput.Type;
@@ -13876,11 +21165,11 @@ export const EcsTaskDefinitionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsTaskDefinitions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcsTaskDefinitionsListByResourceGroupInput =
@@ -13942,11 +21231,11 @@ export const EcsTaskDefinitionsListByResourceGroup =
 export const EcsTaskDefinitionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ecsTaskDefinitions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcsTaskDefinitionsListBySubscriptionInput =
@@ -14009,11 +21298,12 @@ export const EcsTaskDefinitionsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ecsTaskDefinitions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EcsTaskDefinitionsUpdateInput =
@@ -14064,11 +21354,96 @@ export const EfsFileSystemsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            availabilityZoneName: Schema.optional(Schema.String),
+            backupPolicy: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals(["DISABLED", "ENABLED"]),
+                ),
+              }),
+            ),
+            bypassPolicyLockoutSafetyCheck: Schema.optional(Schema.Boolean),
+            encrypted: Schema.optional(Schema.Boolean),
+            fileSystemId: Schema.optional(Schema.String),
+            fileSystemPolicy: Schema.optional(Schema.Unknown),
+            fileSystemProtection: Schema.optional(
+              Schema.Struct({
+                replicationOverwriteProtection: Schema.optional(
+                  Schema.Literals(["DISABLED", "ENABLED"]),
+                ),
+              }),
+            ),
+            fileSystemTags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            kmsKeyId: Schema.optional(Schema.String),
+            lifecyclePolicies: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  transitionToArchive: Schema.optional(Schema.String),
+                  transitionToIA: Schema.optional(Schema.String),
+                  transitionToPrimaryStorageClass: Schema.optional(
+                    Schema.String,
+                  ),
+                }),
+              ),
+            ),
+            performanceMode: Schema.optional(Schema.String),
+            provisionedThroughputInMibps: Schema.optional(Schema.Number),
+            replicationConfiguration: Schema.optional(
+              Schema.Struct({
+                destinations: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      availabilityZoneName: Schema.optional(Schema.String),
+                      fileSystemId: Schema.optional(Schema.String),
+                      kmsKeyId: Schema.optional(Schema.String),
+                      region: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            throughputMode: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsFileSystems/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EfsFileSystemsCreateOrReplaceInput =
@@ -14118,11 +21493,11 @@ export const EfsFileSystemsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsFileSystems/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EfsFileSystemsDeleteInput = typeof EfsFileSystemsDeleteInput.Type;
@@ -14153,12 +21528,12 @@ export const EfsFileSystemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsFileSystems/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EfsFileSystemsGetInput = typeof EfsFileSystemsGetInput.Type;
@@ -14204,11 +21579,11 @@ export const EfsFileSystemsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsFileSystems",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EfsFileSystemsListByResourceGroupInput =
@@ -14270,11 +21645,11 @@ export const EfsFileSystemsListByResourceGroup =
 export const EfsFileSystemsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/efsFileSystems",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EfsFileSystemsListBySubscriptionInput =
@@ -14337,11 +21712,12 @@ export const EfsFileSystemsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsFileSystems/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EfsFileSystemsUpdateInput = typeof EfsFileSystemsUpdateInput.Type;
@@ -14390,11 +21766,44 @@ export const EfsMountTargetsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            fileSystemId: Schema.optional(Schema.String),
+            id: Schema.optional(Schema.String),
+            ipAddress: Schema.optional(Schema.String),
+            securityGroups: Schema.optional(Schema.Array(Schema.String)),
+            subnetId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsMountTargets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EfsMountTargetsCreateOrReplaceInput =
@@ -14444,11 +21853,11 @@ export const EfsMountTargetsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsMountTargets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EfsMountTargetsDeleteInput = typeof EfsMountTargetsDeleteInput.Type;
@@ -14480,11 +21889,11 @@ export const EfsMountTargetsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsMountTargets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EfsMountTargetsGetInput = typeof EfsMountTargetsGetInput.Type;
@@ -14530,11 +21939,11 @@ export const EfsMountTargetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsMountTargets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EfsMountTargetsListByResourceGroupInput =
@@ -14596,11 +22005,11 @@ export const EfsMountTargetsListByResourceGroup =
 export const EfsMountTargetsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/efsMountTargets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EfsMountTargetsListBySubscriptionInput =
@@ -14663,11 +22072,12 @@ export const EfsMountTargetsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/efsMountTargets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EfsMountTargetsUpdateInput = typeof EfsMountTargetsUpdateInput.Type;
@@ -14714,11 +22124,208 @@ export const EfsMountTargetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const EksClustersCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            accessConfig: Schema.optional(
+              Schema.Struct({
+                authenticationMode: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "API",
+                        "API_AND_CONFIG_MAP",
+                        "CONFIG_MAP",
+                      ]),
+                    ),
+                  }),
+                ),
+                bootstrapClusterCreatorAdminPermissions: Schema.optional(
+                  Schema.Boolean,
+                ),
+              }),
+            ),
+            arn: Schema.optional(Schema.String),
+            certificateAuthority: Schema.optional(
+              Schema.Struct({
+                data: Schema.optional(Schema.String),
+              }),
+            ),
+            clientRequestToken: Schema.optional(Schema.String),
+            connectorConfig: Schema.optional(
+              Schema.Struct({
+                activationCode: Schema.optional(Schema.String),
+                activationExpiry: Schema.optional(Schema.String),
+                activationId: Schema.optional(Schema.String),
+                provider: Schema.optional(Schema.String),
+                roleArn: Schema.optional(Schema.String),
+              }),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            encryptionConfig: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  provider: Schema.optional(
+                    Schema.Struct({
+                      keyArn: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  resources: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            endpoint: Schema.optional(Schema.String),
+            health: Schema.optional(
+              Schema.Struct({
+                issues: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.optional(
+                        Schema.Struct({
+                          value: Schema.optional(
+                            Schema.Literals([
+                              "AccessDenied",
+                              "ClusterUnreachable",
+                              "ConfigurationConflict",
+                              "Ec2SecurityGroupNotFound",
+                              "Ec2ServiceNotSubscribed",
+                              "Ec2SubnetNotFound",
+                              "IamRoleNotFound",
+                              "InsufficientFreeAddresses",
+                              "InternalFailure",
+                              "KmsGrantRevoked",
+                              "KmsKeyDisabled",
+                              "KmsKeyMarkedForDeletion",
+                              "KmsKeyNotFound",
+                              "Other",
+                              "ResourceLimitExceeded",
+                              "ResourceNotFound",
+                              "StsRegionalEndpointDisabled",
+                              "UnsupportedVersion",
+                              "VpcNotFound",
+                            ]),
+                          ),
+                        }),
+                      ),
+                      message: Schema.optional(Schema.String),
+                      resourceIds: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            id: Schema.optional(Schema.String),
+            identity: Schema.optional(
+              Schema.Struct({
+                oidc: Schema.optional(
+                  Schema.Struct({
+                    issuer: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            kubernetesNetworkConfig: Schema.optional(
+              Schema.Struct({
+                ipFamily: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.Literals(["ipv4", "ipv6"])),
+                  }),
+                ),
+                serviceIpv4Cidr: Schema.optional(Schema.String),
+                serviceIpv6Cidr: Schema.optional(Schema.String),
+              }),
+            ),
+            logging: Schema.optional(
+              Schema.Struct({
+                clusterLogging: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      enabled: Schema.optional(Schema.Boolean),
+                      types: Schema.optional(
+                        Schema.Array(
+                          Schema.Literals([
+                            "api",
+                            "audit",
+                            "authenticator",
+                            "controllerManager",
+                            "scheduler",
+                          ]),
+                        ),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            name: Schema.optional(Schema.String),
+            outpostConfig: Schema.optional(
+              Schema.Struct({
+                controlPlaneInstanceType: Schema.optional(Schema.String),
+                controlPlanePlacement: Schema.optional(
+                  Schema.Struct({
+                    groupName: Schema.optional(Schema.String),
+                  }),
+                ),
+                outpostArns: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            platformVersion: Schema.optional(Schema.String),
+            resourcesVpcConfig: Schema.optional(
+              Schema.Struct({
+                clusterSecurityGroupId: Schema.optional(Schema.String),
+                endpointPrivateAccess: Schema.optional(Schema.Boolean),
+                endpointPublicAccess: Schema.optional(Schema.Boolean),
+                publicAccessCidrs: Schema.optional(Schema.Array(Schema.String)),
+                securityGroupIds: Schema.optional(Schema.Array(Schema.String)),
+                subnetIds: Schema.optional(Schema.Array(Schema.String)),
+                vpcId: Schema.optional(Schema.String),
+              }),
+            ),
+            roleArn: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "ACTIVE",
+                    "CREATING",
+                    "DELETING",
+                    "FAILED",
+                    "PENDING",
+                    "UPDATING",
+                  ]),
+                ),
+              }),
+            ),
+            tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.AwsConnector/eksClusters/default",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EksClustersCreateOrReplaceInput =
@@ -14762,13 +22369,12 @@ export const EksClustersCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const EksClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    "api-version": Schema.String,
-  },
+  {},
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/eksClusters/default",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EksClustersDeleteInput = typeof EksClustersDeleteInput.Type;
@@ -14788,12 +22394,13 @@ export const EksClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EksClustersDeleteOutput,
 }));
 // Input Schema
-export const EksClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const EksClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/eksClusters/default",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EksClustersGetInput = typeof EksClustersGetInput.Type;
@@ -14831,12 +22438,13 @@ export const EksClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EksClustersGetOutput,
 }));
 // Input Schema
-export const EksClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const EksClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AwsConnector/eksClusters",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EksClustersListInput = typeof EksClustersListInput.Type;
@@ -14884,11 +22492,93 @@ export const EksNodegroupsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            amiType: Schema.optional(Schema.String),
+            arn: Schema.optional(Schema.String),
+            capacityType: Schema.optional(Schema.String),
+            clusterName: Schema.optional(Schema.String),
+            diskSize: Schema.optional(Schema.Number),
+            forceUpdateEnabled: Schema.optional(Schema.Boolean),
+            id: Schema.optional(Schema.String),
+            instanceTypes: Schema.optional(Schema.Array(Schema.String)),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            launchTemplate: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                version: Schema.optional(Schema.String),
+              }),
+            ),
+            nodeRole: Schema.optional(Schema.String),
+            nodegroupName: Schema.optional(Schema.String),
+            releaseVersion: Schema.optional(Schema.String),
+            remoteAccess: Schema.optional(
+              Schema.Struct({
+                ec2SshKey: Schema.optional(Schema.String),
+                sourceSecurityGroups: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+              }),
+            ),
+            scalingConfig: Schema.optional(
+              Schema.Struct({
+                desiredSize: Schema.optional(Schema.Number),
+                maxSize: Schema.optional(Schema.Number),
+                minSize: Schema.optional(Schema.Number),
+              }),
+            ),
+            subnets: Schema.optional(Schema.Array(Schema.String)),
+            tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+            taints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  effect: Schema.optional(Schema.String),
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            updateConfig: Schema.optional(
+              Schema.Struct({
+                maxUnavailable: Schema.optional(Schema.Number),
+                maxUnavailablePercentage: Schema.optional(Schema.Number),
+              }),
+            ),
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/eksNodegroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EksNodegroupsCreateOrReplaceInput =
@@ -14938,11 +22628,11 @@ export const EksNodegroupsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/eksNodegroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EksNodegroupsDeleteInput = typeof EksNodegroupsDeleteInput.Type;
@@ -14970,11 +22660,11 @@ export const EksNodegroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/eksNodegroups/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EksNodegroupsGetInput = typeof EksNodegroupsGetInput.Type;
@@ -15021,11 +22711,11 @@ export const EksNodegroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/eksNodegroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EksNodegroupsListByResourceGroupInput =
@@ -15087,11 +22777,11 @@ export const EksNodegroupsListByResourceGroup =
 export const EksNodegroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/eksNodegroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EksNodegroupsListBySubscriptionInput =
@@ -15154,11 +22844,12 @@ export const EksNodegroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/eksNodegroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EksNodegroupsUpdateInput = typeof EksNodegroupsUpdateInput.Type;
@@ -15205,11 +22896,64 @@ export const ElasticBeanstalkApplicationsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            applicationName: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            resourceLifecycleConfig: Schema.optional(
+              Schema.Struct({
+                serviceRole: Schema.optional(Schema.String),
+                versionLifecycleConfig: Schema.optional(
+                  Schema.Struct({
+                    maxAgeRule: Schema.optional(
+                      Schema.Struct({
+                        deleteSourceFromS3: Schema.optional(Schema.Boolean),
+                        enabled: Schema.optional(Schema.Boolean),
+                        maxAgeInDays: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    maxCountRule: Schema.optional(
+                      Schema.Struct({
+                        deleteSourceFromS3: Schema.optional(Schema.Boolean),
+                        enabled: Schema.optional(Schema.Boolean),
+                        maxCount: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkApplications/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkApplicationsCreateOrReplaceInput =
@@ -15259,11 +23003,11 @@ export const ElasticBeanstalkApplicationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkApplications/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkApplicationsDeleteInput =
@@ -15295,11 +23039,11 @@ export const ElasticBeanstalkApplicationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkApplications/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkApplicationsGetInput =
@@ -15348,11 +23092,11 @@ export const ElasticBeanstalkApplicationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkApplications",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkApplicationsListByResourceGroupInput =
@@ -15414,11 +23158,11 @@ export const ElasticBeanstalkApplicationsListByResourceGroup =
 export const ElasticBeanstalkApplicationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/elasticBeanstalkApplications",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkApplicationsListBySubscriptionInput =
@@ -15481,11 +23225,12 @@ export const ElasticBeanstalkApplicationsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkApplications/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkApplicationsUpdateInput =
@@ -15535,11 +23280,61 @@ export const ElasticBeanstalkConfigurationTemplatesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            applicationName: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            environmentId: Schema.optional(Schema.String),
+            optionSettings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  namespace: Schema.optional(Schema.String),
+                  optionName: Schema.optional(Schema.String),
+                  resourceName: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            platformArn: Schema.optional(Schema.String),
+            solutionStackName: Schema.optional(Schema.String),
+            sourceConfiguration: Schema.optional(
+              Schema.Struct({
+                applicationName: Schema.optional(Schema.String),
+                templateName: Schema.optional(Schema.String),
+              }),
+            ),
+            templateName: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkConfigurationTemplates/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkConfigurationTemplatesCreateOrReplaceInput =
@@ -15589,11 +23384,11 @@ export const ElasticBeanstalkConfigurationTemplatesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkConfigurationTemplates/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkConfigurationTemplatesDeleteInput =
@@ -15625,11 +23420,11 @@ export const ElasticBeanstalkConfigurationTemplatesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkConfigurationTemplates/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkConfigurationTemplatesGetInput =
@@ -15678,11 +23473,11 @@ export const ElasticBeanstalkConfigurationTemplatesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkConfigurationTemplates",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkConfigurationTemplatesListByResourceGroupInput =
@@ -15745,11 +23540,11 @@ export const ElasticBeanstalkConfigurationTemplatesListByResourceGroup =
 export const ElasticBeanstalkConfigurationTemplatesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/elasticBeanstalkConfigurationTemplates",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkConfigurationTemplatesListBySubscriptionInput =
@@ -15813,11 +23608,12 @@ export const ElasticBeanstalkConfigurationTemplatesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkConfigurationTemplates/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkConfigurationTemplatesUpdateInput =
@@ -15867,11 +23663,74 @@ export const ElasticBeanstalkEnvironmentsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            applicationName: Schema.optional(Schema.String),
+            cnamePrefix: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            endpointURL: Schema.optional(Schema.String),
+            environmentName: Schema.optional(Schema.String),
+            operationsRole: Schema.optional(Schema.String),
+            optionSettings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  namespace: Schema.optional(Schema.String),
+                  optionName: Schema.optional(Schema.String),
+                  resourceName: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            platformArn: Schema.optional(Schema.String),
+            solutionStackName: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            templateName: Schema.optional(Schema.String),
+            tier: Schema.optional(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                type: Schema.optional(Schema.String),
+                version: Schema.optional(Schema.String),
+              }),
+            ),
+            versionLabel: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkEnvironments/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkEnvironmentsCreateOrReplaceInput =
@@ -15921,11 +23780,11 @@ export const ElasticBeanstalkEnvironmentsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkEnvironments/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkEnvironmentsDeleteInput =
@@ -15957,11 +23816,11 @@ export const ElasticBeanstalkEnvironmentsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkEnvironments/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkEnvironmentsGetInput =
@@ -16010,11 +23869,11 @@ export const ElasticBeanstalkEnvironmentsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkEnvironments",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkEnvironmentsListByResourceGroupInput =
@@ -16076,11 +23935,11 @@ export const ElasticBeanstalkEnvironmentsListByResourceGroup =
 export const ElasticBeanstalkEnvironmentsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/elasticBeanstalkEnvironments",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkEnvironmentsListBySubscriptionInput =
@@ -16143,11 +24002,12 @@ export const ElasticBeanstalkEnvironmentsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticBeanstalkEnvironments/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticBeanstalkEnvironmentsUpdateInput =
@@ -16197,11 +24057,135 @@ export const ElasticLoadBalancingV2ListenersCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            alpnPolicy: Schema.optional(Schema.Array(Schema.String)),
+            certificates: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  certificateArn: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            defaultActions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  authenticateCognitoConfig: Schema.optional(
+                    Schema.Struct({
+                      authenticationRequestExtraParams: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      onUnauthenticatedRequest: Schema.optional(Schema.String),
+                      scope: Schema.optional(Schema.String),
+                      sessionCookieName: Schema.optional(Schema.String),
+                      sessionTimeout: Schema.optional(Schema.String),
+                      userPoolArn: Schema.optional(Schema.String),
+                      userPoolClientId: Schema.optional(Schema.String),
+                      userPoolDomain: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  authenticateOidcConfig: Schema.optional(
+                    Schema.Struct({
+                      authenticationRequestExtraParams: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      authorizationEndpoint: Schema.optional(Schema.String),
+                      clientId: Schema.optional(Schema.String),
+                      clientSecret: Schema.optional(SensitiveString),
+                      issuer: Schema.optional(Schema.String),
+                      onUnauthenticatedRequest: Schema.optional(Schema.String),
+                      scope: Schema.optional(Schema.String),
+                      sessionCookieName: Schema.optional(Schema.String),
+                      sessionTimeout: Schema.optional(Schema.String),
+                      tokenEndpoint: Schema.optional(Schema.String),
+                      useExistingClientSecret: Schema.optional(Schema.Boolean),
+                      userInfoEndpoint: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  fixedResponseConfig: Schema.optional(
+                    Schema.Struct({
+                      contentType: Schema.optional(Schema.String),
+                      messageBody: Schema.optional(Schema.String),
+                      statusCode: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  forwardConfig: Schema.optional(
+                    Schema.Struct({
+                      targetGroupStickinessConfig: Schema.optional(
+                        Schema.Struct({
+                          durationSeconds: Schema.optional(Schema.Number),
+                          enabled: Schema.optional(Schema.Boolean),
+                        }),
+                      ),
+                      targetGroups: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            targetGroupArn: Schema.optional(Schema.String),
+                            weight: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  order: Schema.optional(Schema.Number),
+                  redirectConfig: Schema.optional(
+                    Schema.Struct({
+                      host: Schema.optional(Schema.String),
+                      path: Schema.optional(Schema.String),
+                      port: Schema.optional(Schema.String),
+                      protocol: Schema.optional(Schema.String),
+                      query: Schema.optional(Schema.String),
+                      statusCode: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  targetGroupArn: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            listenerArn: Schema.optional(Schema.String),
+            loadBalancerArn: Schema.optional(Schema.String),
+            mutualAuthentication: Schema.optional(
+              Schema.Struct({
+                ignoreClientCertificateExpiry: Schema.optional(Schema.Boolean),
+                mode: Schema.optional(Schema.String),
+                trustStoreArn: Schema.optional(Schema.String),
+              }),
+            ),
+            port: Schema.optional(Schema.Number),
+            protocol: Schema.optional(Schema.String),
+            sslPolicy: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2Listeners/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2ListenersCreateOrReplaceInput =
@@ -16251,11 +24235,11 @@ export const ElasticLoadBalancingV2ListenersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2Listeners/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2ListenersDeleteInput =
@@ -16287,11 +24271,11 @@ export const ElasticLoadBalancingV2ListenersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2Listeners/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2ListenersGetInput =
@@ -16340,11 +24324,11 @@ export const ElasticLoadBalancingV2ListenersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2Listeners",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2ListenersListByResourceGroupInput =
@@ -16406,11 +24390,11 @@ export const ElasticLoadBalancingV2ListenersListByResourceGroup =
 export const ElasticLoadBalancingV2ListenersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2Listeners",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2ListenersListBySubscriptionInput =
@@ -16473,11 +24457,12 @@ export const ElasticLoadBalancingV2ListenersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2Listeners/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2ListenersUpdateInput =
@@ -16527,11 +24512,78 @@ export const ElasticLoadBalancingV2LoadBalancersCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            canonicalHostedZoneID: Schema.optional(Schema.String),
+            dnsName: Schema.optional(Schema.String),
+            enforceSecurityGroupInboundRulesOnPrivateLinkTraffic:
+              Schema.optional(Schema.String),
+            ipAddressType: Schema.optional(Schema.String),
+            loadBalancerArn: Schema.optional(Schema.String),
+            loadBalancerAttributes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            loadBalancerFullName: Schema.optional(Schema.String),
+            loadBalancerName: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            scheme: Schema.optional(Schema.String),
+            securityGroups: Schema.optional(Schema.Array(Schema.String)),
+            subnetMappings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  allocationId: Schema.optional(Schema.String),
+                  iPv6Address: Schema.optional(Schema.String),
+                  privateIPv4Address: Schema.optional(Schema.String),
+                  subnetId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            subnets: Schema.optional(Schema.Array(Schema.String)),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2LoadBalancers/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2LoadBalancersCreateOrReplaceInput =
@@ -16581,11 +24633,11 @@ export const ElasticLoadBalancingV2LoadBalancersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2LoadBalancers/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2LoadBalancersDeleteInput =
@@ -16617,11 +24669,11 @@ export const ElasticLoadBalancingV2LoadBalancersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2LoadBalancers/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2LoadBalancersGetInput =
@@ -16670,11 +24722,11 @@ export const ElasticLoadBalancingV2LoadBalancersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2LoadBalancers",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2LoadBalancersListByResourceGroupInput =
@@ -16736,11 +24788,11 @@ export const ElasticLoadBalancingV2LoadBalancersListByResourceGroup =
 export const ElasticLoadBalancingV2LoadBalancersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2LoadBalancers",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2LoadBalancersListBySubscriptionInput =
@@ -16803,11 +24855,12 @@ export const ElasticLoadBalancingV2LoadBalancersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2LoadBalancers/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2LoadBalancersUpdateInput =
@@ -16857,11 +24910,89 @@ export const ElasticLoadBalancingV2TargetGroupsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            healthCheckEnabled: Schema.optional(Schema.Boolean),
+            healthCheckIntervalSeconds: Schema.optional(Schema.Number),
+            healthCheckPath: Schema.optional(Schema.String),
+            healthCheckPort: Schema.optional(Schema.String),
+            healthCheckProtocol: Schema.optional(Schema.String),
+            healthCheckTimeoutSeconds: Schema.optional(Schema.Number),
+            healthyThresholdCount: Schema.optional(Schema.Number),
+            ipAddressType: Schema.optional(Schema.String),
+            loadBalancerArns: Schema.optional(Schema.Array(Schema.String)),
+            matcher: Schema.optional(
+              Schema.Struct({
+                grpcCode: Schema.optional(Schema.String),
+                httpCode: Schema.optional(Schema.String),
+              }),
+            ),
+            name: Schema.optional(Schema.String),
+            port: Schema.optional(Schema.Number),
+            protocol: Schema.optional(Schema.String),
+            protocolVersion: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            targetGroupArn: Schema.optional(Schema.String),
+            targetGroupAttributes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            targetGroupFullName: Schema.optional(Schema.String),
+            targetGroupName: Schema.optional(Schema.String),
+            targetType: Schema.optional(Schema.String),
+            targets: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  availabilityZone: Schema.optional(Schema.String),
+                  id: Schema.optional(Schema.String),
+                  port: Schema.optional(Schema.Number),
+                }),
+              ),
+            ),
+            unhealthyThresholdCount: Schema.optional(Schema.Number),
+            vpcId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2TargetGroupsCreateOrReplaceInput =
@@ -16911,11 +25042,11 @@ export const ElasticLoadBalancingV2TargetGroupsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2TargetGroupsDeleteInput =
@@ -16947,11 +25078,11 @@ export const ElasticLoadBalancingV2TargetGroupsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2TargetGroupsGetInput =
@@ -17000,11 +25131,11 @@ export const ElasticLoadBalancingV2TargetGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2TargetGroupsListByResourceGroupInput =
@@ -17066,11 +25197,11 @@ export const ElasticLoadBalancingV2TargetGroupsListByResourceGroup =
 export const ElasticLoadBalancingV2TargetGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2TargetGroupsListBySubscriptionInput =
@@ -17133,11 +25264,12 @@ export const ElasticLoadBalancingV2TargetGroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingV2TargetGroupsUpdateInput =
@@ -17187,11 +25319,103 @@ export const ElasticLoadBalancingv2TargetHealthDescriptionsCreateOrReplaceInput 
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            anomalyDetection: Schema.optional(
+              Schema.Struct({
+                mitigationInEffect: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.Literals(["no", "yes"])),
+                  }),
+                ),
+                result: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["anomalous", "normal"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            healthCheckPort: Schema.optional(Schema.String),
+            target: Schema.optional(
+              Schema.Struct({
+                availabilityZone: Schema.optional(Schema.String),
+                id: Schema.optional(Schema.String),
+                port: Schema.optional(Schema.Number),
+              }),
+            ),
+            targetHealth: Schema.optional(
+              Schema.Struct({
+                description: Schema.optional(Schema.String),
+                reason: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "Elb.InitialHealthChecking",
+                        "Elb.InternalError",
+                        "Elb.RegistrationInProgress",
+                        "Target.DeregistrationInProgress",
+                        "Target.FailedHealthChecks",
+                        "Target.HealthCheckDisabled",
+                        "Target.InvalidState",
+                        "Target.IpUnusable",
+                        "Target.NotInUse",
+                        "Target.NotRegistered",
+                        "Target.ResponseCodeMismatch",
+                        "Target.Timeout",
+                      ]),
+                    ),
+                  }),
+                ),
+                state: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "draining",
+                        "healthy",
+                        "initial",
+                        "unavailable",
+                        "unhealthy",
+                        "unhealthy.draining",
+                        "unused",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetHealthDescriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingv2TargetHealthDescriptionsCreateOrReplaceInput =
@@ -17243,11 +25467,11 @@ export const ElasticLoadBalancingv2TargetHealthDescriptionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetHealthDescriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingv2TargetHealthDescriptionsDeleteInput =
@@ -17279,11 +25503,11 @@ export const ElasticLoadBalancingv2TargetHealthDescriptionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetHealthDescriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingv2TargetHealthDescriptionsGetInput =
@@ -17332,11 +25556,11 @@ export const ElasticLoadBalancingv2TargetHealthDescriptionsListByResourceGroupIn
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetHealthDescriptions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingv2TargetHealthDescriptionsListByResourceGroupInput =
@@ -17400,11 +25624,11 @@ export const ElasticLoadBalancingv2TargetHealthDescriptionsListByResourceGroup =
 export const ElasticLoadBalancingv2TargetHealthDescriptionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetHealthDescriptions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingv2TargetHealthDescriptionsListBySubscriptionInput =
@@ -17469,11 +25693,12 @@ export const ElasticLoadBalancingv2TargetHealthDescriptionsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/elasticLoadBalancingV2TargetHealthDescriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ElasticLoadBalancingv2TargetHealthDescriptionsUpdateInput =
@@ -17523,11 +25748,230 @@ export const EmrClustersCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            applications: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  additionalInfo: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  args: Schema.optional(Schema.Array(Schema.String)),
+                  name: Schema.optional(Schema.String),
+                  version: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            autoScalingRole: Schema.optional(Schema.String),
+            autoTerminate: Schema.optional(Schema.Boolean),
+            clusterArn: Schema.optional(Schema.String),
+            configurations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  classification: Schema.optional(Schema.String),
+                  configurations: Schema.optional(Schema.Array(Schema.Unknown)),
+                  properties: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                }),
+              ),
+            ),
+            customAmiId: Schema.optional(Schema.String),
+            ebsRootVolumeIops: Schema.optional(Schema.Number),
+            ebsRootVolumeSize: Schema.optional(Schema.Number),
+            ebsRootVolumeThroughput: Schema.optional(Schema.Number),
+            ec2InstanceAttributes: Schema.optional(
+              Schema.Struct({
+                additionalMasterSecurityGroups: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                additionalSlaveSecurityGroups: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                ec2AvailabilityZone: Schema.optional(Schema.String),
+                ec2KeyName: Schema.optional(Schema.String),
+                ec2SubnetId: Schema.optional(Schema.String),
+                emrManagedMasterSecurityGroup: Schema.optional(Schema.String),
+                emrManagedSlaveSecurityGroup: Schema.optional(Schema.String),
+                iamInstanceProfile: Schema.optional(Schema.String),
+                requestedEc2AvailabilityZones: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                requestedEc2SubnetIds: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                serviceAccessSecurityGroup: Schema.optional(Schema.String),
+              }),
+            ),
+            id: Schema.optional(Schema.String),
+            instanceCollectionType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["INSTANCE_FLEET", "INSTANCE_GROUP"]),
+                ),
+              }),
+            ),
+            kerberosAttributes: Schema.optional(
+              Schema.Struct({
+                adDomainJoinPassword: Schema.optional(SensitiveString),
+                adDomainJoinUser: Schema.optional(Schema.String),
+                crossRealmTrustPrincipalPassword:
+                  Schema.optional(SensitiveString),
+                kdcAdminPassword: Schema.optional(SensitiveString),
+                realm: Schema.optional(Schema.String),
+              }),
+            ),
+            logEncryptionKmsKeyId: Schema.optional(Schema.String),
+            logUri: Schema.optional(Schema.String),
+            masterPublicDnsName: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            normalizedInstanceHours: Schema.optional(Schema.Number),
+            osReleaseLabel: Schema.optional(Schema.String),
+            outpostArn: Schema.optional(Schema.String),
+            placementGroups: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  instanceRole: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals(["CORE", "MASTER", "TASK"]),
+                      ),
+                    }),
+                  ),
+                  placementStrategy: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals([
+                          "CLUSTER",
+                          "NONE",
+                          "PARTITION",
+                          "SPREAD",
+                        ]),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            releaseLabel: Schema.optional(Schema.String),
+            repoUpgradeOnBoot: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["NONE", "SECURITY"])),
+              }),
+            ),
+            requestedAmiVersion: Schema.optional(Schema.String),
+            runningAmiVersion: Schema.optional(Schema.String),
+            scaleDownBehavior: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "TERMINATE_AT_INSTANCE_HOUR",
+                    "TERMINATE_AT_TASK_COMPLETION",
+                  ]),
+                ),
+              }),
+            ),
+            securityConfiguration: Schema.optional(Schema.String),
+            serviceRole: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Struct({
+                errorDetails: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      errorCode: Schema.optional(Schema.String),
+                      errorData: Schema.optional(Schema.Array(Schema.Unknown)),
+                      errorMessage: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                state: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "BOOTSTRAPPING",
+                        "RUNNING",
+                        "STARTING",
+                        "TERMINATED",
+                        "TERMINATED_WITH_ERRORS",
+                        "TERMINATING",
+                        "WAITING",
+                      ]),
+                    ),
+                  }),
+                ),
+                stateChangeReason: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(
+                      Schema.Struct({
+                        value: Schema.optional(
+                          Schema.Literals([
+                            "ALL_STEPS_COMPLETED",
+                            "BOOTSTRAP_FAILURE",
+                            "INSTANCE_FAILURE",
+                            "INSTANCE_FLEET_TIMEOUT",
+                            "INTERNAL_ERROR",
+                            "STEP_FAILURE",
+                            "USER_REQUEST",
+                            "VALIDATION_ERROR",
+                          ]),
+                        ),
+                      }),
+                    ),
+                    message: Schema.optional(Schema.String),
+                  }),
+                ),
+                timeline: Schema.optional(
+                  Schema.Struct({
+                    creationDateTime: Schema.optional(Schema.String),
+                    endDateTime: Schema.optional(Schema.String),
+                    readyDateTime: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            stepConcurrencyLevel: Schema.optional(Schema.Number),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            terminationProtected: Schema.optional(Schema.Boolean),
+            unhealthyNodeReplacement: Schema.optional(Schema.Boolean),
+            visibleToAllUsers: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/emrClusters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EmrClustersCreateOrReplaceInput =
@@ -17578,12 +26022,12 @@ export const EmrClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/emrClusters/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EmrClustersDeleteInput = typeof EmrClustersDeleteInput.Type;
@@ -17610,11 +26054,11 @@ export const EmrClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/emrClusters/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EmrClustersGetInput = typeof EmrClustersGetInput.Type;
@@ -17659,11 +26103,11 @@ export const EmrClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/emrClusters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EmrClustersListByResourceGroupInput =
@@ -17725,11 +26169,11 @@ export const EmrClustersListByResourceGroup =
 export const EmrClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/emrClusters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EmrClustersListBySubscriptionInput =
@@ -17792,12 +26236,13 @@ export const EmrClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/emrClusters/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EmrClustersUpdateInput = typeof EmrClustersUpdateInput.Type;
@@ -17844,11 +26289,95 @@ export const GuardDutyDetectorsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            dataSources: Schema.optional(
+              Schema.Struct({
+                kubernetes: Schema.optional(
+                  Schema.Struct({
+                    auditLogs: Schema.optional(
+                      Schema.Struct({
+                        enable: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  }),
+                ),
+                malwareProtection: Schema.optional(
+                  Schema.Struct({
+                    scanEc2InstanceWithFindings: Schema.optional(
+                      Schema.Struct({
+                        ebsVolumes: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                  }),
+                ),
+                s3Logs: Schema.optional(
+                  Schema.Struct({
+                    enable: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              }),
+            ),
+            enable: Schema.optional(Schema.Boolean),
+            features: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  additionalConfiguration: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                        status: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  name: Schema.optional(Schema.String),
+                  status: Schema.optional(
+                    Schema.Literals(["DISABLED", "ENABLED"]),
+                  ),
+                }),
+              ),
+            ),
+            findingPublishingFrequency: Schema.optional(Schema.String),
+            id: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/guardDutyDetectors/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type GuardDutyDetectorsCreateOrReplaceInput =
@@ -17898,11 +26427,11 @@ export const GuardDutyDetectorsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/guardDutyDetectors/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type GuardDutyDetectorsDeleteInput =
@@ -17935,11 +26464,11 @@ export const GuardDutyDetectorsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/guardDutyDetectors/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type GuardDutyDetectorsGetInput = typeof GuardDutyDetectorsGetInput.Type;
@@ -17988,11 +26517,11 @@ export const GuardDutyDetectorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/guardDutyDetectors",
+      apiVersion: "2024-12-01",
     }),
   );
 export type GuardDutyDetectorsListByResourceGroupInput =
@@ -18054,11 +26583,11 @@ export const GuardDutyDetectorsListByResourceGroup =
 export const GuardDutyDetectorsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/guardDutyDetectors",
+      apiVersion: "2024-12-01",
     }),
   );
 export type GuardDutyDetectorsListBySubscriptionInput =
@@ -18121,11 +26650,12 @@ export const GuardDutyDetectorsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/guardDutyDetectors/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type GuardDutyDetectorsUpdateInput =
@@ -18176,11 +26706,42 @@ export const IamAccessKeyLastUsedsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            lastUsedDate: Schema.optional(Schema.String),
+            region: Schema.optional(Schema.String),
+            serviceName: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyLastUseds/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamAccessKeyLastUsedsCreateOrReplaceInput =
@@ -18230,11 +26791,11 @@ export const IamAccessKeyLastUsedsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyLastUseds/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamAccessKeyLastUsedsDeleteInput =
@@ -18267,11 +26828,11 @@ export const IamAccessKeyLastUsedsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyLastUseds/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamAccessKeyLastUsedsGetInput =
@@ -18321,11 +26882,11 @@ export const IamAccessKeyLastUsedsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyLastUseds",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamAccessKeyLastUsedsListByResourceGroupInput =
@@ -18387,11 +26948,11 @@ export const IamAccessKeyLastUsedsListByResourceGroup =
 export const IamAccessKeyLastUsedsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/iamAccessKeyLastUseds",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamAccessKeyLastUsedsListBySubscriptionInput =
@@ -18454,11 +27015,12 @@ export const IamAccessKeyLastUsedsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyLastUseds/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamAccessKeyLastUsedsUpdateInput =
@@ -18509,11 +27071,47 @@ export const IamAccessKeyMetadataInfoCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            accessKeyId: Schema.optional(SensitiveString),
+            createDate: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["Active", "Inactive"])),
+              }),
+            ),
+            userName: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyMetadata/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamAccessKeyMetadataInfoCreateOrReplaceInput =
@@ -18563,11 +27161,11 @@ export const IamAccessKeyMetadataInfoDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyMetadata/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamAccessKeyMetadataInfoDeleteInput =
@@ -18599,11 +27197,11 @@ export const IamAccessKeyMetadataInfoGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyMetadata/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamAccessKeyMetadataInfoGetInput =
@@ -18653,11 +27251,11 @@ export const IamAccessKeyMetadataInfoListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyMetadata",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamAccessKeyMetadataInfoListByResourceGroupInput =
@@ -18719,11 +27317,11 @@ export const IamAccessKeyMetadataInfoListByResourceGroup =
 export const IamAccessKeyMetadataInfoListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/iamAccessKeyMetadata",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamAccessKeyMetadataInfoListBySubscriptionInput =
@@ -18786,11 +27384,12 @@ export const IamAccessKeyMetadataInfoUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamAccessKeyMetadata/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamAccessKeyMetadataInfoUpdateInput =
@@ -18840,11 +27439,53 @@ export const IamGroupsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            groupName: Schema.optional(Schema.String),
+            managedPolicyArns: Schema.optional(Schema.Array(Schema.String)),
+            path: Schema.optional(Schema.String),
+            policies: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  policyDocument: Schema.optional(
+                    Schema.Record(Schema.String, Schema.Unknown),
+                  ),
+                  policyName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamGroupsCreateOrReplaceInput =
@@ -18894,11 +27535,11 @@ export const IamGroupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamGroups/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type IamGroupsDeleteInput = typeof IamGroupsDeleteInput.Type;
@@ -18925,11 +27566,11 @@ export const IamGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamGroups/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type IamGroupsGetInput = typeof IamGroupsGetInput.Type;
@@ -18974,11 +27615,11 @@ export const IamGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamGroupsListByResourceGroupInput =
@@ -19040,11 +27681,11 @@ export const IamGroupsListByResourceGroup =
 export const IamGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/iamGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamGroupsListBySubscriptionInput =
@@ -19107,11 +27748,12 @@ export const IamGroupsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamGroups/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type IamGroupsUpdateInput = typeof IamGroupsUpdateInput.Type;
@@ -19157,11 +27799,43 @@ export const IamInstanceProfilesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            instanceProfileName: Schema.optional(Schema.String),
+            path: Schema.optional(Schema.String),
+            roles: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamInstanceProfiles/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamInstanceProfilesCreateOrUpdateInput =
@@ -19211,11 +27885,11 @@ export const IamInstanceProfilesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamInstanceProfiles/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamInstanceProfilesDeleteInput =
@@ -19248,11 +27922,11 @@ export const IamInstanceProfilesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamInstanceProfiles/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamInstanceProfilesGetInput =
@@ -19302,11 +27976,11 @@ export const IamInstanceProfilesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamInstanceProfiles",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamInstanceProfilesListByResourceGroupInput =
@@ -19368,11 +28042,11 @@ export const IamInstanceProfilesListByResourceGroup =
 export const IamInstanceProfilesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/iamInstanceProfiles",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamInstanceProfilesListBySubscriptionInput =
@@ -19435,11 +28109,12 @@ export const IamInstanceProfilesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamInstanceProfiles/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamInstanceProfilesUpdateInput =
@@ -19490,11 +28165,42 @@ export const IamMfaDevicesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            enableDate: Schema.optional(Schema.String),
+            serialNumber: Schema.optional(Schema.String),
+            userName: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamMFADevices/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamMfaDevicesCreateOrReplaceInput =
@@ -19544,11 +28250,11 @@ export const IamMfaDevicesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamMFADevices/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamMfaDevicesDeleteInput = typeof IamMfaDevicesDeleteInput.Type;
@@ -19576,11 +28282,11 @@ export const IamMfaDevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamMFADevices/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type IamMfaDevicesGetInput = typeof IamMfaDevicesGetInput.Type;
@@ -19627,11 +28333,11 @@ export const IamMfaDevicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamMFADevices",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamMfaDevicesListByResourceGroupInput =
@@ -19693,11 +28399,11 @@ export const IamMfaDevicesListByResourceGroup =
 export const IamMfaDevicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/iamMFADevices",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamMfaDevicesListBySubscriptionInput =
@@ -19760,11 +28466,12 @@ export const IamMfaDevicesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamMFADevices/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamMfaDevicesUpdateInput = typeof IamMfaDevicesUpdateInput.Type;
@@ -19811,11 +28518,49 @@ export const IamPasswordPoliciesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            allowUsersToChangePassword: Schema.optional(Schema.Boolean),
+            expirePasswords: Schema.optional(Schema.Boolean),
+            hardExpiry: Schema.optional(Schema.Boolean),
+            maxPasswordAge: Schema.optional(Schema.Number),
+            minimumPasswordLength: Schema.optional(Schema.Number),
+            passwordReusePrevention: Schema.optional(Schema.Number),
+            requireLowercaseCharacters: Schema.optional(Schema.Boolean),
+            requireNumbers: Schema.optional(Schema.Boolean),
+            requireSymbols: Schema.optional(Schema.Boolean),
+            requireUppercaseCharacters: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPasswordPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamPasswordPoliciesCreateOrReplaceInput =
@@ -19865,11 +28610,11 @@ export const IamPasswordPoliciesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPasswordPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamPasswordPoliciesDeleteInput =
@@ -19902,11 +28647,11 @@ export const IamPasswordPoliciesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPasswordPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamPasswordPoliciesGetInput =
@@ -19956,11 +28701,11 @@ export const IamPasswordPoliciesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPasswordPolicies",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamPasswordPoliciesListByResourceGroupInput =
@@ -20022,11 +28767,11 @@ export const IamPasswordPoliciesListByResourceGroup =
 export const IamPasswordPoliciesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/iamPasswordPolicies",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamPasswordPoliciesListBySubscriptionInput =
@@ -20089,11 +28834,12 @@ export const IamPasswordPoliciesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPasswordPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamPasswordPoliciesUpdateInput =
@@ -20144,11 +28890,43 @@ export const IamPolicyVersionsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            createDate: Schema.optional(Schema.String),
+            document: Schema.optional(Schema.String),
+            isDefaultVersion: Schema.optional(Schema.Boolean),
+            versionId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPolicyVersions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamPolicyVersionsCreateOrReplaceInput =
@@ -20198,11 +28976,11 @@ export const IamPolicyVersionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPolicyVersions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamPolicyVersionsDeleteInput =
@@ -20235,11 +29013,11 @@ export const IamPolicyVersionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPolicyVersions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamPolicyVersionsGetInput = typeof IamPolicyVersionsGetInput.Type;
@@ -20287,11 +29065,11 @@ export const IamPolicyVersionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPolicyVersions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamPolicyVersionsListByResourceGroupInput =
@@ -20353,11 +29131,11 @@ export const IamPolicyVersionsListByResourceGroup =
 export const IamPolicyVersionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/iamPolicyVersions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamPolicyVersionsListBySubscriptionInput =
@@ -20420,11 +29198,12 @@ export const IamPolicyVersionsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamPolicyVersions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamPolicyVersionsUpdateInput =
@@ -20475,11 +29254,68 @@ export const IamRolesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            assumeRolePolicyDocument: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            description: Schema.optional(Schema.String),
+            managedPolicyArns: Schema.optional(Schema.Array(Schema.String)),
+            maxSessionDuration: Schema.optional(Schema.Number),
+            path: Schema.optional(Schema.String),
+            permissionsBoundary: Schema.optional(Schema.String),
+            policies: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  policyDocument: Schema.optional(
+                    Schema.Record(Schema.String, Schema.Unknown),
+                  ),
+                  policyName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            roleId: Schema.optional(Schema.String),
+            roleName: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamRoles/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamRolesCreateOrReplaceInput =
@@ -20529,11 +29365,11 @@ export const IamRolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamRoles/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type IamRolesDeleteInput = typeof IamRolesDeleteInput.Type;
@@ -20560,11 +29396,11 @@ export const IamRolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamRoles/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type IamRolesGetInput = typeof IamRolesGetInput.Type;
@@ -20609,11 +29445,11 @@ export const IamRolesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamRoles",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamRolesListByResourceGroupInput =
@@ -20676,11 +29512,11 @@ export const IamRolesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const IamRolesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/iamRoles",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamRolesListBySubscriptionInput =
@@ -20743,11 +29579,12 @@ export const IamRolesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamRoles/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type IamRolesUpdateInput = typeof IamRolesUpdateInput.Type;
@@ -20793,11 +29630,53 @@ export const IamServerCertificatesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            certificateBody: Schema.optional(Schema.String),
+            certificateChain: Schema.optional(Schema.String),
+            path: Schema.optional(Schema.String),
+            privateKey: Schema.optional(SensitiveString),
+            serverCertificateName: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamServerCertificates/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamServerCertificatesCreateOrReplaceInput =
@@ -20847,11 +29726,11 @@ export const IamServerCertificatesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamServerCertificates/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamServerCertificatesDeleteInput =
@@ -20884,11 +29763,11 @@ export const IamServerCertificatesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamServerCertificates/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamServerCertificatesGetInput =
@@ -20938,11 +29817,11 @@ export const IamServerCertificatesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamServerCertificates",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamServerCertificatesListByResourceGroupInput =
@@ -21004,11 +29883,11 @@ export const IamServerCertificatesListByResourceGroup =
 export const IamServerCertificatesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/iamServerCertificates",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamServerCertificatesListBySubscriptionInput =
@@ -21071,11 +29950,12 @@ export const IamServerCertificatesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamServerCertificates/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamServerCertificatesUpdateInput =
@@ -21126,11 +30006,51 @@ export const IamVirtualMfaDevicesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            path: Schema.optional(Schema.String),
+            serialNumber: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            users: Schema.optional(Schema.Array(Schema.String)),
+            virtualMfaDeviceName: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamVirtualMFADevices/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamVirtualMfaDevicesCreateOrReplaceInput =
@@ -21180,11 +30100,11 @@ export const IamVirtualMfaDevicesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamVirtualMFADevices/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamVirtualMfaDevicesDeleteInput =
@@ -21217,11 +30137,11 @@ export const IamVirtualMfaDevicesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamVirtualMFADevices/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamVirtualMfaDevicesGetInput =
@@ -21271,11 +30191,11 @@ export const IamVirtualMfaDevicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamVirtualMFADevices",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamVirtualMfaDevicesListByResourceGroupInput =
@@ -21337,11 +30257,11 @@ export const IamVirtualMfaDevicesListByResourceGroup =
 export const IamVirtualMfaDevicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/iamVirtualMFADevices",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamVirtualMfaDevicesListBySubscriptionInput =
@@ -21404,11 +30324,12 @@ export const IamVirtualMfaDevicesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/iamVirtualMFADevices/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type IamVirtualMfaDevicesUpdateInput =
@@ -21459,11 +30380,41 @@ export const KmsAliasesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            aliasName: Schema.optional(Schema.String),
+            targetKeyId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsAliases/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type KmsAliasesCreateOrReplaceInput =
@@ -21513,11 +30464,11 @@ export const KmsAliasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsAliases/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type KmsAliasesDeleteInput = typeof KmsAliasesDeleteInput.Type;
@@ -21544,11 +30495,11 @@ export const KmsAliasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsAliases/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type KmsAliasesGetInput = typeof KmsAliasesGetInput.Type;
@@ -21593,11 +30544,11 @@ export const KmsAliasesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsAliases",
+      apiVersion: "2024-12-01",
     }),
   );
 export type KmsAliasesListByResourceGroupInput =
@@ -21659,11 +30610,11 @@ export const KmsAliasesListByResourceGroup =
 export const KmsAliasesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/kmsAliases",
+      apiVersion: "2024-12-01",
     }),
   );
 export type KmsAliasesListBySubscriptionInput =
@@ -21725,11 +30676,12 @@ export const KmsAliasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsAliases/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type KmsAliasesUpdateInput = typeof KmsAliasesUpdateInput.Type;
@@ -21777,11 +30729,84 @@ export const KmsKeysCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            bypassPolicyLockoutSafetyCheck: Schema.optional(Schema.Boolean),
+            description: Schema.optional(Schema.String),
+            enableKeyRotation: Schema.optional(Schema.Boolean),
+            enabled: Schema.optional(Schema.Boolean),
+            keyId: Schema.optional(Schema.String),
+            keyPolicy: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            keySpec: Schema.optional(
+              Schema.Literals([
+                "ECC_NIST_P256",
+                "ECC_NIST_P384",
+                "ECC_NIST_P521",
+                "ECC_SECG_P256K1",
+                "HMAC_224",
+                "HMAC_256",
+                "HMAC_384",
+                "HMAC_512",
+                "RSA_2048",
+                "RSA_3072",
+                "RSA_4096",
+                "SM2",
+                "SYMMETRIC_DEFAULT",
+              ]),
+            ),
+            keyUsage: Schema.optional(
+              Schema.Literals([
+                "ENCRYPT_DECRYPT",
+                "GENERATE_VERIFY_MAC",
+                "SIGN_VERIFY",
+              ]),
+            ),
+            multiRegion: Schema.optional(Schema.Boolean),
+            origin: Schema.optional(Schema.Literals(["AWS_KMS", "EXTERNAL"])),
+            pendingWindowInDays: Schema.optional(Schema.Number),
+            rotationPeriodInDays: Schema.optional(Schema.Number),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsKeys/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type KmsKeysCreateOrReplaceInput =
@@ -21831,11 +30856,11 @@ export const KmsKeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsKeys/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type KmsKeysDeleteInput = typeof KmsKeysDeleteInput.Type;
@@ -21862,11 +30887,11 @@ export const KmsKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsKeys/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type KmsKeysGetInput = typeof KmsKeysGetInput.Type;
@@ -21911,11 +30936,11 @@ export const KmsKeysListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsKeys",
+      apiVersion: "2024-12-01",
     }),
   );
 export type KmsKeysListByResourceGroupInput =
@@ -21978,11 +31003,11 @@ export const KmsKeysListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const KmsKeysListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/kmsKeys",
+      apiVersion: "2024-12-01",
     }),
   );
 export type KmsKeysListBySubscriptionInput =
@@ -22045,11 +31070,12 @@ export const KmsKeysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/kmsKeys/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type KmsKeysUpdateInput = typeof KmsKeysUpdateInput.Type;
@@ -22095,11 +31121,43 @@ export const LambdaFunctionCodeLocationsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            imageUri: Schema.optional(Schema.String),
+            location: Schema.optional(Schema.String),
+            repositoryType: Schema.optional(Schema.String),
+            resolvedImageUri: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctionCodeLocations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LambdaFunctionCodeLocationsCreateOrReplaceInput =
@@ -22149,11 +31207,11 @@ export const LambdaFunctionCodeLocationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctionCodeLocations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LambdaFunctionCodeLocationsDeleteInput =
@@ -22185,11 +31243,11 @@ export const LambdaFunctionCodeLocationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctionCodeLocations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LambdaFunctionCodeLocationsGetInput =
@@ -22238,11 +31296,11 @@ export const LambdaFunctionCodeLocationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctionCodeLocations",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LambdaFunctionCodeLocationsListByResourceGroupInput =
@@ -22304,11 +31362,11 @@ export const LambdaFunctionCodeLocationsListByResourceGroup =
 export const LambdaFunctionCodeLocationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/lambdaFunctionCodeLocations",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LambdaFunctionCodeLocationsListBySubscriptionInput =
@@ -22371,11 +31429,12 @@ export const LambdaFunctionCodeLocationsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctionCodeLocations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LambdaFunctionCodeLocationsUpdateInput =
@@ -22425,11 +31484,162 @@ export const LambdaFunctionsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            architectures: Schema.optional(
+              Schema.Array(Schema.Literals(["arm64", "x86_64"])),
+            ),
+            arn: Schema.optional(Schema.String),
+            code: Schema.optional(
+              Schema.Struct({
+                imageUri: Schema.optional(Schema.String),
+                s3Bucket: Schema.optional(Schema.String),
+                s3Key: Schema.optional(Schema.String),
+                s3ObjectVersion: Schema.optional(Schema.String),
+                zipFile: Schema.optional(Schema.String),
+              }),
+            ),
+            codeSigningConfigArn: Schema.optional(Schema.String),
+            deadLetterConfig: Schema.optional(
+              Schema.Struct({
+                targetArn: Schema.optional(Schema.String),
+              }),
+            ),
+            description: Schema.optional(Schema.String),
+            environment: Schema.optional(
+              Schema.Struct({
+                variables: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+              }),
+            ),
+            ephemeralStorage: Schema.optional(
+              Schema.Struct({
+                size: Schema.optional(Schema.Number),
+              }),
+            ),
+            fileSystemConfigs: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  arn: Schema.optional(Schema.String),
+                  localMountPath: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            functionName: Schema.optional(Schema.String),
+            handler: Schema.optional(Schema.String),
+            imageConfig: Schema.optional(
+              Schema.Struct({
+                command: Schema.optional(Schema.Array(Schema.String)),
+                entryPoint: Schema.optional(Schema.Array(Schema.String)),
+                workingDirectory: Schema.optional(Schema.String),
+              }),
+            ),
+            kmsKeyArn: Schema.optional(Schema.String),
+            layers: Schema.optional(Schema.Array(Schema.String)),
+            loggingConfig: Schema.optional(
+              Schema.Struct({
+                applicationLogLevel: Schema.optional(
+                  Schema.Literals([
+                    "DEBUG",
+                    "ERROR",
+                    "FATAL",
+                    "INFO",
+                    "TRACE",
+                    "WARN",
+                  ]),
+                ),
+                logFormat: Schema.optional(Schema.Literals(["JSON", "Text"])),
+                logGroup: Schema.optional(Schema.String),
+                systemLogLevel: Schema.optional(
+                  Schema.Literals(["DEBUG", "INFO", "WARN"]),
+                ),
+              }),
+            ),
+            memorySize: Schema.optional(Schema.Number),
+            packageType: Schema.optional(Schema.Literals(["Image", "Zip"])),
+            reservedConcurrentExecutions: Schema.optional(Schema.Number),
+            role: Schema.optional(Schema.String),
+            runtime: Schema.optional(Schema.String),
+            runtimeManagementConfig: Schema.optional(
+              Schema.Struct({
+                runtimeVersionArn: Schema.optional(Schema.String),
+                updateRuntimeOn: Schema.optional(
+                  Schema.Literals(["Auto", "FunctionUpdate", "Manual"]),
+                ),
+              }),
+            ),
+            snapStart: Schema.optional(
+              Schema.Struct({
+                applyOn: Schema.optional(
+                  Schema.Literals(["None", "PublishedVersions"]),
+                ),
+              }),
+            ),
+            snapStartResponse: Schema.optional(
+              Schema.Struct({
+                applyOn: Schema.optional(
+                  Schema.Literals(["None", "PublishedVersions"]),
+                ),
+                optimizationStatus: Schema.optional(
+                  Schema.Literals(["Off", "On"]),
+                ),
+              }),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            timeout: Schema.optional(Schema.Number),
+            tracingConfig: Schema.optional(
+              Schema.Struct({
+                mode: Schema.optional(
+                  Schema.Literals(["Active", "PassThrough"]),
+                ),
+              }),
+            ),
+            vpcConfig: Schema.optional(
+              Schema.Struct({
+                ipv6AllowedForDualStack: Schema.optional(Schema.Boolean),
+                securityGroupIds: Schema.optional(Schema.Array(Schema.String)),
+                subnetIds: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LambdaFunctionsCreateOrReplaceInput =
@@ -22479,11 +31689,11 @@ export const LambdaFunctionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LambdaFunctionsDeleteInput = typeof LambdaFunctionsDeleteInput.Type;
@@ -22515,11 +31725,11 @@ export const LambdaFunctionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LambdaFunctionsGetInput = typeof LambdaFunctionsGetInput.Type;
@@ -22565,11 +31775,11 @@ export const LambdaFunctionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LambdaFunctionsListByResourceGroupInput =
@@ -22631,11 +31841,11 @@ export const LambdaFunctionsListByResourceGroup =
 export const LambdaFunctionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/lambdaFunctions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LambdaFunctionsListBySubscriptionInput =
@@ -22698,11 +31908,12 @@ export const LambdaFunctionsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lambdaFunctions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LambdaFunctionsUpdateInput = typeof LambdaFunctionsUpdateInput.Type;
@@ -22752,11 +31963,65 @@ export const LightsailBucketsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            ableToUpdateBundle: Schema.optional(Schema.Boolean),
+            accessRules: Schema.optional(
+              Schema.Struct({
+                allowPublicOverrides: Schema.optional(Schema.Boolean),
+                getObject: Schema.optional(Schema.String),
+              }),
+            ),
+            bucketArn: Schema.optional(Schema.String),
+            bucketName: Schema.optional(Schema.String),
+            bundleId: Schema.optional(Schema.String),
+            objectVersioning: Schema.optional(Schema.Boolean),
+            readOnlyAccessAccounts: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            resourcesReceivingAccess: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            url: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailBuckets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LightsailBucketsCreateOrReplaceInput =
@@ -22806,11 +32071,11 @@ export const LightsailBucketsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailBuckets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LightsailBucketsDeleteInput =
@@ -22843,11 +32108,11 @@ export const LightsailBucketsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailBuckets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LightsailBucketsGetInput = typeof LightsailBucketsGetInput.Type;
@@ -22893,11 +32158,11 @@ export const LightsailBucketsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailBuckets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LightsailBucketsListByResourceGroupInput =
@@ -22959,11 +32224,11 @@ export const LightsailBucketsListByResourceGroup =
 export const LightsailBucketsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/lightsailBuckets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LightsailBucketsListBySubscriptionInput =
@@ -23026,11 +32291,12 @@ export const LightsailBucketsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailBuckets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LightsailBucketsUpdateInput =
@@ -23081,11 +32347,142 @@ export const LightsailInstancesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            addOns: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  addOnType: Schema.optional(Schema.String),
+                  autoSnapshotAddOnRequest: Schema.optional(
+                    Schema.Struct({
+                      snapshotTimeOfDay: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  status: Schema.optional(
+                    Schema.Literals([
+                      "Disabled",
+                      "Disabling",
+                      "Enabled",
+                      "Enabling",
+                      "Failed",
+                      "Terminated",
+                      "Terminating",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+            availabilityZone: Schema.optional(Schema.String),
+            blueprintId: Schema.optional(Schema.String),
+            bundleId: Schema.optional(Schema.String),
+            hardware: Schema.optional(
+              Schema.Struct({
+                cpuCount: Schema.optional(Schema.Number),
+                disks: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      attachedTo: Schema.optional(Schema.String),
+                      attachmentState: Schema.optional(Schema.String),
+                      diskName: Schema.optional(Schema.String),
+                      iops: Schema.optional(Schema.Number),
+                      isSystemDisk: Schema.optional(Schema.Boolean),
+                      path: Schema.optional(Schema.String),
+                      sizeInGb: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                ramSizeInGb: Schema.optional(Schema.Number),
+              }),
+            ),
+            instanceArn: Schema.optional(Schema.String),
+            instanceName: Schema.optional(Schema.String),
+            isStaticIp: Schema.optional(Schema.Boolean),
+            keyPairName: Schema.optional(Schema.String),
+            location: Schema.optional(
+              Schema.Struct({
+                availabilityZone: Schema.optional(Schema.String),
+                regionName: Schema.optional(Schema.String),
+              }),
+            ),
+            networking: Schema.optional(
+              Schema.Struct({
+                monthlyTransfer: Schema.optional(
+                  Schema.Struct({
+                    gbPerMonthAllocated: Schema.optional(Schema.String),
+                  }),
+                ),
+                ports: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      accessDirection: Schema.optional(Schema.String),
+                      accessFrom: Schema.optional(Schema.String),
+                      accessType: Schema.optional(Schema.String),
+                      cidrListAliases: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      cidrs: Schema.optional(Schema.Array(Schema.String)),
+                      commonName: Schema.optional(Schema.String),
+                      fromPort: Schema.optional(Schema.Number),
+                      ipv6Cidrs: Schema.optional(Schema.Array(Schema.String)),
+                      protocol: Schema.optional(Schema.String),
+                      toPort: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            privateIpAddress: Schema.optional(Schema.String),
+            publicIpAddress: Schema.optional(Schema.String),
+            resourceType: Schema.optional(Schema.String),
+            sshKeyName: Schema.optional(Schema.String),
+            state: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.Number),
+                name: Schema.optional(Schema.String),
+              }),
+            ),
+            supportCode: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            userData: Schema.optional(Schema.String),
+            userName: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailInstances/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LightsailInstancesCreateOrReplaceInput =
@@ -23135,11 +32532,11 @@ export const LightsailInstancesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailInstances/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LightsailInstancesDeleteInput =
@@ -23172,11 +32569,11 @@ export const LightsailInstancesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailInstances/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LightsailInstancesGetInput = typeof LightsailInstancesGetInput.Type;
@@ -23225,11 +32622,11 @@ export const LightsailInstancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailInstances",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LightsailInstancesListByResourceGroupInput =
@@ -23291,11 +32688,11 @@ export const LightsailInstancesListByResourceGroup =
 export const LightsailInstancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/lightsailInstances",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LightsailInstancesListBySubscriptionInput =
@@ -23358,11 +32755,12 @@ export const LightsailInstancesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/lightsailInstances/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LightsailInstancesUpdateInput =
@@ -23413,11 +32811,55 @@ export const LogsLogGroupsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            dataProtectionPolicy: Schema.optional(Schema.Unknown),
+            kmsKeyId: Schema.optional(Schema.String),
+            logGroupClass: Schema.optional(
+              Schema.Literals(["INFREQUENT_ACCESS", "STANDARD"]),
+            ),
+            logGroupName: Schema.optional(Schema.String),
+            retentionInDays: Schema.optional(Schema.Number),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsLogGroupsCreateOrReplaceInput =
@@ -23467,11 +32909,11 @@ export const LogsLogGroupsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsLogGroupsDeleteInput = typeof LogsLogGroupsDeleteInput.Type;
@@ -23499,11 +32941,11 @@ export const LogsLogGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogGroups/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type LogsLogGroupsGetInput = typeof LogsLogGroupsGetInput.Type;
@@ -23550,11 +32992,11 @@ export const LogsLogGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsLogGroupsListByResourceGroupInput =
@@ -23616,11 +33058,11 @@ export const LogsLogGroupsListByResourceGroup =
 export const LogsLogGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/logsLogGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsLogGroupsListBySubscriptionInput =
@@ -23683,11 +33125,12 @@ export const LogsLogGroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsLogGroupsUpdateInput = typeof LogsLogGroupsUpdateInput.Type;
@@ -23734,11 +33177,41 @@ export const LogsLogStreamsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            logGroupName: Schema.optional(Schema.String),
+            logStreamName: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogStreams/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsLogStreamsCreateOrReplaceInput =
@@ -23788,11 +33261,11 @@ export const LogsLogStreamsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogStreams/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsLogStreamsDeleteInput = typeof LogsLogStreamsDeleteInput.Type;
@@ -23823,12 +33296,12 @@ export const LogsLogStreamsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogStreams/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type LogsLogStreamsGetInput = typeof LogsLogStreamsGetInput.Type;
@@ -23874,11 +33347,11 @@ export const LogsLogStreamsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogStreams",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsLogStreamsListByResourceGroupInput =
@@ -23940,11 +33413,11 @@ export const LogsLogStreamsListByResourceGroup =
 export const LogsLogStreamsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/logsLogStreams",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsLogStreamsListBySubscriptionInput =
@@ -24007,11 +33480,12 @@ export const LogsLogStreamsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsLogStreams/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsLogStreamsUpdateInput = typeof LogsLogStreamsUpdateInput.Type;
@@ -24060,11 +33534,91 @@ export const LogsMetricFiltersCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            filterName: Schema.optional(Schema.String),
+            filterPattern: Schema.optional(Schema.String),
+            logGroupName: Schema.optional(Schema.String),
+            metricTransformations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  defaultValue: Schema.optional(Schema.Number),
+                  dimensions: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.optional(Schema.String),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  metricName: Schema.optional(Schema.String),
+                  metricNamespace: Schema.optional(Schema.String),
+                  metricValue: Schema.optional(Schema.String),
+                  unit: Schema.optional(
+                    Schema.Literals([
+                      "Bits",
+                      "Bits/Second",
+                      "Bytes",
+                      "Bytes/Second",
+                      "Count",
+                      "Count/Second",
+                      "Gigabits",
+                      "Gigabits/Second",
+                      "Gigabytes",
+                      "Gigabytes/Second",
+                      "Kilobits",
+                      "Kilobits/Second",
+                      "Kilobytes",
+                      "Kilobytes/Second",
+                      "Megabits",
+                      "Megabits/Second",
+                      "Megabytes",
+                      "Megabytes/Second",
+                      "Microseconds",
+                      "Milliseconds",
+                      "None",
+                      "Percent",
+                      "Seconds",
+                      "Terabits",
+                      "Terabits/Second",
+                      "Terabytes",
+                      "Terabytes/Second",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsMetricFilters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsMetricFiltersCreateOrReplaceInput =
@@ -24114,11 +33668,11 @@ export const LogsMetricFiltersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsMetricFilters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsMetricFiltersDeleteInput =
@@ -24151,11 +33705,11 @@ export const LogsMetricFiltersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsMetricFilters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsMetricFiltersGetInput = typeof LogsMetricFiltersGetInput.Type;
@@ -24203,11 +33757,11 @@ export const LogsMetricFiltersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsMetricFilters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsMetricFiltersListByResourceGroupInput =
@@ -24269,11 +33823,11 @@ export const LogsMetricFiltersListByResourceGroup =
 export const LogsMetricFiltersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/logsMetricFilters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsMetricFiltersListBySubscriptionInput =
@@ -24336,11 +33890,12 @@ export const LogsMetricFiltersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsMetricFilters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsMetricFiltersUpdateInput =
@@ -24391,11 +33946,47 @@ export const LogsSubscriptionFiltersCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            destinationArn: Schema.optional(Schema.String),
+            distribution: Schema.optional(
+              Schema.Literals(["ByLogStream", "Random"]),
+            ),
+            filterName: Schema.optional(Schema.String),
+            filterPattern: Schema.optional(Schema.String),
+            logGroupName: Schema.optional(Schema.String),
+            roleArn: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsSubscriptionFilters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsSubscriptionFiltersCreateOrReplaceInput =
@@ -24445,11 +34036,11 @@ export const LogsSubscriptionFiltersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsSubscriptionFilters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsSubscriptionFiltersDeleteInput =
@@ -24481,11 +34072,11 @@ export const LogsSubscriptionFiltersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsSubscriptionFilters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsSubscriptionFiltersGetInput =
@@ -24535,11 +34126,11 @@ export const LogsSubscriptionFiltersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsSubscriptionFilters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsSubscriptionFiltersListByResourceGroupInput =
@@ -24601,11 +34192,11 @@ export const LogsSubscriptionFiltersListByResourceGroup =
 export const LogsSubscriptionFiltersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/logsSubscriptionFilters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsSubscriptionFiltersListBySubscriptionInput =
@@ -24668,11 +34259,12 @@ export const LogsSubscriptionFiltersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/logsSubscriptionFilters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type LogsSubscriptionFiltersUpdateInput =
@@ -24722,11 +34314,239 @@ export const Macie2JobSummariesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            bucketCriteria: Schema.optional(
+              Schema.Struct({
+                excludes: Schema.optional(
+                  Schema.Struct({
+                    and: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          simpleCriterion: Schema.optional(
+                            Schema.Struct({
+                              comparator: Schema.optional(
+                                Schema.Struct({
+                                  value: Schema.optional(
+                                    Schema.Literals([
+                                      "CONTAINS",
+                                      "EQ",
+                                      "GT",
+                                      "GTE",
+                                      "LT",
+                                      "LTE",
+                                      "NE",
+                                      "STARTS_WITH",
+                                    ]),
+                                  ),
+                                }),
+                              ),
+                              key: Schema.optional(
+                                Schema.Struct({
+                                  value: Schema.optional(
+                                    Schema.Literals([
+                                      "ACCOUNT_ID",
+                                      "S3_BUCKET_EFFECTIVE_PERMISSION",
+                                      "S3_BUCKET_NAME",
+                                      "S3_BUCKET_SHARED_ACCESS",
+                                    ]),
+                                  ),
+                                }),
+                              ),
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          tagCriterion: Schema.optional(
+                            Schema.Struct({
+                              comparator: Schema.optional(
+                                Schema.Struct({
+                                  value: Schema.optional(
+                                    Schema.Literals([
+                                      "CONTAINS",
+                                      "EQ",
+                                      "GT",
+                                      "GTE",
+                                      "LT",
+                                      "LTE",
+                                      "NE",
+                                      "STARTS_WITH",
+                                    ]),
+                                  ),
+                                }),
+                              ),
+                              tagValues: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    key: Schema.optional(Schema.String),
+                                    value: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                includes: Schema.optional(
+                  Schema.Struct({
+                    and: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          simpleCriterion: Schema.optional(
+                            Schema.Struct({
+                              comparator: Schema.optional(
+                                Schema.Struct({
+                                  value: Schema.optional(
+                                    Schema.Literals([
+                                      "CONTAINS",
+                                      "EQ",
+                                      "GT",
+                                      "GTE",
+                                      "LT",
+                                      "LTE",
+                                      "NE",
+                                      "STARTS_WITH",
+                                    ]),
+                                  ),
+                                }),
+                              ),
+                              key: Schema.optional(
+                                Schema.Struct({
+                                  value: Schema.optional(
+                                    Schema.Literals([
+                                      "ACCOUNT_ID",
+                                      "S3_BUCKET_EFFECTIVE_PERMISSION",
+                                      "S3_BUCKET_NAME",
+                                      "S3_BUCKET_SHARED_ACCESS",
+                                    ]),
+                                  ),
+                                }),
+                              ),
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          tagCriterion: Schema.optional(
+                            Schema.Struct({
+                              comparator: Schema.optional(
+                                Schema.Struct({
+                                  value: Schema.optional(
+                                    Schema.Literals([
+                                      "CONTAINS",
+                                      "EQ",
+                                      "GT",
+                                      "GTE",
+                                      "LT",
+                                      "LTE",
+                                      "NE",
+                                      "STARTS_WITH",
+                                    ]),
+                                  ),
+                                }),
+                              ),
+                              tagValues: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    key: Schema.optional(Schema.String),
+                                    value: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            bucketDefinitions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  accountId: Schema.optional(Schema.String),
+                  buckets: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            jobId: Schema.optional(Schema.String),
+            jobStatus: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "CANCELLED",
+                    "COMPLETE",
+                    "IDLE",
+                    "PAUSED",
+                    "RUNNING",
+                    "USER_PAUSED",
+                  ]),
+                ),
+              }),
+            ),
+            jobType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["ONE_TIME", "SCHEDULED"]),
+                ),
+              }),
+            ),
+            lastRunErrorStatus: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.Literals(["ERROR", "NONE"])),
+                  }),
+                ),
+              }),
+            ),
+            name: Schema.optional(Schema.String),
+            userPausedDetails: Schema.optional(
+              Schema.Struct({
+                jobExpiresAt: Schema.optional(Schema.String),
+                jobImminentExpirationHealthEventArn: Schema.optional(
+                  Schema.String,
+                ),
+                jobPausedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macie2JobSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Macie2JobSummariesCreateOrReplaceInput =
@@ -24776,11 +34596,11 @@ export const Macie2JobSummariesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macie2JobSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Macie2JobSummariesDeleteInput =
@@ -24813,11 +34633,11 @@ export const Macie2JobSummariesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macie2JobSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Macie2JobSummariesGetInput = typeof Macie2JobSummariesGetInput.Type;
@@ -24866,11 +34686,11 @@ export const Macie2JobSummariesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macie2JobSummaries",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Macie2JobSummariesListByResourceGroupInput =
@@ -24932,11 +34752,11 @@ export const Macie2JobSummariesListByResourceGroup =
 export const Macie2JobSummariesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/macie2JobSummaries",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Macie2JobSummariesListBySubscriptionInput =
@@ -24999,11 +34819,12 @@ export const Macie2JobSummariesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macie2JobSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Macie2JobSummariesUpdateInput =
@@ -25054,11 +34875,74 @@ export const MacieAllowListsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            criteria: Schema.optional(
+              Schema.Struct({
+                regex: Schema.optional(Schema.String),
+                s3WordsList: Schema.optional(
+                  Schema.Struct({
+                    bucketName: Schema.optional(Schema.String),
+                    objectKey: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            description: Schema.optional(Schema.String),
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Literals([
+                "OK",
+                "S3_OBJECT_ACCESS_DENIED",
+                "S3_OBJECT_EMPTY",
+                "S3_OBJECT_NOT_FOUND",
+                "S3_OBJECT_OVERSIZE",
+                "S3_THROTTLED",
+                "S3_USER_ACCESS_DENIED",
+                "UNKNOWN_ERROR",
+              ]),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macieAllowLists/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type MacieAllowListsCreateOrReplaceInput =
@@ -25108,11 +34992,11 @@ export const MacieAllowListsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macieAllowLists/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type MacieAllowListsDeleteInput = typeof MacieAllowListsDeleteInput.Type;
@@ -25144,11 +35028,11 @@ export const MacieAllowListsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macieAllowLists/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type MacieAllowListsGetInput = typeof MacieAllowListsGetInput.Type;
@@ -25194,11 +35078,11 @@ export const MacieAllowListsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macieAllowLists",
+      apiVersion: "2024-12-01",
     }),
   );
 export type MacieAllowListsListByResourceGroupInput =
@@ -25260,11 +35144,11 @@ export const MacieAllowListsListByResourceGroup =
 export const MacieAllowListsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/macieAllowLists",
+      apiVersion: "2024-12-01",
     }),
   );
 export type MacieAllowListsListBySubscriptionInput =
@@ -25327,11 +35211,12 @@ export const MacieAllowListsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/macieAllowLists/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type MacieAllowListsUpdateInput = typeof MacieAllowListsUpdateInput.Type;
@@ -25381,11 +35266,134 @@ export const NetworkFirewallFirewallPoliciesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            firewallPolicy: Schema.optional(
+              Schema.Struct({
+                policyVariables: Schema.optional(
+                  Schema.Struct({
+                    ruleVariables: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          definition: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                statefulDefaultActions: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                statefulEngineOptions: Schema.optional(
+                  Schema.Struct({
+                    ruleOrder: Schema.optional(
+                      Schema.Literals(["DEFAULT_ACTION_ORDER", "STRICT_ORDER"]),
+                    ),
+                    streamExceptionPolicy: Schema.optional(
+                      Schema.Literals(["CONTINUE", "DROP", "REJECT"]),
+                    ),
+                  }),
+                ),
+                statefulRuleGroupReferences: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      override: Schema.optional(
+                        Schema.Struct({
+                          action: Schema.optional(
+                            Schema.Literals(["DROP_TO_ALERT"]),
+                          ),
+                        }),
+                      ),
+                      priority: Schema.optional(Schema.Number),
+                      resourceArn: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                statelessCustomActions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      actionDefinition: Schema.optional(
+                        Schema.Struct({
+                          publishMetricAction: Schema.optional(
+                            Schema.Struct({
+                              dimensions: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    value: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                      actionName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                statelessDefaultActions: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                statelessFragmentDefaultActions: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                statelessRuleGroupReferences: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      priority: Schema.optional(Schema.Number),
+                      resourceArn: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                tlsInspectionConfigurationArn: Schema.optional(Schema.String),
+              }),
+            ),
+            firewallPolicyArn: Schema.optional(Schema.String),
+            firewallPolicyId: Schema.optional(Schema.String),
+            firewallPolicyName: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewallPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallFirewallPoliciesCreateOrReplaceInput =
@@ -25435,11 +35443,11 @@ export const NetworkFirewallFirewallPoliciesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewallPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallFirewallPoliciesDeleteInput =
@@ -25471,11 +35479,11 @@ export const NetworkFirewallFirewallPoliciesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewallPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallFirewallPoliciesGetInput =
@@ -25524,11 +35532,11 @@ export const NetworkFirewallFirewallPoliciesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewallPolicies",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallFirewallPoliciesListByResourceGroupInput =
@@ -25590,11 +35598,11 @@ export const NetworkFirewallFirewallPoliciesListByResourceGroup =
 export const NetworkFirewallFirewallPoliciesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/networkFirewallFirewallPolicies",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallFirewallPoliciesListBySubscriptionInput =
@@ -25657,11 +35665,12 @@ export const NetworkFirewallFirewallPoliciesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewallPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallFirewallPoliciesUpdateInput =
@@ -25711,11 +35720,65 @@ export const NetworkFirewallFirewallsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            deleteProtection: Schema.optional(Schema.Boolean),
+            description: Schema.optional(Schema.String),
+            endpointIds: Schema.optional(Schema.Array(Schema.String)),
+            firewallArn: Schema.optional(Schema.String),
+            firewallId: Schema.optional(Schema.String),
+            firewallName: Schema.optional(Schema.String),
+            firewallPolicyArn: Schema.optional(Schema.String),
+            firewallPolicyChangeProtection: Schema.optional(Schema.Boolean),
+            subnetChangeProtection: Schema.optional(Schema.Boolean),
+            subnetMappings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  ipAddressType: Schema.optional(Schema.String),
+                  subnetId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            vpcId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewalls/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallFirewallsCreateOrReplaceInput =
@@ -25765,11 +35828,11 @@ export const NetworkFirewallFirewallsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewalls/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallFirewallsDeleteInput =
@@ -25801,11 +35864,11 @@ export const NetworkFirewallFirewallsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewalls/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallFirewallsGetInput =
@@ -25855,11 +35918,11 @@ export const NetworkFirewallFirewallsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewalls",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallFirewallsListByResourceGroupInput =
@@ -25921,11 +35984,11 @@ export const NetworkFirewallFirewallsListByResourceGroup =
 export const NetworkFirewallFirewallsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/networkFirewallFirewalls",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallFirewallsListBySubscriptionInput =
@@ -25988,11 +36051,12 @@ export const NetworkFirewallFirewallsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallFirewalls/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallFirewallsUpdateInput =
@@ -26042,11 +36106,277 @@ export const NetworkFirewallRuleGroupsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            capacity: Schema.optional(Schema.Number),
+            description: Schema.optional(Schema.String),
+            ruleGroup: Schema.optional(
+              Schema.Struct({
+                referenceSets: Schema.optional(
+                  Schema.Struct({
+                    ipSetReferences: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          referenceArn: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                ruleVariables: Schema.optional(
+                  Schema.Struct({
+                    ipSets: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          definition: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                    ),
+                    portSets: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          definition: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                rulesSource: Schema.optional(
+                  Schema.Struct({
+                    rulesSourceList: Schema.optional(
+                      Schema.Struct({
+                        generatedRulesType: Schema.optional(
+                          Schema.Literals(["ALLOWLIST", "DENYLIST"]),
+                        ),
+                        targetTypes: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        targets: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    rulesString: Schema.optional(Schema.String),
+                    statefulRules: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          action: Schema.optional(
+                            Schema.Literals([
+                              "ALERT",
+                              "DROP",
+                              "PASS",
+                              "REJECT",
+                            ]),
+                          ),
+                          header: Schema.optional(
+                            Schema.Struct({
+                              destination: Schema.optional(Schema.String),
+                              destinationPort: Schema.optional(Schema.String),
+                              direction: Schema.optional(
+                                Schema.Literals(["ANY", "FORWARD"]),
+                              ),
+                              protocol: Schema.optional(
+                                Schema.Literals([
+                                  "DCERPC",
+                                  "DHCP",
+                                  "DNS",
+                                  "FTP",
+                                  "HTTP",
+                                  "ICMP",
+                                  "IKEV2",
+                                  "IMAP",
+                                  "IP",
+                                  "KRB5",
+                                  "MSN",
+                                  "NTP",
+                                  "SMB",
+                                  "SMTP",
+                                  "SSH",
+                                  "TCP",
+                                  "TFTP",
+                                  "TLS",
+                                  "UDP",
+                                ]),
+                              ),
+                              source: Schema.optional(Schema.String),
+                              sourcePort: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          ruleOptions: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                keyword: Schema.optional(Schema.String),
+                                settings: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                    statelessRulesAndCustomActions: Schema.optional(
+                      Schema.Struct({
+                        customActions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              actionDefinition: Schema.optional(
+                                Schema.Struct({
+                                  publishMetricAction: Schema.optional(
+                                    Schema.Struct({
+                                      dimensions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            value: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                }),
+                              ),
+                              actionName: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        statelessRules: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              priority: Schema.optional(Schema.Number),
+                              ruleDefinition: Schema.optional(
+                                Schema.Struct({
+                                  actions: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  matchAttributes: Schema.optional(
+                                    Schema.Struct({
+                                      destinationPorts: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            fromPort: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                            toPort: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      destinations: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            addressDefinition: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      protocols: Schema.optional(
+                                        Schema.Array(Schema.Number),
+                                      ),
+                                      sourcePorts: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            fromPort: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                            toPort: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      sources: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            addressDefinition: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      tcpFlags: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            flags: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                            masks: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+                statefulRuleOptions: Schema.optional(
+                  Schema.Struct({
+                    ruleOrder: Schema.optional(
+                      Schema.Literals(["DEFAULT_ACTION_ORDER", "STRICT_ORDER"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            ruleGroupArn: Schema.optional(Schema.String),
+            ruleGroupId: Schema.optional(Schema.String),
+            ruleGroupName: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            type: Schema.optional(Schema.Literals(["STATEFUL", "STATELESS"])),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallRuleGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallRuleGroupsCreateOrReplaceInput =
@@ -26096,11 +36426,11 @@ export const NetworkFirewallRuleGroupsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallRuleGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallRuleGroupsDeleteInput =
@@ -26132,11 +36462,11 @@ export const NetworkFirewallRuleGroupsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallRuleGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallRuleGroupsGetInput =
@@ -26185,11 +36515,11 @@ export const NetworkFirewallRuleGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallRuleGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallRuleGroupsListByResourceGroupInput =
@@ -26251,11 +36581,11 @@ export const NetworkFirewallRuleGroupsListByResourceGroup =
 export const NetworkFirewallRuleGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/networkFirewallRuleGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallRuleGroupsListBySubscriptionInput =
@@ -26318,11 +36648,12 @@ export const NetworkFirewallRuleGroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/networkFirewallRuleGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type NetworkFirewallRuleGroupsUpdateInput =
@@ -26372,11 +36703,541 @@ export const OpenSearchDomainStatusesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            accessPolicies: Schema.optional(Schema.String),
+            advancedOptions: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            advancedSecurityOptions: Schema.optional(
+              Schema.Struct({
+                anonymousAuthDisableDate: Schema.optional(Schema.String),
+                anonymousAuthEnabled: Schema.optional(Schema.Boolean),
+                enabled: Schema.optional(Schema.Boolean),
+                internalUserDatabaseEnabled: Schema.optional(Schema.Boolean),
+                samlOptions: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    idp: Schema.optional(
+                      Schema.Struct({
+                        entityId: Schema.optional(Schema.String),
+                        metadataContent: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    rolesKey: Schema.optional(Schema.String),
+                    sessionTimeoutMinutes: Schema.optional(Schema.Number),
+                    subjectKey: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            autoTuneOptions: Schema.optional(
+              Schema.Struct({
+                errorMessage: Schema.optional(Schema.String),
+                state: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "DISABLED",
+                        "DISABLED_AND_ROLLBACK_COMPLETE",
+                        "DISABLED_AND_ROLLBACK_ERROR",
+                        "DISABLED_AND_ROLLBACK_IN_PROGRESS",
+                        "DISABLED_AND_ROLLBACK_SCHEDULED",
+                        "DISABLE_IN_PROGRESS",
+                        "ENABLED",
+                        "ENABLE_IN_PROGRESS",
+                        "ERROR",
+                      ]),
+                    ),
+                  }),
+                ),
+                useOffPeakWindow: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            changeProgressDetails: Schema.optional(
+              Schema.Struct({
+                changeId: Schema.optional(Schema.String),
+                configChangeStatus: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "ApplyingChanges",
+                        "Cancelled",
+                        "Completed",
+                        "Initializing",
+                        "Pending",
+                        "PendingUserInput",
+                        "Validating",
+                        "ValidationFailed",
+                      ]),
+                    ),
+                  }),
+                ),
+                initiatedBy: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["CUSTOMER", "SERVICE"]),
+                    ),
+                  }),
+                ),
+                lastUpdatedTime: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                startTime: Schema.optional(Schema.String),
+              }),
+            ),
+            clusterConfig: Schema.optional(
+              Schema.Struct({
+                coldStorageOptions: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                dedicatedMasterCount: Schema.optional(Schema.Number),
+                dedicatedMasterEnabled: Schema.optional(Schema.Boolean),
+                dedicatedMasterType: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "c4.2xlarge.search",
+                        "c4.4xlarge.search",
+                        "c4.8xlarge.search",
+                        "c4.large.search",
+                        "c4.xlarge.search",
+                        "c5.18xlarge.search",
+                        "c5.2xlarge.search",
+                        "c5.4xlarge.search",
+                        "c5.9xlarge.search",
+                        "c5.large.search",
+                        "c5.xlarge.search",
+                        "c6g.12xlarge.search",
+                        "c6g.2xlarge.search",
+                        "c6g.4xlarge.search",
+                        "c6g.8xlarge.search",
+                        "c6g.large.search",
+                        "c6g.xlarge.search",
+                        "d2.2xlarge.search",
+                        "d2.4xlarge.search",
+                        "d2.8xlarge.search",
+                        "d2.xlarge.search",
+                        "i2.2xlarge.search",
+                        "i2.xlarge.search",
+                        "i3.16xlarge.search",
+                        "i3.2xlarge.search",
+                        "i3.4xlarge.search",
+                        "i3.8xlarge.search",
+                        "i3.large.search",
+                        "i3.xlarge.search",
+                        "m3.2xlarge.search",
+                        "m3.large.search",
+                        "m3.medium.search",
+                        "m3.xlarge.search",
+                        "m4.10xlarge.search",
+                        "m4.2xlarge.search",
+                        "m4.4xlarge.search",
+                        "m4.large.search",
+                        "m4.xlarge.search",
+                        "m5.12xlarge.search",
+                        "m5.24xlarge.search",
+                        "m5.2xlarge.search",
+                        "m5.4xlarge.search",
+                        "m5.large.search",
+                        "m5.xlarge.search",
+                        "m6g.12xlarge.search",
+                        "m6g.2xlarge.search",
+                        "m6g.4xlarge.search",
+                        "m6g.8xlarge.search",
+                        "m6g.large.search",
+                        "m6g.xlarge.search",
+                        "or1.12xlarge.search",
+                        "or1.16xlarge.search",
+                        "or1.2xlarge.search",
+                        "or1.4xlarge.search",
+                        "or1.8xlarge.search",
+                        "or1.large.search",
+                        "or1.medium.search",
+                        "or1.xlarge.search",
+                        "r3.2xlarge.search",
+                        "r3.4xlarge.search",
+                        "r3.8xlarge.search",
+                        "r3.large.search",
+                        "r3.xlarge.search",
+                        "r4.16xlarge.search",
+                        "r4.2xlarge.search",
+                        "r4.4xlarge.search",
+                        "r4.8xlarge.search",
+                        "r4.large.search",
+                        "r4.xlarge.search",
+                        "r5.12xlarge.search",
+                        "r5.24xlarge.search",
+                        "r5.2xlarge.search",
+                        "r5.4xlarge.search",
+                        "r5.large.search",
+                        "r5.xlarge.search",
+                        "r6g.12xlarge.search",
+                        "r6g.2xlarge.search",
+                        "r6g.4xlarge.search",
+                        "r6g.8xlarge.search",
+                        "r6g.large.search",
+                        "r6g.xlarge.search",
+                        "r6gd.12xlarge.search",
+                        "r6gd.16xlarge.search",
+                        "r6gd.2xlarge.search",
+                        "r6gd.4xlarge.search",
+                        "r6gd.8xlarge.search",
+                        "r6gd.large.search",
+                        "r6gd.xlarge.search",
+                        "t2.medium.search",
+                        "t2.micro.search",
+                        "t2.small.search",
+                        "t3.2xlarge.search",
+                        "t3.large.search",
+                        "t3.medium.search",
+                        "t3.micro.search",
+                        "t3.nano.search",
+                        "t3.small.search",
+                        "t3.xlarge.search",
+                        "t4g.medium.search",
+                        "t4g.small.search",
+                        "ultrawarm1.large.search",
+                        "ultrawarm1.medium.search",
+                        "ultrawarm1.xlarge.search",
+                      ]),
+                    ),
+                  }),
+                ),
+                instanceCount: Schema.optional(Schema.Number),
+                instanceType: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "c4.2xlarge.search",
+                        "c4.4xlarge.search",
+                        "c4.8xlarge.search",
+                        "c4.large.search",
+                        "c4.xlarge.search",
+                        "c5.18xlarge.search",
+                        "c5.2xlarge.search",
+                        "c5.4xlarge.search",
+                        "c5.9xlarge.search",
+                        "c5.large.search",
+                        "c5.xlarge.search",
+                        "c6g.12xlarge.search",
+                        "c6g.2xlarge.search",
+                        "c6g.4xlarge.search",
+                        "c6g.8xlarge.search",
+                        "c6g.large.search",
+                        "c6g.xlarge.search",
+                        "d2.2xlarge.search",
+                        "d2.4xlarge.search",
+                        "d2.8xlarge.search",
+                        "d2.xlarge.search",
+                        "i2.2xlarge.search",
+                        "i2.xlarge.search",
+                        "i3.16xlarge.search",
+                        "i3.2xlarge.search",
+                        "i3.4xlarge.search",
+                        "i3.8xlarge.search",
+                        "i3.large.search",
+                        "i3.xlarge.search",
+                        "m3.2xlarge.search",
+                        "m3.large.search",
+                        "m3.medium.search",
+                        "m3.xlarge.search",
+                        "m4.10xlarge.search",
+                        "m4.2xlarge.search",
+                        "m4.4xlarge.search",
+                        "m4.large.search",
+                        "m4.xlarge.search",
+                        "m5.12xlarge.search",
+                        "m5.24xlarge.search",
+                        "m5.2xlarge.search",
+                        "m5.4xlarge.search",
+                        "m5.large.search",
+                        "m5.xlarge.search",
+                        "m6g.12xlarge.search",
+                        "m6g.2xlarge.search",
+                        "m6g.4xlarge.search",
+                        "m6g.8xlarge.search",
+                        "m6g.large.search",
+                        "m6g.xlarge.search",
+                        "or1.12xlarge.search",
+                        "or1.16xlarge.search",
+                        "or1.2xlarge.search",
+                        "or1.4xlarge.search",
+                        "or1.8xlarge.search",
+                        "or1.large.search",
+                        "or1.medium.search",
+                        "or1.xlarge.search",
+                        "r3.2xlarge.search",
+                        "r3.4xlarge.search",
+                        "r3.8xlarge.search",
+                        "r3.large.search",
+                        "r3.xlarge.search",
+                        "r4.16xlarge.search",
+                        "r4.2xlarge.search",
+                        "r4.4xlarge.search",
+                        "r4.8xlarge.search",
+                        "r4.large.search",
+                        "r4.xlarge.search",
+                        "r5.12xlarge.search",
+                        "r5.24xlarge.search",
+                        "r5.2xlarge.search",
+                        "r5.4xlarge.search",
+                        "r5.large.search",
+                        "r5.xlarge.search",
+                        "r6g.12xlarge.search",
+                        "r6g.2xlarge.search",
+                        "r6g.4xlarge.search",
+                        "r6g.8xlarge.search",
+                        "r6g.large.search",
+                        "r6g.xlarge.search",
+                        "r6gd.12xlarge.search",
+                        "r6gd.16xlarge.search",
+                        "r6gd.2xlarge.search",
+                        "r6gd.4xlarge.search",
+                        "r6gd.8xlarge.search",
+                        "r6gd.large.search",
+                        "r6gd.xlarge.search",
+                        "t2.medium.search",
+                        "t2.micro.search",
+                        "t2.small.search",
+                        "t3.2xlarge.search",
+                        "t3.large.search",
+                        "t3.medium.search",
+                        "t3.micro.search",
+                        "t3.nano.search",
+                        "t3.small.search",
+                        "t3.xlarge.search",
+                        "t4g.medium.search",
+                        "t4g.small.search",
+                        "ultrawarm1.large.search",
+                        "ultrawarm1.medium.search",
+                        "ultrawarm1.xlarge.search",
+                      ]),
+                    ),
+                  }),
+                ),
+                multiAZWithStandbyEnabled: Schema.optional(Schema.Boolean),
+                warmCount: Schema.optional(Schema.Number),
+                warmEnabled: Schema.optional(Schema.Boolean),
+                warmType: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "ultrawarm1.large.search",
+                        "ultrawarm1.medium.search",
+                        "ultrawarm1.xlarge.search",
+                      ]),
+                    ),
+                  }),
+                ),
+                zoneAwarenessConfig: Schema.optional(
+                  Schema.Struct({
+                    availabilityZoneCount: Schema.optional(Schema.Number),
+                  }),
+                ),
+                zoneAwarenessEnabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            cognitoOptions: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                identityPoolId: Schema.optional(Schema.String),
+                roleArn: Schema.optional(Schema.String),
+                userPoolId: Schema.optional(Schema.String),
+              }),
+            ),
+            created: Schema.optional(Schema.Boolean),
+            deleted: Schema.optional(Schema.Boolean),
+            domainEndpointOptions: Schema.optional(
+              Schema.Struct({
+                customEndpoint: Schema.optional(Schema.String),
+                customEndpointCertificateArn: Schema.optional(Schema.String),
+                customEndpointEnabled: Schema.optional(Schema.Boolean),
+                enforceHTTPS: Schema.optional(Schema.Boolean),
+                tlsSecurityPolicy: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "Policy-Min-TLS-1-0-2019-07",
+                        "Policy-Min-TLS-1-2-2019-07",
+                        "Policy-Min-TLS-1-2-PFS-2023-10",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            domainId: Schema.optional(Schema.String),
+            domainName: Schema.optional(Schema.String),
+            domainProcessingStatus: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "Active",
+                    "Creating",
+                    "Deleting",
+                    "Isolated",
+                    "Modifying",
+                    "UpdatingServiceSoftware",
+                    "UpgradingEngineVersion",
+                  ]),
+                ),
+              }),
+            ),
+            ebsOptions: Schema.optional(
+              Schema.Struct({
+                ebsEnabled: Schema.optional(Schema.Boolean),
+                iops: Schema.optional(Schema.Number),
+                throughput: Schema.optional(Schema.Number),
+                volumeSize: Schema.optional(Schema.Number),
+                volumeType: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals(["gp2", "gp3", "io1", "standard"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            encryptionAtRestOptions: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                kmsKeyId: Schema.optional(Schema.String),
+              }),
+            ),
+            endpoint: Schema.optional(Schema.String),
+            endpointV2: Schema.optional(Schema.String),
+            endpoints: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            engineVersion: Schema.optional(Schema.String),
+            ipAddressType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(Schema.Literals(["dualstack", "ipv4"])),
+              }),
+            ),
+            logPublishingOptions: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  cloudWatchLogsLogGroupArn: Schema.optional(Schema.String),
+                  enabled: Schema.optional(Schema.Boolean),
+                }),
+              ),
+            ),
+            modifyingProperties: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  activeValue: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  pendingValue: Schema.optional(Schema.String),
+                  valueType: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals(["PLAIN_TEXT", "STRINGIFIED_JSON"]),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            nodeToNodeEncryptionOptions: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            offPeakWindowOptions: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                offPeakWindow: Schema.optional(
+                  Schema.Struct({
+                    windowStartTime: Schema.optional(
+                      Schema.Struct({
+                        hours: Schema.optional(Schema.Number),
+                        minutes: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            processing: Schema.optional(Schema.Boolean),
+            serviceSoftwareOptions: Schema.optional(
+              Schema.Struct({
+                automatedUpdateDate: Schema.optional(Schema.String),
+                cancellable: Schema.optional(Schema.Boolean),
+                currentVersion: Schema.optional(Schema.String),
+                description: Schema.optional(Schema.String),
+                newVersion: Schema.optional(Schema.String),
+                optionalDeployment: Schema.optional(Schema.Boolean),
+                updateAvailable: Schema.optional(Schema.Boolean),
+                updateStatus: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(
+                      Schema.Literals([
+                        "COMPLETED",
+                        "ELIGIBLE",
+                        "IN_PROGRESS",
+                        "NOT_ELIGIBLE",
+                        "PENDING_UPDATE",
+                      ]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            snapshotOptions: Schema.optional(
+              Schema.Struct({
+                automatedSnapshotStartHour: Schema.optional(Schema.Number),
+              }),
+            ),
+            softwareUpdateOptions: Schema.optional(
+              Schema.Struct({
+                autoSoftwareUpdateEnabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            upgradeProcessing: Schema.optional(Schema.Boolean),
+            vpcOptions: Schema.optional(
+              Schema.Struct({
+                availabilityZones: Schema.optional(Schema.Array(Schema.String)),
+                securityGroupIds: Schema.optional(Schema.Array(Schema.String)),
+                subnetIds: Schema.optional(Schema.Array(Schema.String)),
+                vpcId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/openSearchDomainStatuses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OpenSearchDomainStatusesCreateOrReplaceInput =
@@ -26426,11 +37287,11 @@ export const OpenSearchDomainStatusesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/openSearchDomainStatuses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OpenSearchDomainStatusesDeleteInput =
@@ -26462,11 +37323,11 @@ export const OpenSearchDomainStatusesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/openSearchDomainStatuses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OpenSearchDomainStatusesGetInput =
@@ -26516,11 +37377,11 @@ export const OpenSearchDomainStatusesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/openSearchDomainStatuses",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OpenSearchDomainStatusesListByResourceGroupInput =
@@ -26582,11 +37443,11 @@ export const OpenSearchDomainStatusesListByResourceGroup =
 export const OpenSearchDomainStatusesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/openSearchDomainStatuses",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OpenSearchDomainStatusesListBySubscriptionInput =
@@ -26649,11 +37510,12 @@ export const OpenSearchDomainStatusesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/openSearchDomainStatuses/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OpenSearchDomainStatusesUpdateInput =
@@ -26698,12 +37560,13 @@ export const OpenSearchDomainStatusesUpdate =
     outputSchema: OpenSearchDomainStatusesUpdateOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AwsConnector/operations",
+    apiVersion: "2024-12-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -26750,11 +37613,60 @@ export const OrganizationsAccountsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            accountId: Schema.optional(Schema.String),
+            accountName: Schema.optional(Schema.String),
+            arn: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            joinedMethod: Schema.optional(
+              Schema.Literals(["CREATED", "INVITED"]),
+            ),
+            joinedTimestamp: Schema.optional(Schema.String),
+            parentIds: Schema.optional(Schema.Array(Schema.String)),
+            roleName: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Literals(["ACTIVE", "PENDING_CLOSURE", "SUSPENDED"]),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsAccounts/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OrganizationsAccountsCreateOrReplaceInput =
@@ -26804,11 +37716,11 @@ export const OrganizationsAccountsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsAccounts/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OrganizationsAccountsDeleteInput =
@@ -26841,11 +37753,11 @@ export const OrganizationsAccountsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsAccounts/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OrganizationsAccountsGetInput =
@@ -26895,11 +37807,11 @@ export const OrganizationsAccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsAccounts",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OrganizationsAccountsListByResourceGroupInput =
@@ -26961,11 +37873,11 @@ export const OrganizationsAccountsListByResourceGroup =
 export const OrganizationsAccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/organizationsAccounts",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OrganizationsAccountsListBySubscriptionInput =
@@ -27028,11 +37940,12 @@ export const OrganizationsAccountsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsAccounts/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OrganizationsAccountsUpdateInput =
@@ -27083,11 +37996,48 @@ export const OrganizationsOrganizationsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            featureSet: Schema.optional(
+              Schema.Literals(["ALL", "CONSOLIDATED_BILLING"]),
+            ),
+            id: Schema.optional(Schema.String),
+            managementAccountArn: Schema.optional(Schema.String),
+            managementAccountEmail: Schema.optional(Schema.String),
+            managementAccountId: Schema.optional(Schema.String),
+            rootId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsOrganizations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OrganizationsOrganizationsCreateOrReplaceInput =
@@ -27137,11 +38087,11 @@ export const OrganizationsOrganizationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsOrganizations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OrganizationsOrganizationsDeleteInput =
@@ -27173,11 +38123,11 @@ export const OrganizationsOrganizationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsOrganizations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OrganizationsOrganizationsGetInput =
@@ -27226,11 +38176,11 @@ export const OrganizationsOrganizationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsOrganizations",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OrganizationsOrganizationsListByResourceGroupInput =
@@ -27292,11 +38242,11 @@ export const OrganizationsOrganizationsListByResourceGroup =
 export const OrganizationsOrganizationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/organizationsOrganizations",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OrganizationsOrganizationsListBySubscriptionInput =
@@ -27359,11 +38309,12 @@ export const OrganizationsOrganizationsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/organizationsOrganizations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type OrganizationsOrganizationsUpdateInput =
@@ -27413,11 +38364,142 @@ export const RdsDbClustersCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            allocatedStorage: Schema.optional(Schema.Number),
+            associatedRoles: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  featureName: Schema.optional(Schema.String),
+                  roleArn: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            autoMinorVersionUpgrade: Schema.optional(Schema.Boolean),
+            availabilityZones: Schema.optional(Schema.Array(Schema.String)),
+            backtrackWindow: Schema.optional(Schema.Number),
+            backupRetentionPeriod: Schema.optional(Schema.Number),
+            copyTagsToSnapshot: Schema.optional(Schema.Boolean),
+            dbClusterArn: Schema.optional(Schema.String),
+            dbClusterIdentifier: Schema.optional(Schema.String),
+            dbClusterInstanceClass: Schema.optional(Schema.String),
+            dbClusterParameterGroupName: Schema.optional(Schema.String),
+            dbClusterResourceId: Schema.optional(Schema.String),
+            dbInstanceParameterGroupName: Schema.optional(Schema.String),
+            dbSubnetGroupName: Schema.optional(Schema.String),
+            dbSystemId: Schema.optional(Schema.String),
+            databaseName: Schema.optional(Schema.String),
+            deletionProtection: Schema.optional(Schema.Boolean),
+            domain: Schema.optional(Schema.String),
+            domainIAMRoleName: Schema.optional(Schema.String),
+            enableCloudwatchLogsExports: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            enableGlobalWriteForwarding: Schema.optional(Schema.Boolean),
+            enableHttpEndpoint: Schema.optional(Schema.Boolean),
+            enableIAMDatabaseAuthentication: Schema.optional(Schema.Boolean),
+            endpoint: Schema.optional(
+              Schema.Struct({
+                address: Schema.optional(Schema.String),
+                port: Schema.optional(Schema.String),
+              }),
+            ),
+            engine: Schema.optional(Schema.String),
+            engineMode: Schema.optional(Schema.String),
+            engineVersion: Schema.optional(Schema.String),
+            globalClusterIdentifier: Schema.optional(Schema.String),
+            iops: Schema.optional(Schema.Number),
+            kmsKeyId: Schema.optional(Schema.String),
+            manageMasterUserPassword: Schema.optional(Schema.Boolean),
+            masterUserPassword: Schema.optional(SensitiveString),
+            masterUserSecret: Schema.optional(
+              Schema.Struct({
+                kmsKeyId: Schema.optional(Schema.String),
+                secretArn: Schema.optional(Schema.String),
+              }),
+            ),
+            masterUsername: Schema.optional(Schema.String),
+            monitoringInterval: Schema.optional(Schema.Number),
+            monitoringRoleArn: Schema.optional(Schema.String),
+            networkType: Schema.optional(Schema.String),
+            performanceInsightsEnabled: Schema.optional(Schema.Boolean),
+            performanceInsightsKmsKeyId: Schema.optional(Schema.String),
+            performanceInsightsRetentionPeriod: Schema.optional(Schema.Number),
+            port: Schema.optional(Schema.Number),
+            preferredBackupWindow: Schema.optional(Schema.String),
+            preferredMaintenanceWindow: Schema.optional(Schema.String),
+            publiclyAccessible: Schema.optional(Schema.Boolean),
+            readEndpoint: Schema.optional(
+              Schema.Struct({
+                address: Schema.optional(Schema.String),
+              }),
+            ),
+            replicationSourceIdentifier: Schema.optional(Schema.String),
+            restoreToTime: Schema.optional(Schema.String),
+            restoreType: Schema.optional(Schema.String),
+            scalingConfiguration: Schema.optional(
+              Schema.Struct({
+                autoPause: Schema.optional(Schema.Boolean),
+                maxCapacity: Schema.optional(Schema.Number),
+                minCapacity: Schema.optional(Schema.Number),
+                secondsBeforeTimeout: Schema.optional(Schema.Number),
+                secondsUntilAutoPause: Schema.optional(Schema.Number),
+                timeoutAction: Schema.optional(Schema.String),
+              }),
+            ),
+            serverlessV2ScalingConfiguration: Schema.optional(
+              Schema.Struct({
+                maxCapacity: Schema.optional(Schema.Number),
+                minCapacity: Schema.optional(Schema.Number),
+              }),
+            ),
+            snapshotIdentifier: Schema.optional(Schema.String),
+            sourceDBClusterIdentifier: Schema.optional(Schema.String),
+            sourceRegion: Schema.optional(Schema.String),
+            storageEncrypted: Schema.optional(Schema.Boolean),
+            storageThroughput: Schema.optional(Schema.Number),
+            storageType: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            useLatestRestorableTime: Schema.optional(Schema.Boolean),
+            vpcSecurityGroupIds: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBClusters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbClustersCreateOrReplaceInput =
@@ -27467,11 +38549,11 @@ export const RdsDbClustersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBClusters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbClustersDeleteInput = typeof RdsDbClustersDeleteInput.Type;
@@ -27499,11 +38581,11 @@ export const RdsDbClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBClusters/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type RdsDbClustersGetInput = typeof RdsDbClustersGetInput.Type;
@@ -27550,11 +38632,11 @@ export const RdsDbClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBClusters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbClustersListByResourceGroupInput =
@@ -27616,11 +38698,11 @@ export const RdsDbClustersListByResourceGroup =
 export const RdsDbClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/rdsDBClusters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbClustersListBySubscriptionInput =
@@ -27683,11 +38765,12 @@ export const RdsDbClustersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBClusters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbClustersUpdateInput = typeof RdsDbClustersUpdateInput.Type;
@@ -27734,11 +38817,160 @@ export const RdsDbInstancesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            allocatedStorage: Schema.optional(Schema.String),
+            allowMajorVersionUpgrade: Schema.optional(Schema.Boolean),
+            associatedRoles: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  featureName: Schema.optional(Schema.String),
+                  roleArn: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            autoMinorVersionUpgrade: Schema.optional(Schema.Boolean),
+            automaticBackupReplicationKmsKeyId: Schema.optional(Schema.String),
+            automaticBackupReplicationRegion: Schema.optional(Schema.String),
+            availabilityZone: Schema.optional(Schema.String),
+            backupRetentionPeriod: Schema.optional(Schema.Number),
+            caCertificateIdentifier: Schema.optional(Schema.String),
+            certificateDetails: Schema.optional(
+              Schema.Struct({
+                caIdentifier: Schema.optional(Schema.String),
+                validTill: Schema.optional(Schema.String),
+              }),
+            ),
+            certificateRotationRestart: Schema.optional(Schema.Boolean),
+            characterSetName: Schema.optional(Schema.String),
+            copyTagsToSnapshot: Schema.optional(Schema.Boolean),
+            customIAMInstanceProfile: Schema.optional(Schema.String),
+            dbClusterIdentifier: Schema.optional(Schema.String),
+            dbClusterSnapshotIdentifier: Schema.optional(Schema.String),
+            dbInstanceArn: Schema.optional(Schema.String),
+            dbInstanceClass: Schema.optional(Schema.String),
+            dbInstanceIdentifier: Schema.optional(Schema.String),
+            dbName: Schema.optional(Schema.String),
+            dbParameterGroupName: Schema.optional(Schema.String),
+            dbSecurityGroups: Schema.optional(Schema.Array(Schema.String)),
+            dbSnapshotIdentifier: Schema.optional(Schema.String),
+            dbSubnetGroupName: Schema.optional(Schema.String),
+            dbSystemId: Schema.optional(Schema.String),
+            dbiResourceId: Schema.optional(Schema.String),
+            dedicatedLogVolume: Schema.optional(Schema.Boolean),
+            deleteAutomatedBackups: Schema.optional(Schema.Boolean),
+            deletionProtection: Schema.optional(Schema.Boolean),
+            domain: Schema.optional(Schema.String),
+            domainAuthSecretArn: Schema.optional(Schema.String),
+            domainDnsIps: Schema.optional(Schema.Array(Schema.String)),
+            domainFqdn: Schema.optional(Schema.String),
+            domainIAMRoleName: Schema.optional(Schema.String),
+            domainOu: Schema.optional(Schema.String),
+            enableCloudwatchLogsExports: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            enableIAMDatabaseAuthentication: Schema.optional(Schema.Boolean),
+            enablePerformanceInsights: Schema.optional(Schema.Boolean),
+            endpoint: Schema.optional(
+              Schema.Struct({
+                address: Schema.optional(Schema.String),
+                hostedZoneId: Schema.optional(Schema.String),
+                port: Schema.optional(Schema.String),
+              }),
+            ),
+            engine: Schema.optional(Schema.String),
+            engineVersion: Schema.optional(Schema.String),
+            iops: Schema.optional(Schema.Number),
+            kmsKeyId: Schema.optional(Schema.String),
+            licenseModel: Schema.optional(Schema.String),
+            manageMasterUserPassword: Schema.optional(Schema.Boolean),
+            masterUserPassword: Schema.optional(SensitiveString),
+            masterUserSecret: Schema.optional(
+              Schema.Struct({
+                kmsKeyId: Schema.optional(Schema.String),
+                secretArn: Schema.optional(Schema.String),
+              }),
+            ),
+            masterUsername: Schema.optional(Schema.String),
+            maxAllocatedStorage: Schema.optional(Schema.Number),
+            monitoringInterval: Schema.optional(Schema.Number),
+            monitoringRoleArn: Schema.optional(Schema.String),
+            multiAZ: Schema.optional(Schema.Boolean),
+            ncharCharacterSetName: Schema.optional(Schema.String),
+            networkType: Schema.optional(Schema.String),
+            optionGroupName: Schema.optional(Schema.String),
+            performanceInsightsKMSKeyId: Schema.optional(Schema.String),
+            performanceInsightsRetentionPeriod: Schema.optional(Schema.Number),
+            port: Schema.optional(Schema.String),
+            preferredBackupWindow: Schema.optional(Schema.String),
+            preferredMaintenanceWindow: Schema.optional(Schema.String),
+            processorFeatures: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(
+                    Schema.Literals(["coreCount", "threadsPerCore"]),
+                  ),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            promotionTier: Schema.optional(Schema.Number),
+            publiclyAccessible: Schema.optional(Schema.Boolean),
+            replicaMode: Schema.optional(Schema.String),
+            restoreTime: Schema.optional(Schema.String),
+            sourceDBClusterIdentifier: Schema.optional(Schema.String),
+            sourceDBInstanceAutomatedBackupsArn: Schema.optional(Schema.String),
+            sourceDBInstanceIdentifier: Schema.optional(Schema.String),
+            sourceDbiResourceId: Schema.optional(Schema.String),
+            sourceRegion: Schema.optional(Schema.String),
+            storageEncrypted: Schema.optional(Schema.Boolean),
+            storageThroughput: Schema.optional(Schema.Number),
+            storageType: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            tdeCredentialArn: Schema.optional(Schema.String),
+            tdeCredentialPassword: Schema.optional(SensitiveString),
+            timezone: Schema.optional(Schema.String),
+            useDefaultProcessorFeatures: Schema.optional(Schema.Boolean),
+            useLatestRestorableTime: Schema.optional(Schema.Boolean),
+            vpcSecurityGroups: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBInstances/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbInstancesCreateOrReplaceInput =
@@ -27788,11 +39020,11 @@ export const RdsDbInstancesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBInstances/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbInstancesDeleteInput = typeof RdsDbInstancesDeleteInput.Type;
@@ -27823,12 +39055,12 @@ export const RdsDbInstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBInstances/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type RdsDbInstancesGetInput = typeof RdsDbInstancesGetInput.Type;
@@ -27874,11 +39106,11 @@ export const RdsDbInstancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBInstances",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbInstancesListByResourceGroupInput =
@@ -27940,11 +39172,11 @@ export const RdsDbInstancesListByResourceGroup =
 export const RdsDbInstancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/rdsDBInstances",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbInstancesListBySubscriptionInput =
@@ -28007,11 +39239,12 @@ export const RdsDbInstancesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBInstances/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbInstancesUpdateInput = typeof RdsDbInstancesUpdateInput.Type;
@@ -28060,11 +39293,48 @@ export const RdsDbSnapshotAttributesResultsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            dbSnapshotAttributes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  attributeName: Schema.optional(Schema.String),
+                  attributeValues: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            dbSnapshotIdentifier: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshotAttributesResults/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbSnapshotAttributesResultsCreateOrReplaceInput =
@@ -28114,11 +39384,11 @@ export const RdsDbSnapshotAttributesResultsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshotAttributesResults/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbSnapshotAttributesResultsDeleteInput =
@@ -28150,11 +39420,11 @@ export const RdsDbSnapshotAttributesResultsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshotAttributesResults/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbSnapshotAttributesResultsGetInput =
@@ -28203,11 +39473,11 @@ export const RdsDbSnapshotAttributesResultsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshotAttributesResults",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbSnapshotAttributesResultsListByResourceGroupInput =
@@ -28269,11 +39539,11 @@ export const RdsDbSnapshotAttributesResultsListByResourceGroup =
 export const RdsDbSnapshotAttributesResultsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/rdsDBSnapshotAttributesResults",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbSnapshotAttributesResultsListBySubscriptionInput =
@@ -28336,11 +39606,12 @@ export const RdsDbSnapshotAttributesResultsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshotAttributesResults/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbSnapshotAttributesResultsUpdateInput =
@@ -28390,11 +39661,89 @@ export const RdsDbSnapshotsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            allocatedStorage: Schema.optional(Schema.Number),
+            availabilityZone: Schema.optional(Schema.String),
+            dbInstanceIdentifier: Schema.optional(Schema.String),
+            dbSnapshotArn: Schema.optional(Schema.String),
+            dbSnapshotIdentifier: Schema.optional(Schema.String),
+            dbSystemId: Schema.optional(Schema.String),
+            dbiResourceId: Schema.optional(Schema.String),
+            dedicatedLogVolume: Schema.optional(Schema.Boolean),
+            encrypted: Schema.optional(Schema.Boolean),
+            engine: Schema.optional(Schema.String),
+            engineVersion: Schema.optional(Schema.String),
+            iamDatabaseAuthenticationEnabled: Schema.optional(Schema.Boolean),
+            instanceCreateTime: Schema.optional(Schema.String),
+            iops: Schema.optional(Schema.Number),
+            kmsKeyId: Schema.optional(Schema.String),
+            licenseModel: Schema.optional(Schema.String),
+            masterUsername: Schema.optional(Schema.String),
+            multiTenant: Schema.optional(Schema.Boolean),
+            optionGroupName: Schema.optional(Schema.String),
+            originalSnapshotCreateTime: Schema.optional(Schema.String),
+            percentProgress: Schema.optional(Schema.Number),
+            port: Schema.optional(Schema.Number),
+            processorFeatures: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            snapshotCreateTime: Schema.optional(Schema.String),
+            snapshotDatabaseTime: Schema.optional(Schema.String),
+            snapshotTarget: Schema.optional(Schema.String),
+            snapshotType: Schema.optional(Schema.String),
+            sourceDBSnapshotIdentifier: Schema.optional(Schema.String),
+            sourceRegion: Schema.optional(Schema.String),
+            status: Schema.optional(Schema.String),
+            storageThroughput: Schema.optional(Schema.Number),
+            storageType: Schema.optional(Schema.String),
+            tagList: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            tdeCredentialArn: Schema.optional(Schema.String),
+            timezone: Schema.optional(Schema.String),
+            vpcId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshots/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbSnapshotsCreateOrReplaceInput =
@@ -28444,11 +39793,11 @@ export const RdsDbSnapshotsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshots/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbSnapshotsDeleteInput = typeof RdsDbSnapshotsDeleteInput.Type;
@@ -28479,12 +39828,12 @@ export const RdsDbSnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshots/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type RdsDbSnapshotsGetInput = typeof RdsDbSnapshotsGetInput.Type;
@@ -28530,11 +39879,11 @@ export const RdsDbSnapshotsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshots",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbSnapshotsListByResourceGroupInput =
@@ -28596,11 +39945,11 @@ export const RdsDbSnapshotsListByResourceGroup =
 export const RdsDbSnapshotsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/rdsDBSnapshots",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbSnapshotsListBySubscriptionInput =
@@ -28663,11 +40012,12 @@ export const RdsDbSnapshotsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsDBSnapshots/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsDbSnapshotsUpdateInput = typeof RdsDbSnapshotsUpdateInput.Type;
@@ -28716,11 +40066,53 @@ export const RdsEventSubscriptionsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            eventCategories: Schema.optional(Schema.Array(Schema.String)),
+            snsTopicArn: Schema.optional(Schema.String),
+            sourceIds: Schema.optional(Schema.Array(Schema.String)),
+            sourceType: Schema.optional(Schema.String),
+            subscriptionName: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsEventSubscriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsEventSubscriptionsCreateOrReplaceInput =
@@ -28770,11 +40162,11 @@ export const RdsEventSubscriptionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsEventSubscriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsEventSubscriptionsDeleteInput =
@@ -28807,11 +40199,11 @@ export const RdsEventSubscriptionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsEventSubscriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsEventSubscriptionsGetInput =
@@ -28861,11 +40253,11 @@ export const RdsEventSubscriptionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsEventSubscriptions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsEventSubscriptionsListByResourceGroupInput =
@@ -28927,11 +40319,11 @@ export const RdsEventSubscriptionsListByResourceGroup =
 export const RdsEventSubscriptionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/rdsEventSubscriptions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsEventSubscriptionsListBySubscriptionInput =
@@ -28994,11 +40386,12 @@ export const RdsEventSubscriptionsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsEventSubscriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsEventSubscriptionsUpdateInput =
@@ -29049,11 +40442,61 @@ export const RdsExportTasksCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            exportOnly: Schema.optional(Schema.Array(Schema.String)),
+            exportTaskIdentifier: Schema.optional(Schema.String),
+            failureCause: Schema.optional(Schema.String),
+            iamRoleArn: Schema.optional(Schema.String),
+            kmsKeyId: Schema.optional(Schema.String),
+            percentProgress: Schema.optional(Schema.Number),
+            s3Bucket: Schema.optional(Schema.String),
+            s3Prefix: Schema.optional(Schema.String),
+            snapshotTime: Schema.optional(Schema.String),
+            sourceArn: Schema.optional(Schema.String),
+            sourceType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["CLUSTER", "SNAPSHOT"]),
+                ),
+              }),
+            ),
+            status: Schema.optional(Schema.String),
+            taskEndTime: Schema.optional(Schema.String),
+            taskStartTime: Schema.optional(Schema.String),
+            totalExtractedDataInGB: Schema.optional(Schema.Number),
+            warningMessage: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsExportTasks/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsExportTasksCreateOrReplaceInput =
@@ -29103,11 +40546,11 @@ export const RdsExportTasksDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsExportTasks/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsExportTasksDeleteInput = typeof RdsExportTasksDeleteInput.Type;
@@ -29138,12 +40581,12 @@ export const RdsExportTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsExportTasks/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type RdsExportTasksGetInput = typeof RdsExportTasksGetInput.Type;
@@ -29189,11 +40632,11 @@ export const RdsExportTasksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsExportTasks",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsExportTasksListByResourceGroupInput =
@@ -29255,11 +40698,11 @@ export const RdsExportTasksListByResourceGroup =
 export const RdsExportTasksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/rdsExportTasks",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsExportTasksListBySubscriptionInput =
@@ -29322,11 +40765,12 @@ export const RdsExportTasksUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/rdsExportTasks/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RdsExportTasksUpdateInput = typeof RdsExportTasksUpdateInput.Type;
@@ -29375,11 +40819,58 @@ export const RedshiftClusterParameterGroupsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            parameterGroupFamily: Schema.optional(Schema.String),
+            parameterGroupName: Schema.optional(Schema.String),
+            parameters: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  parameterName: Schema.optional(Schema.String),
+                  parameterValue: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusterParameterGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RedshiftClusterParameterGroupsCreateOrReplaceInput =
@@ -29429,11 +40920,11 @@ export const RedshiftClusterParameterGroupsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusterParameterGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RedshiftClusterParameterGroupsDeleteInput =
@@ -29465,11 +40956,11 @@ export const RedshiftClusterParameterGroupsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusterParameterGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RedshiftClusterParameterGroupsGetInput =
@@ -29518,11 +41009,11 @@ export const RedshiftClusterParameterGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusterParameterGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RedshiftClusterParameterGroupsListByResourceGroupInput =
@@ -29584,11 +41075,11 @@ export const RedshiftClusterParameterGroupsListByResourceGroup =
 export const RedshiftClusterParameterGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/redshiftClusterParameterGroups",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RedshiftClusterParameterGroupsListBySubscriptionInput =
@@ -29651,11 +41142,12 @@ export const RedshiftClusterParameterGroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusterParameterGroups/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RedshiftClusterParameterGroupsUpdateInput =
@@ -29705,11 +41197,111 @@ export const RedshiftClustersCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            allowVersionUpgrade: Schema.optional(Schema.Boolean),
+            aquaConfigurationStatus: Schema.optional(Schema.String),
+            automatedSnapshotRetentionPeriod: Schema.optional(Schema.Number),
+            availabilityZone: Schema.optional(Schema.String),
+            availabilityZoneRelocation: Schema.optional(Schema.Boolean),
+            availabilityZoneRelocationStatus: Schema.optional(Schema.String),
+            classic: Schema.optional(Schema.Boolean),
+            clusterIdentifier: Schema.optional(Schema.String),
+            clusterNamespaceArn: Schema.optional(Schema.String),
+            clusterParameterGroupName: Schema.optional(Schema.String),
+            clusterSecurityGroups: Schema.optional(Schema.Array(Schema.String)),
+            clusterSubnetGroupName: Schema.optional(Schema.String),
+            clusterType: Schema.optional(Schema.String),
+            clusterVersion: Schema.optional(Schema.String),
+            dbName: Schema.optional(Schema.String),
+            deferMaintenance: Schema.optional(Schema.Boolean),
+            deferMaintenanceDuration: Schema.optional(Schema.Number),
+            deferMaintenanceEndTime: Schema.optional(Schema.String),
+            deferMaintenanceIdentifier: Schema.optional(Schema.String),
+            deferMaintenanceStartTime: Schema.optional(Schema.String),
+            destinationRegion: Schema.optional(Schema.String),
+            elasticIp: Schema.optional(Schema.String),
+            encrypted: Schema.optional(Schema.Boolean),
+            endpoint: Schema.optional(
+              Schema.Struct({
+                address: Schema.optional(Schema.String),
+                port: Schema.optional(Schema.String),
+              }),
+            ),
+            enhancedVpcRouting: Schema.optional(Schema.Boolean),
+            hsmClientCertificateIdentifier: Schema.optional(Schema.String),
+            hsmConfigurationIdentifier: Schema.optional(Schema.String),
+            iamRoles: Schema.optional(Schema.Array(Schema.String)),
+            kmsKeyId: Schema.optional(Schema.String),
+            loggingProperties: Schema.optional(
+              Schema.Struct({
+                bucketName: Schema.optional(Schema.String),
+                s3KeyPrefix: Schema.optional(Schema.String),
+              }),
+            ),
+            maintenanceTrackName: Schema.optional(Schema.String),
+            manageMasterPassword: Schema.optional(Schema.Boolean),
+            manualSnapshotRetentionPeriod: Schema.optional(Schema.Number),
+            masterPasswordSecretArn: Schema.optional(SensitiveString),
+            masterPasswordSecretKmsKeyId: Schema.optional(SensitiveString),
+            masterUserPassword: Schema.optional(SensitiveString),
+            masterUsername: Schema.optional(Schema.String),
+            multiAZ: Schema.optional(Schema.Boolean),
+            namespaceResourcePolicy: Schema.optional(Schema.Unknown),
+            nodeType: Schema.optional(Schema.String),
+            numberOfNodes: Schema.optional(Schema.Number),
+            ownerAccount: Schema.optional(Schema.String),
+            port: Schema.optional(Schema.Number),
+            preferredMaintenanceWindow: Schema.optional(Schema.String),
+            publiclyAccessible: Schema.optional(Schema.Boolean),
+            resourceAction: Schema.optional(Schema.String),
+            revisionTarget: Schema.optional(Schema.String),
+            rotateEncryptionKey: Schema.optional(Schema.Boolean),
+            snapshotClusterIdentifier: Schema.optional(Schema.String),
+            snapshotCopyGrantName: Schema.optional(Schema.String),
+            snapshotCopyManual: Schema.optional(Schema.Boolean),
+            snapshotCopyRetentionPeriod: Schema.optional(Schema.Number),
+            snapshotIdentifier: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            vpcSecurityGroupIds: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RedshiftClustersCreateOrReplaceInput =
@@ -29759,11 +41351,11 @@ export const RedshiftClustersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RedshiftClustersDeleteInput =
@@ -29796,11 +41388,11 @@ export const RedshiftClustersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RedshiftClustersGetInput = typeof RedshiftClustersGetInput.Type;
@@ -29846,11 +41438,11 @@ export const RedshiftClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RedshiftClustersListByResourceGroupInput =
@@ -29912,11 +41504,11 @@ export const RedshiftClustersListByResourceGroup =
 export const RedshiftClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/redshiftClusters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RedshiftClustersListBySubscriptionInput =
@@ -29979,11 +41571,12 @@ export const RedshiftClustersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/redshiftClusters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type RedshiftClustersUpdateInput =
@@ -30034,11 +41627,43 @@ export const Route53DomainsDomainSummariesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            autoRenew: Schema.optional(Schema.Boolean),
+            domainName: Schema.optional(Schema.String),
+            expiry: Schema.optional(Schema.String),
+            transferLock: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53DomainsDomainSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53DomainsDomainSummariesCreateOrReplaceInput =
@@ -30088,11 +41713,11 @@ export const Route53DomainsDomainSummariesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53DomainsDomainSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53DomainsDomainSummariesDeleteInput =
@@ -30124,11 +41749,11 @@ export const Route53DomainsDomainSummariesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53DomainsDomainSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53DomainsDomainSummariesGetInput =
@@ -30177,11 +41802,11 @@ export const Route53DomainsDomainSummariesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53DomainsDomainSummaries",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53DomainsDomainSummariesListByResourceGroupInput =
@@ -30243,11 +41868,11 @@ export const Route53DomainsDomainSummariesListByResourceGroup =
 export const Route53DomainsDomainSummariesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/route53DomainsDomainSummaries",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53DomainsDomainSummariesListBySubscriptionInput =
@@ -30310,11 +41935,12 @@ export const Route53DomainsDomainSummariesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53DomainsDomainSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53DomainsDomainSummariesUpdateInput =
@@ -30364,11 +41990,68 @@ export const Route53HostedZonesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            hostedZoneConfig: Schema.optional(
+              Schema.Struct({
+                comment: Schema.optional(Schema.String),
+              }),
+            ),
+            hostedZoneTags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            nameServers: Schema.optional(Schema.Array(Schema.String)),
+            queryLoggingConfig: Schema.optional(
+              Schema.Struct({
+                cloudWatchLogsLogGroupArn: Schema.optional(Schema.String),
+              }),
+            ),
+            vpCs: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  vpcId: Schema.optional(Schema.String),
+                  vpcRegion: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53HostedZones/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53HostedZonesCreateOrReplaceInput =
@@ -30418,11 +42101,11 @@ export const Route53HostedZonesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53HostedZones/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53HostedZonesDeleteInput =
@@ -30455,11 +42138,11 @@ export const Route53HostedZonesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53HostedZones/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53HostedZonesGetInput = typeof Route53HostedZonesGetInput.Type;
@@ -30508,11 +42191,11 @@ export const Route53HostedZonesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53HostedZones",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53HostedZonesListByResourceGroupInput =
@@ -30574,11 +42257,11 @@ export const Route53HostedZonesListByResourceGroup =
 export const Route53HostedZonesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/route53HostedZones",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53HostedZonesListBySubscriptionInput =
@@ -30641,11 +42324,12 @@ export const Route53HostedZonesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53HostedZones/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53HostedZonesUpdateInput =
@@ -30696,11 +42380,153 @@ export const Route53ResourceRecordSetsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            aliasTarget: Schema.optional(
+              Schema.Struct({
+                dnsName: Schema.optional(Schema.String),
+                evaluateTargetHealth: Schema.optional(Schema.Boolean),
+                hostedZoneId: Schema.optional(Schema.String),
+              }),
+            ),
+            cidrRoutingConfig: Schema.optional(
+              Schema.Struct({
+                collectionId: Schema.optional(Schema.String),
+                locationName: Schema.optional(Schema.String),
+              }),
+            ),
+            failover: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["PRIMARY", "SECONDARY"]),
+                ),
+              }),
+            ),
+            geoLocation: Schema.optional(
+              Schema.Struct({
+                continentCode: Schema.optional(Schema.String),
+                countryCode: Schema.optional(Schema.String),
+                subdivisionCode: Schema.optional(Schema.String),
+              }),
+            ),
+            geoProximityLocation: Schema.optional(
+              Schema.Struct({
+                awsRegion: Schema.optional(Schema.String),
+                bias: Schema.optional(Schema.Number),
+                coordinates: Schema.optional(
+                  Schema.Struct({
+                    latitude: Schema.optional(Schema.String),
+                    longitude: Schema.optional(Schema.String),
+                  }),
+                ),
+                localZoneGroup: Schema.optional(Schema.String),
+              }),
+            ),
+            healthCheckId: Schema.optional(Schema.String),
+            multiValueAnswer: Schema.optional(Schema.Boolean),
+            name: Schema.optional(Schema.String),
+            region: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "af-south-1",
+                    "ap-east-1",
+                    "ap-northeast-1",
+                    "ap-northeast-2",
+                    "ap-northeast-3",
+                    "ap-south-1",
+                    "ap-south-2",
+                    "ap-southeast-1",
+                    "ap-southeast-2",
+                    "ap-southeast-3",
+                    "ap-southeast-4",
+                    "ca-central-1",
+                    "ca-west-1",
+                    "cn-north-1",
+                    "cn-northwest-1",
+                    "eu-central-1",
+                    "eu-central-2",
+                    "eu-north-1",
+                    "eu-south-1",
+                    "eu-south-2",
+                    "eu-west-1",
+                    "eu-west-2",
+                    "eu-west-3",
+                    "il-central-1",
+                    "me-central-1",
+                    "me-south-1",
+                    "sa-east-1",
+                    "us-east-1",
+                    "us-east-2",
+                    "us-west-1",
+                    "us-west-2",
+                  ]),
+                ),
+              }),
+            ),
+            resourceRecords: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            setIdentifier: Schema.optional(Schema.String),
+            ttl: Schema.optional(Schema.Number),
+            trafficPolicyInstanceId: Schema.optional(Schema.String),
+            type: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "A",
+                    "AAAA",
+                    "CAA",
+                    "CNAME",
+                    "DS",
+                    "MX",
+                    "NAPTR",
+                    "NS",
+                    "PTR",
+                    "SOA",
+                    "SPF",
+                    "SRV",
+                    "TXT",
+                  ]),
+                ),
+              }),
+            ),
+            weight: Schema.optional(Schema.Number),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53ResourceRecordSets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53ResourceRecordSetsCreateOrReplaceInput =
@@ -30750,11 +42576,11 @@ export const Route53ResourceRecordSetsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53ResourceRecordSets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53ResourceRecordSetsDeleteInput =
@@ -30786,11 +42612,11 @@ export const Route53ResourceRecordSetsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53ResourceRecordSets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53ResourceRecordSetsGetInput =
@@ -30839,11 +42665,11 @@ export const Route53ResourceRecordSetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53ResourceRecordSets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53ResourceRecordSetsListByResourceGroupInput =
@@ -30905,11 +42731,11 @@ export const Route53ResourceRecordSetsListByResourceGroup =
 export const Route53ResourceRecordSetsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/route53ResourceRecordSets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53ResourceRecordSetsListBySubscriptionInput =
@@ -30972,11 +42798,12 @@ export const Route53ResourceRecordSetsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/route53ResourceRecordSets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Route53ResourceRecordSetsUpdateInput =
@@ -31026,11 +42853,83 @@ export const S3AccessControlPoliciesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            grants: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  grantee: Schema.optional(
+                    Schema.Struct({
+                      displayName: Schema.optional(Schema.String),
+                      emailAddress: Schema.optional(Schema.String),
+                      id: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Struct({
+                          value: Schema.optional(
+                            Schema.Literals([
+                              "AmazonCustomerByEmail",
+                              "CanonicalUser",
+                              "Group",
+                            ]),
+                          ),
+                        }),
+                      ),
+                      uri: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  permission: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Literals([
+                          "FULL_CONTROL",
+                          "READ",
+                          "READ_ACP",
+                          "WRITE",
+                          "WRITE_ACP",
+                        ]),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            owner: Schema.optional(
+              Schema.Struct({
+                displayName: Schema.optional(Schema.String),
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessControlPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3AccessControlPoliciesCreateOrReplaceInput =
@@ -31080,11 +42979,11 @@ export const S3AccessControlPoliciesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessControlPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3AccessControlPoliciesDeleteInput =
@@ -31116,11 +43015,11 @@ export const S3AccessControlPoliciesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessControlPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3AccessControlPoliciesGetInput =
@@ -31170,11 +43069,11 @@ export const S3AccessControlPoliciesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessControlPolicies",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3AccessControlPoliciesListByResourceGroupInput =
@@ -31236,11 +43135,11 @@ export const S3AccessControlPoliciesListByResourceGroup =
 export const S3AccessControlPoliciesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/s3AccessControlPolicies",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3AccessControlPoliciesListBySubscriptionInput =
@@ -31303,11 +43202,12 @@ export const S3AccessControlPoliciesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessControlPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3AccessControlPoliciesUpdateInput =
@@ -31357,11 +43257,61 @@ export const S3AccessPointsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            alias: Schema.optional(Schema.String),
+            arn: Schema.optional(Schema.String),
+            bucket: Schema.optional(Schema.String),
+            bucketAccountId: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            networkOrigin: Schema.optional(
+              Schema.Literals(["Internet", "VPC"]),
+            ),
+            policy: Schema.optional(Schema.Unknown),
+            publicAccessBlockConfiguration: Schema.optional(
+              Schema.Struct({
+                blockPublicAcls: Schema.optional(Schema.Boolean),
+                blockPublicPolicy: Schema.optional(Schema.Boolean),
+                ignorePublicAcls: Schema.optional(Schema.Boolean),
+                restrictPublicBuckets: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            vpcConfiguration: Schema.optional(
+              Schema.Struct({
+                vpcId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessPoints/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3AccessPointsCreateOrReplaceInput =
@@ -31411,11 +43361,11 @@ export const S3AccessPointsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessPoints/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3AccessPointsDeleteInput = typeof S3AccessPointsDeleteInput.Type;
@@ -31446,12 +43396,12 @@ export const S3AccessPointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessPoints/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type S3AccessPointsGetInput = typeof S3AccessPointsGetInput.Type;
@@ -31497,11 +43447,11 @@ export const S3AccessPointsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessPoints",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3AccessPointsListByResourceGroupInput =
@@ -31563,11 +43513,11 @@ export const S3AccessPointsListByResourceGroup =
 export const S3AccessPointsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/s3AccessPoints",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3AccessPointsListBySubscriptionInput =
@@ -31630,11 +43580,12 @@ export const S3AccessPointsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3AccessPoints/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3AccessPointsUpdateInput = typeof S3AccessPointsUpdateInput.Type;
@@ -31683,11 +43634,40 @@ export const S3BucketPoliciesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            policy: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3BucketPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3BucketPoliciesCreateOrReplaceInput =
@@ -31737,11 +43717,11 @@ export const S3BucketPoliciesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3BucketPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3BucketPoliciesDeleteInput =
@@ -31774,11 +43754,11 @@ export const S3BucketPoliciesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3BucketPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3BucketPoliciesGetInput = typeof S3BucketPoliciesGetInput.Type;
@@ -31824,11 +43804,11 @@ export const S3BucketPoliciesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3BucketPolicies",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3BucketPoliciesListByResourceGroupInput =
@@ -31890,11 +43870,11 @@ export const S3BucketPoliciesListByResourceGroup =
 export const S3BucketPoliciesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/s3BucketPolicies",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3BucketPoliciesListBySubscriptionInput =
@@ -31957,11 +43937,12 @@ export const S3BucketPoliciesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3BucketPolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3BucketPoliciesUpdateInput =
@@ -32012,11 +43993,682 @@ export const S3BucketsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            accelerateConfiguration: Schema.optional(
+              Schema.Struct({
+                accelerationStatus: Schema.optional(
+                  Schema.Literals(["Enabled", "Suspended"]),
+                ),
+              }),
+            ),
+            accessControl: Schema.optional(
+              Schema.Literals([
+                "AuthenticatedRead",
+                "AwsExecRead",
+                "BucketOwnerFullControl",
+                "BucketOwnerRead",
+                "LogDeliveryWrite",
+                "Private",
+                "PublicRead",
+                "PublicReadWrite",
+              ]),
+            ),
+            analyticsConfigurations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  prefix: Schema.optional(Schema.String),
+                  storageClassAnalysis: Schema.optional(
+                    Schema.Struct({
+                      dataExport: Schema.optional(
+                        Schema.Struct({
+                          destination: Schema.optional(
+                            Schema.Struct({
+                              bucketAccountId: Schema.optional(Schema.String),
+                              bucketArn: Schema.optional(Schema.String),
+                              format: Schema.optional(
+                                Schema.Literals(["CSV", "ORC", "Parquet"]),
+                              ),
+                              prefix: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          outputSchemaVersion: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                  tagFilters: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.optional(Schema.String),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            arn: Schema.optional(Schema.String),
+            bucketEncryption: Schema.optional(
+              Schema.Struct({
+                serverSideEncryptionConfiguration: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      bucketKeyEnabled: Schema.optional(Schema.Boolean),
+                      serverSideEncryptionByDefault: Schema.optional(
+                        Schema.Struct({
+                          kmsMasterKeyID: Schema.optional(Schema.String),
+                          sseAlgorithm: Schema.optional(
+                            Schema.Literals([
+                              "AES256",
+                              "aws:kms",
+                              "aws:kms:dsse",
+                            ]),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            bucketName: Schema.optional(Schema.String),
+            corsConfiguration: Schema.optional(
+              Schema.Struct({
+                corsRules: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      allowedHeaders: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      allowedMethods: Schema.optional(
+                        Schema.Array(
+                          Schema.Literals([
+                            "DELETE",
+                            "GET",
+                            "HEAD",
+                            "POST",
+                            "PUT",
+                          ]),
+                        ),
+                      ),
+                      allowedOrigins: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      exposedHeaders: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      id: Schema.optional(Schema.String),
+                      maxAge: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            domainName: Schema.optional(Schema.String),
+            dualStackDomainName: Schema.optional(Schema.String),
+            intelligentTieringConfigurations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  prefix: Schema.optional(Schema.String),
+                  status: Schema.optional(
+                    Schema.Literals(["Disabled", "Enabled"]),
+                  ),
+                  tagFilters: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.optional(Schema.String),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  tierings: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        accessTier: Schema.optional(
+                          Schema.Literals([
+                            "ARCHIVE_ACCESS",
+                            "DEEP_ARCHIVE_ACCESS",
+                          ]),
+                        ),
+                        days: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            inventoryConfigurations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  destination: Schema.optional(
+                    Schema.Struct({
+                      bucketAccountId: Schema.optional(Schema.String),
+                      bucketArn: Schema.optional(Schema.String),
+                      format: Schema.optional(
+                        Schema.Literals(["CSV", "ORC", "Parquet"]),
+                      ),
+                      prefix: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  enabled: Schema.optional(Schema.Boolean),
+                  id: Schema.optional(Schema.String),
+                  includedObjectVersions: Schema.optional(
+                    Schema.Literals(["All", "Current"]),
+                  ),
+                  optionalFields: Schema.optional(
+                    Schema.Array(
+                      Schema.Literals([
+                        "BucketKeyStatus",
+                        "ChecksumAlgorithm",
+                        "ETag",
+                        "EncryptionStatus",
+                        "IntelligentTieringAccessTier",
+                        "IsMultipartUploaded",
+                        "LastModifiedDate",
+                        "ObjectAccessControlList",
+                        "ObjectLockLegalHoldStatus",
+                        "ObjectLockMode",
+                        "ObjectLockRetainUntilDate",
+                        "ObjectOwner",
+                        "ReplicationStatus",
+                        "Size",
+                        "StorageClass",
+                      ]),
+                    ),
+                  ),
+                  prefix: Schema.optional(Schema.String),
+                  scheduleFrequency: Schema.optional(
+                    Schema.Literals(["Daily", "Weekly"]),
+                  ),
+                }),
+              ),
+            ),
+            lifecycleConfiguration: Schema.optional(
+              Schema.Struct({
+                rules: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      abortIncompleteMultipartUpload: Schema.optional(
+                        Schema.Struct({
+                          daysAfterInitiation: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      expirationDate: Schema.optional(Schema.String),
+                      expirationInDays: Schema.optional(Schema.Number),
+                      expiredObjectDeleteMarker: Schema.optional(
+                        Schema.Boolean,
+                      ),
+                      id: Schema.optional(Schema.String),
+                      noncurrentVersionExpiration: Schema.optional(
+                        Schema.Struct({
+                          newerNoncurrentVersions: Schema.optional(
+                            Schema.Number,
+                          ),
+                          noncurrentDays: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      noncurrentVersionExpirationInDays: Schema.optional(
+                        Schema.Number,
+                      ),
+                      noncurrentVersionTransition: Schema.optional(
+                        Schema.Struct({
+                          newerNoncurrentVersions: Schema.optional(
+                            Schema.Number,
+                          ),
+                          storageClass: Schema.optional(
+                            Schema.Literals([
+                              "DEEP_ARCHIVE",
+                              "GLACIER",
+                              "GLACIER_IR",
+                              "INTELLIGENT_TIERING",
+                              "ONEZONE_IA",
+                              "STANDARD_IA",
+                            ]),
+                          ),
+                          transitionInDays: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      noncurrentVersionTransitions: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            newerNoncurrentVersions: Schema.optional(
+                              Schema.Number,
+                            ),
+                            storageClass: Schema.optional(
+                              Schema.Literals([
+                                "DEEP_ARCHIVE",
+                                "GLACIER",
+                                "GLACIER_IR",
+                                "INTELLIGENT_TIERING",
+                                "ONEZONE_IA",
+                                "STANDARD_IA",
+                              ]),
+                            ),
+                            transitionInDays: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                      ),
+                      objectSizeGreaterThan: Schema.optional(Schema.String),
+                      objectSizeLessThan: Schema.optional(Schema.String),
+                      prefix: Schema.optional(Schema.String),
+                      status: Schema.optional(
+                        Schema.Literals(["Disabled", "Enabled"]),
+                      ),
+                      tagFilters: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            key: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      transition: Schema.optional(
+                        Schema.Struct({
+                          storageClass: Schema.optional(
+                            Schema.Literals([
+                              "DEEP_ARCHIVE",
+                              "GLACIER",
+                              "GLACIER_IR",
+                              "INTELLIGENT_TIERING",
+                              "ONEZONE_IA",
+                              "STANDARD_IA",
+                            ]),
+                          ),
+                          transitionDate: Schema.optional(Schema.String),
+                          transitionInDays: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      transitions: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            storageClass: Schema.optional(
+                              Schema.Literals([
+                                "DEEP_ARCHIVE",
+                                "GLACIER",
+                                "GLACIER_IR",
+                                "INTELLIGENT_TIERING",
+                                "ONEZONE_IA",
+                                "STANDARD_IA",
+                              ]),
+                            ),
+                            transitionDate: Schema.optional(Schema.String),
+                            transitionInDays: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            loggingConfiguration: Schema.optional(
+              Schema.Struct({
+                destinationBucketName: Schema.optional(Schema.String),
+                logFilePrefix: Schema.optional(Schema.String),
+                targetObjectKeyFormat: Schema.optional(
+                  Schema.Struct({
+                    simplePrefix: Schema.optional(Schema.Unknown),
+                    partitionedPrefix: Schema.optional(
+                      Schema.Struct({
+                        partitionDateSource: Schema.optional(
+                          Schema.Literals(["DeliveryTime", "EventTime"]),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            metricsConfigurations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  accessPointArn: Schema.optional(Schema.String),
+                  id: Schema.optional(Schema.String),
+                  prefix: Schema.optional(Schema.String),
+                  tagFilters: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.optional(Schema.String),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            notificationConfiguration: Schema.optional(
+              Schema.Struct({
+                eventBridgeConfiguration: Schema.optional(
+                  Schema.Struct({
+                    eventBridgeEnabled: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                lambdaConfigurations: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      event: Schema.optional(Schema.String),
+                      filter: Schema.optional(
+                        Schema.Struct({
+                          s3Key: Schema.optional(
+                            Schema.Struct({
+                              rules: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.optional(Schema.String),
+                                    value: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                      function: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                queueConfigurations: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      event: Schema.optional(Schema.String),
+                      filter: Schema.optional(
+                        Schema.Struct({
+                          s3Key: Schema.optional(
+                            Schema.Struct({
+                              rules: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.optional(Schema.String),
+                                    value: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                      queue: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                topicConfigurations: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      event: Schema.optional(Schema.String),
+                      filter: Schema.optional(
+                        Schema.Struct({
+                          s3Key: Schema.optional(
+                            Schema.Struct({
+                              rules: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.optional(Schema.String),
+                                    value: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                      topic: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            objectLockConfiguration: Schema.optional(
+              Schema.Struct({
+                objectLockEnabled: Schema.optional(Schema.String),
+                rule: Schema.optional(
+                  Schema.Struct({
+                    defaultRetention: Schema.optional(
+                      Schema.Struct({
+                        days: Schema.optional(Schema.Number),
+                        mode: Schema.optional(
+                          Schema.Literals(["COMPLIANCE", "GOVERNANCE"]),
+                        ),
+                        years: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            objectLockEnabled: Schema.optional(Schema.Boolean),
+            ownershipControls: Schema.optional(
+              Schema.Struct({
+                rules: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      objectOwnership: Schema.optional(
+                        Schema.Literals([
+                          "BucketOwnerEnforced",
+                          "BucketOwnerPreferred",
+                          "ObjectWriter",
+                        ]),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            publicAccessBlockConfiguration: Schema.optional(
+              Schema.Struct({
+                blockPublicAcls: Schema.optional(Schema.Boolean),
+                blockPublicPolicy: Schema.optional(Schema.Boolean),
+                ignorePublicAcls: Schema.optional(Schema.Boolean),
+                restrictPublicBuckets: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            regionalDomainName: Schema.optional(Schema.String),
+            replicationConfiguration: Schema.optional(
+              Schema.Struct({
+                role: Schema.optional(Schema.String),
+                rules: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      deleteMarkerReplication: Schema.optional(
+                        Schema.Struct({
+                          status: Schema.optional(
+                            Schema.Literals(["Disabled", "Enabled"]),
+                          ),
+                        }),
+                      ),
+                      destination: Schema.optional(
+                        Schema.Struct({
+                          accessControlTranslation: Schema.optional(
+                            Schema.Struct({
+                              owner: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          account: Schema.optional(Schema.String),
+                          bucket: Schema.optional(Schema.String),
+                          encryptionConfiguration: Schema.optional(
+                            Schema.Struct({
+                              replicaKmsKeyID: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          metrics: Schema.optional(
+                            Schema.Struct({
+                              eventThreshold: Schema.optional(
+                                Schema.Struct({
+                                  minutes: Schema.optional(Schema.Number),
+                                }),
+                              ),
+                              status: Schema.optional(
+                                Schema.Literals(["Disabled", "Enabled"]),
+                              ),
+                            }),
+                          ),
+                          replicationTime: Schema.optional(
+                            Schema.Struct({
+                              status: Schema.optional(
+                                Schema.Literals(["Disabled", "Enabled"]),
+                              ),
+                              time: Schema.optional(
+                                Schema.Struct({
+                                  minutes: Schema.optional(Schema.Number),
+                                }),
+                              ),
+                            }),
+                          ),
+                          storageClass: Schema.optional(
+                            Schema.Literals([
+                              "DEEP_ARCHIVE",
+                              "GLACIER",
+                              "GLACIER_IR",
+                              "INTELLIGENT_TIERING",
+                              "ONEZONE_IA",
+                              "REDUCED_REDUNDANCY",
+                              "STANDARD",
+                              "STANDARD_IA",
+                            ]),
+                          ),
+                        }),
+                      ),
+                      filter: Schema.optional(
+                        Schema.Struct({
+                          and: Schema.optional(
+                            Schema.Struct({
+                              prefix: Schema.optional(Schema.String),
+                              tagFilters: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    key: Schema.optional(Schema.String),
+                                    value: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                          prefix: Schema.optional(Schema.String),
+                          tagFilter: Schema.optional(
+                            Schema.Struct({
+                              key: Schema.optional(Schema.String),
+                              value: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        }),
+                      ),
+                      id: Schema.optional(Schema.String),
+                      prefix: Schema.optional(Schema.String),
+                      priority: Schema.optional(Schema.Number),
+                      sourceSelectionCriteria: Schema.optional(
+                        Schema.Struct({
+                          replicaModifications: Schema.optional(
+                            Schema.Struct({
+                              status: Schema.optional(
+                                Schema.Literals(["Disabled", "Enabled"]),
+                              ),
+                            }),
+                          ),
+                          sseKmsEncryptedObjects: Schema.optional(
+                            Schema.Struct({
+                              status: Schema.optional(
+                                Schema.Literals(["Disabled", "Enabled"]),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                      status: Schema.optional(
+                        Schema.Literals(["Disabled", "Enabled"]),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            versioningConfiguration: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals(["Enabled", "Suspended"]),
+                ),
+              }),
+            ),
+            websiteConfiguration: Schema.optional(
+              Schema.Struct({
+                errorDocument: Schema.optional(Schema.String),
+                indexDocument: Schema.optional(Schema.String),
+                redirectAllRequestsTo: Schema.optional(
+                  Schema.Struct({
+                    hostName: Schema.optional(Schema.String),
+                    protocol: Schema.optional(
+                      Schema.Literals(["http", "https"]),
+                    ),
+                  }),
+                ),
+                routingRules: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      redirectRule: Schema.optional(
+                        Schema.Struct({
+                          hostName: Schema.optional(Schema.String),
+                          httpRedirectCode: Schema.optional(Schema.String),
+                          protocol: Schema.optional(
+                            Schema.Literals(["http", "https"]),
+                          ),
+                          replaceKeyPrefixWith: Schema.optional(Schema.String),
+                          replaceKeyWith: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      routingRuleCondition: Schema.optional(
+                        Schema.Struct({
+                          httpErrorCodeReturnedEquals: Schema.optional(
+                            Schema.String,
+                          ),
+                          keyPrefixEquals: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            websiteURL: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3Buckets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3BucketsCreateOrReplaceInput =
@@ -32066,11 +44718,11 @@ export const S3BucketsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3Buckets/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type S3BucketsDeleteInput = typeof S3BucketsDeleteInput.Type;
@@ -32097,11 +44749,11 @@ export const S3BucketsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3Buckets/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type S3BucketsGetInput = typeof S3BucketsGetInput.Type;
@@ -32146,11 +44798,11 @@ export const S3BucketsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3Buckets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3BucketsListByResourceGroupInput =
@@ -32212,11 +44864,11 @@ export const S3BucketsListByResourceGroup =
 export const S3BucketsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/s3Buckets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3BucketsListBySubscriptionInput =
@@ -32279,11 +44931,12 @@ export const S3BucketsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3Buckets/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type S3BucketsUpdateInput = typeof S3BucketsUpdateInput.Type;
@@ -32329,11 +44982,49 @@ export const S3ControlMultiRegionAccessPointPolicyDocumentsCreateOrReplaceInput 
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            established: Schema.optional(
+              Schema.Struct({
+                policy: Schema.optional(Schema.String),
+              }),
+            ),
+            proposed: Schema.optional(
+              Schema.Struct({
+                policy: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3ControlMultiRegionAccessPointPolicyDocuments/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3ControlMultiRegionAccessPointPolicyDocumentsCreateOrReplaceInput =
@@ -32385,11 +45076,11 @@ export const S3ControlMultiRegionAccessPointPolicyDocumentsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3ControlMultiRegionAccessPointPolicyDocuments/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3ControlMultiRegionAccessPointPolicyDocumentsDeleteInput =
@@ -32421,11 +45112,11 @@ export const S3ControlMultiRegionAccessPointPolicyDocumentsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3ControlMultiRegionAccessPointPolicyDocuments/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3ControlMultiRegionAccessPointPolicyDocumentsGetInput =
@@ -32474,11 +45165,11 @@ export const S3ControlMultiRegionAccessPointPolicyDocumentsListByResourceGroupIn
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3ControlMultiRegionAccessPointPolicyDocuments",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3ControlMultiRegionAccessPointPolicyDocumentsListByResourceGroupInput =
@@ -32542,11 +45233,11 @@ export const S3ControlMultiRegionAccessPointPolicyDocumentsListByResourceGroup =
 export const S3ControlMultiRegionAccessPointPolicyDocumentsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/s3ControlMultiRegionAccessPointPolicyDocuments",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3ControlMultiRegionAccessPointPolicyDocumentsListBySubscriptionInput =
@@ -32611,11 +45302,12 @@ export const S3ControlMultiRegionAccessPointPolicyDocumentsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/s3ControlMultiRegionAccessPointPolicyDocuments/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type S3ControlMultiRegionAccessPointPolicyDocumentsUpdateInput =
@@ -32665,11 +45357,133 @@ export const SageMakerAppsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            appArn: Schema.optional(Schema.String),
+            appName: Schema.optional(Schema.String),
+            appType: Schema.optional(
+              Schema.Literals([
+                "Canvas",
+                "JupyterServer",
+                "KernelGateway",
+                "RSessionGateway",
+                "RStudioServerPro",
+              ]),
+            ),
+            domainId: Schema.optional(Schema.String),
+            resourceSpec: Schema.optional(
+              Schema.Struct({
+                instanceType: Schema.optional(
+                  Schema.Literals([
+                    "ml.c5.12xlarge",
+                    "ml.c5.18xlarge",
+                    "ml.c5.24xlarge",
+                    "ml.c5.2xlarge",
+                    "ml.c5.4xlarge",
+                    "ml.c5.9xlarge",
+                    "ml.c5.large",
+                    "ml.c5.xlarge",
+                    "ml.g4dn.12xlarge",
+                    "ml.g4dn.16xlarge",
+                    "ml.g4dn.2xlarge",
+                    "ml.g4dn.4xlarge",
+                    "ml.g4dn.8xlarge",
+                    "ml.g4dn.xlarge",
+                    "ml.g5.12xlarge",
+                    "ml.g5.16xlarge",
+                    "ml.g5.24xlarge",
+                    "ml.g5.2xlarge",
+                    "ml.g5.48xlarge",
+                    "ml.g5.4xlarge",
+                    "ml.g5.8xlarge",
+                    "ml.g5.xlarge",
+                    "ml.geospatial.interactive",
+                    "ml.m5.12xlarge",
+                    "ml.m5.16xlarge",
+                    "ml.m5.24xlarge",
+                    "ml.m5.2xlarge",
+                    "ml.m5.4xlarge",
+                    "ml.m5.8xlarge",
+                    "ml.m5.large",
+                    "ml.m5.xlarge",
+                    "ml.m5d.12xlarge",
+                    "ml.m5d.16xlarge",
+                    "ml.m5d.24xlarge",
+                    "ml.m5d.2xlarge",
+                    "ml.m5d.4xlarge",
+                    "ml.m5d.8xlarge",
+                    "ml.m5d.large",
+                    "ml.m5d.xlarge",
+                    "ml.p3.16xlarge",
+                    "ml.p3.2xlarge",
+                    "ml.p3.8xlarge",
+                    "ml.p3dn.24xlarge",
+                    "ml.p4d.24xlarge",
+                    "ml.p4de.24xlarge",
+                    "ml.r5.12xlarge",
+                    "ml.r5.16xlarge",
+                    "ml.r5.24xlarge",
+                    "ml.r5.2xlarge",
+                    "ml.r5.4xlarge",
+                    "ml.r5.8xlarge",
+                    "ml.r5.large",
+                    "ml.r5.xlarge",
+                    "ml.t3.2xlarge",
+                    "ml.t3.large",
+                    "ml.t3.medium",
+                    "ml.t3.micro",
+                    "ml.t3.small",
+                    "ml.t3.xlarge",
+                    "ml.trn1.2xlarge",
+                    "ml.trn1.32xlarge",
+                    "ml.trn1n.32xlarge",
+                    "system",
+                  ]),
+                ),
+                sageMakerImageArn: Schema.optional(Schema.String),
+                sageMakerImageVersionArn: Schema.optional(Schema.String),
+              }),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            userProfileName: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerApps/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SageMakerAppsCreateOrReplaceInput =
@@ -32719,11 +45533,11 @@ export const SageMakerAppsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerApps/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SageMakerAppsDeleteInput = typeof SageMakerAppsDeleteInput.Type;
@@ -32751,11 +45565,11 @@ export const SageMakerAppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerApps/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type SageMakerAppsGetInput = typeof SageMakerAppsGetInput.Type;
@@ -32802,11 +45616,11 @@ export const SageMakerAppsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerApps",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SageMakerAppsListByResourceGroupInput =
@@ -32868,11 +45682,11 @@ export const SageMakerAppsListByResourceGroup =
 export const SageMakerAppsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/sageMakerApps",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SageMakerAppsListBySubscriptionInput =
@@ -32935,11 +45749,12 @@ export const SageMakerAppsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerApps/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SageMakerAppsUpdateInput = typeof SageMakerAppsUpdateInput.Type;
@@ -32986,11 +45801,229 @@ export const SageMakerNotebookInstanceSummariesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            additionalCodeRepositories: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            creationTime: Schema.optional(Schema.String),
+            defaultCodeRepository: Schema.optional(Schema.String),
+            instanceType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "ml.c4.2xlarge",
+                    "ml.c4.4xlarge",
+                    "ml.c4.8xlarge",
+                    "ml.c4.xlarge",
+                    "ml.c5.18xlarge",
+                    "ml.c5.2xlarge",
+                    "ml.c5.4xlarge",
+                    "ml.c5.9xlarge",
+                    "ml.c5.xlarge",
+                    "ml.c5d.18xlarge",
+                    "ml.c5d.2xlarge",
+                    "ml.c5d.4xlarge",
+                    "ml.c5d.9xlarge",
+                    "ml.c5d.xlarge",
+                    "ml.c6i.12xlarge",
+                    "ml.c6i.16xlarge",
+                    "ml.c6i.24xlarge",
+                    "ml.c6i.2xlarge",
+                    "ml.c6i.32xlarge",
+                    "ml.c6i.4xlarge",
+                    "ml.c6i.8xlarge",
+                    "ml.c6i.large",
+                    "ml.c6i.xlarge",
+                    "ml.c6id.12xlarge",
+                    "ml.c6id.16xlarge",
+                    "ml.c6id.24xlarge",
+                    "ml.c6id.2xlarge",
+                    "ml.c6id.32xlarge",
+                    "ml.c6id.4xlarge",
+                    "ml.c6id.8xlarge",
+                    "ml.c6id.large",
+                    "ml.c6id.xlarge",
+                    "ml.c7i.12xlarge",
+                    "ml.c7i.16xlarge",
+                    "ml.c7i.24xlarge",
+                    "ml.c7i.2xlarge",
+                    "ml.c7i.48xlarge",
+                    "ml.c7i.4xlarge",
+                    "ml.c7i.8xlarge",
+                    "ml.c7i.large",
+                    "ml.c7i.xlarge",
+                    "ml.g4dn.12xlarge",
+                    "ml.g4dn.16xlarge",
+                    "ml.g4dn.2xlarge",
+                    "ml.g4dn.4xlarge",
+                    "ml.g4dn.8xlarge",
+                    "ml.g4dn.xlarge",
+                    "ml.g5.12xlarge",
+                    "ml.g5.16xlarge",
+                    "ml.g5.24xlarge",
+                    "ml.g5.2xlarge",
+                    "ml.g5.48xlarge",
+                    "ml.g5.4xlarge",
+                    "ml.g5.8xlarge",
+                    "ml.g5.xlarge",
+                    "ml.inf1.24xlarge",
+                    "ml.inf1.2xlarge",
+                    "ml.inf1.6xlarge",
+                    "ml.inf1.xlarge",
+                    "ml.m4.10xlarge",
+                    "ml.m4.16xlarge",
+                    "ml.m4.2xlarge",
+                    "ml.m4.4xlarge",
+                    "ml.m4.xlarge",
+                    "ml.m5.12xlarge",
+                    "ml.m5.24xlarge",
+                    "ml.m5.2xlarge",
+                    "ml.m5.4xlarge",
+                    "ml.m5.xlarge",
+                    "ml.m5d.12xlarge",
+                    "ml.m5d.16xlarge",
+                    "ml.m5d.24xlarge",
+                    "ml.m5d.2xlarge",
+                    "ml.m5d.4xlarge",
+                    "ml.m5d.8xlarge",
+                    "ml.m5d.large",
+                    "ml.m5d.xlarge",
+                    "ml.m6i.12xlarge",
+                    "ml.m6i.16xlarge",
+                    "ml.m6i.24xlarge",
+                    "ml.m6i.2xlarge",
+                    "ml.m6i.32xlarge",
+                    "ml.m6i.4xlarge",
+                    "ml.m6i.8xlarge",
+                    "ml.m6i.large",
+                    "ml.m6i.xlarge",
+                    "ml.m6id.12xlarge",
+                    "ml.m6id.16xlarge",
+                    "ml.m6id.24xlarge",
+                    "ml.m6id.2xlarge",
+                    "ml.m6id.32xlarge",
+                    "ml.m6id.4xlarge",
+                    "ml.m6id.8xlarge",
+                    "ml.m6id.large",
+                    "ml.m6id.xlarge",
+                    "ml.m7i.12xlarge",
+                    "ml.m7i.16xlarge",
+                    "ml.m7i.24xlarge",
+                    "ml.m7i.2xlarge",
+                    "ml.m7i.48xlarge",
+                    "ml.m7i.4xlarge",
+                    "ml.m7i.8xlarge",
+                    "ml.m7i.large",
+                    "ml.m7i.xlarge",
+                    "ml.p2.16xlarge",
+                    "ml.p2.8xlarge",
+                    "ml.p2.xlarge",
+                    "ml.p3.16xlarge",
+                    "ml.p3.2xlarge",
+                    "ml.p3.8xlarge",
+                    "ml.p3dn.24xlarge",
+                    "ml.p4d.24xlarge",
+                    "ml.p4de.24xlarge",
+                    "ml.p5.48xlarge",
+                    "ml.r5.12xlarge",
+                    "ml.r5.16xlarge",
+                    "ml.r5.24xlarge",
+                    "ml.r5.2xlarge",
+                    "ml.r5.4xlarge",
+                    "ml.r5.8xlarge",
+                    "ml.r5.large",
+                    "ml.r5.xlarge",
+                    "ml.r6i.12xlarge",
+                    "ml.r6i.16xlarge",
+                    "ml.r6i.24xlarge",
+                    "ml.r6i.2xlarge",
+                    "ml.r6i.32xlarge",
+                    "ml.r6i.4xlarge",
+                    "ml.r6i.8xlarge",
+                    "ml.r6i.large",
+                    "ml.r6i.xlarge",
+                    "ml.r6id.12xlarge",
+                    "ml.r6id.16xlarge",
+                    "ml.r6id.24xlarge",
+                    "ml.r6id.2xlarge",
+                    "ml.r6id.32xlarge",
+                    "ml.r6id.4xlarge",
+                    "ml.r6id.8xlarge",
+                    "ml.r6id.large",
+                    "ml.r6id.xlarge",
+                    "ml.r7i.12xlarge",
+                    "ml.r7i.16xlarge",
+                    "ml.r7i.24xlarge",
+                    "ml.r7i.2xlarge",
+                    "ml.r7i.48xlarge",
+                    "ml.r7i.4xlarge",
+                    "ml.r7i.8xlarge",
+                    "ml.r7i.large",
+                    "ml.r7i.xlarge",
+                    "ml.t2.2xlarge",
+                    "ml.t2.large",
+                    "ml.t2.medium",
+                    "ml.t2.xlarge",
+                    "ml.t3.2xlarge",
+                    "ml.t3.large",
+                    "ml.t3.medium",
+                    "ml.t3.xlarge",
+                  ]),
+                ),
+              }),
+            ),
+            lastModifiedTime: Schema.optional(Schema.String),
+            notebookInstanceArn: Schema.optional(Schema.String),
+            notebookInstanceLifecycleConfigName: Schema.optional(Schema.String),
+            notebookInstanceName: Schema.optional(Schema.String),
+            notebookInstanceStatus: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "Deleting",
+                    "Failed",
+                    "InService",
+                    "Pending",
+                    "Stopped",
+                    "Stopping",
+                    "Updating",
+                  ]),
+                ),
+              }),
+            ),
+            url: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerNotebookInstanceSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SageMakerNotebookInstanceSummariesCreateOrReplaceInput =
@@ -33040,11 +46073,11 @@ export const SageMakerNotebookInstanceSummariesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerNotebookInstanceSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SageMakerNotebookInstanceSummariesDeleteInput =
@@ -33076,11 +46109,11 @@ export const SageMakerNotebookInstanceSummariesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerNotebookInstanceSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SageMakerNotebookInstanceSummariesGetInput =
@@ -33129,11 +46162,11 @@ export const SageMakerNotebookInstanceSummariesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerNotebookInstanceSummaries",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SageMakerNotebookInstanceSummariesListByResourceGroupInput =
@@ -33195,11 +46228,11 @@ export const SageMakerNotebookInstanceSummariesListByResourceGroup =
 export const SageMakerNotebookInstanceSummariesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/sageMakerNotebookInstanceSummaries",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SageMakerNotebookInstanceSummariesListBySubscriptionInput =
@@ -33262,11 +46295,12 @@ export const SageMakerNotebookInstanceSummariesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sageMakerNotebookInstanceSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SageMakerNotebookInstanceSummariesUpdateInput =
@@ -33316,11 +46350,43 @@ export const SecretsManagerResourcePoliciesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            blockPublicPolicy: Schema.optional(Schema.Boolean),
+            id: Schema.optional(Schema.String),
+            resourcePolicy: Schema.optional(Schema.Unknown),
+            secretId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerResourcePolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SecretsManagerResourcePoliciesCreateOrReplaceInput =
@@ -33370,11 +46436,11 @@ export const SecretsManagerResourcePoliciesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerResourcePolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SecretsManagerResourcePoliciesDeleteInput =
@@ -33406,11 +46472,11 @@ export const SecretsManagerResourcePoliciesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerResourcePolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SecretsManagerResourcePoliciesGetInput =
@@ -33459,11 +46525,11 @@ export const SecretsManagerResourcePoliciesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerResourcePolicies",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SecretsManagerResourcePoliciesListByResourceGroupInput =
@@ -33525,11 +46591,11 @@ export const SecretsManagerResourcePoliciesListByResourceGroup =
 export const SecretsManagerResourcePoliciesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/secretsManagerResourcePolicies",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SecretsManagerResourcePoliciesListBySubscriptionInput =
@@ -33592,11 +46658,12 @@ export const SecretsManagerResourcePoliciesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerResourcePolicies/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SecretsManagerResourcePoliciesUpdateInput =
@@ -33646,11 +46713,74 @@ export const SecretsManagerSecretsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            generateSecretString: Schema.optional(
+              Schema.Struct({
+                excludeCharacters: Schema.optional(Schema.String),
+                excludeLowercase: Schema.optional(Schema.Boolean),
+                excludeNumbers: Schema.optional(Schema.Boolean),
+                excludePunctuation: Schema.optional(Schema.Boolean),
+                excludeUppercase: Schema.optional(Schema.Boolean),
+                generateStringKey: Schema.optional(Schema.String),
+                includeSpace: Schema.optional(Schema.Boolean),
+                passwordLength: Schema.optional(Schema.Number),
+                requireEachIncludedType: Schema.optional(Schema.Boolean),
+                secretStringTemplate: Schema.optional(Schema.String),
+              }),
+            ),
+            id: Schema.optional(Schema.String),
+            kmsKeyId: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            replicaRegions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  kmsKeyId: Schema.optional(Schema.String),
+                  region: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            secretString: Schema.optional(Schema.String),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerSecrets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SecretsManagerSecretsCreateOrReplaceInput =
@@ -33700,11 +46830,11 @@ export const SecretsManagerSecretsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerSecrets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SecretsManagerSecretsDeleteInput =
@@ -33737,11 +46867,11 @@ export const SecretsManagerSecretsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerSecrets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SecretsManagerSecretsGetInput =
@@ -33791,11 +46921,11 @@ export const SecretsManagerSecretsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerSecrets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SecretsManagerSecretsListByResourceGroupInput =
@@ -33857,11 +46987,11 @@ export const SecretsManagerSecretsListByResourceGroup =
 export const SecretsManagerSecretsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/secretsManagerSecrets",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SecretsManagerSecretsListBySubscriptionInput =
@@ -33924,11 +47054,12 @@ export const SecretsManagerSecretsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/secretsManagerSecrets/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SecretsManagerSecretsUpdateInput =
@@ -33979,11 +47110,44 @@ export const SnsSubscriptionsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            endpoint: Schema.optional(Schema.String),
+            owner: Schema.optional(Schema.String),
+            protocol: Schema.optional(Schema.String),
+            subscriptionArn: Schema.optional(Schema.String),
+            topicArn: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsSubscriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SnsSubscriptionsCreateOrReplaceInput =
@@ -34033,11 +47197,11 @@ export const SnsSubscriptionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsSubscriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SnsSubscriptionsDeleteInput =
@@ -34070,11 +47234,11 @@ export const SnsSubscriptionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsSubscriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SnsSubscriptionsGetInput = typeof SnsSubscriptionsGetInput.Type;
@@ -34120,11 +47284,11 @@ export const SnsSubscriptionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsSubscriptions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SnsSubscriptionsListByResourceGroupInput =
@@ -34186,11 +47350,11 @@ export const SnsSubscriptionsListByResourceGroup =
 export const SnsSubscriptionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/snsSubscriptions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SnsSubscriptionsListBySubscriptionInput =
@@ -34253,11 +47417,12 @@ export const SnsSubscriptionsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsSubscriptions/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SnsSubscriptionsUpdateInput =
@@ -34308,11 +47473,83 @@ export const SnsTopicsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            archivePolicy: Schema.optional(Schema.Unknown),
+            contentBasedDeduplication: Schema.optional(Schema.Boolean),
+            dataProtectionPolicy: Schema.optional(Schema.Unknown),
+            deliveryStatusLogging: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  failureFeedbackRoleArn: Schema.optional(Schema.String),
+                  protocol: Schema.optional(
+                    Schema.Literals([
+                      "application",
+                      "firehose",
+                      "http/s",
+                      "lambda",
+                      "sqs",
+                    ]),
+                  ),
+                  successFeedbackRoleArn: Schema.optional(Schema.String),
+                  successFeedbackSampleRate: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            displayName: Schema.optional(Schema.String),
+            fifoTopic: Schema.optional(Schema.Boolean),
+            kmsMasterKeyId: Schema.optional(Schema.String),
+            signatureVersion: Schema.optional(Schema.String),
+            subscription: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  endpoint: Schema.optional(Schema.String),
+                  protocol: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            topicArn: Schema.optional(Schema.String),
+            topicName: Schema.optional(Schema.String),
+            tracingConfig: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsTopics/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SnsTopicsCreateOrReplaceInput =
@@ -34362,11 +47599,11 @@ export const SnsTopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsTopics/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type SnsTopicsDeleteInput = typeof SnsTopicsDeleteInput.Type;
@@ -34393,11 +47630,11 @@ export const SnsTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsTopics/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type SnsTopicsGetInput = typeof SnsTopicsGetInput.Type;
@@ -34442,11 +47679,11 @@ export const SnsTopicsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsTopics",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SnsTopicsListByResourceGroupInput =
@@ -34508,11 +47745,11 @@ export const SnsTopicsListByResourceGroup =
 export const SnsTopicsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/snsTopics",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SnsTopicsListBySubscriptionInput =
@@ -34575,11 +47812,12 @@ export const SnsTopicsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/snsTopics/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type SnsTopicsUpdateInput = typeof SnsTopicsUpdateInput.Type;
@@ -34625,11 +47863,68 @@ export const SqsQueuesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            arn: Schema.optional(Schema.String),
+            contentBasedDeduplication: Schema.optional(Schema.Boolean),
+            deduplicationScope: Schema.optional(Schema.String),
+            delaySeconds: Schema.optional(Schema.Number),
+            fifoQueue: Schema.optional(Schema.Boolean),
+            fifoThroughputLimit: Schema.optional(Schema.String),
+            kmsDataKeyReusePeriodSeconds: Schema.optional(Schema.Number),
+            kmsMasterKeyId: Schema.optional(Schema.String),
+            maximumMessageSize: Schema.optional(Schema.Number),
+            messageRetentionPeriod: Schema.optional(Schema.Number),
+            queueName: Schema.optional(Schema.String),
+            queueUrl: Schema.optional(Schema.String),
+            receiveMessageWaitTimeSeconds: Schema.optional(Schema.Number),
+            redriveAllowPolicy: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            redrivePolicy: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            sqsManagedSseEnabled: Schema.optional(Schema.Boolean),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            visibilityTimeout: Schema.optional(Schema.Number),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sqsQueues/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SqsQueuesCreateOrReplaceInput =
@@ -34679,11 +47974,11 @@ export const SqsQueuesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sqsQueues/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type SqsQueuesDeleteInput = typeof SqsQueuesDeleteInput.Type;
@@ -34710,11 +48005,11 @@ export const SqsQueuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sqsQueues/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type SqsQueuesGetInput = typeof SqsQueuesGetInput.Type;
@@ -34759,11 +48054,11 @@ export const SqsQueuesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sqsQueues",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SqsQueuesListByResourceGroupInput =
@@ -34825,11 +48120,11 @@ export const SqsQueuesListByResourceGroup =
 export const SqsQueuesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/sqsQueues",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SqsQueuesListBySubscriptionInput =
@@ -34892,11 +48187,12 @@ export const SqsQueuesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/sqsQueues/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type SqsQueuesUpdateInput = typeof SqsQueuesUpdateInput.Type;
@@ -34942,11 +48238,97 @@ export const SsmInstanceInformationsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            activationId: Schema.optional(Schema.String),
+            agentVersion: Schema.optional(Schema.String),
+            associationOverview: Schema.optional(
+              Schema.Struct({
+                detailedStatus: Schema.optional(Schema.String),
+                instanceAssociationStatusAggregatedCount: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Number),
+                ),
+              }),
+            ),
+            associationStatus: Schema.optional(Schema.String),
+            computerName: Schema.optional(Schema.String),
+            ipAddress: Schema.optional(Schema.String),
+            iamRole: Schema.optional(Schema.String),
+            instanceId: Schema.optional(Schema.String),
+            isLatestVersion: Schema.optional(Schema.Boolean),
+            lastAssociationExecutionDate: Schema.optional(Schema.String),
+            lastPingDateTime: Schema.optional(Schema.String),
+            lastSuccessfulAssociationExecutionDate: Schema.optional(
+              Schema.String,
+            ),
+            name: Schema.optional(Schema.String),
+            pingStatus: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["ConnectionLost", "Inactive", "Online"]),
+                ),
+              }),
+            ),
+            platformName: Schema.optional(Schema.String),
+            platformType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["Linux", "MacOS", "Windows"]),
+                ),
+              }),
+            ),
+            platformVersion: Schema.optional(Schema.String),
+            registrationDate: Schema.optional(Schema.String),
+            resourceType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["EC2Instance", "ManagedInstance"]),
+                ),
+              }),
+            ),
+            sourceId: Schema.optional(Schema.String),
+            sourceType: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "AWS::EC2::Instance",
+                    "AWS::IoT::Thing",
+                    "AWS::SSM::ManagedInstance",
+                  ]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmInstanceInformations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmInstanceInformationsCreateOrReplaceInput =
@@ -34996,11 +48378,11 @@ export const SsmInstanceInformationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmInstanceInformations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmInstanceInformationsDeleteInput =
@@ -35032,11 +48414,11 @@ export const SsmInstanceInformationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmInstanceInformations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmInstanceInformationsGetInput =
@@ -35086,11 +48468,11 @@ export const SsmInstanceInformationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmInstanceInformations",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmInstanceInformationsListByResourceGroupInput =
@@ -35152,11 +48534,11 @@ export const SsmInstanceInformationsListByResourceGroup =
 export const SsmInstanceInformationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ssmInstanceInformations",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmInstanceInformationsListBySubscriptionInput =
@@ -35219,11 +48601,12 @@ export const SsmInstanceInformationsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmInstanceInformations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmInstanceInformationsUpdateInput =
@@ -35273,11 +48656,52 @@ export const SsmParametersCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            allowedPattern: Schema.optional(Schema.String),
+            dataType: Schema.optional(
+              Schema.Literals(["aws:ec2:image", "text"]),
+            ),
+            description: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            policies: Schema.optional(Schema.String),
+            tags: Schema.optional(Schema.Unknown),
+            tier: Schema.optional(
+              Schema.Literals(["Advanced", "Intelligent-Tiering", "Standard"]),
+            ),
+            type: Schema.optional(Schema.Literals(["String", "StringList"])),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmParameters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmParametersCreateOrReplaceInput =
@@ -35327,11 +48751,11 @@ export const SsmParametersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmParameters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmParametersDeleteInput = typeof SsmParametersDeleteInput.Type;
@@ -35359,11 +48783,11 @@ export const SsmParametersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmParameters/{name}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type SsmParametersGetInput = typeof SsmParametersGetInput.Type;
@@ -35410,11 +48834,11 @@ export const SsmParametersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmParameters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmParametersListByResourceGroupInput =
@@ -35476,11 +48900,11 @@ export const SsmParametersListByResourceGroup =
 export const SsmParametersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ssmParameters",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmParametersListBySubscriptionInput =
@@ -35543,11 +48967,12 @@ export const SsmParametersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmParameters/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmParametersUpdateInput = typeof SsmParametersUpdateInput.Type;
@@ -35594,11 +49019,100 @@ export const SsmResourceComplianceSummaryItemsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            complianceType: Schema.optional(Schema.String),
+            compliantSummary: Schema.optional(
+              Schema.Struct({
+                compliantCount: Schema.optional(Schema.Number),
+                severitySummary: Schema.optional(
+                  Schema.Struct({
+                    criticalCount: Schema.optional(Schema.Number),
+                    highCount: Schema.optional(Schema.Number),
+                    informationalCount: Schema.optional(Schema.Number),
+                    lowCount: Schema.optional(Schema.Number),
+                    mediumCount: Schema.optional(Schema.Number),
+                    unspecifiedCount: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            executionSummary: Schema.optional(
+              Schema.Struct({
+                executionId: Schema.optional(Schema.String),
+                executionTime: Schema.optional(Schema.String),
+                executionType: Schema.optional(Schema.String),
+              }),
+            ),
+            nonCompliantSummary: Schema.optional(
+              Schema.Struct({
+                nonCompliantCount: Schema.optional(Schema.Number),
+                severitySummary: Schema.optional(
+                  Schema.Struct({
+                    criticalCount: Schema.optional(Schema.Number),
+                    highCount: Schema.optional(Schema.Number),
+                    informationalCount: Schema.optional(Schema.Number),
+                    lowCount: Schema.optional(Schema.Number),
+                    mediumCount: Schema.optional(Schema.Number),
+                    unspecifiedCount: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+            overallSeverity: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals([
+                    "CRITICAL",
+                    "HIGH",
+                    "INFORMATIONAL",
+                    "LOW",
+                    "MEDIUM",
+                    "UNSPECIFIED",
+                  ]),
+                ),
+              }),
+            ),
+            resourceId: Schema.optional(Schema.String),
+            resourceType: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Struct({
+                value: Schema.optional(
+                  Schema.Literals(["COMPLIANT", "NON_COMPLIANT"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmResourceComplianceSummaryItems/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmResourceComplianceSummaryItemsCreateOrReplaceInput =
@@ -35648,11 +49162,11 @@ export const SsmResourceComplianceSummaryItemsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmResourceComplianceSummaryItems/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmResourceComplianceSummaryItemsDeleteInput =
@@ -35684,11 +49198,11 @@ export const SsmResourceComplianceSummaryItemsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmResourceComplianceSummaryItems/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmResourceComplianceSummaryItemsGetInput =
@@ -35737,11 +49251,11 @@ export const SsmResourceComplianceSummaryItemsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmResourceComplianceSummaryItems",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmResourceComplianceSummaryItemsListByResourceGroupInput =
@@ -35803,11 +49317,11 @@ export const SsmResourceComplianceSummaryItemsListByResourceGroup =
 export const SsmResourceComplianceSummaryItemsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/ssmResourceComplianceSummaryItems",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmResourceComplianceSummaryItemsListBySubscriptionInput =
@@ -35870,11 +49384,12 @@ export const SsmResourceComplianceSummaryItemsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/ssmResourceComplianceSummaryItems/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SsmResourceComplianceSummaryItemsUpdateInput =
@@ -35924,11 +49439,100 @@ export const Wafv2LoggingConfigurationsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            logDestinationConfigs: Schema.optional(Schema.Array(Schema.String)),
+            loggingFilter: Schema.optional(
+              Schema.Struct({
+                defaultBehavior: Schema.optional(
+                  Schema.Literals(["DROP", "KEEP"]),
+                ),
+                filters: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      behavior: Schema.optional(
+                        Schema.Literals(["DROP", "KEEP"]),
+                      ),
+                      conditions: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            actionCondition: Schema.optional(
+                              Schema.Struct({
+                                action: Schema.optional(
+                                  Schema.Literals([
+                                    "ALLOW",
+                                    "BLOCK",
+                                    "CAPTCHA",
+                                    "CHALLENGE",
+                                    "COUNT",
+                                    "EXCLUDED_AS_COUNT",
+                                  ]),
+                                ),
+                              }),
+                            ),
+                            labelNameCondition: Schema.optional(
+                              Schema.Struct({
+                                labelName: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                      requirement: Schema.optional(
+                        Schema.Literals(["MEETS_ALL", "MEETS_ANY"]),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            managedByFirewallManager: Schema.optional(Schema.Boolean),
+            redactedFields: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  method: Schema.optional(Schema.Unknown),
+                  queryString: Schema.optional(Schema.Unknown),
+                  singleHeader: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  uriPath: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+            resourceArn: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafv2LoggingConfigurations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Wafv2LoggingConfigurationsCreateOrReplaceInput =
@@ -35978,11 +49582,11 @@ export const Wafv2LoggingConfigurationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafv2LoggingConfigurations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Wafv2LoggingConfigurationsDeleteInput =
@@ -36014,11 +49618,11 @@ export const Wafv2LoggingConfigurationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafv2LoggingConfigurations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Wafv2LoggingConfigurationsGetInput =
@@ -36067,11 +49671,11 @@ export const Wafv2LoggingConfigurationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafv2LoggingConfigurations",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Wafv2LoggingConfigurationsListByResourceGroupInput =
@@ -36133,11 +49737,11 @@ export const Wafv2LoggingConfigurationsListByResourceGroup =
 export const Wafv2LoggingConfigurationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/wafv2LoggingConfigurations",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Wafv2LoggingConfigurationsListBySubscriptionInput =
@@ -36200,11 +49804,12 @@ export const Wafv2LoggingConfigurationsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafv2LoggingConfigurations/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type Wafv2LoggingConfigurationsUpdateInput =
@@ -36254,11 +49859,41 @@ export const WafWebAclSummariesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsProperties: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            webACLId: Schema.optional(Schema.String),
+          }),
+        ),
+        publicCloudConnectorsResourceId: Schema.optional(Schema.String),
+        awsAccountId: Schema.optional(Schema.String),
+        arn: Schema.optional(Schema.String),
+        publicCloudResourceName: Schema.optional(Schema.String),
+        awsSourceSchema: Schema.optional(Schema.String),
+        awsRegion: Schema.optional(Schema.String),
+        awsTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafWebACLSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type WafWebAclSummariesCreateOrReplaceInput =
@@ -36308,11 +49943,11 @@ export const WafWebAclSummariesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafWebACLSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type WafWebAclSummariesDeleteInput =
@@ -36345,11 +49980,11 @@ export const WafWebAclSummariesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafWebACLSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type WafWebAclSummariesGetInput = typeof WafWebAclSummariesGetInput.Type;
@@ -36398,11 +50033,11 @@ export const WafWebAclSummariesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafWebACLSummaries",
+      apiVersion: "2024-12-01",
     }),
   );
 export type WafWebAclSummariesListByResourceGroupInput =
@@ -36464,11 +50099,11 @@ export const WafWebAclSummariesListByResourceGroup =
 export const WafWebAclSummariesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AwsConnector/wafWebACLSummaries",
+      apiVersion: "2024-12-01",
     }),
   );
 export type WafWebAclSummariesListBySubscriptionInput =
@@ -36531,11 +50166,12 @@ export const WafWebAclSummariesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AwsConnector/wafWebACLSummaries/{name}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type WafWebAclSummariesUpdateInput =

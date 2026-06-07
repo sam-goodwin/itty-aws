@@ -7,7 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const AccessCreateRoleBindingInput =
@@ -15,11 +15,14 @@ export const AccessCreateRoleBindingInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    principal: Schema.optional(Schema.String),
+    role_name: Schema.optional(Schema.String),
+    crn_pattern: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/createRoleBinding",
+      apiVersion: "2024-07-01",
     }),
   );
 export type AccessCreateRoleBindingInput =
@@ -68,11 +71,11 @@ export const AccessDeleteRoleBindingInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
     roleBindingId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/deleteRoleBinding/{roleBindingId}",
+      apiVersion: "2024-07-01",
     }),
   );
 export type AccessDeleteRoleBindingInput =
@@ -105,11 +108,20 @@ export const AccessInviteUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  organizationId: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  upn: Schema.optional(Schema.String),
+  invitedUserDetails: Schema.optional(
+    Schema.Struct({
+      invitedEmail: Schema.optional(Schema.String),
+      auth_type: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/createInvitation",
+    apiVersion: "2024-07-01",
   }),
 );
 export type AccessInviteUserInput = typeof AccessInviteUserInput.Type;
@@ -156,11 +168,12 @@ export const AccessListClustersInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    searchFilters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listClusters",
+      apiVersion: "2024-07-01",
     }),
   );
 export type AccessListClustersInput = typeof AccessListClustersInput.Type;
@@ -264,11 +277,12 @@ export const AccessListEnvironmentsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    searchFilters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listEnvironments",
+      apiVersion: "2024-07-01",
     }),
   );
 export type AccessListEnvironmentsInput =
@@ -330,11 +344,12 @@ export const AccessListInvitationsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    searchFilters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listInvitations",
+      apiVersion: "2024-07-01",
     }),
   );
 export type AccessListInvitationsInput = typeof AccessListInvitationsInput.Type;
@@ -399,11 +414,12 @@ export const AccessListRoleBindingNameListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    searchFilters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listRoleBindingNameList",
+      apiVersion: "2024-07-01",
     }),
   );
 export type AccessListRoleBindingNameListInput =
@@ -447,11 +463,12 @@ export const AccessListRoleBindingsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    searchFilters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listRoleBindings",
+      apiVersion: "2024-07-01",
     }),
   );
 export type AccessListRoleBindingsInput =
@@ -515,11 +532,12 @@ export const AccessListServiceAccountsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    searchFilters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listServiceAccounts",
+      apiVersion: "2024-07-01",
     }),
   );
 export type AccessListServiceAccountsInput =
@@ -581,11 +599,12 @@ export const AccessListUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  searchFilters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listUsers",
+    apiVersion: "2024-07-01",
   }),
 );
 export type AccessListUsersInput = typeof AccessListUsersInput.Type;
@@ -646,11 +665,74 @@ export const ClusterCreateOrUpdateInput =
     organizationName: Schema.String.pipe(T.PathParam()),
     environmentId: Schema.String.pipe(T.PathParam()),
     clusterId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    kind: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(
+          Schema.Struct({
+            self: Schema.optional(Schema.String),
+            resourceName: Schema.optional(Schema.String),
+            createdTimestamp: Schema.optional(Schema.String),
+            updatedTimestamp: Schema.optional(Schema.String),
+            deletedTimestamp: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            availability: Schema.optional(Schema.String),
+            cloud: Schema.optional(Schema.String),
+            zone: Schema.optional(Schema.String),
+            package: Schema.optional(
+              Schema.Literals(["ESSENTIALS", "ADVANCED"]),
+            ),
+            region: Schema.optional(Schema.String),
+            kafkaBootstrapEndpoint: Schema.optional(Schema.String),
+            httpEndpoint: Schema.optional(Schema.String),
+            apiEndpoint: Schema.optional(Schema.String),
+            config: Schema.optional(
+              Schema.Struct({
+                kind: Schema.optional(Schema.String),
+              }),
+            ),
+            environment: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                environment: Schema.optional(Schema.String),
+                related: Schema.optional(Schema.String),
+                resourceName: Schema.optional(Schema.String),
+              }),
+            ),
+            network: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                environment: Schema.optional(Schema.String),
+                related: Schema.optional(Schema.String),
+                resourceName: Schema.optional(Schema.String),
+              }),
+            ),
+            byok: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                related: Schema.optional(Schema.String),
+                resourceName: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            phase: Schema.optional(Schema.String),
+            cku: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
+      apiVersion: "2024-07-01",
     }),
   );
 export type ClusterCreateOrUpdateInput = typeof ClusterCreateOrUpdateInput.Type;
@@ -703,11 +785,11 @@ export const ClusterDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationName: Schema.String.pipe(T.PathParam()),
   environmentId: Schema.String.pipe(T.PathParam()),
   clusterId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
+    apiVersion: "2024-07-01",
   }),
 );
 export type ClusterDeleteInput = typeof ClusterDeleteInput.Type;
@@ -740,11 +822,48 @@ export const ConnectorCreateOrUpdateInput =
     environmentId: Schema.String.pipe(T.PathParam()),
     clusterId: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      connectorBasicInfo: Schema.optional(
+        Schema.Struct({
+          connectorType: Schema.optional(Schema.Literals(["SINK", "SOURCE"])),
+          connectorClass: Schema.optional(
+            Schema.Literals(["AZUREBLOBSOURCE", "AZUREBLOBSINK"]),
+          ),
+          connectorName: Schema.optional(Schema.String),
+          connectorId: Schema.optional(Schema.String),
+          connectorState: Schema.optional(
+            Schema.Literals(["PROVISIONING", "RUNNING", "PAUSED", "FAILED"]),
+          ),
+        }),
+      ),
+      connectorServiceTypeInfo: Schema.optional(
+        Schema.Struct({
+          connectorServiceType: Schema.Literals([
+            "AzureBlobStorageSinkConnector",
+            "AzureBlobStorageSourceConnector",
+            "AzureCosmosDBSinkConnector",
+            "AzureCosmosDBSourceConnector",
+            "AzureSynapseAnalyticsSinkConnector",
+          ]),
+        }),
+      ),
+      partnerConnectorInfo: Schema.optional(
+        Schema.Struct({
+          partnerConnectorType: Schema.Literals([
+            "KafkaAzureBlobStorageSource",
+            "KafkaAzureBlobStorageSink",
+            "KafkaAzureCosmosDBSource",
+            "KafkaAzureCosmosDBSink",
+            "KafkaAzureSynapseAnalyticsSink",
+          ]),
+        }),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
+      apiVersion: "2024-07-01",
     }),
   );
 export type ConnectorCreateOrUpdateInput =
@@ -800,11 +919,11 @@ export const ConnectorDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   environmentId: Schema.String.pipe(T.PathParam()),
   clusterId: Schema.String.pipe(T.PathParam()),
   connectorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
+    apiVersion: "2024-07-01",
   }),
 );
 export type ConnectorDeleteInput = typeof ConnectorDeleteInput.Type;
@@ -837,11 +956,11 @@ export const ConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   environmentId: Schema.String.pipe(T.PathParam()),
   clusterId: Schema.String.pipe(T.PathParam()),
   connectorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
+    apiVersion: "2024-07-01",
   }),
 );
 export type ConnectorGetInput = typeof ConnectorGetInput.Type;
@@ -891,13 +1010,13 @@ export const ConnectorListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationName: Schema.String.pipe(T.PathParam()),
   environmentId: Schema.String.pipe(T.PathParam()),
   clusterId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   pageSize: Schema.optional(Schema.Number),
   pageToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors",
+    apiVersion: "2024-07-01",
   }),
 );
 export type ConnectorListInput = typeof ConnectorListInput.Type;
@@ -953,11 +1072,32 @@ export const EnvironmentCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
     environmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    kind: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        streamGovernanceConfig: Schema.optional(
+          Schema.Struct({
+            package: Schema.optional(
+              Schema.Literals(["ESSENTIALS", "ADVANCED"]),
+            ),
+          }),
+        ),
+        metadata: Schema.optional(
+          Schema.Struct({
+            self: Schema.optional(Schema.String),
+            resourceName: Schema.optional(Schema.String),
+            createdTimestamp: Schema.optional(Schema.String),
+            updatedTimestamp: Schema.optional(Schema.String),
+            deletedTimestamp: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}",
+      apiVersion: "2024-07-01",
     }),
   );
 export type EnvironmentCreateOrUpdateInput =
@@ -1010,12 +1150,12 @@ export const EnvironmentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
     environmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}",
+    apiVersion: "2024-07-01",
   }),
 );
 export type EnvironmentDeleteInput = typeof EnvironmentDeleteInput.Type;
@@ -1042,11 +1182,40 @@ export const EnvironmentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const MarketplaceAgreementsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        publisher: Schema.optional(Schema.String),
+        product: Schema.optional(Schema.String),
+        plan: Schema.optional(Schema.String),
+        licenseTextLink: Schema.optional(Schema.String),
+        privacyPolicyLink: Schema.optional(Schema.String),
+        retrieveDatetime: Schema.optional(Schema.String),
+        signature: Schema.optional(Schema.String),
+        accepted: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/agreements/default",
+      apiVersion: "2024-07-01",
     }),
   );
 export type MarketplaceAgreementsCreateInput =
@@ -1105,11 +1274,11 @@ export const MarketplaceAgreementsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const MarketplaceAgreementsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/agreements",
+      apiVersion: "2024-07-01",
     }),
   );
 export type MarketplaceAgreementsListInput =
@@ -1185,11 +1354,67 @@ export const OrganizationCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      createdTime: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Deleted",
+          "NotSpecified",
+        ]),
+      ),
+      organizationId: Schema.optional(Schema.String),
+      ssoUrl: Schema.optional(Schema.String),
+      offerDetail: Schema.Struct({
+        publisherId: Schema.String,
+        id: Schema.String,
+        planId: Schema.String,
+        planName: Schema.String,
+        termUnit: Schema.String,
+        termId: Schema.optional(Schema.String),
+        privateOfferId: Schema.optional(Schema.String),
+        privateOfferIds: Schema.optional(Schema.Array(Schema.String)),
+        status: Schema.optional(
+          Schema.Literals([
+            "Started",
+            "PendingFulfillmentStart",
+            "InProgress",
+            "Subscribed",
+            "Suspended",
+            "Reinstated",
+            "Succeeded",
+            "Failed",
+            "Unsubscribed",
+            "Updating",
+          ]),
+        ),
+      }),
+      userDetail: Schema.Struct({
+        firstName: Schema.optional(Schema.String),
+        lastName: Schema.optional(Schema.String),
+        emailAddress: Schema.String,
+        userPrincipalName: Schema.optional(Schema.String),
+        aadEmail: Schema.optional(Schema.String),
+      }),
+      linkOrganization: Schema.optional(
+        Schema.Struct({
+          token: Schema.String,
+        }),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationCreateInput = typeof OrganizationCreateInput.Type;
@@ -1238,11 +1463,13 @@ export const OrganizationCreateAPIKeyInput =
     organizationName: Schema.String.pipe(T.PathParam()),
     environmentId: Schema.String.pipe(T.PathParam()),
     clusterId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/createAPIKey",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationCreateAPIKeyInput =
@@ -1268,7 +1495,7 @@ export const OrganizationCreateAPIKeyOutput =
           Schema.Struct({
             description: Schema.optional(Schema.String),
             name: Schema.optional(Schema.String),
-            secret: Schema.optional(SensitiveString),
+            secret: Schema.optional(SensitiveOutputString),
             resource: Schema.optional(
               Schema.Struct({
                 id: Schema.optional(Schema.String),
@@ -1317,11 +1544,11 @@ export const OrganizationDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationDeleteInput = typeof OrganizationDeleteInput.Type;
@@ -1350,11 +1577,11 @@ export const OrganizationDeleteClusterAPIKeyInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
     apiKeyId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/apiKeys/{apiKeyId}",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationDeleteClusterAPIKeyInput =
@@ -1386,11 +1613,11 @@ export const OrganizationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
+    apiVersion: "2024-07-01",
   }),
 );
 export type OrganizationGetInput = typeof OrganizationGetInput.Type;
@@ -1437,11 +1664,11 @@ export const OrganizationGetClusterAPIKeyInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
     apiKeyId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/apiKeys/{apiKeyId}",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationGetClusterAPIKeyInput =
@@ -1467,7 +1694,7 @@ export const OrganizationGetClusterAPIKeyOutput =
           Schema.Struct({
             description: Schema.optional(Schema.String),
             name: Schema.optional(Schema.String),
-            secret: Schema.optional(SensitiveString),
+            secret: Schema.optional(SensitiveOutputString),
             resource: Schema.optional(
               Schema.Struct({
                 id: Schema.optional(Schema.String),
@@ -1516,11 +1743,11 @@ export const OrganizationGetClusterByIdInput =
     organizationName: Schema.String.pipe(T.PathParam()),
     environmentId: Schema.String.pipe(T.PathParam()),
     clusterId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationGetClusterByIdInput =
@@ -1574,11 +1801,11 @@ export const OrganizationGetEnvironmentByIdInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
     environmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationGetEnvironmentByIdInput =
@@ -1631,11 +1858,11 @@ export const OrganizationGetSchemaRegistryClusterByIdInput =
     organizationName: Schema.String.pipe(T.PathParam()),
     environmentId: Schema.String.pipe(T.PathParam()),
     clusterId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/schemaRegistryClusters/{clusterId}",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationGetSchemaRegistryClusterByIdInput =
@@ -1711,11 +1938,11 @@ export const OrganizationListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationListByResourceGroupInput =
@@ -1777,11 +2004,11 @@ export const OrganizationListByResourceGroup =
 export const OrganizationListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/organizations",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationListBySubscriptionInput =
@@ -1845,13 +2072,13 @@ export const OrganizationListClustersInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
     environmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationListClustersInput =
@@ -1920,13 +2147,13 @@ export const OrganizationListEnvironmentsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationListEnvironmentsInput =
@@ -1993,11 +2220,12 @@ export const OrganizationListRegionsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    searchFilters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/listRegions",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationListRegionsInput =
@@ -2061,13 +2289,13 @@ export const OrganizationListSchemaRegistryClustersInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
     environmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/schemaRegistryClusters",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationListSchemaRegistryClustersInput =
@@ -2146,12 +2374,11 @@ export const OrganizationListSchemaRegistryClusters =
   }));
 // Input Schema
 export const OrganizationOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Confluent/operations",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationOperationsListInput =
@@ -2197,11 +2424,12 @@ export const OrganizationUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
+      apiVersion: "2024-07-01",
     }),
   );
 export type OrganizationUpdateInput = typeof OrganizationUpdateInput.Type;
@@ -2250,11 +2478,48 @@ export const TopicsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   environmentId: Schema.String.pipe(T.PathParam()),
   clusterId: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      topicId: Schema.optional(Schema.String),
+      metadata: Schema.optional(
+        Schema.Struct({
+          self: Schema.optional(Schema.String),
+          resourceName: Schema.optional(Schema.String),
+        }),
+      ),
+      partitions: Schema.optional(
+        Schema.Struct({
+          related: Schema.optional(Schema.String),
+        }),
+      ),
+      configs: Schema.optional(
+        Schema.Struct({
+          related: Schema.optional(Schema.String),
+        }),
+      ),
+      inputConfigs: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      partitionsReassignments: Schema.optional(
+        Schema.Struct({
+          related: Schema.optional(Schema.String),
+        }),
+      ),
+      partitionsCount: Schema.optional(Schema.String),
+      replicationFactor: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics/{topicName}",
+    apiVersion: "2024-07-01",
   }),
 );
 export type TopicsCreateInput = typeof TopicsCreateInput.Type;
@@ -2305,11 +2570,11 @@ export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   environmentId: Schema.String.pipe(T.PathParam()),
   clusterId: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics/{topicName}",
+    apiVersion: "2024-07-01",
   }),
 );
 export type TopicsDeleteInput = typeof TopicsDeleteInput.Type;
@@ -2342,11 +2607,11 @@ export const TopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   environmentId: Schema.String.pipe(T.PathParam()),
   clusterId: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics/{topicName}",
+    apiVersion: "2024-07-01",
   }),
 );
 export type TopicsGetInput = typeof TopicsGetInput.Type;
@@ -2396,13 +2661,13 @@ export const TopicsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationName: Schema.String.pipe(T.PathParam()),
   environmentId: Schema.String.pipe(T.PathParam()),
   clusterId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   pageSize: Schema.optional(Schema.Number),
   pageToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics",
+    apiVersion: "2024-07-01",
   }),
 );
 export type TopicsListInput = typeof TopicsListInput.Type;
@@ -2457,11 +2722,67 @@ export const ValidationsValidateOrganizationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      createdTime: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Deleted",
+          "NotSpecified",
+        ]),
+      ),
+      organizationId: Schema.optional(Schema.String),
+      ssoUrl: Schema.optional(Schema.String),
+      offerDetail: Schema.Struct({
+        publisherId: Schema.String,
+        id: Schema.String,
+        planId: Schema.String,
+        planName: Schema.String,
+        termUnit: Schema.String,
+        termId: Schema.optional(Schema.String),
+        privateOfferId: Schema.optional(Schema.String),
+        privateOfferIds: Schema.optional(Schema.Array(Schema.String)),
+        status: Schema.optional(
+          Schema.Literals([
+            "Started",
+            "PendingFulfillmentStart",
+            "InProgress",
+            "Subscribed",
+            "Suspended",
+            "Reinstated",
+            "Succeeded",
+            "Failed",
+            "Unsubscribed",
+            "Updating",
+          ]),
+        ),
+      }),
+      userDetail: Schema.Struct({
+        firstName: Schema.optional(Schema.String),
+        lastName: Schema.optional(Schema.String),
+        emailAddress: Schema.String,
+        userPrincipalName: Schema.optional(Schema.String),
+        aadEmail: Schema.optional(Schema.String),
+      }),
+      linkOrganization: Schema.optional(
+        Schema.Struct({
+          token: Schema.String,
+        }),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/validations/{organizationName}/orgvalidate",
+      apiVersion: "2024-07-01",
     }),
   );
 export type ValidationsValidateOrganizationInput =
@@ -2511,11 +2832,67 @@ export const ValidationsValidateOrganizationV2Input =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      createdTime: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Deleted",
+          "NotSpecified",
+        ]),
+      ),
+      organizationId: Schema.optional(Schema.String),
+      ssoUrl: Schema.optional(Schema.String),
+      offerDetail: Schema.Struct({
+        publisherId: Schema.String,
+        id: Schema.String,
+        planId: Schema.String,
+        planName: Schema.String,
+        termUnit: Schema.String,
+        termId: Schema.optional(Schema.String),
+        privateOfferId: Schema.optional(Schema.String),
+        privateOfferIds: Schema.optional(Schema.Array(Schema.String)),
+        status: Schema.optional(
+          Schema.Literals([
+            "Started",
+            "PendingFulfillmentStart",
+            "InProgress",
+            "Subscribed",
+            "Suspended",
+            "Reinstated",
+            "Succeeded",
+            "Failed",
+            "Unsubscribed",
+            "Updating",
+          ]),
+        ),
+      }),
+      userDetail: Schema.Struct({
+        firstName: Schema.optional(Schema.String),
+        lastName: Schema.optional(Schema.String),
+        emailAddress: Schema.String,
+        userPrincipalName: Schema.optional(Schema.String),
+        aadEmail: Schema.optional(Schema.String),
+      }),
+      linkOrganization: Schema.optional(
+        Schema.Struct({
+          token: Schema.String,
+        }),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/validations/{organizationName}/orgvalidateV2",
+      apiVersion: "2024-07-01",
     }),
   );
 export type ValidationsValidateOrganizationV2Input =

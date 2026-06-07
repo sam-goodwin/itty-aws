@@ -12,10 +12,13 @@ import * as T from "../traits.ts";
 export const AccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.DataLakeStore/accounts"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/checkNameAvailability",
+      apiVersion: "2016-11-01",
     }),
   );
 export type AccountsCheckNameAvailabilityInput =
@@ -43,12 +46,90 @@ export const AccountsCheckNameAvailability =
     outputSchema: AccountsCheckNameAvailabilityOutput,
   }));
 // Input Schema
-export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.Literals(["SystemAssigned"]),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      defaultGroup: Schema.optional(Schema.String),
+      encryptionConfig: Schema.optional(
+        Schema.Struct({
+          type: Schema.Literals(["UserManaged", "ServiceManaged"]),
+          keyVaultMetaInfo: Schema.optional(
+            Schema.Struct({
+              keyVaultResourceId: Schema.String,
+              encryptionKeyName: Schema.String,
+              encryptionKeyVersion: Schema.String,
+            }),
+          ),
+        }),
+      ),
+      encryptionState: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      firewallRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            properties: Schema.Struct({
+              startIpAddress: Schema.String,
+              endIpAddress: Schema.String,
+            }),
+          }),
+        ),
+      ),
+      virtualNetworkRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            properties: Schema.Struct({
+              subnetId: Schema.String,
+            }),
+          }),
+        ),
+      ),
+      firewallState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      firewallAllowAzureIps: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      trustedIdProviders: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            properties: Schema.Struct({
+              idProvider: Schema.String,
+            }),
+          }),
+        ),
+      ),
+      trustedIdProviderState: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      newTier: Schema.optional(
+        Schema.Literals([
+          "Consumption",
+          "Commitment_1TB",
+          "Commitment_10TB",
+          "Commitment_100TB",
+          "Commitment_500TB",
+          "Commitment_1PB",
+          "Commitment_5PB",
+        ]),
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}",
+    apiVersion: "2016-11-01",
   }),
 );
 export type AccountsCreateInput = typeof AccountsCreateInput.Type;
@@ -78,6 +159,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}",
+    apiVersion: "2016-11-01",
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -100,6 +182,7 @@ export const AccountsEnableKeyVaultInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/enableKeyVault",
+      apiVersion: "2016-11-01",
     }),
   );
 export type AccountsEnableKeyVaultInput =
@@ -128,6 +211,7 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}",
+    apiVersion: "2016-11-01",
   }),
 );
 export type AccountsGetInput = typeof AccountsGetInput.Type;
@@ -162,6 +246,7 @@ export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/accounts",
+    apiVersion: "2016-11-01",
   }),
 );
 export type AccountsListInput = typeof AccountsListInput.Type;
@@ -211,6 +296,7 @@ export const AccountsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts",
+      apiVersion: "2016-11-01",
     }),
   );
 export type AccountsListByResourceGroupInput =
@@ -253,12 +339,82 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      defaultGroup: Schema.optional(Schema.String),
+      encryptionConfig: Schema.optional(
+        Schema.Struct({
+          keyVaultMetaInfo: Schema.optional(
+            Schema.Struct({
+              encryptionKeyVersion: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      firewallRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            properties: Schema.optional(
+              Schema.Struct({
+                startIpAddress: Schema.optional(Schema.String),
+                endIpAddress: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      virtualNetworkRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            properties: Schema.optional(
+              Schema.Struct({
+                subnetId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      firewallState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      firewallAllowAzureIps: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      trustedIdProviders: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            properties: Schema.optional(
+              Schema.Struct({
+                idProvider: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      trustedIdProviderState: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      newTier: Schema.optional(
+        Schema.Literals([
+          "Consumption",
+          "Commitment_1TB",
+          "Commitment_10TB",
+          "Commitment_100TB",
+          "Commitment_500TB",
+          "Commitment_1PB",
+          "Commitment_5PB",
+        ]),
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}",
+    apiVersion: "2016-11-01",
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -285,10 +441,15 @@ export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewallRuleName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      startIpAddress: Schema.String,
+      endIpAddress: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type FirewallRulesCreateOrUpdateInput =
@@ -324,6 +485,7 @@ export const FirewallRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
@@ -350,6 +512,7 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}",
+    apiVersion: "2016-11-01",
   }),
 );
 export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
@@ -380,6 +543,7 @@ export const FirewallRulesListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules",
+      apiVersion: "2016-11-01",
     }),
   );
 export type FirewallRulesListByAccountInput =
@@ -416,10 +580,17 @@ export const FirewallRulesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const FirewallRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewallRuleName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        startIpAddress: Schema.optional(Schema.String),
+        endIpAddress: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type FirewallRulesUpdateInput = typeof FirewallRulesUpdateInput.Type;
@@ -451,6 +622,7 @@ export const LocationsGetCapabilityInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/capability",
+      apiVersion: "2016-11-01",
     }),
   );
 export type LocationsGetCapabilityInput =
@@ -497,6 +669,7 @@ export const LocationsGetUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/usages",
+    apiVersion: "2016-11-01",
   }),
 );
 export type LocationsGetUsageInput = typeof LocationsGetUsageInput.Type;
@@ -549,6 +722,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataLakeStore/operations",
+    apiVersion: "2016-11-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -589,10 +763,14 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const TrustedIdProvidersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trustedIdProviderName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      idProvider: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type TrustedIdProvidersCreateOrUpdateInput =
@@ -627,6 +805,7 @@ export const TrustedIdProvidersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type TrustedIdProvidersDeleteInput =
@@ -658,6 +837,7 @@ export const TrustedIdProvidersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type TrustedIdProvidersGetInput = typeof TrustedIdProvidersGetInput.Type;
@@ -690,6 +870,7 @@ export const TrustedIdProvidersListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders",
+      apiVersion: "2016-11-01",
     }),
   );
 export type TrustedIdProvidersListByAccountInput =
@@ -725,10 +906,16 @@ export const TrustedIdProvidersListByAccount =
 export const TrustedIdProvidersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trustedIdProviderName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        idProvider: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type TrustedIdProvidersUpdateInput =
@@ -760,10 +947,14 @@ export const TrustedIdProvidersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const VirtualNetworkRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      subnetId: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type VirtualNetworkRulesCreateOrUpdateInput =
@@ -798,6 +989,7 @@ export const VirtualNetworkRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type VirtualNetworkRulesDeleteInput =
@@ -829,6 +1021,7 @@ export const VirtualNetworkRulesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type VirtualNetworkRulesGetInput =
@@ -862,6 +1055,7 @@ export const VirtualNetworkRulesListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules",
+      apiVersion: "2016-11-01",
     }),
   );
 export type VirtualNetworkRulesListByAccountInput =
@@ -897,10 +1091,16 @@ export const VirtualNetworkRulesListByAccount =
 export const VirtualNetworkRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        subnetId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type VirtualNetworkRulesUpdateInput =

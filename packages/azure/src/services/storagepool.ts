@@ -14,6 +14,7 @@ export const DiskPoolsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type DiskPoolsCreateOrUpdateInput =
@@ -45,6 +46,7 @@ export const DiskPoolsDeallocateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/deallocate",
+      apiVersion: "2021-08-01",
     }),
   );
 export type DiskPoolsDeallocateInput = typeof DiskPoolsDeallocateInput.Type;
@@ -69,6 +71,7 @@ export const DiskPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type DiskPoolsDeleteInput = typeof DiskPoolsDeleteInput.Type;
@@ -92,6 +95,7 @@ export const DiskPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type DiskPoolsGetInput = typeof DiskPoolsGetInput.Type;
@@ -118,6 +122,7 @@ export const DiskPoolsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools",
+      apiVersion: "2021-08-01",
     }),
   );
 export type DiskPoolsListByResourceGroupInput =
@@ -153,6 +158,7 @@ export const DiskPoolsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/diskPools",
+      apiVersion: "2021-08-01",
     }),
   );
 export type DiskPoolsListBySubscriptionInput =
@@ -189,6 +195,7 @@ export const DiskPoolsListOutboundNetworkDependenciesEndpointsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/outboundNetworkDependenciesEndpoints",
+      apiVersion: "2021-08-01",
     }),
   );
 export type DiskPoolsListOutboundNetworkDependenciesEndpointsInput =
@@ -240,6 +247,7 @@ export const DiskPoolsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/start",
+    apiVersion: "2021-08-01",
   }),
 );
 export type DiskPoolsStartInput = typeof DiskPoolsStartInput.Type;
@@ -263,6 +271,7 @@ export const DiskPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type DiskPoolsUpdateInput = typeof DiskPoolsUpdateInput.Type;
@@ -290,6 +299,7 @@ export const DiskPoolsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/upgrade",
+    apiVersion: "2021-08-01",
   }),
 );
 export type DiskPoolsUpgradeInput = typeof DiskPoolsUpgradeInput.Type;
@@ -313,6 +323,7 @@ export const DiskPoolZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/locations/{location}/diskPoolZones",
+    apiVersion: "2021-08-01",
   }),
 );
 export type DiskPoolZonesListInput = typeof DiskPoolZonesListInput.Type;
@@ -352,6 +363,7 @@ export const IscsiTargetsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type IscsiTargetsCreateOrUpdateInput =
@@ -383,6 +395,7 @@ export const IscsiTargetsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type IscsiTargetsDeleteInput = typeof IscsiTargetsDeleteInput.Type;
@@ -406,6 +419,7 @@ export const IscsiTargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
+    apiVersion: "2021-08-01",
   }),
 );
 export type IscsiTargetsGetInput = typeof IscsiTargetsGetInput.Type;
@@ -432,6 +446,7 @@ export const IscsiTargetsListByDiskPoolInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets",
+      apiVersion: "2021-08-01",
     }),
   );
 export type IscsiTargetsListByDiskPoolInput =
@@ -468,6 +483,7 @@ export const IscsiTargetsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
+      apiVersion: "2021-08-01",
     }),
   );
 export type IscsiTargetsUpdateInput = typeof IscsiTargetsUpdateInput.Type;
@@ -496,6 +512,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StoragePool/operations",
+    apiVersion: "2021-08-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -535,6 +552,7 @@ export const ResourceSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/locations/{location}/skus",
+    apiVersion: "2021-08-01",
   }),
 );
 export type ResourceSkusListInput = typeof ResourceSkusListInput.Type;

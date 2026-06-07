@@ -7,17 +7,25 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const OffersGenerateAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    publisherName: Schema.optional(Schema.String),
+    edgeMarketPlaceRegion: Schema.String,
+    egeMarketPlaceResourceId: Schema.optional(Schema.String),
+    hypervGeneration: Schema.optional(Schema.String),
+    marketPlaceSku: Schema.optional(Schema.String),
+    marketPlaceSkuVersion: Schema.optional(Schema.String),
+    deviceSku: Schema.optional(Schema.String),
+    deviceVersion: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}/generateAccessToken",
+      apiVersion: "2024-10-01",
     }),
   );
 export type OffersGenerateAccessTokenInput =
@@ -28,7 +36,7 @@ export const OffersGenerateAccessTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskId: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-    accessToken: SensitiveString,
+    accessToken: SensitiveOutputString,
   });
 export type OffersGenerateAccessTokenOutput =
   typeof OffersGenerateAccessTokenOutput.Type;
@@ -49,11 +57,11 @@ export const OffersGenerateAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const OffersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   offerId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}",
+    apiVersion: "2024-10-01",
   }),
 );
 export type OffersGetInput = typeof OffersGetInput.Type;
@@ -95,11 +103,12 @@ export const OffersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const OffersGetAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    requestId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}/getAccessToken",
+      apiVersion: "2024-10-01",
     }),
   );
 export type OffersGetAccessTokenInput = typeof OffersGetAccessTokenInput.Type;
@@ -109,7 +118,7 @@ export const OffersGetAccessTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskId: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-    accessToken: SensitiveString,
+    accessToken: SensitiveOutputString,
   });
 export type OffersGetAccessTokenOutput = typeof OffersGetAccessTokenOutput.Type;
 
@@ -128,7 +137,6 @@ export const OffersGetAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const OffersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
   $top: Schema.optional(Schema.Number),
   skip: Schema.optional(Schema.Number),
   maxpagesize: Schema.optional(Schema.Number),
@@ -138,6 +146,7 @@ export const OffersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers",
+    apiVersion: "2024-10-01",
   }),
 );
 export type OffersListInput = typeof OffersListInput.Type;
@@ -188,11 +197,11 @@ export const OffersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const OffersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeMarketplace/offers",
+      apiVersion: "2024-10-01",
     }),
   );
 export type OffersListBySubscriptionInput =
@@ -251,12 +260,13 @@ export const OffersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.EdgeMarketplace/operations",
+    apiVersion: "2024-10-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -300,11 +310,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PublishersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   publisherName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/publishers/{publisherName}",
+    apiVersion: "2024-10-01",
   }),
 );
 export type PublishersGetInput = typeof PublishersGetInput.Type;
@@ -344,7 +354,6 @@ export const PublishersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PublishersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
   $top: Schema.optional(Schema.Number),
   skip: Schema.optional(Schema.Number),
   maxpagesize: Schema.optional(Schema.Number),
@@ -354,6 +363,7 @@ export const PublishersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/publishers",
+    apiVersion: "2024-10-01",
   }),
 );
 export type PublishersListInput = typeof PublishersListInput.Type;
@@ -404,11 +414,11 @@ export const PublishersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PublishersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeMarketplace/publishers",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PublishersListBySubscriptionInput =

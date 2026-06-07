@@ -14,6 +14,7 @@ export const MarketplaceRegistrationDefinitionsGetInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions/{marketplaceIdentifier}",
+      apiVersion: "2022-10-01",
     }),
   );
 export type MarketplaceRegistrationDefinitionsGetInput =
@@ -93,6 +94,7 @@ export const MarketplaceRegistrationDefinitionsListInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions",
+      apiVersion: "2022-10-01",
     }),
   );
 export type MarketplaceRegistrationDefinitionsListInput =
@@ -186,6 +188,7 @@ export const MarketplaceRegistrationDefinitionsWithoutScopeGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions/{marketplaceIdentifier}",
+      apiVersion: "2022-10-01",
     }),
   );
 export type MarketplaceRegistrationDefinitionsWithoutScopeGetInput =
@@ -265,6 +268,7 @@ export const MarketplaceRegistrationDefinitionsWithoutScopeListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions",
+      apiVersion: "2022-10-01",
     }),
   );
 export type MarketplaceRegistrationDefinitionsWithoutScopeListInput =
@@ -359,6 +363,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ManagedServices/operations",
+    apiVersion: "2022-10-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -397,6 +402,7 @@ export const OperationsWithScopeListInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/operations",
+      apiVersion: "2022-10-01",
     }),
   );
 export type OperationsWithScopeListInput =
@@ -436,10 +442,157 @@ export const OperationsWithScopeList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const RegistrationAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        registrationDefinitionId: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Ready",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        registrationDefinition: Schema.optional(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Struct({
+                description: Schema.optional(Schema.String),
+                authorizations: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      principalId: Schema.String,
+                      principalIdDisplayName: Schema.optional(Schema.String),
+                      roleDefinitionId: Schema.String,
+                      delegatedRoleDefinitionIds: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                    }),
+                  ),
+                ),
+                eligibleAuthorizations: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      principalId: Schema.String,
+                      principalIdDisplayName: Schema.optional(Schema.String),
+                      roleDefinitionId: Schema.String,
+                      justInTimeAccessPolicy: Schema.optional(
+                        Schema.Struct({
+                          multiFactorAuthProvider: Schema.Literals([
+                            "Azure",
+                            "None",
+                          ]),
+                          maximumActivationDuration: Schema.optional(
+                            Schema.String,
+                          ),
+                          managedByTenantApprovers: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                principalId: Schema.String,
+                                principalIdDisplayName: Schema.optional(
+                                  Schema.String,
+                                ),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                registrationDefinitionName: Schema.optional(Schema.String),
+                provisioningState: Schema.optional(
+                  Schema.Literals([
+                    "NotSpecified",
+                    "Accepted",
+                    "Running",
+                    "Ready",
+                    "Creating",
+                    "Created",
+                    "Deleting",
+                    "Deleted",
+                    "Canceled",
+                    "Failed",
+                    "Succeeded",
+                    "Updating",
+                  ]),
+                ),
+                manageeTenantId: Schema.optional(Schema.String),
+                manageeTenantName: Schema.optional(Schema.String),
+                managedByTenantId: Schema.optional(Schema.String),
+                managedByTenantName: Schema.optional(Schema.String),
+              }),
+            ),
+            plan: Schema.optional(
+              Schema.Struct({
+                name: Schema.String,
+                publisher: Schema.String,
+                product: Schema.String,
+                version: Schema.String,
+              }),
+            ),
+            id: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
+      apiVersion: "2022-10-01",
     }),
   );
 export type RegistrationAssignmentsCreateOrUpdateInput =
@@ -612,6 +765,7 @@ export const RegistrationAssignmentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
+      apiVersion: "2022-10-01",
     }),
   );
 export type RegistrationAssignmentsDeleteInput =
@@ -638,6 +792,7 @@ export const RegistrationAssignmentsGetInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
+      apiVersion: "2022-10-01",
     }),
   );
 export type RegistrationAssignmentsGetInput =
@@ -811,6 +966,7 @@ export const RegistrationAssignmentsListInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments",
+      apiVersion: "2022-10-01",
     }),
   );
 export type RegistrationAssignmentsListInput =
@@ -1003,10 +1159,96 @@ export const RegistrationAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const RegistrationDefinitionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        authorizations: Schema.Array(
+          Schema.Struct({
+            principalId: Schema.String,
+            principalIdDisplayName: Schema.optional(Schema.String),
+            roleDefinitionId: Schema.String,
+            delegatedRoleDefinitionIds: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+          }),
+        ),
+        eligibleAuthorizations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              principalId: Schema.String,
+              principalIdDisplayName: Schema.optional(Schema.String),
+              roleDefinitionId: Schema.String,
+              justInTimeAccessPolicy: Schema.optional(
+                Schema.Struct({
+                  multiFactorAuthProvider: Schema.Literals(["Azure", "None"]),
+                  maximumActivationDuration: Schema.optional(Schema.String),
+                  managedByTenantApprovers: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        principalId: Schema.String,
+                        principalIdDisplayName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+        registrationDefinitionName: Schema.optional(Schema.String),
+        managedByTenantId: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Ready",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        manageeTenantId: Schema.optional(Schema.String),
+        manageeTenantName: Schema.optional(Schema.String),
+        managedByTenantName: Schema.optional(Schema.String),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        version: Schema.String,
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
+      apiVersion: "2022-10-01",
     }),
   );
 export type RegistrationDefinitionsCreateOrUpdateInput =
@@ -1118,6 +1360,7 @@ export const RegistrationDefinitionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
+      apiVersion: "2022-10-01",
     }),
   );
 export type RegistrationDefinitionsDeleteInput =
@@ -1144,6 +1387,7 @@ export const RegistrationDefinitionsGetInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
+      apiVersion: "2022-10-01",
     }),
   );
 export type RegistrationDefinitionsGetInput =
@@ -1256,6 +1500,7 @@ export const RegistrationDefinitionsListInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions",
+      apiVersion: "2022-10-01",
     }),
   );
 export type RegistrationDefinitionsListInput =

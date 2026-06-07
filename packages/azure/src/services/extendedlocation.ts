@@ -13,11 +13,50 @@ export const CustomLocationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        authentication: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+        clusterExtensionIds: Schema.optional(Schema.Array(Schema.String)),
+        displayName: Schema.optional(Schema.String),
+        hostResourceId: Schema.optional(Schema.String),
+        hostType: Schema.optional(Schema.Literals(["Kubernetes"])),
+        namespace: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}",
+      apiVersion: "2021-08-15",
     }),
   );
 export type CustomLocationsCreateOrUpdateInput =
@@ -53,11 +92,11 @@ export const CustomLocationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}",
+      apiVersion: "2021-08-15",
     }),
   );
 export type CustomLocationsDeleteInput = typeof CustomLocationsDeleteInput.Type;
@@ -89,11 +128,11 @@ export const CustomLocationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}",
+      apiVersion: "2021-08-15",
     }),
   );
 export type CustomLocationsGetInput = typeof CustomLocationsGetInput.Type;
@@ -126,11 +165,11 @@ export const CustomLocationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations",
+      apiVersion: "2021-08-15",
     }),
   );
 export type CustomLocationsListByResourceGroupInput =
@@ -172,11 +211,11 @@ export const CustomLocationsListByResourceGroup =
 export const CustomLocationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ExtendedLocation/customLocations",
+      apiVersion: "2021-08-15",
     }),
   );
 export type CustomLocationsListBySubscriptionInput =
@@ -218,11 +257,11 @@ export const CustomLocationsListEnabledResourceTypesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}/enabledResourceTypes",
+      apiVersion: "2021-08-15",
     }),
   );
 export type CustomLocationsListEnabledResourceTypesInput =
@@ -262,12 +301,11 @@ export const CustomLocationsListEnabledResourceTypes =
   }));
 // Input Schema
 export const CustomLocationsListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ExtendedLocation/operations",
+      apiVersion: "2021-08-15",
     }),
   );
 export type CustomLocationsListOperationsInput =
@@ -312,11 +350,35 @@ export const CustomLocationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        authentication: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+        clusterExtensionIds: Schema.optional(Schema.Array(Schema.String)),
+        displayName: Schema.optional(Schema.String),
+        hostResourceId: Schema.optional(Schema.String),
+        hostType: Schema.optional(Schema.Literals(["Kubernetes"])),
+        namespace: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}",
+      apiVersion: "2021-08-15",
     }),
   );
 export type CustomLocationsUpdateInput = typeof CustomLocationsUpdateInput.Type;

@@ -7,13 +7,53 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const BotConnectionCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        clientId: Schema.optional(Schema.String),
+        settingId: Schema.optional(Schema.String),
+        clientSecret: Schema.optional(SensitiveString),
+        scopes: Schema.optional(Schema.String),
+        serviceProviderId: Schema.optional(Schema.String),
+        serviceProviderDisplayName: Schema.optional(Schema.String),
+        parameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["F0", "S1"]),
+        tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
+      }),
+    ),
+    kind: Schema.optional(
+      Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
+    ),
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
+      apiVersion: "2022-09-15",
     }),
   );
 export type BotConnectionCreateInput = typeof BotConnectionCreateInput.Type;
@@ -54,6 +94,7 @@ export const BotConnectionDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
+      apiVersion: "2022-09-15",
     }),
   );
 export type BotConnectionDeleteInput = typeof BotConnectionDeleteInput.Type;
@@ -78,6 +119,7 @@ export const BotConnectionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
+    apiVersion: "2022-09-15",
   }),
 );
 export type BotConnectionGetInput = typeof BotConnectionGetInput.Type;
@@ -119,6 +161,7 @@ export const BotConnectionListByBotServiceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections",
+      apiVersion: "2022-09-15",
     }),
   );
 export type BotConnectionListByBotServiceInput =
@@ -169,6 +212,7 @@ export const BotConnectionListServiceProvidersInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/listAuthServiceProviders",
+      apiVersion: "2022-09-15",
     }),
   );
 export type BotConnectionListServiceProvidersInput =
@@ -233,6 +277,7 @@ export const BotConnectionListWithSecretsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}/listWithSecrets",
+      apiVersion: "2022-09-15",
     }),
   );
 export type BotConnectionListWithSecretsInput =
@@ -272,10 +317,49 @@ export const BotConnectionListWithSecrets =
   }));
 // Input Schema
 export const BotConnectionUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        clientId: Schema.optional(Schema.String),
+        settingId: Schema.optional(Schema.String),
+        clientSecret: Schema.optional(SensitiveString),
+        scopes: Schema.optional(Schema.String),
+        serviceProviderId: Schema.optional(Schema.String),
+        serviceProviderDisplayName: Schema.optional(Schema.String),
+        parameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["F0", "S1"]),
+        tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
+      }),
+    ),
+    kind: Schema.optional(
+      Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
+    ),
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
+      apiVersion: "2022-09-15",
     }),
   );
 export type BotConnectionUpdateInput = typeof BotConnectionUpdateInput.Type;
@@ -311,12 +395,81 @@ export const BotConnectionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BotConnectionUpdateOutput,
 }));
 // Input Schema
-export const BotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      displayName: Schema.String,
+      description: Schema.optional(Schema.String),
+      iconUrl: Schema.optional(Schema.String),
+      endpoint: Schema.NullOr(Schema.String),
+      endpointVersion: Schema.optional(Schema.String),
+      allSettings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      manifestUrl: Schema.optional(Schema.String),
+      msaAppType: Schema.optional(
+        Schema.Literals(["UserAssignedMSI", "SingleTenant", "MultiTenant"]),
+      ),
+      msaAppId: Schema.String,
+      msaAppTenantId: Schema.optional(Schema.String),
+      msaAppMSIResourceId: Schema.optional(Schema.String),
+      configuredChannels: Schema.optional(Schema.Array(Schema.String)),
+      enabledChannels: Schema.optional(Schema.Array(Schema.String)),
+      developerAppInsightKey: Schema.optional(Schema.String),
+      developerAppInsightsApiKey: Schema.optional(Schema.String),
+      developerAppInsightsApplicationId: Schema.optional(Schema.String),
+      luisAppIds: Schema.optional(Schema.Array(Schema.String)),
+      luisKey: Schema.optional(Schema.String),
+      isCmekEnabled: Schema.optional(Schema.Boolean),
+      cmekKeyVaultUrl: Schema.optional(Schema.String),
+      cmekEncryptionStatus: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      isStreamingSupported: Schema.optional(Schema.Boolean),
+      isDeveloperAppInsightsApiKeySet: Schema.optional(Schema.Boolean),
+      migrationToken: Schema.optional(Schema.String),
+      disableLocalAuth: Schema.optional(Schema.Boolean),
+      schemaTransformationVersion: Schema.optional(
+        Schema.NullOr(Schema.String),
+      ),
+      storageResourceId: Schema.optional(Schema.String),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      openWithHint: Schema.optional(Schema.String),
+      appPasswordHint: Schema.optional(SensitiveString),
+      provisioningState: Schema.optional(Schema.String),
+      publishingCredentials: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["F0", "S1"]),
+      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
+    }),
+  ),
+  kind: Schema.optional(
+    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
+  ),
+  etag: Schema.optional(Schema.String),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
+    apiVersion: "2022-09-15",
   }),
 );
 export type BotsCreateInput = typeof BotsCreateInput.Type;
@@ -357,6 +510,7 @@ export const BotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
+    apiVersion: "2022-09-15",
   }),
 );
 export type BotsDeleteInput = typeof BotsDeleteInput.Type;
@@ -378,6 +532,7 @@ export const BotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
+    apiVersion: "2022-09-15",
   }),
 );
 export type BotsGetInput = typeof BotsGetInput.Type;
@@ -413,10 +568,14 @@ export const BotsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BotsGetCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.BotService/checkNameAvailability",
+      apiVersion: "2022-09-15",
     }),
   );
 export type BotsGetCheckNameAvailabilityInput =
@@ -446,6 +605,7 @@ export const BotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/botServices",
+    apiVersion: "2022-09-15",
   }),
 );
 export type BotsListInput = typeof BotsListInput.Type;
@@ -492,6 +652,7 @@ export const BotsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices",
+      apiVersion: "2022-09-15",
     }),
   );
 export type BotsListByResourceGroupInput =
@@ -538,12 +699,81 @@ export const BotsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const BotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      displayName: Schema.String,
+      description: Schema.optional(Schema.String),
+      iconUrl: Schema.optional(Schema.String),
+      endpoint: Schema.NullOr(Schema.String),
+      endpointVersion: Schema.optional(Schema.String),
+      allSettings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      manifestUrl: Schema.optional(Schema.String),
+      msaAppType: Schema.optional(
+        Schema.Literals(["UserAssignedMSI", "SingleTenant", "MultiTenant"]),
+      ),
+      msaAppId: Schema.String,
+      msaAppTenantId: Schema.optional(Schema.String),
+      msaAppMSIResourceId: Schema.optional(Schema.String),
+      configuredChannels: Schema.optional(Schema.Array(Schema.String)),
+      enabledChannels: Schema.optional(Schema.Array(Schema.String)),
+      developerAppInsightKey: Schema.optional(Schema.String),
+      developerAppInsightsApiKey: Schema.optional(Schema.String),
+      developerAppInsightsApplicationId: Schema.optional(Schema.String),
+      luisAppIds: Schema.optional(Schema.Array(Schema.String)),
+      luisKey: Schema.optional(Schema.String),
+      isCmekEnabled: Schema.optional(Schema.Boolean),
+      cmekKeyVaultUrl: Schema.optional(Schema.String),
+      cmekEncryptionStatus: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      isStreamingSupported: Schema.optional(Schema.Boolean),
+      isDeveloperAppInsightsApiKeySet: Schema.optional(Schema.Boolean),
+      migrationToken: Schema.optional(Schema.String),
+      disableLocalAuth: Schema.optional(Schema.Boolean),
+      schemaTransformationVersion: Schema.optional(
+        Schema.NullOr(Schema.String),
+      ),
+      storageResourceId: Schema.optional(Schema.String),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      openWithHint: Schema.optional(Schema.String),
+      appPasswordHint: Schema.optional(SensitiveString),
+      provisioningState: Schema.optional(Schema.String),
+      publishingCredentials: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["F0", "S1"]),
+      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
+    }),
+  ),
+  kind: Schema.optional(
+    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
+  ),
+  etag: Schema.optional(Schema.String),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
+    apiVersion: "2022-09-15",
   }),
 );
 export type BotsUpdateInput = typeof BotsUpdateInput.Type;
@@ -578,12 +808,36 @@ export const BotsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BotsUpdateOutput,
 }));
 // Input Schema
-export const ChannelsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ChannelsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      channelName: Schema.String,
+      etag: Schema.optional(Schema.NullOr(Schema.String)),
+      provisioningState: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["F0", "S1"]),
+      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
+    }),
+  ),
+  kind: Schema.optional(
+    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
+  ),
+  etag: Schema.optional(Schema.String),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}",
+    apiVersion: "2022-09-15",
   }),
 );
 export type ChannelsCreateInput = typeof ChannelsCreateInput.Type;
@@ -624,6 +878,7 @@ export const ChannelsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}",
+    apiVersion: "2022-09-15",
   }),
 );
 export type ChannelsDeleteInput = typeof ChannelsDeleteInput.Type;
@@ -649,6 +904,7 @@ export const ChannelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}",
+    apiVersion: "2022-09-15",
   }),
 );
 export type ChannelsGetInput = typeof ChannelsGetInput.Type;
@@ -690,6 +946,7 @@ export const ChannelsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels",
+      apiVersion: "2022-09-15",
     }),
   );
 export type ChannelsListByResourceGroupInput =
@@ -741,6 +998,7 @@ export const ChannelsListWithKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}/listChannelWithKeys",
+      apiVersion: "2022-09-15",
     }),
   );
 export type ChannelsListWithKeysInput = typeof ChannelsListWithKeysInput.Type;
@@ -778,12 +1036,36 @@ export const ChannelsListWithKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ChannelsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ChannelsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      channelName: Schema.String,
+      etag: Schema.optional(Schema.NullOr(Schema.String)),
+      provisioningState: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["F0", "S1"]),
+      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
+    }),
+  ),
+  kind: Schema.optional(
+    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
+  ),
+  etag: Schema.optional(Schema.String),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}",
+    apiVersion: "2022-09-15",
   }),
 );
 export type ChannelsUpdateInput = typeof ChannelsUpdateInput.Type;
@@ -819,10 +1101,14 @@ export const ChannelsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DirectLineRegenerateKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    siteName: Schema.String,
+    key: Schema.Literals(["key1", "key2"]),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}/regeneratekeys",
+      apiVersion: "2022-09-15",
     }),
   );
 export type DirectLineRegenerateKeysInput =
@@ -867,6 +1153,7 @@ export const EmailCreateSignInUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/createEmailSignInUrl",
+      apiVersion: "2022-09-15",
     }),
   );
 export type EmailCreateSignInUrlInput = typeof EmailCreateSignInUrlInput.Type;
@@ -901,6 +1188,7 @@ export const HostSettingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/hostSettings",
+    apiVersion: "2022-09-15",
   }),
 );
 export type HostSettingsGetInput = typeof HostSettingsGetInput.Type;
@@ -932,6 +1220,7 @@ export const OperationResultsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/operationresults/{operationResultId}",
+      apiVersion: "2022-09-15",
     }),
   );
 export type OperationResultsGetInput = typeof OperationResultsGetInput.Type;
@@ -966,7 +1255,11 @@ export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.BotService/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.BotService/operations",
+    apiVersion: "2022-09-15",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -1025,10 +1318,14 @@ export const PrivateEndpointConnectionsCreateInput =
         groupIds: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2022-09-15",
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -1064,6 +1361,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2022-09-15",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1094,6 +1392,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2022-09-15",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -1126,6 +1425,7 @@ export const PrivateEndpointConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections",
+      apiVersion: "2022-09-15",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -1162,6 +1462,7 @@ export const PrivateLinkResourcesListByBotResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateLinkResources",
+      apiVersion: "2022-09-15",
     }),
   );
 export type PrivateLinkResourcesListByBotResourceInput =
@@ -1194,10 +1495,14 @@ export const PrivateLinkResourcesListByBotResource =
   }));
 // Input Schema
 export const QnAMakerEndpointKeysGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostname: Schema.optional(Schema.String),
+    authkey: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/listQnAMakerEndpointKeys",
+      apiVersion: "2022-09-15",
     }),
   );
 export type QnAMakerEndpointKeysGetInput =

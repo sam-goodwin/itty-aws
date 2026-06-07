@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const ActivityGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -15,11 +16,11 @@ export const ActivityGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   automationAccountName: Schema.String.pipe(T.PathParam()),
   moduleName: Schema.String.pipe(T.PathParam()),
   activityName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities/{activityName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type ActivityGetInput = typeof ActivityGetInput.Type;
@@ -100,11 +101,11 @@ export const ActivityListByModuleInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     moduleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ActivityListByModuleInput = typeof ActivityListByModuleInput.Type;
@@ -193,11 +194,11 @@ export const AgentRegistrationInformationGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/agentRegistrationInformation",
+      apiVersion: "2024-10-23",
     }),
   );
 export type AgentRegistrationInformationGetInput =
@@ -239,11 +240,12 @@ export const AgentRegistrationInformationRegenerateKeyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keyName: Schema.Literals(["primary", "secondary"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/agentRegistrationInformation/regenerateKey",
+      apiVersion: "2024-10-23",
     }),
   );
 export type AgentRegistrationInformationRegenerateKeyInput =
@@ -285,11 +287,69 @@ export const AutomationAccountCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.Literals(["Free", "Basic"]),
+            family: Schema.optional(Schema.String),
+            capacity: Schema.optional(Schema.Number),
+          }),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            keyVaultProperties: Schema.optional(
+              Schema.Struct({
+                keyvaultUri: Schema.optional(Schema.String),
+                keyName: Schema.optional(Schema.String),
+                keyVersion: Schema.optional(Schema.String),
+              }),
+            ),
+            keySource: Schema.optional(
+              Schema.Literals(["Microsoft.Automation", "Microsoft.Keyvault"]),
+            ),
+            identity: Schema.optional(
+              Schema.Struct({
+                userAssignedIdentity: Schema.optional(Schema.Unknown),
+              }),
+            ),
+          }),
+        ),
+        publicNetworkAccess: Schema.optional(Schema.Boolean),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type AutomationAccountCreateOrUpdateInput =
@@ -339,11 +399,11 @@ export const AutomationAccountDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type AutomationAccountDeleteInput =
@@ -376,11 +436,11 @@ export const AutomationAccountGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type AutomationAccountGetInput = typeof AutomationAccountGetInput.Type;
@@ -427,11 +487,11 @@ export const AutomationAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AutomationAccountListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/automationAccounts",
+      apiVersion: "2024-10-23",
     }),
   );
 export type AutomationAccountListInput = typeof AutomationAccountListInput.Type;
@@ -495,11 +555,11 @@ export const AutomationAccountListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts",
+      apiVersion: "2024-10-23",
     }),
   );
 export type AutomationAccountListByResourceGroupInput =
@@ -563,11 +623,11 @@ export const AutomationAccountListDeletedRunbooksInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listDeletedRunbooks",
+      apiVersion: "2024-10-23",
     }),
   );
 export type AutomationAccountListDeletedRunbooksInput =
@@ -618,11 +678,69 @@ export const AutomationAccountUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.Literals(["Free", "Basic"]),
+            family: Schema.optional(Schema.String),
+            capacity: Schema.optional(Schema.Number),
+          }),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            keyVaultProperties: Schema.optional(
+              Schema.Struct({
+                keyvaultUri: Schema.optional(Schema.String),
+                keyName: Schema.optional(Schema.String),
+                keyVersion: Schema.optional(Schema.String),
+              }),
+            ),
+            keySource: Schema.optional(
+              Schema.Literals(["Microsoft.Automation", "Microsoft.Keyvault"]),
+            ),
+            identity: Schema.optional(
+              Schema.Struct({
+                userAssignedIdentity: Schema.optional(Schema.Unknown),
+              }),
+            ),
+          }),
+        ),
+        publicNetworkAccess: Schema.optional(Schema.Boolean),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type AutomationAccountUpdateInput =
@@ -674,11 +792,18 @@ export const CertificateCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    properties: Schema.Struct({
+      base64Value: Schema.String,
+      description: Schema.optional(Schema.String),
+      thumbprint: Schema.optional(Schema.String),
+      isExportable: Schema.optional(Schema.Boolean),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type CertificateCreateOrUpdateInput =
@@ -731,12 +856,12 @@ export const CertificateDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type CertificateDeleteInput = typeof CertificateDeleteInput.Type;
@@ -765,11 +890,11 @@ export const CertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   certificateName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type CertificateGetInput = typeof CertificateGetInput.Type;
@@ -816,11 +941,11 @@ export const CertificateListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates",
+      apiVersion: "2024-10-23",
     }),
   );
 export type CertificateListByAutomationAccountInput =
@@ -886,12 +1011,18 @@ export const CertificateUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+      }),
+    ),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type CertificateUpdateInput = typeof CertificateUpdateInput.Type;
@@ -940,11 +1071,21 @@ export const ConnectionCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.String),
+      connectionType: Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+      fieldDefinitionValues: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ConnectionCreateOrUpdateInput =
@@ -996,11 +1137,11 @@ export const ConnectionDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type ConnectionDeleteInput = typeof ConnectionDeleteInput.Type;
@@ -1029,11 +1170,11 @@ export const ConnectionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type ConnectionGetInput = typeof ConnectionGetInput.Type;
@@ -1080,11 +1221,11 @@ export const ConnectionListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ConnectionListByAutomationAccountInput =
@@ -1150,11 +1291,23 @@ export const ConnectionTypeCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     connectionTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    properties: Schema.Struct({
+      isGlobal: Schema.optional(Schema.Boolean),
+      fieldDefinitions: Schema.Record(
+        Schema.String,
+        Schema.Struct({
+          isEncrypted: Schema.optional(Schema.Boolean),
+          isOptional: Schema.optional(Schema.Boolean),
+          type: Schema.String,
+        }),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ConnectionTypeCreateOrUpdateInput =
@@ -1206,11 +1359,11 @@ export const ConnectionTypeDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     connectionTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ConnectionTypeDeleteInput = typeof ConnectionTypeDeleteInput.Type;
@@ -1243,12 +1396,12 @@ export const ConnectionTypeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     connectionTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type ConnectionTypeGetInput = typeof ConnectionTypeGetInput.Type;
@@ -1296,11 +1449,11 @@ export const ConnectionTypeListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ConnectionTypeListByAutomationAccountInput =
@@ -1365,11 +1518,20 @@ export const ConnectionUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+      fieldDefinitionValues: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type ConnectionUpdateInput = typeof ConnectionUpdateInput.Type;
@@ -1418,11 +1580,21 @@ export const ConvertGraphRunbookContentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    rawContent: Schema.optional(
+      Schema.Struct({
+        schemaVersion: Schema.optional(Schema.String),
+        runbookDefinition: Schema.optional(Schema.String),
+        runbookType: Schema.optional(
+          Schema.Literals(["GraphPowerShell", "GraphPowerShellWorkflow"]),
+        ),
+      }),
+    ),
+    graphRunbookJson: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/convertGraphRunbookContent",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ConvertGraphRunbookContentInput =
@@ -1467,11 +1639,17 @@ export const CredentialCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     credentialName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    properties: Schema.Struct({
+      userName: Schema.String,
+      password: SensitiveString,
+      description: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type CredentialCreateOrUpdateInput =
@@ -1523,11 +1701,11 @@ export const CredentialDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   credentialName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type CredentialDeleteInput = typeof CredentialDeleteInput.Type;
@@ -1556,11 +1734,11 @@ export const CredentialGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   credentialName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type CredentialGetInput = typeof CredentialGetInput.Type;
@@ -1607,11 +1785,11 @@ export const CredentialListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials",
+      apiVersion: "2024-10-23",
     }),
   );
 export type CredentialListByAutomationAccountInput =
@@ -1676,11 +1854,19 @@ export const CredentialUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   credentialName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      userName: Schema.optional(Schema.String),
+      password: Schema.optional(SensitiveString),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type CredentialUpdateInput = typeof CredentialUpdateInput.Type;
@@ -1727,11 +1913,11 @@ export const CredentialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DeletedAutomationAccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/deletedAutomationAccounts",
+      apiVersion: "2024-10-23",
     }),
   );
 export type DeletedAutomationAccountsListBySubscriptionInput =
@@ -1781,11 +1967,41 @@ export const DscConfigurationCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      logVerbose: Schema.optional(Schema.Boolean),
+      logProgress: Schema.optional(Schema.Boolean),
+      source: Schema.Struct({
+        hash: Schema.optional(
+          Schema.Struct({
+            algorithm: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+        type: Schema.optional(Schema.Literals(["embeddedContent", "uri"])),
+        value: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+      parameters: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            isMandatory: Schema.optional(Schema.Boolean),
+            position: Schema.optional(Schema.Number),
+            defaultValue: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      description: Schema.optional(Schema.String),
+    }),
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type DscConfigurationCreateOrUpdateInput =
@@ -1837,11 +2053,11 @@ export const DscConfigurationDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type DscConfigurationDeleteInput =
@@ -1876,11 +2092,11 @@ export const DscConfigurationGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type DscConfigurationGetInput = typeof DscConfigurationGetInput.Type;
@@ -1929,11 +2145,11 @@ export const DscConfigurationGetContentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}/content",
+      apiVersion: "2024-10-23",
     }),
   );
 export type DscConfigurationGetContentInput =
@@ -1967,7 +2183,6 @@ export const DscConfigurationListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
@@ -1976,6 +2191,7 @@ export const DscConfigurationListByAutomationAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations",
+      apiVersion: "2024-10-23",
     }),
   );
 export type DscConfigurationListByAutomationAccountInput =
@@ -2048,11 +2264,42 @@ export const DscConfigurationUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        logVerbose: Schema.optional(Schema.Boolean),
+        logProgress: Schema.optional(Schema.Boolean),
+        source: Schema.Struct({
+          hash: Schema.optional(
+            Schema.Struct({
+              algorithm: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+          type: Schema.optional(Schema.Literals(["embeddedContent", "uri"])),
+          value: Schema.optional(Schema.String),
+          version: Schema.optional(Schema.String),
+        }),
+        parameters: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              isMandatory: Schema.optional(Schema.Boolean),
+              position: Schema.optional(Schema.Number),
+              defaultValue: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        description: Schema.optional(Schema.String),
+      }),
+    ),
+    name: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type DscConfigurationUpdateInput =
@@ -2105,11 +2352,32 @@ export const DscNodeConfigurationCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     nodeConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.Struct({
+          hash: Schema.optional(
+            Schema.Struct({
+              algorithm: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+          type: Schema.optional(Schema.Literals(["embeddedContent", "uri"])),
+          value: Schema.optional(Schema.String),
+          version: Schema.optional(Schema.String),
+        }),
+        configuration: Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+        incrementNodeConfigurationBuild: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    name: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type DscNodeConfigurationCreateOrUpdateInput =
@@ -2143,11 +2411,11 @@ export const DscNodeConfigurationDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     nodeConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type DscNodeConfigurationDeleteInput =
@@ -2182,11 +2450,11 @@ export const DscNodeConfigurationGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     nodeConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type DscNodeConfigurationGetInput =
@@ -2238,7 +2506,6 @@ export const DscNodeConfigurationListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
@@ -2247,6 +2514,7 @@ export const DscNodeConfigurationListByAutomationAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations",
+      apiVersion: "2024-10-23",
     }),
   );
 export type DscNodeConfigurationListByAutomationAccountInput =
@@ -2318,11 +2586,11 @@ export const DscNodeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   nodeId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type DscNodeDeleteInput = typeof DscNodeDeleteInput.Type;
@@ -2351,11 +2619,11 @@ export const DscNodeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   nodeId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type DscNodeGetInput = typeof DscNodeGetInput.Type;
@@ -2402,7 +2670,6 @@ export const DscNodeListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
@@ -2411,6 +2678,7 @@ export const DscNodeListByAutomationAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes",
+      apiVersion: "2024-10-23",
     }),
   );
 export type DscNodeListByAutomationAccountInput =
@@ -2482,11 +2750,20 @@ export const DscNodeUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   nodeId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      nodeConfiguration: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type DscNodeUpdateInput = typeof DscNodeUpdateInput.Type;
@@ -2534,11 +2811,11 @@ export const FieldsListByTypeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   automationAccountName: Schema.String.pipe(T.PathParam()),
   moduleName: Schema.String.pipe(T.PathParam()),
   typeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/types/{typeName}/fields",
+    apiVersion: "2024-10-23",
   }),
 );
 export type FieldsListByTypeInput = typeof FieldsListByTypeInput.Type;
@@ -2581,11 +2858,21 @@ export const HybridRunbookWorkerGroupCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        credential: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    name: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type HybridRunbookWorkerGroupCreateInput =
@@ -2637,11 +2924,11 @@ export const HybridRunbookWorkerGroupDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type HybridRunbookWorkerGroupDeleteInput =
@@ -2675,11 +2962,11 @@ export const HybridRunbookWorkerGroupGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type HybridRunbookWorkerGroupGetInput =
@@ -2731,12 +3018,12 @@ export const HybridRunbookWorkerGroupListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups",
+      apiVersion: "2024-10-23",
     }),
   );
 export type HybridRunbookWorkerGroupListByAutomationAccountInput =
@@ -2803,11 +3090,21 @@ export const HybridRunbookWorkerGroupUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        credential: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    name: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type HybridRunbookWorkerGroupUpdateInput =
@@ -2860,11 +3157,17 @@ export const HybridRunbookWorkersCreateInput =
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        vmResourceId: Schema.optional(Schema.String),
+      }),
+    ),
+    name: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type HybridRunbookWorkersCreateInput =
@@ -2919,11 +3222,11 @@ export const HybridRunbookWorkersDeleteInput =
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type HybridRunbookWorkersDeleteInput =
@@ -2960,11 +3263,11 @@ export const HybridRunbookWorkersGetInput =
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type HybridRunbookWorkersGetInput =
@@ -3018,12 +3321,12 @@ export const HybridRunbookWorkersListByHybridRunbookWorkerGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers",
+      apiVersion: "2024-10-23",
     }),
   );
 export type HybridRunbookWorkersListByHybridRunbookWorkerGroupInput =
@@ -3092,11 +3395,11 @@ export const HybridRunbookWorkersMoveInput =
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}/move",
+      apiVersion: "2024-10-23",
     }),
   );
 export type HybridRunbookWorkersMoveInput =
@@ -3133,11 +3436,17 @@ export const HybridRunbookWorkersPatchInput =
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        vmResourceId: Schema.optional(Schema.String),
+      }),
+    ),
+    name: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type HybridRunbookWorkersPatchInput =
@@ -3190,11 +3499,20 @@ export const JobCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.Struct({
+    runbook: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    runOn: Schema.optional(Schema.String),
+  }),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type JobCreateInput = typeof JobCreateInput.Type;
@@ -3242,11 +3560,11 @@ export const JobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type JobGetInput = typeof JobGetInput.Type;
@@ -3295,11 +3613,11 @@ export const JobGetRunbookContentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/runbookContent",
+      apiVersion: "2024-10-23",
     }),
   );
 export type JobGetRunbookContentInput = typeof JobGetRunbookContentInput.Type;
@@ -3332,12 +3650,12 @@ export const JobListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs",
+      apiVersion: "2024-10-23",
     }),
   );
 export type JobListByAutomationAccountInput =
@@ -3405,11 +3723,11 @@ export const JobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/resume",
+    apiVersion: "2024-10-23",
   }),
 );
 export type JobResumeInput = typeof JobResumeInput.Type;
@@ -3440,12 +3758,22 @@ export const JobScheduleCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     jobScheduleId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      schedule: Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+      runbook: Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+      runOn: Schema.optional(Schema.String),
+      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
   },
 ).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type JobScheduleCreateInput = typeof JobScheduleCreateInput.Type;
@@ -3494,12 +3822,12 @@ export const JobScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     jobScheduleId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type JobScheduleDeleteInput = typeof JobScheduleDeleteInput.Type;
@@ -3528,11 +3856,11 @@ export const JobScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   jobScheduleId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type JobScheduleGetInput = typeof JobScheduleGetInput.Type;
@@ -3579,12 +3907,12 @@ export const JobScheduleListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules",
+      apiVersion: "2024-10-23",
     }),
   );
 export type JobScheduleListByAutomationAccountInput =
@@ -3650,11 +3978,11 @@ export const JobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/stop",
+    apiVersion: "2024-10-23",
   }),
 );
 export type JobStopInput = typeof JobStopInput.Type;
@@ -3685,11 +4013,11 @@ export const JobStreamGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   automationAccountName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
   jobStreamId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/streams/{jobStreamId}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type JobStreamGetInput = typeof JobStreamGetInput.Type;
@@ -3743,12 +4071,12 @@ export const JobStreamListByJobInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/streams",
+      apiVersion: "2024-10-23",
     }),
   );
 export type JobStreamListByJobInput = typeof JobStreamListByJobInput.Type;
@@ -3809,11 +4137,11 @@ export const JobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/suspend",
+    apiVersion: "2024-10-23",
   }),
 );
 export type JobSuspendInput = typeof JobSuspendInput.Type;
@@ -3843,11 +4171,11 @@ export const KeysListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listKeys",
+      apiVersion: "2024-10-23",
     }),
   );
 export type KeysListByAutomationAccountInput =
@@ -3890,11 +4218,11 @@ export const LinkedWorkspaceGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/linkedWorkspace",
+      apiVersion: "2024-10-23",
     }),
   );
 export type LinkedWorkspaceGetInput = typeof LinkedWorkspaceGetInput.Type;
@@ -3926,11 +4254,26 @@ export const ModuleCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     moduleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      contentLink: Schema.Struct({
+        uri: Schema.optional(Schema.String),
+        contentHash: Schema.optional(
+          Schema.Struct({
+            algorithm: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+        version: Schema.optional(Schema.String),
+      }),
+    }),
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ModuleCreateOrUpdateInput = typeof ModuleCreateOrUpdateInput.Type;
@@ -3980,11 +4323,11 @@ export const ModuleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   moduleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type ModuleDeleteInput = typeof ModuleDeleteInput.Type;
@@ -4013,11 +4356,11 @@ export const ModuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   moduleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type ModuleGetInput = typeof ModuleGetInput.Type;
@@ -4064,11 +4407,11 @@ export const ModuleListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ModuleListByAutomationAccountInput =
@@ -4133,11 +4476,30 @@ export const ModuleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   moduleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      contentLink: Schema.optional(
+        Schema.Struct({
+          uri: Schema.optional(Schema.String),
+          contentHash: Schema.optional(
+            Schema.Struct({
+              algorithm: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+          version: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type ModuleUpdateInput = typeof ModuleUpdateInput.Type;
@@ -4187,11 +4549,11 @@ export const NodeCountInformationGetInput =
     countType: Schema.Literals(["status", "nodeconfiguration"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodecounts/{countType}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type NodeCountInformationGetInput =
@@ -4240,11 +4602,11 @@ export const NodeReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   automationAccountName: Schema.String.pipe(T.PathParam()),
   nodeId: Schema.String.pipe(T.PathParam()),
   reportId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports/{reportId}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type NodeReportsGetInput = typeof NodeReportsGetInput.Type;
@@ -4338,11 +4700,11 @@ export const NodeReportsGetContentInput =
     automationAccountName: Schema.String.pipe(T.PathParam()),
     nodeId: Schema.String.pipe(T.PathParam()),
     reportId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports/{reportId}/content",
+      apiVersion: "2024-10-23",
     }),
   );
 export type NodeReportsGetContentInput = typeof NodeReportsGetContentInput.Type;
@@ -4377,12 +4739,12 @@ export const NodeReportsListByNodeInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     nodeId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports",
+      apiVersion: "2024-10-23",
     }),
   );
 export type NodeReportsListByNodeInput = typeof NodeReportsListByNodeInput.Type;
@@ -4485,11 +4847,11 @@ export const ObjectDataTypesListFieldsByModuleAndTypeInput =
     automationAccountName: Schema.String.pipe(T.PathParam()),
     moduleName: Schema.String.pipe(T.PathParam()),
     typeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/objectDataTypes/{typeName}/fields",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ObjectDataTypesListFieldsByModuleAndTypeInput =
@@ -4534,11 +4896,11 @@ export const ObjectDataTypesListFieldsByTypeInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     typeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/objectDataTypes/{typeName}/fields",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ObjectDataTypesListFieldsByTypeInput =
@@ -4576,10 +4938,14 @@ export const ObjectDataTypesListFieldsByType =
     outputSchema: ObjectDataTypesListFieldsByTypeOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Automation/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Automation/operations",
+    apiVersion: "2024-10-23",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -4657,11 +5023,54 @@ export const PackageCreateOrUpdateInput =
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      contentLink: Schema.Struct({
+        uri: Schema.optional(Schema.String),
+        contentHash: Schema.optional(
+          Schema.Struct({
+            algorithm: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+        version: Schema.optional(Schema.String),
+      }),
+    }),
+    allOf: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type PackageCreateOrUpdateInput = typeof PackageCreateOrUpdateInput.Type;
@@ -4714,11 +5123,11 @@ export const PackageDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
   packageName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type PackageDeleteInput = typeof PackageDeleteInput.Type;
@@ -4749,11 +5158,11 @@ export const PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
   packageName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type PackageGetInput = typeof PackageGetInput.Type;
@@ -4802,11 +5211,11 @@ export const PackageListByRuntimeEnvironmentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages",
+      apiVersion: "2024-10-23",
     }),
   );
 export type PackageListByRuntimeEnvironmentInput =
@@ -4873,11 +5282,48 @@ export const PackageUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
   packageName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      contentLink: Schema.optional(
+        Schema.Struct({
+          uri: Schema.optional(Schema.String),
+          contentHash: Schema.optional(
+            Schema.Struct({
+              algorithm: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+          version: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  allOf: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type PackageUpdateInput = typeof PackageUpdateInput.Type;
@@ -4926,11 +5372,28 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -4982,11 +5445,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -5020,11 +5483,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -5075,11 +5538,11 @@ export const PrivateEndpointConnectionsListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections",
+      apiVersion: "2024-10-23",
     }),
   );
 export type PrivateEndpointConnectionsListByAutomationAccountInput =
@@ -5146,11 +5609,11 @@ export const PrivateLinkResourcesAutomationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateLinkResources",
+      apiVersion: "2024-10-23",
     }),
   );
 export type PrivateLinkResourcesAutomationInput =
@@ -5218,11 +5681,24 @@ export const Python2PackageCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      contentLink: Schema.Struct({
+        uri: Schema.optional(Schema.String),
+        contentHash: Schema.optional(
+          Schema.Struct({
+            algorithm: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+        version: Schema.optional(Schema.String),
+      }),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type Python2PackageCreateOrUpdateInput =
@@ -5274,11 +5750,11 @@ export const Python2PackageDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type Python2PackageDeleteInput = typeof Python2PackageDeleteInput.Type;
@@ -5311,12 +5787,12 @@ export const Python2PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type Python2PackageGetInput = typeof Python2PackageGetInput.Type;
@@ -5364,11 +5840,11 @@ export const Python2PackageListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages",
+      apiVersion: "2024-10-23",
     }),
   );
 export type Python2PackageListByAutomationAccountInput =
@@ -5434,11 +5910,12 @@ export const Python2PackageUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type Python2PackageUpdateInput = typeof Python2PackageUpdateInput.Type;
@@ -5489,11 +5966,24 @@ export const Python3PackageCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      contentLink: Schema.Struct({
+        uri: Schema.optional(Schema.String),
+        contentHash: Schema.optional(
+          Schema.Struct({
+            algorithm: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+        version: Schema.optional(Schema.String),
+      }),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type Python3PackageCreateOrUpdateInput =
@@ -5545,11 +6035,11 @@ export const Python3PackageDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type Python3PackageDeleteInput = typeof Python3PackageDeleteInput.Type;
@@ -5582,12 +6072,12 @@ export const Python3PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type Python3PackageGetInput = typeof Python3PackageGetInput.Type;
@@ -5635,11 +6125,11 @@ export const Python3PackageListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages",
+      apiVersion: "2024-10-23",
     }),
   );
 export type Python3PackageListByAutomationAccountInput =
@@ -5705,11 +6195,12 @@ export const Python3PackageUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type Python3PackageUpdateInput = typeof Python3PackageUpdateInput.Type;
@@ -5760,11 +6251,76 @@ export const RunbookCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runbookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      logVerbose: Schema.optional(Schema.Boolean),
+      logProgress: Schema.optional(Schema.Boolean),
+      runtimeEnvironment: Schema.optional(Schema.String),
+      runbookType: Schema.Literals([
+        "Script",
+        "Graph",
+        "PowerShellWorkflow",
+        "PowerShell",
+        "GraphPowerShellWorkflow",
+        "GraphPowerShell",
+        "Python2",
+        "Python3",
+        "Python",
+        "PowerShell72",
+      ]),
+      draft: Schema.optional(
+        Schema.Struct({
+          inEdit: Schema.optional(Schema.Boolean),
+          draftContentLink: Schema.optional(
+            Schema.Struct({
+              uri: Schema.optional(Schema.String),
+              contentHash: Schema.optional(
+                Schema.Struct({
+                  algorithm: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+              version: Schema.optional(Schema.String),
+            }),
+          ),
+          creationTime: Schema.optional(Schema.String),
+          lastModifiedTime: Schema.optional(Schema.String),
+          parameters: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                isMandatory: Schema.optional(Schema.Boolean),
+                position: Schema.optional(Schema.Number),
+                defaultValue: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          outputTypes: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      publishContentLink: Schema.optional(
+        Schema.Struct({
+          uri: Schema.optional(Schema.String),
+          contentHash: Schema.optional(
+            Schema.Struct({
+              algorithm: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+          version: Schema.optional(Schema.String),
+        }),
+      ),
+      description: Schema.optional(Schema.String),
+      logActivityTrace: Schema.optional(Schema.Number),
+    }),
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type RunbookCreateOrUpdateInput = typeof RunbookCreateOrUpdateInput.Type;
@@ -5815,11 +6371,11 @@ export const RunbookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runbookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type RunbookDeleteInput = typeof RunbookDeleteInput.Type;
@@ -5848,11 +6404,11 @@ export const RunbookDraftGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runbookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft",
+    apiVersion: "2024-10-23",
   }),
 );
 export type RunbookDraftGetInput = typeof RunbookDraftGetInput.Type;
@@ -5910,11 +6466,11 @@ export const RunbookDraftGetContentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runbookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
+      apiVersion: "2024-10-23",
     }),
   );
 export type RunbookDraftGetContentInput =
@@ -5949,11 +6505,11 @@ export const RunbookDraftReplaceContentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runbookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
+      apiVersion: "2024-10-23",
     }),
   );
 export type RunbookDraftReplaceContentInput =
@@ -5988,11 +6544,11 @@ export const RunbookDraftUndoEditInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runbookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/undoEdit",
+      apiVersion: "2024-10-23",
     }),
   );
 export type RunbookDraftUndoEditInput = typeof RunbookDraftUndoEditInput.Type;
@@ -6077,11 +6633,11 @@ export const RunbookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runbookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type RunbookGetInput = typeof RunbookGetInput.Type;
@@ -6129,12 +6685,12 @@ export const RunbookGetContentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runbookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/content",
+    apiVersion: "2024-10-23",
   }),
 );
 export type RunbookGetContentInput = typeof RunbookGetContentInput.Type;
@@ -6164,11 +6720,11 @@ export const RunbookListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks",
+      apiVersion: "2024-10-23",
     }),
   );
 export type RunbookListByAutomationAccountInput =
@@ -6233,11 +6789,11 @@ export const RunbookPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runbookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/publish",
+    apiVersion: "2024-10-23",
   }),
 );
 export type RunbookPublishInput = typeof RunbookPublishInput.Type;
@@ -6266,11 +6822,22 @@ export const RunbookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runbookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+      logVerbose: Schema.optional(Schema.Boolean),
+      logProgress: Schema.optional(Schema.Boolean),
+      logActivityTrace: Schema.optional(Schema.Number),
+    }),
+  ),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type RunbookUpdateInput = typeof RunbookUpdateInput.Type;
@@ -6318,11 +6885,27 @@ export const RuntimeEnvironmentsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        runtime: Schema.optional(
+          Schema.Struct({
+            language: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+        defaultPackages: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        description: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type RuntimeEnvironmentsCreateInput =
@@ -6375,11 +6958,11 @@ export const RuntimeEnvironmentsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type RuntimeEnvironmentsDeleteInput =
@@ -6414,11 +6997,11 @@ export const RuntimeEnvironmentsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type RuntimeEnvironmentsGetInput =
@@ -6470,11 +7053,11 @@ export const RuntimeEnvironmentsListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments",
+      apiVersion: "2024-10-23",
     }),
   );
 export type RuntimeEnvironmentsListByAutomationAccountInput =
@@ -6540,11 +7123,32 @@ export const RuntimeEnvironmentsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        defaultPackages: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type RuntimeEnvironmentsUpdateInput =
@@ -6597,11 +7201,51 @@ export const ScheduleCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     scheduleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.String),
+      startTime: Schema.String,
+      expiryTime: Schema.optional(Schema.NullOr(Schema.String)),
+      interval: Schema.optional(Schema.Unknown),
+      frequency: Schema.Literals([
+        "OneTime",
+        "Day",
+        "Hour",
+        "Week",
+        "Month",
+        "Minute",
+      ]),
+      timeZone: Schema.optional(Schema.String),
+      advancedSchedule: Schema.optional(
+        Schema.Struct({
+          weekDays: Schema.optional(Schema.Array(Schema.String)),
+          monthDays: Schema.optional(Schema.Array(Schema.Number)),
+          monthlyOccurrences: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                occurrence: Schema.optional(Schema.Number),
+                day: Schema.optional(
+                  Schema.Literals([
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday",
+                  ]),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ScheduleCreateOrUpdateInput =
@@ -6653,11 +7297,11 @@ export const ScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   scheduleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type ScheduleDeleteInput = typeof ScheduleDeleteInput.Type;
@@ -6686,11 +7330,11 @@ export const ScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   scheduleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type ScheduleGetInput = typeof ScheduleGetInput.Type;
@@ -6737,11 +7381,11 @@ export const ScheduleListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules",
+      apiVersion: "2024-10-23",
     }),
   );
 export type ScheduleListByAutomationAccountInput =
@@ -6806,11 +7450,18 @@ export const ScheduleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   scheduleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+      isEnabled: Schema.optional(Schema.Boolean),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type ScheduleUpdateInput = typeof ScheduleUpdateInput.Type;
@@ -6858,11 +7509,11 @@ export const SoftwareUpdateConfigurationMachineRunsGetByIdInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     softwareUpdateConfigurationMachineRunId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurationMachineRuns/{softwareUpdateConfigurationMachineRunId}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SoftwareUpdateConfigurationMachineRunsGetByIdInput =
@@ -6932,7 +7583,6 @@ export const SoftwareUpdateConfigurationMachineRunsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skip: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.String),
@@ -6940,6 +7590,7 @@ export const SoftwareUpdateConfigurationMachineRunsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurationMachineRuns",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SoftwareUpdateConfigurationMachineRunsListInput =
@@ -7017,11 +7668,11 @@ export const SoftwareUpdateConfigurationRunsGetByIdInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     softwareUpdateConfigurationRunId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurationRuns/{softwareUpdateConfigurationRunId}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SoftwareUpdateConfigurationRunsGetByIdInput =
@@ -7096,7 +7747,6 @@ export const SoftwareUpdateConfigurationRunsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skip: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.String),
@@ -7104,6 +7754,7 @@ export const SoftwareUpdateConfigurationRunsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurationRuns",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SoftwareUpdateConfigurationRunsListInput =
@@ -7186,11 +7837,170 @@ export const SoftwareUpdateConfigurationsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     softwareUpdateConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      updateConfiguration: Schema.Struct({
+        operatingSystem: Schema.Literals(["Windows", "Linux"]),
+        windows: Schema.optional(
+          Schema.Struct({
+            includedUpdateClassifications: Schema.optional(
+              Schema.Literals([
+                "Unclassified",
+                "Critical",
+                "Security",
+                "UpdateRollup",
+                "FeaturePack",
+                "ServicePack",
+                "Definition",
+                "Tools",
+                "Updates",
+              ]),
+            ),
+            excludedKbNumbers: Schema.optional(Schema.Array(Schema.String)),
+            includedKbNumbers: Schema.optional(Schema.Array(Schema.String)),
+            rebootSetting: Schema.optional(Schema.String),
+          }),
+        ),
+        linux: Schema.optional(
+          Schema.Struct({
+            includedPackageClassifications: Schema.optional(
+              Schema.Literals([
+                "Unclassified",
+                "Critical",
+                "Security",
+                "Other",
+              ]),
+            ),
+            excludedPackageNameMasks: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            includedPackageNameMasks: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            rebootSetting: Schema.optional(Schema.String),
+          }),
+        ),
+        duration: Schema.optional(Schema.String),
+        azureVirtualMachines: Schema.optional(Schema.Array(Schema.String)),
+        nonAzureComputerNames: Schema.optional(Schema.Array(Schema.String)),
+        targets: Schema.optional(
+          Schema.Struct({
+            azureQueries: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  scope: Schema.optional(Schema.Array(Schema.String)),
+                  locations: Schema.optional(Schema.Array(Schema.String)),
+                  tagSettings: Schema.optional(
+                    Schema.Struct({
+                      tags: Schema.optional(
+                        Schema.Record(
+                          Schema.String,
+                          Schema.Array(Schema.String),
+                        ),
+                      ),
+                      filterOperator: Schema.optional(
+                        Schema.Literals(["All", "Any"]),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            nonAzureQueries: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  functionAlias: Schema.optional(Schema.String),
+                  workspaceId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+      scheduleInfo: Schema.Struct({
+        startTime: Schema.optional(Schema.String),
+        startTimeOffsetMinutes: Schema.optional(Schema.Number),
+        expiryTime: Schema.optional(Schema.NullOr(Schema.String)),
+        expiryTimeOffsetMinutes: Schema.optional(Schema.Number),
+        isEnabled: Schema.optional(Schema.Boolean),
+        nextRun: Schema.optional(Schema.NullOr(Schema.String)),
+        nextRunOffsetMinutes: Schema.optional(Schema.Number),
+        interval: Schema.optional(Schema.Number),
+        frequency: Schema.optional(
+          Schema.Literals([
+            "OneTime",
+            "Day",
+            "Hour",
+            "Week",
+            "Month",
+            "Minute",
+          ]),
+        ),
+        timeZone: Schema.optional(Schema.String),
+        advancedSchedule: Schema.optional(
+          Schema.Struct({
+            weekDays: Schema.optional(Schema.Array(Schema.String)),
+            monthDays: Schema.optional(Schema.Array(Schema.Number)),
+            monthlyOccurrences: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  occurrence: Schema.optional(Schema.Number),
+                  day: Schema.optional(
+                    Schema.Literals([
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday",
+                      "Sunday",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        creationTime: Schema.optional(Schema.String),
+        lastModifiedTime: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
+      provisioningState: Schema.optional(Schema.String),
+      error: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+        }),
+      ),
+      creationTime: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      lastModifiedTime: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      tasks: Schema.optional(
+        Schema.Struct({
+          preTask: Schema.optional(
+            Schema.Struct({
+              parameters: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              source: Schema.optional(Schema.String),
+            }),
+          ),
+          postTask: Schema.optional(
+            Schema.Struct({
+              parameters: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              source: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations/{softwareUpdateConfigurationName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SoftwareUpdateConfigurationsCreateInput =
@@ -7243,11 +8053,11 @@ export const SoftwareUpdateConfigurationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     softwareUpdateConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations/{softwareUpdateConfigurationName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SoftwareUpdateConfigurationsDeleteInput =
@@ -7282,11 +8092,11 @@ export const SoftwareUpdateConfigurationsGetByNameInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     softwareUpdateConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations/{softwareUpdateConfigurationName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SoftwareUpdateConfigurationsGetByNameInput =
@@ -7338,12 +8148,12 @@ export const SoftwareUpdateConfigurationsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SoftwareUpdateConfigurationsListInput =
@@ -7514,11 +8324,31 @@ export const SourceControlCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      repoUrl: Schema.optional(Schema.String),
+      branch: Schema.optional(Schema.String),
+      folderPath: Schema.optional(Schema.String),
+      autoSync: Schema.optional(Schema.Boolean),
+      publishRunbook: Schema.optional(Schema.Boolean),
+      sourceType: Schema.optional(
+        Schema.Literals(["VsoGit", "VsoTfvc", "GitHub"]),
+      ),
+      securityToken: Schema.optional(
+        Schema.Struct({
+          accessToken: Schema.optional(SensitiveString),
+          refreshToken: Schema.optional(SensitiveString),
+          tokenType: Schema.optional(
+            Schema.Literals(["PersonalAccessToken", "Oauth"]),
+          ),
+        }),
+      ),
+      description: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SourceControlCreateOrUpdateInput =
@@ -7571,11 +8401,11 @@ export const SourceControlDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SourceControlDeleteInput = typeof SourceControlDeleteInput.Type;
@@ -7605,11 +8435,11 @@ export const SourceControlGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   sourceControlName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type SourceControlGetInput = typeof SourceControlGetInput.Type;
@@ -7658,12 +8488,12 @@ export const SourceControlListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SourceControlListByAutomationAccountInput =
@@ -7731,11 +8561,14 @@ export const SourceControlSyncJobCreateInput =
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
     sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      commitId: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SourceControlSyncJobCreateInput =
@@ -7788,11 +8621,11 @@ export const SourceControlSyncJobGetInput =
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
     sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SourceControlSyncJobGetInput =
@@ -7843,12 +8676,12 @@ export const SourceControlSyncJobListByAutomationAccountInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SourceControlSyncJobListByAutomationAccountInput =
@@ -7908,11 +8741,11 @@ export const SourceControlSyncJobStreamsGetInput =
     sourceControlName: Schema.String.pipe(T.PathParam()),
     sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
     streamId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams/{streamId}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SourceControlSyncJobStreamsGetInput =
@@ -7961,12 +8794,12 @@ export const SourceControlSyncJobStreamsListBySyncJobInput =
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
     sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SourceControlSyncJobStreamsListBySyncJobInput =
@@ -8017,11 +8850,29 @@ export const SourceControlUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        branch: Schema.optional(Schema.String),
+        folderPath: Schema.optional(Schema.String),
+        autoSync: Schema.optional(Schema.Boolean),
+        publishRunbook: Schema.optional(Schema.Boolean),
+        securityToken: Schema.optional(
+          Schema.Struct({
+            accessToken: Schema.optional(SensitiveString),
+            refreshToken: Schema.optional(SensitiveString),
+            tokenType: Schema.optional(
+              Schema.Literals(["PersonalAccessToken", "Oauth"]),
+            ),
+          }),
+        ),
+        description: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type SourceControlUpdateInput = typeof SourceControlUpdateInput.Type;
@@ -8069,12 +8920,12 @@ export const StatisticsListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/statistics",
+      apiVersion: "2024-10-23",
     }),
   );
 export type StatisticsListByAutomationAccountInput =
@@ -8120,11 +8971,14 @@ export const TestJobCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runbookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  runOn: Schema.optional(Schema.String),
+  runtimeEnvironment: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob",
+    apiVersion: "2024-10-23",
   }),
 );
 export type TestJobCreateInput = typeof TestJobCreateInput.Type;
@@ -8165,11 +9019,11 @@ export const TestJobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runbookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob",
+    apiVersion: "2024-10-23",
   }),
 );
 export type TestJobGetInput = typeof TestJobGetInput.Type;
@@ -8210,11 +9064,11 @@ export const TestJobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runbookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/resume",
+    apiVersion: "2024-10-23",
   }),
 );
 export type TestJobResumeInput = typeof TestJobResumeInput.Type;
@@ -8243,11 +9097,11 @@ export const TestJobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runbookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/stop",
+    apiVersion: "2024-10-23",
   }),
 );
 export type TestJobStopInput = typeof TestJobStopInput.Type;
@@ -8278,12 +9132,12 @@ export const TestJobStreamsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runbookName: Schema.String.pipe(T.PathParam()),
     jobStreamId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams/{jobStreamId}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type TestJobStreamsGetInput = typeof TestJobStreamsGetInput.Type;
@@ -8337,12 +9191,12 @@ export const TestJobStreamsListByTestJobInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runbookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams",
+      apiVersion: "2024-10-23",
     }),
   );
 export type TestJobStreamsListByTestJobInput =
@@ -8406,11 +9260,11 @@ export const TestJobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runbookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/suspend",
+    apiVersion: "2024-10-23",
   }),
 );
 export type TestJobSuspendInput = typeof TestJobSuspendInput.Type;
@@ -8439,11 +9293,11 @@ export const UsagesListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/usages",
+      apiVersion: "2024-10-23",
     }),
   );
 export type UsagesListByAutomationAccountInput =
@@ -8495,11 +9349,17 @@ export const VariableCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     variableName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    properties: Schema.Struct({
+      value: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      isEncrypted: Schema.optional(Schema.Boolean),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type VariableCreateOrUpdateInput =
@@ -8551,11 +9411,11 @@ export const VariableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   variableName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type VariableDeleteInput = typeof VariableDeleteInput.Type;
@@ -8584,11 +9444,11 @@ export const VariableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   variableName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type VariableGetInput = typeof VariableGetInput.Type;
@@ -8635,11 +9495,11 @@ export const VariableListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables",
+      apiVersion: "2024-10-23",
     }),
   );
 export type VariableListByAutomationAccountInput =
@@ -8704,11 +9564,18 @@ export const VariableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   variableName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      value: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type VariableUpdateInput = typeof VariableUpdateInput.Type;
@@ -8756,11 +9623,46 @@ export const WatcherCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        executionFrequencyInSeconds: Schema.optional(Schema.Number),
+        scriptName: Schema.optional(Schema.String),
+        scriptParameters: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        scriptRunOn: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+        creationTime: Schema.optional(Schema.String),
+        lastModifiedTime: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type WatcherCreateOrUpdateInput = typeof WatcherCreateOrUpdateInput.Type;
@@ -8811,11 +9713,11 @@ export const WatcherDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type WatcherDeleteInput = typeof WatcherDeleteInput.Type;
@@ -8844,11 +9746,11 @@ export const WatcherGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type WatcherGetInput = typeof WatcherGetInput.Type;
@@ -8895,12 +9797,12 @@ export const WatcherListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers",
+      apiVersion: "2024-10-23",
     }),
   );
 export type WatcherListByAutomationAccountInput =
@@ -8966,11 +9868,11 @@ export const WatcherStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}/start",
+    apiVersion: "2024-10-23",
   }),
 );
 export type WatcherStartInput = typeof WatcherStartInput.Type;
@@ -8999,11 +9901,11 @@ export const WatcherStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}/stop",
+    apiVersion: "2024-10-23",
   }),
 );
 export type WatcherStopInput = typeof WatcherStopInput.Type;
@@ -9032,11 +9934,17 @@ export const WatcherUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      executionFrequencyInSeconds: Schema.optional(Schema.Number),
+    }),
+  ),
+  name: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type WatcherUpdateInput = typeof WatcherUpdateInput.Type;
@@ -9084,11 +9992,24 @@ export const WebhookCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     webhookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    properties: Schema.Struct({
+      isEnabled: Schema.optional(Schema.Boolean),
+      uri: Schema.optional(Schema.String),
+      expiryTime: Schema.optional(Schema.String),
+      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      runbook: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      runOn: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
+      apiVersion: "2024-10-23",
     }),
   );
 export type WebhookCreateOrUpdateInput = typeof WebhookCreateOrUpdateInput.Type;
@@ -9139,11 +10060,11 @@ export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type WebhookDeleteInput = typeof WebhookDeleteInput.Type;
@@ -9172,11 +10093,11 @@ export const WebhookGenerateUriInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/generateUri",
+      apiVersion: "2024-10-23",
     }),
   );
 export type WebhookGenerateUriInput = typeof WebhookGenerateUriInput.Type;
@@ -9205,11 +10126,11 @@ export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type WebhookGetInput = typeof WebhookGetInput.Type;
@@ -9256,12 +10177,12 @@ export const WebhookListByAutomationAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks",
+      apiVersion: "2024-10-23",
     }),
   );
 export type WebhookListByAutomationAccountInput =
@@ -9327,11 +10248,20 @@ export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      isEnabled: Schema.optional(Schema.Boolean),
+      runOn: Schema.optional(Schema.String),
+      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
+    apiVersion: "2024-10-23",
   }),
 );
 export type WebhookUpdateInput = typeof WebhookUpdateInput.Type;

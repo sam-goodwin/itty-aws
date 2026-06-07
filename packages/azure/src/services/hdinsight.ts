@@ -7,14 +7,257 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const ApplicationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        computeProfile: Schema.optional(
+          Schema.Struct({
+            roles: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  minInstanceCount: Schema.optional(Schema.Number),
+                  targetInstanceCount: Schema.optional(Schema.Number),
+                  VMGroupName: Schema.optional(Schema.String),
+                  autoscale: Schema.optional(
+                    Schema.Struct({
+                      capacity: Schema.optional(
+                        Schema.Struct({
+                          minInstanceCount: Schema.optional(Schema.Number),
+                          maxInstanceCount: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      recurrence: Schema.optional(
+                        Schema.Struct({
+                          timeZone: Schema.optional(Schema.String),
+                          schedule: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                days: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Literals([
+                                      "Monday",
+                                      "Tuesday",
+                                      "Wednesday",
+                                      "Thursday",
+                                      "Friday",
+                                      "Saturday",
+                                      "Sunday",
+                                    ]),
+                                  ),
+                                ),
+                                timeAndCapacity: Schema.optional(
+                                  Schema.Struct({
+                                    time: Schema.optional(Schema.String),
+                                    minInstanceCount: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                    maxInstanceCount: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                  }),
+                                ),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  hardwareProfile: Schema.optional(
+                    Schema.Struct({
+                      vmSize: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  osProfile: Schema.optional(
+                    Schema.Struct({
+                      linuxOperatingSystemProfile: Schema.optional(
+                        Schema.Struct({
+                          username: Schema.optional(Schema.String),
+                          password: Schema.optional(SensitiveString),
+                          sshProfile: Schema.optional(
+                            Schema.Struct({
+                              publicKeys: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    certificateData: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  virtualNetworkProfile: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                      subnet: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  dataDisksGroups: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        disksPerNode: Schema.optional(Schema.Number),
+                        storageAccountType: Schema.optional(Schema.String),
+                        diskSizeGB: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                  ),
+                  scriptActions: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        uri: Schema.String,
+                        parameters: Schema.String,
+                      }),
+                    ),
+                  ),
+                  encryptDataDisks: Schema.optional(Schema.Boolean),
+                }),
+              ),
+            ),
+          }),
+        ),
+        installScriptActions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              uri: Schema.String,
+              parameters: Schema.optional(Schema.String),
+              roles: Schema.Array(Schema.String),
+              applicationName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        uninstallScriptActions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              uri: Schema.String,
+              parameters: Schema.optional(Schema.String),
+              roles: Schema.Array(Schema.String),
+              applicationName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        httpsEndpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              accessModes: Schema.optional(Schema.Array(Schema.String)),
+              location: Schema.optional(Schema.String),
+              destinationPort: Schema.optional(Schema.Number),
+              publicPort: Schema.optional(Schema.Number),
+              privateIPAddress: Schema.optional(Schema.String),
+              subDomainSuffix: Schema.optional(Schema.String),
+              disableGatewayAuth: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+        sshEndpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              location: Schema.optional(Schema.String),
+              destinationPort: Schema.optional(Schema.Number),
+              publicPort: Schema.optional(Schema.Number),
+              privateIPAddress: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        applicationType: Schema.optional(Schema.String),
+        applicationState: Schema.optional(Schema.String),
+        errors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        createdDate: Schema.optional(Schema.String),
+        marketplaceIdentifier: Schema.optional(Schema.String),
+        privateLinkConfigurations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.String,
+              type: Schema.optional(Schema.String),
+              properties: Schema.Struct({
+                groupId: Schema.String,
+                provisioningState: Schema.optional(
+                  Schema.Literals([
+                    "InProgress",
+                    "Failed",
+                    "Succeeded",
+                    "Canceled",
+                    "Deleting",
+                  ]),
+                ),
+                ipConfigurations: Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    name: Schema.String,
+                    type: Schema.optional(Schema.String),
+                    properties: Schema.optional(
+                      Schema.Struct({
+                        provisioningState: Schema.optional(
+                          Schema.Literals([
+                            "InProgress",
+                            "Failed",
+                            "Succeeded",
+                            "Canceled",
+                            "Deleting",
+                          ]),
+                        ),
+                        primary: Schema.optional(Schema.Boolean),
+                        privateIPAddress: Schema.optional(Schema.String),
+                        privateIPAllocationMethod: Schema.optional(
+                          Schema.Literals(["dynamic", "static"]),
+                        ),
+                        subnet: Schema.optional(
+                          Schema.Struct({
+                            id: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationsCreateInput = typeof ApplicationsCreateInput.Type;
@@ -42,6 +285,7 @@ export const ApplicationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
@@ -65,6 +309,7 @@ export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ApplicationsGetInput = typeof ApplicationsGetInput.Type;
@@ -91,6 +336,7 @@ export const ApplicationsGetAzureAsyncOperationStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}/azureasyncoperations/{operationId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationsGetAzureAsyncOperationStatusInput =
@@ -127,6 +373,7 @@ export const ApplicationsListByClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationsListByClusterInput =
@@ -160,12 +407,298 @@ export const ApplicationsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      clusterVersion: Schema.optional(Schema.String),
+      osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+      tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
+      clusterDefinition: Schema.optional(
+        Schema.Struct({
+          blueprint: Schema.optional(Schema.String),
+          kind: Schema.optional(Schema.String),
+          componentVersion: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          configurations: Schema.optional(Schema.Unknown),
+        }),
+      ),
+      kafkaRestProperties: Schema.optional(
+        Schema.Struct({
+          clientGroupInfo: Schema.optional(
+            Schema.Struct({
+              groupName: Schema.optional(Schema.String),
+              groupId: Schema.optional(Schema.String),
+            }),
+          ),
+          configurationOverride: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+        }),
+      ),
+      securityProfile: Schema.optional(
+        Schema.Struct({
+          directoryType: Schema.optional(Schema.Literals(["ActiveDirectory"])),
+          domain: Schema.optional(Schema.String),
+          organizationalUnitDN: Schema.optional(Schema.String),
+          ldapsUrls: Schema.optional(Schema.Array(Schema.String)),
+          domainUsername: Schema.optional(Schema.String),
+          domainUserPassword: Schema.optional(SensitiveString),
+          clusterUsersGroupDNs: Schema.optional(Schema.Array(Schema.String)),
+          aaddsResourceId: Schema.optional(Schema.String),
+          msiResourceId: Schema.optional(Schema.String),
+        }),
+      ),
+      computeProfile: Schema.optional(
+        Schema.Struct({
+          roles: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                minInstanceCount: Schema.optional(Schema.Number),
+                targetInstanceCount: Schema.optional(Schema.Number),
+                VMGroupName: Schema.optional(Schema.String),
+                autoscale: Schema.optional(
+                  Schema.Struct({
+                    capacity: Schema.optional(
+                      Schema.Struct({
+                        minInstanceCount: Schema.optional(Schema.Number),
+                        maxInstanceCount: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    recurrence: Schema.optional(
+                      Schema.Struct({
+                        timeZone: Schema.optional(Schema.String),
+                        schedule: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              days: Schema.optional(
+                                Schema.Array(
+                                  Schema.Literals([
+                                    "Monday",
+                                    "Tuesday",
+                                    "Wednesday",
+                                    "Thursday",
+                                    "Friday",
+                                    "Saturday",
+                                    "Sunday",
+                                  ]),
+                                ),
+                              ),
+                              timeAndCapacity: Schema.optional(
+                                Schema.Struct({
+                                  time: Schema.optional(Schema.String),
+                                  minInstanceCount: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  maxInstanceCount: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+                hardwareProfile: Schema.optional(
+                  Schema.Struct({
+                    vmSize: Schema.optional(Schema.String),
+                  }),
+                ),
+                osProfile: Schema.optional(
+                  Schema.Struct({
+                    linuxOperatingSystemProfile: Schema.optional(
+                      Schema.Struct({
+                        username: Schema.optional(Schema.String),
+                        password: Schema.optional(SensitiveString),
+                        sshProfile: Schema.optional(
+                          Schema.Struct({
+                            publicKeys: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  certificateData: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+                virtualNetworkProfile: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    subnet: Schema.optional(Schema.String),
+                  }),
+                ),
+                dataDisksGroups: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      disksPerNode: Schema.optional(Schema.Number),
+                      storageAccountType: Schema.optional(Schema.String),
+                      diskSizeGB: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                ),
+                scriptActions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.String,
+                      uri: Schema.String,
+                      parameters: Schema.String,
+                    }),
+                  ),
+                ),
+                encryptDataDisks: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          ),
+        }),
+      ),
+      storageProfile: Schema.optional(
+        Schema.Struct({
+          storageaccounts: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                isDefault: Schema.optional(Schema.Boolean),
+                container: Schema.optional(Schema.String),
+                fileSystem: Schema.optional(Schema.String),
+                key: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                msiResourceId: Schema.optional(Schema.String),
+                saskey: Schema.optional(Schema.String),
+                fileshare: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      diskEncryptionProperties: Schema.optional(
+        Schema.Struct({
+          vaultUri: Schema.optional(Schema.String),
+          keyName: Schema.optional(Schema.String),
+          keyVersion: Schema.optional(Schema.String),
+          encryptionAlgorithm: Schema.optional(
+            Schema.Literals(["RSA-OAEP", "RSA-OAEP-256", "RSA1_5"]),
+          ),
+          msiResourceId: Schema.optional(Schema.String),
+          encryptionAtHost: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      encryptionInTransitProperties: Schema.optional(
+        Schema.Struct({
+          isEncryptionInTransitEnabled: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      minSupportedTlsVersion: Schema.optional(Schema.String),
+      networkProperties: Schema.optional(
+        Schema.Struct({
+          resourceProviderConnection: Schema.optional(
+            Schema.Literals(["Inbound", "Outbound"]),
+          ),
+          privateLink: Schema.optional(
+            Schema.Literals(["Disabled", "Enabled"]),
+          ),
+        }),
+      ),
+      computeIsolationProperties: Schema.optional(
+        Schema.Struct({
+          enableComputeIsolation: Schema.optional(Schema.Boolean),
+          hostSku: Schema.optional(Schema.String),
+        }),
+      ),
+      privateLinkConfigurations: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.String,
+            type: Schema.optional(Schema.String),
+            properties: Schema.Struct({
+              groupId: Schema.String,
+              provisioningState: Schema.optional(
+                Schema.Literals([
+                  "InProgress",
+                  "Failed",
+                  "Succeeded",
+                  "Canceled",
+                  "Deleting",
+                ]),
+              ),
+              ipConfigurations: Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  name: Schema.String,
+                  type: Schema.optional(Schema.String),
+                  properties: Schema.optional(
+                    Schema.Struct({
+                      provisioningState: Schema.optional(
+                        Schema.Literals([
+                          "InProgress",
+                          "Failed",
+                          "Succeeded",
+                          "Canceled",
+                          "Deleting",
+                        ]),
+                      ),
+                      primary: Schema.optional(Schema.Boolean),
+                      privateIPAddress: Schema.optional(Schema.String),
+                      privateIPAllocationMethod: Schema.optional(
+                        Schema.Literals(["dynamic", "static"]),
+                      ),
+                      subnet: Schema.optional(
+                        Schema.Struct({
+                          id: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          }),
+        ),
+      ),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(
+        Schema.Literals([
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+          "None",
+        ]),
+      ),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+            tenantId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ClustersCreateInput = typeof ClustersCreateInput.Type;
@@ -193,6 +726,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -228,6 +762,7 @@ export const ClustersExecuteScriptActionsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/executeScriptActions",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClustersExecuteScriptActionsInput =
@@ -257,6 +792,7 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ClustersGetInput = typeof ClustersGetInput.Type;
@@ -283,6 +819,7 @@ export const ClustersGetAzureAsyncOperationStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/azureasyncoperations/{operationId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClustersGetAzureAsyncOperationStatusInput =
@@ -319,6 +856,7 @@ export const ClustersGetGatewaySettingsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/getGatewaySettings",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClustersGetGatewaySettingsInput =
@@ -329,7 +867,7 @@ export const ClustersGetGatewaySettingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "restAuthCredential.isEnabled": Schema.optional(Schema.String),
     "restAuthCredential.username": Schema.optional(Schema.String),
-    "restAuthCredential.password": Schema.optional(SensitiveString),
+    "restAuthCredential.password": Schema.optional(SensitiveOutputString),
   });
 export type ClustersGetGatewaySettingsOutput =
   typeof ClustersGetGatewaySettingsOutput.Type;
@@ -351,6 +889,7 @@ export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/clusters",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ClustersListInput = typeof ClustersListInput.Type;
@@ -384,6 +923,7 @@ export const ClustersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClustersListByResourceGroupInput =
@@ -419,10 +959,12 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ClustersResizeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   roleName: Schema.Literals(["workernode"]).pipe(T.PathParam()),
+  targetInstanceCount: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/roles/{roleName}/resize",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ClustersResizeInput = typeof ClustersResizeInput.Type;
@@ -443,10 +985,15 @@ export const ClustersResize = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ClustersRotateDiskEncryptionKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vaultUri: Schema.optional(Schema.String),
+    keyName: Schema.optional(Schema.String),
+    keyVersion: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/rotatediskencryptionkey",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClustersRotateDiskEncryptionKeyInput =
@@ -468,12 +1015,15 @@ export const ClustersRotateDiskEncryptionKey =
     outputSchema: ClustersRotateDiskEncryptionKeyOutput,
   }));
 // Input Schema
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -498,10 +1048,52 @@ export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersUpdateAutoScaleConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roleName: Schema.Literals(["workernode"]).pipe(T.PathParam()),
+    autoscale: Schema.optional(
+      Schema.Struct({
+        capacity: Schema.optional(
+          Schema.Struct({
+            minInstanceCount: Schema.optional(Schema.Number),
+            maxInstanceCount: Schema.optional(Schema.Number),
+          }),
+        ),
+        recurrence: Schema.optional(
+          Schema.Struct({
+            timeZone: Schema.optional(Schema.String),
+            schedule: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  days: Schema.optional(
+                    Schema.Array(
+                      Schema.Literals([
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday",
+                      ]),
+                    ),
+                  ),
+                  timeAndCapacity: Schema.optional(
+                    Schema.Struct({
+                      time: Schema.optional(Schema.String),
+                      minInstanceCount: Schema.optional(Schema.Number),
+                      maxInstanceCount: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/roles/{roleName}/autoscale",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClustersUpdateAutoScaleConfigurationInput =
@@ -526,10 +1118,15 @@ export const ClustersUpdateAutoScaleConfiguration =
   }));
 // Input Schema
 export const ClustersUpdateGatewaySettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "restAuthCredential.isEnabled": Schema.optional(Schema.Boolean),
+    "restAuthCredential.username": Schema.optional(Schema.String),
+    "restAuthCredential.password": Schema.optional(SensitiveString),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/updateGatewaySettings",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClustersUpdateGatewaySettingsInput =
@@ -552,10 +1149,15 @@ export const ClustersUpdateGatewaySettings =
   }));
 // Input Schema
 export const ClustersUpdateIdentityCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationId: Schema.optional(Schema.String),
+    certificate: Schema.optional(Schema.String),
+    certificatePassword: Schema.optional(SensitiveString),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/updateClusterIdentityCertificate",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClustersUpdateIdentityCertificateInput =
@@ -583,6 +1185,7 @@ export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations/{configurationName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ConfigurationsGetInput = typeof ConfigurationsGetInput.Type;
@@ -606,6 +1209,7 @@ export const ConfigurationsListInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ConfigurationsListInput = typeof ConfigurationsListInput.Type;
@@ -628,12 +1232,14 @@ export const ConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationsListOutput,
 }));
 // Input Schema
-export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workspaceId: Schema.optional(Schema.String),
+  primaryKey: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ExtensionsCreateInput = typeof ExtensionsCreateInput.Type;
@@ -657,6 +1263,7 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ExtensionsDeleteInput = typeof ExtensionsDeleteInput.Type;
@@ -679,6 +1286,7 @@ export const ExtensionsDisableAzureMonitorInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ExtensionsDisableAzureMonitorInput =
@@ -705,6 +1313,7 @@ export const ExtensionsDisableMonitoringInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ExtensionsDisableMonitoringInput =
@@ -728,10 +1337,29 @@ export const ExtensionsDisableMonitoring = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ExtensionsEnableAzureMonitorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workspaceId: Schema.optional(Schema.String),
+    primaryKey: Schema.optional(Schema.String),
+    selectedConfigurations: Schema.optional(
+      Schema.Struct({
+        configurationVersion: Schema.optional(Schema.String),
+        globalConfigurations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        tableList: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ExtensionsEnableAzureMonitorInput =
@@ -754,10 +1382,14 @@ export const ExtensionsEnableAzureMonitor =
   }));
 // Input Schema
 export const ExtensionsEnableMonitoringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workspaceId: Schema.optional(Schema.String),
+    primaryKey: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ExtensionsEnableMonitoringInput =
@@ -786,6 +1418,7 @@ export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ExtensionsGetInput = typeof ExtensionsGetInput.Type;
@@ -811,6 +1444,7 @@ export const ExtensionsGetAzureAsyncOperationStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}/azureAsyncOperations/{operationId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ExtensionsGetAzureAsyncOperationStatusInput =
@@ -847,6 +1481,7 @@ export const ExtensionsGetAzureMonitorStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ExtensionsGetAzureMonitorStatusInput =
@@ -891,6 +1526,7 @@ export const ExtensionsGetMonitoringStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/clustermonitoring",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ExtensionsGetMonitoringStatusInput =
@@ -916,10 +1552,14 @@ export const ExtensionsGetMonitoringStatus =
   }));
 // Input Schema
 export const LocationsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/checkNameAvailability",
+      apiVersion: "2021-06-01",
     }),
   );
 export type LocationsCheckNameAvailabilityInput =
@@ -950,6 +1590,7 @@ export const LocationsGetAzureAsyncOperationStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/azureasyncoperations/{operationId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type LocationsGetAzureAsyncOperationStatusInput =
@@ -986,6 +1627,7 @@ export const LocationsGetCapabilitiesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/capabilities",
+      apiVersion: "2021-06-01",
     }),
   );
 export type LocationsGetCapabilitiesInput =
@@ -1057,6 +1699,7 @@ export const LocationsListBillingSpecsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/billingSpecs",
+      apiVersion: "2021-06-01",
     }),
   );
 export type LocationsListBillingSpecsInput =
@@ -1147,6 +1790,7 @@ export const LocationsListUsagesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/usages",
+      apiVersion: "2021-06-01",
     }),
   );
 export type LocationsListUsagesInput = typeof LocationsListUsagesInput.Type;
@@ -1182,10 +1826,304 @@ export const LocationsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LocationsValidateClusterCreateRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    fetchAaddsResource: Schema.optional(Schema.Boolean),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        clusterVersion: Schema.optional(Schema.String),
+        osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+        tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
+        clusterDefinition: Schema.optional(
+          Schema.Struct({
+            blueprint: Schema.optional(Schema.String),
+            kind: Schema.optional(Schema.String),
+            componentVersion: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            configurations: Schema.optional(Schema.Unknown),
+          }),
+        ),
+        kafkaRestProperties: Schema.optional(
+          Schema.Struct({
+            clientGroupInfo: Schema.optional(
+              Schema.Struct({
+                groupName: Schema.optional(Schema.String),
+                groupId: Schema.optional(Schema.String),
+              }),
+            ),
+            configurationOverride: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        securityProfile: Schema.optional(
+          Schema.Struct({
+            directoryType: Schema.optional(
+              Schema.Literals(["ActiveDirectory"]),
+            ),
+            domain: Schema.optional(Schema.String),
+            organizationalUnitDN: Schema.optional(Schema.String),
+            ldapsUrls: Schema.optional(Schema.Array(Schema.String)),
+            domainUsername: Schema.optional(Schema.String),
+            domainUserPassword: Schema.optional(SensitiveString),
+            clusterUsersGroupDNs: Schema.optional(Schema.Array(Schema.String)),
+            aaddsResourceId: Schema.optional(Schema.String),
+            msiResourceId: Schema.optional(Schema.String),
+          }),
+        ),
+        computeProfile: Schema.optional(
+          Schema.Struct({
+            roles: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  minInstanceCount: Schema.optional(Schema.Number),
+                  targetInstanceCount: Schema.optional(Schema.Number),
+                  VMGroupName: Schema.optional(Schema.String),
+                  autoscale: Schema.optional(
+                    Schema.Struct({
+                      capacity: Schema.optional(
+                        Schema.Struct({
+                          minInstanceCount: Schema.optional(Schema.Number),
+                          maxInstanceCount: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      recurrence: Schema.optional(
+                        Schema.Struct({
+                          timeZone: Schema.optional(Schema.String),
+                          schedule: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                days: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Literals([
+                                      "Monday",
+                                      "Tuesday",
+                                      "Wednesday",
+                                      "Thursday",
+                                      "Friday",
+                                      "Saturday",
+                                      "Sunday",
+                                    ]),
+                                  ),
+                                ),
+                                timeAndCapacity: Schema.optional(
+                                  Schema.Struct({
+                                    time: Schema.optional(Schema.String),
+                                    minInstanceCount: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                    maxInstanceCount: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                  }),
+                                ),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  hardwareProfile: Schema.optional(
+                    Schema.Struct({
+                      vmSize: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  osProfile: Schema.optional(
+                    Schema.Struct({
+                      linuxOperatingSystemProfile: Schema.optional(
+                        Schema.Struct({
+                          username: Schema.optional(Schema.String),
+                          password: Schema.optional(SensitiveString),
+                          sshProfile: Schema.optional(
+                            Schema.Struct({
+                              publicKeys: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    certificateData: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  virtualNetworkProfile: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                      subnet: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  dataDisksGroups: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        disksPerNode: Schema.optional(Schema.Number),
+                        storageAccountType: Schema.optional(Schema.String),
+                        diskSizeGB: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                  ),
+                  scriptActions: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        uri: Schema.String,
+                        parameters: Schema.String,
+                      }),
+                    ),
+                  ),
+                  encryptDataDisks: Schema.optional(Schema.Boolean),
+                }),
+              ),
+            ),
+          }),
+        ),
+        storageProfile: Schema.optional(
+          Schema.Struct({
+            storageaccounts: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  isDefault: Schema.optional(Schema.Boolean),
+                  container: Schema.optional(Schema.String),
+                  fileSystem: Schema.optional(Schema.String),
+                  key: Schema.optional(Schema.String),
+                  resourceId: Schema.optional(Schema.String),
+                  msiResourceId: Schema.optional(Schema.String),
+                  saskey: Schema.optional(Schema.String),
+                  fileshare: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        diskEncryptionProperties: Schema.optional(
+          Schema.Struct({
+            vaultUri: Schema.optional(Schema.String),
+            keyName: Schema.optional(Schema.String),
+            keyVersion: Schema.optional(Schema.String),
+            encryptionAlgorithm: Schema.optional(
+              Schema.Literals(["RSA-OAEP", "RSA-OAEP-256", "RSA1_5"]),
+            ),
+            msiResourceId: Schema.optional(Schema.String),
+            encryptionAtHost: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        encryptionInTransitProperties: Schema.optional(
+          Schema.Struct({
+            isEncryptionInTransitEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        minSupportedTlsVersion: Schema.optional(Schema.String),
+        networkProperties: Schema.optional(
+          Schema.Struct({
+            resourceProviderConnection: Schema.optional(
+              Schema.Literals(["Inbound", "Outbound"]),
+            ),
+            privateLink: Schema.optional(
+              Schema.Literals(["Disabled", "Enabled"]),
+            ),
+          }),
+        ),
+        computeIsolationProperties: Schema.optional(
+          Schema.Struct({
+            enableComputeIsolation: Schema.optional(Schema.Boolean),
+            hostSku: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkConfigurations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.String,
+              type: Schema.optional(Schema.String),
+              properties: Schema.Struct({
+                groupId: Schema.String,
+                provisioningState: Schema.optional(
+                  Schema.Literals([
+                    "InProgress",
+                    "Failed",
+                    "Succeeded",
+                    "Canceled",
+                    "Deleting",
+                  ]),
+                ),
+                ipConfigurations: Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    name: Schema.String,
+                    type: Schema.optional(Schema.String),
+                    properties: Schema.optional(
+                      Schema.Struct({
+                        provisioningState: Schema.optional(
+                          Schema.Literals([
+                            "InProgress",
+                            "Failed",
+                            "Succeeded",
+                            "Canceled",
+                            "Deleting",
+                          ]),
+                        ),
+                        primary: Schema.optional(Schema.Boolean),
+                        privateIPAddress: Schema.optional(Schema.String),
+                        privateIPAllocationMethod: Schema.optional(
+                          Schema.Literals(["dynamic", "static"]),
+                        ),
+                        subnet: Schema.optional(
+                          Schema.Struct({
+                            id: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            }),
+          ),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+              tenantId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/validateCreateRequest",
+      apiVersion: "2021-06-01",
     }),
   );
 export type LocationsValidateClusterCreateRequestInput =
@@ -1245,7 +2183,11 @@ export const LocationsValidateClusterCreateRequest =
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.HDInsight/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.HDInsight/operations",
+    apiVersion: "2021-06-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -1330,10 +2272,52 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.Struct({
+      privateEndpoint: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+      privateLinkServiceConnectionState: Schema.Struct({
+        status: Schema.Literals(["Approved", "Rejected", "Pending", "Removed"]),
+        description: Schema.optional(Schema.String),
+        actionsRequired: Schema.optional(Schema.String),
+      }),
+      linkIdentifier: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "InProgress",
+          "Updating",
+          "Failed",
+          "Succeeded",
+          "Canceled",
+          "Deleting",
+        ]),
+      ),
+    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1364,6 +2348,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1390,6 +2375,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -1420,6 +2406,7 @@ export const PrivateEndpointConnectionsListByClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsListByClusterInput =
@@ -1457,6 +2444,7 @@ export const PrivateLinkResourcesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -1488,6 +2476,7 @@ export const PrivateLinkResourcesListByClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateLinkResources",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkResourcesListByClusterInput =
@@ -1524,6 +2513,7 @@ export const ScriptActionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptActions/{scriptName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ScriptActionsDeleteInput = typeof ScriptActionsDeleteInput.Type;
@@ -1547,6 +2537,7 @@ export const ScriptActionsGetExecutionAsyncOperationStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/executeScriptActions/azureasyncoperations/{operationId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ScriptActionsGetExecutionAsyncOperationStatusInput =
@@ -1583,6 +2574,7 @@ export const ScriptActionsGetExecutionDetailInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptExecutionHistory/{scriptExecutionId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ScriptActionsGetExecutionDetailInput =
@@ -1615,6 +2607,7 @@ export const ScriptActionsListByClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptActions",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ScriptActionsListByClusterInput =
@@ -1655,6 +2648,7 @@ export const ScriptExecutionHistoryListByClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptExecutionHistory",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ScriptExecutionHistoryListByClusterInput =
@@ -1694,6 +2688,7 @@ export const ScriptExecutionHistoryPromoteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptExecutionHistory/{scriptExecutionId}/promote",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ScriptExecutionHistoryPromoteInput =
@@ -1720,6 +2715,7 @@ export const VirtualMachinesGetAsyncOperationStatusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts/azureasyncoperations/{operationId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type VirtualMachinesGetAsyncOperationStatusInput =
@@ -1756,6 +2752,7 @@ export const VirtualMachinesListHostsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts",
+      apiVersion: "2021-06-01",
     }),
   );
 export type VirtualMachinesListHostsInput =
@@ -1789,6 +2786,7 @@ export const VirtualMachinesRestartHostsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts",
+      apiVersion: "2021-06-01",
     }),
   );
 export type VirtualMachinesRestartHostsInput =

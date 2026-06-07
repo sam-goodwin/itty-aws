@@ -14,11 +14,39 @@ export const PrivateZonesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        maxNumberOfRecordSets: Schema.optional(Schema.Number),
+        numberOfRecordSets: Schema.optional(Schema.Number),
+        maxNumberOfVirtualNetworkLinks: Schema.optional(Schema.Number),
+        numberOfVirtualNetworkLinks: Schema.optional(Schema.Number),
+        maxNumberOfVirtualNetworkLinksWithRegistration: Schema.optional(
+          Schema.Number,
+        ),
+        numberOfVirtualNetworkLinksWithRegistration: Schema.optional(
+          Schema.Number,
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        internalId: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type PrivateZonesCreateOrUpdateInput =
@@ -71,11 +99,11 @@ export const PrivateZonesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type PrivateZonesDeleteInput = typeof PrivateZonesDeleteInput.Type;
@@ -103,11 +131,11 @@ export const PrivateZonesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateZoneName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
+    apiVersion: "2024-06-01",
   }),
 );
 export type PrivateZonesGetInput = typeof PrivateZonesGetInput.Type;
@@ -150,12 +178,12 @@ export const PrivateZonesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PrivateZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $top: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateDnsZones",
+    apiVersion: "2024-06-01",
   }),
 );
 export type PrivateZonesListInput = typeof PrivateZonesListInput.Type;
@@ -216,12 +244,12 @@ export const PrivateZonesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones",
+      apiVersion: "2024-06-01",
     }),
   );
 export type PrivateZonesListByResourceGroupInput =
@@ -286,11 +314,39 @@ export const PrivateZonesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        maxNumberOfRecordSets: Schema.optional(Schema.Number),
+        numberOfRecordSets: Schema.optional(Schema.Number),
+        maxNumberOfVirtualNetworkLinks: Schema.optional(Schema.Number),
+        numberOfVirtualNetworkLinks: Schema.optional(Schema.Number),
+        maxNumberOfVirtualNetworkLinksWithRegistration: Schema.optional(
+          Schema.Number,
+        ),
+        numberOfVirtualNetworkLinksWithRegistration: Schema.optional(
+          Schema.Number,
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        internalId: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type PrivateZonesUpdateInput = typeof PrivateZonesUpdateInput.Type;
@@ -349,11 +405,82 @@ export const RecordSetsCreateOrUpdateInput =
       "TXT",
     ]).pipe(T.PathParam()),
     relativeRecordSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        ttl: Schema.optional(Schema.Number),
+        fqdn: Schema.optional(Schema.String),
+        isAutoRegistered: Schema.optional(Schema.Boolean),
+        aRecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipv4Address: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        aaaaRecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipv6Address: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        cnameRecord: Schema.optional(
+          Schema.Struct({
+            cname: Schema.optional(Schema.String),
+          }),
+        ),
+        mxRecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              preference: Schema.optional(Schema.Number),
+              exchange: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        ptrRecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ptrdname: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        soaRecord: Schema.optional(
+          Schema.Struct({
+            host: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            serialNumber: Schema.optional(Schema.Number),
+            refreshTime: Schema.optional(Schema.Number),
+            retryTime: Schema.optional(Schema.Number),
+            expireTime: Schema.optional(Schema.Number),
+            minimumTtl: Schema.optional(Schema.Number),
+          }),
+        ),
+        srvRecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              priority: Schema.optional(Schema.Number),
+              weight: Schema.optional(Schema.Number),
+              port: Schema.optional(Schema.Number),
+              target: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        txtRecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              value: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}/{relativeRecordSetName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type RecordSetsCreateOrUpdateInput =
@@ -418,11 +545,11 @@ export const RecordSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "TXT",
   ]).pipe(T.PathParam()),
   relativeRecordSetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}/{relativeRecordSetName}",
+    apiVersion: "2024-06-01",
   }),
 );
 export type RecordSetsDeleteInput = typeof RecordSetsDeleteInput.Type;
@@ -463,11 +590,11 @@ export const RecordSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "TXT",
   ]).pipe(T.PathParam()),
   relativeRecordSetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}/{relativeRecordSetName}",
+    apiVersion: "2024-06-01",
   }),
 );
 export type RecordSetsGetInput = typeof RecordSetsGetInput.Type;
@@ -514,13 +641,13 @@ export const RecordSetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateZoneName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $top: Schema.optional(Schema.Number),
   $recordsetnamesuffix: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/aLL",
+    apiVersion: "2024-06-01",
   }),
 );
 export type RecordSetsListInput = typeof RecordSetsListInput.Type;
@@ -583,13 +710,13 @@ export const RecordSetsListByTypeInput =
       "SRV",
       "TXT",
     ]).pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
     $recordsetnamesuffix: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type RecordSetsListByTypeInput = typeof RecordSetsListByTypeInput.Type;
@@ -666,11 +793,82 @@ export const RecordSetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "TXT",
   ]).pipe(T.PathParam()),
   relativeRecordSetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      ttl: Schema.optional(Schema.Number),
+      fqdn: Schema.optional(Schema.String),
+      isAutoRegistered: Schema.optional(Schema.Boolean),
+      aRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            ipv4Address: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      aaaaRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            ipv6Address: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      cnameRecord: Schema.optional(
+        Schema.Struct({
+          cname: Schema.optional(Schema.String),
+        }),
+      ),
+      mxRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            preference: Schema.optional(Schema.Number),
+            exchange: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      ptrRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            ptrdname: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      soaRecord: Schema.optional(
+        Schema.Struct({
+          host: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          serialNumber: Schema.optional(Schema.Number),
+          refreshTime: Schema.optional(Schema.Number),
+          retryTime: Schema.optional(Schema.Number),
+          expireTime: Schema.optional(Schema.Number),
+          minimumTtl: Schema.optional(Schema.Number),
+        }),
+      ),
+      srvRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            priority: Schema.optional(Schema.Number),
+            weight: Schema.optional(Schema.Number),
+            port: Schema.optional(Schema.Number),
+            target: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      txtRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            value: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      ),
+    }),
+  ),
+  etag: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}/{relativeRecordSetName}",
+    apiVersion: "2024-06-01",
   }),
 );
 export type RecordSetsUpdateInput = typeof RecordSetsUpdateInput.Type;
@@ -722,11 +920,40 @@ export const VirtualNetworkLinksCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
     virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        virtualNetwork: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        registrationEnabled: Schema.optional(Schema.Boolean),
+        resolutionPolicy: Schema.optional(
+          Schema.Literals(["Default", "NxDomainRedirect"]),
+        ),
+        virtualNetworkLinkState: Schema.optional(
+          Schema.Literals(["InProgress", "Completed"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type VirtualNetworkLinksCreateOrUpdateInput =
@@ -780,11 +1007,11 @@ export const VirtualNetworkLinksDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
     virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type VirtualNetworkLinksDeleteInput =
@@ -820,11 +1047,11 @@ export const VirtualNetworkLinksGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
     virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type VirtualNetworkLinksGetInput =
@@ -876,12 +1103,12 @@ export const VirtualNetworkLinksListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks",
+      apiVersion: "2024-06-01",
     }),
   );
 export type VirtualNetworkLinksListInput =
@@ -949,11 +1176,40 @@ export const VirtualNetworkLinksUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
     virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        virtualNetwork: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        registrationEnabled: Schema.optional(Schema.Boolean),
+        resolutionPolicy: Schema.optional(
+          Schema.Literals(["Default", "NxDomainRedirect"]),
+        ),
+        virtualNetworkLinkState: Schema.optional(
+          Schema.Literals(["InProgress", "Completed"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type VirtualNetworkLinksUpdateInput =

@@ -14,11 +14,89 @@ export const InstancesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instancename: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        marketplace: Schema.Struct({
+          subscriptionId: Schema.optional(Schema.String),
+          subscriptionStatus: Schema.optional(
+            Schema.Literals([
+              "PendingFulfillmentStart",
+              "Subscribed",
+              "Suspended",
+              "Unsubscribed",
+            ]),
+          ),
+          offerDetails: Schema.Struct({
+            publisherId: Schema.String,
+            offerId: Schema.String,
+            planId: Schema.String,
+            planName: Schema.optional(Schema.String),
+            termUnit: Schema.optional(Schema.String),
+            termId: Schema.optional(Schema.String),
+          }),
+        }),
+        user: Schema.Struct({
+          firstName: Schema.optional(Schema.String),
+          lastName: Schema.optional(Schema.String),
+          emailAddress: Schema.optional(Schema.String),
+          upn: Schema.optional(Schema.String),
+          phoneNumber: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+        partnerProperties: Schema.Struct({
+          region: Schema.Literals([
+            "eastus",
+            "centralus",
+            "westus",
+            "westeurope",
+            "japaneast",
+            "koreacentral",
+          ]),
+          subdomain: Schema.String,
+        }),
+        singleSignOnProperties: Schema.optional(
+          Schema.Struct({
+            type: Schema.Literals(["Saml", "OpenId"]),
+            state: Schema.optional(
+              Schema.Literals(["Initial", "Enable", "Disable"]),
+            ),
+            enterpriseAppId: Schema.optional(Schema.String),
+            url: Schema.optional(Schema.String),
+            aadDomains: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances/{instancename}",
+      apiVersion: "2024-09-18",
     }),
   );
 export type InstancesCreateOrUpdateInput =
@@ -68,11 +146,11 @@ export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instancename: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances/{instancename}",
+    apiVersion: "2024-09-18",
   }),
 );
 export type InstancesDeleteInput = typeof InstancesDeleteInput.Type;
@@ -99,11 +177,11 @@ export const InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instancename: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances/{instancename}",
+    apiVersion: "2024-09-18",
   }),
 );
 export type InstancesGetInput = typeof InstancesGetInput.Type;
@@ -148,11 +226,11 @@ export const InstancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances",
+      apiVersion: "2024-09-18",
     }),
   );
 export type InstancesListByResourceGroupInput =
@@ -214,11 +292,11 @@ export const InstancesListByResourceGroup =
 export const InstancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.WeightsAndBiases/instances",
+      apiVersion: "2024-09-18",
     }),
   );
 export type InstancesListBySubscriptionInput =
@@ -281,11 +359,33 @@ export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instancename: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+      ),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances/{instancename}",
+    apiVersion: "2024-09-18",
   }),
 );
 export type InstancesUpdateInput = typeof InstancesUpdateInput.Type;
@@ -326,12 +426,13 @@ export const InstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InstancesUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.WeightsAndBiases/operations",
+    apiVersion: "2024-09-18",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;

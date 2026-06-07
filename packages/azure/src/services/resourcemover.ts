@@ -13,10 +13,16 @@ export const MoveCollectionsBulkRemoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
+    validateOnly: Schema.optional(Schema.Boolean),
+    moveResources: Schema.optional(Schema.Array(Schema.String)),
+    moveResourceInputType: Schema.optional(
+      Schema.Literals(["MoveResourceId", "MoveResourceSourceId"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/bulkRemove",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsBulkRemoveInput =
@@ -76,10 +82,17 @@ export const MoveCollectionsBulkRemove = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MoveCollectionsCommitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean),
+    moveResources: Schema.Array(Schema.String),
+    moveResourceInputType: Schema.optional(
+      Schema.Literals(["MoveResourceId", "MoveResourceSourceId"]),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/commit",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsCommitInput = typeof MoveCollectionsCommitInput.Type;
@@ -138,10 +151,67 @@ export const MoveCollectionsCommit = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MoveCollectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        sourceRegion: Schema.optional(Schema.String),
+        targetRegion: Schema.optional(Schema.String),
+        moveRegion: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Updating", "Creating", "Failed"]),
+        ),
+        version: Schema.optional(Schema.String),
+        moveType: Schema.optional(
+          Schema.Literals(["RegionToRegion", "RegionToZone"]),
+        ),
+        errors: Schema.optional(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                target: Schema.optional(Schema.String),
+                details: Schema.optional(Schema.Array(Schema.Unknown)),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsCreateInput = typeof MoveCollectionsCreateInput.Type;
@@ -224,6 +294,7 @@ export const MoveCollectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsDeleteInput = typeof MoveCollectionsDeleteInput.Type;
@@ -282,10 +353,17 @@ export const MoveCollectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MoveCollectionsDiscardInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean),
+    moveResources: Schema.Array(Schema.String),
+    moveResourceInputType: Schema.optional(
+      Schema.Literals(["MoveResourceId", "MoveResourceSourceId"]),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/discard",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsDiscardInput =
@@ -349,6 +427,7 @@ export const MoveCollectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsGetInput = typeof MoveCollectionsGetInput.Type;
@@ -424,10 +503,17 @@ export const MoveCollectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const MoveCollectionsInitiateMoveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean),
+    moveResources: Schema.Array(Schema.String),
+    moveResourceInputType: Schema.optional(
+      Schema.Literals(["MoveResourceId", "MoveResourceSourceId"]),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/initiateMove",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsInitiateMoveInput =
@@ -491,6 +577,7 @@ export const MoveCollectionsListMoveCollectionsByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsListMoveCollectionsByResourceGroupInput =
@@ -597,6 +684,7 @@ export const MoveCollectionsListMoveCollectionsBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/moveCollections",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsListMoveCollectionsBySubscriptionInput =
@@ -705,6 +793,7 @@ export const MoveCollectionsListRequiredForInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/requiredFor",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsListRequiredForInput =
@@ -731,10 +820,17 @@ export const MoveCollectionsListRequiredFor =
   }));
 // Input Schema
 export const MoveCollectionsPrepareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean),
+    moveResources: Schema.Array(Schema.String),
+    moveResourceInputType: Schema.optional(
+      Schema.Literals(["MoveResourceId", "MoveResourceSourceId"]),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/prepare",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsPrepareInput =
@@ -798,6 +894,7 @@ export const MoveCollectionsResolveDependenciesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/resolveDependencies",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsResolveDependenciesInput =
@@ -856,10 +953,22 @@ export const MoveCollectionsResolveDependencies =
   }));
 // Input Schema
 export const MoveCollectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveCollectionsUpdateInput = typeof MoveCollectionsUpdateInput.Type;
@@ -938,10 +1047,140 @@ export const MoveCollectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MoveResourcesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Updating", "Creating", "Failed"]),
+        ),
+        sourceId: Schema.String,
+        targetId: Schema.optional(Schema.String),
+        existingTargetId: Schema.optional(Schema.String),
+        resourceSettings: Schema.optional(
+          Schema.Struct({
+            resourceType: Schema.String,
+            targetResourceName: Schema.optional(Schema.String),
+            targetResourceGroupName: Schema.optional(Schema.String),
+          }),
+        ),
+        sourceResourceSettings: Schema.optional(
+          Schema.Struct({
+            resourceType: Schema.String,
+            targetResourceName: Schema.optional(Schema.String),
+            targetResourceGroupName: Schema.optional(Schema.String),
+          }),
+        ),
+        moveStatus: Schema.optional(
+          Schema.Struct({
+            moveState: Schema.optional(
+              Schema.Literals([
+                "AssignmentPending",
+                "PreparePending",
+                "PrepareInProgress",
+                "PrepareFailed",
+                "MovePending",
+                "MoveInProgress",
+                "MoveFailed",
+                "DiscardInProgress",
+                "DiscardFailed",
+                "CommitPending",
+                "CommitInProgress",
+                "CommitFailed",
+                "Committed",
+                "DeleteSourcePending",
+                "ResourceMoveCompleted",
+              ]),
+            ),
+            jobStatus: Schema.optional(
+              Schema.Struct({
+                jobName: Schema.optional(Schema.Literals(["InitialSync"])),
+                jobProgress: Schema.optional(Schema.String),
+              }),
+            ),
+            errors: Schema.optional(
+              Schema.Struct({
+                properties: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        dependsOn: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              resolutionStatus: Schema.optional(Schema.String),
+              resolutionType: Schema.optional(
+                Schema.Literals(["Manual", "Automatic"]),
+              ),
+              dependencyType: Schema.optional(
+                Schema.Literals(["RequiredForPrepare", "RequiredForMove"]),
+              ),
+              manualResolution: Schema.optional(
+                Schema.Struct({
+                  targetId: Schema.optional(Schema.String),
+                }),
+              ),
+              automaticResolution: Schema.optional(
+                Schema.Struct({
+                  moveResourceId: Schema.optional(Schema.String),
+                }),
+              ),
+              isOptional: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        dependsOnOverrides: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              targetId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        isResolveRequired: Schema.optional(Schema.Boolean),
+        errors: Schema.optional(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                target: Schema.optional(Schema.String),
+                details: Schema.optional(Schema.Array(Schema.Unknown)),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveResourcesCreateInput = typeof MoveResourcesCreateInput.Type;
@@ -1094,6 +1333,7 @@ export const MoveResourcesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
+      apiVersion: "2023-08-01",
     }),
   );
 export type MoveResourcesDeleteInput = typeof MoveResourcesDeleteInput.Type;
@@ -1154,6 +1394,7 @@ export const MoveResourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
+    apiVersion: "2023-08-01",
   }),
 );
 export type MoveResourcesGetInput = typeof MoveResourcesGetInput.Type;
@@ -1310,6 +1551,7 @@ export const MoveResourcesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources",
+    apiVersion: "2023-08-01",
   }),
 );
 export type MoveResourcesListInput = typeof MoveResourcesListInput.Type;
@@ -1504,7 +1746,11 @@ export const MoveResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const OperationsDiscoveryGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Migrate/operations" }),
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Migrate/operations",
+      apiVersion: "2023-08-01",
+    }),
   );
 export type OperationsDiscoveryGetInput =
   typeof OperationsDiscoveryGetInput.Type;
@@ -1552,6 +1798,7 @@ export const UnresolvedDependenciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/unresolvedDependencies",
+      apiVersion: "2023-08-01",
     }),
   );
 export type UnresolvedDependenciesGetInput =

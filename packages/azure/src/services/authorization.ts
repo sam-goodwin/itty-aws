@@ -13,11 +13,11 @@ export const DenyAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     denyAssignmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId}",
+      apiVersion: "2022-04-01",
     }),
   );
 export type DenyAssignmentsGetInput = typeof DenyAssignmentsGetInput.Type;
@@ -94,8 +94,13 @@ export const DenyAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DenyAssignmentsGetByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     denyAssignmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(T.Http({ method: "GET", path: "/{denyAssignmentId}" }));
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{denyAssignmentId}",
+      apiVersion: "2022-04-01",
+    }),
+  );
 export type DenyAssignmentsGetByIdInput =
   typeof DenyAssignmentsGetByIdInput.Type;
 
@@ -173,11 +178,11 @@ export const DenyAssignmentsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DenyAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/denyAssignments",
+      apiVersion: "2022-04-01",
     }),
   );
 export type DenyAssignmentsListInput = typeof DenyAssignmentsListInput.Type;
@@ -266,11 +271,11 @@ export const DenyAssignmentsListForResourceInput =
     parentResourcePath: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/denyAssignments",
+      apiVersion: "2022-04-01",
     }),
   );
 export type DenyAssignmentsListForResourceInput =
@@ -363,11 +368,11 @@ export const DenyAssignmentsListForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/denyAssignments",
+      apiVersion: "2022-04-01",
     }),
   );
 export type DenyAssignmentsListForResourceGroupInput =
@@ -456,11 +461,11 @@ export const DenyAssignmentsListForResourceGroup =
 export const DenyAssignmentsListForScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.Authorization/denyAssignments",
+      apiVersion: "2022-04-01",
     }),
   );
 export type DenyAssignmentsListForScopeInput =
@@ -554,11 +559,11 @@ export const PermissionsListForResourceInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/permissions",
+      apiVersion: "2022-04-01",
     }),
   );
 export type PermissionsListForResourceInput =
@@ -605,11 +610,11 @@ export const PermissionsListForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/permissions",
+      apiVersion: "2022-04-01",
     }),
   );
 export type PermissionsListForResourceGroupInput =
@@ -650,12 +655,12 @@ export const PermissionsListForResourceGroup =
 export const ProviderOperationsMetadataGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/providerOperations/{resourceProviderNamespace}",
+      apiVersion: "2022-04-01",
     }),
   );
 export type ProviderOperationsMetadataGetInput =
@@ -687,12 +692,12 @@ export const ProviderOperationsMetadataGet =
 // Input Schema
 export const ProviderOperationsMetadataListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/providerOperations",
+      apiVersion: "2022-04-01",
     }),
   );
 export type ProviderOperationsMetadataListInput =
@@ -730,11 +735,33 @@ export const RoleAssignmentsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      scope: Schema.optional(Schema.String),
+      roleDefinitionId: Schema.String,
+      principalId: Schema.String,
+      principalType: Schema.optional(
+        Schema.Literals([
+          "User",
+          "Group",
+          "ServicePrincipal",
+          "ForeignGroup",
+          "Device",
+        ]),
+      ),
+      description: Schema.optional(Schema.String),
+      condition: Schema.optional(Schema.String),
+      conditionVersion: Schema.optional(Schema.String),
+      createdOn: Schema.optional(Schema.String),
+      updatedOn: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      updatedBy: Schema.optional(Schema.String),
+      delegatedManagedIdentityResourceId: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
+      apiVersion: "2022-04-01",
     }),
   );
 export type RoleAssignmentsCreateInput = typeof RoleAssignmentsCreateInput.Type;
@@ -781,8 +808,35 @@ export const RoleAssignmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RoleAssignmentsCreateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roleAssignmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(T.Http({ method: "PUT", path: "/{roleAssignmentId}" }));
+    properties: Schema.Struct({
+      scope: Schema.optional(Schema.String),
+      roleDefinitionId: Schema.String,
+      principalId: Schema.String,
+      principalType: Schema.optional(
+        Schema.Literals([
+          "User",
+          "Group",
+          "ServicePrincipal",
+          "ForeignGroup",
+          "Device",
+        ]),
+      ),
+      description: Schema.optional(Schema.String),
+      condition: Schema.optional(Schema.String),
+      conditionVersion: Schema.optional(Schema.String),
+      createdOn: Schema.optional(Schema.String),
+      updatedOn: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      updatedBy: Schema.optional(Schema.String),
+      delegatedManagedIdentityResourceId: Schema.optional(Schema.String),
+    }),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/{roleAssignmentId}",
+      apiVersion: "2022-04-01",
+    }),
+  );
 export type RoleAssignmentsCreateByIdInput =
   typeof RoleAssignmentsCreateByIdInput.Type;
 
@@ -828,12 +882,12 @@ export const RoleAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
+      apiVersion: "2022-04-01",
     }),
   );
 export type RoleAssignmentsDeleteInput = typeof RoleAssignmentsDeleteInput.Type;
@@ -881,9 +935,14 @@ export const RoleAssignmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RoleAssignmentsDeleteByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roleAssignmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tenantId: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "DELETE", path: "/{roleAssignmentId}" }));
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/{roleAssignmentId}",
+      apiVersion: "2022-04-01",
+    }),
+  );
 export type RoleAssignmentsDeleteByIdInput =
   typeof RoleAssignmentsDeleteByIdInput.Type;
 
@@ -930,12 +989,12 @@ export const RoleAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
+      apiVersion: "2022-04-01",
     }),
   );
 export type RoleAssignmentsGetInput = typeof RoleAssignmentsGetInput.Type;
@@ -980,9 +1039,14 @@ export const RoleAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const RoleAssignmentsGetByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roleAssignmentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tenantId: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/{roleAssignmentId}" }));
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{roleAssignmentId}",
+      apiVersion: "2022-04-01",
+    }),
+  );
 export type RoleAssignmentsGetByIdInput =
   typeof RoleAssignmentsGetByIdInput.Type;
 
@@ -1032,13 +1096,13 @@ export const RoleAssignmentsListForResourceInput =
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/roleAssignments",
+      apiVersion: "2022-04-01",
     }),
   );
 export type RoleAssignmentsListForResourceInput =
@@ -1106,13 +1170,13 @@ export const RoleAssignmentsListForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments",
+      apiVersion: "2022-04-01",
     }),
   );
 export type RoleAssignmentsListForResourceGroupInput =
@@ -1176,7 +1240,6 @@ export const RoleAssignmentsListForResourceGroup =
 export const RoleAssignmentsListForScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
     $skipToken: Schema.optional(Schema.String),
@@ -1184,6 +1247,7 @@ export const RoleAssignmentsListForScopeInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.Authorization/roleAssignments",
+      apiVersion: "2022-04-01",
     }),
   );
 export type RoleAssignmentsListForScopeInput =
@@ -1248,13 +1312,13 @@ export const RoleAssignmentsListForScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RoleAssignmentsListForSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleAssignments",
+      apiVersion: "2022-04-01",
     }),
   );
 export type RoleAssignmentsListForSubscriptionInput =
@@ -1318,11 +1382,36 @@ export const RoleDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleDefinitionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        roleName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        permissions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              actions: Schema.optional(Schema.Array(Schema.String)),
+              notActions: Schema.optional(Schema.Array(Schema.String)),
+              dataActions: Schema.optional(Schema.Array(Schema.String)),
+              notDataActions: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+        assignableScopes: Schema.optional(Schema.Array(Schema.String)),
+        createdOn: Schema.optional(Schema.String),
+        updatedOn: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        updatedBy: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
+      apiVersion: "2022-04-01",
     }),
   );
 export type RoleDefinitionsCreateOrUpdateInput =
@@ -1378,11 +1467,11 @@ export const RoleDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleDefinitionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
+      apiVersion: "2022-04-01",
     }),
   );
 export type RoleDefinitionsDeleteInput = typeof RoleDefinitionsDeleteInput.Type;
@@ -1438,11 +1527,11 @@ export const RoleDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleDefinitionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
+      apiVersion: "2022-04-01",
     }),
   );
 export type RoleDefinitionsGetInput = typeof RoleDefinitionsGetInput.Type;
@@ -1495,11 +1584,11 @@ export const RoleDefinitionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.Authorization/roleDefinitions",
+      apiVersion: "2022-04-01",
     }),
   );
 export type RoleDefinitionsListInput = typeof RoleDefinitionsListInput.Type;

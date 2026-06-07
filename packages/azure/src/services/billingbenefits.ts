@@ -15,6 +15,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.BillingBenefits/operations",
+    apiVersion: "2022-11-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -61,6 +62,7 @@ export const ReservationOrderAliasCreateInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ReservationOrderAliasCreateInput =
@@ -106,6 +108,7 @@ export const ReservationOrderAliasGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ReservationOrderAliasGetInput =
@@ -152,6 +155,7 @@ export const SavingsPlanGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}",
+    apiVersion: "2022-11-01",
   }),
 );
 export type SavingsPlanGetInput = typeof SavingsPlanGetInput.Type;
@@ -193,6 +197,7 @@ export const SavingsPlanListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans",
+    apiVersion: "2022-11-01",
   }),
 );
 export type SavingsPlanListInput = typeof SavingsPlanListInput.Type;
@@ -257,6 +262,7 @@ export const SavingsPlanListAllInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/savingsPlans",
+      apiVersion: "2022-11-01",
     }),
   );
 export type SavingsPlanListAllInput = typeof SavingsPlanListAllInput.Type;
@@ -342,6 +348,7 @@ export const SavingsPlanOrderAliasCreateInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type SavingsPlanOrderAliasCreateInput =
@@ -387,6 +394,7 @@ export const SavingsPlanOrderAliasGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type SavingsPlanOrderAliasGetInput =
@@ -432,6 +440,7 @@ export const SavingsPlanOrderElevateInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/elevate",
+      apiVersion: "2022-11-01",
     }),
   );
 export type SavingsPlanOrderElevateInput =
@@ -469,6 +478,7 @@ export const SavingsPlanOrderGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type SavingsPlanOrderGetInput = typeof SavingsPlanOrderGetInput.Type;
@@ -510,6 +520,7 @@ export const SavingsPlanOrderListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders",
+      apiVersion: "2022-11-01",
     }),
   );
 export type SavingsPlanOrderListInput = typeof SavingsPlanOrderListInput.Type;
@@ -571,6 +582,7 @@ export const SavingsPlanUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}",
+    apiVersion: "2022-11-01",
   }),
 );
 export type SavingsPlanUpdateInput = typeof SavingsPlanUpdateInput.Type;
@@ -612,6 +624,7 @@ export const SavingsPlanValidateUpdateInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/validate",
+      apiVersion: "2022-11-01",
     }),
   );
 export type SavingsPlanValidateUpdateInput =
@@ -651,6 +664,7 @@ export const ValidatePurchaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.BillingBenefits/validate",
+    apiVersion: "2022-11-01",
   }),
 );
 export type ValidatePurchaseInput = typeof ValidatePurchaseInput.Type;

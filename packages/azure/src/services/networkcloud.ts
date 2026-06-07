@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AgentPoolsCreateOrUpdateInput =
@@ -15,11 +16,138 @@ export const AgentPoolsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
     agentPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      administratorConfiguration: Schema.optional(
+        Schema.Struct({
+          adminUsername: Schema.optional(Schema.String),
+          sshPublicKeys: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                keyData: Schema.String,
+              }),
+            ),
+          ),
+        }),
+      ),
+      agentOptions: Schema.optional(
+        Schema.Struct({
+          hugepagesCount: Schema.Number,
+          hugepagesSize: Schema.optional(Schema.Literals(["2M", "1G"])),
+        }),
+      ),
+      attachedNetworkConfiguration: Schema.optional(
+        Schema.Struct({
+          l2Networks: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                networkId: Schema.String,
+                pluginType: Schema.optional(
+                  Schema.Literals([
+                    "DPDK",
+                    "SRIOV",
+                    "OSDevice",
+                    "MACVLAN",
+                    "IPVLAN",
+                  ]),
+                ),
+              }),
+            ),
+          ),
+          l3Networks: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                ipamEnabled: Schema.optional(
+                  Schema.Literals(["True", "False"]),
+                ),
+                networkId: Schema.String,
+                pluginType: Schema.optional(
+                  Schema.Literals([
+                    "DPDK",
+                    "SRIOV",
+                    "OSDevice",
+                    "MACVLAN",
+                    "IPVLAN",
+                  ]),
+                ),
+              }),
+            ),
+          ),
+          trunkedNetworks: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                networkId: Schema.String,
+                pluginType: Schema.optional(
+                  Schema.Literals([
+                    "DPDK",
+                    "SRIOV",
+                    "OSDevice",
+                    "MACVLAN",
+                    "IPVLAN",
+                  ]),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      availabilityZones: Schema.optional(Schema.Array(Schema.String)),
+      count: Schema.Number,
+      labels: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            key: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+      ),
+      mode: Schema.Literals(["System", "User", "NotApplicable"]),
+      taints: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            key: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+      ),
+      upgradeSettings: Schema.optional(
+        Schema.Struct({
+          drainTimeout: Schema.optional(Schema.Number),
+          maxSurge: Schema.optional(Schema.String),
+          maxUnavailable: Schema.optional(Schema.String),
+        }),
+      ),
+      vmSkuName: Schema.String,
+      detailedStatus: Schema.optional(
+        Schema.Literals(["Available", "Error", "Provisioning"]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      kubernetesVersion: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Canceled",
+          "Deleting",
+          "Failed",
+          "InProgress",
+          "Succeeded",
+          "Updating",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type AgentPoolsCreateOrUpdateInput =
@@ -71,11 +199,11 @@ export const AgentPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   kubernetesClusterName: Schema.String.pipe(T.PathParam()),
   agentPoolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type AgentPoolsDeleteInput = typeof AgentPoolsDeleteInput.Type;
@@ -104,11 +232,11 @@ export const AgentPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   kubernetesClusterName: Schema.String.pipe(T.PathParam()),
   agentPoolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type AgentPoolsGetInput = typeof AgentPoolsGetInput.Type;
@@ -155,11 +283,11 @@ export const AgentPoolsListByKubernetesClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools",
+      apiVersion: "2025-09-01",
     }),
   );
 export type AgentPoolsListByKubernetesClusterInput =
@@ -224,11 +352,35 @@ export const AgentPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   kubernetesClusterName: Schema.String.pipe(T.PathParam()),
   agentPoolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      administratorConfiguration: Schema.optional(
+        Schema.Struct({
+          sshPublicKeys: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                keyData: Schema.String,
+              }),
+            ),
+          ),
+        }),
+      ),
+      count: Schema.optional(Schema.Number),
+      upgradeSettings: Schema.optional(
+        Schema.Struct({
+          drainTimeout: Schema.optional(Schema.Number),
+          maxSurge: Schema.optional(Schema.String),
+          maxUnavailable: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type AgentPoolsUpdateInput = typeof AgentPoolsUpdateInput.Type;
@@ -278,11 +430,64 @@ export const BareMetalMachineKeySetsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineKeySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      azureGroupId: Schema.String,
+      expiration: Schema.String,
+      jumpHostsAllowed: Schema.Array(Schema.String),
+      osGroupName: Schema.optional(Schema.String),
+      privilegeLevel: Schema.Literals(["Standard", "Superuser", "Other"]),
+      privilegeLevelName: Schema.optional(Schema.String),
+      userList: Schema.Array(
+        Schema.Struct({
+          azureUserName: Schema.String,
+          description: Schema.optional(Schema.String),
+          sshPublicKey: Schema.Struct({
+            keyData: Schema.String,
+          }),
+          userPrincipalName: Schema.optional(Schema.String),
+        }),
+      ),
+      detailedStatus: Schema.optional(
+        Schema.Literals([
+          "AllActive",
+          "SomeInvalid",
+          "AllInvalid",
+          "Validating",
+        ]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      lastValidation: Schema.optional(Schema.String),
+      userListStatus: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            azureUserName: Schema.optional(Schema.String),
+            status: Schema.optional(Schema.Literals(["Active", "Invalid"])),
+            statusMessage: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Accepted",
+          "Provisioning",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachineKeySetsCreateOrUpdateInput =
@@ -334,11 +539,11 @@ export const BareMetalMachineKeySetsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineKeySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachineKeySetsDeleteInput =
@@ -372,11 +577,11 @@ export const BareMetalMachineKeySetsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineKeySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachineKeySetsGetInput =
@@ -428,11 +633,11 @@ export const BareMetalMachineKeySetsListByClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachineKeySetsListByClusterInput =
@@ -498,11 +703,30 @@ export const BareMetalMachineKeySetsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineKeySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        expiration: Schema.optional(Schema.String),
+        jumpHostsAllowed: Schema.optional(Schema.Array(Schema.String)),
+        userList: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              azureUserName: Schema.String,
+              description: Schema.optional(Schema.String),
+              sshPublicKey: Schema.Struct({
+                keyData: Schema.String,
+              }),
+              userPrincipalName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachineKeySetsUpdateInput =
@@ -553,11 +777,12 @@ export const BareMetalMachinesCordonInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    evacuate: Schema.optional(Schema.Literals(["True", "False"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/cordon",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesCordonInput =
@@ -590,11 +815,176 @@ export const BareMetalMachinesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      bmcConnectionString: Schema.String,
+      bmcCredentials: Schema.Struct({
+        password: SensitiveString,
+        username: Schema.String,
+      }),
+      bmcMacAddress: Schema.String,
+      bootMacAddress: Schema.String,
+      machineDetails: Schema.String,
+      machineName: Schema.String,
+      machineSkuId: Schema.String,
+      rackId: Schema.String,
+      rackSlot: Schema.Number,
+      serialNumber: Schema.String,
+      actionStates: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            actionType: Schema.optional(Schema.String),
+            correlationId: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Literals(["Completed", "InProgress", "Failed"]),
+            ),
+            stepStates: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  endTime: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  startTime: Schema.optional(Schema.String),
+                  status: Schema.optional(
+                    Schema.Literals([
+                      "Completed",
+                      "InProgress",
+                      "Failed",
+                      "NotStarted",
+                    ]),
+                  ),
+                  stepName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      ),
+      associatedResourceIds: Schema.optional(Schema.Array(Schema.String)),
+      caCertificate: Schema.optional(
+        Schema.Struct({
+          hash: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+        }),
+      ),
+      clusterId: Schema.optional(Schema.String),
+      cordonStatus: Schema.optional(
+        Schema.Literals(["Cordoned", "Uncordoned"]),
+      ),
+      detailedStatus: Schema.optional(
+        Schema.Literals([
+          "Preparing",
+          "Error",
+          "Available",
+          "Provisioning",
+          "Provisioned",
+          "Deprovisioning",
+        ]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      hardwareInventory: Schema.optional(
+        Schema.Struct({
+          additionalHostInformation: Schema.optional(Schema.String),
+          interfaces: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                linkStatus: Schema.optional(Schema.String),
+                macAddress: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                networkInterfaceId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          nics: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                lldpNeighbor: Schema.optional(
+                  Schema.Struct({
+                    portDescription: Schema.optional(Schema.String),
+                    portName: Schema.optional(Schema.String),
+                    systemDescription: Schema.optional(Schema.String),
+                    systemName: Schema.optional(Schema.String),
+                  }),
+                ),
+                macAddress: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      hardwareValidationStatus: Schema.optional(
+        Schema.Struct({
+          lastValidationTime: Schema.optional(Schema.String),
+          result: Schema.optional(Schema.Literals(["Pass", "Fail"])),
+        }),
+      ),
+      hybridAksClustersAssociatedIds: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      kubernetesNodeName: Schema.optional(Schema.String),
+      kubernetesVersion: Schema.optional(Schema.String),
+      machineClusterVersion: Schema.optional(Schema.String),
+      machineRoles: Schema.optional(Schema.Array(Schema.String)),
+      oamIpv4Address: Schema.optional(Schema.String),
+      oamIpv6Address: Schema.optional(Schema.String),
+      osImage: Schema.optional(Schema.String),
+      powerState: Schema.optional(Schema.Literals(["On", "Off"])),
+      readyState: Schema.optional(Schema.Literals(["True", "False"])),
+      runtimeProtectionStatus: Schema.optional(
+        Schema.Struct({
+          definitionsLastUpdated: Schema.optional(Schema.String),
+          definitionsVersion: Schema.optional(Schema.String),
+          scanCompletedTime: Schema.optional(Schema.String),
+          scanScheduledTime: Schema.optional(Schema.String),
+          scanStartedTime: Schema.optional(Schema.String),
+        }),
+      ),
+      secretRotationStatus: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            expirePeriodDays: Schema.optional(Schema.Number),
+            lastRotationTime: Schema.optional(Schema.String),
+            rotationPeriodDays: Schema.optional(Schema.Number),
+            secretArchiveReference: Schema.optional(
+              Schema.Struct({
+                keyVaultId: Schema.optional(Schema.String),
+                keyVaultUri: Schema.optional(Schema.String),
+                secretName: Schema.optional(Schema.String),
+                secretVersion: Schema.optional(Schema.String),
+              }),
+            ),
+            secretType: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      serviceTag: Schema.optional(Schema.String),
+      virtualMachinesAssociatedIds: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Accepted",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesCreateOrUpdateInput =
@@ -644,11 +1034,11 @@ export const BareMetalMachinesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesDeleteInput =
@@ -681,11 +1071,11 @@ export const BareMetalMachinesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesGetInput = typeof BareMetalMachinesGetInput.Type;
@@ -733,11 +1123,11 @@ export const BareMetalMachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesListByResourceGroupInput =
@@ -799,11 +1189,11 @@ export const BareMetalMachinesListByResourceGroup =
 export const BareMetalMachinesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/bareMetalMachines",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesListBySubscriptionInput =
@@ -866,11 +1256,12 @@ export const BareMetalMachinesPowerOffInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    skipShutdown: Schema.optional(Schema.Literals(["True", "False"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/powerOff",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesPowerOffInput =
@@ -903,11 +1294,11 @@ export const BareMetalMachinesReimageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/reimage",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesReimageInput =
@@ -940,11 +1331,23 @@ export const BareMetalMachinesReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    bmcCredentials: Schema.optional(
+      Schema.Struct({
+        password: SensitiveString,
+        username: Schema.String,
+      }),
+    ),
+    bmcMacAddress: Schema.optional(Schema.String),
+    bootMacAddress: Schema.optional(Schema.String),
+    machineName: Schema.optional(Schema.String),
+    safeguardMode: Schema.optional(Schema.Literals(["All", "None"])),
+    serialNumber: Schema.optional(Schema.String),
+    storagePolicy: Schema.optional(Schema.Literals(["Preserve", "DiscardAll"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/replace",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesReplaceInput =
@@ -977,11 +1380,11 @@ export const BareMetalMachinesRestartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/restart",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesRestartInput =
@@ -1014,11 +1417,14 @@ export const BareMetalMachinesRunCommandInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    arguments: Schema.optional(Schema.Array(Schema.String)),
+    limitTimeSeconds: Schema.Number,
+    script: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runCommand",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesRunCommandInput =
@@ -1051,11 +1457,18 @@ export const BareMetalMachinesRunDataExtractsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    commands: Schema.Array(
+      Schema.Struct({
+        arguments: Schema.optional(Schema.Array(Schema.String)),
+        command: Schema.String,
+      }),
+    ),
+    limitTimeSeconds: Schema.Number,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runDataExtracts",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesRunDataExtractsInput =
@@ -1087,11 +1500,18 @@ export const BareMetalMachinesRunDataExtractsRestrictedInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    commands: Schema.Array(
+      Schema.Struct({
+        arguments: Schema.optional(Schema.Array(Schema.String)),
+        command: Schema.String,
+      }),
+    ),
+    limitTimeSeconds: Schema.Number,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runDataExtractsRestricted",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesRunDataExtractsRestrictedInput =
@@ -1123,11 +1543,18 @@ export const BareMetalMachinesRunReadCommandsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    commands: Schema.Array(
+      Schema.Struct({
+        arguments: Schema.optional(Schema.Array(Schema.String)),
+        command: Schema.String,
+      }),
+    ),
+    limitTimeSeconds: Schema.Number,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runReadCommands",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesRunReadCommandsInput =
@@ -1159,11 +1586,11 @@ export const BareMetalMachinesStartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/start",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesStartInput =
@@ -1196,11 +1623,11 @@ export const BareMetalMachinesUncordonInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/uncordon",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesUncordonInput =
@@ -1233,11 +1660,17 @@ export const BareMetalMachinesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        machineDetails: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BareMetalMachinesUpdateInput =
@@ -1289,11 +1722,61 @@ export const BmcKeySetsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     bmcKeySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      azureGroupId: Schema.String,
+      expiration: Schema.String,
+      privilegeLevel: Schema.Literals(["ReadOnly", "Administrator"]),
+      userList: Schema.Array(
+        Schema.Struct({
+          azureUserName: Schema.String,
+          description: Schema.optional(Schema.String),
+          sshPublicKey: Schema.Struct({
+            keyData: Schema.String,
+          }),
+          userPrincipalName: Schema.optional(Schema.String),
+        }),
+      ),
+      detailedStatus: Schema.optional(
+        Schema.Literals([
+          "AllActive",
+          "SomeInvalid",
+          "AllInvalid",
+          "Validating",
+        ]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      lastValidation: Schema.optional(Schema.String),
+      userListStatus: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            azureUserName: Schema.optional(Schema.String),
+            status: Schema.optional(Schema.Literals(["Active", "Invalid"])),
+            statusMessage: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Accepted",
+          "Provisioning",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BmcKeySetsCreateOrUpdateInput =
@@ -1345,11 +1828,11 @@ export const BmcKeySetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   bmcKeySetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type BmcKeySetsDeleteInput = typeof BmcKeySetsDeleteInput.Type;
@@ -1378,11 +1861,11 @@ export const BmcKeySetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   bmcKeySetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type BmcKeySetsGetInput = typeof BmcKeySetsGetInput.Type;
@@ -1429,11 +1912,11 @@ export const BmcKeySetsListByClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets",
+      apiVersion: "2025-09-01",
     }),
   );
 export type BmcKeySetsListByClusterInput =
@@ -1499,11 +1982,29 @@ export const BmcKeySetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   bmcKeySetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      expiration: Schema.optional(Schema.String),
+      userList: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            azureUserName: Schema.String,
+            description: Schema.optional(Schema.String),
+            sshPublicKey: Schema.Struct({
+              keyData: Schema.String,
+            }),
+            userPrincipalName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type BmcKeySetsUpdateInput = typeof BmcKeySetsUpdateInput.Type;
@@ -1552,11 +2053,95 @@ export const CloudServicesNetworksCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudServicesNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        additionalEgressEndpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              category: Schema.String,
+              endpoints: Schema.Array(
+                Schema.Struct({
+                  domainName: Schema.String,
+                  port: Schema.optional(Schema.Number),
+                }),
+              ),
+            }),
+          ),
+        ),
+        enableDefaultEgressEndpoints: Schema.optional(
+          Schema.Literals(["True", "False"]),
+        ),
+        storageOptions: Schema.optional(
+          Schema.Struct({
+            mode: Schema.optional(Schema.Literals(["None", "Standard"])),
+            sizeMiB: Schema.optional(Schema.Number),
+            storageApplianceId: Schema.optional(Schema.String),
+          }),
+        ),
+        associatedResourceIds: Schema.optional(Schema.Array(Schema.String)),
+        clusterId: Schema.optional(Schema.String),
+        detailedStatus: Schema.optional(
+          Schema.Literals(["Error", "Available", "Provisioning"]),
+        ),
+        detailedStatusMessage: Schema.optional(Schema.String),
+        enabledEgressEndpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              category: Schema.String,
+              endpoints: Schema.Array(
+                Schema.Struct({
+                  domainName: Schema.String,
+                  port: Schema.optional(Schema.Number),
+                }),
+              ),
+            }),
+          ),
+        ),
+        hybridAksClustersAssociatedIds: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        interfaceName: Schema.optional(Schema.String),
+        storageStatus: Schema.optional(
+          Schema.Struct({
+            mode: Schema.optional(Schema.Literals(["None", "Standard"])),
+            sizeMiB: Schema.optional(Schema.Number),
+            status: Schema.optional(
+              Schema.Literals([
+                "Available",
+                "ExpandingVolume",
+                "ExpansionFailed",
+              ]),
+            ),
+            statusMessage: Schema.optional(Schema.String),
+            volumeId: Schema.optional(Schema.String),
+          }),
+        ),
+        virtualMachinesAssociatedIds: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type CloudServicesNetworksCreateOrUpdateInput =
@@ -1606,11 +2191,11 @@ export const CloudServicesNetworksDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudServicesNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type CloudServicesNetworksDeleteInput =
@@ -1643,11 +2228,11 @@ export const CloudServicesNetworksGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudServicesNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type CloudServicesNetworksGetInput =
@@ -1697,11 +2282,11 @@ export const CloudServicesNetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type CloudServicesNetworksListByResourceGroupInput =
@@ -1763,11 +2348,11 @@ export const CloudServicesNetworksListByResourceGroup =
 export const CloudServicesNetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/cloudServicesNetworks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type CloudServicesNetworksListBySubscriptionInput =
@@ -1830,11 +2415,39 @@ export const CloudServicesNetworksUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudServicesNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        additionalEgressEndpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              category: Schema.String,
+              endpoints: Schema.Array(
+                Schema.Struct({
+                  domainName: Schema.String,
+                  port: Schema.optional(Schema.Number),
+                }),
+              ),
+            }),
+          ),
+        ),
+        enableDefaultEgressEndpoints: Schema.optional(
+          Schema.Literals(["True", "False"]),
+        ),
+        storageOptions: Schema.optional(
+          Schema.Struct({
+            mode: Schema.optional(Schema.Literals(["None", "Standard"])),
+            sizeMiB: Schema.optional(Schema.Number),
+            storageApplianceId: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type CloudServicesNetworksUpdateInput =
@@ -1885,11 +2498,82 @@ export const ClusterManagersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterManagerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      analyticsWorkspaceId: Schema.optional(Schema.String),
+      availabilityZones: Schema.optional(Schema.Array(Schema.String)),
+      clusterVersions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            supportExpiryDate: Schema.optional(Schema.String),
+            targetClusterVersion: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      detailedStatus: Schema.optional(
+        Schema.Literals([
+          "Error",
+          "Available",
+          "Provisioning",
+          "ProvisioningFailed",
+          "Updating",
+          "UpdateFailed",
+        ]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      fabricControllerId: Schema.String,
+      managedResourceGroupConfiguration: Schema.optional(
+        Schema.Struct({
+          location: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      managerExtendedLocation: Schema.optional(
+        Schema.Struct({
+          name: Schema.String,
+          type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+        }),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Accepted",
+          "Updating",
+        ]),
+      ),
+      vmSize: Schema.optional(Schema.String),
+    }),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClusterManagersCreateOrUpdateInput =
@@ -1939,11 +2623,11 @@ export const ClusterManagersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterManagerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClusterManagersDeleteInput = typeof ClusterManagersDeleteInput.Type;
@@ -1975,11 +2659,11 @@ export const ClusterManagersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterManagerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClusterManagersGetInput = typeof ClusterManagersGetInput.Type;
@@ -2025,11 +2709,11 @@ export const ClusterManagersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClusterManagersListByResourceGroupInput =
@@ -2091,11 +2775,11 @@ export const ClusterManagersListByResourceGroup =
 export const ClusterManagersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/clusterManagers",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClusterManagersListBySubscriptionInput =
@@ -2158,11 +2842,33 @@ export const ClusterManagersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterManagerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClusterManagersUpdateInput = typeof ClusterManagersUpdateInput.Type;
@@ -2212,11 +2918,14 @@ export const ClustersContinueUpdateVersionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machineGroupTargetingMode: Schema.optional(
+      Schema.Literals(["AlphaByRack"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/continueUpdateVersion",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClustersContinueUpdateVersionInput =
@@ -2248,11 +2957,359 @@ export const ClustersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      aggregatorOrSingleRackDefinition: Schema.Struct({
+        availabilityZone: Schema.optional(Schema.String),
+        bareMetalMachineConfigurationData: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              bmcConnectionString: Schema.optional(Schema.String),
+              bmcCredentials: Schema.Struct({
+                password: SensitiveString,
+                username: Schema.String,
+              }),
+              bmcMacAddress: Schema.String,
+              bootMacAddress: Schema.String,
+              machineDetails: Schema.optional(Schema.String),
+              machineName: Schema.optional(Schema.String),
+              rackSlot: Schema.Number,
+              serialNumber: Schema.String,
+            }),
+          ),
+        ),
+        networkRackId: Schema.String,
+        rackLocation: Schema.optional(Schema.String),
+        rackSerialNumber: Schema.String,
+        rackSkuId: Schema.String,
+        storageApplianceConfigurationData: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              adminCredentials: Schema.Struct({
+                password: SensitiveString,
+                username: Schema.String,
+              }),
+              rackSlot: Schema.Number,
+              serialNumber: Schema.String,
+              storageApplianceName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+      analyticsOutputSettings: Schema.optional(
+        Schema.Struct({
+          analyticsWorkspaceId: Schema.optional(Schema.String),
+          associatedIdentity: Schema.optional(
+            Schema.Struct({
+              identityType: Schema.optional(
+                Schema.Literals([
+                  "SystemAssignedIdentity",
+                  "UserAssignedIdentity",
+                ]),
+              ),
+              userAssignedIdentityResourceId: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      analyticsWorkspaceId: Schema.optional(Schema.String),
+      clusterLocation: Schema.optional(Schema.String),
+      clusterServicePrincipal: Schema.optional(
+        Schema.Struct({
+          applicationId: Schema.String,
+          password: SensitiveString,
+          principalId: Schema.String,
+          tenantId: Schema.String,
+        }),
+      ),
+      clusterType: Schema.Literals(["SingleRack", "MultiRack"]),
+      clusterVersion: Schema.String,
+      commandOutputSettings: Schema.optional(
+        Schema.Struct({
+          associatedIdentity: Schema.optional(
+            Schema.Struct({
+              identityType: Schema.optional(
+                Schema.Literals([
+                  "SystemAssignedIdentity",
+                  "UserAssignedIdentity",
+                ]),
+              ),
+              userAssignedIdentityResourceId: Schema.optional(Schema.String),
+            }),
+          ),
+          containerUrl: Schema.optional(Schema.String),
+          overrides: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                associatedIdentity: Schema.optional(
+                  Schema.Struct({
+                    identityType: Schema.optional(
+                      Schema.Literals([
+                        "SystemAssignedIdentity",
+                        "UserAssignedIdentity",
+                      ]),
+                    ),
+                    userAssignedIdentityResourceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                commandOutputType: Schema.optional(
+                  Schema.Literals([
+                    "BareMetalMachineRunCommand",
+                    "BareMetalMachineRunDataExtracts",
+                    "BareMetalMachineRunReadCommands",
+                    "StorageRunReadCommands",
+                    "BareMetalMachineRunDataExtractsRestricted",
+                  ]),
+                ),
+                containerUrl: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      computeDeploymentThreshold: Schema.optional(
+        Schema.Struct({
+          grouping: Schema.Literals(["PerCluster", "PerRack"]),
+          type: Schema.Literals(["CountSuccess", "PercentSuccess"]),
+          value: Schema.Number,
+        }),
+      ),
+      computeRackDefinitions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            availabilityZone: Schema.optional(Schema.String),
+            bareMetalMachineConfigurationData: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  bmcConnectionString: Schema.optional(Schema.String),
+                  bmcCredentials: Schema.Struct({
+                    password: SensitiveString,
+                    username: Schema.String,
+                  }),
+                  bmcMacAddress: Schema.String,
+                  bootMacAddress: Schema.String,
+                  machineDetails: Schema.optional(Schema.String),
+                  machineName: Schema.optional(Schema.String),
+                  rackSlot: Schema.Number,
+                  serialNumber: Schema.String,
+                }),
+              ),
+            ),
+            networkRackId: Schema.String,
+            rackLocation: Schema.optional(Schema.String),
+            rackSerialNumber: Schema.String,
+            rackSkuId: Schema.String,
+            storageApplianceConfigurationData: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminCredentials: Schema.Struct({
+                    password: SensitiveString,
+                    username: Schema.String,
+                  }),
+                  rackSlot: Schema.Number,
+                  serialNumber: Schema.String,
+                  storageApplianceName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      ),
+      managedResourceGroupConfiguration: Schema.optional(
+        Schema.Struct({
+          location: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      networkFabricId: Schema.String,
+      runtimeProtectionConfiguration: Schema.optional(
+        Schema.Struct({
+          enforcementLevel: Schema.optional(
+            Schema.Literals([
+              "Audit",
+              "Disabled",
+              "OnDemand",
+              "Passive",
+              "RealTime",
+            ]),
+          ),
+        }),
+      ),
+      secretArchive: Schema.optional(
+        Schema.Struct({
+          keyVaultId: Schema.String,
+          useKeyVault: Schema.optional(Schema.Literals(["True", "False"])),
+        }),
+      ),
+      secretArchiveSettings: Schema.optional(
+        Schema.Struct({
+          associatedIdentity: Schema.optional(
+            Schema.Struct({
+              identityType: Schema.optional(
+                Schema.Literals([
+                  "SystemAssignedIdentity",
+                  "UserAssignedIdentity",
+                ]),
+              ),
+              userAssignedIdentityResourceId: Schema.optional(Schema.String),
+            }),
+          ),
+          vaultUri: Schema.optional(Schema.String),
+        }),
+      ),
+      updateStrategy: Schema.optional(
+        Schema.Struct({
+          maxUnavailable: Schema.optional(Schema.Number),
+          strategyType: Schema.Literals(["Rack", "PauseAfterRack"]),
+          thresholdType: Schema.Literals(["CountSuccess", "PercentSuccess"]),
+          thresholdValue: Schema.Number,
+          waitTimeMinutes: Schema.optional(Schema.Number),
+        }),
+      ),
+      vulnerabilityScanningSettings: Schema.optional(
+        Schema.Struct({
+          containerScan: Schema.optional(
+            Schema.Literals(["Disabled", "Enabled"]),
+          ),
+        }),
+      ),
+      actionStates: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            actionType: Schema.optional(Schema.String),
+            correlationId: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Literals(["Completed", "InProgress", "Failed"]),
+            ),
+            stepStates: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  endTime: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  startTime: Schema.optional(Schema.String),
+                  status: Schema.optional(
+                    Schema.Literals([
+                      "Completed",
+                      "InProgress",
+                      "Failed",
+                      "NotStarted",
+                    ]),
+                  ),
+                  stepName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      ),
+      availableUpgradeVersions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            controlImpact: Schema.optional(Schema.Literals(["True", "False"])),
+            expectedDuration: Schema.optional(Schema.String),
+            impactDescription: Schema.optional(Schema.String),
+            supportExpiryDate: Schema.optional(Schema.String),
+            targetClusterVersion: Schema.optional(Schema.String),
+            workloadImpact: Schema.optional(Schema.Literals(["True", "False"])),
+          }),
+        ),
+      ),
+      clusterCapacity: Schema.optional(
+        Schema.Struct({
+          availableApplianceStorageGB: Schema.optional(Schema.Number),
+          availableCoreCount: Schema.optional(Schema.Number),
+          availableHostStorageGB: Schema.optional(Schema.Number),
+          availableMemoryGB: Schema.optional(Schema.Number),
+          totalApplianceStorageGB: Schema.optional(Schema.Number),
+          totalCoreCount: Schema.optional(Schema.Number),
+          totalHostStorageGB: Schema.optional(Schema.Number),
+          totalMemoryGB: Schema.optional(Schema.Number),
+        }),
+      ),
+      clusterConnectionStatus: Schema.optional(
+        Schema.Literals(["Connected", "Disconnected", "Timeout", "Undefined"]),
+      ),
+      clusterExtendedLocation: Schema.optional(
+        Schema.Struct({
+          name: Schema.String,
+          type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+        }),
+      ),
+      clusterManagerConnectionStatus: Schema.optional(
+        Schema.Literals(["Connected", "Unreachable"]),
+      ),
+      clusterManagerId: Schema.optional(Schema.String),
+      detailedStatus: Schema.optional(
+        Schema.Literals([
+          "PendingDeployment",
+          "Deploying",
+          "Running",
+          "Updating",
+          "UpdatePaused",
+          "Degraded",
+          "Deleting",
+          "Disconnected",
+          "Failed",
+        ]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      hybridAksExtendedLocation: Schema.optional(
+        Schema.Struct({
+          name: Schema.String,
+          type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+        }),
+      ),
+      manualActionCount: Schema.optional(Schema.Number),
+      supportExpiryDate: Schema.optional(Schema.String),
+      workloadResourceIds: Schema.optional(Schema.Array(Schema.String)),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Accepted",
+          "Validating",
+          "Updating",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -2302,11 +3359,11 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -2333,11 +3390,12 @@ export const ClustersDeployInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  skipValidationsForMachines: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/deploy",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ClustersDeployInput = typeof ClustersDeployInput.Type;
@@ -2364,11 +3422,11 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ClustersGetInput = typeof ClustersGetInput.Type;
@@ -2413,11 +3471,11 @@ export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClustersListByResourceGroupInput =
@@ -2480,11 +3538,11 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/clusters",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClustersListBySubscriptionInput =
@@ -2548,11 +3606,12 @@ export const ClustersScanRuntimeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    scanActivity: Schema.optional(Schema.Literals(["Scan", "Skip"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/scanRuntime",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClustersScanRuntimeInput = typeof ClustersScanRuntimeInput.Type;
@@ -2580,11 +3639,245 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      aggregatorOrSingleRackDefinition: Schema.optional(
+        Schema.Struct({
+          availabilityZone: Schema.optional(Schema.String),
+          bareMetalMachineConfigurationData: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                bmcConnectionString: Schema.optional(Schema.String),
+                bmcCredentials: Schema.Struct({
+                  password: SensitiveString,
+                  username: Schema.String,
+                }),
+                bmcMacAddress: Schema.String,
+                bootMacAddress: Schema.String,
+                machineDetails: Schema.optional(Schema.String),
+                machineName: Schema.optional(Schema.String),
+                rackSlot: Schema.Number,
+                serialNumber: Schema.String,
+              }),
+            ),
+          ),
+          networkRackId: Schema.String,
+          rackLocation: Schema.optional(Schema.String),
+          rackSerialNumber: Schema.String,
+          rackSkuId: Schema.String,
+          storageApplianceConfigurationData: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                adminCredentials: Schema.Struct({
+                  password: SensitiveString,
+                  username: Schema.String,
+                }),
+                rackSlot: Schema.Number,
+                serialNumber: Schema.String,
+                storageApplianceName: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      analyticsOutputSettings: Schema.optional(
+        Schema.Struct({
+          analyticsWorkspaceId: Schema.optional(Schema.String),
+          associatedIdentity: Schema.optional(
+            Schema.Struct({
+              identityType: Schema.optional(
+                Schema.Literals([
+                  "SystemAssignedIdentity",
+                  "UserAssignedIdentity",
+                ]),
+              ),
+              userAssignedIdentityResourceId: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      clusterLocation: Schema.optional(Schema.String),
+      clusterServicePrincipal: Schema.optional(
+        Schema.Struct({
+          applicationId: Schema.String,
+          password: SensitiveString,
+          principalId: Schema.String,
+          tenantId: Schema.String,
+        }),
+      ),
+      commandOutputSettings: Schema.optional(
+        Schema.Struct({
+          associatedIdentity: Schema.optional(
+            Schema.Struct({
+              identityType: Schema.optional(
+                Schema.Literals([
+                  "SystemAssignedIdentity",
+                  "UserAssignedIdentity",
+                ]),
+              ),
+              userAssignedIdentityResourceId: Schema.optional(Schema.String),
+            }),
+          ),
+          containerUrl: Schema.optional(Schema.String),
+          overrides: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                associatedIdentity: Schema.optional(
+                  Schema.Struct({
+                    identityType: Schema.optional(
+                      Schema.Literals([
+                        "SystemAssignedIdentity",
+                        "UserAssignedIdentity",
+                      ]),
+                    ),
+                    userAssignedIdentityResourceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                commandOutputType: Schema.optional(
+                  Schema.Literals([
+                    "BareMetalMachineRunCommand",
+                    "BareMetalMachineRunDataExtracts",
+                    "BareMetalMachineRunReadCommands",
+                    "StorageRunReadCommands",
+                    "BareMetalMachineRunDataExtractsRestricted",
+                  ]),
+                ),
+                containerUrl: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      computeDeploymentThreshold: Schema.optional(
+        Schema.Struct({
+          grouping: Schema.Literals(["PerCluster", "PerRack"]),
+          type: Schema.Literals(["CountSuccess", "PercentSuccess"]),
+          value: Schema.Number,
+        }),
+      ),
+      computeRackDefinitions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            availabilityZone: Schema.optional(Schema.String),
+            bareMetalMachineConfigurationData: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  bmcConnectionString: Schema.optional(Schema.String),
+                  bmcCredentials: Schema.Struct({
+                    password: SensitiveString,
+                    username: Schema.String,
+                  }),
+                  bmcMacAddress: Schema.String,
+                  bootMacAddress: Schema.String,
+                  machineDetails: Schema.optional(Schema.String),
+                  machineName: Schema.optional(Schema.String),
+                  rackSlot: Schema.Number,
+                  serialNumber: Schema.String,
+                }),
+              ),
+            ),
+            networkRackId: Schema.String,
+            rackLocation: Schema.optional(Schema.String),
+            rackSerialNumber: Schema.String,
+            rackSkuId: Schema.String,
+            storageApplianceConfigurationData: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  adminCredentials: Schema.Struct({
+                    password: SensitiveString,
+                    username: Schema.String,
+                  }),
+                  rackSlot: Schema.Number,
+                  serialNumber: Schema.String,
+                  storageApplianceName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      ),
+      runtimeProtectionConfiguration: Schema.optional(
+        Schema.Struct({
+          enforcementLevel: Schema.optional(
+            Schema.Literals([
+              "Audit",
+              "Disabled",
+              "OnDemand",
+              "Passive",
+              "RealTime",
+            ]),
+          ),
+        }),
+      ),
+      secretArchive: Schema.optional(
+        Schema.Struct({
+          keyVaultId: Schema.String,
+          useKeyVault: Schema.optional(Schema.Literals(["True", "False"])),
+        }),
+      ),
+      secretArchiveSettings: Schema.optional(
+        Schema.Struct({
+          associatedIdentity: Schema.optional(
+            Schema.Struct({
+              identityType: Schema.optional(
+                Schema.Literals([
+                  "SystemAssignedIdentity",
+                  "UserAssignedIdentity",
+                ]),
+              ),
+              userAssignedIdentityResourceId: Schema.optional(Schema.String),
+            }),
+          ),
+          vaultUri: Schema.optional(Schema.String),
+        }),
+      ),
+      updateStrategy: Schema.optional(
+        Schema.Struct({
+          maxUnavailable: Schema.optional(Schema.Number),
+          strategyType: Schema.Literals(["Rack", "PauseAfterRack"]),
+          thresholdType: Schema.Literals(["CountSuccess", "PercentSuccess"]),
+          thresholdValue: Schema.Number,
+          waitTimeMinutes: Schema.optional(Schema.Number),
+        }),
+      ),
+      vulnerabilityScanningSettings: Schema.optional(
+        Schema.Struct({
+          containerScan: Schema.optional(
+            Schema.Literals(["Disabled", "Enabled"]),
+          ),
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -2630,11 +3923,12 @@ export const ClustersUpdateVersionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    targetClusterVersion: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/updateVersion",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ClustersUpdateVersionInput = typeof ClustersUpdateVersionInput.Type;
@@ -2667,11 +3961,38 @@ export const ConsolesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
     consoleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      enabled: Schema.Literals(["True", "False"]),
+      expiration: Schema.optional(Schema.String),
+      sshPublicKey: Schema.Struct({
+        keyData: Schema.String,
+      }),
+      detailedStatus: Schema.optional(Schema.Literals(["Ready", "Error"])),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      privateLinkServiceId: Schema.optional(Schema.String),
+      virtualMachineAccessId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Accepted",
+          "Provisioning",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ConsolesCreateOrUpdateInput =
@@ -2723,11 +4044,11 @@ export const ConsolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   virtualMachineName: Schema.String.pipe(T.PathParam()),
   consoleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ConsolesDeleteInput = typeof ConsolesDeleteInput.Type;
@@ -2756,11 +4077,11 @@ export const ConsolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   virtualMachineName: Schema.String.pipe(T.PathParam()),
   consoleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ConsolesGetInput = typeof ConsolesGetInput.Type;
@@ -2807,11 +4128,11 @@ export const ConsolesListByVirtualMachineInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ConsolesListByVirtualMachineInput =
@@ -2876,11 +4197,23 @@ export const ConsolesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   virtualMachineName: Schema.String.pipe(T.PathParam()),
   consoleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Literals(["True", "False"])),
+      expiration: Schema.optional(Schema.String),
+      sshPublicKey: Schema.optional(
+        Schema.Struct({
+          keyData: Schema.String,
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ConsolesUpdateInput = typeof ConsolesUpdateInput.Type;
@@ -2928,11 +4261,45 @@ export const KubernetesClusterFeaturesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
     featureName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        options: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        availabilityLifecycle: Schema.optional(
+          Schema.Literals(["Preview", "GenerallyAvailable"]),
+        ),
+        detailedStatus: Schema.optional(
+          Schema.Literals(["Error", "Provisioning", "Installed"]),
+        ),
+        detailedStatusMessage: Schema.optional(Schema.String),
+        required: Schema.optional(Schema.Literals(["True", "False"])),
+        version: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Canceled",
+            "Deleting",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type KubernetesClusterFeaturesCreateOrUpdateInput =
@@ -2984,11 +4351,11 @@ export const KubernetesClusterFeaturesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
     featureName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type KubernetesClusterFeaturesDeleteInput =
@@ -3022,11 +4389,11 @@ export const KubernetesClusterFeaturesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
     featureName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type KubernetesClusterFeaturesGetInput =
@@ -3077,11 +4444,11 @@ export const KubernetesClusterFeaturesListByKubernetesClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features",
+      apiVersion: "2025-09-01",
     }),
   );
 export type KubernetesClusterFeaturesListByKubernetesClusterInput =
@@ -3147,11 +4514,24 @@ export const KubernetesClusterFeaturesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
     featureName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        options: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type KubernetesClusterFeaturesUpdateInput =
@@ -3202,11 +4582,412 @@ export const KubernetesClustersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      aadConfiguration: Schema.optional(
+        Schema.Struct({
+          adminGroupObjectIds: Schema.Array(Schema.String),
+        }),
+      ),
+      administratorConfiguration: Schema.optional(
+        Schema.Struct({
+          adminUsername: Schema.optional(Schema.String),
+          sshPublicKeys: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                keyData: Schema.String,
+              }),
+            ),
+          ),
+        }),
+      ),
+      controlPlaneNodeConfiguration: Schema.Struct({
+        administratorConfiguration: Schema.optional(
+          Schema.Struct({
+            adminUsername: Schema.optional(Schema.String),
+            sshPublicKeys: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  keyData: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+        availabilityZones: Schema.optional(Schema.Array(Schema.String)),
+        count: Schema.Number,
+        vmSkuName: Schema.String,
+      }),
+      initialAgentPoolConfigurations: Schema.Array(
+        Schema.Struct({
+          administratorConfiguration: Schema.optional(
+            Schema.Struct({
+              adminUsername: Schema.optional(Schema.String),
+              sshPublicKeys: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    keyData: Schema.String,
+                  }),
+                ),
+              ),
+            }),
+          ),
+          agentOptions: Schema.optional(
+            Schema.Struct({
+              hugepagesCount: Schema.Number,
+              hugepagesSize: Schema.optional(Schema.Literals(["2M", "1G"])),
+            }),
+          ),
+          attachedNetworkConfiguration: Schema.optional(
+            Schema.Struct({
+              l2Networks: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    networkId: Schema.String,
+                    pluginType: Schema.optional(
+                      Schema.Literals([
+                        "DPDK",
+                        "SRIOV",
+                        "OSDevice",
+                        "MACVLAN",
+                        "IPVLAN",
+                      ]),
+                    ),
+                  }),
+                ),
+              ),
+              l3Networks: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    ipamEnabled: Schema.optional(
+                      Schema.Literals(["True", "False"]),
+                    ),
+                    networkId: Schema.String,
+                    pluginType: Schema.optional(
+                      Schema.Literals([
+                        "DPDK",
+                        "SRIOV",
+                        "OSDevice",
+                        "MACVLAN",
+                        "IPVLAN",
+                      ]),
+                    ),
+                  }),
+                ),
+              ),
+              trunkedNetworks: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    networkId: Schema.String,
+                    pluginType: Schema.optional(
+                      Schema.Literals([
+                        "DPDK",
+                        "SRIOV",
+                        "OSDevice",
+                        "MACVLAN",
+                        "IPVLAN",
+                      ]),
+                    ),
+                  }),
+                ),
+              ),
+            }),
+          ),
+          availabilityZones: Schema.optional(Schema.Array(Schema.String)),
+          count: Schema.Number,
+          labels: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+          ),
+          mode: Schema.Literals(["System", "User", "NotApplicable"]),
+          taints: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+          ),
+          upgradeSettings: Schema.optional(
+            Schema.Struct({
+              drainTimeout: Schema.optional(Schema.Number),
+              maxSurge: Schema.optional(Schema.String),
+              maxUnavailable: Schema.optional(Schema.String),
+            }),
+          ),
+          vmSkuName: Schema.String,
+          name: Schema.String,
+        }),
+      ),
+      kubernetesVersion: Schema.String,
+      managedResourceGroupConfiguration: Schema.optional(
+        Schema.Struct({
+          location: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      networkConfiguration: Schema.Struct({
+        attachedNetworkConfiguration: Schema.optional(
+          Schema.Struct({
+            l2Networks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  networkId: Schema.String,
+                  pluginType: Schema.optional(
+                    Schema.Literals([
+                      "DPDK",
+                      "SRIOV",
+                      "OSDevice",
+                      "MACVLAN",
+                      "IPVLAN",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+            l3Networks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  ipamEnabled: Schema.optional(
+                    Schema.Literals(["True", "False"]),
+                  ),
+                  networkId: Schema.String,
+                  pluginType: Schema.optional(
+                    Schema.Literals([
+                      "DPDK",
+                      "SRIOV",
+                      "OSDevice",
+                      "MACVLAN",
+                      "IPVLAN",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+            trunkedNetworks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  networkId: Schema.String,
+                  pluginType: Schema.optional(
+                    Schema.Literals([
+                      "DPDK",
+                      "SRIOV",
+                      "OSDevice",
+                      "MACVLAN",
+                      "IPVLAN",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        bgpServiceLoadBalancerConfiguration: Schema.optional(
+          Schema.Struct({
+            bgpAdvertisements: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  advertiseToFabric: Schema.optional(
+                    Schema.Literals(["True", "False"]),
+                  ),
+                  communities: Schema.optional(Schema.Array(Schema.String)),
+                  ipAddressPools: Schema.Array(Schema.String),
+                  peers: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            bgpPeers: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  bfdEnabled: Schema.optional(
+                    Schema.Literals(["True", "False"]),
+                  ),
+                  bgpMultiHop: Schema.optional(
+                    Schema.Literals(["True", "False"]),
+                  ),
+                  holdTime: Schema.optional(Schema.String),
+                  keepAliveTime: Schema.optional(Schema.String),
+                  myAsn: Schema.optional(Schema.Number),
+                  name: Schema.String,
+                  password: Schema.optional(SensitiveString),
+                  peerAddress: Schema.String,
+                  peerAsn: Schema.Number,
+                  peerPort: Schema.optional(Schema.Number),
+                }),
+              ),
+            ),
+            fabricPeeringEnabled: Schema.optional(
+              Schema.Literals(["True", "False"]),
+            ),
+            ipAddressPools: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  addresses: Schema.Array(Schema.String),
+                  autoAssign: Schema.optional(
+                    Schema.Literals(["True", "False"]),
+                  ),
+                  name: Schema.String,
+                  onlyUseHostIps: Schema.optional(
+                    Schema.Literals(["True", "False"]),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        cloudServicesNetworkId: Schema.String,
+        cniNetworkId: Schema.String,
+        dnsServiceIp: Schema.optional(Schema.String),
+        l2ServiceLoadBalancerConfiguration: Schema.optional(
+          Schema.Struct({
+            ipAddressPools: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  addresses: Schema.Array(Schema.String),
+                  autoAssign: Schema.optional(
+                    Schema.Literals(["True", "False"]),
+                  ),
+                  name: Schema.String,
+                  onlyUseHostIps: Schema.optional(
+                    Schema.Literals(["True", "False"]),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        podCidrs: Schema.optional(Schema.Array(Schema.String)),
+        serviceCidrs: Schema.optional(Schema.Array(Schema.String)),
+      }),
+      attachedNetworkIds: Schema.optional(Schema.Array(Schema.String)),
+      availableUpgrades: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            availabilityLifecycle: Schema.optional(
+              Schema.Literals(["Preview", "GenerallyAvailable"]),
+            ),
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      clusterId: Schema.optional(Schema.String),
+      connectedClusterId: Schema.optional(Schema.String),
+      controlPlaneKubernetesVersion: Schema.optional(Schema.String),
+      detailedStatus: Schema.optional(
+        Schema.Literals(["Available", "Error", "Provisioning"]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      featureStatuses: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            detailedStatus: Schema.optional(
+              Schema.Literals(["Running", "Failed", "Unknown"]),
+            ),
+            detailedStatusMessage: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      nodes: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            agentPoolId: Schema.optional(Schema.String),
+            availabilityZone: Schema.optional(Schema.String),
+            bareMetalMachineId: Schema.optional(Schema.String),
+            cpuCores: Schema.optional(Schema.Number),
+            detailedStatus: Schema.optional(
+              Schema.Literals([
+                "Available",
+                "Error",
+                "Provisioning",
+                "Running",
+                "Scheduling",
+                "Stopped",
+                "Terminating",
+                "Unknown",
+              ]),
+            ),
+            detailedStatusMessage: Schema.optional(Schema.String),
+            diskSizeGB: Schema.optional(Schema.Number),
+            image: Schema.optional(Schema.String),
+            kubernetesVersion: Schema.optional(Schema.String),
+            labels: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+            ),
+            memorySizeGB: Schema.optional(Schema.Number),
+            mode: Schema.optional(
+              Schema.Literals(["System", "User", "NotApplicable"]),
+            ),
+            name: Schema.optional(Schema.String),
+            networkAttachments: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  attachedNetworkId: Schema.String,
+                  defaultGateway: Schema.optional(
+                    Schema.Literals(["True", "False"]),
+                  ),
+                  ipAllocationMethod: Schema.Literals([
+                    "Dynamic",
+                    "Static",
+                    "Disabled",
+                  ]),
+                  ipv4Address: Schema.optional(Schema.String),
+                  ipv6Address: Schema.optional(Schema.String),
+                  macAddress: Schema.optional(Schema.String),
+                  networkAttachmentName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            powerState: Schema.optional(
+              Schema.Literals(["On", "Off", "Unknown"]),
+            ),
+            role: Schema.optional(Schema.Literals(["ControlPlane", "Worker"])),
+            taints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+            ),
+            vmSkuName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Accepted",
+          "InProgress",
+          "Created",
+          "Updating",
+          "Deleting",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type KubernetesClustersCreateOrUpdateInput =
@@ -3256,11 +5037,11 @@ export const KubernetesClustersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type KubernetesClustersDeleteInput =
@@ -3293,11 +5074,11 @@ export const KubernetesClustersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type KubernetesClustersGetInput = typeof KubernetesClustersGetInput.Type;
@@ -3346,11 +5127,11 @@ export const KubernetesClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters",
+      apiVersion: "2025-09-01",
     }),
   );
 export type KubernetesClustersListByResourceGroupInput =
@@ -3412,11 +5193,11 @@ export const KubernetesClustersListByResourceGroup =
 export const KubernetesClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/kubernetesClusters",
+      apiVersion: "2025-09-01",
     }),
   );
 export type KubernetesClustersListBySubscriptionInput =
@@ -3479,11 +5260,12 @@ export const KubernetesClustersRestartNodeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    nodeName: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/restartNode",
+      apiVersion: "2025-09-01",
     }),
   );
 export type KubernetesClustersRestartNodeInput =
@@ -3515,11 +5297,44 @@ export const KubernetesClustersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        administratorConfiguration: Schema.optional(
+          Schema.Struct({
+            sshPublicKeys: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  keyData: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+        controlPlaneNodeConfiguration: Schema.optional(
+          Schema.Struct({
+            administratorConfiguration: Schema.optional(
+              Schema.Struct({
+                sshPublicKeys: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      keyData: Schema.String,
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            count: Schema.optional(Schema.Number),
+          }),
+        ),
+        kubernetesVersion: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type KubernetesClustersUpdateInput =
@@ -3570,11 +5385,46 @@ export const L2NetworksCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l2NetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      hybridAksPluginType: Schema.optional(
+        Schema.Literals(["DPDK", "SRIOV", "OSDevice"]),
+      ),
+      interfaceName: Schema.optional(Schema.String),
+      l2IsolationDomainId: Schema.String,
+      associatedResourceIds: Schema.optional(Schema.Array(Schema.String)),
+      clusterId: Schema.optional(Schema.String),
+      detailedStatus: Schema.optional(
+        Schema.Literals(["Error", "Available", "Provisioning"]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      hybridAksClustersAssociatedIds: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      virtualMachinesAssociatedIds: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Accepted",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type L2NetworksCreateOrUpdateInput =
@@ -3624,11 +5474,11 @@ export const L2NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   l2NetworkName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type L2NetworksDeleteInput = typeof L2NetworksDeleteInput.Type;
@@ -3655,11 +5505,11 @@ export const L2NetworksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   l2NetworkName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type L2NetworksGetInput = typeof L2NetworksGetInput.Type;
@@ -3704,11 +5554,11 @@ export const L2NetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type L2NetworksListByResourceGroupInput =
@@ -3770,11 +5620,11 @@ export const L2NetworksListByResourceGroup =
 export const L2NetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/l2Networks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type L2NetworksListBySubscriptionInput =
@@ -3836,11 +5686,12 @@ export const L2NetworksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   l2NetworkName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type L2NetworksUpdateInput = typeof L2NetworksUpdateInput.Type;
@@ -3888,11 +5739,53 @@ export const L3NetworksCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3NetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      hybridAksIpamEnabled: Schema.optional(Schema.Literals(["True", "False"])),
+      hybridAksPluginType: Schema.optional(
+        Schema.Literals(["DPDK", "SRIOV", "OSDevice"]),
+      ),
+      interfaceName: Schema.optional(Schema.String),
+      ipAllocationType: Schema.optional(
+        Schema.Literals(["IPV4", "IPV6", "DualStack"]),
+      ),
+      ipv4ConnectedPrefix: Schema.optional(Schema.String),
+      ipv6ConnectedPrefix: Schema.optional(Schema.String),
+      l3IsolationDomainId: Schema.String,
+      vlan: Schema.Number,
+      associatedResourceIds: Schema.optional(Schema.Array(Schema.String)),
+      clusterId: Schema.optional(Schema.String),
+      detailedStatus: Schema.optional(
+        Schema.Literals(["Error", "Available", "Provisioning"]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      hybridAksClustersAssociatedIds: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      virtualMachinesAssociatedIds: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Accepted",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type L3NetworksCreateOrUpdateInput =
@@ -3942,11 +5835,11 @@ export const L3NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   l3NetworkName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type L3NetworksDeleteInput = typeof L3NetworksDeleteInput.Type;
@@ -3973,11 +5866,11 @@ export const L3NetworksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   l3NetworkName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type L3NetworksGetInput = typeof L3NetworksGetInput.Type;
@@ -4022,11 +5915,11 @@ export const L3NetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type L3NetworksListByResourceGroupInput =
@@ -4088,11 +5981,11 @@ export const L3NetworksListByResourceGroup =
 export const L3NetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/l3Networks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type L3NetworksListBySubscriptionInput =
@@ -4154,11 +6047,12 @@ export const L3NetworksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   l3NetworkName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type L3NetworksUpdateInput = typeof L3NetworksUpdateInput.Type;
@@ -4207,11 +6101,36 @@ export const MetricsConfigurationsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     metricsConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      enabledMetrics: Schema.optional(Schema.Array(Schema.String)),
+      collectionInterval: Schema.Number,
+      detailedStatus: Schema.optional(
+        Schema.Literals(["Processing", "Applied", "Error"]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      disabledMetrics: Schema.optional(Schema.Array(Schema.String)),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Accepted",
+          "Provisioning",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MetricsConfigurationsCreateOrUpdateInput =
@@ -4263,11 +6182,11 @@ export const MetricsConfigurationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     metricsConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MetricsConfigurationsDeleteInput =
@@ -4302,11 +6221,11 @@ export const MetricsConfigurationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     metricsConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MetricsConfigurationsGetInput =
@@ -4358,11 +6277,11 @@ export const MetricsConfigurationsListByClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MetricsConfigurationsListByClusterInput =
@@ -4428,11 +6347,18 @@ export const MetricsConfigurationsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     metricsConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        collectionInterval: Schema.optional(Schema.Number),
+        enabledMetrics: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type MetricsConfigurationsUpdateInput =
@@ -4479,12 +6405,13 @@ export const MetricsConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.NetworkCloud/operations",
+    apiVersion: "2025-09-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -4531,11 +6458,38 @@ export const RacksCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     rackName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      availabilityZone: Schema.String,
+      rackLocation: Schema.String,
+      rackSerialNumber: Schema.String,
+      rackSkuId: Schema.String,
+      clusterId: Schema.optional(Schema.String),
+      detailedStatus: Schema.optional(
+        Schema.Literals(["Error", "Available", "Provisioning"]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Accepted",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type RacksCreateOrUpdateInput = typeof RacksCreateOrUpdateInput.Type;
@@ -4581,11 +6535,11 @@ export const RacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   rackName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type RacksDeleteInput = typeof RacksDeleteInput.Type;
@@ -4612,11 +6566,11 @@ export const RacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   rackName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type RacksGetInput = typeof RacksGetInput.Type;
@@ -4660,11 +6614,11 @@ export const RacksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const RackSkusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   rackSkuName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/rackSkus/{rackSkuName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type RackSkusGetInput = typeof RackSkusGetInput.Type;
@@ -4707,11 +6661,11 @@ export const RackSkusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const RackSkusListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/rackSkus",
+      apiVersion: "2025-09-01",
     }),
   );
 export type RackSkusListBySubscriptionInput =
@@ -4774,11 +6728,11 @@ export const RacksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type RacksListByResourceGroupInput =
@@ -4841,11 +6795,11 @@ export const RacksListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RacksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/racks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type RacksListBySubscriptionInput =
@@ -4908,11 +6862,18 @@ export const RacksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   rackName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      rackLocation: Schema.optional(Schema.String),
+      rackSerialNumber: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type RacksUpdateInput = typeof RacksUpdateInput.Type;
@@ -4958,11 +6919,78 @@ export const StorageAppliancesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      rackId: Schema.String,
+      storageApplianceSkuId: Schema.String,
+      rackSlot: Schema.Number,
+      serialNumber: Schema.String,
+      administratorCredentials: Schema.Struct({
+        password: SensitiveString,
+        username: Schema.String,
+      }),
+      caCertificate: Schema.optional(
+        Schema.Struct({
+          hash: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+        }),
+      ),
+      capacity: Schema.optional(Schema.Number),
+      capacityUsed: Schema.optional(Schema.Number),
+      clusterId: Schema.optional(Schema.String),
+      detailedStatus: Schema.optional(
+        Schema.Literals(["Available", "Degraded", "Error", "Provisioning"]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      managementIpv4Address: Schema.optional(Schema.String),
+      manufacturer: Schema.optional(Schema.String),
+      model: Schema.optional(Schema.String),
+      remoteVendorManagementFeature: Schema.optional(
+        Schema.Literals(["Supported", "Unsupported"]),
+      ),
+      remoteVendorManagementStatus: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled", "Unsupported"]),
+      ),
+      secretRotationStatus: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            expirePeriodDays: Schema.optional(Schema.Number),
+            lastRotationTime: Schema.optional(Schema.String),
+            rotationPeriodDays: Schema.optional(Schema.Number),
+            secretArchiveReference: Schema.optional(
+              Schema.Struct({
+                keyVaultId: Schema.optional(Schema.String),
+                keyVaultUri: Schema.optional(Schema.String),
+                secretName: Schema.optional(Schema.String),
+                secretVersion: Schema.optional(Schema.String),
+              }),
+            ),
+            secretType: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      version: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Accepted",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageAppliancesCreateOrUpdateInput =
@@ -5012,11 +7040,11 @@ export const StorageAppliancesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageAppliancesDeleteInput =
@@ -5049,11 +7077,11 @@ export const StorageAppliancesDisableRemoteVendorManagementInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/disableRemoteVendorManagement",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageAppliancesDisableRemoteVendorManagementInput =
@@ -5085,11 +7113,12 @@ export const StorageAppliancesEnableRemoteVendorManagementInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    supportEndpoints: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/enableRemoteVendorManagement",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageAppliancesEnableRemoteVendorManagementInput =
@@ -5121,11 +7150,11 @@ export const StorageAppliancesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageAppliancesGetInput = typeof StorageAppliancesGetInput.Type;
@@ -5173,11 +7202,11 @@ export const StorageAppliancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageAppliancesListByResourceGroupInput =
@@ -5239,11 +7268,11 @@ export const StorageAppliancesListByResourceGroup =
 export const StorageAppliancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/storageAppliances",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageAppliancesListBySubscriptionInput =
@@ -5306,11 +7335,18 @@ export const StorageAppliancesRunReadCommandsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    commands: Schema.Array(
+      Schema.Struct({
+        arguments: Schema.optional(Schema.Array(Schema.String)),
+        command: Schema.String,
+      }),
+    ),
+    limitTimeSeconds: Schema.Number,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/runReadCommands",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageAppliancesRunReadCommandsInput =
@@ -5342,11 +7378,17 @@ export const StorageAppliancesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        serialNumber: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type StorageAppliancesUpdateInput =
@@ -5397,11 +7439,47 @@ export const TrunkedNetworksCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trunkedNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      hybridAksPluginType: Schema.optional(
+        Schema.Literals(["DPDK", "SRIOV", "OSDevice"]),
+      ),
+      interfaceName: Schema.optional(Schema.String),
+      isolationDomainIds: Schema.Array(Schema.String),
+      vlans: Schema.Array(Schema.Number),
+      associatedResourceIds: Schema.optional(Schema.Array(Schema.String)),
+      clusterId: Schema.optional(Schema.String),
+      detailedStatus: Schema.optional(
+        Schema.Literals(["Error", "Available", "Provisioning"]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      hybridAksClustersAssociatedIds: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      virtualMachinesAssociatedIds: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Accepted",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type TrunkedNetworksCreateOrUpdateInput =
@@ -5451,11 +7529,11 @@ export const TrunkedNetworksDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trunkedNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type TrunkedNetworksDeleteInput = typeof TrunkedNetworksDeleteInput.Type;
@@ -5487,11 +7565,11 @@ export const TrunkedNetworksGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trunkedNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type TrunkedNetworksGetInput = typeof TrunkedNetworksGetInput.Type;
@@ -5537,11 +7615,11 @@ export const TrunkedNetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type TrunkedNetworksListByResourceGroupInput =
@@ -5603,11 +7681,11 @@ export const TrunkedNetworksListByResourceGroup =
 export const TrunkedNetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/trunkedNetworks",
+      apiVersion: "2025-09-01",
     }),
   );
 export type TrunkedNetworksListBySubscriptionInput =
@@ -5670,11 +7748,12 @@ export const TrunkedNetworksUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trunkedNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type TrunkedNetworksUpdateInput = typeof TrunkedNetworksUpdateInput.Type;
@@ -5724,11 +7803,13 @@ export const VirtualMachinesAssignRelayInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machineId: Schema.String,
+    relayType: Schema.optional(Schema.Literals(["Platform", "Public"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/assignRelay",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesAssignRelayInput =
@@ -5761,11 +7842,150 @@ export const VirtualMachinesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      adminUsername: Schema.String,
+      bootMethod: Schema.optional(Schema.Literals(["BIOS", "UEFI"])),
+      cloudServicesNetworkAttachment: Schema.Struct({
+        attachedNetworkId: Schema.String,
+        defaultGateway: Schema.optional(Schema.Literals(["True", "False"])),
+        ipAllocationMethod: Schema.Literals(["Dynamic", "Static", "Disabled"]),
+        ipv4Address: Schema.optional(Schema.String),
+        ipv6Address: Schema.optional(Schema.String),
+        macAddress: Schema.optional(Schema.String),
+        networkAttachmentName: Schema.optional(Schema.String),
+      }),
+      cpuCores: Schema.Number,
+      isolateEmulatorThread: Schema.optional(
+        Schema.Literals(["False", "True"]),
+      ),
+      memorySizeGB: Schema.Number,
+      networkAttachments: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            attachedNetworkId: Schema.String,
+            defaultGateway: Schema.optional(Schema.Literals(["True", "False"])),
+            ipAllocationMethod: Schema.Literals([
+              "Dynamic",
+              "Static",
+              "Disabled",
+            ]),
+            ipv4Address: Schema.optional(Schema.String),
+            ipv6Address: Schema.optional(Schema.String),
+            macAddress: Schema.optional(Schema.String),
+            networkAttachmentName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      networkData: Schema.optional(Schema.String),
+      networkDataContent: Schema.optional(Schema.String),
+      placementHints: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            hintType: Schema.Literals(["Affinity", "AntiAffinity"]),
+            resourceId: Schema.String,
+            schedulingExecution: Schema.Literals(["Hard", "Soft"]),
+            scope: Schema.Literals(["Machine", "Rack"]),
+          }),
+        ),
+      ),
+      sshPublicKeys: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            keyData: Schema.String,
+          }),
+        ),
+      ),
+      storageProfile: Schema.Struct({
+        osDisk: Schema.Struct({
+          createOption: Schema.optional(
+            Schema.Literals(["Ephemeral", "Persistent"]),
+          ),
+          deleteOption: Schema.optional(Schema.Literals(["Delete"])),
+          diskSizeGB: Schema.Number,
+        }),
+        volumeAttachments: Schema.optional(Schema.Array(Schema.String)),
+      }),
+      userData: Schema.optional(Schema.String),
+      userDataContent: Schema.optional(Schema.String),
+      virtioInterface: Schema.optional(
+        Schema.Literals(["Modern", "Transitional"]),
+      ),
+      vmDeviceModel: Schema.optional(Schema.Literals(["T1", "T2", "T3"])),
+      vmImage: Schema.String,
+      vmImageRepositoryCredentials: Schema.optional(
+        Schema.Struct({
+          password: SensitiveString,
+          registryUrl: Schema.String,
+          username: Schema.String,
+        }),
+      ),
+      availabilityZone: Schema.optional(Schema.String),
+      bareMetalMachineId: Schema.optional(Schema.String),
+      clusterId: Schema.optional(Schema.String),
+      consoleExtendedLocation: Schema.optional(
+        Schema.Struct({
+          name: Schema.String,
+          type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+        }),
+      ),
+      detailedStatus: Schema.optional(
+        Schema.Literals([
+          "Available",
+          "Error",
+          "Provisioning",
+          "Running",
+          "Scheduling",
+          "Stopped",
+          "Terminating",
+          "Unknown",
+        ]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      powerState: Schema.optional(Schema.Literals(["Off", "On", "Unknown"])),
+      volumes: Schema.optional(Schema.Array(Schema.String)),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Canceled",
+          "Failed",
+          "Provisioning",
+          "Succeeded",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesCreateOrUpdateInput =
@@ -5815,11 +8035,11 @@ export const VirtualMachinesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
@@ -5851,11 +8071,11 @@ export const VirtualMachinesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
@@ -5901,11 +8121,11 @@ export const VirtualMachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesListByResourceGroupInput =
@@ -5967,11 +8187,11 @@ export const VirtualMachinesListByResourceGroup =
 export const VirtualMachinesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/virtualMachines",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesListBySubscriptionInput =
@@ -6034,11 +8254,12 @@ export const VirtualMachinesPowerOffInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    skipShutdown: Schema.optional(Schema.Literals(["True", "False"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/powerOff",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesPowerOffInput =
@@ -6071,11 +8292,11 @@ export const VirtualMachinesReimageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/reimage",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesReimageInput =
@@ -6108,11 +8329,11 @@ export const VirtualMachinesRestartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/restart",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesRestartInput =
@@ -6145,11 +8366,11 @@ export const VirtualMachinesStartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/start",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
@@ -6180,11 +8401,44 @@ export const VirtualMachinesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        vmImageRepositoryCredentials: Schema.optional(
+          Schema.Struct({
+            password: SensitiveString,
+            registryUrl: Schema.String,
+            username: Schema.String,
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;
@@ -6234,11 +8488,38 @@ export const VolumesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      sizeMiB: Schema.Number,
+      storageApplianceId: Schema.optional(Schema.String),
+      allocatedSizeMiB: Schema.optional(Schema.Number),
+      attachedTo: Schema.optional(Schema.Array(Schema.String)),
+      detailedStatus: Schema.optional(
+        Schema.Literals(["Active", "Error", "Provisioning"]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      serialNumber: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Canceled",
+          "Failed",
+          "Provisioning",
+          "Succeeded",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VolumesCreateOrUpdateInput = typeof VolumesCreateOrUpdateInput.Type;
@@ -6287,11 +8568,11 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;
@@ -6318,11 +8599,11 @@ export const VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type VolumesGetInput = typeof VolumesGetInput.Type;
@@ -6367,11 +8648,11 @@ export const VolumesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VolumesListByResourceGroupInput =
@@ -6434,11 +8715,11 @@ export const VolumesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const VolumesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/volumes",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VolumesListBySubscriptionInput =
@@ -6501,11 +8782,12 @@ export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type VolumesUpdateInput = typeof VolumesUpdateInput.Type;

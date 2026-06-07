@@ -17,6 +17,7 @@ export const DiagnosticsCheckNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/{scope}/providers/Microsoft.Help/checkNameAvailability",
+      apiVersion: "2023-06-01",
     }),
   );
 export type DiagnosticsCheckNameAvailabilityInput =
@@ -45,11 +46,75 @@ export const DiagnosticsCheckNameAvailability =
   }));
 // Input Schema
 export const DiagnosticsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    properties: Schema.optional(
+      Schema.Struct({
+        globalParameters: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        insights: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              solutionId: Schema.optional(Schema.String),
+              additionalParameters: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+            }),
+          ),
+        ),
+        acceptedAt: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "PartialComplete",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        diagnostics: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              solutionId: Schema.optional(Schema.String),
+              status: Schema.optional(
+                Schema.Literals([
+                  "Failed",
+                  "MissingInputs",
+                  "Running",
+                  "Succeeded",
+                  "Timeout",
+                ]),
+              ),
+              insights: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    title: Schema.optional(Schema.String),
+                    results: Schema.optional(Schema.String),
+                    importanceLevel: Schema.optional(
+                      Schema.Literals(["Critical", "Warning", "Information"]),
+                    ),
+                  }),
+                ),
+              ),
+              error: Schema.optional(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  details: Schema.optional(Schema.Array(Schema.Unknown)),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+  },
 ).pipe(
   T.Http({
     method: "PUT",
     path: "/{scope}/providers/Microsoft.Help/diagnostics/{diagnosticsResourceName}",
+    apiVersion: "2023-06-01",
   }),
 );
 export type DiagnosticsCreateInput = typeof DiagnosticsCreateInput.Type;
@@ -92,6 +157,7 @@ export const DiagnosticsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.Help/diagnostics/{diagnosticsResourceName}",
+    apiVersion: "2023-06-01",
   }),
 );
 export type DiagnosticsGetInput = typeof DiagnosticsGetInput.Type;
@@ -132,6 +198,7 @@ export const DiscoverySolutionListInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.Help/discoverySolutions",
+      apiVersion: "2023-06-01",
     }),
   );
 export type DiscoverySolutionListInput = typeof DiscoverySolutionListInput.Type;
@@ -190,7 +257,13 @@ export const DiscoverySolutionList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/providers/Microsoft.Help/operations" }));
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Help/operations",
+    apiVersion: "2023-06-01",
+  }),
+);
 export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema

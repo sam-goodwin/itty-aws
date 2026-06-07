@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const ArmTemplatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -15,12 +16,12 @@ export const ArmTemplatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   artifactSourceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/armtemplates/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type ArmTemplatesGetInput = typeof ArmTemplatesGetInput.Type;
@@ -69,7 +70,6 @@ export const ArmTemplatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   artifactSourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -78,6 +78,7 @@ export const ArmTemplatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/armtemplates",
+    apiVersion: "2018-09-15",
   }),
 );
 export type ArmTemplatesListInput = typeof ArmTemplatesListInput.Type;
@@ -147,11 +148,24 @@ export const ArtifactsGenerateArmTemplateInput =
     labName: Schema.String.pipe(T.PathParam()),
     artifactSourceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    virtualMachineName: Schema.optional(Schema.String),
+    parameters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    location: Schema.optional(Schema.String),
+    fileUploadOptions: Schema.optional(
+      Schema.Literals(["UploadFilesAndGenerateSasTokens", "None"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/artifacts/{name}/generateArmTemplate",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ArtifactsGenerateArmTemplateInput =
@@ -189,12 +203,12 @@ export const ArtifactsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   artifactSourceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/artifacts/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type ArtifactsGetInput = typeof ArtifactsGetInput.Type;
@@ -243,7 +257,6 @@ export const ArtifactsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   artifactSourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -252,6 +265,7 @@ export const ArtifactsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/artifacts",
+    apiVersion: "2018-09-15",
   }),
 );
 export type ArtifactsListInput = typeof ArtifactsListInput.Type;
@@ -308,11 +322,28 @@ export const ArtifactSourcesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      displayName: Schema.optional(Schema.String),
+      uri: Schema.optional(Schema.String),
+      sourceType: Schema.optional(
+        Schema.Literals(["VsoGit", "GitHub", "StorageAccount"]),
+      ),
+      folderPath: Schema.optional(Schema.String),
+      armTemplateFolderPath: Schema.optional(Schema.String),
+      branchRef: Schema.optional(Schema.String),
+      securityToken: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      createdDate: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ArtifactSourcesCreateOrUpdateInput =
@@ -364,11 +395,11 @@ export const ArtifactSourcesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ArtifactSourcesDeleteInput = typeof ArtifactSourcesDeleteInput.Type;
@@ -402,12 +433,12 @@ export const ArtifactSourcesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ArtifactSourcesGetInput = typeof ArtifactSourcesGetInput.Type;
@@ -456,7 +487,6 @@ export const ArtifactSourcesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -465,6 +495,7 @@ export const ArtifactSourcesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ArtifactSourcesListInput = typeof ArtifactSourcesListInput.Type;
@@ -531,11 +562,12 @@ export const ArtifactSourcesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ArtifactSourcesUpdateInput = typeof ArtifactSourcesUpdateInput.Type;
@@ -587,11 +619,82 @@ export const CostsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      targetCost: Schema.optional(
+        Schema.Struct({
+          status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          target: Schema.optional(Schema.Number),
+          costThresholds: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                thresholdId: Schema.optional(Schema.String),
+                percentageThreshold: Schema.optional(
+                  Schema.Struct({
+                    thresholdValue: Schema.optional(Schema.Number),
+                  }),
+                ),
+                displayOnChart: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                sendNotificationWhenExceeded: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                notificationSent: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          cycleStartDateTime: Schema.optional(Schema.String),
+          cycleEndDateTime: Schema.optional(Schema.String),
+          cycleType: Schema.optional(
+            Schema.Literals(["CalendarMonth", "Custom"]),
+          ),
+        }),
+      ),
+      labCostSummary: Schema.optional(
+        Schema.Struct({
+          estimatedLabCost: Schema.optional(Schema.Number),
+        }),
+      ),
+      labCostDetails: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            date: Schema.optional(Schema.String),
+            cost: Schema.optional(Schema.Number),
+            costType: Schema.optional(
+              Schema.Literals(["Unavailable", "Reported", "Projected"]),
+            ),
+          }),
+        ),
+      ),
+      resourceCosts: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourcename: Schema.optional(Schema.String),
+            resourceUId: Schema.optional(Schema.String),
+            resourceCost: Schema.optional(Schema.Number),
+            resourceType: Schema.optional(Schema.String),
+            resourceOwner: Schema.optional(Schema.String),
+            resourcePricingTier: Schema.optional(Schema.String),
+            resourceStatus: Schema.optional(Schema.String),
+            resourceId: Schema.optional(Schema.String),
+            externalResourceId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      currencyCode: Schema.optional(Schema.String),
+      startDateTime: Schema.optional(Schema.String),
+      endDateTime: Schema.optional(Schema.String),
+      createdDate: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/costs/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type CostsCreateOrUpdateInput = typeof CostsCreateOrUpdateInput.Type;
@@ -639,12 +742,12 @@ export const CostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/costs/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type CostsGetInput = typeof CostsGetInput.Type;
@@ -693,11 +796,74 @@ export const CustomImagesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      vm: Schema.optional(
+        Schema.Struct({
+          sourceVmId: Schema.optional(Schema.String),
+          windowsOsInfo: Schema.optional(
+            Schema.Struct({
+              windowsOsState: Schema.optional(
+                Schema.Literals([
+                  "NonSysprepped",
+                  "SysprepRequested",
+                  "SysprepApplied",
+                ]),
+              ),
+            }),
+          ),
+          linuxOsInfo: Schema.optional(
+            Schema.Struct({
+              linuxOsState: Schema.optional(
+                Schema.Literals([
+                  "NonDeprovisioned",
+                  "DeprovisionRequested",
+                  "DeprovisionApplied",
+                ]),
+              ),
+            }),
+          ),
+        }),
+      ),
+      vhd: Schema.optional(
+        Schema.Struct({
+          imageName: Schema.optional(Schema.String),
+          sysPrep: Schema.optional(Schema.Boolean),
+          osType: Schema.Literals(["Windows", "Linux", "None"]),
+        }),
+      ),
+      description: Schema.optional(Schema.String),
+      author: Schema.optional(Schema.String),
+      creationDate: Schema.optional(Schema.String),
+      managedImageId: Schema.optional(Schema.String),
+      managedSnapshotId: Schema.optional(Schema.String),
+      dataDiskStorageInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            lun: Schema.optional(Schema.String),
+            storageType: Schema.optional(
+              Schema.Literals(["Standard", "Premium", "StandardSSD"]),
+            ),
+          }),
+        ),
+      ),
+      customImagePlan: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          publisher: Schema.optional(Schema.String),
+          offer: Schema.optional(Schema.String),
+        }),
+      ),
+      isPlanAuthorized: Schema.optional(Schema.Boolean),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type CustomImagesCreateOrUpdateInput =
@@ -750,11 +916,11 @@ export const CustomImagesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type CustomImagesDeleteInput = typeof CustomImagesDeleteInput.Type;
@@ -783,12 +949,12 @@ export const CustomImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type CustomImagesGetInput = typeof CustomImagesGetInput.Type;
@@ -835,7 +1001,6 @@ export const CustomImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -844,6 +1009,7 @@ export const CustomImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages",
+    apiVersion: "2018-09-15",
   }),
 );
 export type CustomImagesListInput = typeof CustomImagesListInput.Type;
@@ -911,11 +1077,12 @@ export const CustomImagesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type CustomImagesUpdateInput = typeof CustomImagesUpdateInput.Type;
@@ -964,11 +1131,12 @@ export const DisksAttachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  leasedByLabVmId: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}/attach",
+    apiVersion: "2018-09-15",
   }),
 );
 export type DisksAttachInput = typeof DisksAttachInput.Type;
@@ -1000,11 +1168,28 @@ export const DisksCreateOrUpdateInput =
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      diskType: Schema.optional(
+        Schema.Literals(["Standard", "Premium", "StandardSSD"]),
+      ),
+      diskSizeGiB: Schema.optional(Schema.Number),
+      leasedByLabVmId: Schema.optional(Schema.String),
+      diskBlobName: Schema.optional(Schema.String),
+      diskUri: Schema.optional(Schema.String),
+      storageAccountId: Schema.optional(Schema.String),
+      createdDate: Schema.optional(Schema.String),
+      hostCaching: Schema.optional(Schema.String),
+      managedDiskId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type DisksCreateOrUpdateInput = typeof DisksCreateOrUpdateInput.Type;
@@ -1054,11 +1239,11 @@ export const DisksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type DisksDeleteInput = typeof DisksDeleteInput.Type;
@@ -1089,11 +1274,12 @@ export const DisksDetachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  leasedByLabVmId: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}/detach",
+    apiVersion: "2018-09-15",
   }),
 );
 export type DisksDetachInput = typeof DisksDetachInput.Type;
@@ -1124,12 +1310,12 @@ export const DisksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type DisksGetInput = typeof DisksGetInput.Type;
@@ -1178,7 +1364,6 @@ export const DisksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -1187,6 +1372,7 @@ export const DisksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks",
+    apiVersion: "2018-09-15",
   }),
 );
 export type DisksListInput = typeof DisksListInput.Type;
@@ -1243,11 +1429,12 @@ export const DisksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type DisksUpdateInput = typeof DisksUpdateInput.Type;
@@ -1297,11 +1484,33 @@ export const EnvironmentsCreateOrUpdateInput =
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      deploymentProperties: Schema.optional(
+        Schema.Struct({
+          armTemplateId: Schema.optional(Schema.String),
+          parameters: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      armTemplateDisplayName: Schema.optional(Schema.String),
+      resourceGroupId: Schema.optional(Schema.String),
+      createdByUser: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type EnvironmentsCreateOrUpdateInput =
@@ -1356,11 +1565,11 @@ export const EnvironmentsDeleteInput =
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type EnvironmentsDeleteInput = typeof EnvironmentsDeleteInput.Type;
@@ -1391,12 +1600,12 @@ export const EnvironmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type EnvironmentsGetInput = typeof EnvironmentsGetInput.Type;
@@ -1445,7 +1654,6 @@ export const EnvironmentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -1454,6 +1662,7 @@ export const EnvironmentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments",
+    apiVersion: "2018-09-15",
   }),
 );
 export type EnvironmentsListInput = typeof EnvironmentsListInput.Type;
@@ -1523,11 +1732,12 @@ export const EnvironmentsUpdateInput =
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type EnvironmentsUpdateInput = typeof EnvironmentsUpdateInput.Type;
@@ -1577,11 +1787,189 @@ export const FormulasCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.String),
+      author: Schema.optional(Schema.String),
+      osType: Schema.optional(Schema.String),
+      creationDate: Schema.optional(Schema.String),
+      formulaContent: Schema.optional(
+        Schema.Struct({
+          properties: Schema.optional(
+            Schema.Struct({
+              bulkCreationParameters: Schema.optional(
+                Schema.Struct({
+                  instanceCount: Schema.optional(Schema.Number),
+                }),
+              ),
+              notes: Schema.optional(Schema.String),
+              ownerObjectId: Schema.optional(Schema.String),
+              ownerUserPrincipalName: Schema.optional(Schema.String),
+              createdDate: Schema.optional(Schema.String),
+              customImageId: Schema.optional(Schema.String),
+              size: Schema.optional(Schema.String),
+              userName: Schema.optional(Schema.String),
+              password: Schema.optional(SensitiveString),
+              sshKey: Schema.optional(Schema.String),
+              isAuthenticationWithSshKey: Schema.optional(Schema.Boolean),
+              labSubnetName: Schema.optional(Schema.String),
+              labVirtualNetworkId: Schema.optional(Schema.String),
+              disallowPublicIpAddress: Schema.optional(Schema.Boolean),
+              artifacts: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    artifactId: Schema.optional(Schema.String),
+                    artifactTitle: Schema.optional(Schema.String),
+                    parameters: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          value: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    status: Schema.optional(Schema.String),
+                    deploymentStatusMessage: Schema.optional(Schema.String),
+                    vmExtensionStatusMessage: Schema.optional(Schema.String),
+                    installTime: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              galleryImageReference: Schema.optional(
+                Schema.Struct({
+                  offer: Schema.optional(Schema.String),
+                  publisher: Schema.optional(Schema.String),
+                  sku: Schema.optional(Schema.String),
+                  osType: Schema.optional(Schema.String),
+                  version: Schema.optional(Schema.String),
+                }),
+              ),
+              planId: Schema.optional(Schema.String),
+              networkInterface: Schema.optional(
+                Schema.Struct({
+                  virtualNetworkId: Schema.optional(Schema.String),
+                  subnetId: Schema.optional(Schema.String),
+                  publicIpAddressId: Schema.optional(Schema.String),
+                  publicIpAddress: Schema.optional(Schema.String),
+                  privateIpAddress: Schema.optional(Schema.String),
+                  dnsName: Schema.optional(Schema.String),
+                  rdpAuthority: Schema.optional(Schema.String),
+                  sshAuthority: Schema.optional(Schema.String),
+                  sharedPublicIpAddressConfiguration: Schema.optional(
+                    Schema.Struct({
+                      inboundNatRules: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            transportProtocol: Schema.optional(
+                              Schema.Literals(["Tcp", "Udp"]),
+                            ),
+                            frontendPort: Schema.optional(Schema.Number),
+                            backendPort: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+              expirationDate: Schema.optional(Schema.String),
+              allowClaim: Schema.optional(Schema.Boolean),
+              storageType: Schema.optional(Schema.String),
+              environmentId: Schema.optional(Schema.String),
+              dataDiskParameters: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    attachNewDataDiskOptions: Schema.optional(
+                      Schema.Struct({
+                        diskSizeGiB: Schema.optional(Schema.Number),
+                        diskName: Schema.optional(Schema.String),
+                        diskType: Schema.optional(
+                          Schema.Literals([
+                            "Standard",
+                            "Premium",
+                            "StandardSSD",
+                          ]),
+                        ),
+                      }),
+                    ),
+                    existingLabDiskId: Schema.optional(Schema.String),
+                    hostCaching: Schema.optional(
+                      Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+                    ),
+                  }),
+                ),
+              ),
+              scheduleParameters: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    properties: Schema.optional(
+                      Schema.Struct({
+                        status: Schema.optional(
+                          Schema.Literals(["Enabled", "Disabled"]),
+                        ),
+                        taskType: Schema.optional(Schema.String),
+                        weeklyRecurrence: Schema.optional(
+                          Schema.Struct({
+                            weekdays: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            time: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        dailyRecurrence: Schema.optional(
+                          Schema.Struct({
+                            time: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        hourlyRecurrence: Schema.optional(
+                          Schema.Struct({
+                            minute: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        timeZoneId: Schema.optional(Schema.String),
+                        notificationSettings: Schema.optional(
+                          Schema.Struct({
+                            status: Schema.optional(
+                              Schema.Literals(["Enabled", "Disabled"]),
+                            ),
+                            timeInMinutes: Schema.optional(Schema.Number),
+                            webhookUrl: Schema.optional(Schema.String),
+                            emailRecipient: Schema.optional(Schema.String),
+                            notificationLocale: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        targetResourceId: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    name: Schema.optional(Schema.String),
+                    location: Schema.optional(Schema.String),
+                    tags: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                  }),
+                ),
+              ),
+            }),
+          ),
+          name: Schema.optional(Schema.String),
+          location: Schema.optional(Schema.String),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        }),
+      ),
+      vm: Schema.optional(
+        Schema.Struct({
+          labVmId: Schema.optional(Schema.String),
+        }),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type FormulasCreateOrUpdateInput =
@@ -1633,11 +2021,11 @@ export const FormulasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type FormulasDeleteInput = typeof FormulasDeleteInput.Type;
@@ -1666,12 +2054,12 @@ export const FormulasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type FormulasGetInput = typeof FormulasGetInput.Type;
@@ -1718,7 +2106,6 @@ export const FormulasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -1727,6 +2114,7 @@ export const FormulasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas",
+    apiVersion: "2018-09-15",
   }),
 );
 export type FormulasListInput = typeof FormulasListInput.Type;
@@ -1781,11 +2169,12 @@ export const FormulasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type FormulasUpdateInput = typeof FormulasUpdateInput.Type;
@@ -1832,7 +2221,6 @@ export const GalleryImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -1842,6 +2230,7 @@ export const GalleryImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/galleryimages",
+    apiVersion: "2018-09-15",
   }),
 );
 export type GalleryImagesListInput = typeof GalleryImagesListInput.Type;
@@ -1907,11 +2296,47 @@ export const GlobalSchedulesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      taskType: Schema.optional(Schema.String),
+      weeklyRecurrence: Schema.optional(
+        Schema.Struct({
+          weekdays: Schema.optional(Schema.Array(Schema.String)),
+          time: Schema.optional(Schema.String),
+        }),
+      ),
+      dailyRecurrence: Schema.optional(
+        Schema.Struct({
+          time: Schema.optional(Schema.String),
+        }),
+      ),
+      hourlyRecurrence: Schema.optional(
+        Schema.Struct({
+          minute: Schema.optional(Schema.Number),
+        }),
+      ),
+      timeZoneId: Schema.optional(Schema.String),
+      notificationSettings: Schema.optional(
+        Schema.Struct({
+          status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          timeInMinutes: Schema.optional(Schema.Number),
+          webhookUrl: Schema.optional(Schema.String),
+          emailRecipient: Schema.optional(Schema.String),
+          notificationLocale: Schema.optional(Schema.String),
+        }),
+      ),
+      createdDate: Schema.optional(Schema.String),
+      targetResourceId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type GlobalSchedulesCreateOrUpdateInput =
@@ -1961,11 +2386,11 @@ export const GlobalSchedulesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type GlobalSchedulesDeleteInput = typeof GlobalSchedulesDeleteInput.Type;
@@ -1997,11 +2422,11 @@ export const GlobalSchedulesExecuteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}/execute",
+      apiVersion: "2018-09-15",
     }),
   );
 export type GlobalSchedulesExecuteInput =
@@ -2034,12 +2459,12 @@ export const GlobalSchedulesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type GlobalSchedulesGetInput = typeof GlobalSchedulesGetInput.Type;
@@ -2086,7 +2511,6 @@ export const GlobalSchedulesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -2095,6 +2519,7 @@ export const GlobalSchedulesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules",
+      apiVersion: "2018-09-15",
     }),
   );
 export type GlobalSchedulesListByResourceGroupInput =
@@ -2160,7 +2585,6 @@ export const GlobalSchedulesListByResourceGroup =
 export const GlobalSchedulesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -2169,6 +2593,7 @@ export const GlobalSchedulesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevTestLab/schedules",
+      apiVersion: "2018-09-15",
     }),
   );
 export type GlobalSchedulesListBySubscriptionInput =
@@ -2235,11 +2660,13 @@ export const GlobalSchedulesRetargetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    currentResourceId: Schema.optional(Schema.String),
+    targetResourceId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}/retarget",
+      apiVersion: "2018-09-15",
     }),
   );
 export type GlobalSchedulesRetargetInput =
@@ -2272,11 +2699,12 @@ export const GlobalSchedulesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type GlobalSchedulesUpdateInput = typeof GlobalSchedulesUpdateInput.Type;
@@ -2325,11 +2753,11 @@ export const LabsClaimAnyVmInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/claimAnyVm",
+    apiVersion: "2018-09-15",
   }),
 );
 export type LabsClaimAnyVmInput = typeof LabsClaimAnyVmInput.Type;
@@ -2357,11 +2785,163 @@ export const LabsCreateEnvironmentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        bulkCreationParameters: Schema.optional(
+          Schema.Struct({
+            instanceCount: Schema.optional(Schema.Number),
+          }),
+        ),
+        notes: Schema.optional(Schema.String),
+        ownerObjectId: Schema.optional(Schema.String),
+        ownerUserPrincipalName: Schema.optional(Schema.String),
+        createdDate: Schema.optional(Schema.String),
+        customImageId: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        userName: Schema.optional(Schema.String),
+        password: Schema.optional(SensitiveString),
+        sshKey: Schema.optional(Schema.String),
+        isAuthenticationWithSshKey: Schema.optional(Schema.Boolean),
+        labSubnetName: Schema.optional(Schema.String),
+        labVirtualNetworkId: Schema.optional(Schema.String),
+        disallowPublicIpAddress: Schema.optional(Schema.Boolean),
+        artifacts: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              artifactId: Schema.optional(Schema.String),
+              artifactTitle: Schema.optional(Schema.String),
+              parameters: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    value: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              status: Schema.optional(Schema.String),
+              deploymentStatusMessage: Schema.optional(Schema.String),
+              vmExtensionStatusMessage: Schema.optional(Schema.String),
+              installTime: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        galleryImageReference: Schema.optional(
+          Schema.Struct({
+            offer: Schema.optional(Schema.String),
+            publisher: Schema.optional(Schema.String),
+            sku: Schema.optional(Schema.String),
+            osType: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+        planId: Schema.optional(Schema.String),
+        networkInterface: Schema.optional(
+          Schema.Struct({
+            virtualNetworkId: Schema.optional(Schema.String),
+            subnetId: Schema.optional(Schema.String),
+            publicIpAddressId: Schema.optional(Schema.String),
+            publicIpAddress: Schema.optional(Schema.String),
+            privateIpAddress: Schema.optional(Schema.String),
+            dnsName: Schema.optional(Schema.String),
+            rdpAuthority: Schema.optional(Schema.String),
+            sshAuthority: Schema.optional(Schema.String),
+            sharedPublicIpAddressConfiguration: Schema.optional(
+              Schema.Struct({
+                inboundNatRules: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      transportProtocol: Schema.optional(
+                        Schema.Literals(["Tcp", "Udp"]),
+                      ),
+                      frontendPort: Schema.optional(Schema.Number),
+                      backendPort: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        expirationDate: Schema.optional(Schema.String),
+        allowClaim: Schema.optional(Schema.Boolean),
+        storageType: Schema.optional(Schema.String),
+        environmentId: Schema.optional(Schema.String),
+        dataDiskParameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              attachNewDataDiskOptions: Schema.optional(
+                Schema.Struct({
+                  diskSizeGiB: Schema.optional(Schema.Number),
+                  diskName: Schema.optional(Schema.String),
+                  diskType: Schema.optional(
+                    Schema.Literals(["Standard", "Premium", "StandardSSD"]),
+                  ),
+                }),
+              ),
+              existingLabDiskId: Schema.optional(Schema.String),
+              hostCaching: Schema.optional(
+                Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+              ),
+            }),
+          ),
+        ),
+        scheduleParameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              properties: Schema.optional(
+                Schema.Struct({
+                  status: Schema.optional(
+                    Schema.Literals(["Enabled", "Disabled"]),
+                  ),
+                  taskType: Schema.optional(Schema.String),
+                  weeklyRecurrence: Schema.optional(
+                    Schema.Struct({
+                      weekdays: Schema.optional(Schema.Array(Schema.String)),
+                      time: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  dailyRecurrence: Schema.optional(
+                    Schema.Struct({
+                      time: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  hourlyRecurrence: Schema.optional(
+                    Schema.Struct({
+                      minute: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  timeZoneId: Schema.optional(Schema.String),
+                  notificationSettings: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(
+                        Schema.Literals(["Enabled", "Disabled"]),
+                      ),
+                      timeInMinutes: Schema.optional(Schema.Number),
+                      webhookUrl: Schema.optional(Schema.String),
+                      emailRecipient: Schema.optional(Schema.String),
+                      notificationLocale: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  targetResourceId: Schema.optional(Schema.String),
+                }),
+              ),
+              name: Schema.optional(Schema.String),
+              location: Schema.optional(Schema.String),
+              tags: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/createEnvironment",
+      apiVersion: "2018-09-15",
     }),
   );
 export type LabsCreateEnvironmentInput = typeof LabsCreateEnvironmentInput.Type;
@@ -2393,11 +2973,62 @@ export const LabsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      defaultStorageAccount: Schema.optional(Schema.String),
+      defaultPremiumStorageAccount: Schema.optional(Schema.String),
+      artifactsStorageAccount: Schema.optional(Schema.String),
+      premiumDataDiskStorageAccount: Schema.optional(Schema.String),
+      vaultName: Schema.optional(Schema.String),
+      labStorageType: Schema.optional(
+        Schema.Literals(["Standard", "Premium", "StandardSSD"]),
+      ),
+      mandatoryArtifactsResourceIdsLinux: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      mandatoryArtifactsResourceIdsWindows: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      createdDate: Schema.optional(Schema.String),
+      premiumDataDisks: Schema.optional(
+        Schema.Literals(["Disabled", "Enabled"]),
+      ),
+      environmentPermission: Schema.optional(
+        Schema.Literals(["Reader", "Contributor"]),
+      ),
+      announcement: Schema.optional(
+        Schema.Struct({
+          title: Schema.optional(Schema.String),
+          markdown: Schema.optional(Schema.String),
+          enabled: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          expirationDate: Schema.optional(Schema.String),
+          expired: Schema.optional(Schema.Boolean),
+          provisioningState: Schema.optional(Schema.String),
+          uniqueIdentifier: Schema.optional(Schema.String),
+        }),
+      ),
+      support: Schema.optional(
+        Schema.Struct({
+          enabled: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          markdown: Schema.optional(Schema.String),
+        }),
+      ),
+      vmCreationResourceGroup: Schema.optional(Schema.String),
+      publicIpId: Schema.optional(Schema.String),
+      loadBalancerId: Schema.optional(Schema.String),
+      networkSecurityGroupId: Schema.optional(Schema.String),
+      extendedProperties: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type LabsCreateOrUpdateInput = typeof LabsCreateOrUpdateInput.Type;
@@ -2443,11 +3074,11 @@ export const LabsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type LabsDeleteInput = typeof LabsDeleteInput.Type;
@@ -2475,11 +3106,13 @@ export const LabsExportResourceUsageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    blobStorageAbsoluteSasUri: Schema.optional(Schema.String),
+    usageStartDate: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/exportResourceUsage",
+      apiVersion: "2018-09-15",
     }),
   );
 export type LabsExportResourceUsageInput =
@@ -2512,11 +3145,12 @@ export const LabsGenerateUploadUriInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    blobName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/generateUploadUri",
+      apiVersion: "2018-09-15",
     }),
   );
 export type LabsGenerateUploadUriInput = typeof LabsGenerateUploadUriInput.Type;
@@ -2549,12 +3183,12 @@ export const LabsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type LabsGetInput = typeof LabsGetInput.Type;
@@ -2601,11 +3235,13 @@ export const LabsImportVirtualMachineInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sourceVirtualMachineResourceId: Schema.optional(Schema.String),
+    destinationVirtualMachineName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/importVirtualMachine",
+      apiVersion: "2018-09-15",
     }),
   );
 export type LabsImportVirtualMachineInput =
@@ -2637,7 +3273,6 @@ export const LabsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -2646,6 +3281,7 @@ export const LabsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs",
+      apiVersion: "2018-09-15",
     }),
   );
 export type LabsListByResourceGroupInput =
@@ -2712,7 +3348,6 @@ export const LabsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const LabsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -2721,6 +3356,7 @@ export const LabsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevTestLab/labs",
+      apiVersion: "2018-09-15",
     }),
   );
 export type LabsListBySubscriptionInput =
@@ -2787,11 +3423,11 @@ export const LabsListVhdsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/listVhds",
+    apiVersion: "2018-09-15",
   }),
 );
 export type LabsListVhdsInput = typeof LabsListVhdsInput.Type;
@@ -2825,11 +3461,12 @@ export const LabsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type LabsUpdateInput = typeof LabsUpdateInput.Type;
@@ -2876,11 +3513,31 @@ export const NotificationChannelsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      webHookUrl: Schema.optional(Schema.String),
+      emailRecipient: Schema.optional(Schema.String),
+      notificationLocale: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      events: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            eventName: Schema.optional(
+              Schema.Literals(["AutoShutdown", "Cost"]),
+            ),
+          }),
+        ),
+      ),
+      createdDate: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type NotificationChannelsCreateOrUpdateInput =
@@ -2932,11 +3589,11 @@ export const NotificationChannelsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type NotificationChannelsDeleteInput =
@@ -2971,12 +3628,12 @@ export const NotificationChannelsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type NotificationChannelsGetInput =
@@ -3029,7 +3686,6 @@ export const NotificationChannelsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -3038,6 +3694,7 @@ export const NotificationChannelsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels",
+      apiVersion: "2018-09-15",
     }),
   );
 export type NotificationChannelsListInput =
@@ -3108,11 +3765,13 @@ export const NotificationChannelsNotifyInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    eventName: Schema.optional(Schema.Literals(["AutoShutdown", "Cost"])),
+    jsonPayload: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}/notify",
+      apiVersion: "2018-09-15",
     }),
   );
 export type NotificationChannelsNotifyInput =
@@ -3147,11 +3806,12 @@ export const NotificationChannelsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type NotificationChannelsUpdateInput =
@@ -3202,11 +3862,11 @@ export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   locationName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevTestLab/locations/{locationName}/operations/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type OperationsGetInput = typeof OperationsGetInput.Type;
@@ -3295,11 +3955,39 @@ export const PoliciesCreateOrUpdateInput =
     labName: Schema.String.pipe(T.PathParam()),
     policySetName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      factName: Schema.optional(
+        Schema.Literals([
+          "UserOwnedLabVmCount",
+          "UserOwnedLabPremiumVmCount",
+          "LabVmCount",
+          "LabPremiumVmCount",
+          "LabVmSize",
+          "GalleryImage",
+          "UserOwnedLabVmCountInSubnet",
+          "LabTargetCost",
+          "EnvironmentTemplate",
+          "ScheduleEditPermission",
+        ]),
+      ),
+      factData: Schema.optional(Schema.String),
+      threshold: Schema.optional(Schema.String),
+      evaluatorType: Schema.optional(
+        Schema.Literals(["AllowedValuesPolicy", "MaxValuePolicy"]),
+      ),
+      createdDate: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type PoliciesCreateOrUpdateInput =
@@ -3353,11 +4041,11 @@ export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   policySetName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type PoliciesDeleteInput = typeof PoliciesDeleteInput.Type;
@@ -3388,12 +4076,12 @@ export const PoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   policySetName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type PoliciesGetInput = typeof PoliciesGetInput.Type;
@@ -3442,7 +4130,6 @@ export const PoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   policySetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -3451,6 +4138,7 @@ export const PoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies",
+    apiVersion: "2018-09-15",
   }),
 );
 export type PoliciesListInput = typeof PoliciesListInput.Type;
@@ -3507,11 +4195,12 @@ export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   policySetName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type PoliciesUpdateInput = typeof PoliciesUpdateInput.Type;
@@ -3560,11 +4249,21 @@ export const PolicySetsEvaluatePoliciesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    policies: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          factName: Schema.optional(Schema.String),
+          factData: Schema.optional(Schema.String),
+          valueOffset: Schema.optional(Schema.String),
+          userObjectId: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{name}/evaluatePolicies",
+      apiVersion: "2018-09-15",
     }),
   );
 export type PolicySetsEvaluatePoliciesInput =
@@ -3610,12 +4309,11 @@ export const PolicySetsEvaluatePolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ProviderOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.DevTestLab/operations",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ProviderOperationsListInput =
@@ -3668,11 +4366,47 @@ export const SchedulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      taskType: Schema.optional(Schema.String),
+      weeklyRecurrence: Schema.optional(
+        Schema.Struct({
+          weekdays: Schema.optional(Schema.Array(Schema.String)),
+          time: Schema.optional(Schema.String),
+        }),
+      ),
+      dailyRecurrence: Schema.optional(
+        Schema.Struct({
+          time: Schema.optional(Schema.String),
+        }),
+      ),
+      hourlyRecurrence: Schema.optional(
+        Schema.Struct({
+          minute: Schema.optional(Schema.Number),
+        }),
+      ),
+      timeZoneId: Schema.optional(Schema.String),
+      notificationSettings: Schema.optional(
+        Schema.Struct({
+          status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          timeInMinutes: Schema.optional(Schema.Number),
+          webhookUrl: Schema.optional(Schema.String),
+          emailRecipient: Schema.optional(Schema.String),
+          notificationLocale: Schema.optional(Schema.String),
+        }),
+      ),
+      createdDate: Schema.optional(Schema.String),
+      targetResourceId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type SchedulesCreateOrUpdateInput =
@@ -3724,11 +4458,11 @@ export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type SchedulesDeleteInput = typeof SchedulesDeleteInput.Type;
@@ -3757,11 +4491,11 @@ export const SchedulesExecuteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}/execute",
+    apiVersion: "2018-09-15",
   }),
 );
 export type SchedulesExecuteInput = typeof SchedulesExecuteInput.Type;
@@ -3790,12 +4524,12 @@ export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type SchedulesGetInput = typeof SchedulesGetInput.Type;
@@ -3842,7 +4576,6 @@ export const SchedulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -3851,6 +4584,7 @@ export const SchedulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules",
+    apiVersion: "2018-09-15",
   }),
 );
 export type SchedulesListInput = typeof SchedulesListInput.Type;
@@ -3906,11 +4640,11 @@ export const SchedulesListApplicableInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}/listApplicable",
+      apiVersion: "2018-09-15",
     }),
   );
 export type SchedulesListApplicableInput =
@@ -3977,11 +4711,12 @@ export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type SchedulesUpdateInput = typeof SchedulesUpdateInput.Type;
@@ -4030,11 +4765,18 @@ export const SecretsCreateOrUpdateInput =
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      value: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type SecretsCreateOrUpdateInput = typeof SecretsCreateOrUpdateInput.Type;
@@ -4087,11 +4829,11 @@ export const SecretsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type SecretsDeleteInput = typeof SecretsDeleteInput.Type;
@@ -4122,12 +4864,12 @@ export const SecretsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type SecretsGetInput = typeof SecretsGetInput.Type;
@@ -4176,7 +4918,6 @@ export const SecretsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -4185,6 +4926,7 @@ export const SecretsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets",
+    apiVersion: "2018-09-15",
   }),
 );
 export type SecretsListInput = typeof SecretsListInput.Type;
@@ -4241,11 +4983,12 @@ export const SecretsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   labName: Schema.String.pipe(T.PathParam()),
   userName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type SecretsUpdateInput = typeof SecretsUpdateInput.Type;
@@ -4296,11 +5039,47 @@ export const ServiceFabricSchedulesCreateOrUpdateInput =
     userName: Schema.String.pipe(T.PathParam()),
     serviceFabricName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      taskType: Schema.optional(Schema.String),
+      weeklyRecurrence: Schema.optional(
+        Schema.Struct({
+          weekdays: Schema.optional(Schema.Array(Schema.String)),
+          time: Schema.optional(Schema.String),
+        }),
+      ),
+      dailyRecurrence: Schema.optional(
+        Schema.Struct({
+          time: Schema.optional(Schema.String),
+        }),
+      ),
+      hourlyRecurrence: Schema.optional(
+        Schema.Struct({
+          minute: Schema.optional(Schema.Number),
+        }),
+      ),
+      timeZoneId: Schema.optional(Schema.String),
+      notificationSettings: Schema.optional(
+        Schema.Struct({
+          status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          timeInMinutes: Schema.optional(Schema.Number),
+          webhookUrl: Schema.optional(Schema.String),
+          emailRecipient: Schema.optional(Schema.String),
+          notificationLocale: Schema.optional(Schema.String),
+        }),
+      ),
+      createdDate: Schema.optional(Schema.String),
+      targetResourceId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricSchedulesCreateOrUpdateInput =
@@ -4356,11 +5135,11 @@ export const ServiceFabricSchedulesDeleteInput =
     userName: Schema.String.pipe(T.PathParam()),
     serviceFabricName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricSchedulesDeleteInput =
@@ -4398,11 +5177,11 @@ export const ServiceFabricSchedulesExecuteInput =
     userName: Schema.String.pipe(T.PathParam()),
     serviceFabricName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}/execute",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricSchedulesExecuteInput =
@@ -4440,12 +5219,12 @@ export const ServiceFabricSchedulesGetInput =
     userName: Schema.String.pipe(T.PathParam()),
     serviceFabricName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricSchedulesGetInput =
@@ -4502,7 +5281,6 @@ export const ServiceFabricSchedulesListInput =
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     serviceFabricName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -4511,6 +5289,7 @@ export const ServiceFabricSchedulesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricSchedulesListInput =
@@ -4585,11 +5364,12 @@ export const ServiceFabricSchedulesUpdateInput =
     userName: Schema.String.pipe(T.PathParam()),
     serviceFabricName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricSchedulesUpdateInput =
@@ -4644,11 +5424,50 @@ export const ServiceFabricsCreateOrUpdateInput =
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      externalServiceFabricId: Schema.optional(Schema.String),
+      environmentId: Schema.optional(Schema.String),
+      applicableSchedule: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricsCreateOrUpdateInput =
@@ -4702,11 +5521,11 @@ export const ServiceFabricsDeleteInput =
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricsDeleteInput = typeof ServiceFabricsDeleteInput.Type;
@@ -4741,13 +5560,13 @@ export const ServiceFabricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type ServiceFabricsGetInput = typeof ServiceFabricsGetInput.Type;
@@ -4798,7 +5617,6 @@ export const ServiceFabricsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -4807,6 +5625,7 @@ export const ServiceFabricsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricsListInput = typeof ServiceFabricsListInput.Type;
@@ -4875,11 +5694,11 @@ export const ServiceFabricsListApplicableSchedulesInput =
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}/listApplicableSchedules",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricsListApplicableSchedulesInput =
@@ -4933,11 +5752,11 @@ export const ServiceFabricsStartInput =
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}/start",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricsStartInput = typeof ServiceFabricsStartInput.Type;
@@ -4970,11 +5789,11 @@ export const ServiceFabricsStopInput =
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}/stop",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricsStopInput = typeof ServiceFabricsStopInput.Type;
@@ -5006,11 +5825,12 @@ export const ServiceFabricsUpdateInput =
     labName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceFabricsUpdateInput = typeof ServiceFabricsUpdateInput.Type;
@@ -5062,11 +5882,28 @@ export const ServiceRunnersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+          ]),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        clientSecretUrl: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/servicerunners/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceRunnersCreateOrUpdateInput =
@@ -5118,11 +5955,11 @@ export const ServiceRunnersDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/servicerunners/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type ServiceRunnersDeleteInput = typeof ServiceRunnersDeleteInput.Type;
@@ -5155,12 +5992,12 @@ export const ServiceRunnersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/servicerunners/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type ServiceRunnersGetInput = typeof ServiceRunnersGetInput.Type;
@@ -5209,11 +6046,33 @@ export const UsersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      identity: Schema.optional(
+        Schema.Struct({
+          principalName: Schema.optional(Schema.String),
+          principalId: Schema.optional(Schema.String),
+          tenantId: Schema.optional(Schema.String),
+          objectId: Schema.optional(Schema.String),
+          appId: Schema.optional(Schema.String),
+        }),
+      ),
+      secretStore: Schema.optional(
+        Schema.Struct({
+          keyVaultUri: Schema.optional(Schema.String),
+          keyVaultId: Schema.optional(Schema.String),
+        }),
+      ),
+      createdDate: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
@@ -5261,11 +6120,11 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;
@@ -5294,12 +6153,12 @@ export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type UsersGetInput = typeof UsersGetInput.Type;
@@ -5346,7 +6205,6 @@ export const UsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -5355,6 +6213,7 @@ export const UsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users",
+    apiVersion: "2018-09-15",
   }),
 );
 export type UsersListInput = typeof UsersListInput.Type;
@@ -5409,11 +6268,12 @@ export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}",
+    apiVersion: "2018-09-15",
   }),
 );
 export type UsersUpdateInput = typeof UsersUpdateInput.Type;
@@ -5461,11 +6321,24 @@ export const VirtualMachinesAddDataDiskInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    attachNewDataDiskOptions: Schema.optional(
+      Schema.Struct({
+        diskSizeGiB: Schema.optional(Schema.Number),
+        diskName: Schema.optional(Schema.String),
+        diskType: Schema.optional(
+          Schema.Literals(["Standard", "Premium", "StandardSSD"]),
+        ),
+      }),
+    ),
+    existingLabDiskId: Schema.optional(Schema.String),
+    hostCaching: Schema.optional(
+      Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/addDataDisk",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesAddDataDiskInput =
@@ -5500,11 +6373,31 @@ export const VirtualMachinesApplyArtifactsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    artifacts: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          artifactId: Schema.optional(Schema.String),
+          artifactTitle: Schema.optional(Schema.String),
+          parameters: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          status: Schema.optional(Schema.String),
+          deploymentStatusMessage: Schema.optional(Schema.String),
+          vmExtensionStatusMessage: Schema.optional(Schema.String),
+          installTime: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/applyArtifacts",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesApplyArtifactsInput =
@@ -5539,11 +6432,47 @@ export const VirtualMachineSchedulesCreateOrUpdateInput =
     labName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      taskType: Schema.optional(Schema.String),
+      weeklyRecurrence: Schema.optional(
+        Schema.Struct({
+          weekdays: Schema.optional(Schema.Array(Schema.String)),
+          time: Schema.optional(Schema.String),
+        }),
+      ),
+      dailyRecurrence: Schema.optional(
+        Schema.Struct({
+          time: Schema.optional(Schema.String),
+        }),
+      ),
+      hourlyRecurrence: Schema.optional(
+        Schema.Struct({
+          minute: Schema.optional(Schema.Number),
+        }),
+      ),
+      timeZoneId: Schema.optional(Schema.String),
+      notificationSettings: Schema.optional(
+        Schema.Struct({
+          status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          timeInMinutes: Schema.optional(Schema.Number),
+          webhookUrl: Schema.optional(Schema.String),
+          emailRecipient: Schema.optional(Schema.String),
+          notificationLocale: Schema.optional(Schema.String),
+        }),
+      ),
+      createdDate: Schema.optional(Schema.String),
+      targetResourceId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachineSchedulesCreateOrUpdateInput =
@@ -5597,11 +6526,11 @@ export const VirtualMachineSchedulesDeleteInput =
     labName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachineSchedulesDeleteInput =
@@ -5637,11 +6566,11 @@ export const VirtualMachineSchedulesExecuteInput =
     labName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}/execute",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachineSchedulesExecuteInput =
@@ -5677,12 +6606,12 @@ export const VirtualMachineSchedulesGetInput =
     labName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachineSchedulesGetInput =
@@ -5737,7 +6666,6 @@ export const VirtualMachineSchedulesListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -5746,6 +6674,7 @@ export const VirtualMachineSchedulesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachineSchedulesListInput =
@@ -5818,11 +6747,12 @@ export const VirtualMachineSchedulesUpdateInput =
     labName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachineSchedulesUpdateInput =
@@ -5875,11 +6805,11 @@ export const VirtualMachinesClaimInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/claim",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesClaimInput = typeof VirtualMachinesClaimInput.Type;
@@ -5912,11 +6842,235 @@ export const VirtualMachinesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      notes: Schema.optional(Schema.String),
+      ownerObjectId: Schema.optional(Schema.String),
+      ownerUserPrincipalName: Schema.optional(Schema.String),
+      createdByUserId: Schema.optional(Schema.String),
+      createdByUser: Schema.optional(Schema.String),
+      createdDate: Schema.optional(Schema.String),
+      computeId: Schema.optional(Schema.String),
+      customImageId: Schema.optional(Schema.String),
+      osType: Schema.optional(Schema.String),
+      size: Schema.optional(Schema.String),
+      userName: Schema.optional(Schema.String),
+      password: Schema.optional(SensitiveString),
+      sshKey: Schema.optional(Schema.String),
+      isAuthenticationWithSshKey: Schema.optional(Schema.Boolean),
+      fqdn: Schema.optional(Schema.String),
+      labSubnetName: Schema.optional(Schema.String),
+      labVirtualNetworkId: Schema.optional(Schema.String),
+      disallowPublicIpAddress: Schema.optional(Schema.Boolean),
+      artifacts: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            artifactId: Schema.optional(Schema.String),
+            artifactTitle: Schema.optional(Schema.String),
+            parameters: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            status: Schema.optional(Schema.String),
+            deploymentStatusMessage: Schema.optional(Schema.String),
+            vmExtensionStatusMessage: Schema.optional(Schema.String),
+            installTime: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      artifactDeploymentStatus: Schema.optional(
+        Schema.Struct({
+          deploymentStatus: Schema.optional(Schema.String),
+          artifactsApplied: Schema.optional(Schema.Number),
+          totalArtifacts: Schema.optional(Schema.Number),
+        }),
+      ),
+      galleryImageReference: Schema.optional(
+        Schema.Struct({
+          offer: Schema.optional(Schema.String),
+          publisher: Schema.optional(Schema.String),
+          sku: Schema.optional(Schema.String),
+          osType: Schema.optional(Schema.String),
+          version: Schema.optional(Schema.String),
+        }),
+      ),
+      planId: Schema.optional(Schema.String),
+      computeVm: Schema.optional(
+        Schema.Struct({
+          statuses: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                displayStatus: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          osType: Schema.optional(Schema.String),
+          vmSize: Schema.optional(Schema.String),
+          networkInterfaceId: Schema.optional(Schema.String),
+          osDiskId: Schema.optional(Schema.String),
+          dataDiskIds: Schema.optional(Schema.Array(Schema.String)),
+          dataDisks: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                diskUri: Schema.optional(Schema.String),
+                managedDiskId: Schema.optional(Schema.String),
+                diskSizeGiB: Schema.optional(Schema.Number),
+              }),
+            ),
+          ),
+        }),
+      ),
+      networkInterface: Schema.optional(
+        Schema.Struct({
+          virtualNetworkId: Schema.optional(Schema.String),
+          subnetId: Schema.optional(Schema.String),
+          publicIpAddressId: Schema.optional(Schema.String),
+          publicIpAddress: Schema.optional(Schema.String),
+          privateIpAddress: Schema.optional(Schema.String),
+          dnsName: Schema.optional(Schema.String),
+          rdpAuthority: Schema.optional(Schema.String),
+          sshAuthority: Schema.optional(Schema.String),
+          sharedPublicIpAddressConfiguration: Schema.optional(
+            Schema.Struct({
+              inboundNatRules: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    transportProtocol: Schema.optional(
+                      Schema.Literals(["Tcp", "Udp"]),
+                    ),
+                    frontendPort: Schema.optional(Schema.Number),
+                    backendPort: Schema.optional(Schema.Number),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+      applicableSchedule: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      expirationDate: Schema.optional(Schema.String),
+      allowClaim: Schema.optional(Schema.Boolean),
+      storageType: Schema.optional(Schema.String),
+      virtualMachineCreationSource: Schema.optional(
+        Schema.Literals([
+          "FromCustomImage",
+          "FromGalleryImage",
+          "FromSharedGalleryImage",
+        ]),
+      ),
+      environmentId: Schema.optional(Schema.String),
+      dataDiskParameters: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            attachNewDataDiskOptions: Schema.optional(
+              Schema.Struct({
+                diskSizeGiB: Schema.optional(Schema.Number),
+                diskName: Schema.optional(Schema.String),
+                diskType: Schema.optional(
+                  Schema.Literals(["Standard", "Premium", "StandardSSD"]),
+                ),
+              }),
+            ),
+            existingLabDiskId: Schema.optional(Schema.String),
+            hostCaching: Schema.optional(
+              Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
+            ),
+          }),
+        ),
+      ),
+      scheduleParameters: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                taskType: Schema.optional(Schema.String),
+                weeklyRecurrence: Schema.optional(
+                  Schema.Struct({
+                    weekdays: Schema.optional(Schema.Array(Schema.String)),
+                    time: Schema.optional(Schema.String),
+                  }),
+                ),
+                dailyRecurrence: Schema.optional(
+                  Schema.Struct({
+                    time: Schema.optional(Schema.String),
+                  }),
+                ),
+                hourlyRecurrence: Schema.optional(
+                  Schema.Struct({
+                    minute: Schema.optional(Schema.Number),
+                  }),
+                ),
+                timeZoneId: Schema.optional(Schema.String),
+                notificationSettings: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.optional(
+                      Schema.Literals(["Enabled", "Disabled"]),
+                    ),
+                    timeInMinutes: Schema.optional(Schema.Number),
+                    webhookUrl: Schema.optional(Schema.String),
+                    emailRecipient: Schema.optional(Schema.String),
+                    notificationLocale: Schema.optional(Schema.String),
+                  }),
+                ),
+                targetResourceId: Schema.optional(Schema.String),
+              }),
+            ),
+            name: Schema.optional(Schema.String),
+            location: Schema.optional(Schema.String),
+            tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          }),
+        ),
+      ),
+      lastKnownPowerState: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesCreateOrUpdateInput =
@@ -5968,11 +7122,11 @@ export const VirtualMachinesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
@@ -6006,11 +7160,12 @@ export const VirtualMachinesDetachDataDiskInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    existingLabDiskId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/detachDataDisk",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesDetachDataDiskInput =
@@ -6044,12 +7199,12 @@ export const VirtualMachinesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
@@ -6099,11 +7254,11 @@ export const VirtualMachinesGetRdpFileContentsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/getRdpFileContents",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesGetRdpFileContentsInput =
@@ -6138,7 +7293,6 @@ export const VirtualMachinesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -6147,6 +7301,7 @@ export const VirtualMachinesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesListInput = typeof VirtualMachinesListInput.Type;
@@ -6213,11 +7368,11 @@ export const VirtualMachinesListApplicableSchedulesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/listApplicableSchedules",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesListApplicableSchedulesInput =
@@ -6269,11 +7424,11 @@ export const VirtualMachinesRedeployInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/redeploy",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesRedeployInput =
@@ -6308,11 +7463,12 @@ export const VirtualMachinesResizeInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    size: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/resize",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesResizeInput = typeof VirtualMachinesResizeInput.Type;
@@ -6346,11 +7502,11 @@ export const VirtualMachinesRestartInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/restart",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesRestartInput =
@@ -6385,11 +7541,11 @@ export const VirtualMachinesStartInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/start",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
@@ -6422,11 +7578,11 @@ export const VirtualMachinesStopInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/stop",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesStopInput = typeof VirtualMachinesStopInput.Type;
@@ -6457,11 +7613,11 @@ export const VirtualMachinesTransferDisksInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/transferDisks",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesTransferDisksInput =
@@ -6495,11 +7651,11 @@ export const VirtualMachinesUnClaimInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/unClaim",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesUnClaimInput =
@@ -6534,11 +7690,12 @@ export const VirtualMachinesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;
@@ -6590,11 +7747,68 @@ export const VirtualNetworksCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      allowedSubnets: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourceId: Schema.optional(Schema.String),
+            labSubnetName: Schema.optional(Schema.String),
+            allowPublicIp: Schema.optional(
+              Schema.Literals(["Default", "Deny", "Allow"]),
+            ),
+          }),
+        ),
+      ),
+      description: Schema.optional(Schema.String),
+      externalProviderResourceId: Schema.optional(Schema.String),
+      externalSubnets: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      subnetOverrides: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourceId: Schema.optional(Schema.String),
+            labSubnetName: Schema.optional(Schema.String),
+            useInVmCreationPermission: Schema.optional(
+              Schema.Literals(["Default", "Deny", "Allow"]),
+            ),
+            usePublicIpAddressPermission: Schema.optional(
+              Schema.Literals(["Default", "Deny", "Allow"]),
+            ),
+            sharedPublicIpAddressConfiguration: Schema.optional(
+              Schema.Struct({
+                allowedPorts: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      transportProtocol: Schema.optional(
+                        Schema.Literals(["Tcp", "Udp"]),
+                      ),
+                      backendPort: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            virtualNetworkPoolName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      createdDate: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      uniqueIdentifier: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualNetworksCreateOrUpdateInput =
@@ -6646,11 +7860,11 @@ export const VirtualNetworksDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
@@ -6684,12 +7898,12 @@ export const VirtualNetworksGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualNetworksGetInput = typeof VirtualNetworksGetInput.Type;
@@ -6738,7 +7952,6 @@ export const VirtualNetworksListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -6747,6 +7960,7 @@ export const VirtualNetworksListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualNetworksListInput = typeof VirtualNetworksListInput.Type;
@@ -6813,11 +8027,12 @@ export const VirtualNetworksUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks/{name}",
+      apiVersion: "2018-09-15",
     }),
   );
 export type VirtualNetworksUpdateInput = typeof VirtualNetworksUpdateInput.Type;

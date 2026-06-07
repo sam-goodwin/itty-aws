@@ -14,11 +14,11 @@ export const ChatTranscriptsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
     chatTranscriptName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ChatTranscriptsGetInput = typeof ChatTranscriptsGetInput.Type;
@@ -64,11 +64,11 @@ export const ChatTranscriptsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ChatTranscriptsListInput = typeof ChatTranscriptsListInput.Type;
@@ -130,11 +130,11 @@ export const ChatTranscriptsNoSubscriptionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
     chatTranscriptName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ChatTranscriptsNoSubscriptionGetInput =
@@ -181,11 +181,11 @@ export const ChatTranscriptsNoSubscriptionGet =
 export const ChatTranscriptsNoSubscriptionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ChatTranscriptsNoSubscriptionListInput =
@@ -249,11 +249,16 @@ export const CommunicationsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals([
+      "Microsoft.Support/supportTickets",
+      "Microsoft.Support/communications",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CommunicationsCheckNameAvailabilityInput =
@@ -288,11 +293,21 @@ export const CommunicationsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
     communicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      communicationType: Schema.optional(Schema.Literals(["web", "phone"])),
+      communicationDirection: Schema.optional(
+        Schema.Literals(["inbound", "outbound"]),
+      ),
+      sender: Schema.optional(Schema.String),
+      subject: Schema.String,
+      body: Schema.String,
+      createdDate: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CommunicationsCreateInput = typeof CommunicationsCreateInput.Type;
@@ -341,12 +356,12 @@ export const CommunicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
     communicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type CommunicationsGetInput = typeof CommunicationsGetInput.Type;
@@ -392,13 +407,13 @@ export const CommunicationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CommunicationsListInput = typeof CommunicationsListInput.Type;
@@ -461,11 +476,16 @@ export const CommunicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const CommunicationsNoSubscriptionCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals([
+      "Microsoft.Support/supportTickets",
+      "Microsoft.Support/communications",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CommunicationsNoSubscriptionCheckNameAvailabilityInput =
@@ -498,11 +518,21 @@ export const CommunicationsNoSubscriptionCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
     communicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      communicationType: Schema.optional(Schema.Literals(["web", "phone"])),
+      communicationDirection: Schema.optional(
+        Schema.Literals(["inbound", "outbound"]),
+      ),
+      sender: Schema.optional(Schema.String),
+      subject: Schema.String,
+      body: Schema.String,
+      createdDate: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CommunicationsNoSubscriptionCreateInput =
@@ -550,11 +580,11 @@ export const CommunicationsNoSubscriptionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
     communicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CommunicationsNoSubscriptionGetInput =
@@ -601,13 +631,13 @@ export const CommunicationsNoSubscriptionGet =
 export const CommunicationsNoSubscriptionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CommunicationsNoSubscriptionListInput =
@@ -673,11 +703,19 @@ export const FilesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   fileWorkspaceName: Schema.String.pipe(T.PathParam()),
   fileName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      createdOn: Schema.optional(Schema.String),
+      chunkSize: Schema.optional(Schema.Number),
+      fileSize: Schema.optional(Schema.Number),
+      numberOfChunks: Schema.optional(Schema.Number),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type FilesCreateInput = typeof FilesCreateInput.Type;
@@ -722,11 +760,11 @@ export const FilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   fileWorkspaceName: Schema.String.pipe(T.PathParam()),
   fileName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type FilesGetInput = typeof FilesGetInput.Type;
@@ -770,11 +808,11 @@ export const FilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FilesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   fileWorkspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
+    apiVersion: "2024-04-01",
   }),
 );
 export type FilesListInput = typeof FilesListInput.Type;
@@ -835,11 +873,19 @@ export const FilesNoSubscriptionCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
     fileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        createdOn: Schema.optional(Schema.String),
+        chunkSize: Schema.optional(Schema.Number),
+        fileSize: Schema.optional(Schema.Number),
+        numberOfChunks: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type FilesNoSubscriptionCreateInput =
@@ -888,11 +934,11 @@ export const FilesNoSubscriptionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
     fileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type FilesNoSubscriptionGetInput =
@@ -940,11 +986,11 @@ export const FilesNoSubscriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const FilesNoSubscriptionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
+      apiVersion: "2024-04-01",
     }),
   );
 export type FilesNoSubscriptionListInput =
@@ -1009,11 +1055,13 @@ export const FilesNoSubscriptionUploadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
     fileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    content: Schema.optional(Schema.String),
+    chunkIndex: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload",
+      apiVersion: "2024-04-01",
     }),
   );
 export type FilesNoSubscriptionUploadInput =
@@ -1044,11 +1092,13 @@ export const FilesUploadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   fileWorkspaceName: Schema.String.pipe(T.PathParam()),
   fileName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  content: Schema.optional(Schema.String),
+  chunkIndex: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload",
+    apiVersion: "2024-04-01",
   }),
 );
 export type FilesUploadInput = typeof FilesUploadInput.Type;
@@ -1075,11 +1125,11 @@ export const FileWorkspacesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type FileWorkspacesCreateInput = typeof FileWorkspacesCreateInput.Type;
@@ -1126,12 +1176,12 @@ export const FileWorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type FileWorkspacesGetInput = typeof FileWorkspacesGetInput.Type;
@@ -1175,11 +1225,11 @@ export const FileWorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FileWorkspacesNoSubscriptionCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type FileWorkspacesNoSubscriptionCreateInput =
@@ -1225,11 +1275,11 @@ export const FileWorkspacesNoSubscriptionCreate =
 export const FileWorkspacesNoSubscriptionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type FileWorkspacesNoSubscriptionGetInput =
@@ -1272,10 +1322,14 @@ export const FileWorkspacesNoSubscriptionGet =
     outputSchema: FileWorkspacesNoSubscriptionGetOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Support/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Support/operations",
+    apiVersion: "2024-04-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -1320,11 +1374,11 @@ export const ProblemClassificationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     problemClassificationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Support/services/{serviceName}/problemClassifications/{problemClassificationName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ProblemClassificationsGetInput =
@@ -1372,11 +1426,11 @@ export const ProblemClassificationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ProblemClassificationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Support/services/{serviceName}/problemClassifications",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ProblemClassificationsListInput =
@@ -1439,11 +1493,11 @@ export const ProblemClassificationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Support/services/{serviceName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type ServicesGetInput = typeof ServicesGetInput.Type;
@@ -1482,10 +1536,14 @@ export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Support/services" }),
+export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Support/services",
+    apiVersion: "2024-04-01",
+  }),
 );
 export type ServicesListInput = typeof ServicesListInput.Type;
 
@@ -1542,11 +1600,16 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SupportTicketsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals([
+      "Microsoft.Support/supportTickets",
+      "Microsoft.Support/communications",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/checkNameAvailability",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SupportTicketsCheckNameAvailabilityInput =
@@ -1579,11 +1642,89 @@ export const SupportTicketsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      supportTicketId: Schema.optional(Schema.String),
+      description: Schema.String,
+      problemClassificationId: Schema.String,
+      problemClassificationDisplayName: Schema.optional(Schema.String),
+      severity: Schema.Literals([
+        "minimal",
+        "moderate",
+        "critical",
+        "highestcriticalimpact",
+      ]),
+      enrollmentId: Schema.optional(Schema.String),
+      require24X7Response: Schema.optional(Schema.Boolean),
+      advancedDiagnosticConsent: Schema.Literals(["Yes", "No"]),
+      problemScopingQuestions: Schema.optional(Schema.String),
+      supportPlanId: Schema.optional(Schema.String),
+      contactDetails: Schema.Struct({
+        firstName: Schema.String,
+        lastName: Schema.String,
+        preferredContactMethod: Schema.Literals(["email", "phone"]),
+        primaryEmailAddress: Schema.String,
+        additionalEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
+        phoneNumber: Schema.optional(Schema.String),
+        preferredTimeZone: Schema.String,
+        country: Schema.String,
+        preferredSupportLanguage: Schema.String,
+      }),
+      serviceLevelAgreement: Schema.optional(
+        Schema.Struct({
+          startTime: Schema.optional(Schema.String),
+          expirationTime: Schema.optional(Schema.String),
+          slaMinutes: Schema.optional(Schema.Number),
+        }),
+      ),
+      supportEngineer: Schema.optional(
+        Schema.Struct({
+          emailAddress: Schema.optional(Schema.String),
+        }),
+      ),
+      supportPlanType: Schema.optional(Schema.String),
+      supportPlanDisplayName: Schema.optional(Schema.String),
+      title: Schema.String,
+      problemStartTime: Schema.optional(Schema.String),
+      serviceId: Schema.String,
+      serviceDisplayName: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.String),
+      createdDate: Schema.optional(Schema.String),
+      modifiedDate: Schema.optional(Schema.String),
+      fileWorkspaceName: Schema.optional(Schema.String),
+      isTemporaryTicket: Schema.optional(Schema.Literals(["Yes", "No"])),
+      technicalTicketDetails: Schema.optional(
+        Schema.Struct({
+          resourceId: Schema.optional(Schema.String),
+        }),
+      ),
+      quotaTicketDetails: Schema.optional(
+        Schema.Struct({
+          quotaChangeRequestSubType: Schema.optional(Schema.String),
+          quotaChangeRequestVersion: Schema.optional(Schema.String),
+          quotaChangeRequests: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                region: Schema.optional(Schema.String),
+                payload: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      secondaryConsent: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            userConsent: Schema.optional(Schema.Literals(["Yes", "No"])),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SupportTicketsCreateInput = typeof SupportTicketsCreateInput.Type;
@@ -1630,12 +1771,12 @@ export const SupportTicketsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type SupportTicketsGetInput = typeof SupportTicketsGetInput.Type;
@@ -1679,13 +1820,13 @@ export const SupportTicketsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SupportTicketsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SupportTicketsListInput = typeof SupportTicketsListInput.Type;
@@ -1746,11 +1887,16 @@ export const SupportTicketsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SupportTicketsNoSubscriptionCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals([
+      "Microsoft.Support/supportTickets",
+      "Microsoft.Support/communications",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Support/checkNameAvailability",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SupportTicketsNoSubscriptionCheckNameAvailabilityInput =
@@ -1781,11 +1927,89 @@ export const SupportTicketsNoSubscriptionCheckNameAvailability =
 export const SupportTicketsNoSubscriptionCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      supportTicketId: Schema.optional(Schema.String),
+      description: Schema.String,
+      problemClassificationId: Schema.String,
+      problemClassificationDisplayName: Schema.optional(Schema.String),
+      severity: Schema.Literals([
+        "minimal",
+        "moderate",
+        "critical",
+        "highestcriticalimpact",
+      ]),
+      enrollmentId: Schema.optional(Schema.String),
+      require24X7Response: Schema.optional(Schema.Boolean),
+      advancedDiagnosticConsent: Schema.Literals(["Yes", "No"]),
+      problemScopingQuestions: Schema.optional(Schema.String),
+      supportPlanId: Schema.optional(Schema.String),
+      contactDetails: Schema.Struct({
+        firstName: Schema.String,
+        lastName: Schema.String,
+        preferredContactMethod: Schema.Literals(["email", "phone"]),
+        primaryEmailAddress: Schema.String,
+        additionalEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
+        phoneNumber: Schema.optional(Schema.String),
+        preferredTimeZone: Schema.String,
+        country: Schema.String,
+        preferredSupportLanguage: Schema.String,
+      }),
+      serviceLevelAgreement: Schema.optional(
+        Schema.Struct({
+          startTime: Schema.optional(Schema.String),
+          expirationTime: Schema.optional(Schema.String),
+          slaMinutes: Schema.optional(Schema.Number),
+        }),
+      ),
+      supportEngineer: Schema.optional(
+        Schema.Struct({
+          emailAddress: Schema.optional(Schema.String),
+        }),
+      ),
+      supportPlanType: Schema.optional(Schema.String),
+      supportPlanDisplayName: Schema.optional(Schema.String),
+      title: Schema.String,
+      problemStartTime: Schema.optional(Schema.String),
+      serviceId: Schema.String,
+      serviceDisplayName: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.String),
+      createdDate: Schema.optional(Schema.String),
+      modifiedDate: Schema.optional(Schema.String),
+      fileWorkspaceName: Schema.optional(Schema.String),
+      isTemporaryTicket: Schema.optional(Schema.Literals(["Yes", "No"])),
+      technicalTicketDetails: Schema.optional(
+        Schema.Struct({
+          resourceId: Schema.optional(Schema.String),
+        }),
+      ),
+      quotaTicketDetails: Schema.optional(
+        Schema.Struct({
+          quotaChangeRequestSubType: Schema.optional(Schema.String),
+          quotaChangeRequestVersion: Schema.optional(Schema.String),
+          quotaChangeRequests: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                region: Schema.optional(Schema.String),
+                payload: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      secondaryConsent: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            userConsent: Schema.optional(Schema.Literals(["Yes", "No"])),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SupportTicketsNoSubscriptionCreateInput =
@@ -1831,11 +2055,11 @@ export const SupportTicketsNoSubscriptionCreate =
 export const SupportTicketsNoSubscriptionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SupportTicketsNoSubscriptionGetInput =
@@ -1880,13 +2104,13 @@ export const SupportTicketsNoSubscriptionGet =
 // Input Schema
 export const SupportTicketsNoSubscriptionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Support/supportTickets",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SupportTicketsNoSubscriptionListInput =
@@ -1950,11 +2174,44 @@ export const SupportTicketsNoSubscriptionList =
 export const SupportTicketsNoSubscriptionUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    severity: Schema.optional(
+      Schema.Literals([
+        "minimal",
+        "moderate",
+        "critical",
+        "highestcriticalimpact",
+      ]),
+    ),
+    status: Schema.optional(Schema.Literals(["open", "closed"])),
+    contactDetails: Schema.optional(
+      Schema.Struct({
+        firstName: Schema.optional(Schema.String),
+        lastName: Schema.optional(Schema.String),
+        preferredContactMethod: Schema.optional(
+          Schema.Literals(["email", "phone"]),
+        ),
+        primaryEmailAddress: Schema.optional(Schema.String),
+        additionalEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
+        phoneNumber: Schema.optional(Schema.String),
+        preferredTimeZone: Schema.optional(Schema.String),
+        country: Schema.optional(Schema.String),
+        preferredSupportLanguage: Schema.optional(Schema.String),
+      }),
+    ),
+    advancedDiagnosticConsent: Schema.optional(Schema.Literals(["Yes", "No"])),
+    secondaryConsent: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          userConsent: Schema.optional(Schema.Literals(["Yes", "No"])),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SupportTicketsNoSubscriptionUpdateInput =
@@ -2001,11 +2258,44 @@ export const SupportTicketsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    severity: Schema.optional(
+      Schema.Literals([
+        "minimal",
+        "moderate",
+        "critical",
+        "highestcriticalimpact",
+      ]),
+    ),
+    status: Schema.optional(Schema.Literals(["open", "closed"])),
+    contactDetails: Schema.optional(
+      Schema.Struct({
+        firstName: Schema.optional(Schema.String),
+        lastName: Schema.optional(Schema.String),
+        preferredContactMethod: Schema.optional(
+          Schema.Literals(["email", "phone"]),
+        ),
+        primaryEmailAddress: Schema.optional(Schema.String),
+        additionalEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
+        phoneNumber: Schema.optional(Schema.String),
+        preferredTimeZone: Schema.optional(Schema.String),
+        country: Schema.optional(Schema.String),
+        preferredSupportLanguage: Schema.optional(Schema.String),
+      }),
+    ),
+    advancedDiagnosticConsent: Schema.optional(Schema.Literals(["Yes", "No"])),
+    secondaryConsent: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          userConsent: Schema.optional(Schema.Literals(["Yes", "No"])),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SupportTicketsUpdateInput = typeof SupportTicketsUpdateInput.Type;

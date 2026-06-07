@@ -14,11 +14,54 @@ export const AccessConnectorsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Running",
+            "Ready",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        referedBy: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AccessConnectorsCreateOrUpdateInput =
@@ -54,11 +97,11 @@ export const AccessConnectorsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AccessConnectorsDeleteInput =
@@ -91,11 +134,11 @@ export const AccessConnectorsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AccessConnectorsGetInput = typeof AccessConnectorsGetInput.Type;
@@ -127,11 +170,11 @@ export const AccessConnectorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AccessConnectorsListByResourceGroupInput =
@@ -169,11 +212,11 @@ export const AccessConnectorsListByResourceGroup =
 export const AccessConnectorsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/accessConnectors",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AccessConnectorsListBySubscriptionInput =
@@ -212,11 +255,33 @@ export const AccessConnectorsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AccessConnectorsUpdateInput =
@@ -248,10 +313,14 @@ export const AccessConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Databricks/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Databricks/operations",
+    apiVersion: "2026-01-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -292,11 +361,11 @@ export const OutboundNetworkDependenciesEndpointsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/outboundNetworkDependenciesEndpoints",
+      apiVersion: "2026-01-01",
     }),
   );
 export type OutboundNetworkDependenciesEndpointsListInput =
@@ -352,11 +421,38 @@ export const PrivateEndpointConnectionsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      privateEndpoint: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+      groupIds: Schema.optional(Schema.Array(Schema.String)),
+      privateLinkServiceConnectionState: Schema.Struct({
+        status: Schema.Literals([
+          "Pending",
+          "Approved",
+          "Rejected",
+          "Disconnected",
+        ]),
+        description: Schema.optional(Schema.String),
+        actionsRequired: Schema.optional(Schema.String),
+      }),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Failed",
+        ]),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -396,11 +492,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -436,11 +532,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -479,11 +575,11 @@ export const PrivateEndpointConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections",
+      apiVersion: "2026-01-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -527,11 +623,11 @@ export const PrivateLinkResourcesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateLinkResources/{groupId}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -571,11 +667,11 @@ export const PrivateLinkResourcesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateLinkResources",
+      apiVersion: "2026-01-01",
     }),
   );
 export type PrivateLinkResourcesListInput =
@@ -620,11 +716,41 @@ export const VNetPeeringCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      allowVirtualNetworkAccess: Schema.optional(Schema.Boolean),
+      allowForwardedTraffic: Schema.optional(Schema.Boolean),
+      allowGatewayTransit: Schema.optional(Schema.Boolean),
+      useRemoteGateways: Schema.optional(Schema.Boolean),
+      databricksVirtualNetwork: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+      databricksAddressSpace: Schema.optional(
+        Schema.Struct({
+          addressPrefixes: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      remoteVirtualNetwork: Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+      remoteAddressSpace: Schema.optional(
+        Schema.Struct({
+          addressPrefixes: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      peeringState: Schema.optional(
+        Schema.Literals(["Initiated", "Connected", "Disconnected"]),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Updating", "Deleting", "Failed"]),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type VNetPeeringCreateOrUpdateInput =
@@ -663,12 +789,12 @@ export const VNetPeeringDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type VNetPeeringDeleteInput = typeof VNetPeeringDeleteInput.Type;
@@ -697,11 +823,11 @@ export const VNetPeeringGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   peeringName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type VNetPeeringGetInput = typeof VNetPeeringGetInput.Type;
@@ -734,11 +860,11 @@ export const VNetPeeringListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings",
+      apiVersion: "2026-01-01",
     }),
   );
 export type VNetPeeringListByWorkspaceInput =
@@ -780,11 +906,309 @@ export const WorkspacesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      computeMode: Schema.Literals(["Serverless", "Hybrid"]),
+      managedResourceGroupId: Schema.optional(Schema.String),
+      parameters: Schema.optional(
+        Schema.Struct({
+          amlWorkspaceId: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.String,
+            }),
+          ),
+          customVirtualNetworkId: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.String,
+            }),
+          ),
+          customPublicSubnetName: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.String,
+            }),
+          ),
+          customPrivateSubnetName: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.String,
+            }),
+          ),
+          enableNoPublicIp: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.Boolean,
+            }),
+          ),
+          loadBalancerBackendPoolName: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.String,
+            }),
+          ),
+          loadBalancerId: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.String,
+            }),
+          ),
+          natGatewayName: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.String,
+            }),
+          ),
+          publicIpName: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.String,
+            }),
+          ),
+          prepareEncryption: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.Boolean,
+            }),
+          ),
+          encryption: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.optional(
+                Schema.Struct({
+                  keySource: Schema.optional(
+                    Schema.Literals(["Default", "Microsoft.Keyvault"]),
+                  ),
+                  KeyName: Schema.optional(Schema.String),
+                  keyversion: Schema.optional(Schema.String),
+                  keyvaulturi: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+          requireInfrastructureEncryption: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.Boolean,
+            }),
+          ),
+          storageAccountName: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.String,
+            }),
+          ),
+          storageAccountSkuName: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.String,
+            }),
+          ),
+          vnetAddressPrefix: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.String,
+            }),
+          ),
+          resourceTags: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["Bool", "Object", "String"]),
+              ),
+              value: Schema.Unknown,
+            }),
+          ),
+        }),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Running",
+          "Ready",
+          "Creating",
+          "Created",
+          "Deleting",
+          "Deleted",
+          "Canceled",
+          "Failed",
+          "Succeeded",
+          "Updating",
+        ]),
+      ),
+      uiDefinitionUri: Schema.optional(Schema.String),
+      authorizations: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            principalId: Schema.String,
+            roleDefinitionId: Schema.String,
+          }),
+        ),
+      ),
+      createdBy: Schema.optional(
+        Schema.Struct({
+          oid: Schema.optional(Schema.String),
+          puid: Schema.optional(Schema.String),
+          applicationId: Schema.optional(Schema.String),
+        }),
+      ),
+      updatedBy: Schema.optional(
+        Schema.Struct({
+          oid: Schema.optional(Schema.String),
+          puid: Schema.optional(Schema.String),
+          applicationId: Schema.optional(Schema.String),
+        }),
+      ),
+      createdDateTime: Schema.optional(Schema.String),
+      workspaceId: Schema.optional(Schema.String),
+      workspaceUrl: Schema.optional(Schema.String),
+      storageAccountIdentity: Schema.optional(
+        Schema.Struct({
+          principalId: Schema.optional(Schema.String),
+          tenantId: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+      managedDiskIdentity: Schema.optional(
+        Schema.Struct({
+          principalId: Schema.optional(Schema.String),
+          tenantId: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+      diskEncryptionSetId: Schema.optional(Schema.String),
+      encryption: Schema.optional(
+        Schema.Struct({
+          entities: Schema.Struct({
+            managedServices: Schema.optional(
+              Schema.Struct({
+                keySource: Schema.Literals(["Microsoft.Keyvault"]),
+                keyVaultProperties: Schema.optional(
+                  Schema.Struct({
+                    keyVaultUri: Schema.String,
+                    keyName: Schema.String,
+                    keyVersion: Schema.String,
+                  }),
+                ),
+              }),
+            ),
+            managedDisk: Schema.optional(
+              Schema.Struct({
+                keySource: Schema.Literals(["Microsoft.Keyvault"]),
+                keyVaultProperties: Schema.Struct({
+                  keyVaultUri: Schema.String,
+                  keyName: Schema.String,
+                  keyVersion: Schema.String,
+                }),
+                rotationToLatestKeyVersionEnabled: Schema.optional(
+                  Schema.Boolean,
+                ),
+              }),
+            ),
+          }),
+        }),
+      ),
+      enhancedSecurityCompliance: Schema.optional(
+        Schema.Struct({
+          automaticClusterUpdate: Schema.optional(
+            Schema.Struct({
+              value: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+            }),
+          ),
+          complianceSecurityProfile: Schema.optional(
+            Schema.Struct({
+              complianceStandards: Schema.optional(Schema.Array(Schema.String)),
+              value: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+            }),
+          ),
+          enhancedSecurityMonitoring: Schema.optional(
+            Schema.Struct({
+              value: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+            }),
+          ),
+        }),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      requiredNsgRules: Schema.optional(
+        Schema.Literals([
+          "AllRules",
+          "NoAzureDatabricksRules",
+          "NoAzureServiceRules",
+        ]),
+      ),
+      defaultCatalog: Schema.optional(
+        Schema.Struct({
+          initialType: Schema.optional(
+            Schema.Literals(["HiveMetastore", "UnityCatalog"]),
+          ),
+          initialName: Schema.optional(Schema.String),
+        }),
+      ),
+      isUcEnabled: Schema.optional(Schema.Boolean),
+      accessConnector: Schema.optional(
+        Schema.Struct({
+          id: Schema.String,
+          identityType: Schema.Literals(["SystemAssigned", "UserAssigned"]),
+          userAssignedIdentityId: Schema.optional(Schema.String),
+        }),
+      ),
+      defaultStorageFirewall: Schema.optional(
+        Schema.Literals(["Disabled", "Enabled"]),
+      ),
+    }),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type WorkspacesCreateOrUpdateInput =
@@ -820,12 +1244,12 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   forceDeletion: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -853,11 +1277,11 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
@@ -888,11 +1312,11 @@ export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces",
+      apiVersion: "2026-01-01",
     }),
   );
 export type WorkspacesListByResourceGroupInput =
@@ -930,11 +1354,11 @@ export const WorkspacesListByResourceGroup =
 export const WorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/workspaces",
+      apiVersion: "2026-01-01",
     }),
   );
 export type WorkspacesListBySubscriptionInput =
@@ -972,11 +1396,12 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;

@@ -12,7 +12,11 @@ import * as T from "../traits.ts";
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.WindowsIoT/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.WindowsIoT/operations",
+    apiVersion: "2019-06-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -49,10 +53,13 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ServicesCheckDeviceServiceNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.WindowsIoT/checkDeviceServiceNameAvailability",
+      apiVersion: "2019-06-01",
     }),
   );
 export type ServicesCheckDeviceServiceNameAvailabilityInput =
@@ -79,10 +86,24 @@ export const ServicesCheckDeviceServiceNameAvailability =
   }));
 // Input Schema
 export const ServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        notes: Schema.optional(Schema.String),
+        startDate: Schema.optional(Schema.String),
+        quantity: Schema.optional(Schema.Number),
+        billingDomainName: Schema.optional(Schema.String),
+        adminDomainName: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}",
+      apiVersion: "2019-06-01",
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -119,6 +140,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}",
+    apiVersion: "2019-06-01",
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -146,6 +168,7 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}",
+    apiVersion: "2019-06-01",
   }),
 );
 export type ServicesGetInput = typeof ServicesGetInput.Type;
@@ -173,6 +196,7 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.WindowsIoT/deviceServices",
+    apiVersion: "2019-06-01",
   }),
 );
 export type ServicesListInput = typeof ServicesListInput.Type;
@@ -206,6 +230,7 @@ export const ServicesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices",
+      apiVersion: "2019-06-01",
     }),
   );
 export type ServicesListByResourceGroupInput =
@@ -239,12 +264,24 @@ export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      notes: Schema.optional(Schema.String),
+      startDate: Schema.optional(Schema.String),
+      quantity: Schema.optional(Schema.Number),
+      billingDomainName: Schema.optional(Schema.String),
+      adminDomainName: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}",
+    apiVersion: "2019-06-01",
   }),
 );
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;

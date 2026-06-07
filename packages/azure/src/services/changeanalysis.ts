@@ -13,11 +13,11 @@ export const ChangesListChangesByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ChangeAnalysis/changes",
+      apiVersion: "2021-04-01",
     }),
   );
 export type ChangesListChangesByResourceGroupInput =
@@ -57,11 +57,11 @@ export const ChangesListChangesByResourceGroup =
 export const ChangesListChangesBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ChangeAnalysis/changes",
+      apiVersion: "2021-04-01",
     }),
   );
 export type ChangesListChangesBySubscriptionInput =
@@ -97,12 +97,13 @@ export const ChangesListChangesBySubscription =
     outputSchema: ChangesListChangesBySubscriptionOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ChangeAnalysis/operations",
+    apiVersion: "2021-04-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -140,12 +141,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ResourceChangesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.ChangeAnalysis/resourceChanges",
+      apiVersion: "2021-04-01",
     }),
   );
 export type ResourceChangesListInput = typeof ResourceChangesListInput.Type;

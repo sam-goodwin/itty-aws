@@ -15,11 +15,11 @@ export const CloudHsmClusterBackupStatusGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
     jobId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/backupOperationStatus/{jobId}",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClusterBackupStatusGetInput =
@@ -98,11 +98,40 @@ export const CloudHsmClusterPrivateEndpointConnectionsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Creating",
+            "Deleting",
+            "Failed",
+            "Updating",
+            "InternalError",
+            "Canceled",
+          ]),
+        ),
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/privateEndpointConnections/{peConnectionName}",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClusterPrivateEndpointConnectionsCreateInput =
@@ -154,11 +183,11 @@ export const CloudHsmClusterPrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/privateEndpointConnections/{peConnectionName}",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClusterPrivateEndpointConnectionsDeleteInput =
@@ -192,11 +221,11 @@ export const CloudHsmClusterPrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/privateEndpointConnections/{peConnectionName}",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClusterPrivateEndpointConnectionsGetInput =
@@ -247,11 +276,11 @@ export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/privateLinkResources",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput =
@@ -320,11 +349,11 @@ export const CloudHsmClusterRestoreStatusGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
     jobId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/restoreOperationStatus/{jobId}",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClusterRestoreStatusGetInput =
@@ -402,11 +431,13 @@ export const CloudHsmClustersBackupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    azureStorageBlobContainerUri: Schema.String,
+    token: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/backup",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClustersBackupInput =
@@ -484,11 +515,116 @@ export const CloudHsmClustersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        activationState: Schema.optional(
+          Schema.Literals([
+            "NotDefined",
+            "NotActivated",
+            "Active",
+            "Failed",
+            "Unknown",
+          ]),
+        ),
+        autoGeneratedDomainNameLabelScope: Schema.optional(
+          Schema.Literals([
+            "TenantReuse",
+            "SubscriptionReuse",
+            "ResourceGroupReuse",
+            "NoReuse",
+          ]),
+        ),
+        hsms: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              fqdn: Schema.optional(Schema.String),
+              state: Schema.optional(Schema.String),
+              stateMessage: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Succeeded",
+            "Updating",
+            "Failed",
+            "Deleting",
+            "Canceled",
+          ]),
+        ),
+        publicNetworkAccess: Schema.optional(Schema.Literals(["Disabled"])),
+        statusMessage: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        family: Schema.Literals(["B"]),
+        name: Schema.Literals(["Standard_B1", "Standard B10"]),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClustersCreateOrUpdateInput =
@@ -538,11 +674,11 @@ export const CloudHsmClustersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClustersDeleteInput =
@@ -575,11 +711,11 @@ export const CloudHsmClustersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClustersGetInput = typeof CloudHsmClustersGetInput.Type;
@@ -625,12 +761,12 @@ export const CloudHsmClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClustersListByResourceGroupInput =
@@ -693,12 +829,12 @@ export const CloudHsmClustersListByResourceGroup =
 export const CloudHsmClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClustersListBySubscriptionInput =
@@ -762,11 +898,14 @@ export const CloudHsmClustersRestoreInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    backupId: Schema.String,
+    azureStorageBlobContainerUri: Schema.String,
+    token: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/restore",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClustersRestoreInput =
@@ -844,11 +983,33 @@ export const CloudHsmClustersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClustersUpdateInput =
@@ -899,11 +1060,13 @@ export const CloudHsmClustersValidateBackupPropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    azureStorageBlobContainerUri: Schema.String,
+    token: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/validateBackupProperties",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClustersValidateBackupPropertiesInput =
@@ -980,11 +1143,14 @@ export const CloudHsmClustersValidateRestorePropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    backupId: Schema.String,
+    azureStorageBlobContainerUri: Schema.String,
+    token: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/validateRestoreProperties",
+      apiVersion: "2025-03-31",
     }),
   );
 export type CloudHsmClustersValidateRestorePropertiesInput =
@@ -1061,11 +1227,76 @@ export const DedicatedHsmCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      networkProfile: Schema.optional(
+        Schema.Struct({
+          subnet: Schema.optional(
+            Schema.Struct({
+              resourceId: Schema.optional(Schema.String),
+            }),
+          ),
+          networkInterfaces: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                resourceId: Schema.optional(Schema.String),
+                privateIpAddress: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      managementNetworkProfile: Schema.optional(
+        Schema.Struct({
+          subnet: Schema.optional(
+            Schema.Struct({
+              resourceId: Schema.optional(Schema.String),
+            }),
+          ),
+          networkInterfaces: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                resourceId: Schema.optional(Schema.String),
+                privateIpAddress: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      stampId: Schema.optional(Schema.String),
+      statusMessage: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Provisioning",
+          "Allocating",
+          "Connecting",
+          "Failed",
+          "CheckingQuota",
+          "Deleting",
+        ]),
+      ),
+    }),
+    sku: Schema.Struct({
+      name: Schema.optional(
+        Schema.Literals([
+          "SafeNet Luna Network HSM A790",
+          "payShield10K_LMK1_CPS60",
+          "payShield10K_LMK1_CPS250",
+          "payShield10K_LMK1_CPS2500",
+          "payShield10K_LMK2_CPS60",
+          "payShield10K_LMK2_CPS250",
+          "payShield10K_LMK2_CPS2500",
+        ]),
+      ),
+    }),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}",
+      apiVersion: "2025-03-31",
     }),
   );
 export type DedicatedHsmCreateOrUpdateInput =
@@ -1116,11 +1347,11 @@ export const DedicatedHsmDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}",
+      apiVersion: "2025-03-31",
     }),
   );
 export type DedicatedHsmDeleteInput = typeof DedicatedHsmDeleteInput.Type;
@@ -1147,11 +1378,11 @@ export const DedicatedHsmGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}",
+    apiVersion: "2025-03-31",
   }),
 );
 export type DedicatedHsmGetInput = typeof DedicatedHsmGetInput.Type;
@@ -1196,12 +1427,12 @@ export const DedicatedHsmListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs",
+      apiVersion: "2025-03-31",
     }),
   );
 export type DedicatedHsmListByResourceGroupInput =
@@ -1264,12 +1495,12 @@ export const DedicatedHsmListByResourceGroup =
 export const DedicatedHsmListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs",
+      apiVersion: "2025-03-31",
     }),
   );
 export type DedicatedHsmListBySubscriptionInput =
@@ -1333,11 +1564,11 @@ export const DedicatedHsmListOutboundNetworkDependenciesEndpointsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}/outboundNetworkDependenciesEndpoints",
+      apiVersion: "2025-03-31",
     }),
   );
 export type DedicatedHsmListOutboundNetworkDependenciesEndpointsInput =
@@ -1393,11 +1624,12 @@ export const DedicatedHsmUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}",
+      apiVersion: "2025-03-31",
     }),
   );
 export type DedicatedHsmUpdateInput = typeof DedicatedHsmUpdateInput.Type;
@@ -1439,12 +1671,13 @@ export const DedicatedHsmUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DedicatedHsmUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HardwareSecurityModules/operations",
+    apiVersion: "2025-03-31",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1491,11 +1724,11 @@ export const PrivateEndpointConnectionsListByCloudHsmClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/privateEndpointConnections",
+      apiVersion: "2025-03-31",
     }),
   );
 export type PrivateEndpointConnectionsListByCloudHsmClusterInput =

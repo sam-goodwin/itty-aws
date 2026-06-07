@@ -7,16 +7,19 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const CommunicationServicesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Communication/checkNameAvailability",
+      apiVersion: "2026-03-18",
     }),
   );
 export type CommunicationServicesCheckNameAvailabilityInput =
@@ -52,11 +55,61 @@ export const CommunicationServicesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Running",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Moving",
+          ]),
+        ),
+        hostName: Schema.optional(Schema.String),
+        dataLocation: Schema.String,
+        notificationHubId: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+        immutableResourceId: Schema.optional(Schema.String),
+        linkedDomains: Schema.optional(Schema.Array(Schema.String)),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+        ),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type CommunicationServicesCreateOrUpdateInput =
@@ -108,11 +161,11 @@ export const CommunicationServicesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type CommunicationServicesDeleteInput =
@@ -147,11 +200,11 @@ export const CommunicationServicesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type CommunicationServicesGetInput =
@@ -204,11 +257,13 @@ export const CommunicationServicesLinkNotificationHubInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    resourceId: Schema.String,
+    connectionString: SensitiveString,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/linkNotificationHub",
+      apiVersion: "2026-03-18",
     }),
   );
 export type CommunicationServicesLinkNotificationHubInput =
@@ -243,11 +298,11 @@ export const CommunicationServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices",
+      apiVersion: "2026-03-18",
     }),
   );
 export type CommunicationServicesListByResourceGroupInput =
@@ -311,11 +366,11 @@ export const CommunicationServicesListByResourceGroup =
 export const CommunicationServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Communication/communicationServices",
+      apiVersion: "2026-03-18",
     }),
   );
 export type CommunicationServicesListBySubscriptionInput =
@@ -380,11 +435,11 @@ export const CommunicationServicesListKeysInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/listKeys",
+      apiVersion: "2026-03-18",
     }),
   );
 export type CommunicationServicesListKeysInput =
@@ -423,11 +478,12 @@ export const CommunicationServicesRegenerateKeyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keyType: Schema.optional(Schema.Literals(["Primary", "Secondary"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/regenerateKey",
+      apiVersion: "2026-03-18",
     }),
   );
 export type CommunicationServicesRegenerateKeyInput =
@@ -466,11 +522,42 @@ export const CommunicationServicesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        linkedDomains: Schema.optional(Schema.Array(Schema.String)),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+        ),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type CommunicationServicesUpdateInput =
@@ -524,11 +611,18 @@ export const DomainsCancelVerificationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    verificationType: Schema.Literals([
+      "Domain",
+      "SPF",
+      "DKIM",
+      "DKIM2",
+      "DMARC",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/cancelVerification",
+      apiVersion: "2026-03-18",
     }),
   );
 export type DomainsCancelVerificationInput =
@@ -565,11 +659,164 @@ export const DomainsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Running",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Moving",
+          ]),
+        ),
+        dataLocation: Schema.optional(Schema.String),
+        fromSenderDomain: Schema.optional(Schema.String),
+        mailFromSenderDomain: Schema.optional(Schema.String),
+        domainManagement: Schema.Literals([
+          "AzureManaged",
+          "CustomerManaged",
+          "CustomerManagedInExchangeOnline",
+        ]),
+        verificationStates: Schema.optional(
+          Schema.Struct({
+            Domain: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "NotStarted",
+                    "VerificationRequested",
+                    "VerificationInProgress",
+                    "VerificationFailed",
+                    "Verified",
+                    "CancellationRequested",
+                  ]),
+                ),
+                errorCode: Schema.optional(Schema.String),
+              }),
+            ),
+            SPF: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "NotStarted",
+                    "VerificationRequested",
+                    "VerificationInProgress",
+                    "VerificationFailed",
+                    "Verified",
+                    "CancellationRequested",
+                  ]),
+                ),
+                errorCode: Schema.optional(Schema.String),
+              }),
+            ),
+            DKIM: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "NotStarted",
+                    "VerificationRequested",
+                    "VerificationInProgress",
+                    "VerificationFailed",
+                    "Verified",
+                    "CancellationRequested",
+                  ]),
+                ),
+                errorCode: Schema.optional(Schema.String),
+              }),
+            ),
+            DKIM2: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "NotStarted",
+                    "VerificationRequested",
+                    "VerificationInProgress",
+                    "VerificationFailed",
+                    "Verified",
+                    "CancellationRequested",
+                  ]),
+                ),
+                errorCode: Schema.optional(Schema.String),
+              }),
+            ),
+            DMARC: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "NotStarted",
+                    "VerificationRequested",
+                    "VerificationInProgress",
+                    "VerificationFailed",
+                    "Verified",
+                    "CancellationRequested",
+                  ]),
+                ),
+                errorCode: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        verificationRecords: Schema.optional(
+          Schema.Struct({
+            Domain: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+                ttl: Schema.optional(Schema.Number),
+              }),
+            ),
+            SPF: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+                ttl: Schema.optional(Schema.Number),
+              }),
+            ),
+            DKIM: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+                ttl: Schema.optional(Schema.Number),
+              }),
+            ),
+            DKIM2: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+                ttl: Schema.optional(Schema.Number),
+              }),
+            ),
+            DMARC: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+                ttl: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        userEngagementTracking: Schema.optional(
+          Schema.Literals(["Disabled", "Enabled"]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type DomainsCreateOrUpdateInput = typeof DomainsCreateOrUpdateInput.Type;
@@ -622,11 +869,11 @@ export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   emailServiceName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
+    apiVersion: "2026-03-18",
   }),
 );
 export type DomainsDeleteInput = typeof DomainsDeleteInput.Type;
@@ -657,11 +904,11 @@ export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   emailServiceName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
+    apiVersion: "2026-03-18",
   }),
 );
 export type DomainsGetInput = typeof DomainsGetInput.Type;
@@ -711,11 +958,18 @@ export const DomainsInitiateVerificationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    verificationType: Schema.Literals([
+      "Domain",
+      "SPF",
+      "DKIM",
+      "DKIM2",
+      "DMARC",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/initiateVerification",
+      apiVersion: "2026-03-18",
     }),
   );
 export type DomainsInitiateVerificationInput =
@@ -751,11 +1005,11 @@ export const DomainsListByEmailServiceResourceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains",
+      apiVersion: "2026-03-18",
     }),
   );
 export type DomainsListByEmailServiceResourceInput =
@@ -822,11 +1076,19 @@ export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   emailServiceName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      userEngagementTracking: Schema.optional(
+        Schema.Literals(["Disabled", "Enabled"]),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
+    apiVersion: "2026-03-18",
   }),
 );
 export type DomainsUpdateInput = typeof DomainsUpdateInput.Type;
@@ -875,11 +1137,31 @@ export const EmailServicesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Running",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Moving",
+          ]),
+        ),
+        dataLocation: Schema.String,
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type EmailServicesCreateOrUpdateInput =
@@ -932,11 +1214,11 @@ export const EmailServicesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type EmailServicesDeleteInput = typeof EmailServicesDeleteInput.Type;
@@ -966,11 +1248,11 @@ export const EmailServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   emailServiceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}",
+    apiVersion: "2026-03-18",
   }),
 );
 export type EmailServicesGetInput = typeof EmailServicesGetInput.Type;
@@ -1019,11 +1301,11 @@ export const EmailServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices",
+      apiVersion: "2026-03-18",
     }),
   );
 export type EmailServicesListByResourceGroupInput =
@@ -1087,11 +1369,11 @@ export const EmailServicesListByResourceGroup =
 export const EmailServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Communication/emailServices",
+      apiVersion: "2026-03-18",
     }),
   );
 export type EmailServicesListBySubscriptionInput =
@@ -1154,11 +1436,11 @@ export const EmailServicesListBySubscription =
 export const EmailServicesListVerifiedExchangeOnlineDomainsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Communication/listVerifiedExchangeOnlineDomains",
+      apiVersion: "2026-03-18",
     }),
   );
 export type EmailServicesListVerifiedExchangeOnlineDomainsInput =
@@ -1190,11 +1472,12 @@ export const EmailServicesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type EmailServicesUpdateInput = typeof EmailServicesUpdateInput.Type;
@@ -1238,12 +1521,13 @@ export const EmailServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EmailServicesUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Communication/operations",
+    apiVersion: "2026-03-18",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1294,11 +1578,31 @@ export const SenderUsernamesCreateOrUpdateInput =
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     senderUsername: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        dataLocation: Schema.optional(Schema.String),
+        username: Schema.String,
+        displayName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Running",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Moving",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SenderUsernamesCreateOrUpdateInput =
@@ -1354,11 +1658,11 @@ export const SenderUsernamesDeleteInput =
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     senderUsername: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SenderUsernamesDeleteInput = typeof SenderUsernamesDeleteInput.Type;
@@ -1396,11 +1700,11 @@ export const SenderUsernamesGetInput =
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     senderUsername: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SenderUsernamesGetInput = typeof SenderUsernamesGetInput.Type;
@@ -1452,11 +1756,11 @@ export const SenderUsernamesListByDomainsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SenderUsernamesListByDomainsInput =
@@ -1525,11 +1829,18 @@ export const SmtpUsernamesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
     smtpUsername: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        username: Schema.String,
+        entraApplicationId: Schema.String,
+        tenantId: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/smtpUsernames/{smtpUsername}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SmtpUsernamesCreateOrUpdateInput =
@@ -1584,11 +1895,11 @@ export const SmtpUsernamesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
     smtpUsername: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/smtpUsernames/{smtpUsername}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SmtpUsernamesDeleteInput = typeof SmtpUsernamesDeleteInput.Type;
@@ -1620,11 +1931,11 @@ export const SmtpUsernamesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   communicationServiceName: Schema.String.pipe(T.PathParam()),
   smtpUsername: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/smtpUsernames/{smtpUsername}",
+    apiVersion: "2026-03-18",
   }),
 );
 export type SmtpUsernamesGetInput = typeof SmtpUsernamesGetInput.Type;
@@ -1675,12 +1986,12 @@ export const SmtpUsernamesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/smtpUsernames",
+    apiVersion: "2026-03-18",
   }),
 );
 export type SmtpUsernamesListInput = typeof SmtpUsernamesListInput.Type;
@@ -1747,11 +2058,21 @@ export const SuppressionListAddressesCreateOrUpdateInput =
     domainName: Schema.String.pipe(T.PathParam()),
     suppressionListName: Schema.String.pipe(T.PathParam()),
     addressId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        email: Schema.String,
+        firstName: Schema.optional(Schema.String),
+        lastName: Schema.optional(Schema.String),
+        notes: Schema.optional(Schema.String),
+        lastModified: Schema.optional(Schema.String),
+        dataLocation: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}/suppressionListAddresses/{addressId}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SuppressionListAddressesCreateOrUpdateInput =
@@ -1809,11 +2130,11 @@ export const SuppressionListAddressesDeleteInput =
     domainName: Schema.String.pipe(T.PathParam()),
     suppressionListName: Schema.String.pipe(T.PathParam()),
     addressId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}/suppressionListAddresses/{addressId}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SuppressionListAddressesDeleteInput =
@@ -1853,11 +2174,11 @@ export const SuppressionListAddressesGetInput =
     domainName: Schema.String.pipe(T.PathParam()),
     suppressionListName: Schema.String.pipe(T.PathParam()),
     addressId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}/suppressionListAddresses/{addressId}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SuppressionListAddressesGetInput =
@@ -1915,11 +2236,11 @@ export const SuppressionListAddressesListInput =
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     suppressionListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}/suppressionListAddresses",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SuppressionListAddressesListInput =
@@ -1990,11 +2311,19 @@ export const SuppressionListsCreateOrUpdateInput =
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     suppressionListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        listName: Schema.optional(Schema.String),
+        lastUpdatedTimeStamp: Schema.optional(Schema.String),
+        createdTimeStamp: Schema.optional(Schema.String),
+        dataLocation: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SuppressionListsCreateOrUpdateInput =
@@ -2050,11 +2379,11 @@ export const SuppressionListsDeleteInput =
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     suppressionListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SuppressionListsDeleteInput =
@@ -2093,11 +2422,11 @@ export const SuppressionListsGetInput =
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     suppressionListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SuppressionListsGetInput = typeof SuppressionListsGetInput.Type;
@@ -2149,11 +2478,11 @@ export const SuppressionListsListByDomainInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists",
+      apiVersion: "2026-03-18",
     }),
   );
 export type SuppressionListsListByDomainInput =

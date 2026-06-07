@@ -11,11 +11,77 @@ import * as T from "../traits.ts";
 // Input Schema
 export const AgentPoolCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        osType: Schema.optional(Schema.Literals(["Linux", "Windows"])),
+        osSKU: Schema.optional(
+          Schema.Literals(["CBLMariner", "Windows2019", "Windows2022"]),
+        ),
+        nodeLabels: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        nodeTaints: Schema.optional(Schema.Array(Schema.String)),
+        maxCount: Schema.optional(Schema.Number),
+        minCount: Schema.optional(Schema.Number),
+        enableAutoScaling: Schema.optional(Schema.Boolean),
+        maxPods: Schema.optional(Schema.Number),
+        count: Schema.optional(Schema.Number),
+        vmSize: Schema.optional(Schema.String),
+        kubernetesVersion: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Pending",
+            "Creating",
+            "Deleting",
+            "Updating",
+            "Upgrading",
+            "Accepted",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            currentState: Schema.optional(
+              Schema.Literals([
+                "Succeeded",
+                "Failed",
+                "Canceled",
+                "Pending",
+                "Creating",
+                "Deleting",
+                "Updating",
+                "Upgrading",
+                "Accepted",
+              ]),
+            ),
+            errorMessage: Schema.optional(Schema.String),
+            readyReplicas: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  count: Schema.optional(Schema.Number),
+                  vmSize: Schema.optional(Schema.String),
+                  kubernetesVersion: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.Literals(["CustomLocation"])),
+        name: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type AgentPoolCreateOrUpdateInput =
@@ -58,12 +124,13 @@ export const agentPoolCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const AgentPoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const AgentPoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "DELETE",
     path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}",
+    apiVersion: "2024-01-01",
   }),
 );
 export type AgentPoolDeleteInput = typeof AgentPoolDeleteInput.Type;
@@ -83,12 +150,13 @@ export const agentPoolDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AgentPoolDeleteOutput,
 }));
 // Input Schema
-export const AgentPoolGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const AgentPoolGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}",
+    apiVersion: "2024-01-01",
   }),
 );
 export type AgentPoolGetInput = typeof AgentPoolGetInput.Type;
@@ -127,12 +195,11 @@ export const agentPoolGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AgentPoolListByProvisionedClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools",
+      apiVersion: "2024-01-01",
     }),
   );
 export type AgentPoolListByProvisionedClusterInput =
@@ -192,12 +259,11 @@ export const agentPoolListByProvisionedCluster =
   }));
 // Input Schema
 export const DeleteKubernetesVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type DeleteKubernetesVersionsInput =
@@ -224,12 +290,13 @@ export const DeleteKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const DeleteVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const DeleteVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "DELETE",
     path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default",
+    apiVersion: "2024-01-01",
   }),
 );
 export type DeleteVMSkusInput = typeof DeleteVMSkusInput.Type;
@@ -250,12 +317,11 @@ export const DeleteVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const GetKubernetesVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type GetKubernetesVersionsInput = typeof GetKubernetesVersionsInput.Type;
@@ -299,12 +365,13 @@ export const GetKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const GetVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const GetVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default",
+    apiVersion: "2024-01-01",
   }),
 );
 export type GetVMSkusInput = typeof GetVMSkusInput.Type;
@@ -345,12 +412,11 @@ export const GetVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const HybridIdentityMetadataDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type HybridIdentityMetadataDeleteInput =
@@ -377,12 +443,11 @@ export const HybridIdentityMetadataDelete =
   }));
 // Input Schema
 export const HybridIdentityMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type HybridIdentityMetadataGetInput =
@@ -428,12 +493,11 @@ export const HybridIdentityMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const HybridIdentityMetadataListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata",
+      apiVersion: "2024-01-01",
     }),
   );
 export type HybridIdentityMetadataListByClusterInput =
@@ -494,11 +558,42 @@ export const HybridIdentityMetadataListByCluster =
 // Input Schema
 export const HybridIdentityMetadataPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resourceUid: Schema.optional(Schema.String),
+      publicKey: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Pending",
+          "Creating",
+          "Deleting",
+          "Updating",
+          "Upgrading",
+          "Accepted",
+        ]),
+      ),
+    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type HybridIdentityMetadataPutInput =
@@ -544,12 +639,11 @@ export const HybridIdentityMetadataPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const KubernetesVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions",
+      apiVersion: "2024-01-01",
     }),
   );
 export type KubernetesVersionsListInput =
@@ -611,12 +705,13 @@ export const KubernetesVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HybridContainerService/operations",
+    apiVersion: "2024-01-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -660,11 +755,196 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ProvisionedClusterInstancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        linuxProfile: Schema.optional(
+          Schema.Struct({
+            ssh: Schema.optional(
+              Schema.Struct({
+                publicKeys: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      keyData: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        controlPlane: Schema.optional(
+          Schema.Struct({
+            count: Schema.optional(Schema.Number),
+            vmSize: Schema.optional(Schema.String),
+            controlPlaneEndpoint: Schema.optional(
+              Schema.Struct({
+                hostIP: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        kubernetesVersion: Schema.optional(Schema.String),
+        networkProfile: Schema.optional(
+          Schema.Struct({
+            loadBalancerProfile: Schema.optional(
+              Schema.Struct({
+                count: Schema.optional(Schema.Number),
+              }),
+            ),
+            networkPolicy: Schema.optional(Schema.Literals(["calico"])),
+            podCidr: Schema.optional(Schema.String),
+          }),
+        ),
+        storageProfile: Schema.optional(
+          Schema.Struct({
+            smbCsiDriver: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            nfsCsiDriver: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        clusterVMAccessProfile: Schema.optional(
+          Schema.Struct({
+            authorizedIPRanges: Schema.optional(Schema.String),
+          }),
+        ),
+        agentPoolProfiles: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              osType: Schema.optional(Schema.Literals(["Linux", "Windows"])),
+              osSKU: Schema.optional(
+                Schema.Literals(["CBLMariner", "Windows2019", "Windows2022"]),
+              ),
+              nodeLabels: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              nodeTaints: Schema.optional(Schema.Array(Schema.String)),
+              maxCount: Schema.optional(Schema.Number),
+              minCount: Schema.optional(Schema.Number),
+              enableAutoScaling: Schema.optional(Schema.Boolean),
+              maxPods: Schema.optional(Schema.Number),
+              count: Schema.optional(Schema.Number),
+              vmSize: Schema.optional(Schema.String),
+              kubernetesVersion: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        cloudProviderProfile: Schema.optional(
+          Schema.Struct({
+            infraNetworkProfile: Schema.optional(
+              Schema.Struct({
+                vnetSubnetIds: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Pending",
+            "Creating",
+            "Deleting",
+            "Updating",
+            "Upgrading",
+            "Accepted",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            controlPlaneStatus: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  phase: Schema.optional(
+                    Schema.Literals([
+                      "pending",
+                      "provisioning",
+                      "provisioning {HelmChartInstalled}",
+                      "provisioning {MSICertificateDownloaded}",
+                      "provisioned",
+                      "deleting",
+                      "failed",
+                      "upgrading",
+                    ]),
+                  ),
+                  ready: Schema.optional(Schema.Boolean),
+                  errorMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            currentState: Schema.optional(
+              Schema.Literals([
+                "Succeeded",
+                "Failed",
+                "Canceled",
+                "Pending",
+                "Creating",
+                "Deleting",
+                "Updating",
+                "Upgrading",
+                "Accepted",
+              ]),
+            ),
+            errorMessage: Schema.optional(Schema.String),
+          }),
+        ),
+        licenseProfile: Schema.optional(
+          Schema.Struct({
+            azureHybridBenefit: Schema.optional(
+              Schema.Literals(["True", "False", "NotApplicable"]),
+            ),
+          }),
+        ),
+        autoScalerProfile: Schema.optional(
+          Schema.Struct({
+            "balance-similar-node-groups": Schema.optional(Schema.String),
+            expander: Schema.optional(
+              Schema.Literals([
+                "least-waste",
+                "most-pods",
+                "priority",
+                "random",
+              ]),
+            ),
+            "max-empty-bulk-delete": Schema.optional(Schema.String),
+            "max-graceful-termination-sec": Schema.optional(Schema.String),
+            "max-node-provision-time": Schema.optional(Schema.String),
+            "max-total-unready-percentage": Schema.optional(Schema.String),
+            "new-pod-scale-up-delay": Schema.optional(Schema.String),
+            "ok-total-unready-count": Schema.optional(Schema.String),
+            "scan-interval": Schema.optional(Schema.String),
+            "scale-down-delay-after-add": Schema.optional(Schema.String),
+            "scale-down-delay-after-delete": Schema.optional(Schema.String),
+            "scale-down-delay-after-failure": Schema.optional(Schema.String),
+            "scale-down-unneeded-time": Schema.optional(Schema.String),
+            "scale-down-unready-time": Schema.optional(Schema.String),
+            "scale-down-utilization-threshold": Schema.optional(Schema.String),
+            "skip-nodes-with-local-storage": Schema.optional(Schema.String),
+            "skip-nodes-with-system-pods": Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.Literals(["CustomLocation"])),
+        name: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ProvisionedClusterInstancesCreateOrUpdateInput =
@@ -707,12 +987,11 @@ export const provisionedClusterInstancesCreateOrUpdate =
   }));
 // Input Schema
 export const ProvisionedClusterInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ProvisionedClusterInstancesDeleteInput =
@@ -737,12 +1016,11 @@ export const provisionedClusterInstancesDelete =
   }));
 // Input Schema
 export const ProvisionedClusterInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ProvisionedClusterInstancesGetInput =
@@ -785,12 +1063,11 @@ export const provisionedClusterInstancesGet =
   }));
 // Input Schema
 export const ProvisionedClusterInstancesGetUpgradeProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/upgradeProfiles/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ProvisionedClusterInstancesGetUpgradeProfileInput =
@@ -833,12 +1110,11 @@ export const provisionedClusterInstancesGetUpgradeProfile =
   }));
 // Input Schema
 export const ProvisionedClusterInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ProvisionedClusterInstancesListInput =
@@ -898,12 +1174,11 @@ export const provisionedClusterInstancesList =
   }));
 // Input Schema
 export const ProvisionedClusterInstancesListAdminKubeconfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/listAdminKubeconfig",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ProvisionedClusterInstancesListAdminKubeconfigInput =
@@ -963,12 +1238,11 @@ export const provisionedClusterInstancesListAdminKubeconfig =
   }));
 // Input Schema
 export const ProvisionedClusterInstancesListUserKubeconfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/listUserKubeconfig",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ProvisionedClusterInstancesListUserKubeconfigInput =
@@ -1029,11 +1303,68 @@ export const provisionedClusterInstancesListUserKubeconfig =
 // Input Schema
 export const PutKubernetesVersionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.Literals(["CustomLocation"])),
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Pending",
+            "Creating",
+            "Deleting",
+            "Updating",
+            "Upgrading",
+            "Accepted",
+          ]),
+        ),
+        values: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              version: Schema.optional(Schema.String),
+              isPreview: Schema.optional(Schema.Boolean),
+              patchVersions: Schema.optional(
+                Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    readiness: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          osType: Schema.optional(
+                            Schema.Literals(["Windows", "Linux"]),
+                          ),
+                          osSku: Schema.optional(
+                            Schema.Literals([
+                              "CBLMariner",
+                              "Windows2019",
+                              "Windows2022",
+                            ]),
+                          ),
+                          ready: Schema.optional(Schema.Boolean),
+                          errorMessage: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    upgrades: Schema.optional(Schema.Array(Schema.String)),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type PutKubernetesVersionsInput = typeof PutKubernetesVersionsInput.Type;
@@ -1076,11 +1407,52 @@ export const PutKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PutVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.Literals(["CustomLocation"])),
+      name: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Pending",
+          "Creating",
+          "Deleting",
+          "Updating",
+          "Upgrading",
+          "Accepted",
+        ]),
+      ),
+      values: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourceType: Schema.optional(Schema.String),
+            capabilities: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            name: Schema.optional(Schema.String),
+            tier: Schema.optional(Schema.String),
+            size: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default",
+    apiVersion: "2024-01-01",
   }),
 );
 export type PutVMSkusInput = typeof PutVMSkusInput.Type;
@@ -1122,11 +1494,82 @@ export const VirtualNetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        infraVnetProfile: Schema.optional(
+          Schema.Struct({
+            hci: Schema.optional(
+              Schema.Struct({
+                mocGroup: Schema.optional(Schema.String),
+                mocLocation: Schema.optional(Schema.String),
+                mocVnetName: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        vipPool: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              endIP: Schema.optional(Schema.String),
+              startIP: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        vmipPool: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              endIP: Schema.optional(Schema.String),
+              startIP: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        dnsServers: Schema.optional(Schema.Array(Schema.String)),
+        gateway: Schema.optional(Schema.String),
+        ipAddressPrefix: Schema.optional(Schema.String),
+        vlanID: Schema.optional(Schema.Number),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Pending",
+            "Creating",
+            "Deleting",
+            "Updating",
+            "Accepted",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            operationStatus: Schema.optional(
+              Schema.Struct({
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                  }),
+                ),
+                operationId: Schema.optional(Schema.String),
+                status: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.Literals(["CustomLocation"])),
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type VirtualNetworksCreateOrUpdateInput =
@@ -1174,11 +1617,11 @@ export const VirtualNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
@@ -1208,11 +1651,11 @@ export const VirtualNetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks",
+      apiVersion: "2024-01-01",
     }),
   );
 export type VirtualNetworksListByResourceGroupInput =
@@ -1276,11 +1719,11 @@ export const virtualNetworksListByResourceGroup =
 export const VirtualNetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridContainerService/virtualNetworks",
+      apiVersion: "2024-01-01",
     }),
   );
 export type VirtualNetworksListBySubscriptionInput =
@@ -1344,11 +1787,11 @@ export const VirtualNetworksRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type VirtualNetworksRetrieveInput =
@@ -1397,11 +1840,12 @@ export const VirtualNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type VirtualNetworksUpdateInput = typeof VirtualNetworksUpdateInput.Type;
@@ -1445,12 +1889,13 @@ export const virtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const VMSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const VMSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus",
+    apiVersion: "2024-01-01",
   }),
 );
 export type VMSkusListInput = typeof VMSkusListInput.Type;

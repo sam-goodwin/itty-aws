@@ -7,7 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const BlobContainersClearLegalHoldInput =
@@ -16,11 +16,14 @@ export const BlobContainersClearLegalHoldInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    hasLegalHold: Schema.optional(Schema.Boolean),
+    tags: Schema.Array(Schema.String),
+    allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersClearLegalHoldInput =
@@ -58,11 +61,108 @@ export const BlobContainersCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        version: Schema.optional(Schema.String),
+        deleted: Schema.optional(Schema.Boolean),
+        deletedTime: Schema.optional(Schema.String),
+        remainingRetentionDays: Schema.optional(Schema.Number),
+        defaultEncryptionScope: Schema.optional(Schema.String),
+        denyEncryptionScopeOverride: Schema.optional(Schema.Boolean),
+        publicAccess: Schema.optional(
+          Schema.Literals(["Container", "Blob", "None"]),
+        ),
+        lastModifiedTime: Schema.optional(Schema.String),
+        leaseStatus: Schema.optional(Schema.Literals(["Locked", "Unlocked"])),
+        leaseState: Schema.optional(
+          Schema.Literals([
+            "Available",
+            "Leased",
+            "Expired",
+            "Breaking",
+            "Broken",
+          ]),
+        ),
+        leaseDuration: Schema.optional(Schema.Literals(["Infinite", "Fixed"])),
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        immutabilityPolicy: Schema.optional(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Struct({
+                immutabilityPeriodSinceCreationInDays: Schema.optional(
+                  Schema.Number,
+                ),
+                state: Schema.optional(Schema.Literals(["Locked", "Unlocked"])),
+                allowProtectedAppendWrites: Schema.optional(Schema.Boolean),
+                allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            etag: Schema.optional(Schema.String),
+            updateHistory: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  update: Schema.optional(
+                    Schema.Literals(["put", "lock", "extend"]),
+                  ),
+                  immutabilityPeriodSinceCreationInDays: Schema.optional(
+                    Schema.Number,
+                  ),
+                  timestamp: Schema.optional(Schema.String),
+                  objectIdentifier: Schema.optional(Schema.String),
+                  tenantId: Schema.optional(Schema.String),
+                  upn: Schema.optional(Schema.String),
+                  allowProtectedAppendWrites: Schema.optional(Schema.Boolean),
+                  allowProtectedAppendWritesAll: Schema.optional(
+                    Schema.Boolean,
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        legalHold: Schema.optional(
+          Schema.Struct({
+            hasLegalHold: Schema.optional(Schema.Boolean),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  tag: Schema.optional(Schema.String),
+                  timestamp: Schema.optional(Schema.String),
+                  objectIdentifier: Schema.optional(Schema.String),
+                  tenantId: Schema.optional(Schema.String),
+                  upn: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            protectedAppendWritesHistory: Schema.optional(
+              Schema.Struct({
+                allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
+                timestamp: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        hasLegalHold: Schema.optional(Schema.Boolean),
+        hasImmutabilityPolicy: Schema.optional(Schema.Boolean),
+        immutableStorageWithVersioning: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            timeStamp: Schema.optional(Schema.String),
+            migrationState: Schema.optional(
+              Schema.Literals(["InProgress", "Completed"]),
+            ),
+          }),
+        ),
+        enableNfsV3RootSquash: Schema.optional(Schema.Boolean),
+        enableNfsV3AllSquash: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersCreateInput = typeof BlobContainersCreateInput.Type;
@@ -113,11 +213,18 @@ export const BlobContainersCreateOrUpdateImmutabilityPolicyInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      immutabilityPeriodSinceCreationInDays: Schema.optional(Schema.Number),
+      state: Schema.optional(Schema.Literals(["Locked", "Unlocked"])),
+      allowProtectedAppendWrites: Schema.optional(Schema.Boolean),
+      allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersCreateOrUpdateImmutabilityPolicyInput =
@@ -170,11 +277,11 @@ export const BlobContainersDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersDeleteInput = typeof BlobContainersDeleteInput.Type;
@@ -207,11 +314,11 @@ export const BlobContainersDeleteImmutabilityPolicyInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersDeleteImmutabilityPolicyInput =
@@ -264,11 +371,18 @@ export const BlobContainersExtendImmutabilityPolicyInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      immutabilityPeriodSinceCreationInDays: Schema.optional(Schema.Number),
+      state: Schema.optional(Schema.Literals(["Locked", "Unlocked"])),
+      allowProtectedAppendWrites: Schema.optional(Schema.Boolean),
+      allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/extend",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersExtendImmutabilityPolicyInput =
@@ -321,12 +435,12 @@ export const BlobContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type BlobContainersGetInput = typeof BlobContainersGetInput.Type;
@@ -375,11 +489,11 @@ export const BlobContainersGetImmutabilityPolicyInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersGetImmutabilityPolicyInput =
@@ -432,11 +546,16 @@ export const BlobContainersLeaseInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    action: Schema.Literals(["Acquire", "Renew", "Change", "Release", "Break"]),
+    leaseId: Schema.optional(Schema.String),
+    breakPeriod: Schema.optional(Schema.Number),
+    leaseDuration: Schema.optional(Schema.Number),
+    proposedLeaseId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersLeaseInput = typeof BlobContainersLeaseInput.Type;
@@ -469,7 +588,6 @@ export const BlobContainersListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $maxpagesize: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $include: Schema.optional(Schema.Literals(["deleted"])),
@@ -477,6 +595,7 @@ export const BlobContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersListInput = typeof BlobContainersListInput.Type;
@@ -542,11 +661,11 @@ export const BlobContainersLockImmutabilityPolicyInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersLockImmutabilityPolicyInput =
@@ -599,11 +718,11 @@ export const BlobContainersObjectLevelWormInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersObjectLevelWormInput =
@@ -637,11 +756,14 @@ export const BlobContainersSetLegalHoldInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    hasLegalHold: Schema.optional(Schema.Boolean),
+    tags: Schema.Array(Schema.String),
+    allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersSetLegalHoldInput =
@@ -680,11 +802,108 @@ export const BlobContainersUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        version: Schema.optional(Schema.String),
+        deleted: Schema.optional(Schema.Boolean),
+        deletedTime: Schema.optional(Schema.String),
+        remainingRetentionDays: Schema.optional(Schema.Number),
+        defaultEncryptionScope: Schema.optional(Schema.String),
+        denyEncryptionScopeOverride: Schema.optional(Schema.Boolean),
+        publicAccess: Schema.optional(
+          Schema.Literals(["Container", "Blob", "None"]),
+        ),
+        lastModifiedTime: Schema.optional(Schema.String),
+        leaseStatus: Schema.optional(Schema.Literals(["Locked", "Unlocked"])),
+        leaseState: Schema.optional(
+          Schema.Literals([
+            "Available",
+            "Leased",
+            "Expired",
+            "Breaking",
+            "Broken",
+          ]),
+        ),
+        leaseDuration: Schema.optional(Schema.Literals(["Infinite", "Fixed"])),
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        immutabilityPolicy: Schema.optional(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Struct({
+                immutabilityPeriodSinceCreationInDays: Schema.optional(
+                  Schema.Number,
+                ),
+                state: Schema.optional(Schema.Literals(["Locked", "Unlocked"])),
+                allowProtectedAppendWrites: Schema.optional(Schema.Boolean),
+                allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            etag: Schema.optional(Schema.String),
+            updateHistory: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  update: Schema.optional(
+                    Schema.Literals(["put", "lock", "extend"]),
+                  ),
+                  immutabilityPeriodSinceCreationInDays: Schema.optional(
+                    Schema.Number,
+                  ),
+                  timestamp: Schema.optional(Schema.String),
+                  objectIdentifier: Schema.optional(Schema.String),
+                  tenantId: Schema.optional(Schema.String),
+                  upn: Schema.optional(Schema.String),
+                  allowProtectedAppendWrites: Schema.optional(Schema.Boolean),
+                  allowProtectedAppendWritesAll: Schema.optional(
+                    Schema.Boolean,
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        legalHold: Schema.optional(
+          Schema.Struct({
+            hasLegalHold: Schema.optional(Schema.Boolean),
+            tags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  tag: Schema.optional(Schema.String),
+                  timestamp: Schema.optional(Schema.String),
+                  objectIdentifier: Schema.optional(Schema.String),
+                  tenantId: Schema.optional(Schema.String),
+                  upn: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            protectedAppendWritesHistory: Schema.optional(
+              Schema.Struct({
+                allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
+                timestamp: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        hasLegalHold: Schema.optional(Schema.Boolean),
+        hasImmutabilityPolicy: Schema.optional(Schema.Boolean),
+        immutableStorageWithVersioning: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            timeStamp: Schema.optional(Schema.String),
+            migrationState: Schema.optional(
+              Schema.Literals(["InProgress", "Completed"]),
+            ),
+          }),
+        ),
+        enableNfsV3RootSquash: Schema.optional(Schema.Boolean),
+        enableNfsV3AllSquash: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobContainersUpdateInput = typeof BlobContainersUpdateInput.Type;
@@ -735,11 +954,49 @@ export const BlobInventoryPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     blobInventoryPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        lastModifiedTime: Schema.optional(Schema.String),
+        policy: Schema.Struct({
+          enabled: Schema.Boolean,
+          destination: Schema.optional(Schema.String),
+          type: Schema.Literals(["Inventory"]),
+          rules: Schema.Array(
+            Schema.Struct({
+              enabled: Schema.Boolean,
+              name: Schema.String,
+              destination: Schema.String,
+              definition: Schema.Struct({
+                filters: Schema.optional(
+                  Schema.Struct({
+                    prefixMatch: Schema.optional(Schema.Array(Schema.String)),
+                    excludePrefix: Schema.optional(Schema.Array(Schema.String)),
+                    blobTypes: Schema.optional(Schema.Array(Schema.String)),
+                    includeBlobVersions: Schema.optional(Schema.Boolean),
+                    includeSnapshots: Schema.optional(Schema.Boolean),
+                    includeDeleted: Schema.optional(Schema.Boolean),
+                    creationTime: Schema.optional(
+                      Schema.Struct({
+                        lastNDays: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                  }),
+                ),
+                format: Schema.Literals(["Csv", "Parquet"]),
+                schedule: Schema.Literals(["Daily", "Weekly"]),
+                objectType: Schema.Literals(["Blob", "Container"]),
+                schemaFields: Schema.Array(Schema.String),
+              }),
+            }),
+          ),
+        }),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobInventoryPoliciesCreateOrUpdateInput =
@@ -791,11 +1048,11 @@ export const BlobInventoryPoliciesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     blobInventoryPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobInventoryPoliciesDeleteInput =
@@ -830,11 +1087,11 @@ export const BlobInventoryPoliciesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     blobInventoryPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobInventoryPoliciesGetInput =
@@ -886,11 +1143,11 @@ export const BlobInventoryPoliciesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobInventoryPoliciesListInput =
@@ -958,11 +1215,11 @@ export const BlobServicesGetServicePropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobServicesGetServicePropertiesInput =
@@ -1011,11 +1268,11 @@ export const BlobServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices",
+    apiVersion: "2025-08-01",
   }),
 );
 export type BlobServicesListInput = typeof BlobServicesListInput.Type;
@@ -1080,11 +1337,111 @@ export const BlobServicesSetServicePropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        cors: Schema.optional(
+          Schema.Struct({
+            corsRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  allowedOrigins: Schema.Array(Schema.String),
+                  allowedMethods: Schema.Array(
+                    Schema.Literals([
+                      "DELETE",
+                      "GET",
+                      "HEAD",
+                      "MERGE",
+                      "POST",
+                      "OPTIONS",
+                      "PUT",
+                      "PATCH",
+                      "CONNECT",
+                      "TRACE",
+                    ]),
+                  ),
+                  maxAgeInSeconds: Schema.Number,
+                  exposedHeaders: Schema.Array(Schema.String),
+                  allowedHeaders: Schema.Array(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        defaultServiceVersion: Schema.optional(Schema.String),
+        deleteRetentionPolicy: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            days: Schema.optional(Schema.Number),
+            allowPermanentDelete: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        staticWebsite: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.Boolean,
+            indexDocument: Schema.optional(Schema.String),
+            defaultIndexDocumentPath: Schema.optional(Schema.String),
+            errorDocument404Path: Schema.optional(Schema.String),
+          }),
+        ),
+        isVersioningEnabled: Schema.optional(Schema.Boolean),
+        automaticSnapshotPolicyEnabled: Schema.optional(Schema.Boolean),
+        changeFeed: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            retentionInDays: Schema.optional(Schema.Number),
+          }),
+        ),
+        restorePolicy: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.Boolean,
+            days: Schema.optional(Schema.Number),
+            lastEnabledTime: Schema.optional(Schema.String),
+            minRestoreTime: Schema.optional(Schema.String),
+          }),
+        ),
+        containerDeleteRetentionPolicy: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            days: Schema.optional(Schema.Number),
+            allowPermanentDelete: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        lastAccessTimeTrackingPolicy: Schema.optional(
+          Schema.Struct({
+            enable: Schema.Boolean,
+            name: Schema.optional(Schema.Literals(["AccessTimeTracking"])),
+            trackingGranularityInDays: Schema.optional(Schema.Number),
+            blobType: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals([
+          "Standard_LRS",
+          "Standard_GRS",
+          "Standard_RAGRS",
+          "Standard_ZRS",
+          "Premium_LRS",
+          "Premium_ZRS",
+          "Standard_GZRS",
+          "Standard_RAGZRS",
+          "StandardV2_LRS",
+          "StandardV2_GRS",
+          "StandardV2_ZRS",
+          "StandardV2_GZRS",
+          "PremiumV2_LRS",
+          "PremiumV2_ZRS",
+        ]),
+        tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default",
+      apiVersion: "2025-08-01",
     }),
   );
 export type BlobServicesSetServicePropertiesInput =
@@ -1134,11 +1491,34 @@ export const ConnectorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   connectorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.Struct({
+    uniqueId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.Literals(["Active", "Inactive"])),
+    creationTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    testConnection: Schema.optional(Schema.Boolean),
+    dataSourceType: Schema.Literals(["Azure_DataShare"]),
+    source: Schema.Struct({
+      type: Schema.Literals(["DataShare"]),
+    }),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Accepted",
+        "Creating",
+        "Succeeded",
+        "Deleting",
+        "Canceled",
+        "Failed",
+      ]),
+    ),
+  }),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type ConnectorsCreateInput = typeof ConnectorsCreateInput.Type;
@@ -1187,11 +1567,11 @@ export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   connectorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type ConnectorsDeleteInput = typeof ConnectorsDeleteInput.Type;
@@ -1220,11 +1600,11 @@ export const ConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   connectorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type ConnectorsGetInput = typeof ConnectorsGetInput.Type;
@@ -1271,11 +1651,11 @@ export const ConnectorsListByStorageAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConnectorsListByStorageAccountInput =
@@ -1341,11 +1721,12 @@ export const ConnectorsTestExistingConnectionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    uniqueId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}/testExistingConnection",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConnectorsTestExistingConnectionInput =
@@ -1385,11 +1766,24 @@ export const ConnectorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   connectorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      state: Schema.optional(Schema.Literals(["Active", "Inactive"])),
+      description: Schema.optional(Schema.String),
+      testConnection: Schema.optional(Schema.Boolean),
+      source: Schema.optional(
+        Schema.Struct({
+          type: Schema.Literals(["DataShare"]),
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type ConnectorsUpdateInput = typeof ConnectorsUpdateInput.Type;
@@ -1438,11 +1832,41 @@ export const DataSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   dataShareName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.Struct({
+    dataShareIdentifier: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    dataShareUri: Schema.optional(Schema.String),
+    accessPolicies: Schema.Array(
+      Schema.Struct({
+        principalId: Schema.String,
+        tenantId: Schema.String,
+        permission: Schema.Literals(["None", "Read"]),
+      }),
+    ),
+    assets: Schema.Array(
+      Schema.Struct({
+        assetPath: Schema.String,
+        displayName: Schema.String,
+      }),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Accepted",
+        "Creating",
+        "Succeeded",
+        "Deleting",
+        "Canceled",
+        "Failed",
+      ]),
+    ),
+  }),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type DataSharesCreateInput = typeof DataSharesCreateInput.Type;
@@ -1491,11 +1915,11 @@ export const DataSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   dataShareName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type DataSharesDeleteInput = typeof DataSharesDeleteInput.Type;
@@ -1524,11 +1948,11 @@ export const DataSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   dataShareName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type DataSharesGetInput = typeof DataSharesGetInput.Type;
@@ -1575,11 +1999,11 @@ export const DataSharesListByStorageAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DataSharesListByStorageAccountInput =
@@ -1644,11 +2068,34 @@ export const DataSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   dataShareName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+      accessPolicies: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            principalId: Schema.String,
+            tenantId: Schema.String,
+            permission: Schema.Literals(["None", "Read"]),
+          }),
+        ),
+      ),
+      assets: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            assetPath: Schema.String,
+            displayName: Schema.String,
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type DataSharesUpdateInput = typeof DataSharesUpdateInput.Type;
@@ -1697,11 +2144,11 @@ export const DeletedAccountsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     deletedAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/deletedAccounts/{deletedAccountName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DeletedAccountsGetInput = typeof DeletedAccountsGetInput.Type;
@@ -1746,11 +2193,11 @@ export const DeletedAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DeletedAccountsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/deletedAccounts",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DeletedAccountsListInput = typeof DeletedAccountsListInput.Type;
@@ -1811,11 +2258,11 @@ export const EncryptionScopesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     encryptionScopeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type EncryptionScopesGetInput = typeof EncryptionScopesGetInput.Type;
@@ -1863,7 +2310,6 @@ export const EncryptionScopesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $maxpagesize: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
     $include: Schema.optional(Schema.Literals(["All", "Enabled", "Disabled"])),
@@ -1871,6 +2317,7 @@ export const EncryptionScopesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes",
+      apiVersion: "2025-08-01",
     }),
   );
 export type EncryptionScopesListInput = typeof EncryptionScopesListInput.Type;
@@ -1938,11 +2385,29 @@ export const EncryptionScopesPatchInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     encryptionScopeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.optional(
+          Schema.Literals(["Microsoft.Storage", "Microsoft.KeyVault"]),
+        ),
+        state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        creationTime: Schema.optional(Schema.String),
+        lastModifiedTime: Schema.optional(Schema.String),
+        keyVaultProperties: Schema.optional(
+          Schema.Struct({
+            keyUri: Schema.optional(Schema.String),
+            currentVersionedKeyIdentifier: Schema.optional(Schema.String),
+            lastKeyRotationTimestamp: Schema.optional(Schema.String),
+          }),
+        ),
+        requireInfrastructureEncryption: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type EncryptionScopesPatchInput = typeof EncryptionScopesPatchInput.Type;
@@ -1994,11 +2459,29 @@ export const EncryptionScopesPutInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     encryptionScopeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.optional(
+          Schema.Literals(["Microsoft.Storage", "Microsoft.KeyVault"]),
+        ),
+        state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        creationTime: Schema.optional(Schema.String),
+        lastModifiedTime: Schema.optional(Schema.String),
+        keyVaultProperties: Schema.optional(
+          Schema.Struct({
+            keyUri: Schema.optional(Schema.String),
+            currentVersionedKeyIdentifier: Schema.optional(Schema.String),
+            lastKeyRotationTimestamp: Schema.optional(Schema.String),
+          }),
+        ),
+        requireInfrastructureEncryption: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type EncryptionScopesPutInput = typeof EncryptionScopesPutInput.Type;
@@ -2046,11 +2529,11 @@ export const FileServicesGetServicePropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default",
+      apiVersion: "2025-08-01",
     }),
   );
 export type FileServicesGetServicePropertiesInput =
@@ -2100,11 +2583,11 @@ export const FileServicesGetServiceUsageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages/default",
+      apiVersion: "2025-08-01",
     }),
   );
 export type FileServicesGetServiceUsageInput =
@@ -2154,11 +2637,11 @@ export const FileServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices",
+    apiVersion: "2025-08-01",
   }),
 );
 export type FileServicesListInput = typeof FileServicesListInput.Type;
@@ -2222,12 +2705,12 @@ export const FileServicesListServiceUsagesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages",
+      apiVersion: "2025-08-01",
     }),
   );
 export type FileServicesListServiceUsagesInput =
@@ -2293,11 +2776,102 @@ export const FileServicesSetServicePropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        cors: Schema.optional(
+          Schema.Struct({
+            corsRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  allowedOrigins: Schema.Array(Schema.String),
+                  allowedMethods: Schema.Array(
+                    Schema.Literals([
+                      "DELETE",
+                      "GET",
+                      "HEAD",
+                      "MERGE",
+                      "POST",
+                      "OPTIONS",
+                      "PUT",
+                      "PATCH",
+                      "CONNECT",
+                      "TRACE",
+                    ]),
+                  ),
+                  maxAgeInSeconds: Schema.Number,
+                  exposedHeaders: Schema.Array(Schema.String),
+                  allowedHeaders: Schema.Array(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        shareDeleteRetentionPolicy: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            days: Schema.optional(Schema.Number),
+            allowPermanentDelete: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        protocolSettings: Schema.optional(
+          Schema.Struct({
+            smb: Schema.optional(
+              Schema.Struct({
+                multichannel: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                versions: Schema.optional(Schema.String),
+                authenticationMethods: Schema.optional(Schema.String),
+                kerberosTicketEncryption: Schema.optional(Schema.String),
+                channelEncryption: Schema.optional(Schema.String),
+                encryptionInTransit: Schema.optional(
+                  Schema.Struct({
+                    required: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              }),
+            ),
+            nfs: Schema.optional(
+              Schema.Struct({
+                encryptionInTransit: Schema.optional(
+                  Schema.Struct({
+                    required: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals([
+          "Standard_LRS",
+          "Standard_GRS",
+          "Standard_RAGRS",
+          "Standard_ZRS",
+          "Premium_LRS",
+          "Premium_ZRS",
+          "Standard_GZRS",
+          "Standard_RAGZRS",
+          "StandardV2_LRS",
+          "StandardV2_GRS",
+          "StandardV2_ZRS",
+          "StandardV2_GZRS",
+          "PremiumV2_LRS",
+          "PremiumV2_ZRS",
+        ]),
+        tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default",
+      apiVersion: "2025-08-01",
     }),
   );
 export type FileServicesSetServicePropertiesInput =
@@ -2347,12 +2921,76 @@ export const FileSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      lastModifiedTime: Schema.optional(Schema.String),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      shareQuota: Schema.optional(Schema.Number),
+      provisionedIops: Schema.optional(Schema.Number),
+      provisionedBandwidthMibps: Schema.optional(Schema.Number),
+      includedBurstIops: Schema.optional(Schema.Number),
+      maxBurstCreditsForIops: Schema.optional(Schema.Number),
+      nextAllowedQuotaDowngradeTime: Schema.optional(Schema.String),
+      nextAllowedProvisionedIopsDowngradeTime: Schema.optional(Schema.String),
+      nextAllowedProvisionedBandwidthDowngradeTime: Schema.optional(
+        Schema.String,
+      ),
+      enabledProtocols: Schema.optional(Schema.Literals(["SMB", "NFS"])),
+      rootSquash: Schema.optional(
+        Schema.Literals(["NoRootSquash", "RootSquash", "AllSquash"]),
+      ),
+      version: Schema.optional(Schema.String),
+      deleted: Schema.optional(Schema.Boolean),
+      deletedTime: Schema.optional(Schema.String),
+      remainingRetentionDays: Schema.optional(Schema.Number),
+      accessTier: Schema.optional(
+        Schema.Literals(["TransactionOptimized", "Hot", "Cool", "Premium"]),
+      ),
+      accessTierChangeTime: Schema.optional(Schema.String),
+      accessTierStatus: Schema.optional(Schema.String),
+      shareUsageBytes: Schema.optional(Schema.Number),
+      leaseStatus: Schema.optional(Schema.Literals(["Locked", "Unlocked"])),
+      leaseState: Schema.optional(
+        Schema.Literals([
+          "Available",
+          "Leased",
+          "Expired",
+          "Breaking",
+          "Broken",
+        ]),
+      ),
+      leaseDuration: Schema.optional(Schema.Literals(["Infinite", "Fixed"])),
+      signedIdentifiers: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            accessPolicy: Schema.optional(
+              Schema.Struct({
+                startTime: Schema.optional(Schema.String),
+                expiryTime: Schema.optional(Schema.String),
+                permission: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      snapshotTime: Schema.optional(Schema.String),
+      fileSharePaidBursting: Schema.optional(
+        Schema.Struct({
+          paidBurstingEnabled: Schema.optional(Schema.Boolean),
+          paidBurstingMaxIops: Schema.optional(Schema.Number),
+          paidBurstingMaxBandwidthMibps: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+  ),
+  etag: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type FileSharesCreateInput = typeof FileSharesCreateInput.Type;
@@ -2402,12 +3040,12 @@ export const FileSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $include: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type FileSharesDeleteInput = typeof FileSharesDeleteInput.Type;
@@ -2438,12 +3076,12 @@ export const FileSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type FileSharesGetInput = typeof FileSharesGetInput.Type;
@@ -2492,11 +3130,16 @@ export const FileSharesLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  action: Schema.Literals(["Acquire", "Renew", "Change", "Release", "Break"]),
+  leaseId: Schema.optional(Schema.String),
+  breakPeriod: Schema.optional(Schema.Number),
+  leaseDuration: Schema.optional(Schema.Number),
+  proposedLeaseId: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/lease",
+    apiVersion: "2025-08-01",
   }),
 );
 export type FileSharesLeaseInput = typeof FileSharesLeaseInput.Type;
@@ -2528,7 +3171,6 @@ export const FileSharesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $maxpagesize: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
   $expand: Schema.optional(Schema.String),
@@ -2536,6 +3178,7 @@ export const FileSharesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares",
+    apiVersion: "2025-08-01",
   }),
 );
 export type FileSharesListInput = typeof FileSharesListInput.Type;
@@ -2590,12 +3233,14 @@ export const FileSharesRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    deletedShareName: Schema.String,
+    deletedShareVersion: Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore",
+    apiVersion: "2025-08-01",
   }),
 );
 export type FileSharesRestoreInput = typeof FileSharesRestoreInput.Type;
@@ -2624,11 +3269,75 @@ export const FileSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      lastModifiedTime: Schema.optional(Schema.String),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      shareQuota: Schema.optional(Schema.Number),
+      provisionedIops: Schema.optional(Schema.Number),
+      provisionedBandwidthMibps: Schema.optional(Schema.Number),
+      includedBurstIops: Schema.optional(Schema.Number),
+      maxBurstCreditsForIops: Schema.optional(Schema.Number),
+      nextAllowedQuotaDowngradeTime: Schema.optional(Schema.String),
+      nextAllowedProvisionedIopsDowngradeTime: Schema.optional(Schema.String),
+      nextAllowedProvisionedBandwidthDowngradeTime: Schema.optional(
+        Schema.String,
+      ),
+      enabledProtocols: Schema.optional(Schema.Literals(["SMB", "NFS"])),
+      rootSquash: Schema.optional(
+        Schema.Literals(["NoRootSquash", "RootSquash", "AllSquash"]),
+      ),
+      version: Schema.optional(Schema.String),
+      deleted: Schema.optional(Schema.Boolean),
+      deletedTime: Schema.optional(Schema.String),
+      remainingRetentionDays: Schema.optional(Schema.Number),
+      accessTier: Schema.optional(
+        Schema.Literals(["TransactionOptimized", "Hot", "Cool", "Premium"]),
+      ),
+      accessTierChangeTime: Schema.optional(Schema.String),
+      accessTierStatus: Schema.optional(Schema.String),
+      shareUsageBytes: Schema.optional(Schema.Number),
+      leaseStatus: Schema.optional(Schema.Literals(["Locked", "Unlocked"])),
+      leaseState: Schema.optional(
+        Schema.Literals([
+          "Available",
+          "Leased",
+          "Expired",
+          "Breaking",
+          "Broken",
+        ]),
+      ),
+      leaseDuration: Schema.optional(Schema.Literals(["Infinite", "Fixed"])),
+      signedIdentifiers: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            accessPolicy: Schema.optional(
+              Schema.Struct({
+                startTime: Schema.optional(Schema.String),
+                expiryTime: Schema.optional(Schema.String),
+                permission: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      snapshotTime: Schema.optional(Schema.String),
+      fileSharePaidBursting: Schema.optional(
+        Schema.Struct({
+          paidBurstingEnabled: Schema.optional(Schema.Boolean),
+          paidBurstingMaxIops: Schema.optional(Schema.Number),
+          paidBurstingMaxBandwidthMibps: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+  ),
+  etag: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type FileSharesUpdateInput = typeof FileSharesUpdateInput.Type;
@@ -2678,11 +3387,42 @@ export const LocalUsersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     username: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        permissionScopes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              permissions: Schema.String,
+              service: Schema.String,
+              resourceName: Schema.String,
+            }),
+          ),
+        ),
+        homeDirectory: Schema.optional(Schema.String),
+        sshAuthorizedKeys: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              description: Schema.optional(Schema.String),
+              key: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        sid: Schema.optional(Schema.String),
+        hasSharedKey: Schema.optional(Schema.Boolean),
+        hasSshKey: Schema.optional(Schema.Boolean),
+        hasSshPassword: Schema.optional(Schema.Boolean),
+        userId: Schema.optional(Schema.Number),
+        groupId: Schema.optional(Schema.Number),
+        allowAclAuthorization: Schema.optional(Schema.Boolean),
+        extendedGroups: Schema.optional(Schema.Array(Schema.Number)),
+        isNFSv3Enabled: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type LocalUsersCreateOrUpdateInput =
@@ -2734,11 +3474,11 @@ export const LocalUsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   username: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type LocalUsersDeleteInput = typeof LocalUsersDeleteInput.Type;
@@ -2767,11 +3507,11 @@ export const LocalUsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   username: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type LocalUsersGetInput = typeof LocalUsersGetInput.Type;
@@ -2817,7 +3557,6 @@ export const LocalUsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $maxpagesize: Schema.optional(Schema.Number),
   $filter: Schema.optional(Schema.String),
   $include: Schema.optional(Schema.Literals(["nfsv3"])),
@@ -2825,6 +3564,7 @@ export const LocalUsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers",
+    apiVersion: "2025-08-01",
   }),
 );
 export type LocalUsersListInput = typeof LocalUsersListInput.Type;
@@ -2879,11 +3619,11 @@ export const LocalUsersListKeysInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     username: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/listKeys",
+      apiVersion: "2025-08-01",
     }),
   );
 export type LocalUsersListKeysInput = typeof LocalUsersListKeysInput.Type;
@@ -2924,11 +3664,11 @@ export const LocalUsersRegeneratePasswordInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     username: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/regeneratePassword",
+      apiVersion: "2025-08-01",
     }),
   );
 export type LocalUsersRegeneratePasswordInput =
@@ -2937,7 +3677,7 @@ export type LocalUsersRegeneratePasswordInput =
 // Output Schema
 export const LocalUsersRegeneratePasswordOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sshPassword: Schema.optional(SensitiveString),
+    sshPassword: Schema.optional(SensitiveOutputString),
   });
 export type LocalUsersRegeneratePasswordOutput =
   typeof LocalUsersRegeneratePasswordOutput.Type;
@@ -2964,11 +3704,219 @@ export const ManagementPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     managementPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        lastModifiedTime: Schema.optional(Schema.String),
+        policy: Schema.Struct({
+          rules: Schema.Array(
+            Schema.Struct({
+              enabled: Schema.optional(Schema.Boolean),
+              name: Schema.String,
+              type: Schema.Literals(["Lifecycle"]),
+              definition: Schema.Struct({
+                actions: Schema.Struct({
+                  baseBlob: Schema.optional(
+                    Schema.Struct({
+                      tierToCool: Schema.optional(
+                        Schema.Struct({
+                          daysAfterModificationGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterLastAccessTimeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterCreationGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      tierToArchive: Schema.optional(
+                        Schema.Struct({
+                          daysAfterModificationGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterLastAccessTimeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterCreationGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      tierToCold: Schema.optional(
+                        Schema.Struct({
+                          daysAfterModificationGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterLastAccessTimeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterCreationGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      tierToHot: Schema.optional(
+                        Schema.Struct({
+                          daysAfterModificationGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterLastAccessTimeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterCreationGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      delete: Schema.optional(
+                        Schema.Struct({
+                          daysAfterModificationGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterLastAccessTimeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                          daysAfterCreationGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      enableAutoTierToHotFromCool: Schema.optional(
+                        Schema.Boolean,
+                      ),
+                    }),
+                  ),
+                  snapshot: Schema.optional(
+                    Schema.Struct({
+                      tierToCool: Schema.optional(
+                        Schema.Struct({
+                          daysAfterCreationGreaterThan: Schema.Number,
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      tierToArchive: Schema.optional(
+                        Schema.Struct({
+                          daysAfterCreationGreaterThan: Schema.Number,
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      tierToCold: Schema.optional(
+                        Schema.Struct({
+                          daysAfterCreationGreaterThan: Schema.Number,
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      tierToHot: Schema.optional(
+                        Schema.Struct({
+                          daysAfterCreationGreaterThan: Schema.Number,
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      delete: Schema.optional(
+                        Schema.Struct({
+                          daysAfterCreationGreaterThan: Schema.Number,
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  version: Schema.optional(
+                    Schema.Struct({
+                      tierToCool: Schema.optional(
+                        Schema.Struct({
+                          daysAfterCreationGreaterThan: Schema.Number,
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      tierToArchive: Schema.optional(
+                        Schema.Struct({
+                          daysAfterCreationGreaterThan: Schema.Number,
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      tierToCold: Schema.optional(
+                        Schema.Struct({
+                          daysAfterCreationGreaterThan: Schema.Number,
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      tierToHot: Schema.optional(
+                        Schema.Struct({
+                          daysAfterCreationGreaterThan: Schema.Number,
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      delete: Schema.optional(
+                        Schema.Struct({
+                          daysAfterCreationGreaterThan: Schema.Number,
+                          daysAfterLastTierChangeGreaterThan: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                }),
+                filters: Schema.optional(
+                  Schema.Struct({
+                    prefixMatch: Schema.optional(Schema.Array(Schema.String)),
+                    blobTypes: Schema.Array(Schema.String),
+                    blobIndexMatch: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          op: Schema.String,
+                          value: Schema.String,
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            }),
+          ),
+        }),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ManagementPoliciesCreateOrUpdateInput =
@@ -3020,11 +3968,11 @@ export const ManagementPoliciesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     managementPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ManagementPoliciesDeleteInput =
@@ -3059,11 +4007,11 @@ export const ManagementPoliciesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     managementPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ManagementPoliciesGetInput = typeof ManagementPoliciesGetInput.Type;
@@ -3117,11 +4065,11 @@ export const NetworkSecurityPerimeterConfigurationsGetInput =
     networkSecurityPerimeterConfigurationName: Schema.String.pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsGetInput =
@@ -3172,11 +4120,11 @@ export const NetworkSecurityPerimeterConfigurationsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations",
+      apiVersion: "2025-08-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsListInput =
@@ -3244,11 +4192,11 @@ export const NetworkSecurityPerimeterConfigurationsReconcileInput =
     networkSecurityPerimeterConfigurationName: Schema.String.pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
+      apiVersion: "2025-08-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsReconcileInput =
@@ -3282,11 +4230,49 @@ export const ObjectReplicationPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     objectReplicationPolicyId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        policyId: Schema.optional(Schema.String),
+        enabledTime: Schema.optional(Schema.String),
+        sourceAccount: Schema.String,
+        destinationAccount: Schema.String,
+        rules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ruleId: Schema.optional(Schema.String),
+              sourceContainer: Schema.String,
+              destinationContainer: Schema.String,
+              filters: Schema.optional(
+                Schema.Struct({
+                  prefixMatch: Schema.optional(Schema.Array(Schema.String)),
+                  minCreationTime: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        metrics: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        priorityReplication: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        tagsReplication: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ObjectReplicationPoliciesCreateOrUpdateInput =
@@ -3338,11 +4324,11 @@ export const ObjectReplicationPoliciesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     objectReplicationPolicyId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ObjectReplicationPoliciesDeleteInput =
@@ -3376,11 +4362,11 @@ export const ObjectReplicationPoliciesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     objectReplicationPolicyId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ObjectReplicationPoliciesGetInput =
@@ -3431,11 +4417,11 @@ export const ObjectReplicationPoliciesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ObjectReplicationPoliciesListInput =
@@ -3497,10 +4483,14 @@ export const ObjectReplicationPoliciesList =
     outputSchema: ObjectReplicationPoliciesListOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Storage/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Storage/operations",
+    apiVersion: "2025-08-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -3575,11 +4565,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -3613,11 +4603,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -3668,11 +4658,11 @@ export const PrivateEndpointConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections",
+      apiVersion: "2025-08-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -3740,11 +4730,30 @@ export const PrivateEndpointConnectionsPutInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type PrivateEndpointConnectionsPutInput =
@@ -3795,11 +4804,11 @@ export const PrivateLinkResourcesListByStorageAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources",
+      apiVersion: "2025-08-01",
     }),
   );
 export type PrivateLinkResourcesListByStorageAccountInput =
@@ -3865,11 +4874,17 @@ export const QueueCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   queueName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      approximateMessageCount: Schema.optional(Schema.Number),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type QueueCreateInput = typeof QueueCreateInput.Type;
@@ -3916,11 +4931,11 @@ export const QueueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   queueName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type QueueDeleteInput = typeof QueueDeleteInput.Type;
@@ -3949,11 +4964,11 @@ export const QueueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   queueName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type QueueGetInput = typeof QueueGetInput.Type;
@@ -3999,13 +5014,13 @@ export const QueueListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $maxpagesize: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues",
+    apiVersion: "2025-08-01",
   }),
 );
 export type QueueListInput = typeof QueueListInput.Type;
@@ -4058,11 +5073,11 @@ export const QueueServicesGetServicePropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default",
+      apiVersion: "2025-08-01",
     }),
   );
 export type QueueServicesGetServicePropertiesInput =
@@ -4112,12 +5127,12 @@ export const QueueServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices",
+    apiVersion: "2025-08-01",
   }),
 );
 export type QueueServicesListInput = typeof QueueServicesListInput.Type;
@@ -4180,11 +5195,43 @@ export const QueueServicesSetServicePropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        cors: Schema.optional(
+          Schema.Struct({
+            corsRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  allowedOrigins: Schema.Array(Schema.String),
+                  allowedMethods: Schema.Array(
+                    Schema.Literals([
+                      "DELETE",
+                      "GET",
+                      "HEAD",
+                      "MERGE",
+                      "POST",
+                      "OPTIONS",
+                      "PUT",
+                      "PATCH",
+                      "CONNECT",
+                      "TRACE",
+                    ]),
+                  ),
+                  maxAgeInSeconds: Schema.Number,
+                  exposedHeaders: Schema.Array(Schema.String),
+                  allowedHeaders: Schema.Array(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default",
+      apiVersion: "2025-08-01",
     }),
   );
 export type QueueServicesSetServicePropertiesInput =
@@ -4234,11 +5281,17 @@ export const QueueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   queueName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      approximateMessageCount: Schema.optional(Schema.Number),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type QueueUpdateInput = typeof QueueUpdateInput.Type;
@@ -4282,11 +5335,11 @@ export const QueueUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus",
+    apiVersion: "2025-08-01",
   }),
 );
 export type SkusListInput = typeof SkusListInput.Type;
@@ -4375,11 +5428,11 @@ export const StorageAccountsAbortHierarchicalNamespaceMigrationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsAbortHierarchicalNamespaceMigrationInput =
@@ -4409,11 +5462,13 @@ export const StorageAccountsAbortHierarchicalNamespaceMigration =
 export const StorageAccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.Storage/storageAccounts"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsCheckNameAvailabilityInput =
@@ -4449,11 +5504,339 @@ export const StorageAccountsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.Struct({
+      name: Schema.Literals([
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_RAGRS",
+        "Standard_ZRS",
+        "Premium_LRS",
+        "Premium_ZRS",
+        "Standard_GZRS",
+        "Standard_RAGZRS",
+        "StandardV2_LRS",
+        "StandardV2_GRS",
+        "StandardV2_ZRS",
+        "StandardV2_GZRS",
+        "PremiumV2_LRS",
+        "PremiumV2_ZRS",
+      ]),
+      tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
+    }),
+    kind: Schema.Literals([
+      "Storage",
+      "StorageV2",
+      "BlobStorage",
+      "FileStorage",
+      "BlockBlobStorage",
+    ]),
+    location: Schema.String,
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["EdgeZone"])),
+      }),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    placement: Schema.optional(
+      Schema.Struct({
+        zonePlacementPolicy: Schema.optional(Schema.Literals(["Any", "None"])),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        allowedCopyScope: Schema.optional(
+          Schema.Literals(["PrivateLink", "AAD", "All"]),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+        ),
+        sasPolicy: Schema.optional(
+          Schema.Struct({
+            sasExpirationPeriod: Schema.String,
+            expirationAction: Schema.Literals(["Log", "Block"]),
+          }),
+        ),
+        keyPolicy: Schema.optional(
+          Schema.Struct({
+            keyExpirationPeriodInDays: Schema.Number,
+          }),
+        ),
+        customDomain: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            useSubDomainName: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            services: Schema.optional(
+              Schema.Struct({
+                blob: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    lastEnabledTime: Schema.optional(Schema.String),
+                    keyType: Schema.optional(
+                      Schema.Literals(["Service", "Account"]),
+                    ),
+                  }),
+                ),
+                file: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    lastEnabledTime: Schema.optional(Schema.String),
+                    keyType: Schema.optional(
+                      Schema.Literals(["Service", "Account"]),
+                    ),
+                  }),
+                ),
+                table: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    lastEnabledTime: Schema.optional(Schema.String),
+                    keyType: Schema.optional(
+                      Schema.Literals(["Service", "Account"]),
+                    ),
+                  }),
+                ),
+                queue: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    lastEnabledTime: Schema.optional(Schema.String),
+                    keyType: Schema.optional(
+                      Schema.Literals(["Service", "Account"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            keySource: Schema.optional(
+              Schema.Literals(["Microsoft.Storage", "Microsoft.Keyvault"]),
+            ),
+            requireInfrastructureEncryption: Schema.optional(Schema.Boolean),
+            keyvaultproperties: Schema.optional(
+              Schema.Struct({
+                keyname: Schema.optional(Schema.String),
+                keyversion: Schema.optional(Schema.String),
+                keyvaulturi: Schema.optional(Schema.String),
+                currentVersionedKeyIdentifier: Schema.optional(Schema.String),
+                lastKeyRotationTimestamp: Schema.optional(Schema.String),
+                currentVersionedKeyExpirationTimestamp: Schema.optional(
+                  Schema.String,
+                ),
+              }),
+            ),
+            identity: Schema.optional(
+              Schema.Struct({
+                userAssignedIdentity: Schema.optional(Schema.String),
+                federatedIdentityClientId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        networkAcls: Schema.optional(
+          Schema.Struct({
+            bypass: Schema.optional(
+              Schema.Literals(["None", "Logging", "Metrics", "AzureServices"]),
+            ),
+            resourceAccessRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  tenantId: Schema.optional(Schema.String),
+                  resourceId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            virtualNetworkRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.String,
+                  action: Schema.optional(Schema.Literals(["Allow"])),
+                  state: Schema.optional(
+                    Schema.Literals([
+                      "Provisioning",
+                      "Deprovisioning",
+                      "Succeeded",
+                      "Failed",
+                      "NetworkSourceDeleted",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+            ipRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  value: Schema.String,
+                  action: Schema.optional(Schema.Literals(["Allow"])),
+                }),
+              ),
+            ),
+            ipv6Rules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  value: Schema.String,
+                  action: Schema.optional(Schema.Literals(["Allow"])),
+                }),
+              ),
+            ),
+            defaultAction: Schema.Literals(["Allow", "Deny"]),
+          }),
+        ),
+        accessTier: Schema.optional(
+          Schema.Literals(["Hot", "Cool", "Premium", "Cold", "Smart"]),
+        ),
+        azureFilesIdentityBasedAuthentication: Schema.optional(
+          Schema.Struct({
+            directoryServiceOptions: Schema.Literals([
+              "None",
+              "AADDS",
+              "AD",
+              "AADKERB",
+            ]),
+            activeDirectoryProperties: Schema.optional(
+              Schema.Struct({
+                domainName: Schema.optional(Schema.String),
+                netBiosDomainName: Schema.optional(Schema.String),
+                forestName: Schema.optional(Schema.String),
+                domainGuid: Schema.optional(Schema.String),
+                domainSid: Schema.optional(Schema.String),
+                azureStorageSid: Schema.optional(Schema.String),
+                samAccountName: Schema.optional(Schema.String),
+                accountType: Schema.optional(
+                  Schema.Literals(["User", "Computer"]),
+                ),
+              }),
+            ),
+            defaultSharePermission: Schema.optional(
+              Schema.Literals([
+                "None",
+                "StorageFileDataSmbShareReader",
+                "StorageFileDataSmbShareContributor",
+                "StorageFileDataSmbShareElevatedContributor",
+              ]),
+            ),
+            smbOAuthSettings: Schema.optional(
+              Schema.Struct({
+                isSmbOAuthEnabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        supportsHttpsTrafficOnly: Schema.optional(Schema.Boolean),
+        isSftpEnabled: Schema.optional(Schema.Boolean),
+        isLocalUserEnabled: Schema.optional(Schema.Boolean),
+        enableExtendedGroups: Schema.optional(Schema.Boolean),
+        isHnsEnabled: Schema.optional(Schema.Boolean),
+        largeFileSharesState: Schema.optional(
+          Schema.Literals(["Disabled", "Enabled"]),
+        ),
+        routingPreference: Schema.optional(
+          Schema.Struct({
+            routingChoice: Schema.optional(
+              Schema.Literals(["MicrosoftRouting", "InternetRouting"]),
+            ),
+            publishMicrosoftEndpoints: Schema.optional(Schema.Boolean),
+            publishInternetEndpoints: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        dualStackEndpointPreference: Schema.optional(
+          Schema.Struct({
+            publishIpv6Endpoint: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        allowBlobPublicAccess: Schema.optional(Schema.Boolean),
+        minimumTlsVersion: Schema.optional(
+          Schema.Literals(["TLS1_0", "TLS1_1", "TLS1_2", "TLS1_3"]),
+        ),
+        allowSharedKeyAccess: Schema.optional(Schema.Boolean),
+        isNfsV3Enabled: Schema.optional(Schema.Boolean),
+        allowCrossTenantReplication: Schema.optional(Schema.Boolean),
+        defaultToOAuthAuthentication: Schema.optional(Schema.Boolean),
+        immutableStorageWithVersioning: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            immutabilityPolicy: Schema.optional(
+              Schema.Struct({
+                immutabilityPeriodSinceCreationInDays: Schema.optional(
+                  Schema.Number,
+                ),
+                state: Schema.optional(
+                  Schema.Literals(["Unlocked", "Locked", "Disabled"]),
+                ),
+                allowProtectedAppendWrites: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        dnsEndpointType: Schema.optional(
+          Schema.Literals(["Standard", "AzureDnsZone"]),
+        ),
+        geoPriorityReplicationStatus: Schema.optional(
+          Schema.Struct({
+            isBlobEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        allowSharedKeyAccessForServices: Schema.optional(
+          Schema.Struct({
+            blob: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            file: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            table: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            queue: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        dataCollaborationPolicyProperties: Schema.optional(
+          Schema.Struct({
+            allowStorageConnectors: Schema.optional(Schema.Boolean),
+            allowStorageDataShares: Schema.optional(Schema.Boolean),
+            allowCrossTenantDataSharing: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsCreateInput = typeof StorageAccountsCreateInput.Type;
@@ -4503,11 +5886,40 @@ export const StorageAccountsCustomerInitiatedMigrationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      targetSkuName: Schema.Literals([
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_RAGRS",
+        "Standard_ZRS",
+        "Premium_LRS",
+        "Premium_ZRS",
+        "Standard_GZRS",
+        "Standard_RAGZRS",
+        "StandardV2_LRS",
+        "StandardV2_GRS",
+        "StandardV2_ZRS",
+        "StandardV2_GZRS",
+        "PremiumV2_LRS",
+        "PremiumV2_ZRS",
+      ]),
+      migrationStatus: Schema.optional(
+        Schema.Literals([
+          "Invalid",
+          "SubmittedForConversion",
+          "InProgress",
+          "Complete",
+          "Failed",
+        ]),
+      ),
+      migrationFailedReason: Schema.optional(Schema.String),
+      migrationFailedDetailedReason: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsCustomerInitiatedMigrationInput =
@@ -4539,11 +5951,11 @@ export const StorageAccountsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsDeleteInput = typeof StorageAccountsDeleteInput.Type;
@@ -4575,12 +5987,12 @@ export const StorageAccountsFailoverInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     failoverType: Schema.optional(Schema.Literals(["Planned"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsFailoverInput =
@@ -4615,11 +6027,11 @@ export const StorageAccountsGetCustomerInitiatedMigrationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     migrationName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/accountMigrations/{migrationName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsGetCustomerInitiatedMigrationInput =
@@ -4670,7 +6082,6 @@ export const StorageAccountsGetPropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(
       Schema.Literals(["geoReplicationStats", "blobRestoreStatus"]),
     ),
@@ -4678,6 +6089,7 @@ export const StorageAccountsGetPropertiesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsGetPropertiesInput =
@@ -4728,12 +6140,12 @@ export const StorageAccountsHierarchicalNamespaceMigrationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     requestType: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsHierarchicalNamespaceMigrationInput =
@@ -4764,11 +6176,11 @@ export const StorageAccountsHierarchicalNamespaceMigration =
 export const StorageAccountsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsListInput = typeof StorageAccountsListInput.Type;
@@ -4828,11 +6240,19 @@ export const StorageAccountsListAccountSASInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    signedServices: Schema.Literals(["b", "q", "t", "f"]),
+    signedResourceTypes: Schema.Literals(["s", "c", "o"]),
+    signedPermission: Schema.Literals(["r", "d", "w", "l", "a", "c", "u", "p"]),
+    signedIp: Schema.optional(Schema.String),
+    signedProtocol: Schema.optional(Schema.Literals(["https,http", "https"])),
+    signedStart: Schema.optional(Schema.String),
+    signedExpiry: Schema.String,
+    keyToSign: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listAccountSas",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsListAccountSASInput =
@@ -4865,11 +6285,11 @@ export const StorageAccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsListByResourceGroupInput =
@@ -4933,12 +6353,12 @@ export const StorageAccountsListKeysInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.Literals(["kerb"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listKeys",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsListKeysInput =
@@ -4983,11 +6403,31 @@ export const StorageAccountsListServiceSASInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    canonicalizedResource: Schema.String,
+    signedResource: Schema.optional(Schema.Literals(["b", "c", "f", "s"])),
+    signedPermission: Schema.optional(
+      Schema.Literals(["r", "d", "w", "l", "a", "c", "u", "p"]),
+    ),
+    signedIp: Schema.optional(Schema.String),
+    signedProtocol: Schema.optional(Schema.Literals(["https,http", "https"])),
+    signedStart: Schema.optional(Schema.String),
+    signedExpiry: Schema.optional(Schema.String),
+    signedIdentifier: Schema.optional(Schema.String),
+    startPk: Schema.optional(Schema.String),
+    endPk: Schema.optional(Schema.String),
+    startRk: Schema.optional(Schema.String),
+    endRk: Schema.optional(Schema.String),
+    keyToSign: Schema.optional(Schema.String),
+    rscc: Schema.optional(Schema.String),
+    rscd: Schema.optional(Schema.String),
+    rsce: Schema.optional(Schema.String),
+    rscl: Schema.optional(Schema.String),
+    rsct: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listServiceSas",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsListServiceSASInput =
@@ -5021,11 +6461,12 @@ export const StorageAccountsRegenerateKeyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keyName: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsRegenerateKeyInput =
@@ -5068,11 +6509,18 @@ export const StorageAccountsRestoreBlobRangesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    timeToRestore: Schema.String,
+    blobRanges: Schema.Array(
+      Schema.Struct({
+        startRange: Schema.String,
+        endRange: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/restoreBlobRanges",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsRestoreBlobRangesInput =
@@ -5121,11 +6569,11 @@ export const StorageAccountsRevokeUserDelegationKeysInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsRevokeUserDelegationKeysInput =
@@ -5157,11 +6605,334 @@ export const StorageAccountsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals([
+          "Standard_LRS",
+          "Standard_GRS",
+          "Standard_RAGRS",
+          "Standard_ZRS",
+          "Premium_LRS",
+          "Premium_ZRS",
+          "Standard_GZRS",
+          "Standard_RAGZRS",
+          "StandardV2_LRS",
+          "StandardV2_GRS",
+          "StandardV2_ZRS",
+          "StandardV2_GZRS",
+          "PremiumV2_LRS",
+          "PremiumV2_ZRS",
+        ]),
+        tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        customDomain: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            useSubDomainName: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            services: Schema.optional(
+              Schema.Struct({
+                blob: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    lastEnabledTime: Schema.optional(Schema.String),
+                    keyType: Schema.optional(
+                      Schema.Literals(["Service", "Account"]),
+                    ),
+                  }),
+                ),
+                file: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    lastEnabledTime: Schema.optional(Schema.String),
+                    keyType: Schema.optional(
+                      Schema.Literals(["Service", "Account"]),
+                    ),
+                  }),
+                ),
+                table: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    lastEnabledTime: Schema.optional(Schema.String),
+                    keyType: Schema.optional(
+                      Schema.Literals(["Service", "Account"]),
+                    ),
+                  }),
+                ),
+                queue: Schema.optional(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    lastEnabledTime: Schema.optional(Schema.String),
+                    keyType: Schema.optional(
+                      Schema.Literals(["Service", "Account"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            keySource: Schema.optional(
+              Schema.Literals(["Microsoft.Storage", "Microsoft.Keyvault"]),
+            ),
+            requireInfrastructureEncryption: Schema.optional(Schema.Boolean),
+            keyvaultproperties: Schema.optional(
+              Schema.Struct({
+                keyname: Schema.optional(Schema.String),
+                keyversion: Schema.optional(Schema.String),
+                keyvaulturi: Schema.optional(Schema.String),
+                currentVersionedKeyIdentifier: Schema.optional(Schema.String),
+                lastKeyRotationTimestamp: Schema.optional(Schema.String),
+                currentVersionedKeyExpirationTimestamp: Schema.optional(
+                  Schema.String,
+                ),
+              }),
+            ),
+            identity: Schema.optional(
+              Schema.Struct({
+                userAssignedIdentity: Schema.optional(Schema.String),
+                federatedIdentityClientId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        sasPolicy: Schema.optional(
+          Schema.Struct({
+            sasExpirationPeriod: Schema.String,
+            expirationAction: Schema.Literals(["Log", "Block"]),
+          }),
+        ),
+        keyPolicy: Schema.optional(
+          Schema.Struct({
+            keyExpirationPeriodInDays: Schema.Number,
+          }),
+        ),
+        accessTier: Schema.optional(
+          Schema.Literals(["Hot", "Cool", "Premium", "Cold", "Smart"]),
+        ),
+        azureFilesIdentityBasedAuthentication: Schema.optional(
+          Schema.Struct({
+            directoryServiceOptions: Schema.Literals([
+              "None",
+              "AADDS",
+              "AD",
+              "AADKERB",
+            ]),
+            activeDirectoryProperties: Schema.optional(
+              Schema.Struct({
+                domainName: Schema.optional(Schema.String),
+                netBiosDomainName: Schema.optional(Schema.String),
+                forestName: Schema.optional(Schema.String),
+                domainGuid: Schema.optional(Schema.String),
+                domainSid: Schema.optional(Schema.String),
+                azureStorageSid: Schema.optional(Schema.String),
+                samAccountName: Schema.optional(Schema.String),
+                accountType: Schema.optional(
+                  Schema.Literals(["User", "Computer"]),
+                ),
+              }),
+            ),
+            defaultSharePermission: Schema.optional(
+              Schema.Literals([
+                "None",
+                "StorageFileDataSmbShareReader",
+                "StorageFileDataSmbShareContributor",
+                "StorageFileDataSmbShareElevatedContributor",
+              ]),
+            ),
+            smbOAuthSettings: Schema.optional(
+              Schema.Struct({
+                isSmbOAuthEnabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        supportsHttpsTrafficOnly: Schema.optional(Schema.Boolean),
+        isSftpEnabled: Schema.optional(Schema.Boolean),
+        isLocalUserEnabled: Schema.optional(Schema.Boolean),
+        enableExtendedGroups: Schema.optional(Schema.Boolean),
+        networkAcls: Schema.optional(
+          Schema.Struct({
+            bypass: Schema.optional(
+              Schema.Literals(["None", "Logging", "Metrics", "AzureServices"]),
+            ),
+            resourceAccessRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  tenantId: Schema.optional(Schema.String),
+                  resourceId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            virtualNetworkRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.String,
+                  action: Schema.optional(Schema.Literals(["Allow"])),
+                  state: Schema.optional(
+                    Schema.Literals([
+                      "Provisioning",
+                      "Deprovisioning",
+                      "Succeeded",
+                      "Failed",
+                      "NetworkSourceDeleted",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+            ipRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  value: Schema.String,
+                  action: Schema.optional(Schema.Literals(["Allow"])),
+                }),
+              ),
+            ),
+            ipv6Rules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  value: Schema.String,
+                  action: Schema.optional(Schema.Literals(["Allow"])),
+                }),
+              ),
+            ),
+            defaultAction: Schema.Literals(["Allow", "Deny"]),
+          }),
+        ),
+        largeFileSharesState: Schema.optional(
+          Schema.Literals(["Disabled", "Enabled"]),
+        ),
+        routingPreference: Schema.optional(
+          Schema.Struct({
+            routingChoice: Schema.optional(
+              Schema.Literals(["MicrosoftRouting", "InternetRouting"]),
+            ),
+            publishMicrosoftEndpoints: Schema.optional(Schema.Boolean),
+            publishInternetEndpoints: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        dualStackEndpointPreference: Schema.optional(
+          Schema.Struct({
+            publishIpv6Endpoint: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        allowBlobPublicAccess: Schema.optional(Schema.Boolean),
+        minimumTlsVersion: Schema.optional(
+          Schema.Literals(["TLS1_0", "TLS1_1", "TLS1_2", "TLS1_3"]),
+        ),
+        allowSharedKeyAccess: Schema.optional(Schema.Boolean),
+        allowCrossTenantReplication: Schema.optional(Schema.Boolean),
+        defaultToOAuthAuthentication: Schema.optional(Schema.Boolean),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+        ),
+        immutableStorageWithVersioning: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            immutabilityPolicy: Schema.optional(
+              Schema.Struct({
+                immutabilityPeriodSinceCreationInDays: Schema.optional(
+                  Schema.Number,
+                ),
+                state: Schema.optional(
+                  Schema.Literals(["Unlocked", "Locked", "Disabled"]),
+                ),
+                allowProtectedAppendWrites: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        allowedCopyScope: Schema.optional(
+          Schema.Literals(["PrivateLink", "AAD", "All"]),
+        ),
+        dnsEndpointType: Schema.optional(
+          Schema.Literals(["Standard", "AzureDnsZone"]),
+        ),
+        geoPriorityReplicationStatus: Schema.optional(
+          Schema.Struct({
+            isBlobEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        allowSharedKeyAccessForServices: Schema.optional(
+          Schema.Struct({
+            blob: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            file: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            table: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            queue: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        dataCollaborationPolicyProperties: Schema.optional(
+          Schema.Struct({
+            allowStorageConnectors: Schema.optional(Schema.Boolean),
+            allowStorageDataShares: Schema.optional(Schema.Boolean),
+            allowCrossTenantDataSharing: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      }),
+    ),
+    kind: Schema.optional(
+      Schema.Literals([
+        "Storage",
+        "StorageV2",
+        "BlobStorage",
+        "FileStorage",
+        "BlockBlobStorage",
+      ]),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    placement: Schema.optional(
+      Schema.Struct({
+        zonePlacementPolicy: Schema.optional(Schema.Literals(["Any", "None"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageAccountsUpdateInput = typeof StorageAccountsUpdateInput.Type;
@@ -5212,13 +6983,13 @@ export const StorageTaskAssignmentInstancesReportListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $maxpagesize: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/reports",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageTaskAssignmentInstancesReportListInput =
@@ -5287,11 +7058,73 @@ export const StorageTaskAssignmentsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        taskId: Schema.String,
+        enabled: Schema.Boolean,
+        description: Schema.String,
+        executionContext: Schema.Struct({
+          target: Schema.optional(
+            Schema.Struct({
+              prefix: Schema.optional(Schema.Array(Schema.String)),
+              excludePrefix: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+          trigger: Schema.Struct({
+            type: Schema.Literals(["RunOnce", "OnSchedule", "MockRun"]),
+            parameters: Schema.Struct({
+              startFrom: Schema.optional(Schema.String),
+              interval: Schema.optional(Schema.Number),
+              intervalUnit: Schema.optional(Schema.Literals(["Days"])),
+              endBy: Schema.optional(Schema.String),
+              startOn: Schema.optional(Schema.String),
+            }),
+          }),
+        }),
+        report: Schema.Struct({
+          prefix: Schema.String,
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "ValidateSubscriptionQuotaBegin",
+            "ValidateSubscriptionQuotaEnd",
+            "Accepted",
+            "Creating",
+            "Succeeded",
+            "Deleting",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+        runStatus: Schema.optional(
+          Schema.Struct({
+            taskAssignmentId: Schema.optional(Schema.String),
+            storageAccountId: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            finishTime: Schema.optional(Schema.String),
+            objectsTargetedCount: Schema.optional(Schema.String),
+            objectsOperatedOnCount: Schema.optional(Schema.String),
+            objectFailedCount: Schema.optional(Schema.String),
+            objectsSucceededCount: Schema.optional(Schema.String),
+            runStatusError: Schema.optional(Schema.String),
+            runStatusEnum: Schema.optional(
+              Schema.Literals(["InProgress", "Finished"]),
+            ),
+            summaryReportPath: Schema.optional(Schema.String),
+            taskId: Schema.optional(Schema.String),
+            taskVersion: Schema.optional(Schema.String),
+            runResult: Schema.optional(
+              Schema.Literals(["Succeeded", "Failed"]),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageTaskAssignmentsCreateInput =
@@ -5343,11 +7176,11 @@ export const StorageTaskAssignmentsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageTaskAssignmentsDeleteInput =
@@ -5381,11 +7214,11 @@ export const StorageTaskAssignmentsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageTaskAssignmentsGetInput =
@@ -5437,13 +7270,13 @@ export const StorageTaskAssignmentsInstancesReportListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $maxpagesize: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/reports",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageTaskAssignmentsInstancesReportListInput =
@@ -5510,12 +7343,12 @@ export const StorageTaskAssignmentsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageTaskAssignmentsListInput =
@@ -5583,11 +7416,11 @@ export const StorageTaskAssignmentsStopAssignmentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/stopAssignment",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageTaskAssignmentsStopAssignmentInput =
@@ -5621,11 +7454,83 @@ export const StorageTaskAssignmentsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     storageTaskAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        taskId: Schema.optional(Schema.String),
+        enabled: Schema.optional(Schema.Boolean),
+        description: Schema.optional(Schema.String),
+        executionContext: Schema.optional(
+          Schema.Struct({
+            target: Schema.optional(
+              Schema.Struct({
+                prefix: Schema.optional(Schema.Array(Schema.String)),
+                excludePrefix: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            trigger: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["RunOnce", "OnSchedule", "MockRun"]),
+                ),
+                parameters: Schema.optional(
+                  Schema.Struct({
+                    startFrom: Schema.optional(Schema.String),
+                    interval: Schema.optional(Schema.Number),
+                    intervalUnit: Schema.optional(Schema.Literals(["Days"])),
+                    endBy: Schema.optional(Schema.String),
+                    startOn: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        report: Schema.optional(
+          Schema.Struct({
+            prefix: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "ValidateSubscriptionQuotaBegin",
+            "ValidateSubscriptionQuotaEnd",
+            "Accepted",
+            "Creating",
+            "Succeeded",
+            "Deleting",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+        runStatus: Schema.optional(
+          Schema.Struct({
+            taskAssignmentId: Schema.optional(Schema.String),
+            storageAccountId: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            finishTime: Schema.optional(Schema.String),
+            objectsTargetedCount: Schema.optional(Schema.String),
+            objectsOperatedOnCount: Schema.optional(Schema.String),
+            objectFailedCount: Schema.optional(Schema.String),
+            objectsSucceededCount: Schema.optional(Schema.String),
+            runStatusError: Schema.optional(Schema.String),
+            runStatusEnum: Schema.optional(
+              Schema.Literals(["InProgress", "Finished"]),
+            ),
+            summaryReportPath: Schema.optional(Schema.String),
+            taskId: Schema.optional(Schema.String),
+            taskVersion: Schema.optional(Schema.String),
+            runResult: Schema.optional(
+              Schema.Literals(["Succeeded", "Failed"]),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type StorageTaskAssignmentsUpdateInput =
@@ -5676,11 +7581,30 @@ export const TableCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   tableName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      tableName: Schema.optional(Schema.String),
+      signedIdentifiers: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.String,
+            accessPolicy: Schema.optional(
+              Schema.Struct({
+                startTime: Schema.optional(Schema.String),
+                expiryTime: Schema.optional(Schema.String),
+                permission: Schema.String,
+              }),
+            ),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type TableCreateInput = typeof TableCreateInput.Type;
@@ -5727,11 +7651,11 @@ export const TableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   tableName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type TableDeleteInput = typeof TableDeleteInput.Type;
@@ -5760,11 +7684,11 @@ export const TableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   tableName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type TableGetInput = typeof TableGetInput.Type;
@@ -5810,11 +7734,11 @@ export const TableListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables",
+    apiVersion: "2025-08-01",
   }),
 );
 export type TableListInput = typeof TableListInput.Type;
@@ -5865,11 +7789,11 @@ export const TableServicesGetServicePropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TableServicesGetServicePropertiesInput =
@@ -5919,12 +7843,12 @@ export const TableServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices",
+    apiVersion: "2025-08-01",
   }),
 );
 export type TableServicesListInput = typeof TableServicesListInput.Type;
@@ -5987,11 +7911,43 @@ export const TableServicesSetServicePropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        cors: Schema.optional(
+          Schema.Struct({
+            corsRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  allowedOrigins: Schema.Array(Schema.String),
+                  allowedMethods: Schema.Array(
+                    Schema.Literals([
+                      "DELETE",
+                      "GET",
+                      "HEAD",
+                      "MERGE",
+                      "POST",
+                      "OPTIONS",
+                      "PUT",
+                      "PATCH",
+                      "CONNECT",
+                      "TRACE",
+                    ]),
+                  ),
+                  maxAgeInSeconds: Schema.Number,
+                  exposedHeaders: Schema.Array(Schema.String),
+                  allowedHeaders: Schema.Array(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TableServicesSetServicePropertiesInput =
@@ -6041,11 +7997,30 @@ export const TableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   tableName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      tableName: Schema.optional(Schema.String),
+      signedIdentifiers: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.String,
+            accessPolicy: Schema.optional(
+              Schema.Struct({
+                startTime: Schema.optional(Schema.String),
+                expiryTime: Schema.optional(Schema.String),
+                permission: Schema.String,
+              }),
+            ),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type TableUpdateInput = typeof TableUpdateInput.Type;
@@ -6091,11 +8066,11 @@ export const UsagesListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages",
+      apiVersion: "2025-08-01",
     }),
   );
 export type UsagesListByLocationInput = typeof UsagesListByLocationInput.Type;

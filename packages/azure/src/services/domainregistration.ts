@@ -10,12 +10,11 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DomainRegistrationProviderListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.DomainRegistration/operations",
+      apiVersion: "2024-11-01",
     }),
   );
 export type DomainRegistrationProviderListOperationsInput =
@@ -126,11 +125,12 @@ export const DomainRegistrationProviderListOperations =
 export const DomainsCheckAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/checkDomainAvailability",
+      apiVersion: "2024-11-01",
     }),
   );
 export type DomainsCheckAvailabilityInput =
@@ -167,11 +167,179 @@ export const DomainsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        contactAdmin: Schema.Struct({
+          addressMailing: Schema.optional(
+            Schema.Struct({
+              address1: Schema.String,
+              address2: Schema.optional(Schema.String),
+              city: Schema.String,
+              country: Schema.String,
+              postalCode: Schema.String,
+              state: Schema.String,
+            }),
+          ),
+          email: Schema.String,
+          fax: Schema.optional(Schema.String),
+          jobTitle: Schema.optional(Schema.String),
+          nameFirst: Schema.String,
+          nameLast: Schema.String,
+          nameMiddle: Schema.optional(Schema.String),
+          organization: Schema.optional(Schema.String),
+          phone: Schema.String,
+        }),
+        contactBilling: Schema.Struct({
+          addressMailing: Schema.optional(
+            Schema.Struct({
+              address1: Schema.String,
+              address2: Schema.optional(Schema.String),
+              city: Schema.String,
+              country: Schema.String,
+              postalCode: Schema.String,
+              state: Schema.String,
+            }),
+          ),
+          email: Schema.String,
+          fax: Schema.optional(Schema.String),
+          jobTitle: Schema.optional(Schema.String),
+          nameFirst: Schema.String,
+          nameLast: Schema.String,
+          nameMiddle: Schema.optional(Schema.String),
+          organization: Schema.optional(Schema.String),
+          phone: Schema.String,
+        }),
+        contactRegistrant: Schema.Struct({
+          addressMailing: Schema.optional(
+            Schema.Struct({
+              address1: Schema.String,
+              address2: Schema.optional(Schema.String),
+              city: Schema.String,
+              country: Schema.String,
+              postalCode: Schema.String,
+              state: Schema.String,
+            }),
+          ),
+          email: Schema.String,
+          fax: Schema.optional(Schema.String),
+          jobTitle: Schema.optional(Schema.String),
+          nameFirst: Schema.String,
+          nameLast: Schema.String,
+          nameMiddle: Schema.optional(Schema.String),
+          organization: Schema.optional(Schema.String),
+          phone: Schema.String,
+        }),
+        contactTech: Schema.Struct({
+          addressMailing: Schema.optional(
+            Schema.Struct({
+              address1: Schema.String,
+              address2: Schema.optional(Schema.String),
+              city: Schema.String,
+              country: Schema.String,
+              postalCode: Schema.String,
+              state: Schema.String,
+            }),
+          ),
+          email: Schema.String,
+          fax: Schema.optional(Schema.String),
+          jobTitle: Schema.optional(Schema.String),
+          nameFirst: Schema.String,
+          nameLast: Schema.String,
+          nameMiddle: Schema.optional(Schema.String),
+          organization: Schema.optional(Schema.String),
+          phone: Schema.String,
+        }),
+        registrationStatus: Schema.optional(
+          Schema.Literals([
+            "Active",
+            "Awaiting",
+            "Cancelled",
+            "Confiscated",
+            "Disabled",
+            "Excluded",
+            "Expired",
+            "Failed",
+            "Held",
+            "Locked",
+            "Parked",
+            "Pending",
+            "Reserved",
+            "Reverted",
+            "Suspended",
+            "Transferred",
+            "Unknown",
+            "Unlocked",
+            "Unparked",
+            "Updated",
+            "JsonConverterFailed",
+          ]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+        nameServers: Schema.optional(Schema.Array(Schema.String)),
+        privacy: Schema.optional(Schema.Boolean),
+        createdTime: Schema.optional(Schema.String),
+        expirationTime: Schema.optional(Schema.String),
+        lastRenewedTime: Schema.optional(Schema.String),
+        autoRenew: Schema.optional(Schema.Boolean),
+        readyForDnsRecordManagement: Schema.optional(Schema.Boolean),
+        managedHostNames: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              siteNames: Schema.optional(Schema.Array(Schema.String)),
+              azureResourceName: Schema.optional(Schema.String),
+              azureResourceType: Schema.optional(
+                Schema.Literals(["Website", "TrafficManager"]),
+              ),
+              customHostNameDnsRecordType: Schema.optional(
+                Schema.Literals(["CName", "A"]),
+              ),
+              hostNameType: Schema.optional(
+                Schema.Literals(["Verified", "Managed"]),
+              ),
+            }),
+          ),
+        ),
+        consent: Schema.Struct({
+          agreementKeys: Schema.optional(Schema.Array(Schema.String)),
+          agreedBy: Schema.optional(Schema.String),
+          agreedAt: Schema.optional(Schema.String),
+        }),
+        domainNotRenewableReasons: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "RegistrationStatusNotSupportedForRenewal",
+              "ExpirationNotInRenewalTimeRange",
+              "SubscriptionNotActive",
+            ]),
+          ),
+        ),
+        dnsType: Schema.optional(
+          Schema.Literals(["AzureDns", "DefaultDomainRegistrarDns"]),
+        ),
+        dnsZoneId: Schema.optional(Schema.String),
+        targetDnsType: Schema.optional(
+          Schema.Literals(["AzureDns", "DefaultDomainRegistrarDns"]),
+        ),
+        authCode: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type DomainsCreateOrUpdateInput = typeof DomainsCreateOrUpdateInput.Type;
@@ -224,11 +392,17 @@ export const DomainsCreateOrUpdateOwnershipIdentifierInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        ownershipId: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type DomainsCreateOrUpdateOwnershipIdentifierInput =
@@ -280,12 +454,12 @@ export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   forceHardDeleteDomain: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}",
+    apiVersion: "2024-11-01",
   }),
 );
 export type DomainsDeleteInput = typeof DomainsDeleteInput.Type;
@@ -317,11 +491,11 @@ export const DomainsDeleteOwnershipIdentifierInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type DomainsDeleteOwnershipIdentifierInput =
@@ -355,11 +529,11 @@ export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}",
+    apiVersion: "2024-11-01",
   }),
 );
 export type DomainsGetInput = typeof DomainsGetInput.Type;
@@ -405,11 +579,11 @@ export const DomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DomainsGetControlCenterSsoRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/generateSsoRequest",
+      apiVersion: "2024-11-01",
     }),
   );
 export type DomainsGetControlCenterSsoRequestInput =
@@ -446,11 +620,11 @@ export const DomainsGetOwnershipIdentifierInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type DomainsGetOwnershipIdentifierInput =
@@ -500,11 +674,11 @@ export const DomainsGetOwnershipIdentifier =
 // Input Schema
 export const DomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/domains",
+    apiVersion: "2024-11-01",
   }),
 );
 export type DomainsListInput = typeof DomainsListInput.Type;
@@ -554,11 +728,11 @@ export const DomainsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains",
+      apiVersion: "2024-11-01",
     }),
   );
 export type DomainsListByResourceGroupInput =
@@ -625,11 +799,11 @@ export const DomainsListOwnershipIdentifiersInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers",
+      apiVersion: "2024-11-01",
     }),
   );
 export type DomainsListOwnershipIdentifiersInput =
@@ -694,11 +868,13 @@ export const DomainsListOwnershipIdentifiers =
 export const DomainsListRecommendationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keywords: Schema.optional(Schema.String),
+    maxDomainRecommendations: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/listDomainRecommendations",
+      apiVersion: "2024-11-01",
     }),
   );
 export type DomainsListRecommendationsInput =
@@ -737,11 +913,11 @@ export const DomainsRenewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/renew",
+    apiVersion: "2024-11-01",
   }),
 );
 export type DomainsRenewInput = typeof DomainsRenewInput.Type;
@@ -771,11 +947,11 @@ export const DomainsTransferOutInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/transferOut",
+      apiVersion: "2024-11-01",
     }),
   );
 export type DomainsTransferOutInput = typeof DomainsTransferOutInput.Type;
@@ -821,11 +997,180 @@ export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      contactAdmin: Schema.Struct({
+        addressMailing: Schema.optional(
+          Schema.Struct({
+            address1: Schema.String,
+            address2: Schema.optional(Schema.String),
+            city: Schema.String,
+            country: Schema.String,
+            postalCode: Schema.String,
+            state: Schema.String,
+          }),
+        ),
+        email: Schema.String,
+        fax: Schema.optional(Schema.String),
+        jobTitle: Schema.optional(Schema.String),
+        nameFirst: Schema.String,
+        nameLast: Schema.String,
+        nameMiddle: Schema.optional(Schema.String),
+        organization: Schema.optional(Schema.String),
+        phone: Schema.String,
+      }),
+      contactBilling: Schema.Struct({
+        addressMailing: Schema.optional(
+          Schema.Struct({
+            address1: Schema.String,
+            address2: Schema.optional(Schema.String),
+            city: Schema.String,
+            country: Schema.String,
+            postalCode: Schema.String,
+            state: Schema.String,
+          }),
+        ),
+        email: Schema.String,
+        fax: Schema.optional(Schema.String),
+        jobTitle: Schema.optional(Schema.String),
+        nameFirst: Schema.String,
+        nameLast: Schema.String,
+        nameMiddle: Schema.optional(Schema.String),
+        organization: Schema.optional(Schema.String),
+        phone: Schema.String,
+      }),
+      contactRegistrant: Schema.Struct({
+        addressMailing: Schema.optional(
+          Schema.Struct({
+            address1: Schema.String,
+            address2: Schema.optional(Schema.String),
+            city: Schema.String,
+            country: Schema.String,
+            postalCode: Schema.String,
+            state: Schema.String,
+          }),
+        ),
+        email: Schema.String,
+        fax: Schema.optional(Schema.String),
+        jobTitle: Schema.optional(Schema.String),
+        nameFirst: Schema.String,
+        nameLast: Schema.String,
+        nameMiddle: Schema.optional(Schema.String),
+        organization: Schema.optional(Schema.String),
+        phone: Schema.String,
+      }),
+      contactTech: Schema.Struct({
+        addressMailing: Schema.optional(
+          Schema.Struct({
+            address1: Schema.String,
+            address2: Schema.optional(Schema.String),
+            city: Schema.String,
+            country: Schema.String,
+            postalCode: Schema.String,
+            state: Schema.String,
+          }),
+        ),
+        email: Schema.String,
+        fax: Schema.optional(Schema.String),
+        jobTitle: Schema.optional(Schema.String),
+        nameFirst: Schema.String,
+        nameLast: Schema.String,
+        nameMiddle: Schema.optional(Schema.String),
+        organization: Schema.optional(Schema.String),
+        phone: Schema.String,
+      }),
+      registrationStatus: Schema.optional(
+        Schema.Literals([
+          "Active",
+          "Awaiting",
+          "Cancelled",
+          "Confiscated",
+          "Disabled",
+          "Excluded",
+          "Expired",
+          "Failed",
+          "Held",
+          "Locked",
+          "Parked",
+          "Pending",
+          "Reserved",
+          "Reverted",
+          "Suspended",
+          "Transferred",
+          "Unknown",
+          "Unlocked",
+          "Unparked",
+          "Updated",
+          "JsonConverterFailed",
+        ]),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "InProgress",
+          "Deleting",
+        ]),
+      ),
+      nameServers: Schema.optional(Schema.Array(Schema.String)),
+      privacy: Schema.optional(Schema.Boolean),
+      createdTime: Schema.optional(Schema.String),
+      expirationTime: Schema.optional(Schema.String),
+      lastRenewedTime: Schema.optional(Schema.String),
+      autoRenew: Schema.optional(Schema.Boolean),
+      readyForDnsRecordManagement: Schema.optional(Schema.Boolean),
+      managedHostNames: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            siteNames: Schema.optional(Schema.Array(Schema.String)),
+            azureResourceName: Schema.optional(Schema.String),
+            azureResourceType: Schema.optional(
+              Schema.Literals(["Website", "TrafficManager"]),
+            ),
+            customHostNameDnsRecordType: Schema.optional(
+              Schema.Literals(["CName", "A"]),
+            ),
+            hostNameType: Schema.optional(
+              Schema.Literals(["Verified", "Managed"]),
+            ),
+          }),
+        ),
+      ),
+      consent: Schema.Struct({
+        agreementKeys: Schema.optional(Schema.Array(Schema.String)),
+        agreedBy: Schema.optional(Schema.String),
+        agreedAt: Schema.optional(Schema.String),
+      }),
+      domainNotRenewableReasons: Schema.optional(
+        Schema.Array(
+          Schema.Literals([
+            "RegistrationStatusNotSupportedForRenewal",
+            "ExpirationNotInRenewalTimeRange",
+            "SubscriptionNotActive",
+          ]),
+        ),
+      ),
+      dnsType: Schema.optional(
+        Schema.Literals(["AzureDns", "DefaultDomainRegistrarDns"]),
+      ),
+      dnsZoneId: Schema.optional(Schema.String),
+      targetDnsType: Schema.optional(
+        Schema.Literals(["AzureDns", "DefaultDomainRegistrarDns"]),
+      ),
+      authCode: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}",
+    apiVersion: "2024-11-01",
   }),
 );
 export type DomainsUpdateInput = typeof DomainsUpdateInput.Type;
@@ -874,11 +1219,17 @@ export const DomainsUpdateOwnershipIdentifierInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        ownershipId: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type DomainsUpdateOwnershipIdentifierInput =
@@ -930,11 +1281,11 @@ export const TopLevelDomainsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type TopLevelDomainsGetInput = typeof TopLevelDomainsGetInput.Type;
@@ -980,11 +1331,11 @@ export const TopLevelDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const TopLevelDomainsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains",
+      apiVersion: "2024-11-01",
     }),
   );
 export type TopLevelDomainsListInput = typeof TopLevelDomainsListInput.Type;
@@ -1045,11 +1396,13 @@ export const TopLevelDomainsListAgreementsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    includePrivacy: Schema.optional(Schema.Boolean),
+    forTransfer: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}/listAgreements",
+      apiVersion: "2024-11-01",
     }),
   );
 export type TopLevelDomainsListAgreementsInput =

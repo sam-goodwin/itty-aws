@@ -15,11 +15,17 @@ export const BackupInstancesAdhocBackupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    backupRuleOptions: Schema.Struct({
+      ruleName: Schema.String,
+      triggerOption: Schema.Struct({
+        retentionTagOverride: Schema.optional(Schema.String),
+      }),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/backup",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesAdhocBackupInput =
@@ -56,11 +62,169 @@ export const BackupInstancesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        friendlyName: Schema.optional(Schema.String),
+        dataSourceInfo: Schema.Struct({
+          datasourceType: Schema.optional(Schema.String),
+          objectType: Schema.optional(Schema.String),
+          resourceID: Schema.String,
+          resourceLocation: Schema.optional(Schema.String),
+          resourceName: Schema.optional(Schema.String),
+          resourceType: Schema.optional(Schema.String),
+          resourceUri: Schema.optional(Schema.String),
+          resourceProperties: Schema.optional(
+            Schema.Struct({
+              objectType: Schema.Literals(["DefaultResourceProperties"]),
+            }),
+          ),
+        }),
+        dataSourceSetInfo: Schema.optional(
+          Schema.Struct({
+            datasourceType: Schema.optional(Schema.String),
+            objectType: Schema.optional(Schema.String),
+            resourceID: Schema.String,
+            resourceLocation: Schema.optional(Schema.String),
+            resourceName: Schema.optional(Schema.String),
+            resourceType: Schema.optional(Schema.String),
+            resourceUri: Schema.optional(Schema.String),
+            resourceProperties: Schema.optional(
+              Schema.Struct({
+                objectType: Schema.Literals(["DefaultResourceProperties"]),
+              }),
+            ),
+          }),
+        ),
+        policyInfo: Schema.Struct({
+          policyId: Schema.String,
+          policyVersion: Schema.optional(Schema.String),
+          policyParameters: Schema.optional(
+            Schema.Struct({
+              dataStoreParametersList: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    objectType: Schema.String,
+                    dataStoreType: Schema.Literals([
+                      "OperationalStore",
+                      "VaultStore",
+                      "ArchiveStore",
+                    ]),
+                  }),
+                ),
+              ),
+              backupDatasourceParametersList: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    objectType: Schema.String,
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+        resourceGuardOperationRequests: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        protectionStatus: Schema.optional(
+          Schema.Struct({
+            errorDetails: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                details: Schema.optional(Schema.Array(Schema.Unknown)),
+                innerError: Schema.optional(
+                  Schema.Struct({
+                    additionalInfo: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                    code: Schema.optional(Schema.String),
+                    embeddedInnerError: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+                isRetryable: Schema.optional(Schema.Boolean),
+                isUserError: Schema.optional(Schema.Boolean),
+                properties: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                message: Schema.optional(Schema.String),
+                recommendedAction: Schema.optional(Schema.Array(Schema.String)),
+                target: Schema.optional(Schema.String),
+              }),
+            ),
+            status: Schema.optional(
+              Schema.Literals([
+                "ConfiguringProtection",
+                "ConfiguringProtectionFailed",
+                "ProtectionConfigured",
+                "ProtectionStopped",
+                "SoftDeleted",
+                "SoftDeleting",
+              ]),
+            ),
+          }),
+        ),
+        currentProtectionState: Schema.optional(
+          Schema.Literals([
+            "Invalid",
+            "NotProtected",
+            "ConfiguringProtection",
+            "ProtectionConfigured",
+            "BackupSchedulesSuspended",
+            "RetentionSchedulesSuspended",
+            "ProtectionStopped",
+            "ProtectionError",
+            "ConfiguringProtectionFailed",
+            "SoftDeleting",
+            "SoftDeleted",
+            "UpdatingProtection",
+          ]),
+        ),
+        protectionErrorDetails: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            innerError: Schema.optional(
+              Schema.Struct({
+                additionalInfo: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                code: Schema.optional(Schema.String),
+                embeddedInnerError: Schema.optional(Schema.Unknown),
+              }),
+            ),
+            isRetryable: Schema.optional(Schema.Boolean),
+            isUserError: Schema.optional(Schema.Boolean),
+            properties: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            message: Schema.optional(Schema.String),
+            recommendedAction: Schema.optional(Schema.Array(Schema.String)),
+            target: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        datasourceAuthCredentials: Schema.optional(
+          Schema.Struct({
+            objectType: Schema.String,
+          }),
+        ),
+        validationType: Schema.optional(
+          Schema.Literals(["ShallowValidation", "DeepValidation"]),
+        ),
+        identityDetails: Schema.optional(
+          Schema.Struct({
+            useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
+            userAssignedIdentityArmUrl: Schema.optional(Schema.String),
+          }),
+        ),
+        objectType: Schema.String,
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesCreateOrUpdateInput =
@@ -112,11 +276,11 @@ export const BackupInstancesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesDeleteInput = typeof BackupInstancesDeleteInput.Type;
@@ -147,11 +311,11 @@ export const BackupInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const BackupInstancesExtensionRoutingListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceId}/providers/Microsoft.DataProtection/backupInstances",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesExtensionRoutingListInput =
@@ -184,11 +348,11 @@ export const BackupInstancesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesGetInput = typeof BackupInstancesGetInput.Type;
@@ -238,11 +402,11 @@ export const BackupInstancesGetBackupInstanceOperationResultInput =
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/operationResults/{operationId}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesGetBackupInstanceOperationResultInput =
@@ -294,11 +458,11 @@ export const BackupInstancesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesListInput = typeof BackupInstancesListInput.Type;
@@ -330,11 +494,11 @@ export const BackupInstancesResumeBackupsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/resumeBackups",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesResumeBackupsInput =
@@ -368,11 +532,11 @@ export const BackupInstancesResumeProtectionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/resumeProtection",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesResumeProtectionInput =
@@ -406,11 +570,14 @@ export const BackupInstancesStopProtectionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    resourceGuardOperationRequests: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/stopProtection",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesStopProtectionInput =
@@ -444,11 +611,14 @@ export const BackupInstancesSuspendBackupsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    resourceGuardOperationRequests: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/suspendBackups",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesSuspendBackupsInput =
@@ -482,11 +652,12 @@ export const BackupInstancesSyncBackupInstanceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    syncType: Schema.optional(Schema.Literals(["Default", "ForceResync"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/sync",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesSyncBackupInstanceInput =
@@ -520,11 +691,39 @@ export const BackupInstancesTriggerCrossRegionRestoreInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    restoreRequestObject: Schema.Struct({
+      objectType: Schema.String,
+      restoreTargetInfo: Schema.Struct({
+        objectType: Schema.String,
+        recoveryOption: Schema.Literals(["FailIfExists"]),
+        restoreLocation: Schema.optional(Schema.String),
+      }),
+      sourceDataStoreType: Schema.Literals([
+        "ArchiveStore",
+        "SnapshotStore",
+        "OperationalStore",
+        "VaultStore",
+      ]),
+      sourceResourceId: Schema.optional(Schema.String),
+      resourceGuardOperationRequests: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      identityDetails: Schema.optional(
+        Schema.Struct({
+          useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
+          userAssignedIdentityArmUrl: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+    crossRegionRestoreDetails: Schema.Struct({
+      sourceRegion: Schema.String,
+      sourceBackupInstanceId: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/crossRegionRestore",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesTriggerCrossRegionRestoreInput =
@@ -559,11 +758,16 @@ export const BackupInstancesTriggerRehydrateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    recoveryPointId: Schema.String,
+    rehydrationPriority: Schema.optional(
+      Schema.Literals(["Invalid", "High", "Standard"]),
+    ),
+    rehydrationRetentionDuration: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/rehydrate",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesTriggerRehydrateInput =
@@ -597,11 +801,33 @@ export const BackupInstancesTriggerRestoreInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    objectType: Schema.String,
+    restoreTargetInfo: Schema.Struct({
+      objectType: Schema.String,
+      recoveryOption: Schema.Literals(["FailIfExists"]),
+      restoreLocation: Schema.optional(Schema.String),
+    }),
+    sourceDataStoreType: Schema.Literals([
+      "ArchiveStore",
+      "SnapshotStore",
+      "OperationalStore",
+      "VaultStore",
+    ]),
+    sourceResourceId: Schema.optional(Schema.String),
+    resourceGuardOperationRequests: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    identityDetails: Schema.optional(
+      Schema.Struct({
+        useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
+        userAssignedIdentityArmUrl: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/restore",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesTriggerRestoreInput =
@@ -636,11 +862,39 @@ export const BackupInstancesValidateCrossRegionRestoreInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    restoreRequestObject: Schema.Struct({
+      objectType: Schema.String,
+      restoreTargetInfo: Schema.Struct({
+        objectType: Schema.String,
+        recoveryOption: Schema.Literals(["FailIfExists"]),
+        restoreLocation: Schema.optional(Schema.String),
+      }),
+      sourceDataStoreType: Schema.Literals([
+        "ArchiveStore",
+        "SnapshotStore",
+        "OperationalStore",
+        "VaultStore",
+      ]),
+      sourceResourceId: Schema.optional(Schema.String),
+      resourceGuardOperationRequests: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      identityDetails: Schema.optional(
+        Schema.Struct({
+          useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
+          userAssignedIdentityArmUrl: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+    crossRegionRestoreDetails: Schema.Struct({
+      sourceRegion: Schema.String,
+      sourceBackupInstanceId: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/validateCrossRegionRestore",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesValidateCrossRegionRestoreInput =
@@ -674,11 +928,166 @@ export const BackupInstancesValidateForBackupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    backupInstance: Schema.Struct({
+      friendlyName: Schema.optional(Schema.String),
+      dataSourceInfo: Schema.Struct({
+        datasourceType: Schema.optional(Schema.String),
+        objectType: Schema.optional(Schema.String),
+        resourceID: Schema.String,
+        resourceLocation: Schema.optional(Schema.String),
+        resourceName: Schema.optional(Schema.String),
+        resourceType: Schema.optional(Schema.String),
+        resourceUri: Schema.optional(Schema.String),
+        resourceProperties: Schema.optional(
+          Schema.Struct({
+            objectType: Schema.Literals(["DefaultResourceProperties"]),
+          }),
+        ),
+      }),
+      dataSourceSetInfo: Schema.optional(
+        Schema.Struct({
+          datasourceType: Schema.optional(Schema.String),
+          objectType: Schema.optional(Schema.String),
+          resourceID: Schema.String,
+          resourceLocation: Schema.optional(Schema.String),
+          resourceName: Schema.optional(Schema.String),
+          resourceType: Schema.optional(Schema.String),
+          resourceUri: Schema.optional(Schema.String),
+          resourceProperties: Schema.optional(
+            Schema.Struct({
+              objectType: Schema.Literals(["DefaultResourceProperties"]),
+            }),
+          ),
+        }),
+      ),
+      policyInfo: Schema.Struct({
+        policyId: Schema.String,
+        policyVersion: Schema.optional(Schema.String),
+        policyParameters: Schema.optional(
+          Schema.Struct({
+            dataStoreParametersList: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  objectType: Schema.String,
+                  dataStoreType: Schema.Literals([
+                    "OperationalStore",
+                    "VaultStore",
+                    "ArchiveStore",
+                  ]),
+                }),
+              ),
+            ),
+            backupDatasourceParametersList: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  objectType: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+      resourceGuardOperationRequests: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      protectionStatus: Schema.optional(
+        Schema.Struct({
+          errorDetails: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              innerError: Schema.optional(
+                Schema.Struct({
+                  additionalInfo: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  code: Schema.optional(Schema.String),
+                  embeddedInnerError: Schema.optional(Schema.Unknown),
+                }),
+              ),
+              isRetryable: Schema.optional(Schema.Boolean),
+              isUserError: Schema.optional(Schema.Boolean),
+              properties: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              message: Schema.optional(Schema.String),
+              recommendedAction: Schema.optional(Schema.Array(Schema.String)),
+              target: Schema.optional(Schema.String),
+            }),
+          ),
+          status: Schema.optional(
+            Schema.Literals([
+              "ConfiguringProtection",
+              "ConfiguringProtectionFailed",
+              "ProtectionConfigured",
+              "ProtectionStopped",
+              "SoftDeleted",
+              "SoftDeleting",
+            ]),
+          ),
+        }),
+      ),
+      currentProtectionState: Schema.optional(
+        Schema.Literals([
+          "Invalid",
+          "NotProtected",
+          "ConfiguringProtection",
+          "ProtectionConfigured",
+          "BackupSchedulesSuspended",
+          "RetentionSchedulesSuspended",
+          "ProtectionStopped",
+          "ProtectionError",
+          "ConfiguringProtectionFailed",
+          "SoftDeleting",
+          "SoftDeleted",
+          "UpdatingProtection",
+        ]),
+      ),
+      protectionErrorDetails: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          details: Schema.optional(Schema.Array(Schema.Unknown)),
+          innerError: Schema.optional(
+            Schema.Struct({
+              additionalInfo: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              code: Schema.optional(Schema.String),
+              embeddedInnerError: Schema.optional(Schema.Unknown),
+            }),
+          ),
+          isRetryable: Schema.optional(Schema.Boolean),
+          isUserError: Schema.optional(Schema.Boolean),
+          properties: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          message: Schema.optional(Schema.String),
+          recommendedAction: Schema.optional(Schema.Array(Schema.String)),
+          target: Schema.optional(Schema.String),
+        }),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      datasourceAuthCredentials: Schema.optional(
+        Schema.Struct({
+          objectType: Schema.String,
+        }),
+      ),
+      validationType: Schema.optional(
+        Schema.Literals(["ShallowValidation", "DeepValidation"]),
+      ),
+      identityDetails: Schema.optional(
+        Schema.Struct({
+          useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
+          userAssignedIdentityArmUrl: Schema.optional(Schema.String),
+        }),
+      ),
+      objectType: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/validateForBackup",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesValidateForBackupInput =
@@ -713,11 +1122,166 @@ export const BackupInstancesValidateForModifyBackupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    backupInstance: Schema.Struct({
+      friendlyName: Schema.optional(Schema.String),
+      dataSourceInfo: Schema.Struct({
+        datasourceType: Schema.optional(Schema.String),
+        objectType: Schema.optional(Schema.String),
+        resourceID: Schema.String,
+        resourceLocation: Schema.optional(Schema.String),
+        resourceName: Schema.optional(Schema.String),
+        resourceType: Schema.optional(Schema.String),
+        resourceUri: Schema.optional(Schema.String),
+        resourceProperties: Schema.optional(
+          Schema.Struct({
+            objectType: Schema.Literals(["DefaultResourceProperties"]),
+          }),
+        ),
+      }),
+      dataSourceSetInfo: Schema.optional(
+        Schema.Struct({
+          datasourceType: Schema.optional(Schema.String),
+          objectType: Schema.optional(Schema.String),
+          resourceID: Schema.String,
+          resourceLocation: Schema.optional(Schema.String),
+          resourceName: Schema.optional(Schema.String),
+          resourceType: Schema.optional(Schema.String),
+          resourceUri: Schema.optional(Schema.String),
+          resourceProperties: Schema.optional(
+            Schema.Struct({
+              objectType: Schema.Literals(["DefaultResourceProperties"]),
+            }),
+          ),
+        }),
+      ),
+      policyInfo: Schema.Struct({
+        policyId: Schema.String,
+        policyVersion: Schema.optional(Schema.String),
+        policyParameters: Schema.optional(
+          Schema.Struct({
+            dataStoreParametersList: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  objectType: Schema.String,
+                  dataStoreType: Schema.Literals([
+                    "OperationalStore",
+                    "VaultStore",
+                    "ArchiveStore",
+                  ]),
+                }),
+              ),
+            ),
+            backupDatasourceParametersList: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  objectType: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+      resourceGuardOperationRequests: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      protectionStatus: Schema.optional(
+        Schema.Struct({
+          errorDetails: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              innerError: Schema.optional(
+                Schema.Struct({
+                  additionalInfo: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  code: Schema.optional(Schema.String),
+                  embeddedInnerError: Schema.optional(Schema.Unknown),
+                }),
+              ),
+              isRetryable: Schema.optional(Schema.Boolean),
+              isUserError: Schema.optional(Schema.Boolean),
+              properties: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              message: Schema.optional(Schema.String),
+              recommendedAction: Schema.optional(Schema.Array(Schema.String)),
+              target: Schema.optional(Schema.String),
+            }),
+          ),
+          status: Schema.optional(
+            Schema.Literals([
+              "ConfiguringProtection",
+              "ConfiguringProtectionFailed",
+              "ProtectionConfigured",
+              "ProtectionStopped",
+              "SoftDeleted",
+              "SoftDeleting",
+            ]),
+          ),
+        }),
+      ),
+      currentProtectionState: Schema.optional(
+        Schema.Literals([
+          "Invalid",
+          "NotProtected",
+          "ConfiguringProtection",
+          "ProtectionConfigured",
+          "BackupSchedulesSuspended",
+          "RetentionSchedulesSuspended",
+          "ProtectionStopped",
+          "ProtectionError",
+          "ConfiguringProtectionFailed",
+          "SoftDeleting",
+          "SoftDeleted",
+          "UpdatingProtection",
+        ]),
+      ),
+      protectionErrorDetails: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          details: Schema.optional(Schema.Array(Schema.Unknown)),
+          innerError: Schema.optional(
+            Schema.Struct({
+              additionalInfo: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              code: Schema.optional(Schema.String),
+              embeddedInnerError: Schema.optional(Schema.Unknown),
+            }),
+          ),
+          isRetryable: Schema.optional(Schema.Boolean),
+          isUserError: Schema.optional(Schema.Boolean),
+          properties: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          message: Schema.optional(Schema.String),
+          recommendedAction: Schema.optional(Schema.Array(Schema.String)),
+          target: Schema.optional(Schema.String),
+        }),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      datasourceAuthCredentials: Schema.optional(
+        Schema.Struct({
+          objectType: Schema.String,
+        }),
+      ),
+      validationType: Schema.optional(
+        Schema.Literals(["ShallowValidation", "DeepValidation"]),
+      ),
+      identityDetails: Schema.optional(
+        Schema.Struct({
+          useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
+          userAssignedIdentityArmUrl: Schema.optional(Schema.String),
+        }),
+      ),
+      objectType: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/validateForModifyBackup",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesValidateForModifyBackupInput =
@@ -751,11 +1315,35 @@ export const BackupInstancesValidateForRestoreInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    restoreRequestObject: Schema.Struct({
+      objectType: Schema.String,
+      restoreTargetInfo: Schema.Struct({
+        objectType: Schema.String,
+        recoveryOption: Schema.Literals(["FailIfExists"]),
+        restoreLocation: Schema.optional(Schema.String),
+      }),
+      sourceDataStoreType: Schema.Literals([
+        "ArchiveStore",
+        "SnapshotStore",
+        "OperationalStore",
+        "VaultStore",
+      ]),
+      sourceResourceId: Schema.optional(Schema.String),
+      resourceGuardOperationRequests: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      identityDetails: Schema.optional(
+        Schema.Struct({
+          useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
+          userAssignedIdentityArmUrl: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/validateRestore",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupInstancesValidateForRestoreInput =
@@ -791,11 +1379,17 @@ export const BackupPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        datasourceTypes: Schema.Array(Schema.String),
+        objectType: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies/{backupPolicyName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupPoliciesCreateOrUpdateInput =
@@ -846,11 +1440,11 @@ export const BackupPoliciesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies/{backupPolicyName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupPoliciesDeleteInput = typeof BackupPoliciesDeleteInput.Type;
@@ -882,12 +1476,12 @@ export const BackupPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies/{backupPolicyName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type BackupPoliciesGetInput = typeof BackupPoliciesGetInput.Type;
@@ -934,11 +1528,11 @@ export const BackupPoliciesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupPoliciesListInput = typeof BackupPoliciesListInput.Type;
@@ -970,11 +1564,11 @@ export const BackupVaultOperationResultsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/operationResults/{operationId}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupVaultOperationResultsGetInput =
@@ -1025,11 +1619,13 @@ export const BackupVaultsCheckNameAvailabilityInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/checkNameAvailability",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupVaultsCheckNameAvailabilityInput =
@@ -1065,11 +1661,170 @@ export const BackupVaultsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      monitoringSettings: Schema.optional(
+        Schema.Struct({
+          azureMonitorAlertSettings: Schema.optional(
+            Schema.Struct({
+              alertsForAllJobFailures: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled"]),
+              ),
+            }),
+          ),
+        }),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Failed",
+          "Provisioning",
+          "Succeeded",
+          "Unknown",
+          "Updating",
+        ]),
+      ),
+      resourceMoveState: Schema.optional(
+        Schema.Literals([
+          "Unknown",
+          "InProgress",
+          "PrepareFailed",
+          "CommitFailed",
+          "Failed",
+          "PrepareTimedout",
+          "CommitTimedout",
+          "CriticalFailure",
+          "PartialSuccess",
+          "MoveSucceeded",
+        ]),
+      ),
+      resourceMoveDetails: Schema.optional(
+        Schema.Struct({
+          operationId: Schema.optional(Schema.String),
+          startTimeUtc: Schema.optional(Schema.String),
+          completionTimeUtc: Schema.optional(Schema.String),
+          sourceResourcePath: Schema.optional(Schema.String),
+          targetResourcePath: Schema.optional(Schema.String),
+        }),
+      ),
+      securitySettings: Schema.optional(
+        Schema.Struct({
+          softDeleteSettings: Schema.optional(
+            Schema.Struct({
+              state: Schema.optional(
+                Schema.Literals(["Off", "On", "AlwaysOn"]),
+              ),
+              retentionDurationInDays: Schema.optional(Schema.Number),
+            }),
+          ),
+          immutabilitySettings: Schema.optional(
+            Schema.Struct({
+              state: Schema.optional(
+                Schema.Literals(["Disabled", "Unlocked", "Locked"]),
+              ),
+            }),
+          ),
+          encryptionSettings: Schema.optional(
+            Schema.Struct({
+              state: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled", "Inconsistent"]),
+              ),
+              keyVaultProperties: Schema.optional(
+                Schema.Struct({
+                  keyUri: Schema.optional(Schema.String),
+                }),
+              ),
+              kekIdentity: Schema.optional(
+                Schema.Struct({
+                  identityType: Schema.optional(
+                    Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                  ),
+                  identityId: Schema.optional(Schema.String),
+                }),
+              ),
+              infrastructureEncryption: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled"]),
+              ),
+            }),
+          ),
+        }),
+      ),
+      storageSettings: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            datastoreType: Schema.optional(
+              Schema.Literals([
+                "ArchiveStore",
+                "OperationalStore",
+                "VaultStore",
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Literals([
+                "GeoRedundant",
+                "LocallyRedundant",
+                "ZoneRedundant",
+              ]),
+            ),
+          }),
+        ),
+      ),
+      isVaultProtectedByResourceGuard: Schema.optional(Schema.Boolean),
+      featureSettings: Schema.optional(
+        Schema.Struct({
+          crossSubscriptionRestoreSettings: Schema.optional(
+            Schema.Struct({
+              state: Schema.optional(
+                Schema.Literals(["Disabled", "PermanentlyDisabled", "Enabled"]),
+              ),
+            }),
+          ),
+          crossRegionRestoreSettings: Schema.optional(
+            Schema.Struct({
+              state: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+            }),
+          ),
+        }),
+      ),
+      secureScore: Schema.optional(
+        Schema.Literals([
+          "None",
+          "Minimum",
+          "Adequate",
+          "Maximum",
+          "NotSupported",
+        ]),
+      ),
+      bcdrSecurityLevel: Schema.optional(
+        Schema.Literals(["Poor", "Fair", "Good", "Excellent", "NotSupported"]),
+      ),
+      resourceGuardOperationRequests: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      replicatedRegions: Schema.optional(Schema.Array(Schema.String)),
+    }),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupVaultsCreateOrUpdateInput =
@@ -1121,11 +1876,11 @@ export const BackupVaultsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupVaultsDeleteInput = typeof BackupVaultsDeleteInput.Type;
@@ -1152,11 +1907,11 @@ export const BackupVaultsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type BackupVaultsGetInput = typeof BackupVaultsGetInput.Type;
@@ -1201,11 +1956,11 @@ export const BackupVaultsGetInResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupVaultsGetInResourceGroupInput =
@@ -1236,11 +1991,11 @@ export const BackupVaultsGetInResourceGroup =
 export const BackupVaultsGetInSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/backupVaults",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupVaultsGetInSubscriptionInput =
@@ -1272,11 +2027,110 @@ export const BackupVaultsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        monitoringSettings: Schema.optional(
+          Schema.Struct({
+            azureMonitorAlertSettings: Schema.optional(
+              Schema.Struct({
+                alertsForAllJobFailures: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        securitySettings: Schema.optional(
+          Schema.Struct({
+            softDeleteSettings: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Literals(["Off", "On", "AlwaysOn"]),
+                ),
+                retentionDurationInDays: Schema.optional(Schema.Number),
+              }),
+            ),
+            immutabilitySettings: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Literals(["Disabled", "Unlocked", "Locked"]),
+                ),
+              }),
+            ),
+            encryptionSettings: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled", "Inconsistent"]),
+                ),
+                keyVaultProperties: Schema.optional(
+                  Schema.Struct({
+                    keyUri: Schema.optional(Schema.String),
+                  }),
+                ),
+                kekIdentity: Schema.optional(
+                  Schema.Struct({
+                    identityType: Schema.optional(
+                      Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                    ),
+                    identityId: Schema.optional(Schema.String),
+                  }),
+                ),
+                infrastructureEncryption: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        featureSettings: Schema.optional(
+          Schema.Struct({
+            crossSubscriptionRestoreSettings: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Literals([
+                    "Disabled",
+                    "PermanentlyDisabled",
+                    "Enabled",
+                  ]),
+                ),
+              }),
+            ),
+            crossRegionRestoreSettings: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Literals(["Disabled", "Enabled"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        resourceGuardOperationRequests: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type BackupVaultsUpdateInput = typeof BackupVaultsUpdateInput.Type;
@@ -1322,11 +2176,12 @@ export const DataProtectionCheckFeatureSupportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    objectType: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/checkFeatureSupport",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataProtectionCheckFeatureSupportInput =
@@ -1355,12 +2210,11 @@ export const DataProtectionCheckFeatureSupport =
   }));
 // Input Schema
 export const DataProtectionOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.DataProtection/operations",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DataProtectionOperationsListInput =
@@ -1412,11 +2266,11 @@ export const DeletedBackupInstancesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances/{backupInstanceName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DeletedBackupInstancesGetInput =
@@ -1468,11 +2322,11 @@ export const DeletedBackupInstancesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DeletedBackupInstancesListInput =
@@ -1508,11 +2362,11 @@ export const DeletedBackupInstancesUndeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances/{backupInstanceName}/undelete",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DeletedBackupInstancesUndeleteInput =
@@ -1545,11 +2399,11 @@ export const DeletedBackupVaultsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     deletedVaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults/{deletedVaultName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DeletedBackupVaultsGetInput =
@@ -1599,11 +2453,11 @@ export const DeletedBackupVaultsListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DeletedBackupVaultsListByLocationInput =
@@ -1668,11 +2522,26 @@ export const DppResourceGuardProxyCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        resourceGuardResourceId: Schema.optional(Schema.String),
+        resourceGuardOperationDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              vaultCriticalOperation: Schema.optional(Schema.String),
+              defaultResourceRequest: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        lastUpdatedTime: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DppResourceGuardProxyCreateOrUpdateInput =
@@ -1724,11 +2593,11 @@ export const DppResourceGuardProxyDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DppResourceGuardProxyDeleteInput =
@@ -1763,11 +2632,11 @@ export const DppResourceGuardProxyGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DppResourceGuardProxyGetInput =
@@ -1819,11 +2688,11 @@ export const DppResourceGuardProxyListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DppResourceGuardProxyListInput =
@@ -1859,11 +2728,15 @@ export const DppResourceGuardProxyUnlockDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    resourceGuardOperationRequests: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    resourceToBeDeleted: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DppResourceGuardProxyUnlockDeleteInput =
@@ -1899,11 +2772,11 @@ export const ExportJobsOperationResultGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupJobs/operations/{operationId}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ExportJobsOperationResultGetInput =
@@ -1941,12 +2814,12 @@ export const ExportJobsTriggerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/exportBackupJobs",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ExportJobsTriggerInput = typeof ExportJobsTriggerInput.Type;
@@ -1974,11 +2847,14 @@ export const FetchCrossRegionRestoreJobGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sourceRegion: Schema.String,
+    sourceBackupVaultId: Schema.String,
+    jobId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/fetchCrossRegionRestoreJob",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FetchCrossRegionRestoreJobGetInput =
@@ -2028,12 +2904,14 @@ export const FetchCrossRegionRestoreJobsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
+    sourceRegion: Schema.String,
+    sourceBackupVaultId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/fetchCrossRegionRestoreJobs",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FetchCrossRegionRestoreJobsListInput =
@@ -2068,13 +2946,15 @@ export const FetchSecondaryRecoveryPointsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skipToken: Schema.optional(Schema.String),
+    sourceRegion: Schema.optional(Schema.String),
+    sourceBackupInstanceId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/fetchSecondaryRecoveryPoints",
+      apiVersion: "2026-03-01",
     }),
   );
 export type FetchSecondaryRecoveryPointsListInput =
@@ -2110,11 +2990,11 @@ export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
   jobId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupJobs/{jobId}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type JobsGetInput = typeof JobsGetInput.Type;
@@ -2160,11 +3040,11 @@ export const JobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupJobs",
+    apiVersion: "2026-03-01",
   }),
 );
 export type JobsListInput = typeof JobsListInput.Type;
@@ -2194,11 +3074,11 @@ export const OperationResultGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/operationResults/{operationId}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OperationResultGetInput = typeof OperationResultGetInput.Type;
@@ -2231,11 +3111,11 @@ export const OperationStatusBackupVaultContextGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/operationStatus/{operationId}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OperationStatusBackupVaultContextGetInput =
@@ -2294,11 +3174,11 @@ export const OperationStatusGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/operationStatus/{operationId}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
@@ -2353,11 +3233,11 @@ export const OperationStatusResourceGroupContextGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/operationStatus/{operationId}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OperationStatusResourceGroupContextGetInput =
@@ -2417,12 +3297,12 @@ export const RecoveryPointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
     recoveryPointId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/recoveryPoints/{recoveryPointId}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RecoveryPointsGetInput = typeof RecoveryPointsGetInput.Type;
@@ -2471,13 +3351,13 @@ export const RecoveryPointsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/recoveryPoints",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RecoveryPointsListInput = typeof RecoveryPointsListInput.Type;
@@ -2511,11 +3391,11 @@ export const ResourceGuardsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsDeleteInput = typeof ResourceGuardsDeleteInput.Type;
@@ -2546,12 +3426,12 @@ export const ResourceGuardsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ResourceGuardsGetInput = typeof ResourceGuardsGetInput.Type;
@@ -2598,11 +3478,11 @@ export const ResourceGuardsGetBackupSecurityPINRequestsObjectsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetBackupSecurityPINRequestsObjectsInput =
@@ -2668,11 +3548,11 @@ export const ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
     requestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests/{requestName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectInput =
@@ -2724,11 +3604,11 @@ export const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
     requestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests/{requestName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectInput =
@@ -2781,11 +3661,11 @@ export const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectInput
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
     requestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests/{requestName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectInput =
@@ -2839,11 +3719,11 @@ export const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
     requestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests/{requestName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectInput =
@@ -2895,11 +3775,11 @@ export const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
     requestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests/{requestName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectInput =
@@ -2952,11 +3832,11 @@ export const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
     requestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests/{requestName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectInput =
@@ -3009,11 +3889,11 @@ export const ResourceGuardsGetDeleteProtectedItemRequestsObjectsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetDeleteProtectedItemRequestsObjectsInput =
@@ -3078,11 +3958,11 @@ export const ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsInput =
@@ -3148,11 +4028,11 @@ export const ResourceGuardsGetDisableSoftDeleteRequestsObjectsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetDisableSoftDeleteRequestsObjectsInput =
@@ -3216,11 +4096,11 @@ export const ResourceGuardsGetResourcesInResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetResourcesInResourceGroupInput =
@@ -3251,11 +4131,11 @@ export const ResourceGuardsGetResourcesInResourceGroup =
 export const ResourceGuardsGetResourcesInSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/resourceGuards",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetResourcesInSubscriptionInput =
@@ -3287,11 +4167,11 @@ export const ResourceGuardsGetUpdateProtectedItemRequestsObjectsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetUpdateProtectedItemRequestsObjectsInput =
@@ -3356,11 +4236,11 @@ export const ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsInput =
@@ -3425,11 +4305,12 @@ export const ResourceGuardsPatchInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ResourceGuardsPatchInput = typeof ResourceGuardsPatchInput.Type;
@@ -3476,12 +4357,41 @@ export const ResourceGuardsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Failed",
+            "Provisioning",
+            "Succeeded",
+            "Unknown",
+            "Updating",
+          ]),
+        ),
+        allowAutoApprovals: Schema.optional(Schema.Boolean),
+        resourceGuardOperations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              vaultCriticalOperation: Schema.optional(Schema.String),
+              requestResourceType: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        vaultCriticalOperationExclusionList: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        description: Schema.optional(Schema.String),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   },
 ).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ResourceGuardsPutInput = typeof ResourceGuardsPutInput.Type;
@@ -3529,11 +4439,18 @@ export const RestorableTimeRangesFindInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sourceDataStoreType: Schema.Literals([
+      "OperationalStore",
+      "VaultStore",
+      "ArchiveStore",
+    ]),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RestorableTimeRangesFindInput =

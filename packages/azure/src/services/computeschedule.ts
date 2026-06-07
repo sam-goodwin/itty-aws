@@ -9,12 +9,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ComputeSchedule/operations",
+    apiVersion: "2025-05-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -60,11 +61,13 @@ export const ScheduledActionsVirtualMachinesCancelOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    operationIds: Schema.Array(Schema.String),
+    correlationid: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesCancelOperations",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ScheduledActionsVirtualMachinesCancelOperationsInput =
@@ -144,11 +147,33 @@ export const ScheduledActionsVirtualMachinesExecuteCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    resourceConfigParameters: Schema.Struct({
+      baseProfile: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+      resourceOverrides: Schema.optional(
+        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      ),
+      resourceCount: Schema.Number,
+      resourcePrefix: Schema.optional(Schema.String),
+    }),
+    executionParameters: Schema.Struct({
+      optimizationPreference: Schema.optional(
+        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
+      ),
+      retryPolicy: Schema.optional(
+        Schema.Struct({
+          retryCount: Schema.optional(Schema.Number),
+          retryWindowInMinutes: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+    correlationid: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteCreate",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ScheduledActionsVirtualMachinesExecuteCreateInput =
@@ -238,11 +263,26 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    executionParameters: Schema.Struct({
+      optimizationPreference: Schema.optional(
+        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
+      ),
+      retryPolicy: Schema.optional(
+        Schema.Struct({
+          retryCount: Schema.optional(Schema.Number),
+          retryWindowInMinutes: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+    resources: Schema.Struct({
+      ids: Schema.Array(Schema.String),
+    }),
+    correlationid: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteDeallocate",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ScheduledActionsVirtualMachinesExecuteDeallocateInput =
@@ -332,11 +372,27 @@ export const ScheduledActionsVirtualMachinesExecuteDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    executionParameters: Schema.Struct({
+      optimizationPreference: Schema.optional(
+        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
+      ),
+      retryPolicy: Schema.optional(
+        Schema.Struct({
+          retryCount: Schema.optional(Schema.Number),
+          retryWindowInMinutes: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+    resources: Schema.Struct({
+      ids: Schema.Array(Schema.String),
+    }),
+    correlationid: Schema.optional(Schema.String),
+    forceDeletion: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteDelete",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ScheduledActionsVirtualMachinesExecuteDeleteInput =
@@ -426,11 +482,26 @@ export const ScheduledActionsVirtualMachinesExecuteHibernateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    executionParameters: Schema.Struct({
+      optimizationPreference: Schema.optional(
+        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
+      ),
+      retryPolicy: Schema.optional(
+        Schema.Struct({
+          retryCount: Schema.optional(Schema.Number),
+          retryWindowInMinutes: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+    resources: Schema.Struct({
+      ids: Schema.Array(Schema.String),
+    }),
+    correlationid: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteHibernate",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ScheduledActionsVirtualMachinesExecuteHibernateInput =
@@ -520,11 +591,26 @@ export const ScheduledActionsVirtualMachinesExecuteStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    executionParameters: Schema.Struct({
+      optimizationPreference: Schema.optional(
+        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
+      ),
+      retryPolicy: Schema.optional(
+        Schema.Struct({
+          retryCount: Schema.optional(Schema.Number),
+          retryWindowInMinutes: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+    resources: Schema.Struct({
+      ids: Schema.Array(Schema.String),
+    }),
+    correlationid: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteStart",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ScheduledActionsVirtualMachinesExecuteStartInput =
@@ -614,11 +700,12 @@ export const ScheduledActionsVirtualMachinesGetOperationErrorsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    operationIds: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesGetOperationErrors",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ScheduledActionsVirtualMachinesGetOperationErrorsInput =
@@ -671,11 +758,13 @@ export const ScheduledActionsVirtualMachinesGetOperationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    operationIds: Schema.Array(Schema.String),
+    correlationid: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesGetOperationStatus",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ScheduledActionsVirtualMachinesGetOperationStatusInput =
@@ -755,11 +844,33 @@ export const ScheduledActionsVirtualMachinesSubmitDeallocateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    schedule: Schema.Struct({
+      deadline: Schema.optional(Schema.String),
+      deadLine: Schema.optional(Schema.String),
+      timezone: Schema.optional(Schema.String),
+      timeZone: Schema.optional(Schema.String),
+      deadlineType: Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
+    }),
+    executionParameters: Schema.Struct({
+      optimizationPreference: Schema.optional(
+        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
+      ),
+      retryPolicy: Schema.optional(
+        Schema.Struct({
+          retryCount: Schema.optional(Schema.Number),
+          retryWindowInMinutes: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+    resources: Schema.Struct({
+      ids: Schema.Array(Schema.String),
+    }),
+    correlationid: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesSubmitDeallocate",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ScheduledActionsVirtualMachinesSubmitDeallocateInput =
@@ -849,11 +960,33 @@ export const ScheduledActionsVirtualMachinesSubmitHibernateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    schedule: Schema.Struct({
+      deadline: Schema.optional(Schema.String),
+      deadLine: Schema.optional(Schema.String),
+      timezone: Schema.optional(Schema.String),
+      timeZone: Schema.optional(Schema.String),
+      deadlineType: Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
+    }),
+    executionParameters: Schema.Struct({
+      optimizationPreference: Schema.optional(
+        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
+      ),
+      retryPolicy: Schema.optional(
+        Schema.Struct({
+          retryCount: Schema.optional(Schema.Number),
+          retryWindowInMinutes: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+    resources: Schema.Struct({
+      ids: Schema.Array(Schema.String),
+    }),
+    correlationid: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesSubmitHibernate",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ScheduledActionsVirtualMachinesSubmitHibernateInput =
@@ -943,11 +1076,33 @@ export const ScheduledActionsVirtualMachinesSubmitStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    schedule: Schema.Struct({
+      deadline: Schema.optional(Schema.String),
+      deadLine: Schema.optional(Schema.String),
+      timezone: Schema.optional(Schema.String),
+      timeZone: Schema.optional(Schema.String),
+      deadlineType: Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
+    }),
+    executionParameters: Schema.Struct({
+      optimizationPreference: Schema.optional(
+        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
+      ),
+      retryPolicy: Schema.optional(
+        Schema.Struct({
+          retryCount: Schema.optional(Schema.Number),
+          retryWindowInMinutes: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+    resources: Schema.Struct({
+      ids: Schema.Array(Schema.String),
+    }),
+    correlationid: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesSubmitStart",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ScheduledActionsVirtualMachinesSubmitStartInput =

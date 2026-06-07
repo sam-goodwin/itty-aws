@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AssetEndpointProfilesCreateOrReplaceInput =
@@ -14,11 +15,67 @@ export const AssetEndpointProfilesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     assetEndpointProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        targetAddress: Schema.String,
+        endpointProfileType: Schema.String,
+        authentication: Schema.optional(
+          Schema.Struct({
+            method: Schema.Literals([
+              "Anonymous",
+              "Certificate",
+              "UsernamePassword",
+            ]),
+            usernamePasswordCredentials: Schema.optional(
+              Schema.Struct({
+                usernameSecretName: Schema.String,
+                passwordSecretName: SensitiveString,
+              }),
+            ),
+            x509Credentials: Schema.optional(
+              Schema.Struct({
+                certificateSecretName: Schema.String,
+              }),
+            ),
+          }),
+        ),
+        additionalConfiguration: Schema.optional(Schema.String),
+        discoveredAssetEndpointProfileRef: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Struct({
+            errors: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.Number),
+                  message: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Accepted",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.Struct({
+      type: Schema.String,
+      name: Schema.String,
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AssetEndpointProfilesCreateOrReplaceInput =
@@ -68,11 +125,11 @@ export const AssetEndpointProfilesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     assetEndpointProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AssetEndpointProfilesDeleteInput =
@@ -105,11 +162,11 @@ export const AssetEndpointProfilesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     assetEndpointProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AssetEndpointProfilesGetInput =
@@ -159,11 +216,11 @@ export const AssetEndpointProfilesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AssetEndpointProfilesListByResourceGroupInput =
@@ -225,11 +282,11 @@ export const AssetEndpointProfilesListByResourceGroup =
 export const AssetEndpointProfilesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AssetEndpointProfilesListBySubscriptionInput =
@@ -292,11 +349,37 @@ export const AssetEndpointProfilesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     assetEndpointProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        targetAddress: Schema.optional(Schema.String),
+        endpointProfileType: Schema.optional(Schema.String),
+        authentication: Schema.optional(
+          Schema.Struct({
+            method: Schema.optional(
+              Schema.Literals(["Anonymous", "Certificate", "UsernamePassword"]),
+            ),
+            usernamePasswordCredentials: Schema.optional(
+              Schema.Struct({
+                usernameSecretName: Schema.optional(Schema.String),
+                passwordSecretName: Schema.optional(SensitiveString),
+              }),
+            ),
+            x509Credentials: Schema.optional(
+              Schema.Struct({
+                certificateSecretName: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        additionalConfiguration: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AssetEndpointProfilesUpdateInput =
@@ -347,11 +430,136 @@ export const AssetsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     assetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        enabled: Schema.optional(Schema.Boolean),
+        externalAssetId: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        assetEndpointProfileRef: Schema.String,
+        version: Schema.optional(Schema.Number),
+        manufacturer: Schema.optional(Schema.String),
+        manufacturerUri: Schema.optional(Schema.String),
+        model: Schema.optional(Schema.String),
+        productCode: Schema.optional(Schema.String),
+        hardwareRevision: Schema.optional(Schema.String),
+        softwareRevision: Schema.optional(Schema.String),
+        documentationUri: Schema.optional(Schema.String),
+        serialNumber: Schema.optional(Schema.String),
+        attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        discoveredAssetRefs: Schema.optional(Schema.Array(Schema.String)),
+        defaultDatasetsConfiguration: Schema.optional(Schema.String),
+        defaultEventsConfiguration: Schema.optional(Schema.String),
+        defaultTopic: Schema.optional(
+          Schema.Struct({
+            path: Schema.String,
+            retain: Schema.optional(Schema.Literals(["Keep", "Never"])),
+          }),
+        ),
+        datasets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              datasetConfiguration: Schema.optional(Schema.String),
+              topic: Schema.optional(
+                Schema.Struct({
+                  path: Schema.String,
+                  retain: Schema.optional(Schema.Literals(["Keep", "Never"])),
+                }),
+              ),
+              dataPoints: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    dataSource: Schema.String,
+                    dataPointConfiguration: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        events: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              eventNotifier: Schema.String,
+              eventConfiguration: Schema.optional(Schema.String),
+              topic: Schema.optional(
+                Schema.Struct({
+                  path: Schema.String,
+                  retain: Schema.optional(Schema.Literals(["Keep", "Never"])),
+                }),
+              ),
+            }),
+          ),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            errors: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.Number),
+                  message: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            version: Schema.optional(Schema.Number),
+            datasets: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  messageSchemaReference: Schema.optional(
+                    Schema.Struct({
+                      schemaRegistryNamespace: Schema.String,
+                      schemaName: Schema.String,
+                      schemaVersion: Schema.String,
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            events: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  messageSchemaReference: Schema.optional(
+                    Schema.Struct({
+                      schemaRegistryNamespace: Schema.String,
+                      schemaName: Schema.String,
+                      schemaVersion: Schema.String,
+                    }),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Accepted",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.Struct({
+      type: Schema.String,
+      name: Schema.String,
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AssetsCreateOrReplaceInput = typeof AssetsCreateOrReplaceInput.Type;
@@ -400,11 +608,11 @@ export const AssetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   assetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
+    apiVersion: "2026-04-01",
   }),
 );
 export type AssetsDeleteInput = typeof AssetsDeleteInput.Type;
@@ -431,11 +639,11 @@ export const AssetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   assetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
+    apiVersion: "2026-04-01",
   }),
 );
 export type AssetsGetInput = typeof AssetsGetInput.Type;
@@ -480,11 +688,11 @@ export const AssetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AssetsListByResourceGroupInput =
@@ -547,11 +755,11 @@ export const AssetsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AssetsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/assets",
+      apiVersion: "2026-04-01",
     }),
   );
 export type AssetsListBySubscriptionInput =
@@ -614,11 +822,74 @@ export const AssetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   assetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Boolean),
+      displayName: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      manufacturer: Schema.optional(Schema.String),
+      manufacturerUri: Schema.optional(Schema.String),
+      model: Schema.optional(Schema.String),
+      productCode: Schema.optional(Schema.String),
+      hardwareRevision: Schema.optional(Schema.String),
+      softwareRevision: Schema.optional(Schema.String),
+      documentationUri: Schema.optional(Schema.String),
+      serialNumber: Schema.optional(Schema.String),
+      attributes: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      defaultDatasetsConfiguration: Schema.optional(Schema.String),
+      defaultEventsConfiguration: Schema.optional(Schema.String),
+      defaultTopic: Schema.optional(
+        Schema.Struct({
+          path: Schema.optional(Schema.String),
+          retain: Schema.optional(Schema.Literals(["Keep", "Never"])),
+        }),
+      ),
+      datasets: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            datasetConfiguration: Schema.optional(Schema.String),
+            topic: Schema.optional(
+              Schema.Struct({
+                path: Schema.String,
+                retain: Schema.optional(Schema.Literals(["Keep", "Never"])),
+              }),
+            ),
+            dataPoints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  dataSource: Schema.String,
+                  dataPointConfiguration: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      ),
+      events: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            eventNotifier: Schema.String,
+            eventConfiguration: Schema.optional(Schema.String),
+            topic: Schema.optional(
+              Schema.Struct({
+                path: Schema.String,
+                retain: Schema.optional(Schema.Literals(["Keep", "Never"])),
+              }),
+            ),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
+    apiVersion: "2026-04-01",
   }),
 );
 export type AssetsUpdateInput = typeof AssetsUpdateInput.Type;
@@ -663,11 +934,11 @@ export const BillingContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     billingContainerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers/{billingContainerName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BillingContainersGetInput = typeof BillingContainersGetInput.Type;
@@ -713,11 +984,11 @@ export const BillingContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const BillingContainersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers",
+      apiVersion: "2026-04-01",
     }),
   );
 export type BillingContainersListBySubscriptionInput =
@@ -781,11 +1052,370 @@ export const NamespaceAssetsCreateOrReplaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     assetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        enabled: Schema.optional(Schema.Boolean),
+        externalAssetId: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        deviceRef: Schema.Struct({
+          deviceName: Schema.String,
+          endpointName: Schema.String,
+        }),
+        assetTypeRefs: Schema.optional(Schema.Array(Schema.String)),
+        version: Schema.optional(Schema.Number),
+        lastTransitionTime: Schema.optional(Schema.String),
+        manufacturer: Schema.optional(Schema.String),
+        manufacturerUri: Schema.optional(Schema.String),
+        model: Schema.optional(Schema.String),
+        productCode: Schema.optional(Schema.String),
+        hardwareRevision: Schema.optional(Schema.String),
+        softwareRevision: Schema.optional(Schema.String),
+        documentationUri: Schema.optional(Schema.String),
+        serialNumber: Schema.optional(Schema.String),
+        attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        discoveredAssetRefs: Schema.optional(Schema.Array(Schema.String)),
+        defaultDatasetsConfiguration: Schema.optional(Schema.String),
+        defaultEventsConfiguration: Schema.optional(Schema.String),
+        defaultStreamsConfiguration: Schema.optional(Schema.String),
+        defaultManagementGroupsConfiguration: Schema.optional(Schema.String),
+        defaultDatasetsDestinations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              target: Schema.Literals(["Mqtt", "BrokerStateStore", "Storage"]),
+            }),
+          ),
+        ),
+        defaultEventsDestinations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              target: Schema.Literals(["Mqtt", "Storage"]),
+            }),
+          ),
+        ),
+        defaultStreamsDestinations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              target: Schema.Literals(["Mqtt", "Storage"]),
+            }),
+          ),
+        ),
+        datasets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              dataSource: Schema.optional(Schema.String),
+              typeRef: Schema.optional(Schema.String),
+              datasetConfiguration: Schema.optional(Schema.String),
+              destinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    target: Schema.Literals([
+                      "Mqtt",
+                      "BrokerStateStore",
+                      "Storage",
+                    ]),
+                  }),
+                ),
+              ),
+              dataPoints: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    dataSource: Schema.String,
+                    dataPointConfiguration: Schema.optional(Schema.String),
+                    typeRef: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        eventGroups: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              dataSource: Schema.optional(Schema.String),
+              eventGroupConfiguration: Schema.optional(Schema.String),
+              defaultDestinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    target: Schema.Literals(["Mqtt", "Storage"]),
+                  }),
+                ),
+              ),
+              typeRef: Schema.optional(Schema.String),
+              events: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    dataSource: Schema.optional(Schema.String),
+                    eventConfiguration: Schema.optional(Schema.String),
+                    destinations: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          target: Schema.Literals(["Mqtt", "Storage"]),
+                        }),
+                      ),
+                    ),
+                    typeRef: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        streams: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              streamConfiguration: Schema.optional(Schema.String),
+              typeRef: Schema.optional(Schema.String),
+              destinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    target: Schema.Literals(["Mqtt", "Storage"]),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        managementGroups: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              dataSource: Schema.optional(Schema.String),
+              managementGroupConfiguration: Schema.optional(Schema.String),
+              typeRef: Schema.optional(Schema.String),
+              defaultTopic: Schema.optional(Schema.String),
+              defaultTimeoutInSeconds: Schema.optional(Schema.Number),
+              actions: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    actionConfiguration: Schema.optional(Schema.String),
+                    targetUri: Schema.String,
+                    typeRef: Schema.optional(Schema.String),
+                    topic: Schema.optional(Schema.String),
+                    actionType: Schema.optional(
+                      Schema.Literals(["Call", "Read", "Write"]),
+                    ),
+                    timeoutInSeconds: Schema.optional(Schema.Number),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Struct({
+                version: Schema.optional(Schema.Number),
+                lastTransitionTime: Schema.optional(Schema.String),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    details: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          code: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.String),
+                          correlationId: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            datasets: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  messageSchemaReference: Schema.optional(
+                    Schema.Struct({
+                      schemaRegistryNamespace: Schema.String,
+                      schemaName: Schema.String,
+                      schemaVersion: Schema.String,
+                    }),
+                  ),
+                  error: Schema.optional(
+                    Schema.Struct({
+                      code: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                      details: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            code: Schema.optional(Schema.String),
+                            message: Schema.optional(Schema.String),
+                            info: Schema.optional(Schema.String),
+                            correlationId: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            eventGroups: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  events: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        messageSchemaReference: Schema.optional(
+                          Schema.Struct({
+                            schemaRegistryNamespace: Schema.String,
+                            schemaName: Schema.String,
+                            schemaVersion: Schema.String,
+                          }),
+                        ),
+                        error: Schema.optional(
+                          Schema.Struct({
+                            code: Schema.optional(Schema.String),
+                            message: Schema.optional(Schema.String),
+                            details: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  code: Schema.optional(Schema.String),
+                                  message: Schema.optional(Schema.String),
+                                  info: Schema.optional(Schema.String),
+                                  correlationId: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            streams: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  messageSchemaReference: Schema.optional(
+                    Schema.Struct({
+                      schemaRegistryNamespace: Schema.String,
+                      schemaName: Schema.String,
+                      schemaVersion: Schema.String,
+                    }),
+                  ),
+                  error: Schema.optional(
+                    Schema.Struct({
+                      code: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                      details: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            code: Schema.optional(Schema.String),
+                            message: Schema.optional(Schema.String),
+                            info: Schema.optional(Schema.String),
+                            correlationId: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            managementGroups: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  actions: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        requestMessageSchemaReference: Schema.optional(
+                          Schema.Struct({
+                            schemaRegistryNamespace: Schema.String,
+                            schemaName: Schema.String,
+                            schemaVersion: Schema.String,
+                          }),
+                        ),
+                        responseMessageSchemaReference: Schema.optional(
+                          Schema.Struct({
+                            schemaRegistryNamespace: Schema.String,
+                            schemaName: Schema.String,
+                            schemaVersion: Schema.String,
+                          }),
+                        ),
+                        error: Schema.optional(
+                          Schema.Struct({
+                            code: Schema.optional(Schema.String),
+                            message: Schema.optional(Schema.String),
+                            details: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  code: Schema.optional(Schema.String),
+                                  message: Schema.optional(Schema.String),
+                                  info: Schema.optional(Schema.String),
+                                  correlationId: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            healthState: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals([
+                    "Unknown",
+                    "Available",
+                    "Degraded",
+                    "Unavailable",
+                  ]),
+                ),
+                lastTransitionTime: Schema.optional(Schema.String),
+                lastUpdateTime: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                reasonCode: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Accepted",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.Struct({
+      type: Schema.String,
+      name: Schema.String,
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceAssetsCreateOrReplaceInput =
@@ -837,11 +1467,11 @@ export const NamespaceAssetsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     assetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceAssetsDeleteInput = typeof NamespaceAssetsDeleteInput.Type;
@@ -875,11 +1505,14 @@ export const NamespaceAssetsExecuteActionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     assetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    managementActionName: Schema.String,
+    managementGroupName: Schema.String,
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}/executeAction",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceAssetsExecuteActionInput =
@@ -935,11 +1568,11 @@ export const NamespaceAssetsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     assetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceAssetsGetInput = typeof NamespaceAssetsGetInput.Type;
@@ -987,11 +1620,11 @@ export const NamespaceAssetsListByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceAssetsListByResourceGroupInput =
@@ -1057,11 +1690,164 @@ export const NamespaceAssetsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     assetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        enabled: Schema.optional(Schema.Boolean),
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        assetTypeRefs: Schema.optional(Schema.Array(Schema.String)),
+        manufacturer: Schema.optional(Schema.String),
+        manufacturerUri: Schema.optional(Schema.String),
+        model: Schema.optional(Schema.String),
+        productCode: Schema.optional(Schema.String),
+        hardwareRevision: Schema.optional(Schema.String),
+        softwareRevision: Schema.optional(Schema.String),
+        documentationUri: Schema.optional(Schema.String),
+        serialNumber: Schema.optional(Schema.String),
+        attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        defaultDatasetsConfiguration: Schema.optional(Schema.String),
+        defaultEventsConfiguration: Schema.optional(Schema.String),
+        defaultStreamsConfiguration: Schema.optional(Schema.String),
+        defaultManagementGroupsConfiguration: Schema.optional(Schema.String),
+        defaultDatasetsDestinations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              target: Schema.Literals(["Mqtt", "BrokerStateStore", "Storage"]),
+            }),
+          ),
+        ),
+        defaultEventsDestinations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              target: Schema.Literals(["Mqtt", "Storage"]),
+            }),
+          ),
+        ),
+        defaultStreamsDestinations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              target: Schema.Literals(["Mqtt", "Storage"]),
+            }),
+          ),
+        ),
+        datasets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              dataSource: Schema.optional(Schema.String),
+              typeRef: Schema.optional(Schema.String),
+              datasetConfiguration: Schema.optional(Schema.String),
+              destinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    target: Schema.Literals([
+                      "Mqtt",
+                      "BrokerStateStore",
+                      "Storage",
+                    ]),
+                  }),
+                ),
+              ),
+              dataPoints: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    dataSource: Schema.String,
+                    dataPointConfiguration: Schema.optional(Schema.String),
+                    typeRef: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        eventGroups: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              dataSource: Schema.optional(Schema.String),
+              eventGroupConfiguration: Schema.optional(Schema.String),
+              defaultDestinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    target: Schema.Literals(["Mqtt", "Storage"]),
+                  }),
+                ),
+              ),
+              typeRef: Schema.optional(Schema.String),
+              events: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    dataSource: Schema.optional(Schema.String),
+                    eventConfiguration: Schema.optional(Schema.String),
+                    destinations: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          target: Schema.Literals(["Mqtt", "Storage"]),
+                        }),
+                      ),
+                    ),
+                    typeRef: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        streams: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              streamConfiguration: Schema.optional(Schema.String),
+              typeRef: Schema.optional(Schema.String),
+              destinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    target: Schema.Literals(["Mqtt", "Storage"]),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        managementGroups: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              dataSource: Schema.optional(Schema.String),
+              managementGroupConfiguration: Schema.optional(Schema.String),
+              typeRef: Schema.optional(Schema.String),
+              defaultTopic: Schema.optional(Schema.String),
+              defaultTimeoutInSeconds: Schema.optional(Schema.Number),
+              actions: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    actionConfiguration: Schema.optional(Schema.String),
+                    targetUri: Schema.String,
+                    typeRef: Schema.optional(Schema.String),
+                    topic: Schema.optional(Schema.String),
+                    actionType: Schema.optional(
+                      Schema.Literals(["Call", "Read", "Write"]),
+                    ),
+                    timeoutInSeconds: Schema.optional(Schema.Number),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceAssetsUpdateInput = typeof NamespaceAssetsUpdateInput.Type;
@@ -1113,11 +1899,179 @@ export const NamespaceDevicesCreateOrReplaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        enabled: Schema.optional(Schema.Boolean),
+        externalDeviceId: Schema.optional(Schema.String),
+        discoveredDeviceRef: Schema.optional(Schema.String),
+        manufacturer: Schema.optional(Schema.String),
+        model: Schema.optional(Schema.String),
+        operatingSystem: Schema.optional(Schema.String),
+        operatingSystemVersion: Schema.optional(Schema.String),
+        endpoints: Schema.optional(
+          Schema.Struct({
+            inbound: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  endpointType: Schema.String,
+                  address: Schema.String,
+                  version: Schema.optional(Schema.String),
+                  authentication: Schema.optional(
+                    Schema.Struct({
+                      method: Schema.Literals([
+                        "Anonymous",
+                        "Certificate",
+                        "UsernamePassword",
+                      ]),
+                      usernamePasswordCredentials: Schema.optional(
+                        Schema.Struct({
+                          usernameSecretName: Schema.String,
+                          passwordSecretName: SensitiveString,
+                        }),
+                      ),
+                      x509Credentials: Schema.optional(
+                        Schema.Struct({
+                          certificateSecretName: Schema.String,
+                          keySecretName: Schema.optional(Schema.String),
+                          intermediateCertificatesSecretName: Schema.optional(
+                            Schema.String,
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  trustSettings: Schema.optional(
+                    Schema.Struct({
+                      trustList: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  additionalConfiguration: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            outbound: Schema.optional(
+              Schema.Struct({
+                assigned: Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    endpointType: Schema.optional(Schema.String),
+                    address: Schema.String,
+                  }),
+                ),
+                unassigned: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      endpointType: Schema.optional(Schema.String),
+                      address: Schema.String,
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            config: Schema.optional(
+              Schema.Struct({
+                version: Schema.optional(Schema.Number),
+                lastTransitionTime: Schema.optional(Schema.String),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    details: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          code: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.String),
+                          correlationId: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            endpoints: Schema.optional(
+              Schema.Struct({
+                inbound: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      error: Schema.optional(
+                        Schema.Struct({
+                          code: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          details: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                code: Schema.optional(Schema.String),
+                                message: Schema.optional(Schema.String),
+                                info: Schema.optional(Schema.String),
+                                correlationId: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                      healthState: Schema.optional(
+                        Schema.Struct({
+                          status: Schema.optional(
+                            Schema.Literals([
+                              "Unknown",
+                              "Available",
+                              "Degraded",
+                              "Unavailable",
+                            ]),
+                          ),
+                          lastTransitionTime: Schema.optional(Schema.String),
+                          lastUpdateTime: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          reasonCode: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        version: Schema.optional(Schema.Number),
+        lastTransitionTime: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Accepted",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        type: Schema.String,
+        name: Schema.String,
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDevicesCreateOrReplaceInput =
@@ -1169,11 +2123,11 @@ export const NamespaceDevicesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDevicesDeleteInput =
@@ -1208,11 +2162,11 @@ export const NamespaceDevicesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDevicesGetInput = typeof NamespaceDevicesGetInput.Type;
@@ -1260,11 +2214,11 @@ export const NamespaceDevicesListByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDevicesListByResourceGroupInput =
@@ -1330,11 +2284,89 @@ export const NamespaceDevicesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        operatingSystemVersion: Schema.optional(Schema.String),
+        endpoints: Schema.optional(
+          Schema.Struct({
+            inbound: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  endpointType: Schema.optional(Schema.String),
+                  address: Schema.optional(Schema.String),
+                  version: Schema.optional(Schema.String),
+                  authentication: Schema.optional(
+                    Schema.Struct({
+                      method: Schema.optional(
+                        Schema.Literals([
+                          "Anonymous",
+                          "Certificate",
+                          "UsernamePassword",
+                        ]),
+                      ),
+                      usernamePasswordCredentials: Schema.optional(
+                        Schema.Struct({
+                          usernameSecretName: Schema.optional(Schema.String),
+                          passwordSecretName: Schema.optional(SensitiveString),
+                        }),
+                      ),
+                      x509Credentials: Schema.optional(
+                        Schema.Struct({
+                          certificateSecretName: Schema.optional(Schema.String),
+                          keySecretName: Schema.optional(Schema.String),
+                          intermediateCertificatesSecretName: Schema.optional(
+                            Schema.String,
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  trustSettings: Schema.optional(
+                    Schema.Struct({
+                      trustList: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  additionalConfiguration: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            outbound: Schema.optional(
+              Schema.Struct({
+                assigned: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      endpointType: Schema.optional(Schema.String),
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                unassigned: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      endpointType: Schema.optional(Schema.String),
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        enabled: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDevicesUpdateInput =
@@ -1387,11 +2419,190 @@ export const NamespaceDiscoveredAssetsCreateOrReplaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     discoveredAssetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        deviceRef: Schema.Struct({
+          deviceName: Schema.String,
+          endpointName: Schema.String,
+        }),
+        displayName: Schema.optional(Schema.String),
+        assetTypeRefs: Schema.optional(Schema.Array(Schema.String)),
+        description: Schema.optional(Schema.String),
+        discoveryId: Schema.String,
+        externalAssetId: Schema.optional(Schema.String),
+        version: Schema.Number,
+        manufacturer: Schema.optional(Schema.String),
+        manufacturerUri: Schema.optional(Schema.String),
+        model: Schema.optional(Schema.String),
+        productCode: Schema.optional(Schema.String),
+        hardwareRevision: Schema.optional(Schema.String),
+        softwareRevision: Schema.optional(Schema.String),
+        documentationUri: Schema.optional(Schema.String),
+        serialNumber: Schema.optional(Schema.String),
+        attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        defaultDatasetsConfiguration: Schema.optional(Schema.String),
+        defaultEventsConfiguration: Schema.optional(Schema.String),
+        defaultStreamsConfiguration: Schema.optional(Schema.String),
+        defaultManagementGroupsConfiguration: Schema.optional(Schema.String),
+        defaultDatasetsDestinations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              target: Schema.Literals(["Mqtt", "BrokerStateStore", "Storage"]),
+            }),
+          ),
+        ),
+        defaultEventsDestinations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              target: Schema.Literals(["Mqtt", "Storage"]),
+            }),
+          ),
+        ),
+        defaultStreamsDestinations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              target: Schema.Literals(["Mqtt", "Storage"]),
+            }),
+          ),
+        ),
+        datasets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              dataSource: Schema.optional(Schema.String),
+              typeRef: Schema.optional(Schema.String),
+              datasetConfiguration: Schema.optional(Schema.String),
+              destinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    target: Schema.Literals([
+                      "Mqtt",
+                      "BrokerStateStore",
+                      "Storage",
+                    ]),
+                  }),
+                ),
+              ),
+              dataPoints: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    dataSource: Schema.String,
+                    dataPointConfiguration: Schema.optional(Schema.String),
+                    lastUpdatedOn: Schema.optional(Schema.String),
+                    typeRef: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              lastUpdatedOn: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        eventGroups: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              dataSource: Schema.optional(Schema.String),
+              eventGroupConfiguration: Schema.optional(Schema.String),
+              defaultDestinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    target: Schema.Literals(["Mqtt", "Storage"]),
+                  }),
+                ),
+              ),
+              typeRef: Schema.optional(Schema.String),
+              events: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    dataSource: Schema.optional(Schema.String),
+                    eventConfiguration: Schema.optional(Schema.String),
+                    destinations: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          target: Schema.Literals(["Mqtt", "Storage"]),
+                        }),
+                      ),
+                    ),
+                    typeRef: Schema.optional(Schema.String),
+                    lastUpdatedOn: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        streams: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              streamConfiguration: Schema.optional(Schema.String),
+              typeRef: Schema.optional(Schema.String),
+              destinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    target: Schema.Literals(["Mqtt", "Storage"]),
+                  }),
+                ),
+              ),
+              lastUpdatedOn: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        managementGroups: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              managementGroupConfiguration: Schema.optional(Schema.String),
+              typeRef: Schema.optional(Schema.String),
+              dataSource: Schema.optional(Schema.String),
+              defaultTopic: Schema.optional(Schema.String),
+              defaultTimeoutInSeconds: Schema.optional(Schema.Number),
+              actions: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    actionConfiguration: Schema.optional(Schema.String),
+                    targetUri: Schema.String,
+                    typeRef: Schema.optional(Schema.String),
+                    topic: Schema.optional(Schema.String),
+                    actionType: Schema.optional(
+                      Schema.Literals(["Call", "Read", "Write"]),
+                    ),
+                    timeoutInSeconds: Schema.optional(Schema.Number),
+                    lastUpdatedOn: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              lastUpdatedOn: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Accepted",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.Struct({
+      type: Schema.String,
+      name: Schema.String,
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDiscoveredAssetsCreateOrReplaceInput =
@@ -1443,11 +2654,11 @@ export const NamespaceDiscoveredAssetsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     discoveredAssetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDiscoveredAssetsDeleteInput =
@@ -1481,11 +2692,11 @@ export const NamespaceDiscoveredAssetsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     discoveredAssetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDiscoveredAssetsGetInput =
@@ -1536,11 +2747,11 @@ export const NamespaceDiscoveredAssetsListByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDiscoveredAssetsListByResourceGroupInput =
@@ -1606,11 +2817,177 @@ export const NamespaceDiscoveredAssetsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     discoveredAssetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        deviceRef: Schema.optional(
+          Schema.Struct({
+            deviceName: Schema.optional(Schema.String),
+            endpointName: Schema.optional(Schema.String),
+          }),
+        ),
+        displayName: Schema.optional(Schema.String),
+        assetTypeRefs: Schema.optional(Schema.Array(Schema.String)),
+        description: Schema.optional(Schema.String),
+        discoveryId: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.Number),
+        manufacturer: Schema.optional(Schema.String),
+        manufacturerUri: Schema.optional(Schema.String),
+        model: Schema.optional(Schema.String),
+        productCode: Schema.optional(Schema.String),
+        hardwareRevision: Schema.optional(Schema.String),
+        softwareRevision: Schema.optional(Schema.String),
+        documentationUri: Schema.optional(Schema.String),
+        serialNumber: Schema.optional(Schema.String),
+        attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        defaultDatasetsConfiguration: Schema.optional(Schema.String),
+        defaultEventsConfiguration: Schema.optional(Schema.String),
+        defaultStreamsConfiguration: Schema.optional(Schema.String),
+        defaultManagementGroupsConfiguration: Schema.optional(Schema.String),
+        defaultDatasetsDestinations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              target: Schema.Literals(["Mqtt", "BrokerStateStore", "Storage"]),
+            }),
+          ),
+        ),
+        defaultEventsDestinations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              target: Schema.Literals(["Mqtt", "Storage"]),
+            }),
+          ),
+        ),
+        defaultStreamsDestinations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              target: Schema.Literals(["Mqtt", "Storage"]),
+            }),
+          ),
+        ),
+        datasets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              dataSource: Schema.optional(Schema.String),
+              typeRef: Schema.optional(Schema.String),
+              datasetConfiguration: Schema.optional(Schema.String),
+              destinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    target: Schema.Literals([
+                      "Mqtt",
+                      "BrokerStateStore",
+                      "Storage",
+                    ]),
+                  }),
+                ),
+              ),
+              dataPoints: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    dataSource: Schema.String,
+                    dataPointConfiguration: Schema.optional(Schema.String),
+                    lastUpdatedOn: Schema.optional(Schema.String),
+                    typeRef: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              lastUpdatedOn: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        eventGroups: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              dataSource: Schema.optional(Schema.String),
+              eventGroupConfiguration: Schema.optional(Schema.String),
+              defaultDestinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    target: Schema.Literals(["Mqtt", "Storage"]),
+                  }),
+                ),
+              ),
+              typeRef: Schema.optional(Schema.String),
+              events: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    dataSource: Schema.optional(Schema.String),
+                    eventConfiguration: Schema.optional(Schema.String),
+                    destinations: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          target: Schema.Literals(["Mqtt", "Storage"]),
+                        }),
+                      ),
+                    ),
+                    typeRef: Schema.optional(Schema.String),
+                    lastUpdatedOn: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        streams: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              streamConfiguration: Schema.optional(Schema.String),
+              typeRef: Schema.optional(Schema.String),
+              destinations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    target: Schema.Literals(["Mqtt", "Storage"]),
+                  }),
+                ),
+              ),
+              lastUpdatedOn: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        managementGroups: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              managementGroupConfiguration: Schema.optional(Schema.String),
+              typeRef: Schema.optional(Schema.String),
+              dataSource: Schema.optional(Schema.String),
+              defaultTopic: Schema.optional(Schema.String),
+              defaultTimeoutInSeconds: Schema.optional(Schema.Number),
+              actions: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    actionConfiguration: Schema.optional(Schema.String),
+                    targetUri: Schema.String,
+                    typeRef: Schema.optional(Schema.String),
+                    topic: Schema.optional(Schema.String),
+                    actionType: Schema.optional(
+                      Schema.Literals(["Call", "Read", "Write"]),
+                    ),
+                    timeoutInSeconds: Schema.optional(Schema.Number),
+                    lastUpdatedOn: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              lastUpdatedOn: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDiscoveredAssetsUpdateInput =
@@ -1662,11 +3039,76 @@ export const NamespaceDiscoveredDevicesCreateOrReplaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     discoveredDeviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        externalDeviceId: Schema.optional(Schema.String),
+        endpoints: Schema.optional(
+          Schema.Struct({
+            inbound: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  endpointType: Schema.String,
+                  address: Schema.String,
+                  version: Schema.optional(Schema.String),
+                  supportedAuthenticationMethods: Schema.optional(
+                    Schema.Array(
+                      Schema.Literals([
+                        "Anonymous",
+                        "Certificate",
+                        "UsernamePassword",
+                      ]),
+                    ),
+                  ),
+                  additionalConfiguration: Schema.optional(Schema.String),
+                  lastUpdatedOn: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            outbound: Schema.optional(
+              Schema.Struct({
+                assigned: Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    endpointType: Schema.optional(Schema.String),
+                    address: Schema.String,
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        manufacturer: Schema.optional(Schema.String),
+        model: Schema.optional(Schema.String),
+        operatingSystem: Schema.optional(Schema.String),
+        operatingSystemVersion: Schema.optional(Schema.String),
+        attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        discoveryId: Schema.String,
+        version: Schema.Number,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Accepted",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.Struct({
+      type: Schema.String,
+      name: Schema.String,
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDiscoveredDevicesCreateOrReplaceInput =
@@ -1718,11 +3160,11 @@ export const NamespaceDiscoveredDevicesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     discoveredDeviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDiscoveredDevicesDeleteInput =
@@ -1756,11 +3198,11 @@ export const NamespaceDiscoveredDevicesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     discoveredDeviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDiscoveredDevicesGetInput =
@@ -1811,11 +3253,11 @@ export const NamespaceDiscoveredDevicesListByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDiscoveredDevicesListByResourceGroupInput =
@@ -1881,11 +3323,61 @@ export const NamespaceDiscoveredDevicesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     discoveredDeviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        externalDeviceId: Schema.optional(Schema.String),
+        endpoints: Schema.optional(
+          Schema.Struct({
+            inbound: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  endpointType: Schema.optional(Schema.String),
+                  address: Schema.optional(Schema.String),
+                  version: Schema.optional(Schema.String),
+                  supportedAuthenticationMethods: Schema.optional(
+                    Schema.Array(
+                      Schema.Literals([
+                        "Anonymous",
+                        "Certificate",
+                        "UsernamePassword",
+                      ]),
+                    ),
+                  ),
+                  additionalConfiguration: Schema.optional(Schema.String),
+                  lastUpdatedOn: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            outbound: Schema.optional(
+              Schema.Struct({
+                assigned: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      endpointType: Schema.optional(Schema.String),
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        operatingSystemVersion: Schema.optional(Schema.String),
+        attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        discoveryId: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespaceDiscoveredDevicesUpdateInput =
@@ -1936,11 +3428,63 @@ export const NamespacesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        messaging: Schema.optional(
+          Schema.Struct({
+            endpoints: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  endpointType: Schema.optional(Schema.String),
+                  address: Schema.String,
+                  resourceId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        management: Schema.optional(
+          Schema.Struct({
+            endpoints: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  endpointType: Schema.String,
+                  address: Schema.String,
+                  scopeId: Schema.String,
+                  resourceId: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Accepted",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned"]),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespacesCreateOrReplaceInput =
@@ -1990,11 +3534,11 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
+    apiVersion: "2026-04-01",
   }),
 );
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
@@ -2021,11 +3565,11 @@ export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
+    apiVersion: "2026-04-01",
   }),
 );
 export type NamespacesGetInput = typeof NamespacesGetInput.Type;
@@ -2070,11 +3614,11 @@ export const NamespacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespacesListByResourceGroupInput =
@@ -2136,11 +3680,11 @@ export const NamespacesListByResourceGroup =
 export const NamespacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/namespaces",
+      apiVersion: "2026-04-01",
     }),
   );
 export type NamespacesListBySubscriptionInput =
@@ -2203,12 +3747,14 @@ export const NamespacesMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    scope: Schema.optional(Schema.Literals(["Resources"])),
+    resourceIds: Schema.optional(Schema.Array(Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/migrate",
+    apiVersion: "2026-04-01",
   }),
 );
 export type NamespacesMigrateInput = typeof NamespacesMigrateInput.Type;
@@ -2261,11 +3807,52 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals(["None", "SystemAssigned"]),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      messaging: Schema.optional(
+        Schema.Struct({
+          endpoints: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                endpointType: Schema.optional(Schema.String),
+                address: Schema.String,
+                resourceId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      management: Schema.optional(
+        Schema.Struct({
+          endpoints: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                endpointType: Schema.String,
+                address: Schema.String,
+                scopeId: Schema.String,
+                resourceId: Schema.String,
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
+    apiVersion: "2026-04-01",
   }),
 );
 export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
@@ -2308,12 +3895,13 @@ export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DeviceRegistry/operations",
+    apiVersion: "2026-04-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -2360,11 +3948,11 @@ export const OperationStatusGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/locations/{location}/operationStatuses/{operationId}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
@@ -2447,11 +4035,38 @@ export const SchemaRegistriesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        namespace: Schema.String,
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        storageAccountContainerUrl: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Accepted",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned"]),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SchemaRegistriesCreateOrReplaceInput =
@@ -2501,11 +4116,11 @@ export const SchemaRegistriesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SchemaRegistriesDeleteInput =
@@ -2538,11 +4153,11 @@ export const SchemaRegistriesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SchemaRegistriesGetInput = typeof SchemaRegistriesGetInput.Type;
@@ -2588,11 +4203,11 @@ export const SchemaRegistriesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SchemaRegistriesListByResourceGroupInput =
@@ -2654,11 +4269,11 @@ export const SchemaRegistriesListByResourceGroup =
 export const SchemaRegistriesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/schemaRegistries",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SchemaRegistriesListBySubscriptionInput =
@@ -2721,11 +4336,25 @@ export const SchemaRegistriesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned"]),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SchemaRegistriesUpdateInput =
@@ -2777,11 +4406,30 @@ export const SchemasCreateOrReplaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaRegistryName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        format: Schema.Literals(["JsonSchema/draft-07", "Delta/1.0"]),
+        schemaType: Schema.Literals(["MessageSchema"]),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Accepted",
+            "Deleting",
+          ]),
+        ),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SchemasCreateOrReplaceInput =
@@ -2833,11 +4481,11 @@ export const SchemasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schemaRegistryName: Schema.String.pipe(T.PathParam()),
   schemaName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SchemasDeleteInput = typeof SchemasDeleteInput.Type;
@@ -2866,11 +4514,11 @@ export const SchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schemaRegistryName: Schema.String.pipe(T.PathParam()),
   schemaName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SchemasGetInput = typeof SchemasGetInput.Type;
@@ -2917,11 +4565,11 @@ export const SchemasListBySchemaRegistryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SchemasListBySchemaRegistryInput =
@@ -2989,11 +4637,28 @@ export const SchemaVersionsCreateOrReplaceInput =
     schemaRegistryName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     schemaVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        uuid: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        schemaContent: Schema.String,
+        hash: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Accepted",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SchemaVersionsCreateOrReplaceInput =
@@ -3047,11 +4712,11 @@ export const SchemaVersionsDeleteInput =
     schemaRegistryName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     schemaVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SchemaVersionsDeleteInput = typeof SchemaVersionsDeleteInput.Type;
@@ -3086,12 +4751,12 @@ export const SchemaVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     schemaRegistryName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     schemaVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
+    apiVersion: "2026-04-01",
   }),
 );
 export type SchemaVersionsGetInput = typeof SchemaVersionsGetInput.Type;
@@ -3141,11 +4806,11 @@ export const SchemaVersionsListBySchemaInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaRegistryName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions",
+      apiVersion: "2026-04-01",
     }),
   );
 export type SchemaVersionsListBySchemaInput =

@@ -15,11 +15,34 @@ export const AssociationsInterfaceCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     associationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        associationType: Schema.Literals(["subnets"]),
+        subnet: Schema.optional(
+          Schema.Struct({
+            id: Schema.String,
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type AssociationsInterfaceCreateOrUpdateInput =
@@ -71,11 +94,11 @@ export const AssociationsInterfaceDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     associationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type AssociationsInterfaceDeleteInput =
@@ -110,11 +133,11 @@ export const AssociationsInterfaceGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     associationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type AssociationsInterfaceGetInput =
@@ -166,11 +189,11 @@ export const AssociationsInterfaceListByTrafficControllerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations",
+      apiVersion: "2025-01-01",
     }),
   );
 export type AssociationsInterfaceListByTrafficControllerInput =
@@ -236,11 +259,22 @@ export const AssociationsInterfaceUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     associationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        associationType: Schema.optional(Schema.Literals(["subnets"])),
+        subnet: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type AssociationsInterfaceUpdateInput =
@@ -293,11 +327,29 @@ export const FrontendsInterfaceCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     frontendName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        fqdn: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type FrontendsInterfaceCreateOrUpdateInput =
@@ -349,11 +401,11 @@ export const FrontendsInterfaceDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     frontendName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type FrontendsInterfaceDeleteInput =
@@ -388,11 +440,11 @@ export const FrontendsInterfaceGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     frontendName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type FrontendsInterfaceGetInput = typeof FrontendsInterfaceGetInput.Type;
@@ -443,11 +495,11 @@ export const FrontendsInterfaceListByTrafficControllerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends",
+      apiVersion: "2025-01-01",
     }),
   );
 export type FrontendsInterfaceListByTrafficControllerInput =
@@ -513,11 +565,12 @@ export const FrontendsInterfaceUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     frontendName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type FrontendsInterfaceUpdateInput =
@@ -564,12 +617,13 @@ export const FrontendsInterfaceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ServiceNetworking/operations",
+    apiVersion: "2025-01-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -617,11 +671,34 @@ export const SecurityPoliciesInterfaceCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     securityPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        policyType: Schema.optional(Schema.Literals(["waf"])),
+        wafPolicy: Schema.optional(
+          Schema.Struct({
+            id: Schema.String,
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type SecurityPoliciesInterfaceCreateOrUpdateInput =
@@ -673,11 +750,11 @@ export const SecurityPoliciesInterfaceDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     securityPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type SecurityPoliciesInterfaceDeleteInput =
@@ -711,11 +788,11 @@ export const SecurityPoliciesInterfaceGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     securityPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type SecurityPoliciesInterfaceGetInput =
@@ -766,11 +843,11 @@ export const SecurityPoliciesInterfaceListByTrafficControllerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies",
+      apiVersion: "2025-01-01",
     }),
   );
 export type SecurityPoliciesInterfaceListByTrafficControllerInput =
@@ -836,11 +913,21 @@ export const SecurityPoliciesInterfaceUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     securityPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        wafPolicy: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type SecurityPoliciesInterfaceUpdateInput =
@@ -891,11 +978,59 @@ export const TrafficControllerInterfaceCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        configurationEndpoints: Schema.optional(Schema.Array(Schema.String)),
+        frontends: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+            }),
+          ),
+        ),
+        associations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+            }),
+          ),
+        ),
+        securityPolicies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+            }),
+          ),
+        ),
+        securityPolicyConfigurations: Schema.optional(
+          Schema.Struct({
+            wafSecurityPolicy: Schema.optional(
+              Schema.Struct({
+                id: Schema.String,
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type TrafficControllerInterfaceCreateOrUpdateInput =
@@ -945,11 +1080,11 @@ export const TrafficControllerInterfaceDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type TrafficControllerInterfaceDeleteInput =
@@ -981,11 +1116,11 @@ export const TrafficControllerInterfaceGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type TrafficControllerInterfaceGetInput =
@@ -1034,11 +1169,11 @@ export const TrafficControllerInterfaceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers",
+      apiVersion: "2025-01-01",
     }),
   );
 export type TrafficControllerInterfaceListByResourceGroupInput =
@@ -1100,11 +1235,11 @@ export const TrafficControllerInterfaceListByResourceGroup =
 export const TrafficControllerInterfaceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceNetworking/trafficControllers",
+      apiVersion: "2025-01-01",
     }),
   );
 export type TrafficControllerInterfaceListBySubscriptionInput =
@@ -1167,11 +1302,25 @@ export const TrafficControllerInterfaceUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        securityPolicyConfigurations: Schema.optional(
+          Schema.Struct({
+            wafSecurityPolicy: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type TrafficControllerInterfaceUpdateInput =

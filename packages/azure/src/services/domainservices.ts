@@ -7,11 +7,16 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const DomainServiceOperationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.AAD/operations" }),
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.AAD/operations",
+      apiVersion: "2022-12-01",
+    }),
   );
 export type DomainServiceOperationsListInput =
   typeof DomainServiceOperationsListInput.Type;
@@ -52,10 +57,197 @@ export const DomainServiceOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DomainServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        version: Schema.optional(Schema.Number),
+        tenantId: Schema.optional(Schema.String),
+        domainName: Schema.optional(Schema.String),
+        deploymentId: Schema.optional(Schema.String),
+        syncOwner: Schema.optional(Schema.String),
+        syncApplicationId: Schema.optional(Schema.String),
+        replicaSets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              replicaSetId: Schema.optional(Schema.String),
+              location: Schema.optional(Schema.String),
+              vnetSiteId: Schema.optional(Schema.String),
+              subnetId: Schema.optional(Schema.String),
+              domainControllerIpAddress: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              externalAccessIpAddress: Schema.optional(Schema.String),
+              serviceStatus: Schema.optional(Schema.String),
+              healthLastEvaluated: Schema.optional(Schema.String),
+              healthMonitors: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    name: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              healthAlerts: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    name: Schema.optional(Schema.String),
+                    issue: Schema.optional(Schema.String),
+                    severity: Schema.optional(Schema.String),
+                    raised: Schema.optional(Schema.String),
+                    lastDetected: Schema.optional(Schema.String),
+                    resolutionUri: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        ldapsSettings: Schema.optional(
+          Schema.Struct({
+            ldaps: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+            pfxCertificate: Schema.optional(Schema.String),
+            pfxCertificatePassword: Schema.optional(SensitiveString),
+            publicCertificate: Schema.optional(Schema.String),
+            certificateThumbprint: Schema.optional(Schema.String),
+            certificateNotAfter: Schema.optional(Schema.String),
+            externalAccess: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+        resourceForestSettings: Schema.optional(
+          Schema.Struct({
+            settings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  trustedDomainFqdn: Schema.optional(Schema.String),
+                  trustDirection: Schema.optional(Schema.String),
+                  friendlyName: Schema.optional(Schema.String),
+                  remoteDnsIps: Schema.optional(Schema.String),
+                  trustPassword: Schema.optional(SensitiveString),
+                }),
+              ),
+            ),
+            resourceForest: Schema.optional(Schema.String),
+          }),
+        ),
+        domainSecuritySettings: Schema.optional(
+          Schema.Struct({
+            ntlmV1: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+            tlsV1: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+            syncNtlmPasswords: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            syncKerberosPasswords: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            syncOnPremPasswords: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            kerberosRc4Encryption: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            kerberosArmoring: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            ldapSigning: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            channelBinding: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+        domainConfigurationType: Schema.optional(Schema.String),
+        sku: Schema.optional(Schema.String),
+        filteredSync: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        syncScope: Schema.optional(Schema.Literals(["All", "CloudOnly"])),
+        notificationSettings: Schema.optional(
+          Schema.Struct({
+            notifyGlobalAdmins: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            notifyDcAdmins: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            additionalRecipients: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        migrationProperties: Schema.optional(
+          Schema.Struct({
+            oldSubnetId: Schema.optional(Schema.String),
+            oldVnetSiteId: Schema.optional(Schema.String),
+            migrationProgress: Schema.optional(
+              Schema.Struct({
+                completionPercentage: Schema.optional(Schema.Number),
+                progressMessage: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        configDiagnostics: Schema.optional(
+          Schema.Struct({
+            lastExecuted: Schema.optional(Schema.String),
+            validatorResults: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  validatorId: Schema.optional(Schema.String),
+                  replicaSetSubnetDisplayName: Schema.optional(Schema.String),
+                  status: Schema.optional(
+                    Schema.Literals([
+                      "None",
+                      "Running",
+                      "OK",
+                      "Failure",
+                      "Warning",
+                      "Skipped",
+                    ]),
+                  ),
+                  issues: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        id: Schema.optional(Schema.String),
+                        descriptionParams: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
+      apiVersion: "2022-12-01",
     }),
   );
 export type DomainServicesCreateOrUpdateInput =
@@ -105,6 +297,7 @@ export const DomainServicesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
+      apiVersion: "2022-12-01",
     }),
   );
 export type DomainServicesDeleteInput = typeof DomainServicesDeleteInput.Type;
@@ -133,6 +326,7 @@ export const DomainServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
+    apiVersion: "2022-12-01",
   }),
 );
 export type DomainServicesGetInput = typeof DomainServicesGetInput.Type;
@@ -179,6 +373,7 @@ export const DomainServicesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AAD/domainServices",
+      apiVersion: "2022-12-01",
     }),
   );
 export type DomainServicesListInput = typeof DomainServicesListInput.Type;
@@ -242,6 +437,7 @@ export const DomainServicesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices",
+      apiVersion: "2022-12-01",
     }),
   );
 export type DomainServicesListByResourceGroupInput =
@@ -304,10 +500,197 @@ export const DomainServicesListByResourceGroup =
   }));
 // Input Schema
 export const DomainServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        version: Schema.optional(Schema.Number),
+        tenantId: Schema.optional(Schema.String),
+        domainName: Schema.optional(Schema.String),
+        deploymentId: Schema.optional(Schema.String),
+        syncOwner: Schema.optional(Schema.String),
+        syncApplicationId: Schema.optional(Schema.String),
+        replicaSets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              replicaSetId: Schema.optional(Schema.String),
+              location: Schema.optional(Schema.String),
+              vnetSiteId: Schema.optional(Schema.String),
+              subnetId: Schema.optional(Schema.String),
+              domainControllerIpAddress: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              externalAccessIpAddress: Schema.optional(Schema.String),
+              serviceStatus: Schema.optional(Schema.String),
+              healthLastEvaluated: Schema.optional(Schema.String),
+              healthMonitors: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    name: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              healthAlerts: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    name: Schema.optional(Schema.String),
+                    issue: Schema.optional(Schema.String),
+                    severity: Schema.optional(Schema.String),
+                    raised: Schema.optional(Schema.String),
+                    lastDetected: Schema.optional(Schema.String),
+                    resolutionUri: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        ldapsSettings: Schema.optional(
+          Schema.Struct({
+            ldaps: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+            pfxCertificate: Schema.optional(Schema.String),
+            pfxCertificatePassword: Schema.optional(SensitiveString),
+            publicCertificate: Schema.optional(Schema.String),
+            certificateThumbprint: Schema.optional(Schema.String),
+            certificateNotAfter: Schema.optional(Schema.String),
+            externalAccess: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+        resourceForestSettings: Schema.optional(
+          Schema.Struct({
+            settings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  trustedDomainFqdn: Schema.optional(Schema.String),
+                  trustDirection: Schema.optional(Schema.String),
+                  friendlyName: Schema.optional(Schema.String),
+                  remoteDnsIps: Schema.optional(Schema.String),
+                  trustPassword: Schema.optional(SensitiveString),
+                }),
+              ),
+            ),
+            resourceForest: Schema.optional(Schema.String),
+          }),
+        ),
+        domainSecuritySettings: Schema.optional(
+          Schema.Struct({
+            ntlmV1: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+            tlsV1: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+            syncNtlmPasswords: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            syncKerberosPasswords: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            syncOnPremPasswords: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            kerberosRc4Encryption: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            kerberosArmoring: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            ldapSigning: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            channelBinding: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+        domainConfigurationType: Schema.optional(Schema.String),
+        sku: Schema.optional(Schema.String),
+        filteredSync: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        syncScope: Schema.optional(Schema.Literals(["All", "CloudOnly"])),
+        notificationSettings: Schema.optional(
+          Schema.Struct({
+            notifyGlobalAdmins: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            notifyDcAdmins: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            additionalRecipients: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        migrationProperties: Schema.optional(
+          Schema.Struct({
+            oldSubnetId: Schema.optional(Schema.String),
+            oldVnetSiteId: Schema.optional(Schema.String),
+            migrationProgress: Schema.optional(
+              Schema.Struct({
+                completionPercentage: Schema.optional(Schema.Number),
+                progressMessage: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        configDiagnostics: Schema.optional(
+          Schema.Struct({
+            lastExecuted: Schema.optional(Schema.String),
+            validatorResults: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  validatorId: Schema.optional(Schema.String),
+                  replicaSetSubnetDisplayName: Schema.optional(Schema.String),
+                  status: Schema.optional(
+                    Schema.Literals([
+                      "None",
+                      "Running",
+                      "OK",
+                      "Failure",
+                      "Warning",
+                      "Skipped",
+                    ]),
+                  ),
+                  issues: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        id: Schema.optional(Schema.String),
+                        descriptionParams: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
+      apiVersion: "2022-12-01",
     }),
   );
 export type DomainServicesUpdateInput = typeof DomainServicesUpdateInput.Type;
@@ -352,11 +735,16 @@ export const DomainServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const OuContainerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    accountName: Schema.optional(Schema.String),
+    spn: Schema.optional(Schema.String),
+    password: Schema.optional(SensitiveString),
+  },
 ).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
+    apiVersion: "2022-12-01",
   }),
 );
 export type OuContainerCreateInput = typeof OuContainerCreateInput.Type;
@@ -404,6 +792,7 @@ export const OuContainerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
+    apiVersion: "2022-12-01",
   }),
 );
 export type OuContainerDeleteInput = typeof OuContainerDeleteInput.Type;
@@ -429,6 +818,7 @@ export const OuContainerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
+    apiVersion: "2022-12-01",
   }),
 );
 export type OuContainerGetInput = typeof OuContainerGetInput.Type;
@@ -475,6 +865,7 @@ export const OuContainerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer",
+    apiVersion: "2022-12-01",
   }),
 );
 export type OuContainerListInput = typeof OuContainerListInput.Type;
@@ -534,7 +925,11 @@ export const OuContainerList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const OuContainerOperationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Aad/operations" }),
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Aad/operations",
+      apiVersion: "2022-12-01",
+    }),
   );
 export type OuContainerOperationsListInput =
   typeof OuContainerOperationsListInput.Type;
@@ -575,11 +970,16 @@ export const OuContainerOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const OuContainerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    accountName: Schema.optional(Schema.String),
+    spn: Schema.optional(Schema.String),
+    password: Schema.optional(SensitiveString),
+  },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
+    apiVersion: "2022-12-01",
   }),
 );
 export type OuContainerUpdateInput = typeof OuContainerUpdateInput.Type;

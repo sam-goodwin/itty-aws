@@ -12,11 +12,11 @@ import * as T from "../traits.ts";
 export const CreateApiKeyPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiKeyAlias: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/keys/{apiKeyAlias}/create",
+    apiVersion: "2023-01-01-preview",
   }),
 );
 export type CreateApiKeyPostInput = typeof CreateApiKeyPostInput.Type;
@@ -49,6 +49,7 @@ export const EdgeZonesProductsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/locations/{location}/edgeZones/{edgeZone}/products",
+      apiVersion: "2022-07-31",
     }),
   );
 export type EdgeZonesProductsListInput = typeof EdgeZonesProductsListInput.Type;
@@ -1360,11 +1361,11 @@ export const EdgeZonesProductsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const GetApiKeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/keys",
+    apiVersion: "2023-01-01-preview",
   }),
 );
 export type GetApiKeysListInput = typeof GetApiKeysListInput.Type;
@@ -1396,12 +1397,13 @@ export const GetApiKeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetApiKeysListOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Marketplace/operations",
+    apiVersion: "2025-05-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1434,7 +1436,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 
 // The operation
 /**
- * Lists all of the available Microsoft.Marketplace REST API operations.
+ * List the operations for the provider
  *
  * @param api-version - The API version to use for this operation.
  */
@@ -1445,7 +1447,6 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ProductGetGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
     language: Schema.optional(Schema.String),
     includeHiddenPlans: Schema.optional(Schema.Boolean),
@@ -1456,6 +1457,7 @@ export const ProductGetGetByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/products/{productId}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ProductGetGetByBillingAccountInput =
@@ -1938,7 +1940,6 @@ export const ProductGetGetByBillingAccount =
 // Input Schema
 export const ProductGetGetByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
     language: Schema.optional(Schema.String),
     includeHiddenPlans: Schema.optional(Schema.Boolean),
@@ -1949,6 +1950,7 @@ export const ProductGetGetByBillingProfileInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/products/{productId}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ProductGetGetByBillingProfileInput =
@@ -2432,7 +2434,6 @@ export const ProductGetGetByBillingProfile =
 export const ProductGetGetBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
     language: Schema.optional(Schema.String),
     includeHiddenPlans: Schema.optional(Schema.Boolean),
@@ -2444,6 +2445,7 @@ export const ProductGetGetBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/products/{productId}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ProductGetGetBySubscriptionInput =
@@ -2929,7 +2931,6 @@ export const ProductGetGetBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ProductGetGetByTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     market: Schema.String,
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
     language: Schema.optional(Schema.String),
@@ -2942,6 +2943,7 @@ export const ProductGetGetByTenantInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Marketplace/products/{productId}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ProductGetGetByTenantInput = typeof ProductGetGetByTenantInput.Type;
@@ -3426,7 +3428,6 @@ export const ProductGetGetByTenant = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ProductListListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     language: Schema.optional(Schema.String),
     excludePublicOffersAndPublicPlans: Schema.optional(Schema.Boolean),
     locations: Schema.optional(Schema.String),
@@ -3439,6 +3440,7 @@ export const ProductListListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/products",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ProductListListByBillingAccountInput =
@@ -3587,7 +3589,6 @@ export const ProductListListByBillingAccount =
 // Input Schema
 export const ProductListListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     language: Schema.optional(Schema.String),
     excludePublicOffersAndPublicPlans: Schema.optional(Schema.Boolean),
     locations: Schema.optional(Schema.String),
@@ -3600,6 +3601,7 @@ export const ProductListListByBillingProfileInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/products",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ProductListListByBillingProfileInput =
@@ -3749,7 +3751,6 @@ export const ProductListListByBillingProfile =
 export const ProductListListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     language: Schema.optional(Schema.String),
     excludePublicOffersAndPublicPlans: Schema.optional(Schema.Boolean),
     $filter: Schema.optional(Schema.String),
@@ -3761,6 +3762,7 @@ export const ProductListListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/products",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ProductListListBySubscriptionInput =
@@ -3909,7 +3911,6 @@ export const ProductListListBySubscription =
 // Input Schema
 export const ProductListListByTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     market: Schema.optional(Schema.String),
     language: Schema.optional(Schema.String),
     excludePublicOffersAndPublicPlans: Schema.optional(Schema.Boolean),
@@ -3922,6 +3923,7 @@ export const ProductListListByTenantInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Marketplace/products",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ProductListListByTenantInput =
@@ -4073,11 +4075,11 @@ export const ProductListListByTenant = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RevokeApiKeyPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiKeyAlias: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/keys/{apiKeyAlias}/revoke",
+    apiVersion: "2023-01-01-preview",
   }),
 );
 export type RevokeApiKeyPostInput = typeof RevokeApiKeyPostInput.Type;
@@ -4101,9 +4103,52 @@ export const RevokeApiKeyPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SearchPostArmInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
+  searchQuery: Schema.optional(Schema.String),
+  publisherName: Schema.optional(Schema.String),
+  skip: Schema.optional(Schema.Number),
+  take: Schema.optional(Schema.Number),
+  isAzureBenefitEligible: Schema.optional(Schema.Boolean),
+  isMicrosoftProduct: Schema.optional(Schema.Boolean),
+  isThirdParty: Schema.optional(Schema.Boolean),
+  isCoreVm: Schema.optional(Schema.Boolean),
+  isPreferredSolution: Schema.optional(Schema.Boolean),
+  isAdditionalPurchaseRequired: Schema.optional(Schema.Boolean),
+  isPowerBICertified: Schema.optional(Schema.Boolean),
+  isIndustryCloud: Schema.optional(Schema.Boolean),
+  languages: Schema.Array(Schema.String),
+  stores: Schema.Array(
+    Schema.Literals([
+      "Appsource",
+      "AMP",
+      "Ibiza",
+      "Cosell",
+      "DakotaDownstream",
+    ]),
+  ),
+  select: Schema.optional(Schema.Array(Schema.String)),
+  sortBy: Schema.optional(Schema.Array(Schema.String)),
+  offerTypes: Schema.optional(Schema.Array(Schema.String)),
+  pricingTypes: Schema.optional(
+    Schema.Array(Schema.Literals(["Free", "FreeTrial", "Byol", "Payg", "Ri"])),
+  ),
+  privateStoreAllowances: Schema.optional(
+    Schema.Array(
+      Schema.Literals(["AllowedByAdmin", "AllowedByDefault", "NonAllowed"]),
+    ),
+  ),
+  appSourceIndustries: Schema.optional(Schema.Array(Schema.String)),
+  operatingSystems: Schema.optional(Schema.Array(Schema.String)),
+  appSourceCategories: Schema.optional(Schema.Array(Schema.String)),
+  azureIndustries: Schema.optional(Schema.Array(Schema.String)),
+  azureCategories: Schema.optional(Schema.Array(Schema.String)),
+  azurePortalCategories: Schema.optional(Schema.Array(Schema.String)),
+  facets: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
-  T.Http({ method: "POST", path: "/providers/Microsoft.Marketplace/search" }),
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Marketplace/search",
+    apiVersion: "2022-02-02",
+  }),
 );
 export type SearchPostArmInput = typeof SearchPostArmInput.Type;
 

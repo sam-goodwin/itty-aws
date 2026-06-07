@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -15,11 +16,144 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      extensionType: Schema.optional(Schema.String),
+      autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+      releaseTrain: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.NullOr(Schema.String)),
+      scope: Schema.optional(
+        Schema.Struct({
+          cluster: Schema.optional(
+            Schema.Struct({
+              releaseNamespace: Schema.optional(Schema.String),
+            }),
+          ),
+          namespace: Schema.optional(
+            Schema.Struct({
+              targetNamespace: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      configurationSettings: Schema.optional(
+        Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      ),
+      configurationProtectedSettings: Schema.optional(
+        Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      ),
+      currentVersion: Schema.optional(Schema.NullOr(Schema.String)),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Updating",
+          "Deleting",
+        ]),
+      ),
+      statuses: Schema.optional(
+        Schema.NullOr(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              displayStatus: Schema.optional(Schema.String),
+              level: Schema.optional(
+                Schema.Literals(["Error", "Warning", "Information"]),
+              ),
+              message: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      ),
+      errorInfo: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          target: Schema.optional(Schema.String),
+          details: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                target: Schema.optional(Schema.String),
+                details: Schema.optional(Schema.Array(Schema.Unknown)),
+                additionalInfo: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      type: Schema.optional(Schema.String),
+                      info: Schema.optional(Schema.Unknown),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          ),
+          additionalInfo: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                info: Schema.optional(Schema.Unknown),
+              }),
+            ),
+          ),
+        }),
+      ),
+      customLocationSettings: Schema.optional(
+        Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      ),
+      packageUri: Schema.optional(Schema.NullOr(Schema.String)),
+      aksAssignedIdentity: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            tenantId: Schema.optional(Schema.String),
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+          }),
+        ),
+      ),
+      isSystemExtension: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  plan: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      publisher: Schema.String,
+      product: Schema.String,
+      promotionCode: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
+    apiVersion: "2023-05-01",
   }),
 );
 export type ExtensionsCreateInput = typeof ExtensionsCreateInput.Type;
@@ -56,12 +190,12 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   forceDelete: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
+    apiVersion: "2023-05-01",
   }),
 );
 export type ExtensionsDeleteInput = typeof ExtensionsDeleteInput.Type;
@@ -93,11 +227,11 @@ export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
+    apiVersion: "2023-05-01",
   }),
 );
 export type ExtensionsGetInput = typeof ExtensionsGetInput.Type;
@@ -132,11 +266,11 @@ export const ExtensionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions",
+    apiVersion: "2023-05-01",
   }),
 );
 export type ExtensionsListInput = typeof ExtensionsListInput.Type;
@@ -178,11 +312,24 @@ export const ExtensionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+      releaseTrain: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.NullOr(Schema.String)),
+      configurationSettings: Schema.optional(
+        Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      ),
+      configurationProtectedSettings: Schema.optional(
+        Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
+    apiVersion: "2023-05-01",
   }),
 );
 export type ExtensionsUpdateInput = typeof ExtensionsUpdateInput.Type;
@@ -221,11 +368,11 @@ export const FluxConfigOperationStatusGetInput =
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}/operations/{operationId}",
+      apiVersion: "2023-05-01",
     }),
   );
 export type FluxConfigOperationStatusGetInput =
@@ -302,11 +449,265 @@ export const FluxConfigurationsCreateOrUpdateInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        scope: Schema.optional(Schema.Literals(["cluster", "namespace"])),
+        namespace: Schema.optional(Schema.String),
+        sourceKind: Schema.optional(
+          Schema.Literals(["GitRepository", "Bucket", "AzureBlob"]),
+        ),
+        suspend: Schema.optional(Schema.Boolean),
+        gitRepository: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              url: Schema.optional(Schema.NullOr(Schema.String)),
+              timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+              syncIntervalInSeconds: Schema.optional(
+                Schema.NullOr(Schema.Number),
+              ),
+              repositoryRef: Schema.optional(
+                Schema.NullOr(
+                  Schema.Struct({
+                    branch: Schema.optional(Schema.NullOr(Schema.String)),
+                    tag: Schema.optional(Schema.NullOr(Schema.String)),
+                    semver: Schema.optional(Schema.NullOr(Schema.String)),
+                    commit: Schema.optional(Schema.NullOr(Schema.String)),
+                  }),
+                ),
+              ),
+              sshKnownHosts: Schema.optional(Schema.NullOr(Schema.String)),
+              httpsUser: Schema.optional(Schema.NullOr(Schema.String)),
+              httpsCACert: Schema.optional(Schema.NullOr(Schema.String)),
+              localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
+          ),
+        ),
+        bucket: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              url: Schema.optional(Schema.String),
+              bucketName: Schema.optional(Schema.String),
+              insecure: Schema.optional(Schema.Boolean),
+              timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+              syncIntervalInSeconds: Schema.optional(
+                Schema.NullOr(Schema.Number),
+              ),
+              accessKey: Schema.optional(Schema.NullOr(Schema.String)),
+              localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
+          ),
+        ),
+        azureBlob: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              url: Schema.optional(Schema.NullOr(Schema.String)),
+              containerName: Schema.optional(Schema.NullOr(Schema.String)),
+              timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+              syncIntervalInSeconds: Schema.optional(
+                Schema.NullOr(Schema.Number),
+              ),
+              servicePrincipal: Schema.optional(
+                Schema.NullOr(
+                  Schema.Struct({
+                    clientId: Schema.optional(Schema.NullOr(Schema.String)),
+                    tenantId: Schema.optional(Schema.NullOr(Schema.String)),
+                    clientSecret: Schema.optional(SensitiveNullableString),
+                    clientCertificate: Schema.optional(
+                      Schema.NullOr(Schema.String),
+                    ),
+                    clientCertificatePassword: Schema.optional(
+                      SensitiveNullableString,
+                    ),
+                    clientCertificateSendChain: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              ),
+              accountKey: Schema.optional(Schema.NullOr(Schema.String)),
+              sasToken: Schema.optional(Schema.NullOr(Schema.String)),
+              managedIdentity: Schema.optional(
+                Schema.NullOr(
+                  Schema.Struct({
+                    clientId: Schema.optional(Schema.NullOr(Schema.String)),
+                  }),
+                ),
+              ),
+              localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
+          ),
+        ),
+        kustomizations: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.NullOr(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  path: Schema.optional(Schema.String),
+                  dependsOn: Schema.optional(
+                    Schema.NullOr(Schema.Array(Schema.String)),
+                  ),
+                  timeoutInSeconds: Schema.optional(
+                    Schema.NullOr(Schema.Number),
+                  ),
+                  syncIntervalInSeconds: Schema.optional(
+                    Schema.NullOr(Schema.Number),
+                  ),
+                  retryIntervalInSeconds: Schema.optional(
+                    Schema.NullOr(Schema.Number),
+                  ),
+                  prune: Schema.optional(Schema.Boolean),
+                  force: Schema.optional(Schema.Boolean),
+                  wait: Schema.optional(Schema.Boolean),
+                  postBuild: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Struct({
+                        substitute: Schema.optional(
+                          Schema.NullOr(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        ),
+                        substituteFrom: Schema.optional(
+                          Schema.NullOr(
+                            Schema.Array(
+                              Schema.NullOr(
+                                Schema.Struct({
+                                  kind: Schema.optional(Schema.String),
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            ),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          ),
+        ),
+        configurationProtectedSettings: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+        statuses: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(
+              Schema.NullOr(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  namespace: Schema.optional(Schema.String),
+                  kind: Schema.optional(Schema.String),
+                  complianceState: Schema.optional(
+                    Schema.Literals([
+                      "Compliant",
+                      "Non-Compliant",
+                      "Pending",
+                      "Suspended",
+                      "Unknown",
+                    ]),
+                  ),
+                  appliedBy: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                        namespace: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  statusConditions: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Array(
+                        Schema.Struct({
+                          lastTransitionTime: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          reason: Schema.optional(Schema.String),
+                          status: Schema.optional(Schema.String),
+                          type: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  ),
+                  helmReleaseProperties: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Struct({
+                        lastRevisionApplied: Schema.optional(
+                          Schema.NullOr(Schema.Number),
+                        ),
+                        helmChartRef: Schema.optional(
+                          Schema.NullOr(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              namespace: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        failureCount: Schema.optional(
+                          Schema.NullOr(Schema.Number),
+                        ),
+                        installFailureCount: Schema.optional(
+                          Schema.NullOr(Schema.Number),
+                        ),
+                        upgradeFailureCount: Schema.optional(
+                          Schema.NullOr(Schema.Number),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          ),
+        ),
+        repositoryPublicKey: Schema.optional(Schema.NullOr(Schema.String)),
+        sourceSyncedCommitId: Schema.optional(Schema.NullOr(Schema.String)),
+        sourceUpdatedAt: Schema.optional(Schema.NullOr(Schema.String)),
+        statusUpdatedAt: Schema.optional(Schema.NullOr(Schema.String)),
+        waitForReconciliation: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        reconciliationWaitDuration: Schema.optional(
+          Schema.NullOr(Schema.String),
+        ),
+        complianceState: Schema.optional(
+          Schema.Literals([
+            "Compliant",
+            "Non-Compliant",
+            "Pending",
+            "Suspended",
+            "Unknown",
+          ]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Creating",
+            "Updating",
+            "Deleting",
+          ]),
+        ),
+        errorMessage: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
+      apiVersion: "2023-05-01",
     }),
   );
 export type FluxConfigurationsCreateOrUpdateInput =
@@ -346,12 +747,12 @@ export const FluxConfigurationsDeleteInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     forceDelete: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
+      apiVersion: "2023-05-01",
     }),
   );
 export type FluxConfigurationsDeleteInput =
@@ -389,11 +790,11 @@ export const FluxConfigurationsGetInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
+      apiVersion: "2023-05-01",
     }),
   );
 export type FluxConfigurationsGetInput = typeof FluxConfigurationsGetInput.Type;
@@ -433,11 +834,11 @@ export const FluxConfigurationsListInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations",
+      apiVersion: "2023-05-01",
     }),
   );
 export type FluxConfigurationsListInput =
@@ -485,11 +886,151 @@ export const FluxConfigurationsUpdateInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        sourceKind: Schema.optional(
+          Schema.Literals(["GitRepository", "Bucket", "AzureBlob"]),
+        ),
+        suspend: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        gitRepository: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              url: Schema.optional(Schema.NullOr(Schema.String)),
+              timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+              syncIntervalInSeconds: Schema.optional(
+                Schema.NullOr(Schema.Number),
+              ),
+              repositoryRef: Schema.optional(
+                Schema.NullOr(
+                  Schema.Struct({
+                    branch: Schema.optional(Schema.NullOr(Schema.String)),
+                    tag: Schema.optional(Schema.NullOr(Schema.String)),
+                    semver: Schema.optional(Schema.NullOr(Schema.String)),
+                    commit: Schema.optional(Schema.NullOr(Schema.String)),
+                  }),
+                ),
+              ),
+              sshKnownHosts: Schema.optional(Schema.NullOr(Schema.String)),
+              httpsUser: Schema.optional(Schema.NullOr(Schema.String)),
+              httpsCACert: Schema.optional(Schema.NullOr(Schema.String)),
+              localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
+          ),
+        ),
+        bucket: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              url: Schema.optional(Schema.NullOr(Schema.String)),
+              bucketName: Schema.optional(Schema.NullOr(Schema.String)),
+              insecure: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+              syncIntervalInSeconds: Schema.optional(
+                Schema.NullOr(Schema.Number),
+              ),
+              accessKey: Schema.optional(Schema.NullOr(Schema.String)),
+              localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
+          ),
+        ),
+        azureBlob: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              url: Schema.optional(Schema.NullOr(Schema.String)),
+              containerName: Schema.optional(Schema.NullOr(Schema.String)),
+              timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+              syncIntervalInSeconds: Schema.optional(
+                Schema.NullOr(Schema.Number),
+              ),
+              servicePrincipal: Schema.optional(
+                Schema.NullOr(
+                  Schema.Struct({
+                    clientId: Schema.optional(Schema.NullOr(Schema.String)),
+                    tenantId: Schema.optional(Schema.NullOr(Schema.String)),
+                    clientSecret: Schema.optional(SensitiveNullableString),
+                    clientCertificate: Schema.optional(
+                      Schema.NullOr(Schema.String),
+                    ),
+                    clientCertificatePassword: Schema.optional(
+                      SensitiveNullableString,
+                    ),
+                    clientCertificateSendChain: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+              ),
+              accountKey: Schema.optional(Schema.NullOr(Schema.String)),
+              sasToken: Schema.optional(Schema.NullOr(Schema.String)),
+              managedIdentity: Schema.optional(
+                Schema.NullOr(
+                  Schema.Struct({
+                    clientId: Schema.optional(Schema.NullOr(Schema.String)),
+                  }),
+                ),
+              ),
+              localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
+          ),
+        ),
+        kustomizations: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.NullOr(
+                Schema.Struct({
+                  path: Schema.optional(Schema.NullOr(Schema.String)),
+                  dependsOn: Schema.optional(
+                    Schema.NullOr(Schema.Array(Schema.String)),
+                  ),
+                  timeoutInSeconds: Schema.optional(
+                    Schema.NullOr(Schema.Number),
+                  ),
+                  syncIntervalInSeconds: Schema.optional(
+                    Schema.NullOr(Schema.Number),
+                  ),
+                  retryIntervalInSeconds: Schema.optional(
+                    Schema.NullOr(Schema.Number),
+                  ),
+                  prune: Schema.optional(Schema.NullOr(Schema.Boolean)),
+                  force: Schema.optional(Schema.NullOr(Schema.Boolean)),
+                  wait: Schema.optional(Schema.NullOr(Schema.Boolean)),
+                  postBuild: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Struct({
+                        substitute: Schema.optional(
+                          Schema.NullOr(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        ),
+                        substituteFrom: Schema.optional(
+                          Schema.NullOr(
+                            Schema.Array(
+                              Schema.NullOr(
+                                Schema.Struct({
+                                  kind: Schema.optional(Schema.String),
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            ),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          ),
+        ),
+        configurationProtectedSettings: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
+      apiVersion: "2023-05-01",
     }),
   );
 export type FluxConfigurationsUpdateInput =
@@ -523,12 +1064,13 @@ export const FluxConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.KubernetesConfiguration/operations",
+    apiVersion: "2023-05-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -575,11 +1117,11 @@ export const OperationStatusGetInput =
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}/operations/{operationId}",
+      apiVersion: "2023-05-01",
     }),
   );
 export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
@@ -653,11 +1195,11 @@ export const OperationStatusListInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/operations",
+      apiVersion: "2023-05-01",
     }),
   );
 export type OperationStatusListInput = typeof OperationStatusListInput.Type;
@@ -737,11 +1279,76 @@ export const SourceControlConfigurationsCreateOrUpdateInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        repositoryUrl: Schema.optional(Schema.String),
+        operatorNamespace: Schema.optional(Schema.String),
+        operatorInstanceName: Schema.optional(Schema.String),
+        operatorType: Schema.optional(Schema.Literals(["Flux"])),
+        operatorParams: Schema.optional(Schema.String),
+        configurationProtectedSettings: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        operatorScope: Schema.optional(
+          Schema.Literals(["cluster", "namespace"]),
+        ),
+        repositoryPublicKey: Schema.optional(Schema.String),
+        sshKnownHostsContents: Schema.optional(Schema.String),
+        enableHelmOperator: Schema.optional(Schema.Boolean),
+        helmOperatorProperties: Schema.optional(
+          Schema.Struct({
+            chartVersion: Schema.optional(Schema.String),
+            chartValues: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Deleting",
+            "Running",
+            "Succeeded",
+            "Failed",
+          ]),
+        ),
+        complianceStatus: Schema.optional(
+          Schema.Struct({
+            complianceState: Schema.optional(
+              Schema.Literals([
+                "Pending",
+                "Compliant",
+                "Noncompliant",
+                "Installed",
+                "Failed",
+              ]),
+            ),
+            lastConfigApplied: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            messageLevel: Schema.optional(
+              Schema.Literals(["Error", "Warning", "Information"]),
+            ),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
+      apiVersion: "2023-05-01",
     }),
   );
 export type SourceControlConfigurationsCreateOrUpdateInput =
@@ -781,11 +1388,11 @@ export const SourceControlConfigurationsDeleteInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
+      apiVersion: "2023-05-01",
     }),
   );
 export type SourceControlConfigurationsDeleteInput =
@@ -821,11 +1428,11 @@ export const SourceControlConfigurationsGetInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
+      apiVersion: "2023-05-01",
     }),
   );
 export type SourceControlConfigurationsGetInput =
@@ -865,11 +1472,11 @@ export const SourceControlConfigurationsListInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations",
+      apiVersion: "2023-05-01",
     }),
   );
 export type SourceControlConfigurationsListInput =

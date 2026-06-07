@@ -10,10 +10,142 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const ApplicationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        typeVersion: Schema.optional(Schema.String),
+        parameters: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        upgradePolicy: Schema.optional(
+          Schema.Struct({
+            upgradeReplicaSetCheckTimeout: Schema.optional(Schema.String),
+            forceRestart: Schema.optional(Schema.Boolean),
+            rollingUpgradeMonitoringPolicy: Schema.optional(
+              Schema.Struct({
+                failureAction: Schema.optional(
+                  Schema.Literals(["Rollback", "Manual"]),
+                ),
+                healthCheckWaitDuration: Schema.optional(Schema.String),
+                healthCheckStableDuration: Schema.optional(Schema.String),
+                healthCheckRetryTimeout: Schema.optional(Schema.String),
+                upgradeTimeout: Schema.optional(Schema.String),
+                upgradeDomainTimeout: Schema.optional(Schema.String),
+              }),
+            ),
+            applicationHealthPolicy: Schema.optional(
+              Schema.Struct({
+                considerWarningAsError: Schema.optional(Schema.Boolean),
+                maxPercentUnhealthyDeployedApplications: Schema.optional(
+                  Schema.Number,
+                ),
+                defaultServiceTypeHealthPolicy: Schema.optional(
+                  Schema.Struct({
+                    maxPercentUnhealthyServices: Schema.optional(Schema.Number),
+                    maxPercentUnhealthyPartitionsPerService: Schema.optional(
+                      Schema.Number,
+                    ),
+                    maxPercentUnhealthyReplicasPerPartition: Schema.optional(
+                      Schema.Number,
+                    ),
+                  }),
+                ),
+                serviceTypeHealthPolicyMap: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      maxPercentUnhealthyServices: Schema.optional(
+                        Schema.Number,
+                      ),
+                      maxPercentUnhealthyPartitionsPerService: Schema.optional(
+                        Schema.Number,
+                      ),
+                      maxPercentUnhealthyReplicasPerPartition: Schema.optional(
+                        Schema.Number,
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            upgradeMode: Schema.optional(
+              Schema.Literals([
+                "Invalid",
+                "UnmonitoredAuto",
+                "UnmonitoredManual",
+                "Monitored",
+              ]),
+            ),
+            recreateApplication: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        minimumNodes: Schema.optional(Schema.Number),
+        maximumNodes: Schema.optional(Schema.Number),
+        removeApplicationCapacity: Schema.optional(Schema.Boolean),
+        metrics: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              maximumCapacity: Schema.optional(Schema.Number),
+              reservationCapacity: Schema.optional(Schema.Number),
+              totalApplicationCapacity: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        managedIdentities: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              principalId: Schema.String,
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(Schema.String),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationsCreateOrUpdateInput =
@@ -43,6 +175,7 @@ export const ApplicationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
@@ -68,6 +201,7 @@ export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ApplicationsGetInput = typeof ApplicationsGetInput.Type;
@@ -110,6 +244,7 @@ export const ApplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ApplicationsListInput = typeof ApplicationsListInput.Type;
@@ -156,10 +291,119 @@ export const ApplicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ApplicationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        typeVersion: Schema.optional(Schema.String),
+        parameters: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        upgradePolicy: Schema.optional(
+          Schema.Struct({
+            upgradeReplicaSetCheckTimeout: Schema.optional(Schema.String),
+            forceRestart: Schema.optional(Schema.Boolean),
+            rollingUpgradeMonitoringPolicy: Schema.optional(
+              Schema.Struct({
+                failureAction: Schema.optional(
+                  Schema.Literals(["Rollback", "Manual"]),
+                ),
+                healthCheckWaitDuration: Schema.optional(Schema.String),
+                healthCheckStableDuration: Schema.optional(Schema.String),
+                healthCheckRetryTimeout: Schema.optional(Schema.String),
+                upgradeTimeout: Schema.optional(Schema.String),
+                upgradeDomainTimeout: Schema.optional(Schema.String),
+              }),
+            ),
+            applicationHealthPolicy: Schema.optional(
+              Schema.Struct({
+                considerWarningAsError: Schema.optional(Schema.Boolean),
+                maxPercentUnhealthyDeployedApplications: Schema.optional(
+                  Schema.Number,
+                ),
+                defaultServiceTypeHealthPolicy: Schema.optional(
+                  Schema.Struct({
+                    maxPercentUnhealthyServices: Schema.optional(Schema.Number),
+                    maxPercentUnhealthyPartitionsPerService: Schema.optional(
+                      Schema.Number,
+                    ),
+                    maxPercentUnhealthyReplicasPerPartition: Schema.optional(
+                      Schema.Number,
+                    ),
+                  }),
+                ),
+                serviceTypeHealthPolicyMap: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      maxPercentUnhealthyServices: Schema.optional(
+                        Schema.Number,
+                      ),
+                      maxPercentUnhealthyPartitionsPerService: Schema.optional(
+                        Schema.Number,
+                      ),
+                      maxPercentUnhealthyReplicasPerPartition: Schema.optional(
+                        Schema.Number,
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            upgradeMode: Schema.optional(
+              Schema.Literals([
+                "Invalid",
+                "UnmonitoredAuto",
+                "UnmonitoredManual",
+                "Monitored",
+              ]),
+            ),
+            recreateApplication: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        minimumNodes: Schema.optional(Schema.Number),
+        maximumNodes: Schema.optional(Schema.Number),
+        removeApplicationCapacity: Schema.optional(Schema.Boolean),
+        metrics: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              maximumCapacity: Schema.optional(Schema.Number),
+              reservationCapacity: Schema.optional(Schema.Number),
+              totalApplicationCapacity: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        managedIdentities: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              principalId: Schema.String,
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(Schema.String),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
@@ -180,10 +424,33 @@ export const ApplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ApplicationTypesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(Schema.String),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationTypesCreateOrUpdateInput =
@@ -229,6 +496,7 @@ export const ApplicationTypesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationTypesDeleteInput =
@@ -258,6 +526,7 @@ export const ApplicationTypesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationTypesGetInput = typeof ApplicationTypesGetInput.Type;
@@ -300,6 +569,7 @@ export const ApplicationTypesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationTypesListInput = typeof ApplicationTypesListInput.Type;
@@ -347,10 +617,37 @@ export const ApplicationTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ApplicationTypeVersionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        appPackageUrl: Schema.String,
+        defaultParameterList: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(Schema.String),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationTypeVersionsCreateOrUpdateInput =
@@ -379,6 +676,7 @@ export const ApplicationTypeVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationTypeVersionsDeleteInput =
@@ -407,6 +705,7 @@ export const ApplicationTypeVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationTypeVersionsGetInput =
@@ -453,6 +752,7 @@ export const ApplicationTypeVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ApplicationTypeVersionsListInput =
@@ -502,10 +802,350 @@ export const ApplicationTypeVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        addOnFeatures: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "RepairManager",
+              "DnsService",
+              "BackupRestoreService",
+              "ResourceMonitorService",
+            ]),
+          ),
+        ),
+        availableClusterVersions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              codeVersion: Schema.optional(Schema.String),
+              supportExpiryUtc: Schema.optional(Schema.String),
+              environment: Schema.optional(
+                Schema.Literals(["Windows", "Linux"]),
+              ),
+            }),
+          ),
+        ),
+        azureActiveDirectory: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            clusterApplication: Schema.optional(Schema.String),
+            clientApplication: Schema.optional(Schema.String),
+          }),
+        ),
+        certificate: Schema.optional(
+          Schema.Struct({
+            thumbprint: Schema.String,
+            thumbprintSecondary: Schema.optional(Schema.String),
+            x509StoreName: Schema.optional(
+              Schema.Literals([
+                "AddressBook",
+                "AuthRoot",
+                "CertificateAuthority",
+                "Disallowed",
+                "My",
+                "Root",
+                "TrustedPeople",
+                "TrustedPublisher",
+              ]),
+            ),
+          }),
+        ),
+        certificateCommonNames: Schema.optional(
+          Schema.Struct({
+            commonNames: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  certificateCommonName: Schema.String,
+                  certificateIssuerThumbprint: Schema.String,
+                }),
+              ),
+            ),
+            x509StoreName: Schema.optional(
+              Schema.Literals([
+                "AddressBook",
+                "AuthRoot",
+                "CertificateAuthority",
+                "Disallowed",
+                "My",
+                "Root",
+                "TrustedPeople",
+                "TrustedPublisher",
+              ]),
+            ),
+          }),
+        ),
+        clientCertificateCommonNames: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              isAdmin: Schema.Boolean,
+              certificateCommonName: Schema.String,
+              certificateIssuerThumbprint: Schema.String,
+            }),
+          ),
+        ),
+        clientCertificateThumbprints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              isAdmin: Schema.Boolean,
+              certificateThumbprint: Schema.String,
+            }),
+          ),
+        ),
+        clusterCodeVersion: Schema.optional(Schema.String),
+        clusterEndpoint: Schema.optional(Schema.String),
+        clusterId: Schema.optional(Schema.String),
+        clusterState: Schema.optional(
+          Schema.Literals([
+            "WaitingForNodes",
+            "Deploying",
+            "BaselineUpgrade",
+            "UpdatingUserConfiguration",
+            "UpdatingUserCertificate",
+            "UpdatingInfrastructure",
+            "EnforcingClusterVersion",
+            "UpgradeServiceUnreachable",
+            "AutoScale",
+            "Ready",
+          ]),
+        ),
+        diagnosticsStorageAccountConfig: Schema.optional(
+          Schema.Struct({
+            storageAccountName: Schema.String,
+            protectedAccountKeyName: Schema.String,
+            protectedAccountKeyName2: Schema.optional(Schema.String),
+            blobEndpoint: Schema.String,
+            queueEndpoint: Schema.String,
+            tableEndpoint: Schema.String,
+          }),
+        ),
+        eventStoreServiceEnabled: Schema.optional(Schema.Boolean),
+        fabricSettings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              parameters: Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+            }),
+          ),
+        ),
+        managementEndpoint: Schema.String,
+        nodeTypes: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            placementProperties: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            capacities: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            clientConnectionEndpointPort: Schema.Number,
+            httpGatewayEndpointPort: Schema.Number,
+            durabilityLevel: Schema.optional(
+              Schema.Literals(["Bronze", "Silver", "Gold"]),
+            ),
+            applicationPorts: Schema.optional(
+              Schema.Struct({
+                startPort: Schema.Number,
+                endPort: Schema.Number,
+              }),
+            ),
+            ephemeralPorts: Schema.optional(
+              Schema.Struct({
+                startPort: Schema.Number,
+                endPort: Schema.Number,
+              }),
+            ),
+            isPrimary: Schema.Boolean,
+            vmInstanceCount: Schema.Number,
+            reverseProxyEndpointPort: Schema.optional(Schema.Number),
+            isStateless: Schema.optional(Schema.Boolean),
+            multipleAvailabilityZones: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Updating", "Succeeded", "Failed", "Canceled"]),
+        ),
+        reliabilityLevel: Schema.optional(
+          Schema.Literals(["None", "Bronze", "Silver", "Gold", "Platinum"]),
+        ),
+        reverseProxyCertificate: Schema.optional(
+          Schema.Struct({
+            thumbprint: Schema.String,
+            thumbprintSecondary: Schema.optional(Schema.String),
+            x509StoreName: Schema.optional(
+              Schema.Literals([
+                "AddressBook",
+                "AuthRoot",
+                "CertificateAuthority",
+                "Disallowed",
+                "My",
+                "Root",
+                "TrustedPeople",
+                "TrustedPublisher",
+              ]),
+            ),
+          }),
+        ),
+        reverseProxyCertificateCommonNames: Schema.optional(
+          Schema.Struct({
+            commonNames: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  certificateCommonName: Schema.String,
+                  certificateIssuerThumbprint: Schema.String,
+                }),
+              ),
+            ),
+            x509StoreName: Schema.optional(
+              Schema.Literals([
+                "AddressBook",
+                "AuthRoot",
+                "CertificateAuthority",
+                "Disallowed",
+                "My",
+                "Root",
+                "TrustedPeople",
+                "TrustedPublisher",
+              ]),
+            ),
+          }),
+        ),
+        upgradeDescription: Schema.optional(
+          Schema.Struct({
+            forceRestart: Schema.optional(Schema.Boolean),
+            upgradeReplicaSetCheckTimeout: Schema.String,
+            healthCheckWaitDuration: Schema.String,
+            healthCheckStableDuration: Schema.String,
+            healthCheckRetryTimeout: Schema.String,
+            upgradeTimeout: Schema.String,
+            upgradeDomainTimeout: Schema.String,
+            healthPolicy: Schema.Struct({
+              maxPercentUnhealthyNodes: Schema.optional(Schema.Number),
+              maxPercentUnhealthyApplications: Schema.optional(Schema.Number),
+              applicationHealthPolicies: Schema.optional(
+                Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    defaultServiceTypeHealthPolicy: Schema.optional(
+                      Schema.Struct({
+                        maxPercentUnhealthyServices: Schema.optional(
+                          Schema.Number,
+                        ),
+                      }),
+                    ),
+                    serviceTypeHealthPolicies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          maxPercentUnhealthyServices: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              ),
+            }),
+            deltaHealthPolicy: Schema.optional(
+              Schema.Struct({
+                maxPercentDeltaUnhealthyNodes: Schema.Number,
+                maxPercentUpgradeDomainDeltaUnhealthyNodes: Schema.Number,
+                maxPercentDeltaUnhealthyApplications: Schema.Number,
+                applicationDeltaHealthPolicies: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      defaultServiceTypeDeltaHealthPolicy: Schema.optional(
+                        Schema.Struct({
+                          maxPercentDeltaUnhealthyServices: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                      serviceTypeDeltaHealthPolicies: Schema.optional(
+                        Schema.Record(
+                          Schema.String,
+                          Schema.Struct({
+                            maxPercentDeltaUnhealthyServices: Schema.optional(
+                              Schema.Number,
+                            ),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        upgradeMode: Schema.optional(Schema.Literals(["Automatic", "Manual"])),
+        applicationTypeVersionsCleanupPolicy: Schema.optional(
+          Schema.Struct({
+            maxUnusedVersionsToKeep: Schema.Number,
+          }),
+        ),
+        vmImage: Schema.optional(Schema.String),
+        sfZonalUpgradeMode: Schema.optional(
+          Schema.Literals(["Parallel", "Hierarchical"]),
+        ),
+        vmssZonalUpgradeMode: Schema.optional(
+          Schema.Literals(["Parallel", "Hierarchical"]),
+        ),
+        infrastructureServiceManager: Schema.optional(Schema.Boolean),
+        upgradeWave: Schema.optional(
+          Schema.Literals(["Wave0", "Wave1", "Wave2"]),
+        ),
+        upgradePauseStartTimestampUtc: Schema.optional(Schema.String),
+        upgradePauseEndTimestampUtc: Schema.optional(Schema.String),
+        waveUpgradePaused: Schema.optional(Schema.Boolean),
+        notifications: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              isEnabled: Schema.Boolean,
+              notificationCategory: Schema.Literals(["WaveProgress"]),
+              notificationLevel: Schema.Literals(["Critical", "All"]),
+              notificationTargets: Schema.Array(
+                Schema.Struct({
+                  notificationChannel: Schema.Literals([
+                    "EmailUser",
+                    "EmailSubscription",
+                  ]),
+                  receivers: Schema.Array(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(Schema.String),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -553,6 +1193,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -578,6 +1219,7 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ClustersGetInput = typeof ClustersGetInput.Type;
@@ -620,6 +1262,7 @@ export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/clusters",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ClustersListInput = typeof ClustersListInput.Type;
@@ -668,6 +1311,7 @@ export const ClustersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClustersListByResourceGroupInput =
@@ -717,10 +1361,13 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ClustersListUpgradableVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetVersion: Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/listUpgradableVersions",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClustersListUpgradableVersionsInput =
@@ -746,12 +1393,264 @@ export const ClustersListUpgradableVersions =
     outputSchema: ClustersListUpgradableVersionsOutput,
   }));
 // Input Schema
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      addOnFeatures: Schema.optional(
+        Schema.Array(
+          Schema.Literals([
+            "RepairManager",
+            "DnsService",
+            "BackupRestoreService",
+            "ResourceMonitorService",
+          ]),
+        ),
+      ),
+      certificate: Schema.optional(
+        Schema.Struct({
+          thumbprint: Schema.String,
+          thumbprintSecondary: Schema.optional(Schema.String),
+          x509StoreName: Schema.optional(
+            Schema.Literals([
+              "AddressBook",
+              "AuthRoot",
+              "CertificateAuthority",
+              "Disallowed",
+              "My",
+              "Root",
+              "TrustedPeople",
+              "TrustedPublisher",
+            ]),
+          ),
+        }),
+      ),
+      certificateCommonNames: Schema.optional(
+        Schema.Struct({
+          commonNames: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                certificateCommonName: Schema.String,
+                certificateIssuerThumbprint: Schema.String,
+              }),
+            ),
+          ),
+          x509StoreName: Schema.optional(
+            Schema.Literals([
+              "AddressBook",
+              "AuthRoot",
+              "CertificateAuthority",
+              "Disallowed",
+              "My",
+              "Root",
+              "TrustedPeople",
+              "TrustedPublisher",
+            ]),
+          ),
+        }),
+      ),
+      clientCertificateCommonNames: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            isAdmin: Schema.Boolean,
+            certificateCommonName: Schema.String,
+            certificateIssuerThumbprint: Schema.String,
+          }),
+        ),
+      ),
+      clientCertificateThumbprints: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            isAdmin: Schema.Boolean,
+            certificateThumbprint: Schema.String,
+          }),
+        ),
+      ),
+      clusterCodeVersion: Schema.optional(Schema.String),
+      eventStoreServiceEnabled: Schema.optional(Schema.Boolean),
+      fabricSettings: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            parameters: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+          }),
+        ),
+      ),
+      nodeTypes: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            placementProperties: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            capacities: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            clientConnectionEndpointPort: Schema.Number,
+            httpGatewayEndpointPort: Schema.Number,
+            durabilityLevel: Schema.optional(
+              Schema.Literals(["Bronze", "Silver", "Gold"]),
+            ),
+            applicationPorts: Schema.optional(
+              Schema.Struct({
+                startPort: Schema.Number,
+                endPort: Schema.Number,
+              }),
+            ),
+            ephemeralPorts: Schema.optional(
+              Schema.Struct({
+                startPort: Schema.Number,
+                endPort: Schema.Number,
+              }),
+            ),
+            isPrimary: Schema.Boolean,
+            vmInstanceCount: Schema.Number,
+            reverseProxyEndpointPort: Schema.optional(Schema.Number),
+            isStateless: Schema.optional(Schema.Boolean),
+            multipleAvailabilityZones: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      ),
+      reliabilityLevel: Schema.optional(
+        Schema.Literals(["None", "Bronze", "Silver", "Gold", "Platinum"]),
+      ),
+      reverseProxyCertificate: Schema.optional(
+        Schema.Struct({
+          thumbprint: Schema.String,
+          thumbprintSecondary: Schema.optional(Schema.String),
+          x509StoreName: Schema.optional(
+            Schema.Literals([
+              "AddressBook",
+              "AuthRoot",
+              "CertificateAuthority",
+              "Disallowed",
+              "My",
+              "Root",
+              "TrustedPeople",
+              "TrustedPublisher",
+            ]),
+          ),
+        }),
+      ),
+      upgradeDescription: Schema.optional(
+        Schema.Struct({
+          forceRestart: Schema.optional(Schema.Boolean),
+          upgradeReplicaSetCheckTimeout: Schema.String,
+          healthCheckWaitDuration: Schema.String,
+          healthCheckStableDuration: Schema.String,
+          healthCheckRetryTimeout: Schema.String,
+          upgradeTimeout: Schema.String,
+          upgradeDomainTimeout: Schema.String,
+          healthPolicy: Schema.Struct({
+            maxPercentUnhealthyNodes: Schema.optional(Schema.Number),
+            maxPercentUnhealthyApplications: Schema.optional(Schema.Number),
+            applicationHealthPolicies: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  defaultServiceTypeHealthPolicy: Schema.optional(
+                    Schema.Struct({
+                      maxPercentUnhealthyServices: Schema.optional(
+                        Schema.Number,
+                      ),
+                    }),
+                  ),
+                  serviceTypeHealthPolicies: Schema.optional(
+                    Schema.Record(
+                      Schema.String,
+                      Schema.Struct({
+                        maxPercentUnhealthyServices: Schema.optional(
+                          Schema.Number,
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+          deltaHealthPolicy: Schema.optional(
+            Schema.Struct({
+              maxPercentDeltaUnhealthyNodes: Schema.Number,
+              maxPercentUpgradeDomainDeltaUnhealthyNodes: Schema.Number,
+              maxPercentDeltaUnhealthyApplications: Schema.Number,
+              applicationDeltaHealthPolicies: Schema.optional(
+                Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    defaultServiceTypeDeltaHealthPolicy: Schema.optional(
+                      Schema.Struct({
+                        maxPercentDeltaUnhealthyServices: Schema.optional(
+                          Schema.Number,
+                        ),
+                      }),
+                    ),
+                    serviceTypeDeltaHealthPolicies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          maxPercentDeltaUnhealthyServices: Schema.optional(
+                            Schema.Number,
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+      applicationTypeVersionsCleanupPolicy: Schema.optional(
+        Schema.Struct({
+          maxUnusedVersionsToKeep: Schema.Number,
+        }),
+      ),
+      upgradeMode: Schema.optional(Schema.Literals(["Automatic", "Manual"])),
+      sfZonalUpgradeMode: Schema.optional(
+        Schema.Literals(["Parallel", "Hierarchical"]),
+      ),
+      vmssZonalUpgradeMode: Schema.optional(
+        Schema.Literals(["Parallel", "Hierarchical"]),
+      ),
+      infrastructureServiceManager: Schema.optional(Schema.Boolean),
+      upgradeWave: Schema.optional(
+        Schema.Literals(["Wave0", "Wave1", "Wave2"]),
+      ),
+      upgradePauseStartTimestampUtc: Schema.optional(Schema.String),
+      upgradePauseEndTimestampUtc: Schema.optional(Schema.String),
+      waveUpgradePaused: Schema.optional(Schema.Boolean),
+      notifications: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            isEnabled: Schema.Boolean,
+            notificationCategory: Schema.Literals(["WaveProgress"]),
+            notificationLevel: Schema.Literals(["Critical", "All"]),
+            notificationTargets: Schema.Array(
+              Schema.Struct({
+                notificationChannel: Schema.Literals([
+                  "EmailUser",
+                  "EmailSubscription",
+                ]),
+                receivers: Schema.Array(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -793,6 +1692,7 @@ export const ClusterVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/clusterVersions/{clusterVersion}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClusterVersionsGetInput = typeof ClusterVersionsGetInput.Type;
@@ -838,6 +1738,7 @@ export const ClusterVersionsGetByEnvironmentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/clusterVersions/{clusterVersion}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClusterVersionsGetByEnvironmentInput =
@@ -886,6 +1787,7 @@ export const ClusterVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/clusterVersions",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClusterVersionsListInput = typeof ClusterVersionsListInput.Type;
@@ -931,6 +1833,7 @@ export const ClusterVersionsListByEnvironmentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/clusterVersions",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ClusterVersionsListByEnvironmentInput =
@@ -974,12 +1877,13 @@ export const ClusterVersionsListByEnvironment =
     outputSchema: ClusterVersionsListByEnvironmentOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ServiceFabric/operations",
+    apiVersion: "2021-06-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1022,10 +1926,76 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        placementConstraints: Schema.optional(Schema.String),
+        correlationScheme: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              scheme: Schema.Literals([
+                "Invalid",
+                "Affinity",
+                "AlignedAffinity",
+                "NonAlignedAffinity",
+              ]),
+              serviceName: Schema.String,
+            }),
+          ),
+        ),
+        serviceLoadMetrics: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              weight: Schema.optional(
+                Schema.Literals(["Zero", "Low", "Medium", "High"]),
+              ),
+              primaryDefaultLoad: Schema.optional(Schema.Number),
+              secondaryDefaultLoad: Schema.optional(Schema.Number),
+              defaultLoad: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        servicePlacementPolicies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.Literals([
+                "Invalid",
+                "InvalidDomain",
+                "RequiredDomain",
+                "PreferredPrimaryDomain",
+                "RequiredDomainDistribution",
+                "NonPartiallyPlaceService",
+              ]),
+            }),
+          ),
+        ),
+        defaultMoveCost: Schema.optional(
+          Schema.Literals(["Zero", "Low", "Medium", "High"]),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(Schema.String),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -1056,6 +2026,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -1081,6 +2052,7 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ServicesGetInput = typeof ServicesGetInput.Type;
@@ -1123,6 +2095,7 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ServicesListInput = typeof ServicesListInput.Type;
@@ -1166,12 +2139,76 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesListOutput,
 }));
 // Input Schema
-export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      placementConstraints: Schema.optional(Schema.String),
+      correlationScheme: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            scheme: Schema.Literals([
+              "Invalid",
+              "Affinity",
+              "AlignedAffinity",
+              "NonAlignedAffinity",
+            ]),
+            serviceName: Schema.String,
+          }),
+        ),
+      ),
+      serviceLoadMetrics: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            weight: Schema.optional(
+              Schema.Literals(["Zero", "Low", "Medium", "High"]),
+            ),
+            primaryDefaultLoad: Schema.optional(Schema.Number),
+            secondaryDefaultLoad: Schema.optional(Schema.Number),
+            defaultLoad: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
+      servicePlacementPolicies: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.Literals([
+              "Invalid",
+              "InvalidDomain",
+              "RequiredDomain",
+              "PreferredPrimaryDomain",
+              "RequiredDomainDistribution",
+              "NonPartiallyPlaceService",
+            ]),
+          }),
+        ),
+      ),
+      defaultMoveCost: Schema.optional(
+        Schema.Literals(["Zero", "Low", "Medium", "High"]),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(Schema.String),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(Schema.String),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;

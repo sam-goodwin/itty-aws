@@ -11,11 +11,11 @@ import * as T from "../traits.ts";
 // Input Schema
 export const BestPracticesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   bestPracticeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}",
+    apiVersion: "2022-05-04",
   }),
 );
 export type BestPracticesGetInput = typeof BestPracticesGetInput.Type;
@@ -62,12 +62,11 @@ export const BestPracticesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BestPracticesListByTenantInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Automanage/bestPractices",
+      apiVersion: "2022-05-04",
     }),
   );
 export type BestPracticesListByTenantInput =
@@ -135,11 +134,11 @@ export const BestPracticesVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bestPracticeName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}/versions/{versionName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type BestPracticesVersionsGetInput =
@@ -192,11 +191,11 @@ export const BestPracticesVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const BestPracticesVersionsListByTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bestPracticeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}/versions",
+      apiVersion: "2022-05-04",
     }),
   );
 export type BestPracticesVersionsListByTenantInput =
@@ -265,11 +264,33 @@ export const ConfigurationProfileAssignmentsCreateOrUpdateInput =
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        configurationProfile: Schema.optional(Schema.String),
+        targetId: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileAssignmentsCreateOrUpdateInput =
@@ -305,11 +326,11 @@ export const ConfigurationProfileAssignmentsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileAssignmentsDeleteInput =
@@ -341,11 +362,11 @@ export const ConfigurationProfileAssignmentsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileAssignmentsGetInput =
@@ -380,11 +401,11 @@ export const ConfigurationProfileAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfileAssignments",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileAssignmentsListInput =
@@ -424,11 +445,11 @@ export const ConfigurationProfileAssignmentsListByClusterNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileAssignmentsListByClusterNameInput =
@@ -468,11 +489,11 @@ export const ConfigurationProfileAssignmentsListByMachineNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileAssignmentsListByMachineNameInput =
@@ -511,11 +532,11 @@ export const ConfigurationProfileAssignmentsListByMachineName =
 export const ConfigurationProfileAssignmentsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/configurationProfileAssignments",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileAssignmentsListBySubscriptionInput =
@@ -554,11 +575,11 @@ export const ConfigurationProfileAssignmentsListByVirtualMachinesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileAssignmentsListByVirtualMachinesInput =
@@ -599,11 +620,33 @@ export const ConfigurationProfileHCIAssignmentsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        configurationProfile: Schema.optional(Schema.String),
+        targetId: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileHCIAssignmentsCreateOrUpdateInput =
@@ -639,11 +682,11 @@ export const ConfigurationProfileHCIAssignmentsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileHCIAssignmentsDeleteInput =
@@ -675,11 +718,11 @@ export const ConfigurationProfileHCIAssignmentsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileHCIAssignmentsGetInput =
@@ -715,11 +758,33 @@ export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        configurationProfile: Schema.optional(Schema.String),
+        targetId: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput =
@@ -755,11 +820,11 @@ export const ConfigurationProfileHCRPAssignmentsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileHCRPAssignmentsDeleteInput =
@@ -791,11 +856,11 @@ export const ConfigurationProfileHCRPAssignmentsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfileHCRPAssignmentsGetInput =
@@ -831,11 +896,32 @@ export const ConfigurationProfilesCreateOrUpdateInput =
     configurationProfileName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        configuration: Schema.optional(Schema.Unknown),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfilesCreateOrUpdateInput =
@@ -871,11 +957,11 @@ export const ConfigurationProfilesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfilesDeleteInput =
@@ -908,11 +994,11 @@ export const ConfigurationProfilesGetInput =
     configurationProfileName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfilesGetInput =
@@ -948,11 +1034,11 @@ export const ConfigurationProfilesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfilesListByResourceGroupInput =
@@ -991,11 +1077,11 @@ export const ConfigurationProfilesListByResourceGroup =
 export const ConfigurationProfilesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/configurationProfiles",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfilesListBySubscriptionInput =
@@ -1035,11 +1121,17 @@ export const ConfigurationProfilesUpdateInput =
     configurationProfileName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        configuration: Schema.optional(Schema.Unknown),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfilesUpdateInput =
@@ -1077,11 +1169,32 @@ export const ConfigurationProfilesVersionsCreateOrUpdateInput =
     versionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        configuration: Schema.optional(Schema.Unknown),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}/versions/{versionName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfilesVersionsCreateOrUpdateInput =
@@ -1119,11 +1232,11 @@ export const ConfigurationProfilesVersionsDeleteInput =
     configurationProfileName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}/versions/{versionName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfilesVersionsDeleteInput =
@@ -1157,11 +1270,11 @@ export const ConfigurationProfilesVersionsGetInput =
     versionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}/versions/{versionName}",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfilesVersionsGetInput =
@@ -1198,11 +1311,11 @@ export const ConfigurationProfilesVersionsListChildResourcesInput =
     configurationProfileName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}/versions",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ConfigurationProfilesVersionsListChildResourcesInput =
@@ -1244,11 +1357,11 @@ export const HCIReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   reportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
+    apiVersion: "2022-05-04",
   }),
 );
 export type HCIReportsGetInput = typeof HCIReportsGetInput.Type;
@@ -1281,11 +1394,11 @@ export const HCIReportsListByConfigurationProfileAssignmentsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports",
+      apiVersion: "2022-05-04",
     }),
   );
 export type HCIReportsListByConfigurationProfileAssignmentsInput =
@@ -1327,11 +1440,11 @@ export const HCRPReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   reportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
+    apiVersion: "2022-05-04",
   }),
 );
 export type HCRPReportsGetInput = typeof HCRPReportsGetInput.Type;
@@ -1364,11 +1477,11 @@ export const HCRPReportsListByConfigurationProfileAssignmentsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports",
+      apiVersion: "2022-05-04",
     }),
   );
 export type HCRPReportsListByConfigurationProfileAssignmentsInput =
@@ -1405,10 +1518,14 @@ export const HCRPReportsListByConfigurationProfileAssignments =
     outputSchema: HCRPReportsListByConfigurationProfileAssignmentsOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Automanage/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Automanage/operations",
+    apiVersion: "2022-05-04",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -1454,11 +1571,11 @@ export const ReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   reportName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
+    apiVersion: "2022-05-04",
   }),
 );
 export type ReportsGetInput = typeof ReportsGetInput.Type;
@@ -1491,11 +1608,11 @@ export const ReportsListByConfigurationProfileAssignmentsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ReportsListByConfigurationProfileAssignmentsInput =
@@ -1535,11 +1652,11 @@ export const reportsListByConfigurationProfileAssignments =
 export const ServicePrincipalsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/servicePrincipals/default",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ServicePrincipalsGetInput = typeof ServicePrincipalsGetInput.Type;
@@ -1570,11 +1687,11 @@ export const ServicePrincipalsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ServicePrincipalsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/servicePrincipals",
+      apiVersion: "2022-05-04",
     }),
   );
 export type ServicePrincipalsListBySubscriptionInput =

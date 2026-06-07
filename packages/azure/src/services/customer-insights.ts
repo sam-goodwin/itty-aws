@@ -14,10 +14,22 @@ export const AuthorizationPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     authorizationPolicyName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        policyName: Schema.optional(Schema.String),
+        permissions: Schema.Array(Schema.Literals(["Read", "Write", "Manage"])),
+        primaryKey: Schema.optional(Schema.String),
+        secondaryKey: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/authorizationPolicies/{authorizationPolicyName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type AuthorizationPoliciesCreateOrUpdateInput =
@@ -56,6 +68,7 @@ export const AuthorizationPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/authorizationPolicies/{authorizationPolicyName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type AuthorizationPoliciesGetInput =
@@ -94,6 +107,7 @@ export const AuthorizationPoliciesListByHubInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/authorizationPolicies",
+      apiVersion: "2017-04-26",
     }),
   );
 export type AuthorizationPoliciesListByHubInput =
@@ -138,6 +152,7 @@ export const AuthorizationPoliciesRegeneratePrimaryKeyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/authorizationPolicies/{authorizationPolicyName}/regeneratePrimaryKey",
+      apiVersion: "2017-04-26",
     }),
   );
 export type AuthorizationPoliciesRegeneratePrimaryKeyInput =
@@ -177,6 +192,7 @@ export const AuthorizationPoliciesRegenerateSecondaryKeyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/authorizationPolicies/{authorizationPolicyName}/regenerateSecondaryKey",
+      apiVersion: "2017-04-26",
     }),
   );
 export type AuthorizationPoliciesRegenerateSecondaryKeyInput =
@@ -213,10 +229,97 @@ export const ConnectorMappingsCreateOrUpdateInput =
     hubName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
     mappingName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        connectorName: Schema.optional(Schema.String),
+        connectorType: Schema.optional(
+          Schema.Literals([
+            "None",
+            "CRM",
+            "AzureBlob",
+            "Salesforce",
+            "ExchangeOnline",
+            "Outbound",
+          ]),
+        ),
+        created: Schema.optional(Schema.String),
+        lastModified: Schema.optional(Schema.String),
+        entityType: Schema.Literals([
+          "None",
+          "Profile",
+          "Interaction",
+          "Relationship",
+        ]),
+        entityTypeName: Schema.String,
+        connectorMappingName: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        dataFormatId: Schema.optional(Schema.String),
+        mappingProperties: Schema.Struct({
+          folderPath: Schema.optional(Schema.String),
+          fileFilter: Schema.optional(Schema.String),
+          hasHeader: Schema.optional(Schema.Boolean),
+          errorManagement: Schema.Struct({
+            errorManagementType: Schema.Literals([
+              "RejectAndContinue",
+              "StopImport",
+              "RejectUntilLimit",
+            ]),
+            errorLimit: Schema.optional(Schema.Number),
+          }),
+          format: Schema.Struct({
+            formatType: Schema.Literals(["TextFormat"]),
+            columnDelimiter: Schema.optional(Schema.String),
+            acceptLanguage: Schema.optional(Schema.String),
+            quoteCharacter: Schema.optional(Schema.String),
+            quoteEscapeCharacter: Schema.optional(Schema.String),
+            arraySeparator: Schema.optional(Schema.String),
+          }),
+          availability: Schema.Struct({
+            frequency: Schema.optional(
+              Schema.Literals(["Minute", "Hour", "Day", "Week", "Month"]),
+            ),
+            interval: Schema.Number,
+          }),
+          structure: Schema.Array(
+            Schema.Struct({
+              propertyName: Schema.String,
+              columnName: Schema.String,
+              customFormatSpecifier: Schema.optional(Schema.String),
+              isEncrypted: Schema.optional(Schema.Boolean),
+            }),
+          ),
+          completeOperation: Schema.Struct({
+            completionOperationType: Schema.optional(
+              Schema.Literals(["DoNothing", "DeleteFile", "MoveFile"]),
+            ),
+            destinationFolder: Schema.optional(Schema.String),
+          }),
+        }),
+        nextRunTime: Schema.optional(Schema.String),
+        runId: Schema.optional(Schema.String),
+        state: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Created",
+            "Failed",
+            "Ready",
+            "Running",
+            "Stopped",
+            "Expiring",
+          ]),
+        ),
+        tenantId: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings/{mappingName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type ConnectorMappingsCreateOrUpdateInput =
@@ -257,6 +360,7 @@ export const ConnectorMappingsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings/{mappingName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type ConnectorMappingsDeleteInput =
@@ -294,6 +398,7 @@ export const ConnectorMappingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings/{mappingName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type ConnectorMappingsGetInput = typeof ConnectorMappingsGetInput.Type;
@@ -332,6 +437,7 @@ export const ConnectorMappingsListByConnectorInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings",
+      apiVersion: "2017-04-26",
     }),
   );
 export type ConnectorMappingsListByConnectorInput =
@@ -373,10 +479,45 @@ export const ConnectorsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        connectorId: Schema.optional(Schema.Number),
+        connectorName: Schema.optional(Schema.String),
+        connectorType: Schema.Literals([
+          "None",
+          "CRM",
+          "AzureBlob",
+          "Salesforce",
+          "ExchangeOnline",
+          "Outbound",
+        ]),
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        connectorProperties: Schema.Record(Schema.String, Schema.Unknown),
+        created: Schema.optional(Schema.String),
+        lastModified: Schema.optional(Schema.String),
+        state: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Created",
+            "Ready",
+            "Expiring",
+            "Deleting",
+            "Failed",
+          ]),
+        ),
+        tenantId: Schema.optional(Schema.String),
+        isInternal: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type ConnectorsCreateOrUpdateInput =
@@ -415,6 +556,7 @@ export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type ConnectorsDeleteInput = typeof ConnectorsDeleteInput.Type;
@@ -444,6 +586,7 @@ export const ConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type ConnectorsGetInput = typeof ConnectorsGetInput.Type;
@@ -477,6 +620,7 @@ export const ConnectorsListByHubInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors",
+      apiVersion: "2017-04-26",
     }),
   );
 export type ConnectorsListByHubInput = typeof ConnectorsListByHubInput.Type;
@@ -513,10 +657,31 @@ export const HubsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        apiEndpoint: Schema.optional(Schema.String),
+        webEndpoint: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        tenantFeatures: Schema.optional(Schema.Number),
+        hubBillingInfo: Schema.optional(
+          Schema.Struct({
+            skuName: Schema.optional(Schema.String),
+            minUnits: Schema.optional(Schema.Number),
+            maxUnits: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type HubsCreateOrUpdateInput = typeof HubsCreateOrUpdateInput.Type;
@@ -551,6 +716,7 @@ export const HubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type HubsDeleteInput = typeof HubsDeleteInput.Type;
@@ -578,6 +744,7 @@ export const HubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type HubsGetInput = typeof HubsGetInput.Type;
@@ -608,6 +775,7 @@ export const HubsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CustomerInsights/hubs",
+    apiVersion: "2017-04-26",
   }),
 );
 export type HubsListInput = typeof HubsListInput.Type;
@@ -645,6 +813,7 @@ export const HubsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs",
+      apiVersion: "2017-04-26",
     }),
   );
 export type HubsListByResourceGroupInput =
@@ -685,10 +854,31 @@ export const HubsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const HubsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      apiEndpoint: Schema.optional(Schema.String),
+      webEndpoint: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      tenantFeatures: Schema.optional(Schema.Number),
+      hubBillingInfo: Schema.optional(
+        Schema.Struct({
+          skuName: Schema.optional(Schema.String),
+          minUnits: Schema.optional(Schema.Number),
+          maxUnits: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type HubsUpdateInput = typeof HubsUpdateInput.Type;
@@ -719,10 +909,14 @@ export const ImagesGetUploadUrlForDataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
+    entityType: Schema.optional(Schema.String),
+    entityTypeName: Schema.optional(Schema.String),
+    relativePath: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/images/getDataImageUploadUrl",
+      apiVersion: "2017-04-26",
     }),
   );
 export type ImagesGetUploadUrlForDataInput =
@@ -756,10 +950,14 @@ export const ImagesGetUploadUrlForEntityTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
+    entityType: Schema.optional(Schema.String),
+    entityTypeName: Schema.optional(Schema.String),
+    relativePath: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/images/getEntityTypeImageUploadUrl",
+      apiVersion: "2017-04-26",
     }),
   );
 export type ImagesGetUploadUrlForEntityTypeInput =
@@ -793,10 +991,36 @@ export const InteractionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     interactionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Array(Schema.String)),
+        ),
+        description: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        displayName: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        localizedAttributes: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Record(Schema.String, Schema.String),
+          ),
+        ),
+        smallImage: Schema.optional(Schema.String),
+        mediumImage: Schema.optional(Schema.String),
+        largeImage: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions/{interactionName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type InteractionsCreateOrUpdateInput =
@@ -836,6 +1060,7 @@ export const InteractionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions/{interactionName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type InteractionsGetInput = typeof InteractionsGetInput.Type;
@@ -871,6 +1096,7 @@ export const InteractionsListByHubInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions",
+      apiVersion: "2017-04-26",
     }),
   );
 export type InteractionsListByHubInput = typeof InteractionsListByHubInput.Type;
@@ -916,6 +1142,7 @@ export const InteractionsSuggestRelationshipLinksInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions/{interactionName}/suggestRelationshipLinks",
+      apiVersion: "2017-04-26",
     }),
   );
 export type InteractionsSuggestRelationshipLinksInput =
@@ -973,11 +1200,107 @@ export const KpiCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     kpiName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        entityType: Schema.Literals([
+          "None",
+          "Profile",
+          "Interaction",
+          "Relationship",
+        ]),
+        entityTypeName: Schema.String,
+        tenantId: Schema.optional(Schema.String),
+        kpiName: Schema.optional(Schema.String),
+        displayName: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        description: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        calculationWindow: Schema.Literals([
+          "Lifetime",
+          "Hour",
+          "Day",
+          "Week",
+          "Month",
+        ]),
+        calculationWindowFieldName: Schema.optional(Schema.String),
+        function: Schema.Literals([
+          "Sum",
+          "Avg",
+          "Min",
+          "Max",
+          "Last",
+          "Count",
+          "None",
+          "CountDistinct",
+        ]),
+        expression: Schema.String,
+        unit: Schema.optional(Schema.String),
+        filter: Schema.optional(Schema.String),
+        groupBy: Schema.optional(Schema.Array(Schema.String)),
+        groupByMetadata: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              displayName: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              fieldName: Schema.optional(Schema.String),
+              fieldType: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        participantProfilesMetadata: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              typeName: Schema.String,
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Succeeded",
+            "Expiring",
+            "Deleting",
+            "HumanIntervention",
+            "Failed",
+          ]),
+        ),
+        thresHolds: Schema.optional(
+          Schema.Struct({
+            lowerLimit: Schema.Number,
+            upperLimit: Schema.Number,
+            increasingKpi: Schema.Boolean,
+          }),
+        ),
+        aliases: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              aliasName: Schema.String,
+              expression: Schema.String,
+            }),
+          ),
+        ),
+        extracts: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              extractName: Schema.String,
+              expression: Schema.String,
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   },
 ).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type KpiCreateOrUpdateInput = typeof KpiCreateOrUpdateInput.Type;
@@ -1012,6 +1335,7 @@ export const KpiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type KpiDeleteInput = typeof KpiDeleteInput.Type;
@@ -1041,6 +1365,7 @@ export const KpiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type KpiGetInput = typeof KpiGetInput.Type;
@@ -1073,6 +1398,7 @@ export const KpiListByHubInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi",
+    apiVersion: "2017-04-26",
   }),
 );
 export type KpiListByHubInput = typeof KpiListByHubInput.Type;
@@ -1112,6 +1438,7 @@ export const KpiReprocessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}/reprocess",
+    apiVersion: "2017-04-26",
   }),
 );
 export type KpiReprocessInput = typeof KpiReprocessInput.Type;
@@ -1138,10 +1465,69 @@ export const LinksCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     linkName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        linkName: Schema.optional(Schema.String),
+        sourceEntityType: Schema.Literals([
+          "None",
+          "Profile",
+          "Interaction",
+          "Relationship",
+        ]),
+        targetEntityType: Schema.Literals([
+          "None",
+          "Profile",
+          "Interaction",
+          "Relationship",
+        ]),
+        sourceEntityTypeName: Schema.String,
+        targetEntityTypeName: Schema.String,
+        displayName: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        description: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        mappings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              sourcePropertyName: Schema.String,
+              targetPropertyName: Schema.String,
+              linkType: Schema.optional(
+                Schema.Literals(["UpdateAlways", "CopyIfNull"]),
+              ),
+            }),
+          ),
+        ),
+        participantPropertyReferences: Schema.Array(
+          Schema.Struct({
+            sourcePropertyName: Schema.String,
+            targetPropertyName: Schema.String,
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Succeeded",
+            "Expiring",
+            "Deleting",
+            "HumanIntervention",
+            "Failed",
+          ]),
+        ),
+        referenceOnly: Schema.optional(Schema.Boolean),
+        operationType: Schema.optional(Schema.Literals(["Upsert", "Delete"])),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links/{linkName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type LinksCreateOrUpdateInput = typeof LinksCreateOrUpdateInput.Type;
@@ -1176,6 +1562,7 @@ export const LinksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links/{linkName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type LinksDeleteInput = typeof LinksDeleteInput.Type;
@@ -1205,6 +1592,7 @@ export const LinksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links/{linkName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type LinksGetInput = typeof LinksGetInput.Type;
@@ -1237,6 +1625,7 @@ export const LinksListByHubInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links",
+    apiVersion: "2017-04-26",
   }),
 );
 export type LinksListByHubInput = typeof LinksListByHubInput.Type;
@@ -1274,6 +1663,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.CustomerInsights/operations",
+    apiVersion: "2017-04-26",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1312,10 +1702,70 @@ export const PredictionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     predictionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        displayName: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        involvedInteractionTypes: Schema.optional(Schema.Array(Schema.String)),
+        involvedKpiTypes: Schema.optional(Schema.Array(Schema.String)),
+        involvedRelationships: Schema.optional(Schema.Array(Schema.String)),
+        negativeOutcomeExpression: Schema.String,
+        positiveOutcomeExpression: Schema.String,
+        primaryProfileType: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Succeeded",
+            "Expiring",
+            "Deleting",
+            "HumanIntervention",
+            "Failed",
+          ]),
+        ),
+        predictionName: Schema.optional(Schema.String),
+        scopeExpression: Schema.String,
+        tenantId: Schema.optional(Schema.String),
+        autoAnalyze: Schema.Boolean,
+        mappings: Schema.Struct({
+          score: Schema.String,
+          grade: Schema.String,
+          reason: Schema.String,
+        }),
+        scoreLabel: Schema.String,
+        grades: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              gradeName: Schema.optional(Schema.String),
+              minScoreThreshold: Schema.optional(Schema.Number),
+              maxScoreThreshold: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        systemGeneratedEntities: Schema.optional(
+          Schema.Struct({
+            generatedInteractionTypes: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            generatedLinks: Schema.optional(Schema.Array(Schema.String)),
+            generatedKpis: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type PredictionsCreateOrUpdateInput =
@@ -1356,6 +1806,7 @@ export const PredictionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type PredictionsDeleteInput = typeof PredictionsDeleteInput.Type;
@@ -1385,6 +1836,7 @@ export const PredictionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type PredictionsGetInput = typeof PredictionsGetInput.Type;
@@ -1419,6 +1871,7 @@ export const PredictionsGetModelStatusInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}/getModelStatus",
+      apiVersion: "2017-04-26",
     }),
   );
 export type PredictionsGetModelStatusInput =
@@ -1485,6 +1938,7 @@ export const PredictionsGetTrainingResultsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}/getTrainingResults",
+      apiVersion: "2017-04-26",
     }),
   );
 export type PredictionsGetTrainingResultsInput =
@@ -1564,6 +2018,7 @@ export const PredictionsListByHubInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions",
+      apiVersion: "2017-04-26",
     }),
   );
 export type PredictionsListByHubInput = typeof PredictionsListByHubInput.Type;
@@ -1603,10 +2058,40 @@ export const PredictionsModelStatusInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     predictionName: Schema.String.pipe(T.PathParam()),
+    tenantId: Schema.optional(Schema.String),
+    predictionGuidId: Schema.optional(Schema.String),
+    status: Schema.Literals([
+      "New",
+      "Provisioning",
+      "ProvisioningFailed",
+      "PendingDiscovering",
+      "Discovering",
+      "PendingFeaturing",
+      "Featuring",
+      "FeaturingFailed",
+      "PendingTraining",
+      "Training",
+      "TrainingFailed",
+      "Evaluating",
+      "EvaluatingFailed",
+      "PendingModelConfirmation",
+      "Active",
+      "Deleted",
+      "HumanIntervention",
+      "Failed",
+    ]),
+    message: Schema.optional(Schema.String),
+    trainingSetCount: Schema.optional(Schema.Number),
+    testSetCount: Schema.optional(Schema.Number),
+    validationSetCount: Schema.optional(Schema.Number),
+    trainingAccuracy: Schema.optional(Schema.Number),
+    signalsUsed: Schema.optional(Schema.Number),
+    modelVersion: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}/modelStatus",
+      apiVersion: "2017-04-26",
     }),
   );
 export type PredictionsModelStatusInput =
@@ -1638,10 +2123,36 @@ export const ProfilesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        attributes: Schema.optional(
+          Schema.Record(Schema.String, Schema.Array(Schema.String)),
+        ),
+        description: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        displayName: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        localizedAttributes: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Record(Schema.String, Schema.String),
+          ),
+        ),
+        smallImage: Schema.optional(Schema.String),
+        mediumImage: Schema.optional(Schema.String),
+        largeImage: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles/{profileName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type ProfilesCreateOrUpdateInput =
@@ -1681,6 +2192,7 @@ export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles/{profileName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type ProfilesDeleteInput = typeof ProfilesDeleteInput.Type;
@@ -1712,6 +2224,7 @@ export const ProfilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles/{profileName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type ProfilesGetInput = typeof ProfilesGetInput.Type;
@@ -1747,6 +2260,7 @@ export const ProfilesGetEnrichingKpisInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles/{profileName}/getEnrichingKpis",
+      apiVersion: "2017-04-26",
     }),
   );
 export type ProfilesGetEnrichingKpisInput =
@@ -1870,6 +2384,7 @@ export const ProfilesListByHubInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles",
+    apiVersion: "2017-04-26",
   }),
 );
 export type ProfilesListByHubInput = typeof ProfilesListByHubInput.Type;
@@ -1908,10 +2423,62 @@ export const RelationshipLinksCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     relationshipLinkName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        description: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        interactionType: Schema.String,
+        linkName: Schema.optional(Schema.String),
+        mappings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              interactionFieldName: Schema.String,
+              linkType: Schema.optional(
+                Schema.Literals(["UpdateAlways", "CopyIfNull"]),
+              ),
+              relationshipFieldName: Schema.String,
+            }),
+          ),
+        ),
+        profilePropertyReferences: Schema.Array(
+          Schema.Struct({
+            interactionPropertyName: Schema.String,
+            profilePropertyName: Schema.String,
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Succeeded",
+            "Expiring",
+            "Deleting",
+            "HumanIntervention",
+            "Failed",
+          ]),
+        ),
+        relatedProfilePropertyReferences: Schema.Array(
+          Schema.Struct({
+            interactionPropertyName: Schema.String,
+            profilePropertyName: Schema.String,
+          }),
+        ),
+        relationshipName: Schema.String,
+        relationshipGuidId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks/{relationshipLinkName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type RelationshipLinksCreateOrUpdateInput =
@@ -1950,6 +2517,7 @@ export const RelationshipLinksDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks/{relationshipLinkName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type RelationshipLinksDeleteInput =
@@ -1985,6 +2553,7 @@ export const RelationshipLinksGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks/{relationshipLinkName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type RelationshipLinksGetInput = typeof RelationshipLinksGetInput.Type;
@@ -2021,6 +2590,7 @@ export const RelationshipLinksListByHubInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks",
+      apiVersion: "2017-04-26",
     }),
   );
 export type RelationshipLinksListByHubInput =
@@ -2062,10 +2632,109 @@ export const RelationshipsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     relationshipName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        cardinality: Schema.optional(
+          Schema.Literals(["OneToOne", "OneToMany", "ManyToMany"]),
+        ),
+        displayName: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        description: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        expiryDateTimeUtc: Schema.optional(Schema.String),
+        fields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              arrayValueSeparator: Schema.optional(Schema.String),
+              enumValidValues: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.Number),
+                    localizedValueNames: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                  }),
+                ),
+              ),
+              fieldName: Schema.String,
+              fieldType: Schema.String,
+              isArray: Schema.optional(Schema.Boolean),
+              isEnum: Schema.optional(Schema.Boolean),
+              isFlagEnum: Schema.optional(Schema.Boolean),
+              isImage: Schema.optional(Schema.Boolean),
+              isLocalizedString: Schema.optional(Schema.Boolean),
+              isName: Schema.optional(Schema.Boolean),
+              isRequired: Schema.optional(Schema.Boolean),
+              propertyId: Schema.optional(Schema.String),
+              schemaItemPropLink: Schema.optional(Schema.String),
+              maxLength: Schema.optional(Schema.Number),
+              isAvailableInGraph: Schema.optional(Schema.Boolean),
+              dataSourcePrecedenceRules: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    dataSource: Schema.optional(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                        dataSourceType: Schema.optional(
+                          Schema.Literals([
+                            "Connector",
+                            "LinkInteraction",
+                            "SystemDefault",
+                          ]),
+                        ),
+                        status: Schema.optional(
+                          Schema.Literals(["None", "Active", "Deleted"]),
+                        ),
+                        id: Schema.optional(Schema.Number),
+                        dataSourceReferenceId: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    precedence: Schema.optional(Schema.Number),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        lookupMappings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              fieldMappings: Schema.Array(
+                Schema.Struct({
+                  profileFieldName: Schema.String,
+                  relatedProfileKeyProperty: Schema.String,
+                }),
+              ),
+            }),
+          ),
+        ),
+        profileType: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Succeeded",
+            "Expiring",
+            "Deleting",
+            "HumanIntervention",
+            "Failed",
+          ]),
+        ),
+        relationshipName: Schema.optional(Schema.String),
+        relatedProfileType: Schema.String,
+        relationshipGuidId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships/{relationshipName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type RelationshipsCreateOrUpdateInput =
@@ -2105,6 +2774,7 @@ export const RelationshipsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships/{relationshipName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type RelationshipsDeleteInput = typeof RelationshipsDeleteInput.Type;
@@ -2135,6 +2805,7 @@ export const RelationshipsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships/{relationshipName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type RelationshipsGetInput = typeof RelationshipsGetInput.Type;
@@ -2170,6 +2841,7 @@ export const RelationshipsListByHubInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships",
+      apiVersion: "2017-04-26",
     }),
   );
 export type RelationshipsListByHubInput =
@@ -2211,10 +2883,131 @@ export const RoleAssignmentsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     assignmentName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        assignmentName: Schema.optional(Schema.String),
+        displayName: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        description: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Succeeded",
+            "Expiring",
+            "Deleting",
+            "HumanIntervention",
+            "Failed",
+          ]),
+        ),
+        role: Schema.Literals([
+          "Admin",
+          "Reader",
+          "ManageAdmin",
+          "ManageReader",
+          "DataAdmin",
+          "DataReader",
+        ]),
+        principals: Schema.Array(
+          Schema.Struct({
+            principalId: Schema.String,
+            principalType: Schema.String,
+            principalMetadata: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        profiles: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        interactions: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        links: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        kpis: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        sasPolicies: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        connectors: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        views: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        relationshipLinks: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        relationships: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        widgetTypes: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        roleAssignments: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        conflationPolicies: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        segments: Schema.optional(
+          Schema.Struct({
+            elements: Schema.optional(Schema.Array(Schema.String)),
+            exceptions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments/{assignmentName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type RoleAssignmentsCreateOrUpdateInput =
@@ -2253,6 +3046,7 @@ export const RoleAssignmentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments/{assignmentName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type RoleAssignmentsDeleteInput = typeof RoleAssignmentsDeleteInput.Type;
@@ -2287,6 +3081,7 @@ export const RoleAssignmentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments/{assignmentName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type RoleAssignmentsGetInput = typeof RoleAssignmentsGetInput.Type;
@@ -2321,6 +3116,7 @@ export const RoleAssignmentsListByHubInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments",
+      apiVersion: "2017-04-26",
     }),
   );
 export type RoleAssignmentsListByHubInput =
@@ -2364,6 +3160,7 @@ export const RolesListByHubInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roles",
+    apiVersion: "2017-04-26",
   }),
 );
 export type RolesListByHubInput = typeof RolesListByHubInput.Type;
@@ -2400,10 +3197,27 @@ export const ViewsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     viewName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        viewName: Schema.optional(Schema.String),
+        userId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        displayName: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        definition: Schema.String,
+        changed: Schema.optional(Schema.String),
+        created: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/views/{viewName}",
+      apiVersion: "2017-04-26",
     }),
   );
 export type ViewsCreateOrUpdateInput = typeof ViewsCreateOrUpdateInput.Type;
@@ -2439,6 +3253,7 @@ export const ViewsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/views/{viewName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type ViewsDeleteInput = typeof ViewsDeleteInput.Type;
@@ -2470,6 +3285,7 @@ export const ViewsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/views/{viewName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type ViewsGetInput = typeof ViewsGetInput.Type;
@@ -2504,6 +3320,7 @@ export const ViewsListByHubInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/views",
+    apiVersion: "2017-04-26",
   }),
 );
 export type ViewsListByHubInput = typeof ViewsListByHubInput.Type;
@@ -2544,6 +3361,7 @@ export const WidgetTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/widgetTypes/{widgetTypeName}",
+    apiVersion: "2017-04-26",
   }),
 );
 export type WidgetTypesGetInput = typeof WidgetTypesGetInput.Type;
@@ -2577,6 +3395,7 @@ export const WidgetTypesListByHubInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/widgetTypes",
+      apiVersion: "2017-04-26",
     }),
   );
 export type WidgetTypesListByHubInput = typeof WidgetTypesListByHubInput.Type;

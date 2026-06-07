@@ -15,11 +15,11 @@ export const GroupQuotaLimitsListInput =
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/groupQuotaLimits/{location}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaLimitsListInput = typeof GroupQuotaLimitsListInput.Type;
@@ -69,11 +69,11 @@ export const GroupQuotaLimitsRequestGetInput =
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     requestId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/groupQuotaRequests/{requestId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaLimitsRequestGetInput =
@@ -124,12 +124,12 @@ export const GroupQuotaLimitsRequestListInput =
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/groupQuotaRequests",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaLimitsRequestListInput =
@@ -197,11 +197,61 @@ export const GroupQuotaLimitsRequestUpdateInput =
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Created",
+            "Invalid",
+            "Succeeded",
+            "Escalated",
+            "Failed",
+            "InProgress",
+            "Canceled",
+          ]),
+        ),
+        value: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              properties: Schema.optional(
+                Schema.Struct({
+                  resourceName: Schema.optional(Schema.String),
+                  limit: Schema.optional(Schema.Number),
+                  comment: Schema.optional(Schema.String),
+                  unit: Schema.optional(Schema.String),
+                  name: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(Schema.String),
+                      localizedValue: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  availableLimit: Schema.optional(Schema.Number),
+                  allocatedToSubscriptions: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            subscriptionId: Schema.optional(Schema.String),
+                            quotaAllocated: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+        nextLink: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/groupQuotaLimits/{location}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaLimitsRequestUpdateInput =
@@ -254,11 +304,32 @@ export const GroupQuotaLocationSettingsCreateOrUpdateInput =
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        enforcementEnabled: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "NotAvailable"]),
+        ),
+        enforcedGroupName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Created",
+            "Invalid",
+            "Succeeded",
+            "Escalated",
+            "Failed",
+            "InProgress",
+            "Canceled",
+          ]),
+        ),
+        faultCode: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/locationSettings/{location}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaLocationSettingsCreateOrUpdateInput =
@@ -314,11 +385,11 @@ export const GroupQuotaLocationSettingsGetInput =
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/locationSettings/{location}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaLocationSettingsGetInput =
@@ -370,11 +441,32 @@ export const GroupQuotaLocationSettingsUpdateInput =
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        enforcementEnabled: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "NotAvailable"]),
+        ),
+        enforcedGroupName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Created",
+            "Invalid",
+            "Succeeded",
+            "Escalated",
+            "Failed",
+            "InProgress",
+            "Canceled",
+          ]),
+        ),
+        faultCode: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/locationSettings/{location}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaLocationSettingsUpdateInput =
@@ -428,11 +520,31 @@ export const GroupQuotasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        groupType: Schema.optional(
+          Schema.Literals(["AllocationGroup", "EnforcedGroup"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Created",
+            "Invalid",
+            "Succeeded",
+            "Escalated",
+            "Failed",
+            "InProgress",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotasCreateOrUpdateInput =
@@ -481,12 +593,12 @@ export const GroupQuotasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type GroupQuotasDeleteInput = typeof GroupQuotasDeleteInput.Type;
@@ -511,11 +623,11 @@ export const GroupQuotasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GroupQuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   managementGroupId: Schema.String.pipe(T.PathParam()),
   groupQuotaName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type GroupQuotasGetInput = typeof GroupQuotasGetInput.Type;
@@ -557,11 +669,11 @@ export const GroupQuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const GroupQuotasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   managementGroupId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas",
+    apiVersion: "2025-09-01",
   }),
 );
 export type GroupQuotasListInput = typeof GroupQuotasListInput.Type;
@@ -612,11 +724,11 @@ export const GroupQuotaSubscriptionAllocationListInput =
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/subscriptions/{subscriptionId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/quotaAllocations/{location}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaSubscriptionAllocationListInput =
@@ -670,11 +782,11 @@ export const GroupQuotaSubscriptionAllocationRequestGetInput =
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     allocationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/subscriptions/{subscriptionId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/quotaAllocationRequests/{allocationId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaSubscriptionAllocationRequestGetInput =
@@ -727,12 +839,12 @@ export const GroupQuotaSubscriptionAllocationRequestListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/subscriptions/{subscriptionId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/quotaAllocationRequests",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaSubscriptionAllocationRequestListInput =
@@ -805,11 +917,47 @@ export const GroupQuotaSubscriptionAllocationRequestUpdateInput =
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Created",
+            "Invalid",
+            "Succeeded",
+            "Escalated",
+            "Failed",
+            "InProgress",
+            "Canceled",
+          ]),
+        ),
+        value: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              properties: Schema.optional(
+                Schema.Struct({
+                  resourceName: Schema.optional(Schema.String),
+                  limit: Schema.optional(Schema.Number),
+                  shareableQuota: Schema.optional(Schema.Number),
+                  name: Schema.optional(
+                    Schema.Struct({
+                      value: Schema.optional(Schema.String),
+                      localizedValue: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+        nextLink: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/subscriptions/{subscriptionId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/quotaAllocations/{location}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaSubscriptionAllocationRequestUpdateInput =
@@ -861,11 +1009,11 @@ export const GroupQuotaSubscriptionRequestsGetInput =
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     requestId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptionRequests/{requestId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaSubscriptionRequestsGetInput =
@@ -914,11 +1062,11 @@ export const GroupQuotaSubscriptionRequestsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptionRequests",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaSubscriptionRequestsListInput =
@@ -982,11 +1130,11 @@ export const GroupQuotaSubscriptionsCreateOrUpdateInput =
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions/{subscriptionId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaSubscriptionsCreateOrUpdateInput =
@@ -1036,11 +1184,11 @@ export const GroupQuotaSubscriptionsDeleteInput =
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions/{subscriptionId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaSubscriptionsDeleteInput =
@@ -1072,11 +1220,11 @@ export const GroupQuotaSubscriptionsGetInput =
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions/{subscriptionId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaSubscriptionsGetInput =
@@ -1126,11 +1274,11 @@ export const GroupQuotaSubscriptionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaSubscriptionsListInput =
@@ -1195,11 +1343,11 @@ export const GroupQuotaSubscriptionsUpdateInput =
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions/{subscriptionId}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaSubscriptionsUpdateInput =
@@ -1248,12 +1396,29 @@ export const GroupQuotasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Created",
+            "Invalid",
+            "Succeeded",
+            "Escalated",
+            "Failed",
+            "InProgress",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type GroupQuotasUpdateInput = typeof GroupQuotasUpdateInput.Type;
@@ -1301,11 +1466,11 @@ export const GroupQuotaUsagesListInput =
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/locationUsages/{location}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type GroupQuotaUsagesListInput = typeof GroupQuotaUsagesListInput.Type;
@@ -1369,11 +1534,31 @@ export const QuotaCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        limit: Schema.optional(
+          Schema.Struct({
+            limitObjectType: Schema.Literals(["LimitValue"]),
+          }),
+        ),
+        unit: Schema.optional(Schema.String),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        resourceType: Schema.optional(Schema.String),
+        quotaPeriod: Schema.optional(Schema.String),
+        isQuotaApplicable: Schema.optional(Schema.Boolean),
+        properties: Schema.optional(Schema.Unknown),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type QuotaCreateOrUpdateInput = typeof QuotaCreateOrUpdateInput.Type;
@@ -1422,11 +1607,11 @@ export const QuotaCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QuotaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type QuotaGetInput = typeof QuotaGetInput.Type;
@@ -1471,9 +1656,12 @@ export const QuotaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const QuotaListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
-  T.Http({ method: "GET", path: "/{scope}/providers/Microsoft.Quota/quotas" }),
+  T.Http({
+    method: "GET",
+    path: "/{scope}/providers/Microsoft.Quota/quotas",
+    apiVersion: "2025-09-01",
+  }),
 );
 export type QuotaListInput = typeof QuotaListInput.Type;
 
@@ -1517,10 +1705,12 @@ export const QuotaList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const QuotaOperationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Quota/operations" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Quota/operations",
+      apiVersion: "2025-09-01",
+    }),
   );
 export type QuotaOperationListInput = typeof QuotaOperationListInput.Type;
 
@@ -1560,11 +1750,11 @@ export const QuotaRequestStatusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.Quota/quotaRequests/{id}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type QuotaRequestStatusGetInput = typeof QuotaRequestStatusGetInput.Type;
@@ -1611,7 +1801,6 @@ export const QuotaRequestStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const QuotaRequestStatusListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skiptoken: Schema.optional(Schema.String),
@@ -1619,6 +1808,7 @@ export const QuotaRequestStatusListInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.Quota/quotaRequests",
+      apiVersion: "2025-09-01",
     }),
   );
 export type QuotaRequestStatusListInput =
@@ -1688,11 +1878,31 @@ export const QuotaRequestStatusList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const QuotaUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      limit: Schema.optional(
+        Schema.Struct({
+          limitObjectType: Schema.Literals(["LimitValue"]),
+        }),
+      ),
+      unit: Schema.optional(Schema.String),
+      name: Schema.optional(
+        Schema.Struct({
+          value: Schema.optional(Schema.String),
+          localizedValue: Schema.optional(Schema.String),
+        }),
+      ),
+      resourceType: Schema.optional(Schema.String),
+      quotaPeriod: Schema.optional(Schema.String),
+      isQuotaApplicable: Schema.optional(Schema.Boolean),
+      properties: Schema.optional(Schema.Unknown),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type QuotaUpdateInput = typeof QuotaUpdateInput.Type;
@@ -1740,11 +1950,11 @@ export const QuotaUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const UsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.Quota/usages/{resourceName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type UsagesGetInput = typeof UsagesGetInput.Type;
@@ -1789,9 +1999,12 @@ export const UsagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
-  T.Http({ method: "GET", path: "/{scope}/providers/Microsoft.Quota/usages" }),
+  T.Http({
+    method: "GET",
+    path: "/{scope}/providers/Microsoft.Quota/usages",
+    apiVersion: "2025-09-01",
+  }),
 );
 export type UsagesListInput = typeof UsagesListInput.Type;
 

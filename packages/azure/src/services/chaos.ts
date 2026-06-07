@@ -18,11 +18,20 @@ export const CapabilitiesCreateOrUpdateInput =
     parentResourceName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
     capabilityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        publisher: Schema.optional(Schema.String),
+        targetType: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        parametersSchema: Schema.optional(Schema.String),
+        urn: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type CapabilitiesCreateOrUpdateInput =
@@ -81,11 +90,11 @@ export const CapabilitiesDeleteInput =
     parentResourceName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
     capabilityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type CapabilitiesDeleteInput = typeof CapabilitiesDeleteInput.Type;
@@ -120,11 +129,11 @@ export const CapabilitiesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parentResourceName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
   capabilityName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}",
+    apiVersion: "2025-01-01",
   }),
 );
 export type CapabilitiesGetInput = typeof CapabilitiesGetInput.Type;
@@ -176,12 +185,12 @@ export const CapabilitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parentResourceType: Schema.String.pipe(T.PathParam()),
   parentResourceName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   continuationToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities",
+    apiVersion: "2025-01-01",
   }),
 );
 export type CapabilitiesListInput = typeof CapabilitiesListInput.Type;
@@ -249,11 +258,11 @@ export const CapabilityTypesGetInput =
     location: Schema.String.pipe(T.PathParam()),
     targetTypeName: Schema.String.pipe(T.PathParam()),
     capabilityTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/targetTypes/{targetTypeName}/capabilityTypes/{capabilityTypeName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type CapabilityTypesGetInput = typeof CapabilityTypesGetInput.Type;
@@ -301,12 +310,12 @@ export const CapabilityTypesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     targetTypeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     continuationToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/targetTypes/{targetTypeName}/capabilityTypes",
+      apiVersion: "2025-01-01",
     }),
   );
 export type CapabilityTypesListInput = typeof CapabilityTypesListInput.Type;
@@ -369,12 +378,12 @@ export const ExperimentsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/cancel",
+    apiVersion: "2025-01-01",
   }),
 );
 export type ExperimentsCancelInput = typeof ExperimentsCancelInput.Type;
@@ -402,11 +411,73 @@ export const ExperimentsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Updating",
+          "Deleting",
+        ]),
+      ),
+      steps: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          branches: Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              actions: Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  type: Schema.Literals(["delay", "discrete", "continuous"]),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+      selectors: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          type: Schema.Literals(["List", "Query"]),
+          filter: Schema.optional(
+            Schema.Struct({
+              type: Schema.Literals(["Simple"]),
+            }),
+          ),
+        }),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type ExperimentsCreateOrUpdateInput =
@@ -457,12 +528,12 @@ export const ExperimentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
+    apiVersion: "2025-01-01",
   }),
 );
 export type ExperimentsDeleteInput = typeof ExperimentsDeleteInput.Type;
@@ -491,11 +562,11 @@ export const ExperimentsExecutionDetailsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
     executionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/executions/{executionId}/getExecutionDetails",
+      apiVersion: "2025-01-01",
     }),
   );
 export type ExperimentsExecutionDetailsInput =
@@ -594,11 +665,11 @@ export const ExperimentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   experimentName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
+    apiVersion: "2025-01-01",
   }),
 );
 export type ExperimentsGetInput = typeof ExperimentsGetInput.Type;
@@ -645,11 +716,11 @@ export const ExperimentsGetExecutionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
     executionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/executions/{executionId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type ExperimentsGetExecutionInput =
@@ -699,13 +770,13 @@ export const ExperimentsGetExecution = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ExperimentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   running: Schema.optional(Schema.Boolean),
   continuationToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments",
+    apiVersion: "2025-01-01",
   }),
 );
 export type ExperimentsListInput = typeof ExperimentsListInput.Type;
@@ -755,13 +826,13 @@ export const ExperimentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ExperimentsListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     running: Schema.optional(Schema.Boolean),
     continuationToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/experiments",
+      apiVersion: "2025-01-01",
     }),
   );
 export type ExperimentsListAllInput = typeof ExperimentsListAllInput.Type;
@@ -823,11 +894,11 @@ export const ExperimentsListAllExecutionsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/executions",
+      apiVersion: "2025-01-01",
     }),
   );
 export type ExperimentsListAllExecutionsInput =
@@ -891,11 +962,11 @@ export const ExperimentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   experimentName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/start",
+    apiVersion: "2025-01-01",
   }),
 );
 export type ExperimentsStartInput = typeof ExperimentsStartInput.Type;
@@ -923,12 +994,34 @@ export const ExperimentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
+    apiVersion: "2025-01-01",
   }),
 );
 export type ExperimentsUpdateInput = typeof ExperimentsUpdateInput.Type;
@@ -971,11 +1064,13 @@ export const ExperimentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const OperationsListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    "api-version": Schema.String,
-  },
+  {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Chaos/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Chaos/operations",
+    apiVersion: "2025-01-01",
+  }),
 );
 export type OperationsListAllInput = typeof OperationsListAllInput.Type;
 
@@ -1022,11 +1117,11 @@ export const OperationStatusesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/operationStatuses/{operationId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type OperationStatusesGetInput = typeof OperationStatusesGetInput.Type;
@@ -1114,11 +1209,13 @@ export const TargetsCreateOrUpdateInput =
     parentResourceType: Schema.String.pipe(T.PathParam()),
     parentResourceName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Record(Schema.String, Schema.Unknown),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type TargetsCreateOrUpdateInput = typeof TargetsCreateOrUpdateInput.Type;
@@ -1173,11 +1270,11 @@ export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parentResourceType: Schema.String.pipe(T.PathParam()),
   parentResourceName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}",
+    apiVersion: "2025-01-01",
   }),
 );
 export type TargetsDeleteInput = typeof TargetsDeleteInput.Type;
@@ -1210,11 +1307,11 @@ export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parentResourceType: Schema.String.pipe(T.PathParam()),
   parentResourceName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}",
+    apiVersion: "2025-01-01",
   }),
 );
 export type TargetsGetInput = typeof TargetsGetInput.Type;
@@ -1264,12 +1361,12 @@ export const TargetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parentProviderNamespace: Schema.String.pipe(T.PathParam()),
   parentResourceType: Schema.String.pipe(T.PathParam()),
   parentResourceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   continuationToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets",
+    apiVersion: "2025-01-01",
   }),
 );
 export type TargetsListInput = typeof TargetsListInput.Type;
@@ -1322,11 +1419,11 @@ export const TargetTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   targetTypeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/targetTypes/{targetTypeName}",
+    apiVersion: "2025-01-01",
   }),
 );
 export type TargetTypesGetInput = typeof TargetTypesGetInput.Type;
@@ -1370,12 +1467,12 @@ export const TargetTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const TargetTypesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   continuationToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/targetTypes",
+    apiVersion: "2025-01-01",
   }),
 );
 export type TargetTypesListInput = typeof TargetTypesListInput.Type;

@@ -14,11 +14,32 @@ export const DnsForwardingRulesetsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      dnsResolverOutboundEndpoints: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+        }),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+      resourceGuid: Schema.optional(Schema.String),
+    }),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsForwardingRulesetsCreateOrUpdateInput =
@@ -70,11 +91,11 @@ export const DnsForwardingRulesetsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsForwardingRulesetsDeleteInput =
@@ -108,11 +129,11 @@ export const DnsForwardingRulesetsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsForwardingRulesetsGetInput =
@@ -161,12 +182,12 @@ export const DnsForwardingRulesetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DnsForwardingRulesetsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsForwardingRulesets",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsForwardingRulesetsListInput =
@@ -230,12 +251,12 @@ export const DnsForwardingRulesetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsForwardingRulesetsListByResourceGroupInput =
@@ -300,12 +321,12 @@ export const DnsForwardingRulesetsListByVirtualNetworkInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsForwardingRulesets",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsForwardingRulesetsListByVirtualNetworkInput =
@@ -354,11 +375,19 @@ export const DnsForwardingRulesetsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    dnsResolverOutboundEndpoints: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+        }),
+      ),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsForwardingRulesetsUpdateInput =
@@ -410,11 +439,15 @@ export const DnsResolverDomainListsBulkInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      storageUrl: Schema.String,
+      action: Schema.Literals(["Upload", "Download"]),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}/bulk",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverDomainListsBulkInput =
@@ -467,11 +500,31 @@ export const DnsResolverDomainListsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        domains: Schema.optional(Schema.Array(Schema.String)),
+        domainsUrl: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        resourceGuid: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverDomainListsCreateOrUpdateInput =
@@ -523,11 +576,11 @@ export const DnsResolverDomainListsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverDomainListsDeleteInput =
@@ -560,11 +613,11 @@ export const DnsResolverDomainListsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverDomainListsGetInput =
@@ -613,12 +666,12 @@ export const DnsResolverDomainListsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DnsResolverDomainListsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolverDomainLists",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverDomainListsListInput =
@@ -682,12 +735,12 @@ export const DnsResolverDomainListsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverDomainListsListByResourceGroupInput =
@@ -752,11 +805,17 @@ export const DnsResolverDomainListsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        domains: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverDomainListsUpdateInput =
@@ -807,11 +866,29 @@ export const DnsResolverPoliciesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        resourceGuid: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverPoliciesCreateOrUpdateInput =
@@ -863,11 +940,11 @@ export const DnsResolverPoliciesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverPoliciesDeleteInput =
@@ -901,11 +978,11 @@ export const DnsResolverPoliciesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverPoliciesGetInput =
@@ -954,12 +1031,12 @@ export const DnsResolverPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DnsResolverPoliciesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolverPolicies",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverPoliciesListInput =
@@ -1023,12 +1100,12 @@ export const DnsResolverPoliciesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverPoliciesListByResourceGroupInput =
@@ -1093,11 +1170,11 @@ export const DnsResolverPoliciesListByVirtualNetworkInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsResolverPolicies",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverPoliciesListByVirtualNetworkInput =
@@ -1136,11 +1213,12 @@ export const DnsResolverPoliciesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverPoliciesUpdateInput =
@@ -1193,11 +1271,29 @@ export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyVirtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      virtualNetwork: Schema.Struct({
+        id: Schema.String,
+      }),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput =
@@ -1251,11 +1347,11 @@ export const DnsResolverPolicyVirtualNetworkLinksDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyVirtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverPolicyVirtualNetworkLinksDeleteInput =
@@ -1290,11 +1386,11 @@ export const DnsResolverPolicyVirtualNetworkLinksGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyVirtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverPolicyVirtualNetworkLinksGetInput =
@@ -1345,12 +1441,12 @@ export const DnsResolverPolicyVirtualNetworkLinksListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverPolicyVirtualNetworkLinksListInput =
@@ -1417,11 +1513,12 @@ export const DnsResolverPolicyVirtualNetworkLinksUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyVirtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolverPolicyVirtualNetworkLinksUpdateInput =
@@ -1473,11 +1570,33 @@ export const DnsResolversCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      virtualNetwork: Schema.Struct({
+        id: Schema.String,
+      }),
+      dnsResolverState: Schema.optional(
+        Schema.Literals(["Connected", "Disconnected"]),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+      resourceGuid: Schema.optional(Schema.String),
+    }),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolversCreateOrUpdateInput =
@@ -1530,11 +1649,11 @@ export const DnsResolversDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolversDeleteInput = typeof DnsResolversDeleteInput.Type;
@@ -1562,11 +1681,11 @@ export const DnsResolversGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dnsResolverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type DnsResolversGetInput = typeof DnsResolversGetInput.Type;
@@ -1609,12 +1728,12 @@ export const DnsResolversGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DnsResolversListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $top: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolvers",
+    apiVersion: "2025-05-01",
   }),
 );
 export type DnsResolversListInput = typeof DnsResolversListInput.Type;
@@ -1675,12 +1794,12 @@ export const DnsResolversListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolversListByResourceGroupInput =
@@ -1745,12 +1864,12 @@ export const DnsResolversListByVirtualNetworkInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsResolvers",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolversListByVirtualNetworkInput =
@@ -1790,11 +1909,12 @@ export const DnsResolversUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsResolversUpdateInput = typeof DnsResolversUpdateInput.Type;
@@ -1843,11 +1963,40 @@ export const DnsSecurityRulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
     dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      priority: Schema.Number,
+      action: Schema.Struct({
+        actionType: Schema.optional(
+          Schema.Literals(["Allow", "Alert", "Block"]),
+        ),
+      }),
+      dnsResolverDomainLists: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+        }),
+      ),
+      dnsSecurityRuleState: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsSecurityRulesCreateOrUpdateInput =
@@ -1901,11 +2050,11 @@ export const DnsSecurityRulesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
     dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsSecurityRulesDeleteInput =
@@ -1941,11 +2090,11 @@ export const DnsSecurityRulesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
     dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsSecurityRulesGetInput = typeof DnsSecurityRulesGetInput.Type;
@@ -1993,12 +2142,12 @@ export const DnsSecurityRulesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsSecurityRulesListInput = typeof DnsSecurityRulesListInput.Type;
@@ -2064,11 +2213,34 @@ export const DnsSecurityRulesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
     dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        action: Schema.optional(
+          Schema.Struct({
+            actionType: Schema.optional(
+              Schema.Literals(["Allow", "Alert", "Block"]),
+            ),
+          }),
+        ),
+        dnsResolverDomainLists: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+            }),
+          ),
+        ),
+        dnsSecurityRuleState: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        priority: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type DnsSecurityRulesUpdateInput =
@@ -2122,11 +2294,35 @@ export const ForwardingRulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     forwardingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      domainName: Schema.String,
+      targetDnsServers: Schema.Array(
+        Schema.Struct({
+          ipAddress: Schema.String,
+          port: Schema.optional(Schema.Number),
+        }),
+      ),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      forwardingRuleState: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ForwardingRulesCreateOrUpdateInput =
@@ -2180,11 +2376,11 @@ export const ForwardingRulesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     forwardingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ForwardingRulesDeleteInput = typeof ForwardingRulesDeleteInput.Type;
@@ -2219,11 +2415,11 @@ export const ForwardingRulesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     forwardingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ForwardingRulesGetInput = typeof ForwardingRulesGetInput.Type;
@@ -2271,12 +2467,12 @@ export const ForwardingRulesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ForwardingRulesListInput = typeof ForwardingRulesListInput.Type;
@@ -2340,11 +2536,27 @@ export const ForwardingRulesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     forwardingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        targetDnsServers: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipAddress: Schema.String,
+              port: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        forwardingRuleState: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ForwardingRulesUpdateInput = typeof ForwardingRulesUpdateInput.Type;
@@ -2397,11 +2609,38 @@ export const InboundEndpointsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
     inboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      ipConfigurations: Schema.Array(
+        Schema.Struct({
+          subnet: Schema.Struct({
+            id: Schema.String,
+          }),
+          privateIpAddress: Schema.optional(Schema.String),
+          privateIpAllocationMethod: Schema.optional(
+            Schema.Literals(["Static", "Dynamic"]),
+          ),
+        }),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+      resourceGuid: Schema.optional(Schema.String),
+    }),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type InboundEndpointsCreateOrUpdateInput =
@@ -2455,11 +2694,11 @@ export const InboundEndpointsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
     inboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type InboundEndpointsDeleteInput =
@@ -2495,11 +2734,11 @@ export const InboundEndpointsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
     inboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type InboundEndpointsGetInput = typeof InboundEndpointsGetInput.Type;
@@ -2547,12 +2786,12 @@ export const InboundEndpointsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints",
+      apiVersion: "2025-05-01",
     }),
   );
 export type InboundEndpointsListInput = typeof InboundEndpointsListInput.Type;
@@ -2618,11 +2857,12 @@ export const InboundEndpointsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
     inboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type InboundEndpointsUpdateInput =
@@ -2676,11 +2916,30 @@ export const OutboundEndpointsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
     outboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      subnet: Schema.Struct({
+        id: Schema.String,
+      }),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+      resourceGuid: Schema.optional(Schema.String),
+    }),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type OutboundEndpointsCreateOrUpdateInput =
@@ -2734,11 +2993,11 @@ export const OutboundEndpointsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
     outboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type OutboundEndpointsDeleteInput =
@@ -2774,11 +3033,11 @@ export const OutboundEndpointsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
     outboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type OutboundEndpointsGetInput = typeof OutboundEndpointsGetInput.Type;
@@ -2828,12 +3087,12 @@ export const OutboundEndpointsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints",
+      apiVersion: "2025-05-01",
     }),
   );
 export type OutboundEndpointsListInput = typeof OutboundEndpointsListInput.Type;
@@ -2900,11 +3159,12 @@ export const OutboundEndpointsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
     outboundEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type OutboundEndpointsUpdateInput =
@@ -2958,11 +3218,28 @@ export const VirtualNetworkLinksCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      virtualNetwork: Schema.Struct({
+        id: Schema.String,
+      }),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type VirtualNetworkLinksCreateOrUpdateInput =
@@ -3016,11 +3293,11 @@ export const VirtualNetworkLinksDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type VirtualNetworkLinksDeleteInput =
@@ -3056,11 +3333,11 @@ export const VirtualNetworkLinksGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type VirtualNetworkLinksGetInput =
@@ -3112,12 +3389,12 @@ export const VirtualNetworkLinksListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks",
+      apiVersion: "2025-05-01",
     }),
   );
 export type VirtualNetworkLinksListInput =
@@ -3185,11 +3462,16 @@ export const VirtualNetworkLinksUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type VirtualNetworkLinksUpdateInput =

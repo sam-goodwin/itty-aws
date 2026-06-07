@@ -12,11 +12,113 @@ import * as T from "../traits.ts";
 export const AlertsDismissInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   alertId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      definition: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(
+            Schema.Literals([
+              "Budget",
+              "Invoice",
+              "Credit",
+              "Quota",
+              "General",
+              "xCloud",
+              "BudgetForecast",
+            ]),
+          ),
+          category: Schema.optional(
+            Schema.Literals(["Cost", "Usage", "Billing", "System"]),
+          ),
+          criteria: Schema.optional(
+            Schema.Literals([
+              "CostThresholdExceeded",
+              "UsageThresholdExceeded",
+              "CreditThresholdApproaching",
+              "CreditThresholdReached",
+              "QuotaThresholdApproaching",
+              "QuotaThresholdReached",
+              "MultiCurrency",
+              "ForecastCostThresholdExceeded",
+              "ForecastUsageThresholdExceeded",
+              "InvoiceDueDateApproaching",
+              "InvoiceDueDateReached",
+              "CrossCloudNewDataAvailable",
+              "CrossCloudCollectionError",
+              "GeneralThresholdError",
+            ]),
+          ),
+        }),
+      ),
+      description: Schema.optional(Schema.String),
+      source: Schema.optional(Schema.Literals(["Preset", "User"])),
+      details: Schema.optional(
+        Schema.Struct({
+          timeGrainType: Schema.optional(
+            Schema.Literals([
+              "None",
+              "Monthly",
+              "Quarterly",
+              "Annually",
+              "BillingMonth",
+              "BillingQuarter",
+              "BillingAnnual",
+            ]),
+          ),
+          periodStartDate: Schema.optional(Schema.String),
+          triggeredBy: Schema.optional(Schema.String),
+          resourceGroupFilter: Schema.optional(Schema.Array(Schema.Unknown)),
+          resourceFilter: Schema.optional(Schema.Array(Schema.Unknown)),
+          meterFilter: Schema.optional(Schema.Array(Schema.Unknown)),
+          tagFilter: Schema.optional(Schema.Unknown),
+          threshold: Schema.optional(Schema.Number),
+          operator: Schema.optional(
+            Schema.Literals([
+              "None",
+              "EqualTo",
+              "GreaterThan",
+              "GreaterThanOrEqualTo",
+              "LessThan",
+              "LessThanOrEqualTo",
+            ]),
+          ),
+          amount: Schema.optional(Schema.Number),
+          unit: Schema.optional(Schema.String),
+          currentSpend: Schema.optional(Schema.Number),
+          contactEmails: Schema.optional(Schema.Array(Schema.String)),
+          contactGroups: Schema.optional(Schema.Array(Schema.String)),
+          contactRoles: Schema.optional(Schema.Array(Schema.String)),
+          overridingAlert: Schema.optional(Schema.String),
+          departmentName: Schema.optional(Schema.String),
+          companyName: Schema.optional(Schema.String),
+          enrollmentNumber: Schema.optional(Schema.String),
+          enrollmentStartDate: Schema.optional(Schema.String),
+          enrollmentEndDate: Schema.optional(Schema.String),
+          invoicingThreshold: Schema.optional(Schema.Number),
+        }),
+      ),
+      costEntityId: Schema.optional(Schema.String),
+      status: Schema.optional(
+        Schema.Literals([
+          "None",
+          "Active",
+          "Overridden",
+          "Resolved",
+          "Dismissed",
+        ]),
+      ),
+      creationTime: Schema.optional(Schema.String),
+      closeTime: Schema.optional(Schema.String),
+      modificationTime: Schema.optional(Schema.String),
+      statusModificationUserName: Schema.optional(Schema.String),
+      statusModificationTime: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/{scope}/providers/Microsoft.CostManagement/alerts/{alertId}",
+    apiVersion: "2025-03-01",
   }),
 );
 export type AlertsDismissInput = typeof AlertsDismissInput.Type;
@@ -59,11 +161,11 @@ export const AlertsDismiss = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AlertsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   alertId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.CostManagement/alerts/{alertId}",
+    apiVersion: "2025-03-01",
   }),
 );
 export type AlertsGetInput = typeof AlertsGetInput.Type;
@@ -105,11 +207,11 @@ export const AlertsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AlertsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.CostManagement/alerts",
+    apiVersion: "2025-03-01",
   }),
 );
 export type AlertsListInput = typeof AlertsListInput.Type;
@@ -172,11 +274,11 @@ export const AlertsListExternalInput =
       "externalBillingAccounts",
     ]).pipe(T.PathParam()),
     externalCloudProviderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/alerts",
+      apiVersion: "2025-03-01",
     }),
   );
 export type AlertsListExternalInput = typeof AlertsListExternalInput.Type;
@@ -237,7 +339,6 @@ export const AlertsListExternal = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const BenefitRecommendationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingScope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
@@ -245,6 +346,7 @@ export const BenefitRecommendationsListInput =
     T.Http({
       method: "GET",
       path: "/{billingScope}/providers/Microsoft.CostManagement/benefitRecommendations",
+      apiVersion: "2025-03-01",
     }),
   );
 export type BenefitRecommendationsListInput =
@@ -311,7 +413,6 @@ export const BenefitRecommendationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const BenefitUtilizationSummariesListByBillingAccountIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     grainParameter: Schema.optional(
       Schema.Literals(["Hourly", "Daily", "Monthly"]),
     ),
@@ -320,6 +421,7 @@ export const BenefitUtilizationSummariesListByBillingAccountIdInput =
     T.Http({
       method: "GET",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
+      apiVersion: "2025-03-01",
     }),
   );
 export type BenefitUtilizationSummariesListByBillingAccountIdInput =
@@ -385,7 +487,6 @@ export const BenefitUtilizationSummariesListByBillingProfileIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     grainParameter: Schema.optional(
       Schema.Literals(["Hourly", "Daily", "Monthly"]),
     ),
@@ -394,6 +495,7 @@ export const BenefitUtilizationSummariesListByBillingProfileIdInput =
     T.Http({
       method: "GET",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
+      apiVersion: "2025-03-01",
     }),
   );
 export type BenefitUtilizationSummariesListByBillingProfileIdInput =
@@ -460,7 +562,6 @@ export const BenefitUtilizationSummariesListBySavingsPlanIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     savingsPlanId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     grainParameter: Schema.optional(
       Schema.Literals(["Hourly", "Daily", "Monthly"]),
@@ -469,6 +570,7 @@ export const BenefitUtilizationSummariesListBySavingsPlanIdInput =
     T.Http({
       method: "GET",
       path: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
+      apiVersion: "2025-03-01",
     }),
   );
 export type BenefitUtilizationSummariesListBySavingsPlanIdInput =
@@ -534,7 +636,6 @@ export const BenefitUtilizationSummariesListBySavingsPlanId =
 export const BenefitUtilizationSummariesListBySavingsPlanOrderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     grainParameter: Schema.optional(
       Schema.Literals(["Hourly", "Daily", "Monthly"]),
@@ -543,6 +644,7 @@ export const BenefitUtilizationSummariesListBySavingsPlanOrderInput =
     T.Http({
       method: "GET",
       path: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
+      apiVersion: "2025-03-01",
     }),
   );
 export type BenefitUtilizationSummariesListBySavingsPlanOrderInput =
@@ -608,11 +710,131 @@ export const BudgetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     budgetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        category: Schema.Literals(["Cost", "ReservationUtilization"]),
+        amount: Schema.optional(Schema.Number),
+        timeGrain: Schema.Literals([
+          "Monthly",
+          "Quarterly",
+          "Annually",
+          "BillingMonth",
+          "BillingQuarter",
+          "BillingAnnual",
+          "Last7Days",
+          "Last30Days",
+        ]),
+        timePeriod: Schema.Struct({
+          startDate: Schema.String,
+          endDate: Schema.optional(Schema.String),
+        }),
+        filter: Schema.optional(
+          Schema.Struct({
+            and: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  dimensions: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.String,
+                      operator: Schema.Literals(["In"]),
+                      values: Schema.Array(Schema.String),
+                    }),
+                  ),
+                  tags: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.String,
+                      operator: Schema.Literals(["In"]),
+                      values: Schema.Array(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            dimensions: Schema.optional(
+              Schema.Struct({
+                name: Schema.String,
+                operator: Schema.Literals(["In"]),
+                values: Schema.Array(Schema.String),
+              }),
+            ),
+            tags: Schema.optional(
+              Schema.Struct({
+                name: Schema.String,
+                operator: Schema.Literals(["In"]),
+                values: Schema.Array(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        currentSpend: Schema.optional(
+          Schema.Struct({
+            amount: Schema.optional(Schema.Number),
+            unit: Schema.optional(Schema.String),
+          }),
+        ),
+        notifications: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              enabled: Schema.Boolean,
+              operator: Schema.Literals([
+                "EqualTo",
+                "GreaterThan",
+                "GreaterThanOrEqualTo",
+                "LessThan",
+              ]),
+              threshold: Schema.Number,
+              frequency: Schema.optional(
+                Schema.Literals(["Daily", "Weekly", "Monthly"]),
+              ),
+              contactEmails: Schema.Array(Schema.String),
+              contactRoles: Schema.optional(Schema.Array(Schema.String)),
+              contactGroups: Schema.optional(Schema.Array(Schema.String)),
+              thresholdType: Schema.optional(
+                Schema.Literals(["Actual", "Forecasted"]),
+              ),
+              locale: Schema.optional(
+                Schema.Literals([
+                  "en-us",
+                  "ja-jp",
+                  "zh-cn",
+                  "de-de",
+                  "es-es",
+                  "fr-fr",
+                  "it-it",
+                  "ko-kr",
+                  "pt-br",
+                  "ru-ru",
+                  "zh-tw",
+                  "cs-cz",
+                  "pl-pl",
+                  "tr-tr",
+                  "da-dk",
+                  "en-gb",
+                  "hu-hu",
+                  "nb-no",
+                  "nl-nl",
+                  "pt-pt",
+                  "sv-se",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        forecastSpend: Schema.optional(
+          Schema.Struct({
+            amount: Schema.optional(Schema.Number),
+            unit: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type BudgetsCreateOrUpdateInput = typeof BudgetsCreateOrUpdateInput.Type;
@@ -659,11 +881,11 @@ export const BudgetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const BudgetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   budgetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
+    apiVersion: "2025-03-01",
   }),
 );
 export type BudgetsDeleteInput = typeof BudgetsDeleteInput.Type;
@@ -688,11 +910,11 @@ export const BudgetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const BudgetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   budgetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
+    apiVersion: "2025-03-01",
   }),
 );
 export type BudgetsGetInput = typeof BudgetsGetInput.Type;
@@ -734,12 +956,12 @@ export const BudgetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const BudgetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $filter: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.CostManagement/budgets",
+    apiVersion: "2025-03-01",
   }),
 );
 export type BudgetsListInput = typeof BudgetsListInput.Type;
@@ -799,11 +1021,13 @@ export const BudgetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const CostAllocationRulesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/checkNameAvailability",
+      apiVersion: "2025-03-01",
     }),
   );
 export type CostAllocationRulesCheckNameAvailabilityInput =
@@ -838,11 +1062,37 @@ export const CostAllocationRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        details: Schema.Struct({
+          sourceResources: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                resourceType: Schema.Literals(["Dimension", "Tag"]),
+                name: Schema.String,
+              }),
+            ),
+          ),
+          targetResources: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                resourceType: Schema.Literals(["Dimension", "Tag"]),
+                name: Schema.String,
+              }),
+            ),
+          ),
+        }),
+        status: Schema.Literals(["NotActive", "Active", "Processing"]),
+        createdDate: Schema.optional(Schema.String),
+        updatedDate: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type CostAllocationRulesCreateOrUpdateInput =
@@ -890,11 +1140,11 @@ export const CostAllocationRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type CostAllocationRulesDeleteInput =
@@ -925,11 +1175,11 @@ export const CostAllocationRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type CostAllocationRulesGetInput =
@@ -977,11 +1227,11 @@ export const CostAllocationRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CostAllocationRulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules",
+      apiVersion: "2025-03-01",
     }),
   );
 export type CostAllocationRulesListInput =
@@ -1049,7 +1299,6 @@ export const DimensionsByExternalCloudProviderTypeInput =
       "externalBillingAccounts",
     ]).pipe(T.PathParam()),
     externalCloudProviderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
     $skiptoken: Schema.optional(Schema.String),
@@ -1058,6 +1307,7 @@ export const DimensionsByExternalCloudProviderTypeInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/dimensions",
+      apiVersion: "2025-03-01",
     }),
   );
 export type DimensionsByExternalCloudProviderTypeInput =
@@ -1104,7 +1354,6 @@ export const DimensionsByExternalCloudProviderType =
 // Input Schema
 export const DimensionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $filter: Schema.optional(Schema.String),
   $expand: Schema.optional(Schema.String),
   $skiptoken: Schema.optional(Schema.String),
@@ -1113,6 +1362,7 @@ export const DimensionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.CostManagement/dimensions",
+    apiVersion: "2025-03-01",
   }),
 );
 export type DimensionsListInput = typeof DimensionsListInput.Type;
@@ -1156,11 +1406,119 @@ export const ExportsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     exportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        format: Schema.optional(Schema.Literals(["Csv", "Parquet"])),
+        deliveryInfo: Schema.Struct({
+          destination: Schema.Struct({
+            type: Schema.optional(Schema.Literals(["AzureBlob"])),
+            resourceId: Schema.optional(Schema.String),
+            container: Schema.String,
+            rootFolderPath: Schema.optional(Schema.String),
+            sasToken: Schema.optional(Schema.String),
+            storageAccount: Schema.optional(Schema.String),
+          }),
+        }),
+        definition: Schema.Struct({
+          type: Schema.Literals([
+            "Usage",
+            "ActualCost",
+            "AmortizedCost",
+            "FocusCost",
+            "PriceSheet",
+            "ReservationTransactions",
+            "ReservationRecommendations",
+            "ReservationDetails",
+          ]),
+          timeframe: Schema.Literals([
+            "MonthToDate",
+            "BillingMonthToDate",
+            "TheLastMonth",
+            "TheLastBillingMonth",
+            "WeekToDate",
+            "Custom",
+            "TheCurrentMonth",
+          ]),
+          timePeriod: Schema.optional(
+            Schema.Struct({
+              from: Schema.String,
+              to: Schema.String,
+            }),
+          ),
+          dataSet: Schema.optional(
+            Schema.Struct({
+              granularity: Schema.optional(
+                Schema.Literals(["Daily", "Monthly"]),
+              ),
+              configuration: Schema.optional(
+                Schema.Struct({
+                  columns: Schema.optional(Schema.Array(Schema.String)),
+                  dataVersion: Schema.optional(Schema.String),
+                  filters: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(
+                          Schema.Literals([
+                            "ReservationScope",
+                            "ResourceType",
+                            "LookBackPeriod",
+                          ]),
+                        ),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        }),
+        runHistory: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                  eTag: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        partitionData: Schema.optional(Schema.Boolean),
+        dataOverwriteBehavior: Schema.optional(
+          Schema.Literals(["OverwritePreviousReport", "CreateNewReport"]),
+        ),
+        compressionMode: Schema.optional(
+          Schema.Literals(["gzip", "snappy", "none"]),
+        ),
+        exportDescription: Schema.optional(Schema.String),
+        nextRunTimeEstimate: Schema.optional(Schema.String),
+        systemSuspensionContext: Schema.optional(
+          Schema.Struct({
+            suspensionCode: Schema.optional(Schema.String),
+            suspensionReason: Schema.optional(Schema.String),
+            suspensionTime: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned"]),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ExportsCreateOrUpdateInput = typeof ExportsCreateOrUpdateInput.Type;
@@ -1207,11 +1565,11 @@ export const ExportsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ExportsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   exportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
+    apiVersion: "2025-03-01",
   }),
 );
 export type ExportsDeleteInput = typeof ExportsDeleteInput.Type;
@@ -1236,11 +1594,17 @@ export const ExportsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ExportsExecuteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   exportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  timePeriod: Schema.optional(
+    Schema.Struct({
+      from: Schema.String,
+      to: Schema.String,
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/run",
+    apiVersion: "2025-03-01",
   }),
 );
 export type ExportsExecuteInput = typeof ExportsExecuteInput.Type;
@@ -1265,12 +1629,12 @@ export const ExportsExecute = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ExportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   exportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
+    apiVersion: "2025-03-01",
   }),
 );
 export type ExportsGetInput = typeof ExportsGetInput.Type;
@@ -1315,11 +1679,11 @@ export const ExportsGetExecutionHistoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     exportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/runHistory",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ExportsGetExecutionHistoryInput =
@@ -1359,12 +1723,12 @@ export const ExportsGetExecutionHistory = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ExportsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.CostManagement/exports",
+    apiVersion: "2025-03-01",
   }),
 );
 export type ExportsListInput = typeof ExportsListInput.Type;
@@ -1427,12 +1791,62 @@ export const ForecastExternalCloudProviderUsageInput =
       "externalBillingAccounts",
     ]).pipe(T.PathParam()),
     externalCloudProviderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
+    type: Schema.Literals(["Usage", "ActualCost", "AmortizedCost"]),
+    timeframe: Schema.Literals(["Custom"]),
+    timePeriod: Schema.optional(
+      Schema.Struct({
+        from: Schema.String,
+        to: Schema.String,
+      }),
+    ),
+    dataset: Schema.Struct({
+      granularity: Schema.optional(Schema.Literals(["Daily", "Monthly"])),
+      configuration: Schema.optional(
+        Schema.Struct({
+          columns: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      aggregation: Schema.Record(
+        Schema.String,
+        Schema.Struct({
+          name: Schema.Literals([
+            "PreTaxCostUSD",
+            "Cost",
+            "CostUSD",
+            "PreTaxCost",
+          ]),
+          function: Schema.Literals(["Sum"]),
+        }),
+      ),
+      filter: Schema.optional(
+        Schema.Struct({
+          and: Schema.optional(Schema.Array(Schema.Unknown)),
+          or: Schema.optional(Schema.Array(Schema.Unknown)),
+          dimensions: Schema.optional(
+            Schema.Struct({
+              name: Schema.String,
+              operator: Schema.Literals(["In"]),
+              values: Schema.Array(Schema.String),
+            }),
+          ),
+          tags: Schema.optional(
+            Schema.Struct({
+              name: Schema.String,
+              operator: Schema.Literals(["In"]),
+              values: Schema.Array(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    }),
+    includeActualCost: Schema.optional(Schema.Boolean),
+    includeFreshPartialCost: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/forecast",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ForecastExternalCloudProviderUsageInput =
@@ -1469,12 +1883,62 @@ export const ForecastExternalCloudProviderUsage =
 // Input Schema
 export const ForecastUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $filter: Schema.optional(Schema.String),
+  type: Schema.Literals(["Usage", "ActualCost", "AmortizedCost"]),
+  timeframe: Schema.Literals(["Custom"]),
+  timePeriod: Schema.optional(
+    Schema.Struct({
+      from: Schema.String,
+      to: Schema.String,
+    }),
+  ),
+  dataset: Schema.Struct({
+    granularity: Schema.optional(Schema.Literals(["Daily", "Monthly"])),
+    configuration: Schema.optional(
+      Schema.Struct({
+        columns: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    aggregation: Schema.Record(
+      Schema.String,
+      Schema.Struct({
+        name: Schema.Literals([
+          "PreTaxCostUSD",
+          "Cost",
+          "CostUSD",
+          "PreTaxCost",
+        ]),
+        function: Schema.Literals(["Sum"]),
+      }),
+    ),
+    filter: Schema.optional(
+      Schema.Struct({
+        and: Schema.optional(Schema.Array(Schema.Unknown)),
+        or: Schema.optional(Schema.Array(Schema.Unknown)),
+        dimensions: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            operator: Schema.Literals(["In"]),
+            values: Schema.Array(Schema.String),
+          }),
+        ),
+        tags: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            operator: Schema.Literals(["In"]),
+            values: Schema.Array(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  }),
+  includeActualCost: Schema.optional(Schema.Boolean),
+  includeFreshPartialCost: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/{scope}/providers/Microsoft.CostManagement/forecast",
+    apiVersion: "2025-03-01",
   }),
 );
 export type ForecastUsageInput = typeof ForecastUsageInput.Type;
@@ -1507,11 +1971,20 @@ export const ForecastUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    billingProfileId: Schema.optional(Schema.String),
+    benefitOrderId: Schema.optional(Schema.String),
+    benefitId: Schema.optional(Schema.String),
+    grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    startDate: Schema.String,
+    endDate: Schema.String,
+    kind: Schema.optional(
+      Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountInput =
@@ -1591,11 +2064,19 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileIn
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    benefitOrderId: Schema.optional(Schema.String),
+    benefitId: Schema.optional(Schema.String),
+    grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    startDate: Schema.String,
+    endDate: Schema.String,
+    kind: Schema.optional(
+      Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileInput =
@@ -1676,11 +2157,21 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByReservationIdInp
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    billingAccountId: Schema.optional(Schema.String),
+    billingProfileId: Schema.optional(Schema.String),
+    benefitOrderId: Schema.optional(Schema.String),
+    benefitId: Schema.optional(Schema.String),
+    grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    startDate: Schema.String,
+    endDate: Schema.String,
+    kind: Schema.optional(
+      Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateBenefitUtilizationSummariesReportGenerateByReservationIdInput =
@@ -1760,11 +2251,21 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByReservationId =
 export const GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    billingAccountId: Schema.optional(Schema.String),
+    billingProfileId: Schema.optional(Schema.String),
+    benefitOrderId: Schema.optional(Schema.String),
+    benefitId: Schema.optional(Schema.String),
+    grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    startDate: Schema.String,
+    endDate: Schema.String,
+    kind: Schema.optional(
+      Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderIdInput =
@@ -1844,11 +2345,21 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdInp
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     savingsPlanId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    billingAccountId: Schema.optional(Schema.String),
+    billingProfileId: Schema.optional(Schema.String),
+    benefitOrderId: Schema.optional(Schema.String),
+    benefitId: Schema.optional(Schema.String),
+    grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    startDate: Schema.String,
+    endDate: Schema.String,
+    kind: Schema.optional(
+      Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdInput =
@@ -1928,11 +2439,21 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanId =
 export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    billingAccountId: Schema.optional(Schema.String),
+    billingProfileId: Schema.optional(Schema.String),
+    benefitOrderId: Schema.optional(Schema.String),
+    benefitId: Schema.optional(Schema.String),
+    grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    startDate: Schema.String,
+    endDate: Schema.String,
+    kind: Schema.optional(
+      Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderIdInput =
@@ -2011,11 +2532,20 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrder
 export const GenerateCostDetailsReportCreateOperationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    metric: Schema.optional(Schema.Literals(["ActualCost", "AmortizedCost"])),
+    timePeriod: Schema.optional(
+      Schema.Struct({
+        start: Schema.String,
+        end: Schema.String,
+      }),
+    ),
+    billingPeriod: Schema.optional(Schema.String),
+    invoiceId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/{scope}/providers/Microsoft.CostManagement/generateCostDetailsReport",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateCostDetailsReportCreateOperationInput =
@@ -2095,11 +2625,11 @@ export const GenerateCostDetailsReportGetOperationResultsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.CostManagement/costDetailsOperationResults/{operationId}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateCostDetailsReportGetOperationResultsInput =
@@ -2179,11 +2709,21 @@ export const GenerateCostDetailsReportGetOperationResults =
 export const GenerateDetailedCostReportCreateOperationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    metric: Schema.optional(Schema.Literals(["ActualCost", "AmortizedCost"])),
+    timePeriod: Schema.optional(
+      Schema.Struct({
+        start: Schema.String,
+        end: Schema.String,
+      }),
+    ),
+    billingPeriod: Schema.optional(Schema.String),
+    invoiceId: Schema.optional(Schema.String),
+    customerId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/{scope}/providers/Microsoft.CostManagement/generateDetailedCostReport",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateDetailedCostReportCreateOperationInput =
@@ -2230,11 +2770,11 @@ export const GenerateDetailedCostReportOperationResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.CostManagement/operationResults/{operationId}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateDetailedCostReportOperationResultsGetInput =
@@ -2282,11 +2822,11 @@ export const GenerateDetailedCostReportOperationStatusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.CostManagement/operationStatus/{operationId}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateDetailedCostReportOperationStatusGetInput =
@@ -2333,13 +2873,13 @@ export const GenerateDetailedCostReportOperationStatusGet =
 export const GenerateReservationDetailsReportByBillingAccountIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     startDate: Schema.String,
     endDate: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/generateReservationDetailsReport",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateReservationDetailsReportByBillingAccountIdInput =
@@ -2394,13 +2934,13 @@ export const GenerateReservationDetailsReportByBillingProfileIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     startDate: Schema.String,
     endDate: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/generateReservationDetailsReport",
+      apiVersion: "2025-03-01",
     }),
   );
 export type GenerateReservationDetailsReportByBillingProfileIdInput =
@@ -2452,12 +2992,13 @@ export const GenerateReservationDetailsReportByBillingProfileId =
     outputSchema: GenerateReservationDetailsReportByBillingProfileIdOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.CostManagement/operations",
+    apiVersion: "2025-03-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -2503,11 +3044,11 @@ export const PriceSheetDownloadByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingPeriodName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.CostManagement/pricesheets/default/download",
+      apiVersion: "2025-03-01",
     }),
   );
 export type PriceSheetDownloadByBillingAccountInput =
@@ -2568,11 +3109,11 @@ export const PriceSheetDownloadByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/providers/Microsoft.CostManagement/pricesheets/default/download",
+      apiVersion: "2025-03-01",
     }),
   );
 export type PriceSheetDownloadByBillingProfileInput =
@@ -2638,11 +3179,11 @@ export const PriceSheetDownloadByInvoiceInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoices/{invoiceName}/providers/Microsoft.CostManagement/pricesheets/default/download",
+      apiVersion: "2025-03-01",
     }),
   );
 export type PriceSheetDownloadByInvoiceInput =
@@ -2676,11 +3217,81 @@ export const PriceSheetDownloadByInvoice = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const QueryUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  type: Schema.Literals([
+    "Usage",
+    "ActualCost",
+    "AmortizedCost",
+    "FocusCost",
+    "PriceSheet",
+    "ReservationTransactions",
+    "ReservationRecommendations",
+    "ReservationDetails",
+  ]),
+  timeframe: Schema.Literals([
+    "MonthToDate",
+    "BillingMonthToDate",
+    "TheLastMonth",
+    "TheLastBillingMonth",
+    "WeekToDate",
+    "Custom",
+    "TheCurrentMonth",
+  ]),
+  timePeriod: Schema.optional(
+    Schema.Struct({
+      from: Schema.String,
+      to: Schema.String,
+    }),
+  ),
+  dataset: Schema.Struct({
+    granularity: Schema.optional(Schema.Literals(["Daily", "Monthly"])),
+    configuration: Schema.optional(
+      Schema.Struct({
+        columns: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    aggregation: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.Struct({
+          name: Schema.String,
+          function: Schema.Literals(["Sum"]),
+        }),
+      ),
+    ),
+    grouping: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.Literals(["TagKey", "Dimension"]),
+          name: Schema.String,
+        }),
+      ),
+    ),
+    filter: Schema.optional(
+      Schema.Struct({
+        and: Schema.optional(Schema.Array(Schema.Unknown)),
+        or: Schema.optional(Schema.Array(Schema.Unknown)),
+        dimensions: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            operator: Schema.Literals(["In"]),
+            values: Schema.Array(Schema.String),
+          }),
+        ),
+        tags: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            operator: Schema.Literals(["In"]),
+            values: Schema.Array(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  }),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/{scope}/providers/Microsoft.CostManagement/query",
+    apiVersion: "2025-03-01",
   }),
 );
 export type QueryUsageInput = typeof QueryUsageInput.Type;
@@ -2716,11 +3327,81 @@ export const QueryUsageByExternalCloudProviderTypeInput =
       "externalBillingAccounts",
     ]).pipe(T.PathParam()),
     externalCloudProviderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    type: Schema.Literals([
+      "Usage",
+      "ActualCost",
+      "AmortizedCost",
+      "FocusCost",
+      "PriceSheet",
+      "ReservationTransactions",
+      "ReservationRecommendations",
+      "ReservationDetails",
+    ]),
+    timeframe: Schema.Literals([
+      "MonthToDate",
+      "BillingMonthToDate",
+      "TheLastMonth",
+      "TheLastBillingMonth",
+      "WeekToDate",
+      "Custom",
+      "TheCurrentMonth",
+    ]),
+    timePeriod: Schema.optional(
+      Schema.Struct({
+        from: Schema.String,
+        to: Schema.String,
+      }),
+    ),
+    dataset: Schema.Struct({
+      granularity: Schema.optional(Schema.Literals(["Daily", "Monthly"])),
+      configuration: Schema.optional(
+        Schema.Struct({
+          columns: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      aggregation: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            name: Schema.String,
+            function: Schema.Literals(["Sum"]),
+          }),
+        ),
+      ),
+      grouping: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.Literals(["TagKey", "Dimension"]),
+            name: Schema.String,
+          }),
+        ),
+      ),
+      filter: Schema.optional(
+        Schema.Struct({
+          and: Schema.optional(Schema.Array(Schema.Unknown)),
+          or: Schema.optional(Schema.Array(Schema.Unknown)),
+          dimensions: Schema.optional(
+            Schema.Struct({
+              name: Schema.String,
+              operator: Schema.Literals(["In"]),
+              values: Schema.Array(Schema.String),
+            }),
+          ),
+          tags: Schema.optional(
+            Schema.Struct({
+              name: Schema.String,
+              operator: Schema.Literals(["In"]),
+              values: Schema.Array(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/query",
+      apiVersion: "2025-03-01",
     }),
   );
 export type QueryUsageByExternalCloudProviderTypeInput =
@@ -2756,13 +3437,13 @@ export const QueryUsageByExternalCloudProviderType =
 // Input Schema
 export const ScheduledActionsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.CostManagement/checkNameAvailability",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ScheduledActionsCheckNameAvailabilityInput =
@@ -2795,13 +3476,13 @@ export const ScheduledActionsCheckNameAvailability =
 export const ScheduledActionsCheckNameAvailabilityByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/{scope}/providers/Microsoft.CostManagement/checkNameAvailability",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ScheduledActionsCheckNameAvailabilityByScopeInput =
@@ -2835,11 +3516,61 @@ export const ScheduledActionsCheckNameAvailabilityByScope =
 export const ScheduledActionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.String,
+        fileDestination: Schema.optional(
+          Schema.Struct({
+            fileFormats: Schema.optional(
+              Schema.Array(Schema.Literals(["Csv"])),
+            ),
+          }),
+        ),
+        notification: Schema.Struct({
+          to: Schema.Array(Schema.String),
+          language: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          regionalFormat: Schema.optional(Schema.String),
+          subject: Schema.String,
+        }),
+        notificationEmail: Schema.optional(Schema.String),
+        schedule: Schema.Struct({
+          frequency: Schema.Literals(["Daily", "Weekly", "Monthly"]),
+          hourOfDay: Schema.optional(Schema.Number),
+          daysOfWeek: Schema.optional(
+            Schema.Array(
+              Schema.Literals([
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+              ]),
+            ),
+          ),
+          weeksOfMonth: Schema.optional(
+            Schema.Array(
+              Schema.Literals(["First", "Second", "Third", "Fourth", "Last"]),
+            ),
+          ),
+          dayOfMonth: Schema.optional(Schema.Number),
+          startDate: Schema.String,
+          endDate: Schema.String,
+        }),
+        scope: Schema.optional(Schema.String),
+        status: Schema.Literals(["Enabled", "Expired", "Disabled"]),
+        viewId: Schema.String,
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.Literals(["Email", "InsightAlert"])),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ScheduledActionsCreateOrUpdateInput =
@@ -2887,11 +3618,61 @@ export const ScheduledActionsCreateOrUpdateByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.String,
+        fileDestination: Schema.optional(
+          Schema.Struct({
+            fileFormats: Schema.optional(
+              Schema.Array(Schema.Literals(["Csv"])),
+            ),
+          }),
+        ),
+        notification: Schema.Struct({
+          to: Schema.Array(Schema.String),
+          language: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          regionalFormat: Schema.optional(Schema.String),
+          subject: Schema.String,
+        }),
+        notificationEmail: Schema.optional(Schema.String),
+        schedule: Schema.Struct({
+          frequency: Schema.Literals(["Daily", "Weekly", "Monthly"]),
+          hourOfDay: Schema.optional(Schema.Number),
+          daysOfWeek: Schema.optional(
+            Schema.Array(
+              Schema.Literals([
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+              ]),
+            ),
+          ),
+          weeksOfMonth: Schema.optional(
+            Schema.Array(
+              Schema.Literals(["First", "Second", "Third", "Fourth", "Last"]),
+            ),
+          ),
+          dayOfMonth: Schema.optional(Schema.Number),
+          startDate: Schema.String,
+          endDate: Schema.String,
+        }),
+        scope: Schema.optional(Schema.String),
+        status: Schema.Literals(["Enabled", "Expired", "Disabled"]),
+        viewId: Schema.String,
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.Literals(["Email", "InsightAlert"])),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ScheduledActionsCreateOrUpdateByScopeInput =
@@ -2939,11 +3720,11 @@ export const ScheduledActionsCreateOrUpdateByScope =
 export const ScheduledActionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ScheduledActionsDeleteInput =
@@ -2973,11 +3754,11 @@ export const ScheduledActionsDeleteByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ScheduledActionsDeleteByScopeInput =
@@ -3006,11 +3787,11 @@ export const ScheduledActionsDeleteByScope =
 export const ScheduledActionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ScheduledActionsGetInput = typeof ScheduledActionsGetInput.Type;
@@ -3054,11 +3835,11 @@ export const ScheduledActionsGetByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ScheduledActionsGetByScopeInput =
@@ -3105,12 +3886,12 @@ export const ScheduledActionsGetByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ScheduledActionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.CostManagement/scheduledActions",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ScheduledActionsListInput = typeof ScheduledActionsListInput.Type;
@@ -3172,12 +3953,12 @@ export const ScheduledActionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ScheduledActionsListByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ScheduledActionsListByScopeInput =
@@ -3242,11 +4023,11 @@ export const ScheduledActionsListByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ScheduledActionsRunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.CostManagement/scheduledActions/{name}/execute",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ScheduledActionsRunInput = typeof ScheduledActionsRunInput.Type;
@@ -3272,11 +4053,11 @@ export const ScheduledActionsRunByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}/execute",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ScheduledActionsRunByScopeInput =
@@ -3307,11 +4088,12 @@ export const SettingsCreateOrUpdateByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     type: Schema.Literals(["taginheritance"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    kind: Schema.Literals(["taginheritance"]),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type SettingsCreateOrUpdateByScopeInput =
@@ -3359,11 +4141,11 @@ export const SettingsDeleteByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     type: Schema.Literals(["taginheritance"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type SettingsDeleteByScopeInput = typeof SettingsDeleteByScopeInput.Type;
@@ -3393,11 +4175,11 @@ export const SettingsGetByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     type: Schema.Literals(["taginheritance"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type SettingsGetByScopeInput = typeof SettingsGetByScopeInput.Type;
@@ -3440,11 +4222,11 @@ export const SettingsGetByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SettingsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.CostManagement/settings",
+    apiVersion: "2025-03-01",
   }),
 );
 export type SettingsListInput = typeof SettingsListInput.Type;
@@ -3502,11 +4284,129 @@ export const SettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ViewsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        scope: Schema.optional(Schema.String),
+        createdOn: Schema.optional(Schema.String),
+        modifiedOn: Schema.optional(Schema.String),
+        dateRange: Schema.optional(Schema.String),
+        currency: Schema.optional(Schema.String),
+        query: Schema.optional(
+          Schema.Struct({
+            type: Schema.Literals(["Usage"]),
+            timeframe: Schema.Literals([
+              "WeekToDate",
+              "MonthToDate",
+              "YearToDate",
+              "Custom",
+            ]),
+            timePeriod: Schema.optional(
+              Schema.Struct({
+                from: Schema.String,
+                to: Schema.String,
+              }),
+            ),
+            dataSet: Schema.optional(
+              Schema.Struct({
+                granularity: Schema.optional(
+                  Schema.Literals(["Daily", "Monthly"]),
+                ),
+                configuration: Schema.optional(
+                  Schema.Struct({
+                    columns: Schema.optional(Schema.Array(Schema.String)),
+                  }),
+                ),
+                aggregation: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      name: Schema.String,
+                      function: Schema.Literals(["Sum"]),
+                    }),
+                  ),
+                ),
+                grouping: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      type: Schema.Literals(["TagKey", "Dimension"]),
+                      name: Schema.String,
+                    }),
+                  ),
+                ),
+                sorting: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      direction: Schema.optional(
+                        Schema.Literals(["Ascending", "Descending"]),
+                      ),
+                      name: Schema.String,
+                    }),
+                  ),
+                ),
+                filter: Schema.optional(
+                  Schema.Struct({
+                    and: Schema.optional(Schema.Array(Schema.Unknown)),
+                    or: Schema.optional(Schema.Array(Schema.Unknown)),
+                    dimensions: Schema.optional(
+                      Schema.Struct({
+                        name: Schema.String,
+                        operator: Schema.Literals(["In", "Contains"]),
+                        values: Schema.Array(Schema.String),
+                      }),
+                    ),
+                    tags: Schema.optional(
+                      Schema.Struct({
+                        name: Schema.String,
+                        operator: Schema.Literals(["In", "Contains"]),
+                        values: Schema.Array(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            includeMonetaryCommitment: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        chart: Schema.optional(
+          Schema.Literals([
+            "Area",
+            "Line",
+            "StackedColumn",
+            "GroupedColumn",
+            "Table",
+          ]),
+        ),
+        accumulated: Schema.optional(Schema.Literals(["true", "false"])),
+        metric: Schema.optional(
+          Schema.Literals(["ActualCost", "AmortizedCost", "AHUB"]),
+        ),
+        kpis: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.Literals(["Forecast", "Budget"])),
+              id: Schema.optional(Schema.String),
+              enabled: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+        pivots: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.Literals(["Dimension", "TagKey"])),
+              name: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.CostManagement/views/{viewName}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ViewsCreateOrUpdateInput = typeof ViewsCreateOrUpdateInput.Type;
@@ -3550,11 +4450,129 @@ export const ViewsCreateOrUpdateByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     viewName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        scope: Schema.optional(Schema.String),
+        createdOn: Schema.optional(Schema.String),
+        modifiedOn: Schema.optional(Schema.String),
+        dateRange: Schema.optional(Schema.String),
+        currency: Schema.optional(Schema.String),
+        query: Schema.optional(
+          Schema.Struct({
+            type: Schema.Literals(["Usage"]),
+            timeframe: Schema.Literals([
+              "WeekToDate",
+              "MonthToDate",
+              "YearToDate",
+              "Custom",
+            ]),
+            timePeriod: Schema.optional(
+              Schema.Struct({
+                from: Schema.String,
+                to: Schema.String,
+              }),
+            ),
+            dataSet: Schema.optional(
+              Schema.Struct({
+                granularity: Schema.optional(
+                  Schema.Literals(["Daily", "Monthly"]),
+                ),
+                configuration: Schema.optional(
+                  Schema.Struct({
+                    columns: Schema.optional(Schema.Array(Schema.String)),
+                  }),
+                ),
+                aggregation: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      name: Schema.String,
+                      function: Schema.Literals(["Sum"]),
+                    }),
+                  ),
+                ),
+                grouping: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      type: Schema.Literals(["TagKey", "Dimension"]),
+                      name: Schema.String,
+                    }),
+                  ),
+                ),
+                sorting: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      direction: Schema.optional(
+                        Schema.Literals(["Ascending", "Descending"]),
+                      ),
+                      name: Schema.String,
+                    }),
+                  ),
+                ),
+                filter: Schema.optional(
+                  Schema.Struct({
+                    and: Schema.optional(Schema.Array(Schema.Unknown)),
+                    or: Schema.optional(Schema.Array(Schema.Unknown)),
+                    dimensions: Schema.optional(
+                      Schema.Struct({
+                        name: Schema.String,
+                        operator: Schema.Literals(["In", "Contains"]),
+                        values: Schema.Array(Schema.String),
+                      }),
+                    ),
+                    tags: Schema.optional(
+                      Schema.Struct({
+                        name: Schema.String,
+                        operator: Schema.Literals(["In", "Contains"]),
+                        values: Schema.Array(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            includeMonetaryCommitment: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        chart: Schema.optional(
+          Schema.Literals([
+            "Area",
+            "Line",
+            "StackedColumn",
+            "GroupedColumn",
+            "Table",
+          ]),
+        ),
+        accumulated: Schema.optional(Schema.Literals(["true", "false"])),
+        metric: Schema.optional(
+          Schema.Literals(["ActualCost", "AmortizedCost", "AHUB"]),
+        ),
+        kpis: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.Literals(["Forecast", "Budget"])),
+              id: Schema.optional(Schema.String),
+              enabled: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+        pivots: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.Literals(["Dimension", "TagKey"])),
+              name: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ViewsCreateOrUpdateByScopeInput =
@@ -3601,11 +4619,11 @@ export const ViewsCreateOrUpdateByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ViewsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   viewName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/providers/Microsoft.CostManagement/views/{viewName}",
+    apiVersion: "2025-03-01",
   }),
 );
 export type ViewsDeleteInput = typeof ViewsDeleteInput.Type;
@@ -3630,11 +4648,11 @@ export const ViewsDeleteByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     viewName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ViewsDeleteByScopeInput = typeof ViewsDeleteByScopeInput.Type;
@@ -3658,11 +4676,11 @@ export const ViewsDeleteByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ViewsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   viewName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.CostManagement/views/{viewName}",
+    apiVersion: "2025-03-01",
   }),
 );
 export type ViewsGetInput = typeof ViewsGetInput.Type;
@@ -3704,11 +4722,11 @@ export const ViewsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ViewsGetByScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   viewName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
+    apiVersion: "2025-03-01",
   }),
 );
 export type ViewsGetByScopeInput = typeof ViewsGetByScopeInput.Type;
@@ -3748,10 +4766,14 @@ export const ViewsGetByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ViewsGetByScopeOutput,
 }));
 // Input Schema
-export const ViewsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.CostManagement/views" }),
+export const ViewsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.CostManagement/views",
+    apiVersion: "2025-03-01",
+  }),
 );
 export type ViewsListInput = typeof ViewsListInput.Type;
 
@@ -3807,11 +4829,11 @@ export const ViewsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ViewsListByScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.CostManagement/views",
+    apiVersion: "2025-03-01",
   }),
 );
 export type ViewsListByScopeInput = typeof ViewsListByScopeInput.Type;

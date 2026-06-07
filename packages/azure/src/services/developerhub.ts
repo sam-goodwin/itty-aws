@@ -13,11 +13,44 @@ export const GeneratePreviewArtifactsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    generationLanguage: Schema.optional(
+      Schema.Literals([
+        "clojure",
+        "csharp",
+        "erlang",
+        "go",
+        "gomodule",
+        "gradle",
+        "java",
+        "javascript",
+        "php",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+      ]),
+    ),
+    languageVersion: Schema.optional(Schema.String),
+    builderVersion: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.String),
+    appName: Schema.optional(Schema.String),
+    dockerfileOutputDirectory: Schema.optional(Schema.String),
+    manifestOutputDirectory: Schema.optional(Schema.String),
+    dockerfileGenerationMode: Schema.optional(
+      Schema.Literals(["enabled", "disabled"]),
+    ),
+    manifestGenerationMode: Schema.optional(
+      Schema.Literals(["enabled", "disabled"]),
+    ),
+    manifestType: Schema.optional(Schema.Literals(["helm", "kube"])),
+    imageName: Schema.optional(Schema.String),
+    namespace: Schema.optional(Schema.String),
+    imageTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevHub/locations/{location}/generatePreviewArtifacts",
+      apiVersion: "2023-08-01",
     }),
   );
 export type GeneratePreviewArtifactsInput =
@@ -47,11 +80,12 @@ export const GeneratePreviewArtifacts = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const GitHubOAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  redirectUrl: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevHub/locations/{location}/githuboauth/default/getGitHubOAuthInfo",
+    apiVersion: "2023-08-01",
   }),
 );
 export type GitHubOAuthInput = typeof GitHubOAuthInput.Type;
@@ -80,11 +114,11 @@ export const GitHubOAuthCallbackInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevHub/locations/{location}/githuboauth/default",
+      apiVersion: "2023-08-01",
     }),
   );
 export type GitHubOAuthCallbackInput = typeof GitHubOAuthCallbackInput.Type;
@@ -128,11 +162,11 @@ export const GitHubOAuthCallback = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ListGitHubOAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevHub/locations/{location}/githuboauth",
+    apiVersion: "2023-08-01",
   }),
 );
 export type ListGitHubOAuthInput = typeof ListGitHubOAuthInput.Type;
@@ -188,10 +222,14 @@ export const ListGitHubOAuth = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ListGitHubOAuthOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.DevHub/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.DevHub/operations",
+    apiVersion: "2023-08-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -238,11 +276,112 @@ export const WorkflowCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        githubWorkflowProfile: Schema.optional(
+          Schema.Struct({
+            repositoryOwner: Schema.optional(Schema.String),
+            repositoryName: Schema.optional(Schema.String),
+            branchName: Schema.optional(Schema.String),
+            dockerfile: Schema.optional(Schema.String),
+            dockerBuildContext: Schema.optional(Schema.String),
+            deploymentProperties: Schema.optional(
+              Schema.Struct({
+                manifestType: Schema.optional(
+                  Schema.Literals(["helm", "kube", "kustomize"]),
+                ),
+                kubeManifestLocations: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                helmChartPath: Schema.optional(Schema.String),
+                helmValues: Schema.optional(Schema.String),
+                overrides: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+              }),
+            ),
+            namespace: Schema.optional(Schema.String),
+            acr: Schema.optional(
+              Schema.Struct({
+                acrSubscriptionId: Schema.optional(Schema.String),
+                acrResourceGroup: Schema.optional(Schema.String),
+                acrRegistryName: Schema.optional(Schema.String),
+                acrRepositoryName: Schema.optional(Schema.String),
+              }),
+            ),
+            oidcCredentials: Schema.optional(
+              Schema.Struct({
+                azureClientId: Schema.optional(Schema.String),
+                azureTenantId: Schema.optional(Schema.String),
+              }),
+            ),
+            aksResourceId: Schema.optional(Schema.String),
+            prURL: Schema.optional(Schema.String),
+            pullNumber: Schema.optional(Schema.Number),
+            prStatus: Schema.optional(
+              Schema.Literals(["unknown", "submitted", "merged", "removed"]),
+            ),
+            lastWorkflowRun: Schema.optional(
+              Schema.Struct({
+                succeeded: Schema.optional(Schema.Boolean),
+                workflowRunURL: Schema.optional(Schema.String),
+                lastRunAt: Schema.optional(Schema.String),
+                workflowRunStatus: Schema.optional(
+                  Schema.Literals(["queued", "inprogress", "completed"]),
+                ),
+              }),
+            ),
+            authStatus: Schema.optional(
+              Schema.Literals(["Authorized", "NotFound", "Error"]),
+            ),
+          }),
+        ),
+        artifactGenerationProperties: Schema.optional(
+          Schema.Struct({
+            generationLanguage: Schema.optional(
+              Schema.Literals([
+                "clojure",
+                "csharp",
+                "erlang",
+                "go",
+                "gomodule",
+                "gradle",
+                "java",
+                "javascript",
+                "php",
+                "python",
+                "ruby",
+                "rust",
+                "swift",
+              ]),
+            ),
+            languageVersion: Schema.optional(Schema.String),
+            builderVersion: Schema.optional(Schema.String),
+            port: Schema.optional(Schema.String),
+            appName: Schema.optional(Schema.String),
+            dockerfileOutputDirectory: Schema.optional(Schema.String),
+            manifestOutputDirectory: Schema.optional(Schema.String),
+            dockerfileGenerationMode: Schema.optional(
+              Schema.Literals(["enabled", "disabled"]),
+            ),
+            manifestGenerationMode: Schema.optional(
+              Schema.Literals(["enabled", "disabled"]),
+            ),
+            manifestType: Schema.optional(Schema.Literals(["helm", "kube"])),
+            imageName: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            imageTag: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevHub/workflows/{workflowName}",
+      apiVersion: "2023-08-01",
     }),
   );
 export type WorkflowCreateOrUpdateInput =
@@ -290,11 +429,11 @@ export const WorkflowCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WorkflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevHub/workflows/{workflowName}",
+    apiVersion: "2023-08-01",
   }),
 );
 export type WorkflowDeleteInput = typeof WorkflowDeleteInput.Type;
@@ -321,11 +460,11 @@ export const WorkflowDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WorkflowGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevHub/workflows/{workflowName}",
+    apiVersion: "2023-08-01",
   }),
 );
 export type WorkflowGetInput = typeof WorkflowGetInput.Type;
@@ -367,11 +506,11 @@ export const WorkflowGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkflowListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevHub/workflows",
+    apiVersion: "2023-08-01",
   }),
 );
 export type WorkflowListInput = typeof WorkflowListInput.Type;
@@ -431,11 +570,11 @@ export const WorkflowListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevHub/workflows",
+      apiVersion: "2023-08-01",
     }),
   );
 export type WorkflowListByResourceGroupInput =
@@ -501,11 +640,12 @@ export const WorkflowUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevHub/workflows/{workflowName}",
+      apiVersion: "2023-08-01",
     }),
   );
 export type WorkflowUpdateTagsInput = typeof WorkflowUpdateTagsInput.Type;

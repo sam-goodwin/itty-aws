@@ -13,11 +13,31 @@ export const ClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.Literals(["Default"])),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        createdDate: Schema.optional(Schema.String),
+        clusterId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "InProgress"]),
+        ),
+        capacityAllocated: Schema.optional(Schema.Number),
+        capacityAssigned: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -53,11 +73,11 @@ export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -82,11 +102,11 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type ClustersGetInput = typeof ClustersGetInput.Type;
@@ -116,11 +136,11 @@ export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters",
+      apiVersion: "2020-03-01",
     }),
   );
 export type ClustersListByResourceGroupInput =
@@ -161,11 +181,11 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/clusters",
+      apiVersion: "2020-03-01",
     }),
   );
 export type ClustersListBySubscriptionInput =
@@ -206,11 +226,11 @@ export const ClustersListStreamingJobsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/listStreamingJobs",
+      apiVersion: "2020-03-01",
     }),
   );
 export type ClustersListStreamingJobsInput =
@@ -264,11 +284,31 @@ export const ClustersListStreamingJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.Literals(["Default"])),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      createdDate: Schema.optional(Schema.String),
+      clusterId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Failed", "Canceled", "InProgress"]),
+      ),
+      capacityAllocated: Schema.optional(Schema.Number),
+      capacityAssigned: Schema.optional(Schema.Number),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -300,11 +340,42 @@ export const FunctionsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        type: Schema.String,
+        etag: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            inputs: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  dataType: Schema.optional(Schema.String),
+                  isConfigurationParameter: Schema.optional(Schema.Boolean),
+                }),
+              ),
+            ),
+            output: Schema.optional(
+              Schema.Struct({
+                dataType: Schema.optional(Schema.String),
+              }),
+            ),
+            binding: Schema.optional(
+              Schema.Struct({
+                type: Schema.String,
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type FunctionsCreateOrReplaceInput =
@@ -342,11 +413,11 @@ export const FunctionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type FunctionsDeleteInput = typeof FunctionsDeleteInput.Type;
@@ -373,11 +444,11 @@ export const FunctionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type FunctionsGetInput = typeof FunctionsGetInput.Type;
@@ -410,11 +481,11 @@ export const FunctionsListByStreamingJobInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     $select: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions",
+      apiVersion: "2020-03-01",
     }),
   );
 export type FunctionsListByStreamingJobInput =
@@ -459,11 +530,12 @@ export const FunctionsRetrieveDefaultDefinitionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    bindingType: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}/retrieveDefaultDefinition",
+      apiVersion: "2020-03-01",
     }),
   );
 export type FunctionsRetrieveDefaultDefinitionInput =
@@ -498,11 +570,42 @@ export const FunctionsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      type: Schema.String,
+      etag: Schema.optional(Schema.String),
+      properties: Schema.optional(
+        Schema.Struct({
+          inputs: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                dataType: Schema.optional(Schema.String),
+                isConfigurationParameter: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          ),
+          output: Schema.optional(
+            Schema.Struct({
+              dataType: Schema.optional(Schema.String),
+            }),
+          ),
+          binding: Schema.optional(
+            Schema.Struct({
+              type: Schema.String,
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}/test",
+    apiVersion: "2020-03-01",
   }),
 );
 export type FunctionsTestInput = typeof FunctionsTestInput.Type;
@@ -537,11 +640,42 @@ export const FunctionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      type: Schema.String,
+      etag: Schema.optional(Schema.String),
+      properties: Schema.optional(
+        Schema.Struct({
+          inputs: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                dataType: Schema.optional(Schema.String),
+                isConfigurationParameter: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          ),
+          output: Schema.optional(
+            Schema.Struct({
+              dataType: Schema.optional(Schema.String),
+            }),
+          ),
+          binding: Schema.optional(
+            Schema.Struct({
+              type: Schema.String,
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type FunctionsUpdateInput = typeof FunctionsUpdateInput.Type;
@@ -574,11 +708,44 @@ export const InputsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        type: Schema.String,
+        serialization: Schema.optional(
+          Schema.Struct({
+            type: Schema.Literals(["Csv", "Avro", "Json", "Parquet"]),
+          }),
+        ),
+        diagnostics: Schema.optional(
+          Schema.Struct({
+            conditions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  since: Schema.optional(Schema.String),
+                  code: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        etag: Schema.optional(Schema.String),
+        compression: Schema.optional(
+          Schema.Struct({
+            type: Schema.Literals(["None", "GZip", "Deflate"]),
+          }),
+        ),
+        partitionKey: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type InputsCreateOrReplaceInput = typeof InputsCreateOrReplaceInput.Type;
@@ -615,11 +782,11 @@ export const InputsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type InputsDeleteInput = typeof InputsDeleteInput.Type;
@@ -646,11 +813,11 @@ export const InputsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type InputsGetInput = typeof InputsGetInput.Type;
@@ -683,11 +850,11 @@ export const InputsListByStreamingJobInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     $select: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs",
+      apiVersion: "2020-03-01",
     }),
   );
 export type InputsListByStreamingJobInput =
@@ -731,11 +898,44 @@ export const InputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      type: Schema.String,
+      serialization: Schema.optional(
+        Schema.Struct({
+          type: Schema.Literals(["Csv", "Avro", "Json", "Parquet"]),
+        }),
+      ),
+      diagnostics: Schema.optional(
+        Schema.Struct({
+          conditions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                since: Schema.optional(Schema.String),
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      etag: Schema.optional(Schema.String),
+      compression: Schema.optional(
+        Schema.Struct({
+          type: Schema.Literals(["None", "GZip", "Deflate"]),
+        }),
+      ),
+      partitionKey: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}/test",
+    apiVersion: "2020-03-01",
   }),
 );
 export type InputsTestInput = typeof InputsTestInput.Type;
@@ -770,11 +970,44 @@ export const InputsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      type: Schema.String,
+      serialization: Schema.optional(
+        Schema.Struct({
+          type: Schema.Literals(["Csv", "Avro", "Json", "Parquet"]),
+        }),
+      ),
+      diagnostics: Schema.optional(
+        Schema.Struct({
+          conditions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                since: Schema.optional(Schema.String),
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      etag: Schema.optional(Schema.String),
+      compression: Schema.optional(
+        Schema.Struct({
+          type: Schema.Literals(["None", "GZip", "Deflate"]),
+        }),
+      ),
+      partitionKey: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type InputsUpdateInput = typeof InputsUpdateInput.Type;
@@ -802,12 +1035,13 @@ export const InputsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InputsUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StreamAnalytics/operations",
+    apiVersion: "2020-03-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -850,11 +1084,44 @@ export const OutputsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        datasource: Schema.optional(
+          Schema.Struct({
+            type: Schema.String,
+          }),
+        ),
+        timeWindow: Schema.optional(Schema.String),
+        sizeWindow: Schema.optional(Schema.Number),
+        serialization: Schema.optional(
+          Schema.Struct({
+            type: Schema.Literals(["Csv", "Avro", "Json", "Parquet"]),
+          }),
+        ),
+        diagnostics: Schema.optional(
+          Schema.Struct({
+            conditions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  since: Schema.optional(Schema.String),
+                  code: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        etag: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs/{outputName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type OutputsCreateOrReplaceInput =
@@ -892,11 +1159,11 @@ export const OutputsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs/{outputName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type OutputsDeleteInput = typeof OutputsDeleteInput.Type;
@@ -923,11 +1190,11 @@ export const OutputsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs/{outputName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type OutputsGetInput = typeof OutputsGetInput.Type;
@@ -960,11 +1227,11 @@ export const OutputsListByStreamingJobInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     $select: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs",
+      apiVersion: "2020-03-01",
     }),
   );
 export type OutputsListByStreamingJobInput =
@@ -1008,11 +1275,44 @@ export const OutputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      datasource: Schema.optional(
+        Schema.Struct({
+          type: Schema.String,
+        }),
+      ),
+      timeWindow: Schema.optional(Schema.String),
+      sizeWindow: Schema.optional(Schema.Number),
+      serialization: Schema.optional(
+        Schema.Struct({
+          type: Schema.Literals(["Csv", "Avro", "Json", "Parquet"]),
+        }),
+      ),
+      diagnostics: Schema.optional(
+        Schema.Struct({
+          conditions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                since: Schema.optional(Schema.String),
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      etag: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs/{outputName}/test",
+    apiVersion: "2020-03-01",
   }),
 );
 export type OutputsTestInput = typeof OutputsTestInput.Type;
@@ -1047,11 +1347,44 @@ export const OutputsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      datasource: Schema.optional(
+        Schema.Struct({
+          type: Schema.String,
+        }),
+      ),
+      timeWindow: Schema.optional(Schema.String),
+      sizeWindow: Schema.optional(Schema.Number),
+      serialization: Schema.optional(
+        Schema.Struct({
+          type: Schema.Literals(["Csv", "Avro", "Json", "Parquet"]),
+        }),
+      ),
+      diagnostics: Schema.optional(
+        Schema.Struct({
+          conditions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                since: Schema.optional(Schema.String),
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      etag: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs/{outputName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type OutputsUpdateInput = typeof OutputsUpdateInput.Type;
@@ -1084,11 +1417,37 @@ export const PrivateEndpointsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        createdDate: Schema.optional(Schema.String),
+        manualPrivateLinkServiceConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              properties: Schema.optional(
+                Schema.Struct({
+                  privateLinkServiceId: Schema.optional(Schema.String),
+                  groupIds: Schema.optional(Schema.Array(Schema.String)),
+                  requestMessage: Schema.optional(Schema.String),
+                  privateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(Schema.String),
+                      description: Schema.optional(Schema.String),
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateEndpointsCreateOrUpdateInput =
@@ -1126,11 +1485,11 @@ export const PrivateEndpointsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateEndpointsDeleteInput =
@@ -1163,11 +1522,11 @@ export const PrivateEndpointsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateEndpointsGetInput = typeof PrivateEndpointsGetInput.Type;
@@ -1200,11 +1559,11 @@ export const PrivateEndpointsListByClusterInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateEndpointsListByClusterInput =
@@ -1247,11 +1606,100 @@ export const StreamingJobsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.Literals(["Standard"])),
+          }),
+        ),
+        jobId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        jobState: Schema.optional(Schema.String),
+        jobType: Schema.optional(Schema.Literals(["Cloud", "Edge"])),
+        outputStartMode: Schema.optional(
+          Schema.Literals([
+            "JobStartTime",
+            "CustomTime",
+            "LastOutputEventTime",
+          ]),
+        ),
+        outputStartTime: Schema.optional(Schema.String),
+        lastOutputEventTime: Schema.optional(Schema.String),
+        eventsOutOfOrderPolicy: Schema.optional(
+          Schema.Literals(["Adjust", "Drop"]),
+        ),
+        outputErrorPolicy: Schema.optional(Schema.Literals(["Stop", "Drop"])),
+        eventsOutOfOrderMaxDelayInSeconds: Schema.optional(Schema.Number),
+        eventsLateArrivalMaxDelayInSeconds: Schema.optional(Schema.Number),
+        dataLocale: Schema.optional(Schema.String),
+        compatibilityLevel: Schema.optional(Schema.Literals(["1.0", "1.2"])),
+        createdDate: Schema.optional(Schema.String),
+        inputs: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        transformation: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        outputs: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        functions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        etag: Schema.optional(Schema.String),
+        jobStorageAccount: Schema.optional(
+          Schema.Struct({
+            accountName: Schema.optional(Schema.String),
+            accountKey: Schema.optional(Schema.String),
+          }),
+        ),
+        contentStoragePolicy: Schema.optional(
+          Schema.Literals(["SystemAccount", "JobStorageAccount"]),
+        ),
+        cluster: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type StreamingJobsCreateOrReplaceInput =
@@ -1289,11 +1737,11 @@ export const StreamingJobsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type StreamingJobsDeleteInput = typeof StreamingJobsDeleteInput.Type;
@@ -1322,11 +1770,11 @@ export const StreamingJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
   $expand: Schema.optional(Schema.String),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
+    apiVersion: "2020-03-01",
   }),
 );
 export type StreamingJobsGetInput = typeof StreamingJobsGetInput.Type;
@@ -1360,12 +1808,12 @@ export const StreamingJobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/streamingjobs",
+    apiVersion: "2020-03-01",
   }),
 );
 export type StreamingJobsListInput = typeof StreamingJobsListInput.Type;
@@ -1404,11 +1852,11 @@ export const StreamingJobsListByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs",
+      apiVersion: "2020-03-01",
     }),
   );
 export type StreamingJobsListByResourceGroupInput =
@@ -1451,11 +1899,12 @@ export const StreamingJobsScaleInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    streamingUnits: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/scale",
+      apiVersion: "2020-03-01",
     }),
   );
 export type StreamingJobsScaleInput = typeof StreamingJobsScaleInput.Type;
@@ -1483,11 +1932,15 @@ export const StreamingJobsStartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    outputStartMode: Schema.optional(
+      Schema.Literals(["JobStartTime", "CustomTime", "LastOutputEventTime"]),
+    ),
+    outputStartTime: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/start",
+      apiVersion: "2020-03-01",
     }),
   );
 export type StreamingJobsStartInput = typeof StreamingJobsStartInput.Type;
@@ -1515,12 +1968,12 @@ export const StreamingJobsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/stop",
+    apiVersion: "2020-03-01",
   }),
 );
 export type StreamingJobsStopInput = typeof StreamingJobsStopInput.Type;
@@ -1548,11 +2001,100 @@ export const StreamingJobsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.Literals(["Standard"])),
+          }),
+        ),
+        jobId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        jobState: Schema.optional(Schema.String),
+        jobType: Schema.optional(Schema.Literals(["Cloud", "Edge"])),
+        outputStartMode: Schema.optional(
+          Schema.Literals([
+            "JobStartTime",
+            "CustomTime",
+            "LastOutputEventTime",
+          ]),
+        ),
+        outputStartTime: Schema.optional(Schema.String),
+        lastOutputEventTime: Schema.optional(Schema.String),
+        eventsOutOfOrderPolicy: Schema.optional(
+          Schema.Literals(["Adjust", "Drop"]),
+        ),
+        outputErrorPolicy: Schema.optional(Schema.Literals(["Stop", "Drop"])),
+        eventsOutOfOrderMaxDelayInSeconds: Schema.optional(Schema.Number),
+        eventsLateArrivalMaxDelayInSeconds: Schema.optional(Schema.Number),
+        dataLocale: Schema.optional(Schema.String),
+        compatibilityLevel: Schema.optional(Schema.Literals(["1.0", "1.2"])),
+        createdDate: Schema.optional(Schema.String),
+        inputs: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        transformation: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        outputs: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        functions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        etag: Schema.optional(Schema.String),
+        jobStorageAccount: Schema.optional(
+          Schema.Struct({
+            accountName: Schema.optional(Schema.String),
+            accountKey: Schema.optional(Schema.String),
+          }),
+        ),
+        contentStoragePolicy: Schema.optional(
+          Schema.Literals(["SystemAccount", "JobStorageAccount"]),
+        ),
+        cluster: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type StreamingJobsUpdateInput = typeof StreamingJobsUpdateInput.Type;
@@ -1585,11 +2127,11 @@ export const SubscriptionsListQuotasInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/locations/{location}/quotas",
+      apiVersion: "2020-03-01",
     }),
   );
 export type SubscriptionsListQuotasInput =
@@ -1631,11 +2173,22 @@ export const TransformationsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        streamingUnits: Schema.optional(Schema.Number),
+        validStreamingUnits: Schema.optional(Schema.Array(Schema.Number)),
+        query: Schema.optional(Schema.String),
+        etag: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/transformations/{transformationName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type TransformationsCreateOrReplaceInput =
@@ -1673,11 +2226,11 @@ export const TransformationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/transformations/{transformationName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type TransformationsGetInput = typeof TransformationsGetInput.Type;
@@ -1710,11 +2263,22 @@ export const TransformationsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        streamingUnits: Schema.optional(Schema.Number),
+        validStreamingUnits: Schema.optional(Schema.Array(Schema.Number)),
+        query: Schema.optional(Schema.String),
+        etag: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/transformations/{transformationName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type TransformationsUpdateInput = typeof TransformationsUpdateInput.Type;

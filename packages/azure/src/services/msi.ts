@@ -15,11 +15,18 @@ export const FederatedIdentityCredentialsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     federatedIdentityCredentialResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        issuer: Schema.String,
+        subject: Schema.String,
+        audiences: Schema.Array(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}/federatedIdentityCredentials/{federatedIdentityCredentialResourceName}",
+      apiVersion: "2024-11-30",
     }),
   );
 export type FederatedIdentityCredentialsCreateOrUpdateInput =
@@ -71,11 +78,11 @@ export const FederatedIdentityCredentialsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     federatedIdentityCredentialResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}/federatedIdentityCredentials/{federatedIdentityCredentialResourceName}",
+      apiVersion: "2024-11-30",
     }),
   );
 export type FederatedIdentityCredentialsDeleteInput =
@@ -109,11 +116,11 @@ export const FederatedIdentityCredentialsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     federatedIdentityCredentialResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}/federatedIdentityCredentials/{federatedIdentityCredentialResourceName}",
+      apiVersion: "2024-11-30",
     }),
   );
 export type FederatedIdentityCredentialsGetInput =
@@ -164,13 +171,13 @@ export const FederatedIdentityCredentialsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}/federatedIdentityCredentials",
+      apiVersion: "2024-11-30",
     }),
   );
 export type FederatedIdentityCredentialsListInput =
@@ -232,12 +239,13 @@ export const FederatedIdentityCredentialsList =
     outputSchema: FederatedIdentityCredentialsListOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ManagedIdentity/operations",
+    apiVersion: "2024-11-30",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -275,11 +283,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SystemAssignedIdentitiesGetByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedIdentity/identities/default",
+      apiVersion: "2024-11-30",
     }),
   );
 export type SystemAssignedIdentitiesGetByScopeInput =
@@ -327,11 +335,21 @@ export const UserAssignedIdentitiesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        clientId: Schema.optional(Schema.String),
+        isolationScope: Schema.optional(Schema.Literals(["None", "Regional"])),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
+      apiVersion: "2024-11-30",
     }),
   );
 export type UserAssignedIdentitiesCreateOrUpdateInput =
@@ -381,11 +399,11 @@ export const UserAssignedIdentitiesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
+      apiVersion: "2024-11-30",
     }),
   );
 export type UserAssignedIdentitiesDeleteInput =
@@ -417,11 +435,11 @@ export const UserAssignedIdentitiesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
+      apiVersion: "2024-11-30",
     }),
   );
 export type UserAssignedIdentitiesGetInput =
@@ -471,11 +489,11 @@ export const UserAssignedIdentitiesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities",
+      apiVersion: "2024-11-30",
     }),
   );
 export type UserAssignedIdentitiesListByResourceGroupInput =
@@ -537,11 +555,11 @@ export const UserAssignedIdentitiesListByResourceGroup =
 export const UserAssignedIdentitiesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedIdentity/userAssignedIdentities",
+      apiVersion: "2024-11-30",
     }),
   );
 export type UserAssignedIdentitiesListBySubscriptionInput =
@@ -604,11 +622,38 @@ export const UserAssignedIdentitiesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        clientId: Schema.optional(Schema.String),
+        isolationScope: Schema.optional(Schema.Literals(["None", "Regional"])),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
+      apiVersion: "2024-11-30",
     }),
   );
 export type UserAssignedIdentitiesUpdateInput =

@@ -9,12 +9,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DurableTask/operations",
+    apiVersion: "2026-02-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -61,11 +62,41 @@ export const RetentionPoliciesCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        retentionPolicies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              retentionPeriodInDays: Schema.Number,
+              orchestrationState: Schema.optional(
+                Schema.Literals([
+                  "Completed",
+                  "Failed",
+                  "Terminated",
+                  "Canceled",
+                ]),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
+      apiVersion: "2026-02-01",
     }),
   );
 export type RetentionPoliciesCreateOrReplaceInput =
@@ -115,11 +146,11 @@ export const RetentionPoliciesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
+      apiVersion: "2026-02-01",
     }),
   );
 export type RetentionPoliciesDeleteInput =
@@ -152,11 +183,11 @@ export const RetentionPoliciesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
+      apiVersion: "2026-02-01",
     }),
   );
 export type RetentionPoliciesGetInput = typeof RetentionPoliciesGetInput.Type;
@@ -205,11 +236,11 @@ export const RetentionPoliciesListBySchedulerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies",
+      apiVersion: "2026-02-01",
     }),
   );
 export type RetentionPoliciesListBySchedulerInput =
@@ -274,11 +305,41 @@ export const RetentionPoliciesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        retentionPolicies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              retentionPeriodInDays: Schema.Number,
+              orchestrationState: Schema.optional(
+                Schema.Literals([
+                  "Completed",
+                  "Failed",
+                  "Terminated",
+                  "Canceled",
+                ]),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
+      apiVersion: "2026-02-01",
     }),
   );
 export type RetentionPoliciesUpdateInput =
@@ -329,11 +390,71 @@ export const SchedulersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        endpoint: Schema.optional(Schema.String),
+        ipAllowlist: Schema.Array(Schema.String),
+        sku: Schema.Struct({
+          name: Schema.Literals(["Dedicated", "Consumption"]),
+          capacity: Schema.optional(Schema.Number),
+          redundancyState: Schema.optional(Schema.Literals(["None", "Zone"])),
+        }),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type SchedulersCreateOrUpdateInput =
@@ -385,7 +506,6 @@ export const SchedulersCreateOrUpdatePrivateEndpointConnectionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         groupIds: Schema.optional(Schema.Array(Schema.String)),
@@ -406,10 +526,28 @@ export const SchedulersCreateOrUpdatePrivateEndpointConnectionInput =
         ),
       }),
     ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type SchedulersCreateOrUpdatePrivateEndpointConnectionInput =
@@ -460,11 +598,11 @@ export const SchedulersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
+    apiVersion: "2026-02-01",
   }),
 );
 export type SchedulersDeleteInput = typeof SchedulersDeleteInput.Type;
@@ -493,11 +631,11 @@ export const SchedulersDeletePrivateEndpointConnectionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type SchedulersDeletePrivateEndpointConnectionInput =
@@ -529,11 +667,11 @@ export const SchedulersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
+    apiVersion: "2026-02-01",
   }),
 );
 export type SchedulersGetInput = typeof SchedulersGetInput.Type;
@@ -580,11 +718,11 @@ export const SchedulersGetPrivateEndpointConnectionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type SchedulersGetPrivateEndpointConnectionInput =
@@ -636,11 +774,11 @@ export const SchedulersGetPrivateLinkInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
     privateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type SchedulersGetPrivateLinkInput =
@@ -691,11 +829,11 @@ export const SchedulersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers",
+      apiVersion: "2026-02-01",
     }),
   );
 export type SchedulersListByResourceGroupInput =
@@ -757,11 +895,11 @@ export const SchedulersListByResourceGroup =
 export const SchedulersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DurableTask/schedulers",
+      apiVersion: "2026-02-01",
     }),
   );
 export type SchedulersListBySubscriptionInput =
@@ -824,11 +962,11 @@ export const SchedulersListPrivateEndpointConnectionsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections",
+      apiVersion: "2026-02-01",
     }),
   );
 export type SchedulersListPrivateEndpointConnectionsInput =
@@ -893,11 +1031,11 @@ export const SchedulersListPrivateLinksInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateLinkResources",
+      apiVersion: "2026-02-01",
     }),
   );
 export type SchedulersListPrivateLinksInput =
@@ -962,11 +1100,39 @@ export const SchedulersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Updating",
+          "Deleting",
+          "Accepted",
+        ]),
+      ),
+      endpoint: Schema.optional(Schema.String),
+      ipAllowlist: Schema.optional(Schema.Array(Schema.String)),
+      sku: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.Literals(["Dedicated", "Consumption"])),
+          capacity: Schema.optional(Schema.Number),
+          redundancyState: Schema.optional(Schema.Literals(["None", "Zone"])),
+        }),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
+    apiVersion: "2026-02-01",
   }),
 );
 export type SchedulersUpdateInput = typeof SchedulersUpdateInput.Type;
@@ -1015,11 +1181,29 @@ export const SchedulersUpdatePrivateEndpointConnectionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals(["Pending", "Approved", "Rejected"]),
+            ),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type SchedulersUpdatePrivateEndpointConnectionInput =
@@ -1071,11 +1255,27 @@ export const TaskHubsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
     taskHubName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        dashboardUrl: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
+      apiVersion: "2026-02-01",
     }),
   );
 export type TaskHubsCreateOrUpdateInput =
@@ -1127,11 +1327,11 @@ export const TaskHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
   taskHubName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
+    apiVersion: "2026-02-01",
   }),
 );
 export type TaskHubsDeleteInput = typeof TaskHubsDeleteInput.Type;
@@ -1160,11 +1360,11 @@ export const TaskHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
   taskHubName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
+    apiVersion: "2026-02-01",
   }),
 );
 export type TaskHubsGetInput = typeof TaskHubsGetInput.Type;
@@ -1211,11 +1411,11 @@ export const TaskHubsListBySchedulerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs",
+      apiVersion: "2026-02-01",
     }),
   );
 export type TaskHubsListBySchedulerInput =

@@ -9,12 +9,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StorageActions/operations",
+    apiVersion: "2026-03-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -61,12 +62,12 @@ export const StorageTaskAssignmentListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/storageTaskAssignments",
+      apiVersion: "2026-03-01",
     }),
   );
 export type StorageTaskAssignmentListInput =
@@ -107,11 +108,95 @@ export const StorageTasksCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      taskVersion: Schema.optional(Schema.Number),
+      enabled: Schema.Boolean,
+      description: Schema.String,
+      action: Schema.Struct({
+        if: Schema.Struct({
+          condition: Schema.String,
+          operations: Schema.Array(
+            Schema.Struct({
+              name: Schema.Literals([
+                "SetBlobTier",
+                "SetBlobTags",
+                "SetBlobImmutabilityPolicy",
+                "SetBlobLegalHold",
+                "SetBlobExpiry",
+                "DeleteBlob",
+                "UndeleteBlob",
+              ]),
+              parameters: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              onSuccess: Schema.optional(Schema.Literals(["continue"])),
+              onFailure: Schema.optional(Schema.Literals(["break"])),
+            }),
+          ),
+        }),
+        else: Schema.optional(
+          Schema.Struct({
+            operations: Schema.Array(
+              Schema.Struct({
+                name: Schema.Literals([
+                  "SetBlobTier",
+                  "SetBlobTags",
+                  "SetBlobImmutabilityPolicy",
+                  "SetBlobLegalHold",
+                  "SetBlobExpiry",
+                  "DeleteBlob",
+                  "UndeleteBlob",
+                ]),
+                parameters: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                onSuccess: Schema.optional(Schema.Literals(["continue"])),
+                onFailure: Schema.optional(Schema.Literals(["break"])),
+              }),
+            ),
+          }),
+        ),
+      }),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "ValidateSubscriptionQuotaBegin",
+          "ValidateSubscriptionQuotaEnd",
+          "Accepted",
+          "Creating",
+          "Succeeded",
+          "Deleting",
+          "Canceled",
+          "Failed",
+        ]),
+      ),
+      creationTimeInUtc: Schema.optional(Schema.String),
+    }),
+    identity: Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type StorageTasksCreateInput = typeof StorageTasksCreateInput.Type;
@@ -158,11 +243,11 @@ export const StorageTasksDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type StorageTasksDeleteInput = typeof StorageTasksDeleteInput.Type;
@@ -189,11 +274,11 @@ export const StorageTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageTaskName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type StorageTasksGetInput = typeof StorageTasksGetInput.Type;
@@ -238,11 +323,11 @@ export const StorageTasksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks",
+      apiVersion: "2026-03-01",
     }),
   );
 export type StorageTasksListByResourceGroupInput =
@@ -304,11 +389,11 @@ export const StorageTasksListByResourceGroup =
 export const StorageTasksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageActions/storageTasks",
+      apiVersion: "2026-03-01",
     }),
   );
 export type StorageTasksListBySubscriptionInput =
@@ -370,11 +455,62 @@ export const StorageTasksPreviewActionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      container: Schema.Struct({
+        name: Schema.optional(Schema.String),
+        metadata: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+      blobs: Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          properties: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          metadata: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          tags: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          matchedBlock: Schema.optional(
+            Schema.Literals(["If", "Else", "None"]),
+          ),
+        }),
+      ),
+      action: Schema.Struct({
+        if: Schema.Struct({
+          condition: Schema.optional(Schema.String),
+        }),
+        elseBlockExists: Schema.Boolean,
+      }),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageActions/locations/{location}/previewActions",
+      apiVersion: "2026-03-01",
     }),
   );
 export type StorageTasksPreviewActionsInput =
@@ -458,13 +594,13 @@ export const StorageTasksReportListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $maxpagesize: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/reports",
+      apiVersion: "2026-03-01",
     }),
   );
 export type StorageTasksReportListInput =
@@ -532,11 +668,11 @@ export const StorageTasksStopAllAssignmentsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/stopAllAssignments",
+      apiVersion: "2026-03-01",
     }),
   );
 export type StorageTasksStopAllAssignmentsInput =
@@ -568,11 +704,100 @@ export const StorageTasksUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        taskVersion: Schema.optional(Schema.Number),
+        enabled: Schema.optional(Schema.Boolean),
+        description: Schema.optional(Schema.String),
+        action: Schema.optional(
+          Schema.Struct({
+            if: Schema.Struct({
+              condition: Schema.String,
+              operations: Schema.Array(
+                Schema.Struct({
+                  name: Schema.Literals([
+                    "SetBlobTier",
+                    "SetBlobTags",
+                    "SetBlobImmutabilityPolicy",
+                    "SetBlobLegalHold",
+                    "SetBlobExpiry",
+                    "DeleteBlob",
+                    "UndeleteBlob",
+                  ]),
+                  parameters: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  onSuccess: Schema.optional(Schema.Literals(["continue"])),
+                  onFailure: Schema.optional(Schema.Literals(["break"])),
+                }),
+              ),
+            }),
+            else: Schema.optional(
+              Schema.Struct({
+                operations: Schema.Array(
+                  Schema.Struct({
+                    name: Schema.Literals([
+                      "SetBlobTier",
+                      "SetBlobTags",
+                      "SetBlobImmutabilityPolicy",
+                      "SetBlobLegalHold",
+                      "SetBlobExpiry",
+                      "DeleteBlob",
+                      "UndeleteBlob",
+                    ]),
+                    parameters: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                    onSuccess: Schema.optional(Schema.Literals(["continue"])),
+                    onFailure: Schema.optional(Schema.Literals(["break"])),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "ValidateSubscriptionQuotaBegin",
+            "ValidateSubscriptionQuotaEnd",
+            "Accepted",
+            "Creating",
+            "Succeeded",
+            "Deleting",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+        creationTimeInUtc: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type StorageTasksUpdateInput = typeof StorageTasksUpdateInput.Type;

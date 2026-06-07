@@ -7,7 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AllPoliciesListByServiceInput =
@@ -15,11 +15,11 @@ export const AllPoliciesListByServiceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/allPolicies",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AllPoliciesListByServiceInput =
@@ -64,7 +64,6 @@ export const ApiCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -153,6 +152,7 @@ export const ApiCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiCreateOrUpdateInput = typeof ApiCreateOrUpdateInput.Type;
@@ -189,11 +189,11 @@ export const ApiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   deleteRevisions: Schema.optional(Schema.Boolean),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiDeleteInput = typeof ApiDeleteInput.Type;
@@ -226,7 +226,6 @@ export const ApiDiagnosticCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
@@ -396,6 +395,7 @@ export const ApiDiagnosticCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/diagnostics/{diagnosticId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiDiagnosticCreateOrUpdateInput =
@@ -438,11 +438,11 @@ export const ApiDiagnosticDeleteInput =
     apiId: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/diagnostics/{diagnosticId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiDiagnosticDeleteInput = typeof ApiDiagnosticDeleteInput.Type;
@@ -475,11 +475,11 @@ export const ApiDiagnosticGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   diagnosticId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/diagnostics/{diagnosticId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiDiagnosticGetInput = typeof ApiDiagnosticGetInput.Type;
@@ -519,11 +519,11 @@ export const ApiDiagnosticListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/diagnostics",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiDiagnosticListByServiceInput =
@@ -574,7 +574,6 @@ export const ApiDiagnosticUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
@@ -744,6 +743,7 @@ export const ApiDiagnosticUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/diagnostics/{diagnosticId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiDiagnosticUpdateInput = typeof ApiDiagnosticUpdateInput.Type;
@@ -781,11 +781,18 @@ export const ApiGatewayConfigConnectionCreateOrUpdateInput =
     gatewayName: Schema.String.pipe(T.PathParam()),
     configConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(Schema.String),
+      sourceId: Schema.optional(Schema.String),
+      defaultHostname: Schema.optional(Schema.String),
+      hostnames: Schema.optional(Schema.Array(Schema.String)),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}/configConnections/{configConnectionName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiGatewayConfigConnectionCreateOrUpdateInput =
@@ -823,11 +830,11 @@ export const ApiGatewayConfigConnectionDeleteInput =
     gatewayName: Schema.String.pipe(T.PathParam()),
     configConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}/configConnections/{configConnectionName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiGatewayConfigConnectionDeleteInput =
@@ -862,11 +869,11 @@ export const ApiGatewayConfigConnectionGetInput =
     gatewayName: Schema.String.pipe(T.PathParam()),
     configConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}/configConnections/{configConnectionName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiGatewayConfigConnectionGetInput =
@@ -903,11 +910,11 @@ export const ApiGatewayConfigConnectionListByGatewayInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     gatewayName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}/configConnections",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiGatewayConfigConnectionListByGatewayInput =
@@ -948,11 +955,66 @@ export const ApiGatewayCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     gatewayName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(Schema.String),
+      targetProvisioningState: Schema.optional(Schema.String),
+      createdAtUtc: Schema.optional(Schema.String),
+      frontend: Schema.optional(
+        Schema.Struct({
+          defaultHostname: Schema.optional(Schema.String),
+        }),
+      ),
+      backend: Schema.optional(
+        Schema.Struct({
+          subnet: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      configurationApi: Schema.optional(
+        Schema.Struct({
+          hostname: Schema.optional(Schema.String),
+        }),
+      ),
+      virtualNetworkType: Schema.optional(
+        Schema.Literals(["None", "External", "Internal"]),
+      ),
+    }),
+    sku: Schema.Struct({
+      name: Schema.Literals([
+        "Standard",
+        "WorkspaceGatewayStandard",
+        "WorkspaceGatewayPremium",
+      ]),
+      capacity: Schema.optional(Schema.Number),
+    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    etag: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiGatewayCreateOrUpdateInput =
@@ -989,11 +1051,11 @@ export const ApiGatewayDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   gatewayName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiGatewayDeleteInput = typeof ApiGatewayDeleteInput.Type;
@@ -1020,11 +1082,11 @@ export const ApiGatewayGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   gatewayName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiGatewayGetInput = typeof ApiGatewayGetInput.Type;
@@ -1054,11 +1116,11 @@ export const ApiGatewayGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ApiGatewayListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/gateways",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiGatewayListInput = typeof ApiGatewayListInput.Type;
@@ -1093,11 +1155,11 @@ export const ApiGatewayListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiGatewayListByResourceGroupInput =
@@ -1137,11 +1199,57 @@ export const ApiGatewayUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   gatewayName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(Schema.String),
+      targetProvisioningState: Schema.optional(Schema.String),
+      createdAtUtc: Schema.optional(Schema.String),
+      frontend: Schema.optional(
+        Schema.Struct({
+          defaultHostname: Schema.optional(Schema.String),
+        }),
+      ),
+      backend: Schema.optional(
+        Schema.Struct({
+          subnet: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      configurationApi: Schema.optional(
+        Schema.Struct({
+          hostname: Schema.optional(Schema.String),
+        }),
+      ),
+      virtualNetworkType: Schema.optional(
+        Schema.Literals(["None", "External", "Internal"]),
+      ),
+    }),
+  ),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(
+        Schema.Literals([
+          "Standard",
+          "WorkspaceGatewayStandard",
+          "WorkspaceGatewayPremium",
+        ]),
+      ),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  etag: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiGatewayUpdateInput = typeof ApiGatewayUpdateInput.Type;
@@ -1176,11 +1284,11 @@ export const ApiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiGetInput = typeof ApiGetInput.Type;
@@ -1216,7 +1324,6 @@ export const ApiIssueAttachmentCreateOrUpdateInput =
     issueId: Schema.String.pipe(T.PathParam()),
     attachmentId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         title: Schema.String,
@@ -1228,6 +1335,7 @@ export const ApiIssueAttachmentCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}/attachments/{attachmentId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiIssueAttachmentCreateOrUpdateInput =
@@ -1271,11 +1379,11 @@ export const ApiIssueAttachmentDeleteInput =
     issueId: Schema.String.pipe(T.PathParam()),
     attachmentId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}/attachments/{attachmentId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiIssueAttachmentDeleteInput =
@@ -1315,11 +1423,11 @@ export const ApiIssueAttachmentGetInput =
     issueId: Schema.String.pipe(T.PathParam()),
     attachmentId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}/attachments/{attachmentId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiIssueAttachmentGetInput = typeof ApiIssueAttachmentGetInput.Type;
@@ -1363,11 +1471,11 @@ export const ApiIssueAttachmentListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}/attachments",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiIssueAttachmentListByServiceInput =
@@ -1419,7 +1527,6 @@ export const ApiIssueCommentCreateOrUpdateInput =
     issueId: Schema.String.pipe(T.PathParam()),
     commentId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         text: Schema.String,
@@ -1431,6 +1538,7 @@ export const ApiIssueCommentCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}/comments/{commentId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiIssueCommentCreateOrUpdateInput =
@@ -1474,11 +1582,11 @@ export const ApiIssueCommentDeleteInput =
     issueId: Schema.String.pipe(T.PathParam()),
     commentId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}/comments/{commentId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiIssueCommentDeleteInput = typeof ApiIssueCommentDeleteInput.Type;
@@ -1517,11 +1625,11 @@ export const ApiIssueCommentGetInput =
     issueId: Schema.String.pipe(T.PathParam()),
     commentId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}/comments/{commentId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiIssueCommentGetInput = typeof ApiIssueCommentGetInput.Type;
@@ -1562,11 +1670,11 @@ export const ApiIssueCommentListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}/comments",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiIssueCommentListByServiceInput =
@@ -1617,7 +1725,6 @@ export const ApiIssueCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     issueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         createdDate: Schema.optional(Schema.String),
@@ -1637,6 +1744,7 @@ export const ApiIssueCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiIssueCreateOrUpdateInput =
@@ -1678,11 +1786,11 @@ export const ApiIssueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   issueId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiIssueDeleteInput = typeof ApiIssueDeleteInput.Type;
@@ -1715,11 +1823,11 @@ export const ApiIssueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   issueId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   expandCommentsAttachments: Schema.optional(Schema.Boolean),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiIssueGetInput = typeof ApiIssueGetInput.Type;
@@ -1759,11 +1867,11 @@ export const ApiIssueListByServiceInput =
     expandCommentsAttachments: Schema.optional(Schema.Boolean),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiIssueListByServiceInput = typeof ApiIssueListByServiceInput.Type;
@@ -1813,7 +1921,6 @@ export const ApiIssueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   issueId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       createdDate: Schema.optional(Schema.String),
@@ -1827,6 +1934,7 @@ export const ApiIssueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiIssueUpdateInput = typeof ApiIssueUpdateInput.Type;
@@ -1866,11 +1974,11 @@ export const ApiListByServiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $skip: Schema.optional(Schema.Number),
   tags: Schema.optional(Schema.String),
   expandApiVersionSet: Schema.optional(Schema.Boolean),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiListByServiceInput = typeof ApiListByServiceInput.Type;
@@ -1920,11 +2028,11 @@ export const ApiListByTagsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
   includeNotTaggedApis: Schema.optional(Schema.Boolean),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apisByTags",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiListByTagsInput = typeof ApiListByTagsInput.Type;
@@ -2076,11 +2184,11 @@ export const ApiManagementGatewaySkusListAvailableSkusInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     gatewayName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}/skus",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementGatewaySkusListAvailableSkusInput =
@@ -2138,12 +2246,11 @@ export const ApiManagementGatewaySkusListAvailableSkus =
   }));
 // Input Schema
 export const ApiManagementOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ApiManagement/operations",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementOperationsListInput =
@@ -2192,11 +2299,12 @@ export const ApiManagementServiceApplyNetworkConfigurationUpdatesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/applynetworkconfigurationupdates",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceApplyNetworkConfigurationUpdatesInput =
@@ -2233,11 +2341,23 @@ export const ApiManagementServiceBackupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    storageAccount: Schema.String,
+    containerName: Schema.String,
+    backupName: Schema.String,
+    accessType: Schema.optional(
+      Schema.Literals([
+        "AccessKey",
+        "SystemAssignedManagedIdentity",
+        "UserAssignedManagedIdentity",
+      ]),
+    ),
+    accessKey: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceBackupInput =
@@ -2273,11 +2393,12 @@ export const ApiManagementServiceBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ApiManagementServiceCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/checkNameAvailability",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceCheckNameAvailabilityInput =
@@ -2313,11 +2434,248 @@ export const ApiManagementServiceCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      notificationSenderEmail: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      targetProvisioningState: Schema.optional(Schema.String),
+      createdAtUtc: Schema.optional(Schema.String),
+      gatewayUrl: Schema.optional(Schema.String),
+      gatewayRegionalUrl: Schema.optional(Schema.String),
+      portalUrl: Schema.optional(Schema.String),
+      managementApiUrl: Schema.optional(Schema.String),
+      scmUrl: Schema.optional(Schema.String),
+      developerPortalUrl: Schema.optional(Schema.String),
+      hostnameConfigurations: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.Literals([
+              "Proxy",
+              "Portal",
+              "Management",
+              "Scm",
+              "DeveloperPortal",
+              "ConfigurationApi",
+            ]),
+            hostName: Schema.String,
+            keyVaultId: Schema.optional(Schema.String),
+            identityClientId: Schema.optional(Schema.String),
+            encodedCertificate: Schema.optional(Schema.String),
+            certificatePassword: Schema.optional(SensitiveString),
+            defaultSslBinding: Schema.optional(Schema.Boolean),
+            negotiateClientCertificate: Schema.optional(Schema.Boolean),
+            certificate: Schema.optional(
+              Schema.Struct({
+                expiry: Schema.String,
+                thumbprint: Schema.String,
+                subject: Schema.String,
+              }),
+            ),
+            certificateSource: Schema.optional(
+              Schema.Literals(["Managed", "KeyVault", "Custom", "BuiltIn"]),
+            ),
+            certificateStatus: Schema.optional(
+              Schema.Literals(["Completed", "Failed", "InProgress"]),
+            ),
+          }),
+        ),
+      ),
+      publicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+      privateIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+      publicIpAddressId: Schema.optional(Schema.String),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      configurationApi: Schema.optional(
+        Schema.Struct({
+          legacyApi: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        }),
+      ),
+      virtualNetworkConfiguration: Schema.optional(
+        Schema.Struct({
+          vnetid: Schema.optional(Schema.String),
+          subnetname: Schema.optional(Schema.String),
+          subnetResourceId: Schema.optional(Schema.String),
+        }),
+      ),
+      additionalLocations: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            location: Schema.String,
+            sku: Schema.Struct({
+              name: Schema.Literals([
+                "Developer",
+                "Standard",
+                "Premium",
+                "Basic",
+                "Consumption",
+                "Isolated",
+                "BasicV2",
+                "StandardV2",
+              ]),
+              capacity: Schema.Number,
+            }),
+            zones: Schema.optional(Schema.Array(Schema.String)),
+            publicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+            privateIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+            publicIpAddressId: Schema.optional(Schema.String),
+            virtualNetworkConfiguration: Schema.optional(
+              Schema.Struct({
+                vnetid: Schema.optional(Schema.String),
+                subnetname: Schema.optional(Schema.String),
+                subnetResourceId: Schema.optional(Schema.String),
+              }),
+            ),
+            gatewayRegionalUrl: Schema.optional(Schema.String),
+            natGatewayState: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            outboundPublicIPAddresses: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            disableGateway: Schema.optional(Schema.Boolean),
+            platformVersion: Schema.optional(
+              Schema.Literals([
+                "undetermined",
+                "stv1",
+                "stv2",
+                "mtv1",
+                "stv2.1",
+              ]),
+            ),
+          }),
+        ),
+      ),
+      customProperties: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+      certificates: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            encodedCertificate: Schema.optional(Schema.String),
+            certificatePassword: Schema.optional(SensitiveString),
+            storeName: Schema.Literals(["CertificateAuthority", "Root"]),
+            certificate: Schema.optional(
+              Schema.Struct({
+                expiry: Schema.String,
+                thumbprint: Schema.String,
+                subject: Schema.String,
+              }),
+            ),
+          }),
+        ),
+      ),
+      enableClientCertificate: Schema.optional(Schema.Boolean),
+      natGatewayState: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      outboundPublicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+      disableGateway: Schema.optional(Schema.Boolean),
+      virtualNetworkType: Schema.optional(
+        Schema.Literals(["None", "External", "Internal"]),
+      ),
+      apiVersionConstraint: Schema.optional(
+        Schema.Struct({
+          minApiVersion: Schema.optional(Schema.String),
+        }),
+      ),
+      restore: Schema.optional(Schema.Boolean),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            properties: Schema.optional(
+              Schema.Struct({
+                privateEndpoint: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                privateLinkServiceConnectionState: Schema.Struct({
+                  status: Schema.optional(
+                    Schema.Literals(["Pending", "Approved", "Rejected"]),
+                  ),
+                  description: Schema.optional(Schema.String),
+                  actionsRequired: Schema.optional(Schema.String),
+                }),
+                provisioningState: Schema.optional(Schema.String),
+                groupIds: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          }),
+        ),
+      ),
+      platformVersion: Schema.optional(
+        Schema.Literals(["undetermined", "stv1", "stv2", "mtv1", "stv2.1"]),
+      ),
+      legacyPortalStatus: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      developerPortalStatus: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+    }),
+    sku: Schema.Struct({
+      name: Schema.Literals([
+        "Developer",
+        "Standard",
+        "Premium",
+        "Basic",
+        "Consumption",
+        "Isolated",
+        "BasicV2",
+        "StandardV2",
+      ]),
+      capacity: Schema.Number,
+    }),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals([
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+          "None",
+        ]),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceCreateOrUpdateInput =
@@ -2354,11 +2712,11 @@ export const ApiManagementServiceDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceDeleteInput =
@@ -2391,11 +2749,11 @@ export const ApiManagementServiceGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceGetInput =
@@ -2431,11 +2789,11 @@ export const ApiManagementServiceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ApiManagementServiceGetDomainOwnershipIdentifierInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/getDomainOwnershipIdentifier",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceGetDomainOwnershipIdentifierInput =
@@ -2467,11 +2825,11 @@ export const ApiManagementServiceGetSsoTokenInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/getssotoken",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceGetSsoTokenInput =
@@ -2503,11 +2861,11 @@ export const ApiManagementServiceGetSsoToken =
 export const ApiManagementServiceListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/service",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceListInput =
@@ -2547,11 +2905,11 @@ export const ApiManagementServiceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceListByResourceGroupInput =
@@ -2592,11 +2950,12 @@ export const ApiManagementServiceMigrateToStv2Input =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    mode: Schema.optional(Schema.Literals(["PreserveIp", "NewIP"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/migrateToStv2",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceMigrateToStv2Input =
@@ -2633,11 +2992,23 @@ export const ApiManagementServiceRestoreInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    storageAccount: Schema.String,
+    containerName: Schema.String,
+    backupName: Schema.String,
+    accessType: Schema.optional(
+      Schema.Literals([
+        "AccessKey",
+        "SystemAssignedManagedIdentity",
+        "UserAssignedManagedIdentity",
+      ]),
+    ),
+    accessKey: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceRestoreInput =
@@ -2675,11 +3046,11 @@ export const ApiManagementServiceSkusListAvailableServiceSkusInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/skus",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceSkusListAvailableServiceSkusInput =
@@ -2746,11 +3117,239 @@ export const ApiManagementServiceUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        notificationSenderEmail: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        targetProvisioningState: Schema.optional(Schema.String),
+        createdAtUtc: Schema.optional(Schema.String),
+        gatewayUrl: Schema.optional(Schema.String),
+        gatewayRegionalUrl: Schema.optional(Schema.String),
+        portalUrl: Schema.optional(Schema.String),
+        managementApiUrl: Schema.optional(Schema.String),
+        scmUrl: Schema.optional(Schema.String),
+        developerPortalUrl: Schema.optional(Schema.String),
+        hostnameConfigurations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.Literals([
+                "Proxy",
+                "Portal",
+                "Management",
+                "Scm",
+                "DeveloperPortal",
+                "ConfigurationApi",
+              ]),
+              hostName: Schema.String,
+              keyVaultId: Schema.optional(Schema.String),
+              identityClientId: Schema.optional(Schema.String),
+              encodedCertificate: Schema.optional(Schema.String),
+              certificatePassword: Schema.optional(SensitiveString),
+              defaultSslBinding: Schema.optional(Schema.Boolean),
+              negotiateClientCertificate: Schema.optional(Schema.Boolean),
+              certificate: Schema.optional(
+                Schema.Struct({
+                  expiry: Schema.String,
+                  thumbprint: Schema.String,
+                  subject: Schema.String,
+                }),
+              ),
+              certificateSource: Schema.optional(
+                Schema.Literals(["Managed", "KeyVault", "Custom", "BuiltIn"]),
+              ),
+              certificateStatus: Schema.optional(
+                Schema.Literals(["Completed", "Failed", "InProgress"]),
+              ),
+            }),
+          ),
+        ),
+        publicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+        privateIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+        publicIpAddressId: Schema.optional(Schema.String),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        configurationApi: Schema.optional(
+          Schema.Struct({
+            legacyApi: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+        virtualNetworkConfiguration: Schema.optional(
+          Schema.Struct({
+            vnetid: Schema.optional(Schema.String),
+            subnetname: Schema.optional(Schema.String),
+            subnetResourceId: Schema.optional(Schema.String),
+          }),
+        ),
+        additionalLocations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              location: Schema.String,
+              sku: Schema.Struct({
+                name: Schema.Literals([
+                  "Developer",
+                  "Standard",
+                  "Premium",
+                  "Basic",
+                  "Consumption",
+                  "Isolated",
+                  "BasicV2",
+                  "StandardV2",
+                ]),
+                capacity: Schema.Number,
+              }),
+              zones: Schema.optional(Schema.Array(Schema.String)),
+              publicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+              privateIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+              publicIpAddressId: Schema.optional(Schema.String),
+              virtualNetworkConfiguration: Schema.optional(
+                Schema.Struct({
+                  vnetid: Schema.optional(Schema.String),
+                  subnetname: Schema.optional(Schema.String),
+                  subnetResourceId: Schema.optional(Schema.String),
+                }),
+              ),
+              gatewayRegionalUrl: Schema.optional(Schema.String),
+              natGatewayState: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled"]),
+              ),
+              outboundPublicIPAddresses: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              disableGateway: Schema.optional(Schema.Boolean),
+              platformVersion: Schema.optional(
+                Schema.Literals([
+                  "undetermined",
+                  "stv1",
+                  "stv2",
+                  "mtv1",
+                  "stv2.1",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        customProperties: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        certificates: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              encodedCertificate: Schema.optional(Schema.String),
+              certificatePassword: Schema.optional(SensitiveString),
+              storeName: Schema.Literals(["CertificateAuthority", "Root"]),
+              certificate: Schema.optional(
+                Schema.Struct({
+                  expiry: Schema.String,
+                  thumbprint: Schema.String,
+                  subject: Schema.String,
+                }),
+              ),
+            }),
+          ),
+        ),
+        enableClientCertificate: Schema.optional(Schema.Boolean),
+        natGatewayState: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        outboundPublicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+        disableGateway: Schema.optional(Schema.Boolean),
+        virtualNetworkType: Schema.optional(
+          Schema.Literals(["None", "External", "Internal"]),
+        ),
+        apiVersionConstraint: Schema.optional(
+          Schema.Struct({
+            minApiVersion: Schema.optional(Schema.String),
+          }),
+        ),
+        restore: Schema.optional(Schema.Boolean),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              properties: Schema.optional(
+                Schema.Struct({
+                  privateEndpoint: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  privateLinkServiceConnectionState: Schema.Struct({
+                    status: Schema.optional(
+                      Schema.Literals(["Pending", "Approved", "Rejected"]),
+                    ),
+                    description: Schema.optional(Schema.String),
+                    actionsRequired: Schema.optional(Schema.String),
+                  }),
+                  provisioningState: Schema.optional(Schema.String),
+                  groupIds: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            }),
+          ),
+        ),
+        platformVersion: Schema.optional(
+          Schema.Literals(["undetermined", "stv1", "stv2", "mtv1", "stv2.1"]),
+        ),
+        legacyPortalStatus: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        developerPortalStatus: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals([
+          "Developer",
+          "Standard",
+          "Premium",
+          "Basic",
+          "Consumption",
+          "Isolated",
+          "BasicV2",
+          "StandardV2",
+        ]),
+        capacity: Schema.Number,
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals([
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+          "None",
+        ]),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementServiceUpdateInput =
@@ -2786,11 +3385,11 @@ export const ApiManagementServiceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ApiManagementSkusListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/skus",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementSkusListInput = typeof ApiManagementSkusListInput.Type;
@@ -2902,11 +3501,11 @@ export const ApiManagementWorkspaceLinkGetInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaceLinks/{workspaceId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementWorkspaceLinkGetInput =
@@ -2943,11 +3542,11 @@ export const ApiManagementWorkspaceLinksListByServiceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaceLinks",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiManagementWorkspaceLinksListByServiceInput =
@@ -2990,7 +3589,6 @@ export const ApiOperationCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         templateParameters: Schema.optional(
@@ -3204,6 +3802,7 @@ export const ApiOperationCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiOperationCreateOrUpdateInput =
@@ -3246,11 +3845,11 @@ export const ApiOperationDeleteInput =
     apiId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiOperationDeleteInput = typeof ApiOperationDeleteInput.Type;
@@ -3282,11 +3881,11 @@ export const ApiOperationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   operationId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiOperationGetInput = typeof ApiOperationGetInput.Type;
@@ -3325,11 +3924,11 @@ export const ApiOperationListByApiInput =
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     tags: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiOperationListByApiInput = typeof ApiOperationListByApiInput.Type;
@@ -3381,7 +3980,6 @@ export const ApiOperationPolicyCreateOrUpdateInput =
     operationId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -3394,6 +3992,7 @@ export const ApiOperationPolicyCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiOperationPolicyCreateOrUpdateInput =
@@ -3437,11 +4036,11 @@ export const ApiOperationPolicyDeleteInput =
     operationId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiOperationPolicyDeleteInput =
@@ -3482,11 +4081,11 @@ export const ApiOperationPolicyGetInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiOperationPolicyGetInput = typeof ApiOperationPolicyGetInput.Type;
@@ -3528,11 +4127,11 @@ export const ApiOperationPolicyListByOperationInput =
     apiId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}/policies",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiOperationPolicyListByOperationInput =
@@ -3580,7 +4179,6 @@ export const ApiOperationUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         templateParameters: Schema.optional(
@@ -3794,6 +4392,7 @@ export const ApiOperationUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiOperationUpdateInput = typeof ApiOperationUpdateInput.Type;
@@ -3832,7 +4431,6 @@ export const ApiPolicyCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -3845,6 +4443,7 @@ export const ApiPolicyCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiPolicyCreateOrUpdateInput =
@@ -3886,11 +4485,11 @@ export const ApiPolicyDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/policies/{policyId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiPolicyDeleteInput = typeof ApiPolicyDeleteInput.Type;
@@ -3923,11 +4522,11 @@ export const ApiPolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/policies/{policyId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiPolicyGetInput = typeof ApiPolicyGetInput.Type;
@@ -3963,11 +4562,11 @@ export const ApiPolicyListByApiInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/policies",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiPolicyListByApiInput = typeof ApiPolicyListByApiInput.Type;
@@ -4013,11 +4612,11 @@ export const ApiProductListByApisInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/products",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiProductListByApisInput = typeof ApiProductListByApisInput.Type;
@@ -4066,7 +4665,6 @@ export const ApiReleaseCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     releaseId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         apiId: Schema.optional(Schema.String),
@@ -4079,6 +4677,7 @@ export const ApiReleaseCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/releases/{releaseId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiReleaseCreateOrUpdateInput =
@@ -4120,11 +4719,11 @@ export const ApiReleaseDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   releaseId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/releases/{releaseId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiReleaseDeleteInput = typeof ApiReleaseDeleteInput.Type;
@@ -4156,11 +4755,11 @@ export const ApiReleaseGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   releaseId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/releases/{releaseId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiReleaseGetInput = typeof ApiReleaseGetInput.Type;
@@ -4198,11 +4797,11 @@ export const ApiReleaseListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/releases",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiReleaseListByServiceInput =
@@ -4252,7 +4851,6 @@ export const ApiReleaseUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   releaseId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       apiId: Schema.optional(Schema.String),
@@ -4265,6 +4863,7 @@ export const ApiReleaseUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/releases/{releaseId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiReleaseUpdateInput = typeof ApiReleaseUpdateInput.Type;
@@ -4306,11 +4905,11 @@ export const ApiRevisionListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/revisions",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiRevisionListByServiceInput =
@@ -4366,7 +4965,6 @@ export const ApiSchemaCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         contentType: Schema.String,
@@ -4382,6 +4980,7 @@ export const ApiSchemaCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/schemas/{schemaId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiSchemaCreateOrUpdateInput =
@@ -4424,11 +5023,11 @@ export const ApiSchemaDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   schemaId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/schemas/{schemaId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiSchemaDeleteInput = typeof ApiSchemaDeleteInput.Type;
@@ -4461,11 +5060,11 @@ export const ApiSchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   schemaId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/schemas/{schemaId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiSchemaGetInput = typeof ApiSchemaGetInput.Type;
@@ -4503,11 +5102,11 @@ export const ApiSchemaListByApiInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/schemas",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiSchemaListByApiInput = typeof ApiSchemaListByApiInput.Type;
@@ -4554,7 +5153,6 @@ export const ApiTagDescriptionCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     tagDescriptionId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -4566,6 +5164,7 @@ export const ApiTagDescriptionCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/tagDescriptions/{tagDescriptionId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiTagDescriptionCreateOrUpdateInput =
@@ -4607,11 +5206,11 @@ export const ApiTagDescriptionDeleteInput =
     apiId: Schema.String.pipe(T.PathParam()),
     tagDescriptionId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/tagDescriptions/{tagDescriptionId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiTagDescriptionDeleteInput =
@@ -4649,11 +5248,11 @@ export const ApiTagDescriptionGetInput =
     apiId: Schema.String.pipe(T.PathParam()),
     tagDescriptionId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/tagDescriptions/{tagDescriptionId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiTagDescriptionGetInput = typeof ApiTagDescriptionGetInput.Type;
@@ -4694,11 +5293,11 @@ export const ApiTagDescriptionListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/tagDescriptions",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiTagDescriptionListByServiceInput =
@@ -4746,7 +5345,6 @@ export const ApiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       description: Schema.optional(Schema.String),
@@ -4832,6 +5430,7 @@ export const ApiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiUpdateInput = typeof ApiUpdateInput.Type;
@@ -4867,7 +5466,6 @@ export const ApiVersionSetCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     versionSetId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -4879,6 +5477,7 @@ export const ApiVersionSetCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apiVersionSets/{versionSetId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiVersionSetCreateOrUpdateInput =
@@ -4919,11 +5518,11 @@ export const ApiVersionSetDeleteInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     versionSetId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apiVersionSets/{versionSetId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiVersionSetDeleteInput = typeof ApiVersionSetDeleteInput.Type;
@@ -4954,11 +5553,11 @@ export const ApiVersionSetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   versionSetId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apiVersionSets/{versionSetId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiVersionSetGetInput = typeof ApiVersionSetGetInput.Type;
@@ -4996,11 +5595,11 @@ export const ApiVersionSetListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apiVersionSets",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiVersionSetListByServiceInput =
@@ -5049,7 +5648,6 @@ export const ApiVersionSetUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     versionSetId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -5061,6 +5659,7 @@ export const ApiVersionSetUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apiVersionSets/{versionSetId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiVersionSetUpdateInput = typeof ApiVersionSetUpdateInput.Type;
@@ -5097,7 +5696,6 @@ export const ApiWikiCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         documents: Schema.optional(
@@ -5113,6 +5711,7 @@ export const ApiWikiCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/wikis/default",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ApiWikiCreateOrUpdateInput = typeof ApiWikiCreateOrUpdateInput.Type;
@@ -5151,11 +5750,11 @@ export const ApiWikiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/wikis/default",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiWikiDeleteInput = typeof ApiWikiDeleteInput.Type;
@@ -5185,11 +5784,11 @@ export const ApiWikiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/wikis/default",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiWikiGetInput = typeof ApiWikiGetInput.Type;
@@ -5225,11 +5824,11 @@ export const ApiWikisListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/wikis",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiWikisListInput = typeof ApiWikisListInput.Type;
@@ -5272,7 +5871,6 @@ export const ApiWikiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       documents: Schema.optional(
@@ -5288,6 +5886,7 @@ export const ApiWikiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/wikis/default",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ApiWikiUpdateInput = typeof ApiWikiUpdateInput.Type;
@@ -5325,7 +5924,6 @@ export const AuthorizationAccessPolicyCreateOrUpdateInput =
     authorizationId: Schema.String.pipe(T.PathParam()),
     authorizationAccessPolicyId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         appIds: Schema.optional(Schema.Array(Schema.String)),
@@ -5337,6 +5935,7 @@ export const AuthorizationAccessPolicyCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}/accessPolicies/{authorizationAccessPolicyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationAccessPolicyCreateOrUpdateInput =
@@ -5380,11 +5979,11 @@ export const AuthorizationAccessPolicyDeleteInput =
     authorizationId: Schema.String.pipe(T.PathParam()),
     authorizationAccessPolicyId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}/accessPolicies/{authorizationAccessPolicyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationAccessPolicyDeleteInput =
@@ -5423,11 +6022,11 @@ export const AuthorizationAccessPolicyGetInput =
     authorizationId: Schema.String.pipe(T.PathParam()),
     authorizationAccessPolicyId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}/accessPolicies/{authorizationAccessPolicyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationAccessPolicyGetInput =
@@ -5471,11 +6070,11 @@ export const AuthorizationAccessPolicyListByAuthorizationInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}/accessPolicies",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationAccessPolicyListByAuthorizationInput =
@@ -5526,12 +6125,12 @@ export const AuthorizationConfirmConsentCodeInput =
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
     authorizationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     consentCode: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}/confirmConsentCode",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationConfirmConsentCodeInput =
@@ -5568,7 +6167,6 @@ export const AuthorizationCreateOrUpdateInput =
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
     authorizationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         authorizationType: Schema.optional(Schema.Literals(["OAuth2"])),
@@ -5591,6 +6189,7 @@ export const AuthorizationCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationCreateOrUpdateInput =
@@ -5633,11 +6232,11 @@ export const AuthorizationDeleteInput =
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
     authorizationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationDeleteInput = typeof AuthorizationDeleteInput.Type;
@@ -5670,11 +6269,11 @@ export const AuthorizationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   authorizationProviderId: Schema.String.pipe(T.PathParam()),
   authorizationId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type AuthorizationGetInput = typeof AuthorizationGetInput.Type;
@@ -5714,11 +6313,11 @@ export const AuthorizationListByAuthorizationProviderInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationListByAuthorizationProviderInput =
@@ -5768,12 +6367,12 @@ export const AuthorizationLoginLinksPostInput =
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
     authorizationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     postLoginRedirectUrl: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}/getLoginLinks",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationLoginLinksPostInput =
@@ -5812,7 +6411,6 @@ export const AuthorizationProviderCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.optional(Schema.String),
@@ -5838,6 +6436,7 @@ export const AuthorizationProviderCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationProviderCreateOrUpdateInput =
@@ -5877,11 +6476,11 @@ export const AuthorizationProviderDeleteInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationProviderDeleteInput =
@@ -5917,11 +6516,11 @@ export const AuthorizationProviderGetInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationProviderGetInput =
@@ -5962,11 +6561,11 @@ export const AuthorizationProviderListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationProviderListByServiceInput =
@@ -6013,7 +6612,6 @@ export const AuthorizationServerCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     authsid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -6056,6 +6654,7 @@ export const AuthorizationServerCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationServers/{authsid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationServerCreateOrUpdateInput =
@@ -6095,11 +6694,11 @@ export const AuthorizationServerDeleteInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     authsid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationServers/{authsid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationServerDeleteInput =
@@ -6135,11 +6734,11 @@ export const AuthorizationServerGetInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     authsid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationServers/{authsid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationServerGetInput =
@@ -6180,11 +6779,11 @@ export const AuthorizationServerListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationServers",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationServerListByServiceInput =
@@ -6232,11 +6831,11 @@ export const AuthorizationServerListSecretsInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     authsid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationServers/{authsid}/listSecrets",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationServerListSecretsInput =
@@ -6245,9 +6844,9 @@ export type AuthorizationServerListSecretsInput =
 // Output Schema
 export const AuthorizationServerListSecretsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clientSecret: Schema.optional(SensitiveString),
+    clientSecret: Schema.optional(SensitiveOutputString),
     resourceOwnerUsername: Schema.optional(Schema.String),
-    resourceOwnerPassword: Schema.optional(SensitiveString),
+    resourceOwnerPassword: Schema.optional(SensitiveOutputString),
   });
 export type AuthorizationServerListSecretsOutput =
   typeof AuthorizationServerListSecretsOutput.Type;
@@ -6274,7 +6873,6 @@ export const AuthorizationServerUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     authsid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -6317,6 +6915,7 @@ export const AuthorizationServerUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationServers/{authsid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type AuthorizationServerUpdateInput =
@@ -6357,7 +6956,6 @@ export const BackendCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     backendId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         title: Schema.optional(Schema.String),
@@ -6470,6 +7068,7 @@ export const BackendCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type BackendCreateOrUpdateInput = typeof BackendCreateOrUpdateInput.Type;
@@ -6508,11 +7107,11 @@ export const BackendDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   backendId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type BackendDeleteInput = typeof BackendDeleteInput.Type;
@@ -6542,11 +7141,11 @@ export const BackendGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   backendId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type BackendGetInput = typeof BackendGetInput.Type;
@@ -6582,11 +7181,11 @@ export const BackendListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends",
+      apiVersion: "2024-05-01",
     }),
   );
 export type BackendListByServiceInput = typeof BackendListByServiceInput.Type;
@@ -6632,7 +7231,6 @@ export const BackendReconnectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   backendId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       after: Schema.optional(Schema.String),
@@ -6642,6 +7240,7 @@ export const BackendReconnectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendId}/reconnect",
+    apiVersion: "2024-05-01",
   }),
 );
 export type BackendReconnectInput = typeof BackendReconnectInput.Type;
@@ -6671,7 +7270,6 @@ export const BackendUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   backendId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       title: Schema.optional(Schema.String),
@@ -6780,6 +7378,7 @@ export const BackendUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type BackendUpdateInput = typeof BackendUpdateInput.Type;
@@ -6815,7 +7414,6 @@ export const CacheCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     cacheId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -6828,6 +7426,7 @@ export const CacheCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/caches/{cacheId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type CacheCreateOrUpdateInput = typeof CacheCreateOrUpdateInput.Type;
@@ -6863,11 +7462,11 @@ export const CacheDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   cacheId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/caches/{cacheId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type CacheDeleteInput = typeof CacheDeleteInput.Type;
@@ -6897,11 +7496,11 @@ export const CacheGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   cacheId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/caches/{cacheId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type CacheGetInput = typeof CacheGetInput.Type;
@@ -6936,11 +7535,11 @@ export const CacheListByServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/caches",
+      apiVersion: "2024-05-01",
     }),
   );
 export type CacheListByServiceInput = typeof CacheListByServiceInput.Type;
@@ -6983,7 +7582,6 @@ export const CacheUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   cacheId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       description: Schema.optional(Schema.String),
@@ -6996,6 +7594,7 @@ export const CacheUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/caches/{cacheId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type CacheUpdateInput = typeof CacheUpdateInput.Type;
@@ -7031,7 +7630,6 @@ export const CertificateCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         data: Schema.optional(Schema.String),
@@ -7048,6 +7646,7 @@ export const CertificateCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/certificates/{certificateId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type CertificateCreateOrUpdateInput =
@@ -7088,12 +7687,12 @@ export const CertificateDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     serviceName: Schema.String.pipe(T.PathParam()),
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/certificates/{certificateId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type CertificateDeleteInput = typeof CertificateDeleteInput.Type;
@@ -7123,11 +7722,11 @@ export const CertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   certificateId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/certificates/{certificateId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type CertificateGetInput = typeof CertificateGetInput.Type;
@@ -7164,11 +7763,11 @@ export const CertificateListByServiceInput =
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     isKeyVaultRefreshFailed: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/certificates",
+      apiVersion: "2024-05-01",
     }),
   );
 export type CertificateListByServiceInput =
@@ -7218,11 +7817,11 @@ export const CertificateRefreshSecretInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/certificates/{certificateId}/refreshSecret",
+      apiVersion: "2024-05-01",
     }),
   );
 export type CertificateRefreshSecretInput =
@@ -7262,12 +7861,12 @@ export const ContentItemCreateOrUpdateInput =
     contentTypeId: Schema.String.pipe(T.PathParam()),
     contentItemId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(Schema.Struct({})),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}/contentItems/{contentItemId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ContentItemCreateOrUpdateInput =
@@ -7310,12 +7909,12 @@ export const ContentItemDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     contentTypeId: Schema.String.pipe(T.PathParam()),
     contentItemId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}/contentItems/{contentItemId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ContentItemDeleteInput = typeof ContentItemDeleteInput.Type;
@@ -7347,11 +7946,11 @@ export const ContentItemGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   contentTypeId: Schema.String.pipe(T.PathParam()),
   contentItemId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}/contentItems/{contentItemId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ContentItemGetInput = typeof ContentItemGetInput.Type;
@@ -7386,11 +7985,11 @@ export const ContentItemListByServiceInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     contentTypeId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}/contentItems",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ContentItemListByServiceInput =
@@ -7436,7 +8035,6 @@ export const ContentTypeCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     contentTypeId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7450,6 +8048,7 @@ export const ContentTypeCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ContentTypeCreateOrUpdateInput =
@@ -7490,12 +8089,12 @@ export const ContentTypeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     serviceName: Schema.String.pipe(T.PathParam()),
     contentTypeId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ContentTypeDeleteInput = typeof ContentTypeDeleteInput.Type;
@@ -7525,11 +8124,11 @@ export const ContentTypeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   contentTypeId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ContentTypeGetInput = typeof ContentTypeGetInput.Type;
@@ -7562,11 +8161,11 @@ export const ContentTypeListByServiceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ContentTypeListByServiceInput =
@@ -7610,11 +8209,11 @@ export const DeletedServicesGetByNameInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/deletedservices/{serviceName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type DeletedServicesGetByNameInput =
@@ -7649,11 +8248,11 @@ export const DeletedServicesGetByName = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DeletedServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/deletedservices",
+      apiVersion: "2024-05-01",
     }),
   );
 export type DeletedServicesListBySubscriptionInput =
@@ -7694,11 +8293,11 @@ export const DeletedServicesPurgeInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/deletedservices/{serviceName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type DeletedServicesPurgeInput = typeof DeletedServicesPurgeInput.Type;
@@ -7730,7 +8329,6 @@ export const DiagnosticCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
@@ -7900,6 +8498,7 @@ export const DiagnosticCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/diagnostics/{diagnosticId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type DiagnosticCreateOrUpdateInput =
@@ -7939,11 +8538,11 @@ export const DiagnosticDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   diagnosticId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/diagnostics/{diagnosticId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type DiagnosticDeleteInput = typeof DiagnosticDeleteInput.Type;
@@ -7973,11 +8572,11 @@ export const DiagnosticGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   diagnosticId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/diagnostics/{diagnosticId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type DiagnosticGetInput = typeof DiagnosticGetInput.Type;
@@ -8013,11 +8612,11 @@ export const DiagnosticListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/diagnostics",
+      apiVersion: "2024-05-01",
     }),
   );
 export type DiagnosticListByServiceInput =
@@ -8065,7 +8664,6 @@ export const DiagnosticUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   diagnosticId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
@@ -8235,6 +8833,7 @@ export const DiagnosticUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/diagnostics/{diagnosticId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type DiagnosticUpdateInput = typeof DiagnosticUpdateInput.Type;
@@ -8272,7 +8871,6 @@ export const DocumentationCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     documentationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         title: Schema.optional(Schema.String),
@@ -8283,6 +8881,7 @@ export const DocumentationCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/documentations/{documentationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type DocumentationCreateOrUpdateInput =
@@ -8323,11 +8922,11 @@ export const DocumentationDeleteInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     documentationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/documentations/{documentationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type DocumentationDeleteInput = typeof DocumentationDeleteInput.Type;
@@ -8358,11 +8957,11 @@ export const DocumentationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   documentationId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/documentations/{documentationId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type DocumentationGetInput = typeof DocumentationGetInput.Type;
@@ -8400,11 +8999,11 @@ export const DocumentationListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/documentations",
+      apiVersion: "2024-05-01",
     }),
   );
 export type DocumentationListByServiceInput =
@@ -8452,7 +9051,6 @@ export const DocumentationUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     documentationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         title: Schema.optional(Schema.String),
@@ -8463,6 +9061,7 @@ export const DocumentationUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/documentations/{documentationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type DocumentationUpdateInput = typeof DocumentationUpdateInput.Type;
@@ -8514,7 +9113,6 @@ export const EmailTemplateCreateOrUpdateInput =
       "requestDeveloperNotificationMessage",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         subject: Schema.optional(Schema.String),
@@ -8536,6 +9134,7 @@ export const EmailTemplateCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/templates/{templateName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type EmailTemplateCreateOrUpdateInput =
@@ -8591,11 +9190,11 @@ export const EmailTemplateDeleteInput =
       "requestDeveloperNotificationMessage",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/templates/{templateName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type EmailTemplateDeleteInput = typeof EmailTemplateDeleteInput.Type;
@@ -8641,11 +9240,11 @@ export const EmailTemplateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "requestDeveloperNotificationMessage",
   ]).pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/templates/{templateName}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type EmailTemplateGetInput = typeof EmailTemplateGetInput.Type;
@@ -8683,11 +9282,11 @@ export const EmailTemplateListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/templates",
+      apiVersion: "2024-05-01",
     }),
   );
 export type EmailTemplateListByServiceInput =
@@ -8751,7 +9350,6 @@ export const EmailTemplateUpdateInput =
       "requestDeveloperNotificationMessage",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         subject: Schema.optional(Schema.String),
@@ -8773,6 +9371,7 @@ export const EmailTemplateUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/templates/{templateName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type EmailTemplateUpdateInput = typeof EmailTemplateUpdateInput.Type;
@@ -8810,7 +9409,6 @@ export const GatewayApiCreateOrUpdateInput =
     gatewayId: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(Schema.Literals(["created"])),
@@ -8820,6 +9418,7 @@ export const GatewayApiCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/apis/{apiId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayApiCreateOrUpdateInput =
@@ -8860,11 +9459,11 @@ export const GatewayApiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/apis/{apiId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GatewayApiDeleteInput = typeof GatewayApiDeleteInput.Type;
@@ -8898,11 +9497,11 @@ export const GatewayApiListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/apis",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayApiListByServiceInput =
@@ -8953,7 +9552,6 @@ export const GatewayCertificateAuthorityCreateOrUpdateInput =
     gatewayId: Schema.String.pipe(T.PathParam()),
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         isTrusted: Schema.optional(Schema.Boolean),
@@ -8963,6 +9561,7 @@ export const GatewayCertificateAuthorityCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/certificateAuthorities/{certificateId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayCertificateAuthorityCreateOrUpdateInput =
@@ -9004,11 +9603,11 @@ export const GatewayCertificateAuthorityDeleteInput =
     gatewayId: Schema.String.pipe(T.PathParam()),
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/certificateAuthorities/{certificateId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayCertificateAuthorityDeleteInput =
@@ -9045,11 +9644,11 @@ export const GatewayCertificateAuthorityGetInput =
     gatewayId: Schema.String.pipe(T.PathParam()),
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/certificateAuthorities/{certificateId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayCertificateAuthorityGetInput =
@@ -9091,11 +9690,11 @@ export const GatewayCertificateAuthorityListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/certificateAuthorities",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayCertificateAuthorityListByServiceInput =
@@ -9143,7 +9742,6 @@ export const GatewayCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         locationData: Schema.optional(
@@ -9161,6 +9759,7 @@ export const GatewayCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayCreateOrUpdateInput = typeof GatewayCreateOrUpdateInput.Type;
@@ -9199,11 +9798,11 @@ export const GatewayDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   gatewayId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GatewayDeleteInput = typeof GatewayDeleteInput.Type;
@@ -9234,13 +9833,13 @@ export const GatewayGenerateTokenInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     keyType: Schema.Literals(["primary", "secondary"]),
     expiry: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/generateToken",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayGenerateTokenInput = typeof GatewayGenerateTokenInput.Type;
@@ -9277,11 +9876,11 @@ export const GatewayGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   gatewayId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GatewayGetInput = typeof GatewayGetInput.Type;
@@ -9316,7 +9915,6 @@ export const GatewayHostnameConfigurationCreateOrUpdateInput =
     gatewayId: Schema.String.pipe(T.PathParam()),
     hcId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         hostname: Schema.optional(Schema.String),
@@ -9331,6 +9929,7 @@ export const GatewayHostnameConfigurationCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/hostnameConfigurations/{hcId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayHostnameConfigurationCreateOrUpdateInput =
@@ -9372,11 +9971,11 @@ export const GatewayHostnameConfigurationDeleteInput =
     gatewayId: Schema.String.pipe(T.PathParam()),
     hcId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/hostnameConfigurations/{hcId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayHostnameConfigurationDeleteInput =
@@ -9413,11 +10012,11 @@ export const GatewayHostnameConfigurationGetInput =
     gatewayId: Schema.String.pipe(T.PathParam()),
     hcId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/hostnameConfigurations/{hcId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayHostnameConfigurationGetInput =
@@ -9459,11 +10058,11 @@ export const GatewayHostnameConfigurationListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/hostnameConfigurations",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayHostnameConfigurationListByServiceInput =
@@ -9511,11 +10110,11 @@ export const GatewayInvalidateDebugCredentialsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/invalidateDebugCredentials",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayInvalidateDebugCredentialsInput =
@@ -9551,11 +10150,11 @@ export const GatewayListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayListByServiceInput = typeof GatewayListByServiceInput.Type;
@@ -9602,7 +10201,6 @@ export const GatewayListDebugCredentialsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     credentialsExpireAfter: Schema.optional(Schema.String),
     purposes: Schema.Array(Schema.Literals(["tracing"])),
     apiId: Schema.String,
@@ -9610,6 +10208,7 @@ export const GatewayListDebugCredentialsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/listDebugCredentials",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayListDebugCredentialsInput =
@@ -9648,11 +10247,11 @@ export const GatewayListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   gatewayId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/listKeys",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GatewayListKeysInput = typeof GatewayListKeysInput.Type;
@@ -9684,12 +10283,12 @@ export const GatewayListTraceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   gatewayId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   traceId: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/listTrace",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GatewayListTraceInput = typeof GatewayListTraceInput.Type;
@@ -9722,12 +10321,12 @@ export const GatewayRegenerateKeyInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     gatewayId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     keyType: Schema.Literals(["primary", "secondary"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/regenerateKey",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GatewayRegenerateKeyInput = typeof GatewayRegenerateKeyInput.Type;
@@ -9760,7 +10359,6 @@ export const GatewayUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   gatewayId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       locationData: Schema.optional(
@@ -9778,6 +10376,7 @@ export const GatewayUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GatewayUpdateInput = typeof GatewayUpdateInput.Type;
@@ -9813,7 +10412,6 @@ export const GlobalSchemaCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         schemaType: Schema.Literals(["xml", "json"]),
@@ -9827,6 +10425,7 @@ export const GlobalSchemaCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/schemas/{schemaId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GlobalSchemaCreateOrUpdateInput =
@@ -9867,11 +10466,11 @@ export const GlobalSchemaDeleteInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/schemas/{schemaId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GlobalSchemaDeleteInput = typeof GlobalSchemaDeleteInput.Type;
@@ -9901,11 +10500,11 @@ export const GlobalSchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   schemaId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/schemas/{schemaId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GlobalSchemaGetInput = typeof GlobalSchemaGetInput.Type;
@@ -9941,11 +10540,11 @@ export const GlobalSchemaListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/schemas",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GlobalSchemaListByServiceInput =
@@ -9995,7 +10594,6 @@ export const GraphQLApiResolverCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     resolverId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.optional(Schema.String),
@@ -10007,6 +10605,7 @@ export const GraphQLApiResolverCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/resolvers/{resolverId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GraphQLApiResolverCreateOrUpdateInput =
@@ -10048,11 +10647,11 @@ export const GraphQLApiResolverDeleteInput =
     apiId: Schema.String.pipe(T.PathParam()),
     resolverId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/resolvers/{resolverId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GraphQLApiResolverDeleteInput =
@@ -10090,11 +10689,11 @@ export const GraphQLApiResolverGetInput =
     apiId: Schema.String.pipe(T.PathParam()),
     resolverId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/resolvers/{resolverId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GraphQLApiResolverGetInput = typeof GraphQLApiResolverGetInput.Type;
@@ -10136,11 +10735,11 @@ export const GraphQLApiResolverListByApiInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/resolvers",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GraphQLApiResolverListByApiInput =
@@ -10192,7 +10791,6 @@ export const GraphQLApiResolverPolicyCreateOrUpdateInput =
     resolverId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -10205,6 +10803,7 @@ export const GraphQLApiResolverPolicyCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/resolvers/{resolverId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GraphQLApiResolverPolicyCreateOrUpdateInput =
@@ -10248,11 +10847,11 @@ export const GraphQLApiResolverPolicyDeleteInput =
     resolverId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/resolvers/{resolverId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GraphQLApiResolverPolicyDeleteInput =
@@ -10292,11 +10891,11 @@ export const GraphQLApiResolverPolicyGetInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/resolvers/{resolverId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GraphQLApiResolverPolicyGetInput =
@@ -10339,11 +10938,11 @@ export const GraphQLApiResolverPolicyListByResolverInput =
     apiId: Schema.String.pipe(T.PathParam()),
     resolverId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/resolvers/{resolverId}/policies",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GraphQLApiResolverPolicyListByResolverInput =
@@ -10391,7 +10990,6 @@ export const GraphQLApiResolverUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     resolverId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.optional(Schema.String),
@@ -10403,6 +11001,7 @@ export const GraphQLApiResolverUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/resolvers/{resolverId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GraphQLApiResolverUpdateInput =
@@ -10444,7 +11043,6 @@ export const GroupCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.String,
@@ -10459,6 +11057,7 @@ export const GroupCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GroupCreateOrUpdateInput = typeof GroupCreateOrUpdateInput.Type;
@@ -10494,11 +11093,11 @@ export const GroupDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   groupId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GroupDeleteInput = typeof GroupDeleteInput.Type;
@@ -10528,11 +11127,11 @@ export const GroupGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   groupId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GroupGetInput = typeof GroupGetInput.Type;
@@ -10568,11 +11167,11 @@ export const GroupListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups",
+      apiVersion: "2024-05-01",
     }),
   );
 export type GroupListByServiceInput = typeof GroupListByServiceInput.Type;
@@ -10616,7 +11215,6 @@ export const GroupUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   groupId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       displayName: Schema.optional(Schema.String),
@@ -10629,6 +11227,7 @@ export const GroupUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GroupUpdateInput = typeof GroupUpdateInput.Type;
@@ -10664,11 +11263,11 @@ export const GroupUserCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}/users/{userId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GroupUserCreateInput = typeof GroupUserCreateInput.Type;
@@ -10703,11 +11302,11 @@ export const GroupUserDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}/users/{userId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GroupUserDeleteInput = typeof GroupUserDeleteInput.Type;
@@ -10740,11 +11339,11 @@ export const GroupUserListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}/users",
+    apiVersion: "2024-05-01",
   }),
 );
 export type GroupUserListInput = typeof GroupUserListInput.Type;
@@ -10796,7 +11395,6 @@ export const IdentityProviderCreateOrUpdateInput =
       "aadB2C",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         type: Schema.optional(
@@ -10823,6 +11421,7 @@ export const IdentityProviderCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/identityProviders/{identityProviderName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type IdentityProviderCreateOrUpdateInput =
@@ -10869,11 +11468,11 @@ export const IdentityProviderDeleteInput =
       "aadB2C",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/identityProviders/{identityProviderName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type IdentityProviderDeleteInput =
@@ -10916,11 +11515,11 @@ export const IdentityProviderGetInput =
       "aadB2C",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/identityProviders/{identityProviderName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type IdentityProviderGetInput = typeof IdentityProviderGetInput.Type;
@@ -10954,11 +11553,11 @@ export const IdentityProviderListByServiceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/identityProviders",
+      apiVersion: "2024-05-01",
     }),
   );
 export type IdentityProviderListByServiceInput =
@@ -11010,11 +11609,11 @@ export const IdentityProviderListSecretsInput =
       "aadB2C",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/identityProviders/{identityProviderName}/listSecrets",
+      apiVersion: "2024-05-01",
     }),
   );
 export type IdentityProviderListSecretsInput =
@@ -11023,7 +11622,7 @@ export type IdentityProviderListSecretsInput =
 // Output Schema
 export const IdentityProviderListSecretsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clientSecret: Schema.optional(SensitiveString),
+    clientSecret: Schema.optional(SensitiveOutputString),
   });
 export type IdentityProviderListSecretsOutput =
   typeof IdentityProviderListSecretsOutput.Type;
@@ -11058,7 +11657,6 @@ export const IdentityProviderUpdateInput =
       "aadB2C",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         type: Schema.optional(
@@ -11085,6 +11683,7 @@ export const IdentityProviderUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/identityProviders/{identityProviderName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type IdentityProviderUpdateInput =
@@ -11124,11 +11723,11 @@ export const IssueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   issueId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/issues/{issueId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type IssueGetInput = typeof IssueGetInput.Type;
@@ -11164,11 +11763,11 @@ export const IssueListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/issues",
+      apiVersion: "2024-05-01",
     }),
   );
 export type IssueListByServiceInput = typeof IssueListByServiceInput.Type;
@@ -11213,7 +11812,6 @@ export const LoggerCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     loggerId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         loggerType: Schema.Literals([
@@ -11233,6 +11831,7 @@ export const LoggerCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/loggers/{loggerId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type LoggerCreateOrUpdateInput = typeof LoggerCreateOrUpdateInput.Type;
@@ -11270,11 +11869,11 @@ export const LoggerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   loggerId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/loggers/{loggerId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type LoggerDeleteInput = typeof LoggerDeleteInput.Type;
@@ -11304,11 +11903,11 @@ export const LoggerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   loggerId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/loggers/{loggerId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type LoggerGetInput = typeof LoggerGetInput.Type;
@@ -11344,11 +11943,11 @@ export const LoggerListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/loggers",
+      apiVersion: "2024-05-01",
     }),
   );
 export type LoggerListByServiceInput = typeof LoggerListByServiceInput.Type;
@@ -11392,7 +11991,6 @@ export const LoggerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   loggerId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       loggerType: Schema.optional(
@@ -11411,6 +12009,7 @@ export const LoggerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/loggers/{loggerId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type LoggerUpdateInput = typeof LoggerUpdateInput.Type;
@@ -11446,7 +12045,6 @@ export const NamedValueCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     namedValueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         tags: Schema.optional(Schema.Array(Schema.String)),
@@ -11457,6 +12055,7 @@ export const NamedValueCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/namedValues/{namedValueId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NamedValueCreateOrUpdateInput =
@@ -11496,11 +12095,11 @@ export const NamedValueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   namedValueId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/namedValues/{namedValueId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type NamedValueDeleteInput = typeof NamedValueDeleteInput.Type;
@@ -11530,11 +12129,11 @@ export const NamedValueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   namedValueId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/namedValues/{namedValueId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type NamedValueGetInput = typeof NamedValueGetInput.Type;
@@ -11571,11 +12170,11 @@ export const NamedValueListByServiceInput =
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     isKeyVaultRefreshFailed: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/namedValues",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NamedValueListByServiceInput =
@@ -11625,11 +12224,11 @@ export const NamedValueListValueInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     namedValueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/namedValues/{namedValueId}/listValue",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NamedValueListValueInput = typeof NamedValueListValueInput.Type;
@@ -11662,11 +12261,11 @@ export const NamedValueRefreshSecretInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     namedValueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/namedValues/{namedValueId}/refreshSecret",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NamedValueRefreshSecretInput =
@@ -11704,7 +12303,6 @@ export const NamedValueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   namedValueId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       tags: Schema.optional(Schema.Array(Schema.String)),
@@ -11715,6 +12313,7 @@ export const NamedValueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/namedValues/{namedValueId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type NamedValueUpdateInput = typeof NamedValueUpdateInput.Type;
@@ -11752,11 +12351,11 @@ export const NetworkStatusListByLocationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/locations/{locationName}/networkstatus",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NetworkStatusListByLocationInput =
@@ -11803,11 +12402,11 @@ export const NetworkStatusListByServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/networkstatus",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NetworkStatusListByServiceInput =
@@ -11869,11 +12468,11 @@ export const NotificationCreateOrUpdateInput =
       "QuotaLimitApproachingPublisherNotificationMessage",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NotificationCreateOrUpdateInput =
@@ -11920,11 +12519,11 @@ export const NotificationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "QuotaLimitApproachingPublisherNotificationMessage",
   ]).pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type NotificationGetInput = typeof NotificationGetInput.Type;
@@ -11959,11 +12558,11 @@ export const NotificationListByServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NotificationListByServiceInput =
@@ -12020,11 +12619,11 @@ export const NotificationRecipientEmailCreateOrUpdateInput =
     ]).pipe(T.PathParam()),
     email: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}/recipientEmails/{email}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NotificationRecipientEmailCreateOrUpdateInput =
@@ -12072,11 +12671,11 @@ export const NotificationRecipientEmailDeleteInput =
     ]).pipe(T.PathParam()),
     email: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}/recipientEmails/{email}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NotificationRecipientEmailDeleteInput =
@@ -12119,11 +12718,11 @@ export const NotificationRecipientEmailListByNotificationInput =
       "QuotaLimitApproachingPublisherNotificationMessage",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}/recipientEmails",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NotificationRecipientEmailListByNotificationInput =
@@ -12178,11 +12777,11 @@ export const NotificationRecipientUserCreateOrUpdateInput =
     ]).pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}/recipientUsers/{userId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NotificationRecipientUserCreateOrUpdateInput =
@@ -12230,11 +12829,11 @@ export const NotificationRecipientUserDeleteInput =
     ]).pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}/recipientUsers/{userId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NotificationRecipientUserDeleteInput =
@@ -12277,11 +12876,11 @@ export const NotificationRecipientUserListByNotificationInput =
       "QuotaLimitApproachingPublisherNotificationMessage",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}/recipientUsers",
+      apiVersion: "2024-05-01",
     }),
   );
 export type NotificationRecipientUserListByNotificationInput =
@@ -12327,7 +12926,6 @@ export const OpenIdConnectProviderCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     opid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.String,
@@ -12343,6 +12941,7 @@ export const OpenIdConnectProviderCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/openidConnectProviders/{opid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type OpenIdConnectProviderCreateOrUpdateInput =
@@ -12382,11 +12981,11 @@ export const OpenIdConnectProviderDeleteInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     opid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/openidConnectProviders/{opid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type OpenIdConnectProviderDeleteInput =
@@ -12422,11 +13021,11 @@ export const OpenIdConnectProviderGetInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     opid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/openidConnectProviders/{opid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type OpenIdConnectProviderGetInput =
@@ -12467,11 +13066,11 @@ export const OpenIdConnectProviderListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/openidConnectProviders",
+      apiVersion: "2024-05-01",
     }),
   );
 export type OpenIdConnectProviderListByServiceInput =
@@ -12519,11 +13118,11 @@ export const OpenIdConnectProviderListSecretsInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     opid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/openidConnectProviders/{opid}/listSecrets",
+      apiVersion: "2024-05-01",
     }),
   );
 export type OpenIdConnectProviderListSecretsInput =
@@ -12532,7 +13131,7 @@ export type OpenIdConnectProviderListSecretsInput =
 // Output Schema
 export const OpenIdConnectProviderListSecretsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clientSecret: Schema.optional(SensitiveString),
+    clientSecret: Schema.optional(SensitiveOutputString),
   });
 export type OpenIdConnectProviderListSecretsOutput =
   typeof OpenIdConnectProviderListSecretsOutput.Type;
@@ -12559,7 +13158,6 @@ export const OpenIdConnectProviderUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     opid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.optional(Schema.String),
@@ -12575,6 +13173,7 @@ export const OpenIdConnectProviderUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/openidConnectProviders/{opid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type OpenIdConnectProviderUpdateInput =
@@ -12619,11 +13218,11 @@ export const OperationListByTagsInput =
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     includeNotTaggedOperations: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operationsByTags",
+      apiVersion: "2024-05-01",
     }),
   );
 export type OperationListByTagsInput = typeof OperationListByTagsInput.Type;
@@ -12777,11 +13376,11 @@ export const OperationsResultsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/operationResults/{operationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type OperationsResultsGetInput = typeof OperationsResultsGetInput.Type;
@@ -12812,11 +13411,11 @@ export const OperationStatusGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/operationStatuses/{operationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
@@ -12899,11 +13498,11 @@ export const OutboundNetworkDependenciesEndpointsListByServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/outboundNetworkDependenciesEndpoints",
+      apiVersion: "2024-05-01",
     }),
   );
 export type OutboundNetworkDependenciesEndpointsListByServiceInput =
@@ -12957,7 +13556,6 @@ export const PerformConnectivityCheckAsyncInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     source: Schema.Struct({
       region: Schema.String,
       instance: Schema.optional(Schema.Number),
@@ -12990,6 +13588,7 @@ export const PerformConnectivityCheckAsyncInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/connectivityCheck",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PerformConnectivityCheckAsyncInput =
@@ -13075,7 +13674,6 @@ export const PolicyCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -13088,6 +13686,7 @@ export const PolicyCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyCreateOrUpdateInput = typeof PolicyCreateOrUpdateInput.Type;
@@ -13125,11 +13724,11 @@ export const PolicyDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policies/{policyId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type PolicyDeleteInput = typeof PolicyDeleteInput.Type;
@@ -13162,11 +13761,11 @@ export const PolicyDescriptionListByServiceInput =
     scope: Schema.optional(
       Schema.Literals(["Tenant", "Product", "Api", "Operation", "All"]),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyDescriptions",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyDescriptionListByServiceInput =
@@ -13211,7 +13810,6 @@ export const PolicyFragmentCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -13224,6 +13822,7 @@ export const PolicyFragmentCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyFragments/{id}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyFragmentCreateOrUpdateInput =
@@ -13263,11 +13862,11 @@ export const PolicyFragmentDeleteInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyFragments/{id}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyFragmentDeleteInput = typeof PolicyFragmentDeleteInput.Type;
@@ -13301,13 +13900,13 @@ export const PolicyFragmentGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     serviceName: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyFragments/{id}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type PolicyFragmentGetInput = typeof PolicyFragmentGetInput.Type;
@@ -13342,7 +13941,6 @@ export const PolicyFragmentListByServiceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -13351,6 +13949,7 @@ export const PolicyFragmentListByServiceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyFragments",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyFragmentListByServiceInput =
@@ -13400,13 +13999,13 @@ export const PolicyFragmentListReferencesInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyFragments/{id}/listReferences",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyFragmentListReferencesInput =
@@ -13454,11 +14053,11 @@ export const PolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policies/{policyId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type PolicyGetInput = typeof PolicyGetInput.Type;
@@ -13492,11 +14091,11 @@ export const PolicyListByServiceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policies",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyListByServiceInput = typeof PolicyListByServiceInput.Type;
@@ -13538,7 +14137,6 @@ export const PolicyRestrictionCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     policyRestrictionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         scope: Schema.optional(Schema.String),
@@ -13549,6 +14147,7 @@ export const PolicyRestrictionCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyRestrictions/{policyRestrictionId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyRestrictionCreateOrUpdateInput =
@@ -13588,11 +14187,11 @@ export const PolicyRestrictionDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     policyRestrictionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyRestrictions/{policyRestrictionId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyRestrictionDeleteInput =
@@ -13628,11 +14227,11 @@ export const PolicyRestrictionGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     policyRestrictionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyRestrictions/{policyRestrictionId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyRestrictionGetInput = typeof PolicyRestrictionGetInput.Type;
@@ -13668,11 +14267,11 @@ export const PolicyRestrictionListByServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyRestrictions",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyRestrictionListByServiceInput =
@@ -13716,7 +14315,6 @@ export const PolicyRestrictionUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     policyRestrictionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         scope: Schema.optional(Schema.String),
@@ -13727,6 +14325,7 @@ export const PolicyRestrictionUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyRestrictions/{policyRestrictionId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyRestrictionUpdateInput =
@@ -13766,11 +14365,11 @@ export const PolicyRestrictionValidationsByServiceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/validatePolicies",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PolicyRestrictionValidationsByServiceInput =
@@ -13807,7 +14406,6 @@ export const PortalConfigCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     portalConfigId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         enableBasicAuth: Schema.optional(Schema.Boolean),
@@ -13854,6 +14452,7 @@ export const PortalConfigCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalconfigs/{portalConfigId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PortalConfigCreateOrUpdateInput =
@@ -13893,11 +14492,11 @@ export const PortalConfigGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
   portalConfigId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalconfigs/{portalConfigId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type PortalConfigGetInput = typeof PortalConfigGetInput.Type;
@@ -13930,11 +14529,11 @@ export const PortalConfigListByServiceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalconfigs",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PortalConfigListByServiceInput =
@@ -13979,7 +14578,6 @@ export const PortalConfigUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     portalConfigId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         enableBasicAuth: Schema.optional(Schema.Boolean),
@@ -14026,6 +14624,7 @@ export const PortalConfigUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalconfigs/{portalConfigId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PortalConfigUpdateInput = typeof PortalConfigUpdateInput.Type;
@@ -14062,7 +14661,6 @@ export const PortalRevisionCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     portalRevisionId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -14080,6 +14678,7 @@ export const PortalRevisionCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalRevisions/{portalRevisionId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PortalRevisionCreateOrUpdateInput =
@@ -14118,12 +14717,12 @@ export const PortalRevisionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     serviceName: Schema.String.pipe(T.PathParam()),
     portalRevisionId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalRevisions/{portalRevisionId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type PortalRevisionGetInput = typeof PortalRevisionGetInput.Type;
@@ -14160,11 +14759,11 @@ export const PortalRevisionListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalRevisions",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PortalRevisionListByServiceInput =
@@ -14218,7 +14817,6 @@ export const PortalRevisionUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     portalRevisionId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -14236,6 +14834,7 @@ export const PortalRevisionUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalRevisions/{portalRevisionId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PortalRevisionUpdateInput = typeof PortalRevisionUpdateInput.Type;
@@ -14274,7 +14873,6 @@ export const PrivateEndpointConnectionCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -14293,6 +14891,7 @@ export const PrivateEndpointConnectionCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PrivateEndpointConnectionCreateOrUpdateInput =
@@ -14332,11 +14931,11 @@ export const PrivateEndpointConnectionDeleteInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PrivateEndpointConnectionDeleteInput =
@@ -14370,11 +14969,11 @@ export const PrivateEndpointConnectionGetByNameInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PrivateEndpointConnectionGetByNameInput =
@@ -14412,11 +15011,11 @@ export const PrivateEndpointConnectionGetPrivateLinkResourceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     privateLinkSubResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/privateLinkResources/{privateLinkSubResourceName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PrivateEndpointConnectionGetPrivateLinkResourceInput =
@@ -14453,11 +15052,11 @@ export const PrivateEndpointConnectionListByServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/privateEndpointConnections",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PrivateEndpointConnectionListByServiceInput =
@@ -14499,11 +15098,11 @@ export const PrivateEndpointConnectionListPrivateLinkResourcesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/privateLinkResources",
+      apiVersion: "2024-05-01",
     }),
   );
 export type PrivateEndpointConnectionListPrivateLinkResourcesInput =
@@ -14547,11 +15146,11 @@ export const ProductApiCreateOrUpdateInput =
     productId: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apis/{apiId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductApiCreateOrUpdateInput =
@@ -14591,11 +15190,11 @@ export const ProductApiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   productId: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apis/{apiId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ProductApiDeleteInput = typeof ProductApiDeleteInput.Type;
@@ -14627,7 +15226,6 @@ export const ProductApiLinkCreateOrUpdateInput =
     productId: Schema.String.pipe(T.PathParam()),
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         apiId: Schema.String,
@@ -14637,6 +15235,7 @@ export const ProductApiLinkCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apiLinks/{apiLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductApiLinkCreateOrUpdateInput =
@@ -14677,11 +15276,11 @@ export const ProductApiLinkDeleteInput =
     productId: Schema.String.pipe(T.PathParam()),
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apiLinks/{apiLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductApiLinkDeleteInput = typeof ProductApiLinkDeleteInput.Type;
@@ -14716,12 +15315,12 @@ export const ProductApiLinkGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     productId: Schema.String.pipe(T.PathParam()),
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apiLinks/{apiLinkId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ProductApiLinkGetInput = typeof ProductApiLinkGetInput.Type;
@@ -14760,11 +15359,11 @@ export const ProductApiLinkListByProductInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apiLinks",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductApiLinkListByProductInput =
@@ -14817,11 +15416,11 @@ export const ProductApiListByProductInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apis",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductApiListByProductInput =
@@ -14871,7 +15470,6 @@ export const ProductCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -14886,6 +15484,7 @@ export const ProductCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductCreateOrUpdateInput = typeof ProductCreateOrUpdateInput.Type;
@@ -14925,11 +15524,11 @@ export const ProductDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   productId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   deleteSubscriptions: Schema.optional(Schema.Boolean),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ProductDeleteInput = typeof ProductDeleteInput.Type;
@@ -14960,11 +15559,11 @@ export const ProductGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   productId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ProductGetInput = typeof ProductGetInput.Type;
@@ -14999,11 +15598,11 @@ export const ProductGroupCreateOrUpdateInput =
     productId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groups/{groupId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductGroupCreateOrUpdateInput =
@@ -15044,11 +15643,11 @@ export const ProductGroupDeleteInput =
     productId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groups/{groupId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductGroupDeleteInput = typeof ProductGroupDeleteInput.Type;
@@ -15080,7 +15679,6 @@ export const ProductGroupLinkCreateOrUpdateInput =
     productId: Schema.String.pipe(T.PathParam()),
     groupLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         groupId: Schema.String,
@@ -15090,6 +15688,7 @@ export const ProductGroupLinkCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groupLinks/{groupLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductGroupLinkCreateOrUpdateInput =
@@ -15130,11 +15729,11 @@ export const ProductGroupLinkDeleteInput =
     productId: Schema.String.pipe(T.PathParam()),
     groupLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groupLinks/{groupLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductGroupLinkDeleteInput =
@@ -15171,11 +15770,11 @@ export const ProductGroupLinkGetInput =
     productId: Schema.String.pipe(T.PathParam()),
     groupLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groupLinks/{groupLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductGroupLinkGetInput = typeof ProductGroupLinkGetInput.Type;
@@ -15214,11 +15813,11 @@ export const ProductGroupLinkListByProductInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groupLinks",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductGroupLinkListByProductInput =
@@ -15270,11 +15869,11 @@ export const ProductGroupListByProductInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groups",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductGroupListByProductInput =
@@ -15328,11 +15927,11 @@ export const ProductListByServiceInput =
     $skip: Schema.optional(Schema.Number),
     expandGroups: Schema.optional(Schema.Boolean),
     tags: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductListByServiceInput = typeof ProductListByServiceInput.Type;
@@ -15384,12 +15983,12 @@ export const ProductListByTagsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     includeNotTaggedProducts: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/productsByTags",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ProductListByTagsInput = typeof ProductListByTagsInput.Type;
@@ -15544,7 +16143,6 @@ export const ProductPolicyCreateOrUpdateInput =
     productId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -15557,6 +16155,7 @@ export const ProductPolicyCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductPolicyCreateOrUpdateInput =
@@ -15599,11 +16198,11 @@ export const ProductPolicyDeleteInput =
     productId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductPolicyDeleteInput = typeof ProductPolicyDeleteInput.Type;
@@ -15637,11 +16236,11 @@ export const ProductPolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/policies/{policyId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ProductPolicyGetInput = typeof ProductPolicyGetInput.Type;
@@ -15679,11 +16278,11 @@ export const ProductPolicyListByProductInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/policies",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductPolicyListByProductInput =
@@ -15733,11 +16332,11 @@ export const ProductSubscriptionsListInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/subscriptions",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductSubscriptionsListInput =
@@ -15786,7 +16385,6 @@ export const ProductUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   productId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       description: Schema.optional(Schema.String),
@@ -15801,6 +16399,7 @@ export const ProductUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ProductUpdateInput = typeof ProductUpdateInput.Type;
@@ -15836,7 +16435,6 @@ export const ProductWikiCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         documents: Schema.optional(
@@ -15852,6 +16450,7 @@ export const ProductWikiCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/wikis/default",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ProductWikiCreateOrUpdateInput =
@@ -15892,12 +16491,12 @@ export const ProductWikiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/wikis/default",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ProductWikiDeleteInput = typeof ProductWikiDeleteInput.Type;
@@ -15927,11 +16526,11 @@ export const ProductWikiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   productId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/wikis/default",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ProductWikiGetInput = typeof ProductWikiGetInput.Type;
@@ -15967,11 +16566,11 @@ export const ProductWikisListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/wikis",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ProductWikisListInput = typeof ProductWikisListInput.Type;
@@ -16017,7 +16616,6 @@ export const ProductWikiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     serviceName: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         documents: Schema.optional(
@@ -16034,6 +16632,7 @@ export const ProductWikiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/wikis/default",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ProductWikiUpdateInput = typeof ProductWikiUpdateInput.Type;
@@ -16070,11 +16669,11 @@ export const QuotaByCounterKeysListByServiceInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     quotaCounterKey: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/quotas/{quotaCounterKey}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type QuotaByCounterKeysListByServiceInput =
@@ -16127,7 +16726,6 @@ export const QuotaByCounterKeysUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     quotaCounterKey: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         callsCount: Schema.optional(Schema.Number),
@@ -16138,6 +16736,7 @@ export const QuotaByCounterKeysUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/quotas/{quotaCounterKey}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type QuotaByCounterKeysUpdateInput =
@@ -16193,11 +16792,11 @@ export const QuotaByPeriodKeysGetInput =
     quotaCounterKey: Schema.String.pipe(T.PathParam()),
     quotaPeriodKey: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/quotas/{quotaCounterKey}/periods/{quotaPeriodKey}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type QuotaByPeriodKeysGetInput = typeof QuotaByPeriodKeysGetInput.Type;
@@ -16243,7 +16842,6 @@ export const QuotaByPeriodKeysUpdateInput =
     quotaCounterKey: Schema.String.pipe(T.PathParam()),
     quotaPeriodKey: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         callsCount: Schema.optional(Schema.Number),
@@ -16254,6 +16852,7 @@ export const QuotaByPeriodKeysUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/quotas/{quotaCounterKey}/periods/{quotaPeriodKey}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type QuotaByPeriodKeysUpdateInput =
@@ -16300,11 +16899,11 @@ export const RegionListByServiceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/regions",
+      apiVersion: "2024-05-01",
     }),
   );
 export type RegionListByServiceInput = typeof RegionListByServiceInput.Type;
@@ -16348,11 +16947,11 @@ export const ReportsListByApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
   $orderby: Schema.optional(Schema.String),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byApi",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ReportsListByApiInput = typeof ReportsListByApiInput.Type;
@@ -16423,11 +17022,11 @@ export const ReportsListByGeoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $filter: Schema.String,
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byGeo",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ReportsListByGeoInput = typeof ReportsListByGeoInput.Type;
@@ -16499,11 +17098,11 @@ export const ReportsListByOperationInput =
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     $orderby: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byOperation",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ReportsListByOperationInput =
@@ -16579,11 +17178,11 @@ export const ReportsListByProductInput =
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     $orderby: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byProduct",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ReportsListByProductInput = typeof ReportsListByProductInput.Type;
@@ -16656,11 +17255,11 @@ export const ReportsListByRequestInput =
     $filter: Schema.String,
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byRequest",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ReportsListByRequestInput = typeof ReportsListByRequestInput.Type;
@@ -16724,11 +17323,11 @@ export const ReportsListBySubscriptionInput =
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     $orderby: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/bySubscription",
+      apiVersion: "2024-05-01",
     }),
   );
 export type ReportsListBySubscriptionInput =
@@ -16805,12 +17404,12 @@ export const ReportsListByTimeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     $skip: Schema.optional(Schema.Number),
     $orderby: Schema.optional(Schema.String),
     interval: Schema.String,
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byTime",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ReportsListByTimeInput = typeof ReportsListByTimeInput.Type;
@@ -16883,12 +17482,12 @@ export const ReportsListByUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     $orderby: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byUser",
+    apiVersion: "2024-05-01",
   }),
 );
 export type ReportsListByUserInput = typeof ReportsListByUserInput.Type;
@@ -16958,7 +17557,6 @@ export const SubscriptionCreateOrUpdateInput =
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     notify: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
     appType: Schema.optional(Schema.Literals(["portal", "developerPortal"])),
     properties: Schema.optional(
       Schema.Struct({
@@ -16984,6 +17582,7 @@ export const SubscriptionCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type SubscriptionCreateOrUpdateInput =
@@ -17028,11 +17627,11 @@ export const SubscriptionDeleteInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type SubscriptionDeleteInput = typeof SubscriptionDeleteInput.Type;
@@ -17062,11 +17661,11 @@ export const SubscriptionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   sid: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type SubscriptionGetInput = typeof SubscriptionGetInput.Type;
@@ -17101,11 +17700,11 @@ export const SubscriptionListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions",
+    apiVersion: "2024-05-01",
   }),
 );
 export type SubscriptionListInput = typeof SubscriptionListInput.Type;
@@ -17151,11 +17750,11 @@ export const SubscriptionListSecretsInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}/listSecrets",
+      apiVersion: "2024-05-01",
     }),
   );
 export type SubscriptionListSecretsInput =
@@ -17193,11 +17792,11 @@ export const SubscriptionRegeneratePrimaryKeyInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}/regeneratePrimaryKey",
+      apiVersion: "2024-05-01",
     }),
   );
 export type SubscriptionRegeneratePrimaryKeyInput =
@@ -17231,11 +17830,11 @@ export const SubscriptionRegenerateSecondaryKeyInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}/regenerateSecondaryKey",
+      apiVersion: "2024-05-01",
     }),
   );
 export type SubscriptionRegenerateSecondaryKeyInput =
@@ -17270,7 +17869,6 @@ export const SubscriptionUpdateInput =
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     notify: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
     appType: Schema.optional(Schema.Literals(["portal", "developerPortal"])),
     properties: Schema.optional(
       Schema.Struct({
@@ -17298,6 +17896,7 @@ export const SubscriptionUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type SubscriptionUpdateInput = typeof SubscriptionUpdateInput.Type;
@@ -17339,7 +17938,6 @@ export const TagApiLinkCreateOrUpdateInput =
     tagId: Schema.String.pipe(T.PathParam()),
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         apiId: Schema.String,
@@ -17349,6 +17947,7 @@ export const TagApiLinkCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/apiLinks/{apiLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagApiLinkCreateOrUpdateInput =
@@ -17389,11 +17988,11 @@ export const TagApiLinkDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tagId: Schema.String.pipe(T.PathParam()),
   apiLinkId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/apiLinks/{apiLinkId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagApiLinkDeleteInput = typeof TagApiLinkDeleteInput.Type;
@@ -17424,11 +18023,11 @@ export const TagApiLinkGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tagId: Schema.String.pipe(T.PathParam()),
   apiLinkId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/apiLinks/{apiLinkId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagApiLinkGetInput = typeof TagApiLinkGetInput.Type;
@@ -17466,11 +18065,11 @@ export const TagApiLinkListByProductInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/apiLinks",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagApiLinkListByProductInput =
@@ -17520,11 +18119,11 @@ export const TagAssignToApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/tags/{tagId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagAssignToApiInput = typeof TagAssignToApiInput.Type;
@@ -17561,11 +18160,11 @@ export const TagAssignToOperationInput =
     operationId: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}/tags/{tagId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagAssignToOperationInput = typeof TagAssignToOperationInput.Type;
@@ -17605,11 +18204,11 @@ export const TagAssignToProductInput =
     productId: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/tags/{tagId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagAssignToProductInput = typeof TagAssignToProductInput.Type;
@@ -17645,7 +18244,6 @@ export const TagCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     serviceName: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.String,
@@ -17656,6 +18254,7 @@ export const TagCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagCreateOrUpdateInput = typeof TagCreateOrUpdateInput.Type;
@@ -17691,11 +18290,11 @@ export const TagDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagDeleteInput = typeof TagDeleteInput.Type;
@@ -17726,11 +18325,11 @@ export const TagDetachFromApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/tags/{tagId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagDetachFromApiInput = typeof TagDetachFromApiInput.Type;
@@ -17763,11 +18362,11 @@ export const TagDetachFromOperationInput =
     operationId: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}/tags/{tagId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagDetachFromOperationInput =
@@ -17805,11 +18404,11 @@ export const TagDetachFromProductInput =
     productId: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/tags/{tagId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagDetachFromProductInput = typeof TagDetachFromProductInput.Type;
@@ -17842,11 +18441,11 @@ export const TagGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagGetInput = typeof TagGetInput.Type;
@@ -17880,11 +18479,11 @@ export const TagGetByApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/tags/{tagId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagGetByApiInput = typeof TagGetByApiInput.Type;
@@ -17921,12 +18520,12 @@ export const TagGetByOperationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     operationId: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}/tags/{tagId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagGetByOperationInput = typeof TagGetByOperationInput.Type;
@@ -17963,11 +18562,11 @@ export const TagGetByProductInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   productId: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/tags/{tagId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagGetByProductInput = typeof TagGetByProductInput.Type;
@@ -18004,11 +18603,11 @@ export const TagListByApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/tags",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagListByApiInput = typeof TagListByApiInput.Type;
@@ -18057,11 +18656,11 @@ export const TagListByOperationInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}/tags",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagListByOperationInput = typeof TagListByOperationInput.Type;
@@ -18110,11 +18709,11 @@ export const TagListByProductInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/tags",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagListByProductInput = typeof TagListByProductInput.Type;
@@ -18163,11 +18762,11 @@ export const TagListByServiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
   scope: Schema.optional(Schema.String),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagListByServiceInput = typeof TagListByServiceInput.Type;
@@ -18215,7 +18814,6 @@ export const TagOperationLinkCreateOrUpdateInput =
     tagId: Schema.String.pipe(T.PathParam()),
     operationLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         operationId: Schema.String,
@@ -18225,6 +18823,7 @@ export const TagOperationLinkCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/operationLinks/{operationLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagOperationLinkCreateOrUpdateInput =
@@ -18265,11 +18864,11 @@ export const TagOperationLinkDeleteInput =
     tagId: Schema.String.pipe(T.PathParam()),
     operationLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/operationLinks/{operationLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagOperationLinkDeleteInput =
@@ -18306,11 +18905,11 @@ export const TagOperationLinkGetInput =
     tagId: Schema.String.pipe(T.PathParam()),
     operationLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/operationLinks/{operationLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagOperationLinkGetInput = typeof TagOperationLinkGetInput.Type;
@@ -18349,11 +18948,11 @@ export const TagOperationLinkListByProductInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/operationLinks",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagOperationLinkListByProductInput =
@@ -18403,7 +19002,6 @@ export const TagProductLinkCreateOrUpdateInput =
     tagId: Schema.String.pipe(T.PathParam()),
     productLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         productId: Schema.String,
@@ -18413,6 +19011,7 @@ export const TagProductLinkCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/productLinks/{productLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagProductLinkCreateOrUpdateInput =
@@ -18453,11 +19052,11 @@ export const TagProductLinkDeleteInput =
     tagId: Schema.String.pipe(T.PathParam()),
     productLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/productLinks/{productLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagProductLinkDeleteInput = typeof TagProductLinkDeleteInput.Type;
@@ -18492,12 +19091,12 @@ export const TagProductLinkGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     tagId: Schema.String.pipe(T.PathParam()),
     productLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/productLinks/{productLinkId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagProductLinkGetInput = typeof TagProductLinkGetInput.Type;
@@ -18536,11 +19135,11 @@ export const TagProductLinkListByProductInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/productLinks",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagProductLinkListByProductInput =
@@ -18592,11 +19191,11 @@ export const TagResourceListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tagResources",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TagResourceListByServiceInput =
@@ -18752,7 +19351,6 @@ export const TagUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       displayName: Schema.String,
@@ -18762,6 +19360,7 @@ export const TagUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TagUpdateInput = typeof TagUpdateInput.Type;
@@ -18797,7 +19396,6 @@ export const TenantAccessCreateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     accessName: Schema.Literals(["access", "gitAccess"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
@@ -18810,6 +19408,7 @@ export const TenantAccessCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{accessName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TenantAccessCreateInput = typeof TenantAccessCreateInput.Type;
@@ -18845,11 +19444,11 @@ export const TenantAccessGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   accessName: Schema.Literals(["access", "gitAccess"]).pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{accessName}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type TenantAccessGetInput = typeof TenantAccessGetInput.Type;
@@ -18883,11 +19482,11 @@ export const TenantAccessGitRegeneratePrimaryKeyInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     accessName: Schema.Literals(["access", "gitAccess"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{accessName}/git/regeneratePrimaryKey",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TenantAccessGitRegeneratePrimaryKeyInput =
@@ -18921,11 +19520,11 @@ export const TenantAccessGitRegenerateSecondaryKeyInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     accessName: Schema.Literals(["access", "gitAccess"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{accessName}/git/regenerateSecondaryKey",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TenantAccessGitRegenerateSecondaryKeyInput =
@@ -18959,11 +19558,11 @@ export const TenantAccessListByServiceInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TenantAccessListByServiceInput =
@@ -19010,11 +19609,11 @@ export const TenantAccessListSecretsInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     accessName: Schema.Literals(["access", "gitAccess"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{accessName}/listSecrets",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TenantAccessListSecretsInput =
@@ -19055,11 +19654,11 @@ export const TenantAccessRegeneratePrimaryKeyInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     accessName: Schema.Literals(["access", "gitAccess"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{accessName}/regeneratePrimaryKey",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TenantAccessRegeneratePrimaryKeyInput =
@@ -19093,11 +19692,11 @@ export const TenantAccessRegenerateSecondaryKeyInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     accessName: Schema.Literals(["access", "gitAccess"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{accessName}/regenerateSecondaryKey",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TenantAccessRegenerateSecondaryKeyInput =
@@ -19131,7 +19730,6 @@ export const TenantAccessUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     accessName: Schema.Literals(["access", "gitAccess"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         enabled: Schema.optional(Schema.Boolean),
@@ -19141,6 +19739,7 @@ export const TenantAccessUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{accessName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TenantAccessUpdateInput = typeof TenantAccessUpdateInput.Type;
@@ -19177,7 +19776,6 @@ export const TenantConfigurationDeployInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.Literals(["configuration"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         branch: Schema.String,
@@ -19188,6 +19786,7 @@ export const TenantConfigurationDeployInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{configurationName}/deploy",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TenantConfigurationDeployInput =
@@ -19227,11 +19826,11 @@ export const TenantConfigurationGetSyncStateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.Literals(["configuration"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{configurationName}/syncState",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TenantConfigurationGetSyncStateInput =
@@ -19269,7 +19868,6 @@ export const TenantConfigurationSaveInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.Literals(["configuration"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         branch: Schema.String,
@@ -19280,6 +19878,7 @@ export const TenantConfigurationSaveInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{configurationName}/save",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TenantConfigurationSaveInput =
@@ -19319,7 +19918,6 @@ export const TenantConfigurationValidateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.Literals(["configuration"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         branch: Schema.String,
@@ -19330,6 +19928,7 @@ export const TenantConfigurationValidateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/{configurationName}/validate",
+      apiVersion: "2024-05-01",
     }),
   );
 export type TenantConfigurationValidateInput =
@@ -19369,12 +19968,12 @@ export const UserConfirmationPasswordSendInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     appType: Schema.optional(Schema.Literals(["portal", "developerPortal"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}/confirmations/password/send",
+      apiVersion: "2024-05-01",
     }),
   );
 export type UserConfirmationPasswordSendInput =
@@ -19410,7 +20009,6 @@ export const UserCreateOrUpdateInput =
     userId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     notify: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         state: Schema.optional(
@@ -19431,6 +20029,7 @@ export const UserCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type UserCreateOrUpdateInput = typeof UserCreateOrUpdateInput.Type;
@@ -19469,12 +20068,12 @@ export const UserDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   deleteSubscriptions: Schema.optional(Schema.Boolean),
   notify: Schema.optional(Schema.Boolean),
-  "api-version": Schema.String,
   appType: Schema.optional(Schema.Literals(["portal", "developerPortal"])),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type UserDeleteInput = typeof UserDeleteInput.Type;
@@ -19508,11 +20107,11 @@ export const UserGenerateSsoUrlInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}/generateSsoUrl",
+      apiVersion: "2024-05-01",
     }),
   );
 export type UserGenerateSsoUrlInput = typeof UserGenerateSsoUrlInput.Type;
@@ -19544,11 +20143,11 @@ export const UserGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type UserGetInput = typeof UserGetInput.Type;
@@ -19582,7 +20181,6 @@ export const UserGetSharedAccessTokenInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         keyType: Schema.Literals(["primary", "secondary"]),
@@ -19593,6 +20191,7 @@ export const UserGetSharedAccessTokenInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}/token",
+      apiVersion: "2024-05-01",
     }),
   );
 export type UserGetSharedAccessTokenInput =
@@ -19632,11 +20231,11 @@ export const UserGroupListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
   $skip: Schema.optional(Schema.Number),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}/groups",
+    apiVersion: "2024-05-01",
   }),
 );
 export type UserGroupListInput = typeof UserGroupListInput.Type;
@@ -19681,11 +20280,11 @@ export const UserIdentitiesListInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}/identities",
+      apiVersion: "2024-05-01",
     }),
   );
 export type UserIdentitiesListInput = typeof UserIdentitiesListInput.Type;
@@ -19730,12 +20329,12 @@ export const UserListByServiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     expandGroups: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users",
+    apiVersion: "2024-05-01",
   }),
 );
 export type UserListByServiceInput = typeof UserListByServiceInput.Type;
@@ -19782,11 +20381,11 @@ export const UserSubscriptionGetInput =
     userId: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}/subscriptions/{sid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type UserSubscriptionGetInput = typeof UserSubscriptionGetInput.Type;
@@ -19825,11 +20424,11 @@ export const UserSubscriptionListInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}/subscriptions",
+      apiVersion: "2024-05-01",
     }),
   );
 export type UserSubscriptionListInput = typeof UserSubscriptionListInput.Type;
@@ -19876,7 +20475,6 @@ export const UserUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       state: Schema.optional(
@@ -19897,6 +20495,7 @@ export const UserUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type UserUpdateInput = typeof UserUpdateInput.Type;
@@ -19933,7 +20532,6 @@ export const WorkspaceApiCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -20021,6 +20619,7 @@ export const WorkspaceApiCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiCreateOrUpdateInput =
@@ -20064,11 +20663,11 @@ export const WorkspaceApiDeleteInput =
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     deleteRevisions: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiDeleteInput = typeof WorkspaceApiDeleteInput.Type;
@@ -20103,7 +20702,6 @@ export const WorkspaceApiDiagnosticCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
@@ -20273,6 +20871,7 @@ export const WorkspaceApiDiagnosticCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/diagnostics/{diagnosticId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiDiagnosticCreateOrUpdateInput =
@@ -20316,11 +20915,11 @@ export const WorkspaceApiDiagnosticDeleteInput =
     apiId: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/diagnostics/{diagnosticId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiDiagnosticDeleteInput =
@@ -20359,11 +20958,11 @@ export const WorkspaceApiDiagnosticGetInput =
     apiId: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/diagnostics/{diagnosticId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiDiagnosticGetInput =
@@ -20408,11 +21007,11 @@ export const WorkspaceApiDiagnosticListByWorkspaceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/diagnostics",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiDiagnosticListByWorkspaceInput =
@@ -20464,7 +21063,6 @@ export const WorkspaceApiDiagnosticUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
@@ -20634,6 +21232,7 @@ export const WorkspaceApiDiagnosticUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/diagnostics/{diagnosticId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiDiagnosticUpdateInput =
@@ -20675,11 +21274,11 @@ export const WorkspaceApiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workspaceId: Schema.String.pipe(T.PathParam()),
   apiId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type WorkspaceApiGetInput = typeof WorkspaceApiGetInput.Type;
@@ -20719,11 +21318,11 @@ export const WorkspaceApiListByServiceInput =
     $skip: Schema.optional(Schema.Number),
     tags: Schema.optional(Schema.String),
     expandApiVersionSet: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiListByServiceInput =
@@ -20777,7 +21376,6 @@ export const WorkspaceApiOperationCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         templateParameters: Schema.optional(
@@ -20991,6 +21589,7 @@ export const WorkspaceApiOperationCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/operations/{operationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiOperationCreateOrUpdateInput =
@@ -21034,11 +21633,11 @@ export const WorkspaceApiOperationDeleteInput =
     apiId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/operations/{operationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiOperationDeleteInput =
@@ -21078,11 +21677,11 @@ export const WorkspaceApiOperationGetInput =
     apiId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/operations/{operationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiOperationGetInput =
@@ -21128,11 +21727,11 @@ export const WorkspaceApiOperationListByApiInput =
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     tags: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/operations",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiOperationListByApiInput =
@@ -21186,7 +21785,6 @@ export const WorkspaceApiOperationPolicyCreateOrUpdateInput =
     operationId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -21199,6 +21797,7 @@ export const WorkspaceApiOperationPolicyCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/operations/{operationId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiOperationPolicyCreateOrUpdateInput =
@@ -21244,11 +21843,11 @@ export const WorkspaceApiOperationPolicyDeleteInput =
     operationId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/operations/{operationId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiOperationPolicyDeleteInput =
@@ -21290,11 +21889,11 @@ export const WorkspaceApiOperationPolicyGetInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/operations/{operationId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiOperationPolicyGetInput =
@@ -21338,11 +21937,11 @@ export const WorkspaceApiOperationPolicyListByOperationInput =
     apiId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/operations/{operationId}/policies",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiOperationPolicyListByOperationInput =
@@ -21392,7 +21991,6 @@ export const WorkspaceApiOperationUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         templateParameters: Schema.optional(
@@ -21606,6 +22204,7 @@ export const WorkspaceApiOperationUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/operations/{operationId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiOperationUpdateInput =
@@ -21650,7 +22249,6 @@ export const WorkspaceApiPolicyCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -21663,6 +22261,7 @@ export const WorkspaceApiPolicyCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiPolicyCreateOrUpdateInput =
@@ -21706,11 +22305,11 @@ export const WorkspaceApiPolicyDeleteInput =
     apiId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiPolicyDeleteInput =
@@ -21751,11 +22350,11 @@ export const WorkspaceApiPolicyGetInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiPolicyGetInput = typeof WorkspaceApiPolicyGetInput.Type;
@@ -21797,11 +22396,11 @@ export const WorkspaceApiPolicyListByApiInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/policies",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiPolicyListByApiInput =
@@ -21851,7 +22450,6 @@ export const WorkspaceApiReleaseCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     releaseId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         apiId: Schema.optional(Schema.String),
@@ -21864,6 +22462,7 @@ export const WorkspaceApiReleaseCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/releases/{releaseId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiReleaseCreateOrUpdateInput =
@@ -21907,11 +22506,11 @@ export const WorkspaceApiReleaseDeleteInput =
     apiId: Schema.String.pipe(T.PathParam()),
     releaseId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/releases/{releaseId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiReleaseDeleteInput =
@@ -21951,11 +22550,11 @@ export const WorkspaceApiReleaseGetInput =
     apiId: Schema.String.pipe(T.PathParam()),
     releaseId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/releases/{releaseId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiReleaseGetInput =
@@ -22000,11 +22599,11 @@ export const WorkspaceApiReleaseListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/releases",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiReleaseListByServiceInput =
@@ -22056,7 +22655,6 @@ export const WorkspaceApiReleaseUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     releaseId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         apiId: Schema.optional(Schema.String),
@@ -22069,6 +22667,7 @@ export const WorkspaceApiReleaseUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/releases/{releaseId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiReleaseUpdateInput =
@@ -22115,11 +22714,11 @@ export const WorkspaceApiRevisionListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/revisions",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiRevisionListByServiceInput =
@@ -22176,7 +22775,6 @@ export const WorkspaceApiSchemaCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         contentType: Schema.String,
@@ -22192,6 +22790,7 @@ export const WorkspaceApiSchemaCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/schemas/{schemaId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiSchemaCreateOrUpdateInput =
@@ -22236,11 +22835,11 @@ export const WorkspaceApiSchemaDeleteInput =
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     force: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/schemas/{schemaId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiSchemaDeleteInput =
@@ -22281,11 +22880,11 @@ export const WorkspaceApiSchemaGetInput =
     apiId: Schema.String.pipe(T.PathParam()),
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/schemas/{schemaId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiSchemaGetInput = typeof WorkspaceApiSchemaGetInput.Type;
@@ -22329,11 +22928,11 @@ export const WorkspaceApiSchemaListByApiInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/schemas",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiSchemaListByApiInput =
@@ -22385,7 +22984,6 @@ export const WorkspaceApiUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -22473,6 +23071,7 @@ export const WorkspaceApiUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiUpdateInput = typeof WorkspaceApiUpdateInput.Type;
@@ -22511,7 +23110,6 @@ export const WorkspaceApiVersionSetCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     versionSetId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -22523,6 +23121,7 @@ export const WorkspaceApiVersionSetCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apiVersionSets/{versionSetId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiVersionSetCreateOrUpdateInput =
@@ -22564,11 +23163,11 @@ export const WorkspaceApiVersionSetDeleteInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     versionSetId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apiVersionSets/{versionSetId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiVersionSetDeleteInput =
@@ -22605,11 +23204,11 @@ export const WorkspaceApiVersionSetGetInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     versionSetId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apiVersionSets/{versionSetId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiVersionSetGetInput =
@@ -22652,11 +23251,11 @@ export const WorkspaceApiVersionSetListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apiVersionSets",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiVersionSetListByServiceInput =
@@ -22706,7 +23305,6 @@ export const WorkspaceApiVersionSetUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     versionSetId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -22718,6 +23316,7 @@ export const WorkspaceApiVersionSetUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apiVersionSets/{versionSetId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceApiVersionSetUpdateInput =
@@ -22759,7 +23358,6 @@ export const WorkspaceBackendCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     backendId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         title: Schema.optional(Schema.String),
@@ -22872,6 +23470,7 @@ export const WorkspaceBackendCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/backends/{backendId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceBackendCreateOrUpdateInput =
@@ -22913,11 +23512,11 @@ export const WorkspaceBackendDeleteInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     backendId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/backends/{backendId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceBackendDeleteInput =
@@ -22955,11 +23554,11 @@ export const WorkspaceBackendGetInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     backendId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/backends/{backendId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceBackendGetInput = typeof WorkspaceBackendGetInput.Type;
@@ -22998,11 +23597,11 @@ export const WorkspaceBackendListByWorkspaceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/backends",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceBackendListByWorkspaceInput =
@@ -23052,7 +23651,6 @@ export const WorkspaceBackendUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     backendId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         title: Schema.optional(Schema.String),
@@ -23165,6 +23763,7 @@ export const WorkspaceBackendUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/backends/{backendId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceBackendUpdateInput =
@@ -23207,7 +23806,6 @@ export const WorkspaceCertificateCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         data: Schema.optional(Schema.String),
@@ -23224,6 +23822,7 @@ export const WorkspaceCertificateCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/certificates/{certificateId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceCertificateCreateOrUpdateInput =
@@ -23265,11 +23864,11 @@ export const WorkspaceCertificateDeleteInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/certificates/{certificateId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceCertificateDeleteInput =
@@ -23307,11 +23906,11 @@ export const WorkspaceCertificateGetInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/certificates/{certificateId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceCertificateGetInput =
@@ -23355,11 +23954,11 @@ export const WorkspaceCertificateListByWorkspaceInput =
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     isKeyVaultRefreshFailed: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/certificates",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceCertificateListByWorkspaceInput =
@@ -23410,11 +24009,11 @@ export const WorkspaceCertificateRefreshSecretInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/certificates/{certificateId}/refreshSecret",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceCertificateRefreshSecretInput =
@@ -23453,7 +24052,6 @@ export const WorkspaceCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.String,
@@ -23464,6 +24062,7 @@ export const WorkspaceCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceCreateOrUpdateInput =
@@ -23503,11 +24102,11 @@ export const WorkspaceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   workspaceId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type WorkspaceDeleteInput = typeof WorkspaceDeleteInput.Type;
@@ -23539,7 +24138,6 @@ export const WorkspaceDiagnosticCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
@@ -23709,6 +24307,7 @@ export const WorkspaceDiagnosticCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/diagnostics/{diagnosticId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceDiagnosticCreateOrUpdateInput =
@@ -23750,11 +24349,11 @@ export const WorkspaceDiagnosticDeleteInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/diagnostics/{diagnosticId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceDiagnosticDeleteInput =
@@ -23792,11 +24391,11 @@ export const WorkspaceDiagnosticGetInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/diagnostics/{diagnosticId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceDiagnosticGetInput =
@@ -23839,11 +24438,11 @@ export const WorkspaceDiagnosticListByWorkspaceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/diagnostics",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceDiagnosticListByWorkspaceInput =
@@ -23893,7 +24492,6 @@ export const WorkspaceDiagnosticUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
@@ -24063,6 +24661,7 @@ export const WorkspaceDiagnosticUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/diagnostics/{diagnosticId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceDiagnosticUpdateInput =
@@ -24103,11 +24702,11 @@ export const WorkspaceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   workspaceId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type WorkspaceGetInput = typeof WorkspaceGetInput.Type;
@@ -24142,7 +24741,6 @@ export const WorkspaceGlobalSchemaCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         schemaType: Schema.Literals(["xml", "json"]),
@@ -24156,6 +24754,7 @@ export const WorkspaceGlobalSchemaCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/schemas/{schemaId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceGlobalSchemaCreateOrUpdateInput =
@@ -24197,11 +24796,11 @@ export const WorkspaceGlobalSchemaDeleteInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/schemas/{schemaId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceGlobalSchemaDeleteInput =
@@ -24239,11 +24838,11 @@ export const WorkspaceGlobalSchemaGetInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/schemas/{schemaId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceGlobalSchemaGetInput =
@@ -24286,11 +24885,11 @@ export const WorkspaceGlobalSchemaListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/schemas",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceGlobalSchemaListByServiceInput =
@@ -24340,7 +24939,6 @@ export const WorkspaceGroupCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.String,
@@ -24355,6 +24953,7 @@ export const WorkspaceGroupCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/groups/{groupId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceGroupCreateOrUpdateInput =
@@ -24396,11 +24995,11 @@ export const WorkspaceGroupDeleteInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/groups/{groupId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceGroupDeleteInput = typeof WorkspaceGroupDeleteInput.Type;
@@ -24436,12 +25035,12 @@ export const WorkspaceGroupGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     workspaceId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/groups/{groupId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type WorkspaceGroupGetInput = typeof WorkspaceGroupGetInput.Type;
@@ -24480,11 +25079,11 @@ export const WorkspaceGroupListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/groups",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceGroupListByServiceInput =
@@ -24535,7 +25134,6 @@ export const WorkspaceGroupUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.optional(Schema.String),
@@ -24550,6 +25148,7 @@ export const WorkspaceGroupUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/groups/{groupId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceGroupUpdateInput = typeof WorkspaceGroupUpdateInput.Type;
@@ -24591,11 +25190,11 @@ export const WorkspaceGroupUserCreateInput =
     groupId: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/groups/{groupId}/users/{userId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceGroupUserCreateInput =
@@ -24638,11 +25237,11 @@ export const WorkspaceGroupUserDeleteInput =
     groupId: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/groups/{groupId}/users/{userId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceGroupUserDeleteInput =
@@ -24683,11 +25282,11 @@ export const WorkspaceGroupUserListInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/groups/{groupId}/users",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceGroupUserListInput =
@@ -24740,11 +25339,11 @@ export const WorkspaceListByServiceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceListByServiceInput =
@@ -24794,7 +25393,6 @@ export const WorkspaceLoggerCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     loggerId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         loggerType: Schema.Literals([
@@ -24814,6 +25412,7 @@ export const WorkspaceLoggerCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/loggers/{loggerId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceLoggerCreateOrUpdateInput =
@@ -24855,11 +25454,11 @@ export const WorkspaceLoggerDeleteInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     loggerId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/loggers/{loggerId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceLoggerDeleteInput = typeof WorkspaceLoggerDeleteInput.Type;
@@ -24896,11 +25495,11 @@ export const WorkspaceLoggerGetInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     loggerId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/loggers/{loggerId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceLoggerGetInput = typeof WorkspaceLoggerGetInput.Type;
@@ -24939,11 +25538,11 @@ export const WorkspaceLoggerListByWorkspaceInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/loggers",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceLoggerListByWorkspaceInput =
@@ -24993,7 +25592,6 @@ export const WorkspaceLoggerUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     loggerId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         loggerType: Schema.optional(
@@ -25014,6 +25612,7 @@ export const WorkspaceLoggerUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/loggers/{loggerId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceLoggerUpdateInput = typeof WorkspaceLoggerUpdateInput.Type;
@@ -25055,7 +25654,6 @@ export const WorkspaceNamedValueCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     namedValueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         tags: Schema.optional(Schema.Array(Schema.String)),
@@ -25066,6 +25664,7 @@ export const WorkspaceNamedValueCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/namedValues/{namedValueId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNamedValueCreateOrUpdateInput =
@@ -25107,11 +25706,11 @@ export const WorkspaceNamedValueDeleteInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     namedValueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/namedValues/{namedValueId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNamedValueDeleteInput =
@@ -25149,11 +25748,11 @@ export const WorkspaceNamedValueGetInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     namedValueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/namedValues/{namedValueId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNamedValueGetInput =
@@ -25199,11 +25798,11 @@ export const WorkspaceNamedValueListByServiceInput =
     isKeyVaultRefreshFailed: Schema.optional(
       Schema.Literals(["true", "false"]),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/namedValues",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNamedValueListByServiceInput =
@@ -25254,11 +25853,11 @@ export const WorkspaceNamedValueListValueInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     namedValueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/namedValues/{namedValueId}/listValue",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNamedValueListValueInput =
@@ -25296,11 +25895,11 @@ export const WorkspaceNamedValueRefreshSecretInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     namedValueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/namedValues/{namedValueId}/refreshSecret",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNamedValueRefreshSecretInput =
@@ -25340,7 +25939,6 @@ export const WorkspaceNamedValueUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     namedValueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         tags: Schema.optional(Schema.Array(Schema.String)),
@@ -25351,6 +25949,7 @@ export const WorkspaceNamedValueUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/namedValues/{namedValueId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNamedValueUpdateInput =
@@ -25401,11 +26000,11 @@ export const WorkspaceNotificationCreateOrUpdateInput =
       "QuotaLimitApproachingPublisherNotificationMessage",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/notifications/{notificationName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNotificationCreateOrUpdateInput =
@@ -25454,11 +26053,11 @@ export const WorkspaceNotificationGetInput =
       "QuotaLimitApproachingPublisherNotificationMessage",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/notifications/{notificationName}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNotificationGetInput =
@@ -25500,11 +26099,11 @@ export const WorkspaceNotificationListByServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/notifications",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNotificationListByServiceInput =
@@ -25562,11 +26161,11 @@ export const WorkspaceNotificationRecipientEmailCreateOrUpdateInput =
     ]).pipe(T.PathParam()),
     email: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/notifications/{notificationName}/recipientEmails/{email}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNotificationRecipientEmailCreateOrUpdateInput =
@@ -25616,11 +26215,11 @@ export const WorkspaceNotificationRecipientEmailDeleteInput =
     ]).pipe(T.PathParam()),
     email: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/notifications/{notificationName}/recipientEmails/{email}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNotificationRecipientEmailDeleteInput =
@@ -25665,11 +26264,11 @@ export const WorkspaceNotificationRecipientEmailListByNotificationInput =
       "QuotaLimitApproachingPublisherNotificationMessage",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/notifications/{notificationName}/recipientEmails",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNotificationRecipientEmailListByNotificationInput =
@@ -25726,11 +26325,11 @@ export const WorkspaceNotificationRecipientUserCreateOrUpdateInput =
     ]).pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/notifications/{notificationName}/recipientUsers/{userId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNotificationRecipientUserCreateOrUpdateInput =
@@ -25780,11 +26379,11 @@ export const WorkspaceNotificationRecipientUserDeleteInput =
     ]).pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/notifications/{notificationName}/recipientUsers/{userId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNotificationRecipientUserDeleteInput =
@@ -25829,11 +26428,11 @@ export const WorkspaceNotificationRecipientUserListByNotificationInput =
       "QuotaLimitApproachingPublisherNotificationMessage",
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/notifications/{notificationName}/recipientUsers",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceNotificationRecipientUserListByNotificationInput =
@@ -25881,7 +26480,6 @@ export const WorkspacePolicyCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -25894,6 +26492,7 @@ export const WorkspacePolicyCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspacePolicyCreateOrUpdateInput =
@@ -25935,11 +26534,11 @@ export const WorkspacePolicyDeleteInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspacePolicyDeleteInput = typeof WorkspacePolicyDeleteInput.Type;
@@ -25976,7 +26575,6 @@ export const WorkspacePolicyFragmentCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -25989,6 +26587,7 @@ export const WorkspacePolicyFragmentCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/policyFragments/{id}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspacePolicyFragmentCreateOrUpdateInput =
@@ -26030,11 +26629,11 @@ export const WorkspacePolicyFragmentDeleteInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/policyFragments/{id}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspacePolicyFragmentDeleteInput =
@@ -26071,12 +26670,12 @@ export const WorkspacePolicyFragmentGetInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/policyFragments/{id}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspacePolicyFragmentGetInput =
@@ -26117,7 +26716,6 @@ export const WorkspacePolicyFragmentListByServiceInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -26126,6 +26724,7 @@ export const WorkspacePolicyFragmentListByServiceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/policyFragments",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspacePolicyFragmentListByServiceInput =
@@ -26176,13 +26775,13 @@ export const WorkspacePolicyFragmentListReferencesInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/policyFragments/{id}/listReferences",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspacePolicyFragmentListReferencesInput =
@@ -26233,11 +26832,11 @@ export const WorkspacePolicyGetInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspacePolicyGetInput = typeof WorkspacePolicyGetInput.Type;
@@ -26274,11 +26873,11 @@ export const WorkspacePolicyListByApiInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/policies",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspacePolicyListByApiInput =
@@ -26327,7 +26926,6 @@ export const WorkspaceProductApiLinkCreateOrUpdateInput =
     productId: Schema.String.pipe(T.PathParam()),
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         apiId: Schema.String,
@@ -26337,6 +26935,7 @@ export const WorkspaceProductApiLinkCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/apiLinks/{apiLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductApiLinkCreateOrUpdateInput =
@@ -26379,11 +26978,11 @@ export const WorkspaceProductApiLinkDeleteInput =
     productId: Schema.String.pipe(T.PathParam()),
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/apiLinks/{apiLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductApiLinkDeleteInput =
@@ -26421,11 +27020,11 @@ export const WorkspaceProductApiLinkGetInput =
     productId: Schema.String.pipe(T.PathParam()),
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/apiLinks/{apiLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductApiLinkGetInput =
@@ -26470,11 +27069,11 @@ export const WorkspaceProductApiLinkListByProductInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/apiLinks",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductApiLinkListByProductInput =
@@ -26525,7 +27124,6 @@ export const WorkspaceProductCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -26540,6 +27138,7 @@ export const WorkspaceProductCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductCreateOrUpdateInput =
@@ -26582,11 +27181,11 @@ export const WorkspaceProductDeleteInput =
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     deleteSubscriptions: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductDeleteInput =
@@ -26625,11 +27224,11 @@ export const WorkspaceProductGetInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductGetInput = typeof WorkspaceProductGetInput.Type;
@@ -26667,7 +27266,6 @@ export const WorkspaceProductGroupLinkCreateOrUpdateInput =
     productId: Schema.String.pipe(T.PathParam()),
     groupLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         groupId: Schema.String,
@@ -26677,6 +27275,7 @@ export const WorkspaceProductGroupLinkCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/groupLinks/{groupLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductGroupLinkCreateOrUpdateInput =
@@ -26719,11 +27318,11 @@ export const WorkspaceProductGroupLinkDeleteInput =
     productId: Schema.String.pipe(T.PathParam()),
     groupLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/groupLinks/{groupLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductGroupLinkDeleteInput =
@@ -26761,11 +27360,11 @@ export const WorkspaceProductGroupLinkGetInput =
     productId: Schema.String.pipe(T.PathParam()),
     groupLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/groupLinks/{groupLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductGroupLinkGetInput =
@@ -26809,11 +27408,11 @@ export const WorkspaceProductGroupLinkListByProductInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/groupLinks",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductGroupLinkListByProductInput =
@@ -26868,11 +27467,11 @@ export const WorkspaceProductListByServiceInput =
     $skip: Schema.optional(Schema.Number),
     expandGroups: Schema.optional(Schema.Boolean),
     tags: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductListByServiceInput =
@@ -26925,7 +27524,6 @@ export const WorkspaceProductPolicyCreateOrUpdateInput =
     productId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         value: Schema.String,
@@ -26938,6 +27536,7 @@ export const WorkspaceProductPolicyCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductPolicyCreateOrUpdateInput =
@@ -26981,11 +27580,11 @@ export const WorkspaceProductPolicyDeleteInput =
     productId: Schema.String.pipe(T.PathParam()),
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductPolicyDeleteInput =
@@ -27025,11 +27624,11 @@ export const WorkspaceProductPolicyGetInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/policies/{policyId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductPolicyGetInput =
@@ -27072,11 +27671,11 @@ export const WorkspaceProductPolicyListByProductInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/policies",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductPolicyListByProductInput =
@@ -27124,7 +27723,6 @@ export const WorkspaceProductUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -27139,6 +27737,7 @@ export const WorkspaceProductUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceProductUpdateInput =
@@ -27182,7 +27781,6 @@ export const WorkspaceSubscriptionCreateOrUpdateInput =
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     notify: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
     appType: Schema.optional(Schema.Literals(["portal", "developerPortal"])),
     properties: Schema.optional(
       Schema.Struct({
@@ -27208,6 +27806,7 @@ export const WorkspaceSubscriptionCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/subscriptions/{sid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceSubscriptionCreateOrUpdateInput =
@@ -27253,11 +27852,11 @@ export const WorkspaceSubscriptionDeleteInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/subscriptions/{sid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceSubscriptionDeleteInput =
@@ -27295,11 +27894,11 @@ export const WorkspaceSubscriptionGetInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/subscriptions/{sid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceSubscriptionGetInput =
@@ -27342,11 +27941,11 @@ export const WorkspaceSubscriptionListInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/subscriptions",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceSubscriptionListInput =
@@ -27397,11 +27996,11 @@ export const WorkspaceSubscriptionListSecretsInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/subscriptions/{sid}/listSecrets",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceSubscriptionListSecretsInput =
@@ -27440,11 +28039,11 @@ export const WorkspaceSubscriptionRegeneratePrimaryKeyInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/subscriptions/{sid}/regeneratePrimaryKey",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceSubscriptionRegeneratePrimaryKeyInput =
@@ -27480,11 +28079,11 @@ export const WorkspaceSubscriptionRegenerateSecondaryKeyInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/subscriptions/{sid}/regenerateSecondaryKey",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceSubscriptionRegenerateSecondaryKeyInput =
@@ -27521,7 +28120,6 @@ export const WorkspaceSubscriptionUpdateInput =
     sid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     notify: Schema.optional(Schema.Boolean),
-    "api-version": Schema.String,
     appType: Schema.optional(Schema.Literals(["portal", "developerPortal"])),
     properties: Schema.optional(
       Schema.Struct({
@@ -27549,6 +28147,7 @@ export const WorkspaceSubscriptionUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/subscriptions/{sid}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceSubscriptionUpdateInput =
@@ -27596,7 +28195,6 @@ export const WorkspaceTagApiLinkCreateOrUpdateInput =
     tagId: Schema.String.pipe(T.PathParam()),
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         apiId: Schema.String,
@@ -27606,6 +28204,7 @@ export const WorkspaceTagApiLinkCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/apiLinks/{apiLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagApiLinkCreateOrUpdateInput =
@@ -27648,11 +28247,11 @@ export const WorkspaceTagApiLinkDeleteInput =
     tagId: Schema.String.pipe(T.PathParam()),
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/apiLinks/{apiLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagApiLinkDeleteInput =
@@ -27691,11 +28290,11 @@ export const WorkspaceTagApiLinkGetInput =
     tagId: Schema.String.pipe(T.PathParam()),
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/apiLinks/{apiLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagApiLinkGetInput =
@@ -27740,11 +28339,11 @@ export const WorkspaceTagApiLinkListByProductInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/apiLinks",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagApiLinkListByProductInput =
@@ -27795,7 +28394,6 @@ export const WorkspaceTagCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.String,
@@ -27805,6 +28403,7 @@ export const WorkspaceTagCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagCreateOrUpdateInput =
@@ -27847,11 +28446,11 @@ export const WorkspaceTagDeleteInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagDeleteInput = typeof WorkspaceTagDeleteInput.Type;
@@ -27883,11 +28482,11 @@ export const WorkspaceTagGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workspaceId: Schema.String.pipe(T.PathParam()),
   tagId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type WorkspaceTagGetInput = typeof WorkspaceTagGetInput.Type;
@@ -27926,11 +28525,11 @@ export const WorkspaceTagListByServiceInput =
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     scope: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagListByServiceInput =
@@ -27983,7 +28582,6 @@ export const WorkspaceTagOperationLinkCreateOrUpdateInput =
     tagId: Schema.String.pipe(T.PathParam()),
     operationLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         operationId: Schema.String,
@@ -27993,6 +28591,7 @@ export const WorkspaceTagOperationLinkCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/operationLinks/{operationLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagOperationLinkCreateOrUpdateInput =
@@ -28035,11 +28634,11 @@ export const WorkspaceTagOperationLinkDeleteInput =
     tagId: Schema.String.pipe(T.PathParam()),
     operationLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/operationLinks/{operationLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagOperationLinkDeleteInput =
@@ -28077,11 +28676,11 @@ export const WorkspaceTagOperationLinkGetInput =
     tagId: Schema.String.pipe(T.PathParam()),
     operationLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/operationLinks/{operationLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagOperationLinkGetInput =
@@ -28125,11 +28724,11 @@ export const WorkspaceTagOperationLinkListByProductInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/operationLinks",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagOperationLinkListByProductInput =
@@ -28181,7 +28780,6 @@ export const WorkspaceTagProductLinkCreateOrUpdateInput =
     tagId: Schema.String.pipe(T.PathParam()),
     productLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         productId: Schema.String,
@@ -28191,6 +28789,7 @@ export const WorkspaceTagProductLinkCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/productLinks/{productLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagProductLinkCreateOrUpdateInput =
@@ -28233,11 +28832,11 @@ export const WorkspaceTagProductLinkDeleteInput =
     tagId: Schema.String.pipe(T.PathParam()),
     productLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/productLinks/{productLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagProductLinkDeleteInput =
@@ -28275,11 +28874,11 @@ export const WorkspaceTagProductLinkGetInput =
     tagId: Schema.String.pipe(T.PathParam()),
     productLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/productLinks/{productLinkId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagProductLinkGetInput =
@@ -28324,11 +28923,11 @@ export const WorkspaceTagProductLinkListByProductInput =
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/productLinks",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagProductLinkListByProductInput =
@@ -28379,7 +28978,6 @@ export const WorkspaceTagUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     tagId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.String,
@@ -28389,6 +28987,7 @@ export const WorkspaceTagUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}",
+      apiVersion: "2024-05-01",
     }),
   );
 export type WorkspaceTagUpdateInput = typeof WorkspaceTagUpdateInput.Type;
@@ -28425,7 +29024,6 @@ export const WorkspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   workspaceId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   properties: Schema.optional(
     Schema.Struct({
       displayName: Schema.String,
@@ -28436,6 +29034,7 @@ export const WorkspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}",
+    apiVersion: "2024-05-01",
   }),
 );
 export type WorkspaceUpdateInput = typeof WorkspaceUpdateInput.Type;

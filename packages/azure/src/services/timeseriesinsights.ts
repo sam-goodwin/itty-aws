@@ -12,10 +12,18 @@ import * as T from "../traits.ts";
 export const AccessPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessPolicyName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      principalObjectId: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      roles: Schema.optional(
+        Schema.Array(Schema.Literals(["Reader", "Contributor"])),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type AccessPoliciesCreateOrUpdateInput =
@@ -48,6 +56,7 @@ export const AccessPoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type AccessPoliciesDeleteInput = typeof AccessPoliciesDeleteInput.Type;
@@ -74,6 +83,7 @@ export const AccessPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
+    apiVersion: "2020-05-15",
   }),
 );
 export type AccessPoliciesGetInput = typeof AccessPoliciesGetInput.Type;
@@ -101,6 +111,7 @@ export const AccessPoliciesListByEnvironmentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies",
+      apiVersion: "2020-05-15",
     }),
   );
 export type AccessPoliciesListByEnvironmentInput =
@@ -133,10 +144,20 @@ export const AccessPoliciesListByEnvironment =
   }));
 // Input Schema
 export const AccessPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        roles: Schema.optional(
+          Schema.Array(Schema.Literals(["Reader", "Contributor"])),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type AccessPoliciesUpdateInput = typeof AccessPoliciesUpdateInput.Type;
@@ -164,10 +185,18 @@ export const AccessPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const EnvironmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environmentName: Schema.String.pipe(T.PathParam()),
+    kind: Schema.Literals(["Gen1", "Gen2"]),
+    sku: Schema.Struct({
+      name: Schema.Literals(["S1", "S2", "P1", "L1"]),
+      capacity: Schema.Number,
+    }),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type EnvironmentsCreateOrUpdateInput =
@@ -201,6 +230,7 @@ export const EnvironmentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type EnvironmentsDeleteInput = typeof EnvironmentsDeleteInput.Type;
@@ -224,6 +254,7 @@ export const EnvironmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
+    apiVersion: "2020-05-15",
   }),
 );
 export type EnvironmentsGetInput = typeof EnvironmentsGetInput.Type;
@@ -250,6 +281,7 @@ export const EnvironmentsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments",
+      apiVersion: "2020-05-15",
     }),
   );
 export type EnvironmentsListByResourceGroupInput =
@@ -286,6 +318,7 @@ export const EnvironmentsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.TimeSeriesInsights/environments",
+      apiVersion: "2020-05-15",
     }),
   );
 export type EnvironmentsListBySubscriptionInput =
@@ -318,10 +351,14 @@ export const EnvironmentsListBySubscription =
   }));
 // Input Schema
 export const EnvironmentsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.Literals(["Gen1", "Gen2"]),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type EnvironmentsUpdateInput = typeof EnvironmentsUpdateInput.Type;
@@ -347,10 +384,24 @@ export const EnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EventSourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventSourceName: Schema.String.pipe(T.PathParam()),
+    kind: Schema.Literals(["Microsoft.EventHub", "Microsoft.IoTHub"]),
+    localTimestamp: Schema.optional(
+      Schema.Struct({
+        format: Schema.optional(Schema.Literals(["Embedded"])),
+        timeZoneOffset: Schema.optional(
+          Schema.Struct({
+            propertyName: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type EventSourcesCreateOrUpdateInput =
@@ -384,6 +435,7 @@ export const EventSourcesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type EventSourcesDeleteInput = typeof EventSourcesDeleteInput.Type;
@@ -407,6 +459,7 @@ export const EventSourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
+    apiVersion: "2020-05-15",
   }),
 );
 export type EventSourcesGetInput = typeof EventSourcesGetInput.Type;
@@ -433,6 +486,7 @@ export const EventSourcesListByEnvironmentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources",
+      apiVersion: "2020-05-15",
     }),
   );
 export type EventSourcesListByEnvironmentInput =
@@ -465,10 +519,14 @@ export const EventSourcesListByEnvironment =
   }));
 // Input Schema
 export const EventSourcesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.Literals(["Microsoft.EventHub", "Microsoft.IoTHub"]),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type EventSourcesUpdateInput = typeof EventSourcesUpdateInput.Type;
@@ -497,6 +555,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.TimeSeriesInsights/operations",
+    apiVersion: "2020-05-15",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -582,10 +641,26 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ReferenceDataSetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceDataSetName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      keyProperties: Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(
+            Schema.Literals(["String", "Double", "Bool", "DateTime"]),
+          ),
+        }),
+      ),
+      dataStringComparisonBehavior: Schema.optional(
+        Schema.Literals(["Ordinal", "OrdinalIgnoreCase"]),
+      ),
+    }),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type ReferenceDataSetsCreateOrUpdateInput =
@@ -618,6 +693,7 @@ export const ReferenceDataSetsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type ReferenceDataSetsDeleteInput =
@@ -645,6 +721,7 @@ export const ReferenceDataSetsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type ReferenceDataSetsGetInput = typeof ReferenceDataSetsGetInput.Type;
@@ -674,6 +751,7 @@ export const ReferenceDataSetsListByEnvironmentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets",
+      apiVersion: "2020-05-15",
     }),
   );
 export type ReferenceDataSetsListByEnvironmentInput =
@@ -706,10 +784,13 @@ export const ReferenceDataSetsListByEnvironment =
   }));
 // Input Schema
 export const ReferenceDataSetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
+      apiVersion: "2020-05-15",
     }),
   );
 export type ReferenceDataSetsUpdateInput =

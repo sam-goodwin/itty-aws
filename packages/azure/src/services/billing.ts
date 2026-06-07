@@ -10,11 +10,26 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AddressValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
+  addressLine1: Schema.String,
+  addressLine2: Schema.optional(Schema.String),
+  addressLine3: Schema.optional(Schema.String),
+  city: Schema.optional(Schema.String),
+  companyName: Schema.optional(Schema.String),
+  country: Schema.String,
+  district: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  firstName: Schema.optional(Schema.String),
+  lastName: Schema.optional(Schema.String),
+  middleName: Schema.optional(Schema.String),
+  phoneNumber: Schema.optional(Schema.String),
+  postalCode: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  isValidAddress: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Billing/validateAddress",
+    apiVersion: "2024-04-01",
   }),
 );
 export type AddressValidateInput = typeof AddressValidateInput.Type;
@@ -61,11 +76,11 @@ export const AddressValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AgreementsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   agreementName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/agreements/{agreementName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type AgreementsGetInput = typeof AgreementsGetInput.Type;
@@ -108,12 +123,12 @@ export const AgreementsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AgreementsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/agreements",
+      apiVersion: "2024-04-01",
     }),
   );
 export type AgreementsListByBillingAccountInput =
@@ -176,11 +191,48 @@ export const AssociatedTenantsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     associatedTenantName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        displayName: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        billingManagementState: Schema.optional(
+          Schema.Literals(["Other", "NotAllowed", "Active", "Revoked"]),
+        ),
+        provisioningManagementState: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "NotRequested",
+            "Active",
+            "Pending",
+            "BillingRequestExpired",
+            "BillingRequestDeclined",
+            "Revoked",
+          ]),
+        ),
+        provisioningBillingRequestId: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/associatedTenants/{associatedTenantName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type AssociatedTenantsCreateOrUpdateInput =
@@ -228,11 +280,11 @@ export const AssociatedTenantsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     associatedTenantName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/associatedTenants/{associatedTenantName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type AssociatedTenantsDeleteInput =
@@ -263,11 +315,11 @@ export const AssociatedTenantsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     associatedTenantName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/associatedTenants/{associatedTenantName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type AssociatedTenantsGetInput = typeof AssociatedTenantsGetInput.Type;
@@ -313,7 +365,6 @@ export const AssociatedTenantsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AssociatedTenantsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeRevoked: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -325,6 +376,7 @@ export const AssociatedTenantsListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/associatedTenants",
+      apiVersion: "2024-04-01",
     }),
   );
 export type AssociatedTenantsListByBillingAccountInput =
@@ -392,11 +444,11 @@ export const AssociatedTenantsListByBillingAccount =
 export const AvailableBalancesGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/availableBalance/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type AvailableBalancesGetByBillingAccountInput =
@@ -443,11 +495,11 @@ export const AvailableBalancesGetByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/availableBalance/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type AvailableBalancesGetByBillingProfileInput =
@@ -494,11 +546,11 @@ export const AvailableBalancesGetByBillingProfile =
 export const BillingAccountsAddPaymentTermsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/addPaymentTerms",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingAccountsAddPaymentTermsInput =
@@ -544,11 +596,11 @@ export const BillingAccountsAddPaymentTerms =
 export const BillingAccountsCancelPaymentTermsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/cancelPaymentTerms",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingAccountsCancelPaymentTermsInput =
@@ -594,11 +646,11 @@ export const BillingAccountsCancelPaymentTerms =
 export const BillingAccountsConfirmTransitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/confirmTransition",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingAccountsConfirmTransitionInput =
@@ -629,11 +681,11 @@ export const BillingAccountsConfirmTransition =
 export const BillingAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingAccountsGetInput = typeof BillingAccountsGetInput.Type;
@@ -675,7 +727,6 @@ export const BillingAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const BillingAccountsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     includeAll: Schema.optional(Schema.Boolean),
     includeAllWithoutBillingProfiles: Schema.optional(Schema.Boolean),
     includeDeleted: Schema.optional(Schema.Boolean),
@@ -692,6 +743,7 @@ export const BillingAccountsListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingAccountsListInput = typeof BillingAccountsListInput.Type;
@@ -760,12 +812,12 @@ export const BillingAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/listInvoiceSectionsWithCreateSubscriptionPermission",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissionInput =
@@ -839,11 +891,204 @@ export const BillingAccountsListInvoiceSectionsByCreateSubscriptionPermission =
 export const BillingAccountsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        accountStatus: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Active",
+            "UnderReview",
+            "Disabled",
+            "Deleted",
+            "Extended",
+            "Pending",
+            "New",
+            "Expired",
+            "Terminated",
+            "Transferred",
+          ]),
+        ),
+        accountType: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Enterprise",
+            "Individual",
+            "Partner",
+            "Reseller",
+            "ClassicPartner",
+            "Internal",
+            "Tenant",
+            "Business",
+          ]),
+        ),
+        accountSubType: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "None",
+            "Individual",
+            "Professional",
+            "Enterprise",
+          ]),
+        ),
+        accountStatusReasonCode: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "UnusualActivity",
+            "ManuallyTerminated",
+            "Expired",
+            "Transferred",
+            "TerminateProcessing",
+          ]),
+        ),
+        agreementType: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "MicrosoftCustomerAgreement",
+            "EnterpriseAgreement",
+            "MicrosoftOnlineServicesProgram",
+            "MicrosoftPartnerAgreement",
+          ]),
+        ),
+        displayName: Schema.optional(Schema.String),
+        enrollmentDetails: Schema.optional(
+          Schema.Struct({
+            startDate: Schema.optional(Schema.String),
+            endDate: Schema.optional(Schema.String),
+            currency: Schema.optional(Schema.String),
+            channel: Schema.optional(Schema.String),
+            language: Schema.optional(Schema.String),
+            countryCode: Schema.optional(Schema.String),
+            billingCycle: Schema.optional(Schema.String),
+            extendedTermOption: Schema.optional(
+              Schema.Literals(["Other", "Opted-In", "Opted-Out"]),
+            ),
+            supportLevel: Schema.optional(
+              Schema.Literals(["Other", "Standard", "Pro-Direct", "Developer"]),
+            ),
+            supportCoverage: Schema.optional(Schema.String),
+            cloud: Schema.optional(Schema.String),
+            poNumber: Schema.optional(Schema.String),
+            markupStatus: Schema.optional(
+              Schema.Literals([
+                "Other",
+                "Disabled",
+                "Preview",
+                "Published",
+                "Locked",
+              ]),
+            ),
+            indirectRelationshipInfo: Schema.optional(
+              Schema.Struct({
+                billingAccountName: Schema.optional(Schema.String),
+                billingProfileName: Schema.optional(Schema.String),
+                displayName: Schema.optional(Schema.String),
+              }),
+            ),
+            invoiceRecipient: Schema.optional(Schema.String),
+          }),
+        ),
+        hasReadAccess: Schema.optional(Schema.Boolean),
+        hasNoBillingProfiles: Schema.optional(Schema.Boolean),
+        notificationEmailAddress: Schema.optional(Schema.String),
+        primaryBillingTenantId: Schema.optional(Schema.String),
+        soldTo: Schema.optional(
+          Schema.Struct({
+            addressLine1: Schema.String,
+            addressLine2: Schema.optional(Schema.String),
+            addressLine3: Schema.optional(Schema.String),
+            city: Schema.optional(Schema.String),
+            companyName: Schema.optional(Schema.String),
+            country: Schema.String,
+            district: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            firstName: Schema.optional(Schema.String),
+            lastName: Schema.optional(Schema.String),
+            middleName: Schema.optional(Schema.String),
+            phoneNumber: Schema.optional(Schema.String),
+            postalCode: Schema.optional(Schema.String),
+            region: Schema.optional(Schema.String),
+            isValidAddress: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        registrationNumber: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            required: Schema.optional(Schema.Boolean),
+            type: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        billingRelationshipTypes: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "Other",
+              "Direct",
+              "IndirectCustomer",
+              "IndirectPartner",
+              "CSPPartner",
+              "CSPCustomer",
+            ]),
+          ),
+        ),
+        qualifications: Schema.optional(Schema.Array(Schema.String)),
+        taxIds: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              type: Schema.optional(
+                Schema.Literals([
+                  "Other",
+                  "BrazilCcmId",
+                  "BrazilCnpjId",
+                  "BrazilCpfId",
+                  "CanadianFederalExempt",
+                  "CanadianProvinceExempt",
+                  "ExternalTaxation",
+                  "IndiaFederalTanId",
+                  "IndiaFederalServiceTaxId",
+                  "IndiaPanId",
+                  "IndiaStateCstId",
+                  "IndiaStateGstINId",
+                  "IndiaStateVatId",
+                  "IntlExempt",
+                  "USExempt",
+                  "VatId",
+                  "LoveCode",
+                  "MobileBarCode",
+                  "NationalIdentificationNumber",
+                  "PublicSectorId",
+                ]),
+              ),
+              scope: Schema.optional(Schema.String),
+              country: Schema.optional(Schema.String),
+              status: Schema.optional(
+                Schema.Literals(["Other", "Valid", "Invalid"]),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingAccountsUpdateInput = typeof BillingAccountsUpdateInput.Type;
@@ -889,11 +1134,11 @@ export const BillingAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const BillingAccountsValidatePaymentTermsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/validatePaymentTerms",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingAccountsValidatePaymentTermsInput =
@@ -946,11 +1191,12 @@ export const BillingAccountsValidatePaymentTerms =
 export const BillingPermissionsCheckAccessByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    actions: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/checkAccess",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsCheckAccessByBillingAccountInput =
@@ -986,11 +1232,12 @@ export const BillingPermissionsCheckAccessByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    actions: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/checkAccess",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsCheckAccessByBillingProfileInput =
@@ -1028,11 +1275,12 @@ export const BillingPermissionsCheckAccessByCustomerInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    actions: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/checkAccess",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsCheckAccessByCustomerInput =
@@ -1070,11 +1318,12 @@ export const BillingPermissionsCheckAccessByDepartmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    actions: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/checkAccess",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsCheckAccessByDepartmentInput =
@@ -1111,11 +1360,12 @@ export const BillingPermissionsCheckAccessByEnrollmentAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    actions: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/checkAccess",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsCheckAccessByEnrollmentAccountInput =
@@ -1153,11 +1403,12 @@ export const BillingPermissionsCheckAccessByInvoiceSectionInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    actions: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/checkAccess",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsCheckAccessByInvoiceSectionInput =
@@ -1194,11 +1445,11 @@ export const BillingPermissionsCheckAccessByInvoiceSection =
 export const BillingPermissionsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingPermissions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsListByBillingAccountInput =
@@ -1235,11 +1486,11 @@ export const BillingPermissionsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingPermissions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsListByBillingProfileInput =
@@ -1278,11 +1529,11 @@ export const BillingPermissionsListByCustomerInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingPermissions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsListByCustomerInput =
@@ -1321,11 +1572,11 @@ export const BillingPermissionsListByCustomerAtBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/billingPermissions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsListByCustomerAtBillingAccountInput =
@@ -1363,11 +1614,11 @@ export const BillingPermissionsListByDepartmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingPermissions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsListByDepartmentInput =
@@ -1405,11 +1656,11 @@ export const BillingPermissionsListByEnrollmentAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingPermissions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsListByEnrollmentAccountInput =
@@ -1448,11 +1699,11 @@ export const BillingPermissionsListByInvoiceSectionInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingPermissions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPermissionsListByInvoiceSectionInput =
@@ -1491,11 +1742,201 @@ export const BillingProfilesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        billingRelationshipType: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Direct",
+            "IndirectCustomer",
+            "IndirectPartner",
+            "CSPPartner",
+            "CSPCustomer",
+          ]),
+        ),
+        billTo: Schema.optional(
+          Schema.Struct({
+            addressLine1: Schema.String,
+            addressLine2: Schema.optional(Schema.String),
+            addressLine3: Schema.optional(Schema.String),
+            city: Schema.optional(Schema.String),
+            companyName: Schema.optional(Schema.String),
+            country: Schema.String,
+            district: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            firstName: Schema.optional(Schema.String),
+            lastName: Schema.optional(Schema.String),
+            middleName: Schema.optional(Schema.String),
+            phoneNumber: Schema.optional(Schema.String),
+            postalCode: Schema.optional(Schema.String),
+            region: Schema.optional(Schema.String),
+            isValidAddress: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        currency: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        enabledAzurePlans: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              productId: Schema.optional(Schema.String),
+              skuId: Schema.optional(Schema.String),
+              skuDescription: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        hasReadAccess: Schema.optional(Schema.Boolean),
+        indirectRelationshipInfo: Schema.optional(
+          Schema.Struct({
+            billingAccountName: Schema.optional(Schema.String),
+            billingProfileName: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+          }),
+        ),
+        invoiceDay: Schema.optional(Schema.Number),
+        invoiceEmailOptIn: Schema.optional(Schema.Boolean),
+        invoiceRecipients: Schema.optional(Schema.Array(Schema.String)),
+        poNumber: Schema.optional(Schema.String),
+        shipTo: Schema.optional(
+          Schema.Struct({
+            addressLine1: Schema.String,
+            addressLine2: Schema.optional(Schema.String),
+            addressLine3: Schema.optional(Schema.String),
+            city: Schema.optional(Schema.String),
+            companyName: Schema.optional(Schema.String),
+            country: Schema.String,
+            district: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            firstName: Schema.optional(Schema.String),
+            lastName: Schema.optional(Schema.String),
+            middleName: Schema.optional(Schema.String),
+            phoneNumber: Schema.optional(Schema.String),
+            postalCode: Schema.optional(Schema.String),
+            region: Schema.optional(Schema.String),
+            isValidAddress: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        soldTo: Schema.optional(
+          Schema.Struct({
+            addressLine1: Schema.String,
+            addressLine2: Schema.optional(Schema.String),
+            addressLine3: Schema.optional(Schema.String),
+            city: Schema.optional(Schema.String),
+            companyName: Schema.optional(Schema.String),
+            country: Schema.String,
+            district: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            firstName: Schema.optional(Schema.String),
+            lastName: Schema.optional(Schema.String),
+            middleName: Schema.optional(Schema.String),
+            phoneNumber: Schema.optional(Schema.String),
+            postalCode: Schema.optional(Schema.String),
+            region: Schema.optional(Schema.String),
+            isValidAddress: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        spendingLimit: Schema.optional(Schema.Literals(["Off", "On"])),
+        spendingLimitDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              amount: Schema.optional(Schema.Number),
+              currency: Schema.optional(Schema.String),
+              startDate: Schema.optional(Schema.String),
+              endDate: Schema.optional(Schema.String),
+              type: Schema.optional(
+                Schema.Literals([
+                  "Other",
+                  "None",
+                  "FreeAccount",
+                  "Sandbox",
+                  "AzureForStudents",
+                  "AcademicSponsorship",
+                  "AzureConsumptionCredit",
+                  "AzurePassSponsorship",
+                  "MpnSponsorship",
+                  "MSDN",
+                  "NonProfitSponsorship",
+                  "Sponsorship",
+                  "StartupSponsorship",
+                  "AzureForStudentsStarter",
+                  "VisualStudio",
+                ]),
+              ),
+              status: Schema.optional(
+                Schema.Literals([
+                  "Other",
+                  "None",
+                  "Active",
+                  "Expired",
+                  "LimitReached",
+                  "LimitRemoved",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Active",
+            "Disabled",
+            "Warned",
+            "Deleted",
+            "UnderReview",
+          ]),
+        ),
+        statusReasonCode: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "PastDue",
+            "UnusualActivity",
+            "SpendingLimitReached",
+            "SpendingLimitExpired",
+          ]),
+        ),
+        systemId: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        targetClouds: Schema.optional(Schema.Array(Schema.String)),
+        currentPaymentTerm: Schema.optional(
+          Schema.Struct({
+            term: Schema.optional(Schema.String),
+            startDate: Schema.optional(Schema.String),
+            endDate: Schema.optional(Schema.String),
+            isDefault: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        otherPaymentTerms: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              term: Schema.optional(Schema.String),
+              startDate: Schema.optional(Schema.String),
+              endDate: Schema.optional(Schema.String),
+              isDefault: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingProfilesCreateOrUpdateInput =
@@ -1543,11 +1984,11 @@ export const BillingProfilesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingProfilesDeleteInput = typeof BillingProfilesDeleteInput.Type;
@@ -1577,11 +2018,11 @@ export const BillingProfilesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingProfilesGetInput = typeof BillingProfilesGetInput.Type;
@@ -1625,7 +2066,6 @@ export const BillingProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const BillingProfilesListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeDeleted: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -1637,6 +2077,7 @@ export const BillingProfilesListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingProfilesListByBillingAccountInput =
@@ -1705,11 +2146,11 @@ export const BillingProfilesValidateDeleteEligibilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/validateDeleteEligibility",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingProfilesValidateDeleteEligibilityInput =
@@ -1762,13 +2203,13 @@ export const BillingProfilesValidateDeleteEligibility =
 export const BillingPropertyGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeBillingCountry: Schema.optional(Schema.Boolean),
     includeTransitionStatus: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingProperty/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPropertyGetInput = typeof BillingPropertyGetInput.Type;
@@ -1813,11 +2254,266 @@ export const BillingPropertyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const BillingPropertyUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        billingAccountAgreementType: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "MicrosoftCustomerAgreement",
+            "EnterpriseAgreement",
+            "MicrosoftOnlineServicesProgram",
+            "MicrosoftPartnerAgreement",
+          ]),
+        ),
+        billingAccountDisplayName: Schema.optional(Schema.String),
+        billingAccountId: Schema.optional(Schema.String),
+        accountAdminNotificationEmailAddress: Schema.optional(Schema.String),
+        billingAccountSoldToCountry: Schema.optional(Schema.String),
+        billingAccountStatus: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Active",
+            "UnderReview",
+            "Disabled",
+            "Deleted",
+            "Extended",
+            "Pending",
+            "New",
+            "Expired",
+            "Terminated",
+            "Transferred",
+          ]),
+        ),
+        billingAccountStatusReasonCode: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "UnusualActivity",
+            "ManuallyTerminated",
+            "Expired",
+            "Transferred",
+            "TerminateProcessing",
+          ]),
+        ),
+        billingAccountType: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Enterprise",
+            "Individual",
+            "Partner",
+            "Reseller",
+            "ClassicPartner",
+            "Internal",
+            "Tenant",
+            "Business",
+          ]),
+        ),
+        billingAccountSubType: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "None",
+            "Individual",
+            "Professional",
+            "Enterprise",
+          ]),
+        ),
+        billingCurrency: Schema.optional(Schema.String),
+        billingProfileDisplayName: Schema.optional(Schema.String),
+        billingProfileId: Schema.optional(Schema.String),
+        billingProfileSpendingLimit: Schema.optional(
+          Schema.Literals(["Off", "On"]),
+        ),
+        billingProfileSpendingLimitDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              amount: Schema.optional(Schema.Number),
+              currency: Schema.optional(Schema.String),
+              startDate: Schema.optional(Schema.String),
+              endDate: Schema.optional(Schema.String),
+              type: Schema.optional(
+                Schema.Literals([
+                  "Other",
+                  "None",
+                  "FreeAccount",
+                  "Sandbox",
+                  "AzureForStudents",
+                  "AcademicSponsorship",
+                  "AzureConsumptionCredit",
+                  "AzurePassSponsorship",
+                  "MpnSponsorship",
+                  "MSDN",
+                  "NonProfitSponsorship",
+                  "Sponsorship",
+                  "StartupSponsorship",
+                  "AzureForStudentsStarter",
+                  "VisualStudio",
+                ]),
+              ),
+              status: Schema.optional(
+                Schema.Literals([
+                  "Other",
+                  "None",
+                  "Active",
+                  "Expired",
+                  "LimitReached",
+                  "LimitRemoved",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        billingProfileStatus: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Active",
+            "Disabled",
+            "Warned",
+            "Deleted",
+            "UnderReview",
+          ]),
+        ),
+        billingProfileStatusReasonCode: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "PastDue",
+            "UnusualActivity",
+            "SpendingLimitReached",
+            "SpendingLimitExpired",
+          ]),
+        ),
+        billingProfilePaymentMethodFamily: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "None",
+            "CreditCard",
+            "Credits",
+            "CheckWire",
+            "EWallet",
+            "TaskOrder",
+            "DirectDebit",
+          ]),
+        ),
+        billingProfilePaymentMethodType: Schema.optional(Schema.String),
+        billingTenantId: Schema.optional(Schema.String),
+        costCenter: Schema.optional(Schema.String),
+        customerDisplayName: Schema.optional(Schema.String),
+        customerId: Schema.optional(Schema.String),
+        customerStatus: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Active",
+            "Pending",
+            "Disabled",
+            "Warned",
+            "Deleted",
+            "UnderReview",
+          ]),
+        ),
+        invoiceSectionDisplayName: Schema.optional(Schema.String),
+        invoiceSectionId: Schema.optional(Schema.String),
+        invoiceSectionStatus: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Active",
+            "Deleted",
+            "Disabled",
+            "UnderReview",
+            "Warned",
+            "Restricted",
+          ]),
+        ),
+        invoiceSectionStatusReasonCode: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "PastDue",
+            "UnusualActivity",
+            "SpendingLimitReached",
+            "SpendingLimitExpired",
+          ]),
+        ),
+        isTransitionedBillingAccount: Schema.optional(Schema.Boolean),
+        skuDescription: Schema.optional(Schema.String),
+        skuId: Schema.optional(Schema.String),
+        subscriptionBillingStatus: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Unknown",
+            "Active",
+            "Disabled",
+            "Deleted",
+            "Warned",
+            "Expiring",
+            "Expired",
+            "AutoRenew",
+            "Cancelled",
+            "Suspended",
+            "Failed",
+          ]),
+        ),
+        subscriptionBillingStatusDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              effectiveDate: Schema.optional(Schema.String),
+              reason: Schema.optional(
+                Schema.Literals([
+                  "None",
+                  "Cancelled",
+                  "PastDue",
+                  "SuspiciousActivity",
+                  "Other",
+                  "Transferred",
+                  "PolicyViolation",
+                  "SpendingLimitReached",
+                  "Expired",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        subscriptionBillingType: Schema.optional(
+          Schema.Literals(["None", "Benefit", "Free", "Paid", "PrePaid"]),
+        ),
+        subscriptionServiceUsageAddress: Schema.optional(
+          Schema.Struct({
+            addressLine1: Schema.String,
+            addressLine2: Schema.optional(Schema.String),
+            addressLine3: Schema.optional(Schema.String),
+            city: Schema.optional(Schema.String),
+            companyName: Schema.optional(Schema.String),
+            country: Schema.String,
+            district: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            firstName: Schema.optional(Schema.String),
+            lastName: Schema.optional(Schema.String),
+            middleName: Schema.optional(Schema.String),
+            phoneNumber: Schema.optional(Schema.String),
+            postalCode: Schema.optional(Schema.String),
+            region: Schema.optional(Schema.String),
+            isValidAddress: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        subscriptionWorkloadType: Schema.optional(
+          Schema.Literals(["None", "Production", "DevTest", "Internal"]),
+        ),
+        enrollmentDetails: Schema.optional(
+          Schema.Struct({
+            departmentDisplayName: Schema.optional(Schema.String),
+            departmentId: Schema.optional(Schema.String),
+            enrollmentAccountStatus: Schema.optional(Schema.String),
+            enrollmentAccountDisplayName: Schema.optional(Schema.String),
+            enrollmentAccountId: Schema.optional(Schema.String),
+          }),
+        ),
+        isAccountAdmin: Schema.optional(Schema.Boolean),
+        productId: Schema.optional(Schema.String),
+        productName: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingProperty/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingPropertyUpdateInput = typeof BillingPropertyUpdateInput.Type;
@@ -1863,11 +2559,108 @@ export const BillingPropertyUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const BillingRequestsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingRequestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        additionalInformation: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        reviewedBy: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+            upn: Schema.optional(Schema.String),
+          }),
+        ),
+        reviewalDate: Schema.optional(Schema.String),
+        billingAccountId: Schema.optional(Schema.String),
+        billingAccountName: Schema.optional(Schema.String),
+        billingAccountDisplayName: Schema.optional(Schema.String),
+        billingAccountPrimaryBillingTenantId: Schema.optional(Schema.String),
+        billingProfileId: Schema.optional(Schema.String),
+        billingProfileName: Schema.optional(Schema.String),
+        billingProfileDisplayName: Schema.optional(Schema.String),
+        createdBy: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+            upn: Schema.optional(Schema.String),
+          }),
+        ),
+        creationDate: Schema.optional(Schema.String),
+        expirationDate: Schema.optional(Schema.String),
+        decisionReason: Schema.optional(Schema.String),
+        invoiceSectionId: Schema.optional(Schema.String),
+        invoiceSectionName: Schema.optional(Schema.String),
+        invoiceSectionDisplayName: Schema.optional(Schema.String),
+        customerId: Schema.optional(Schema.String),
+        customerName: Schema.optional(Schema.String),
+        customerDisplayName: Schema.optional(Schema.String),
+        subscriptionId: Schema.optional(Schema.String),
+        subscriptionName: Schema.optional(Schema.String),
+        subscriptionDisplayName: Schema.optional(Schema.String),
+        justification: Schema.optional(Schema.String),
+        recipients: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              tenantId: Schema.optional(Schema.String),
+              objectId: Schema.optional(Schema.String),
+              upn: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        requestScope: Schema.optional(Schema.String),
+        billingScope: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Pending",
+            "Approved",
+            "Declined",
+            "Cancelled",
+            "Completed",
+            "Expired",
+          ]),
+        ),
+        type: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "InvoiceAccess",
+            "ProvisioningAccess",
+            "RoleAssignment",
+            "UpdateBillingPolicy",
+          ]),
+        ),
+        lastUpdatedBy: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+            upn: Schema.optional(Schema.String),
+          }),
+        ),
+        lastUpdatedDate: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingRequests/{billingRequestName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRequestsCreateOrUpdateInput =
@@ -1913,11 +2706,11 @@ export const BillingRequestsCreateOrUpdate =
 export const BillingRequestsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingRequestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingRequests/{billingRequestName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRequestsGetInput = typeof BillingRequestsGetInput.Type;
@@ -1960,7 +2753,6 @@ export const BillingRequestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const BillingRequestsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -1971,6 +2763,7 @@ export const BillingRequestsListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRequests",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRequestsListByBillingAccountInput =
@@ -2038,7 +2831,6 @@ export const BillingRequestsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -2049,6 +2841,7 @@ export const BillingRequestsListByBillingProfileInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingRequests",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRequestsListByBillingProfileInput =
@@ -2118,7 +2911,6 @@ export const BillingRequestsListByCustomerInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -2129,6 +2921,7 @@ export const BillingRequestsListByCustomerInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingRequests",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRequestsListByCustomerInput =
@@ -2199,7 +2992,6 @@ export const BillingRequestsListByInvoiceSectionInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -2210,6 +3002,7 @@ export const BillingRequestsListByInvoiceSectionInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingRequests",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRequestsListByInvoiceSectionInput =
@@ -2277,7 +3070,6 @@ export const BillingRequestsListByInvoiceSection =
 // Input Schema
 export const BillingRequestsListByUserInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -2288,6 +3080,7 @@ export const BillingRequestsListByUserInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingRequests",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRequestsListByUserInput =
@@ -2354,11 +3147,65 @@ export const BillingRequestsListByUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const BillingRoleAssignmentsCreateByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Canceled",
+        "Failed",
+        "New",
+        "Pending",
+        "Provisioning",
+        "PendingBilling",
+        "ConfirmedBilling",
+        "Creating",
+        "Created",
+        "Expired",
+      ]),
+    ),
+    createdOn: Schema.optional(Schema.String),
+    createdByPrincipalTenantId: Schema.optional(Schema.String),
+    createdByPrincipalId: Schema.optional(Schema.String),
+    createdByPrincipalPuid: Schema.optional(Schema.String),
+    createdByUserEmailAddress: Schema.optional(Schema.String),
+    modifiedOn: Schema.optional(Schema.String),
+    modifiedByPrincipalPuid: Schema.optional(Schema.String),
+    modifiedByUserEmailAddress: Schema.optional(Schema.String),
+    modifiedByPrincipalId: Schema.optional(Schema.String),
+    modifiedByPrincipalTenantId: Schema.optional(Schema.String),
+    principalPuid: Schema.optional(Schema.String),
+    principalId: Schema.optional(Schema.String),
+    principalTenantId: Schema.optional(Schema.String),
+    roleDefinitionId: Schema.String,
+    scope: Schema.optional(Schema.String),
+    userAuthenticationType: Schema.optional(Schema.String),
+    userEmailAddress: Schema.optional(Schema.String),
+    principalTenantName: Schema.optional(Schema.String),
+    principalDisplayName: Schema.optional(Schema.String),
+    principalType: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "None",
+        "User",
+        "Group",
+        "DirectoryRole",
+        "ServicePrincipal",
+        "Everyone",
+      ]),
+    ),
+    billingRequestId: Schema.optional(Schema.String),
+    billingAccountId: Schema.optional(Schema.String),
+    billingAccountDisplayName: Schema.optional(Schema.String),
+    billingProfileId: Schema.optional(Schema.String),
+    billingProfileDisplayName: Schema.optional(Schema.String),
+    invoiceSectionId: Schema.optional(Schema.String),
+    invoiceSectionDisplayName: Schema.optional(Schema.String),
+    customerId: Schema.optional(Schema.String),
+    customerDisplayName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/createBillingRoleAssignment",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsCreateByBillingAccountInput =
@@ -2405,11 +3252,65 @@ export const BillingRoleAssignmentsCreateByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Canceled",
+        "Failed",
+        "New",
+        "Pending",
+        "Provisioning",
+        "PendingBilling",
+        "ConfirmedBilling",
+        "Creating",
+        "Created",
+        "Expired",
+      ]),
+    ),
+    createdOn: Schema.optional(Schema.String),
+    createdByPrincipalTenantId: Schema.optional(Schema.String),
+    createdByPrincipalId: Schema.optional(Schema.String),
+    createdByPrincipalPuid: Schema.optional(Schema.String),
+    createdByUserEmailAddress: Schema.optional(Schema.String),
+    modifiedOn: Schema.optional(Schema.String),
+    modifiedByPrincipalPuid: Schema.optional(Schema.String),
+    modifiedByUserEmailAddress: Schema.optional(Schema.String),
+    modifiedByPrincipalId: Schema.optional(Schema.String),
+    modifiedByPrincipalTenantId: Schema.optional(Schema.String),
+    principalPuid: Schema.optional(Schema.String),
+    principalId: Schema.optional(Schema.String),
+    principalTenantId: Schema.optional(Schema.String),
+    roleDefinitionId: Schema.String,
+    scope: Schema.optional(Schema.String),
+    userAuthenticationType: Schema.optional(Schema.String),
+    userEmailAddress: Schema.optional(Schema.String),
+    principalTenantName: Schema.optional(Schema.String),
+    principalDisplayName: Schema.optional(Schema.String),
+    principalType: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "None",
+        "User",
+        "Group",
+        "DirectoryRole",
+        "ServicePrincipal",
+        "Everyone",
+      ]),
+    ),
+    billingRequestId: Schema.optional(Schema.String),
+    billingAccountId: Schema.optional(Schema.String),
+    billingAccountDisplayName: Schema.optional(Schema.String),
+    billingProfileId: Schema.optional(Schema.String),
+    billingProfileDisplayName: Schema.optional(Schema.String),
+    invoiceSectionId: Schema.optional(Schema.String),
+    invoiceSectionDisplayName: Schema.optional(Schema.String),
+    customerId: Schema.optional(Schema.String),
+    customerDisplayName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/createBillingRoleAssignment",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsCreateByBillingProfileInput =
@@ -2458,11 +3359,65 @@ export const BillingRoleAssignmentsCreateByCustomerInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Canceled",
+        "Failed",
+        "New",
+        "Pending",
+        "Provisioning",
+        "PendingBilling",
+        "ConfirmedBilling",
+        "Creating",
+        "Created",
+        "Expired",
+      ]),
+    ),
+    createdOn: Schema.optional(Schema.String),
+    createdByPrincipalTenantId: Schema.optional(Schema.String),
+    createdByPrincipalId: Schema.optional(Schema.String),
+    createdByPrincipalPuid: Schema.optional(Schema.String),
+    createdByUserEmailAddress: Schema.optional(Schema.String),
+    modifiedOn: Schema.optional(Schema.String),
+    modifiedByPrincipalPuid: Schema.optional(Schema.String),
+    modifiedByUserEmailAddress: Schema.optional(Schema.String),
+    modifiedByPrincipalId: Schema.optional(Schema.String),
+    modifiedByPrincipalTenantId: Schema.optional(Schema.String),
+    principalPuid: Schema.optional(Schema.String),
+    principalId: Schema.optional(Schema.String),
+    principalTenantId: Schema.optional(Schema.String),
+    roleDefinitionId: Schema.String,
+    scope: Schema.optional(Schema.String),
+    userAuthenticationType: Schema.optional(Schema.String),
+    userEmailAddress: Schema.optional(Schema.String),
+    principalTenantName: Schema.optional(Schema.String),
+    principalDisplayName: Schema.optional(Schema.String),
+    principalType: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "None",
+        "User",
+        "Group",
+        "DirectoryRole",
+        "ServicePrincipal",
+        "Everyone",
+      ]),
+    ),
+    billingRequestId: Schema.optional(Schema.String),
+    billingAccountId: Schema.optional(Schema.String),
+    billingAccountDisplayName: Schema.optional(Schema.String),
+    billingProfileId: Schema.optional(Schema.String),
+    billingProfileDisplayName: Schema.optional(Schema.String),
+    invoiceSectionId: Schema.optional(Schema.String),
+    invoiceSectionDisplayName: Schema.optional(Schema.String),
+    customerId: Schema.optional(Schema.String),
+    customerDisplayName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/createBillingRoleAssignment",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsCreateByCustomerInput =
@@ -2512,11 +3467,65 @@ export const BillingRoleAssignmentsCreateByInvoiceSectionInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Canceled",
+        "Failed",
+        "New",
+        "Pending",
+        "Provisioning",
+        "PendingBilling",
+        "ConfirmedBilling",
+        "Creating",
+        "Created",
+        "Expired",
+      ]),
+    ),
+    createdOn: Schema.optional(Schema.String),
+    createdByPrincipalTenantId: Schema.optional(Schema.String),
+    createdByPrincipalId: Schema.optional(Schema.String),
+    createdByPrincipalPuid: Schema.optional(Schema.String),
+    createdByUserEmailAddress: Schema.optional(Schema.String),
+    modifiedOn: Schema.optional(Schema.String),
+    modifiedByPrincipalPuid: Schema.optional(Schema.String),
+    modifiedByUserEmailAddress: Schema.optional(Schema.String),
+    modifiedByPrincipalId: Schema.optional(Schema.String),
+    modifiedByPrincipalTenantId: Schema.optional(Schema.String),
+    principalPuid: Schema.optional(Schema.String),
+    principalId: Schema.optional(Schema.String),
+    principalTenantId: Schema.optional(Schema.String),
+    roleDefinitionId: Schema.String,
+    scope: Schema.optional(Schema.String),
+    userAuthenticationType: Schema.optional(Schema.String),
+    userEmailAddress: Schema.optional(Schema.String),
+    principalTenantName: Schema.optional(Schema.String),
+    principalDisplayName: Schema.optional(Schema.String),
+    principalType: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "None",
+        "User",
+        "Group",
+        "DirectoryRole",
+        "ServicePrincipal",
+        "Everyone",
+      ]),
+    ),
+    billingRequestId: Schema.optional(Schema.String),
+    billingAccountId: Schema.optional(Schema.String),
+    billingAccountDisplayName: Schema.optional(Schema.String),
+    billingProfileId: Schema.optional(Schema.String),
+    billingProfileDisplayName: Schema.optional(Schema.String),
+    invoiceSectionId: Schema.optional(Schema.String),
+    invoiceSectionDisplayName: Schema.optional(Schema.String),
+    customerId: Schema.optional(Schema.String),
+    customerDisplayName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/createBillingRoleAssignment",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsCreateByInvoiceSectionInput =
@@ -2565,11 +3574,70 @@ export const BillingRoleAssignmentsCreateOrUpdateByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        createdOn: Schema.optional(Schema.String),
+        createdByPrincipalTenantId: Schema.optional(Schema.String),
+        createdByPrincipalId: Schema.optional(Schema.String),
+        createdByPrincipalPuid: Schema.optional(Schema.String),
+        createdByUserEmailAddress: Schema.optional(Schema.String),
+        modifiedOn: Schema.optional(Schema.String),
+        modifiedByPrincipalPuid: Schema.optional(Schema.String),
+        modifiedByUserEmailAddress: Schema.optional(Schema.String),
+        modifiedByPrincipalId: Schema.optional(Schema.String),
+        modifiedByPrincipalTenantId: Schema.optional(Schema.String),
+        principalPuid: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        principalTenantId: Schema.optional(Schema.String),
+        roleDefinitionId: Schema.String,
+        scope: Schema.optional(Schema.String),
+        userAuthenticationType: Schema.optional(Schema.String),
+        userEmailAddress: Schema.optional(Schema.String),
+        principalTenantName: Schema.optional(Schema.String),
+        principalDisplayName: Schema.optional(Schema.String),
+        principalType: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "None",
+            "User",
+            "Group",
+            "DirectoryRole",
+            "ServicePrincipal",
+            "Everyone",
+          ]),
+        ),
+        billingRequestId: Schema.optional(Schema.String),
+        billingAccountId: Schema.optional(Schema.String),
+        billingAccountDisplayName: Schema.optional(Schema.String),
+        billingProfileId: Schema.optional(Schema.String),
+        billingProfileDisplayName: Schema.optional(Schema.String),
+        invoiceSectionId: Schema.optional(Schema.String),
+        invoiceSectionDisplayName: Schema.optional(Schema.String),
+        customerId: Schema.optional(Schema.String),
+        customerDisplayName: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsCreateOrUpdateByBillingAccountInput =
@@ -2618,11 +3686,70 @@ export const BillingRoleAssignmentsCreateOrUpdateByDepartmentInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        createdOn: Schema.optional(Schema.String),
+        createdByPrincipalTenantId: Schema.optional(Schema.String),
+        createdByPrincipalId: Schema.optional(Schema.String),
+        createdByPrincipalPuid: Schema.optional(Schema.String),
+        createdByUserEmailAddress: Schema.optional(Schema.String),
+        modifiedOn: Schema.optional(Schema.String),
+        modifiedByPrincipalPuid: Schema.optional(Schema.String),
+        modifiedByUserEmailAddress: Schema.optional(Schema.String),
+        modifiedByPrincipalId: Schema.optional(Schema.String),
+        modifiedByPrincipalTenantId: Schema.optional(Schema.String),
+        principalPuid: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        principalTenantId: Schema.optional(Schema.String),
+        roleDefinitionId: Schema.String,
+        scope: Schema.optional(Schema.String),
+        userAuthenticationType: Schema.optional(Schema.String),
+        userEmailAddress: Schema.optional(Schema.String),
+        principalTenantName: Schema.optional(Schema.String),
+        principalDisplayName: Schema.optional(Schema.String),
+        principalType: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "None",
+            "User",
+            "Group",
+            "DirectoryRole",
+            "ServicePrincipal",
+            "Everyone",
+          ]),
+        ),
+        billingRequestId: Schema.optional(Schema.String),
+        billingAccountId: Schema.optional(Schema.String),
+        billingAccountDisplayName: Schema.optional(Schema.String),
+        billingProfileId: Schema.optional(Schema.String),
+        billingProfileDisplayName: Schema.optional(Schema.String),
+        invoiceSectionId: Schema.optional(Schema.String),
+        invoiceSectionDisplayName: Schema.optional(Schema.String),
+        customerId: Schema.optional(Schema.String),
+        customerDisplayName: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsCreateOrUpdateByDepartmentInput =
@@ -2672,11 +3799,70 @@ export const BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        createdOn: Schema.optional(Schema.String),
+        createdByPrincipalTenantId: Schema.optional(Schema.String),
+        createdByPrincipalId: Schema.optional(Schema.String),
+        createdByPrincipalPuid: Schema.optional(Schema.String),
+        createdByUserEmailAddress: Schema.optional(Schema.String),
+        modifiedOn: Schema.optional(Schema.String),
+        modifiedByPrincipalPuid: Schema.optional(Schema.String),
+        modifiedByUserEmailAddress: Schema.optional(Schema.String),
+        modifiedByPrincipalId: Schema.optional(Schema.String),
+        modifiedByPrincipalTenantId: Schema.optional(Schema.String),
+        principalPuid: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        principalTenantId: Schema.optional(Schema.String),
+        roleDefinitionId: Schema.String,
+        scope: Schema.optional(Schema.String),
+        userAuthenticationType: Schema.optional(Schema.String),
+        userEmailAddress: Schema.optional(Schema.String),
+        principalTenantName: Schema.optional(Schema.String),
+        principalDisplayName: Schema.optional(Schema.String),
+        principalType: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "None",
+            "User",
+            "Group",
+            "DirectoryRole",
+            "ServicePrincipal",
+            "Everyone",
+          ]),
+        ),
+        billingRequestId: Schema.optional(Schema.String),
+        billingAccountId: Schema.optional(Schema.String),
+        billingAccountDisplayName: Schema.optional(Schema.String),
+        billingProfileId: Schema.optional(Schema.String),
+        billingProfileDisplayName: Schema.optional(Schema.String),
+        invoiceSectionId: Schema.optional(Schema.String),
+        invoiceSectionDisplayName: Schema.optional(Schema.String),
+        customerId: Schema.optional(Schema.String),
+        customerDisplayName: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountInput =
@@ -2725,11 +3911,11 @@ export const BillingRoleAssignmentsDeleteByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsDeleteByBillingAccountInput =
@@ -2760,11 +3946,11 @@ export const BillingRoleAssignmentsDeleteByBillingProfileInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsDeleteByBillingProfileInput =
@@ -2797,11 +3983,11 @@ export const BillingRoleAssignmentsDeleteByCustomerInput =
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsDeleteByCustomerInput =
@@ -2834,11 +4020,11 @@ export const BillingRoleAssignmentsDeleteByDepartmentInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsDeleteByDepartmentInput =
@@ -2870,11 +4056,11 @@ export const BillingRoleAssignmentsDeleteByEnrollmentAccountInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsDeleteByEnrollmentAccountInput =
@@ -2907,11 +4093,11 @@ export const BillingRoleAssignmentsDeleteByInvoiceSectionInput =
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsDeleteByInvoiceSectionInput =
@@ -2943,11 +4129,11 @@ export const BillingRoleAssignmentsGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsGetByBillingAccountInput =
@@ -2996,11 +4182,11 @@ export const BillingRoleAssignmentsGetByBillingProfileInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsGetByBillingProfileInput =
@@ -3051,11 +4237,11 @@ export const BillingRoleAssignmentsGetByCustomerInput =
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsGetByCustomerInput =
@@ -3106,11 +4292,11 @@ export const BillingRoleAssignmentsGetByDepartmentInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsGetByDepartmentInput =
@@ -3160,11 +4346,11 @@ export const BillingRoleAssignmentsGetByEnrollmentAccountInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsGetByEnrollmentAccountInput =
@@ -3215,11 +4401,11 @@ export const BillingRoleAssignmentsGetByInvoiceSectionInput =
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingRoleAssignments/{billingRoleAssignmentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsGetByInvoiceSectionInput =
@@ -3268,7 +4454,6 @@ export const BillingRoleAssignmentsGetByInvoiceSection =
 export const BillingRoleAssignmentsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
     skip: Schema.optional(Schema.Number),
@@ -3276,6 +4461,7 @@ export const BillingRoleAssignmentsListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsListByBillingAccountInput =
@@ -3340,7 +4526,6 @@ export const BillingRoleAssignmentsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
     skip: Schema.optional(Schema.Number),
@@ -3348,6 +4533,7 @@ export const BillingRoleAssignmentsListByBillingProfileInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingRoleAssignments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsListByBillingProfileInput =
@@ -3414,7 +4600,6 @@ export const BillingRoleAssignmentsListByCustomerInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
     skip: Schema.optional(Schema.Number),
@@ -3422,6 +4607,7 @@ export const BillingRoleAssignmentsListByCustomerInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingRoleAssignments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsListByCustomerInput =
@@ -3488,11 +4674,11 @@ export const BillingRoleAssignmentsListByDepartmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingRoleAssignments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsListByDepartmentInput =
@@ -3555,11 +4741,11 @@ export const BillingRoleAssignmentsListByEnrollmentAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleAssignments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsListByEnrollmentAccountInput =
@@ -3623,7 +4809,6 @@ export const BillingRoleAssignmentsListByInvoiceSectionInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
     skip: Schema.optional(Schema.Number),
@@ -3631,6 +4816,7 @@ export const BillingRoleAssignmentsListByInvoiceSectionInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingRoleAssignments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsListByInvoiceSectionInput =
@@ -3696,13 +4882,13 @@ export const BillingRoleAssignmentsListByInvoiceSection =
 export const BillingRoleAssignmentsResolveByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     resolveScopeDisplayNames: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/resolveBillingRoleAssignments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsResolveByBillingAccountInput =
@@ -3766,13 +4952,13 @@ export const BillingRoleAssignmentsResolveByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     resolveScopeDisplayNames: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/resolveBillingRoleAssignments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsResolveByBillingProfileInput =
@@ -3838,13 +5024,13 @@ export const BillingRoleAssignmentsResolveByCustomerInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     resolveScopeDisplayNames: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/resolveBillingRoleAssignments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsResolveByCustomerInput =
@@ -3911,13 +5097,13 @@ export const BillingRoleAssignmentsResolveByInvoiceSectionInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     resolveScopeDisplayNames: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/resolveBillingRoleAssignments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleAssignmentsResolveByInvoiceSectionInput =
@@ -3983,11 +5169,11 @@ export const BillingRoleDefinitionGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     roleDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleDefinitions/{roleDefinitionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleDefinitionGetByBillingAccountInput =
@@ -4036,11 +5222,11 @@ export const BillingRoleDefinitionGetByBillingProfileInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     roleDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingRoleDefinitions/{roleDefinitionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleDefinitionGetByBillingProfileInput =
@@ -4091,11 +5277,11 @@ export const BillingRoleDefinitionGetByCustomerInput =
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
     roleDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingRoleDefinitions/{roleDefinitionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleDefinitionGetByCustomerInput =
@@ -4146,11 +5332,11 @@ export const BillingRoleDefinitionGetByDepartmentInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
     roleDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingRoleDefinitions/{roleDefinitionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleDefinitionGetByDepartmentInput =
@@ -4200,11 +5386,11 @@ export const BillingRoleDefinitionGetByEnrollmentAccountInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
     roleDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleDefinitions/{roleDefinitionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleDefinitionGetByEnrollmentAccountInput =
@@ -4255,11 +5441,11 @@ export const BillingRoleDefinitionGetByInvoiceSectionInput =
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
     roleDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingRoleDefinitions/{roleDefinitionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleDefinitionGetByInvoiceSectionInput =
@@ -4308,11 +5494,11 @@ export const BillingRoleDefinitionGetByInvoiceSection =
 export const BillingRoleDefinitionListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleDefinitions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleDefinitionListByBillingAccountInput =
@@ -4374,11 +5560,11 @@ export const BillingRoleDefinitionListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingRoleDefinitions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleDefinitionListByBillingProfileInput =
@@ -4442,11 +5628,11 @@ export const BillingRoleDefinitionListByCustomerInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingRoleDefinitions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleDefinitionListByCustomerInput =
@@ -4510,11 +5696,11 @@ export const BillingRoleDefinitionListByDepartmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingRoleDefinitions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleDefinitionListByDepartmentInput =
@@ -4577,11 +5763,11 @@ export const BillingRoleDefinitionListByEnrollmentAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleDefinitions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleDefinitionListByEnrollmentAccountInput =
@@ -4645,11 +5831,11 @@ export const BillingRoleDefinitionListByInvoiceSectionInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingRoleDefinitions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingRoleDefinitionListByInvoiceSectionInput =
@@ -4713,11 +5899,168 @@ export const BillingSubscriptionsAliasesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     aliasName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        autoRenew: Schema.optional(Schema.Literals(["Off", "On"])),
+        beneficiaryTenantId: Schema.optional(Schema.String),
+        beneficiary: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
+        ),
+        billingFrequency: Schema.optional(Schema.String),
+        billingProfileId: Schema.optional(Schema.String),
+        billingPolicies: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        billingProfileDisplayName: Schema.optional(Schema.String),
+        billingProfileName: Schema.optional(Schema.String),
+        consumptionCostCenter: Schema.optional(Schema.String),
+        customerId: Schema.optional(Schema.String),
+        customerDisplayName: Schema.optional(Schema.String),
+        customerName: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        enrollmentAccountId: Schema.optional(Schema.String),
+        enrollmentAccountDisplayName: Schema.optional(Schema.String),
+        enrollmentAccountSubscriptionDetails: Schema.optional(
+          Schema.Struct({
+            enrollmentAccountStartDate: Schema.optional(Schema.String),
+            subscriptionEnrollmentAccountStatus: Schema.optional(
+              Schema.Literals([
+                "Active",
+                "Cancelled",
+                "Expired",
+                "Deleted",
+                "TransferredOut",
+                "Transferring",
+                "Inactive",
+              ]),
+            ),
+          }),
+        ),
+        invoiceSectionId: Schema.optional(Schema.String),
+        invoiceSectionDisplayName: Schema.optional(Schema.String),
+        invoiceSectionName: Schema.optional(Schema.String),
+        lastMonthCharges: Schema.optional(
+          Schema.Struct({
+            currency: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.Number),
+          }),
+        ),
+        monthToDateCharges: Schema.optional(
+          Schema.Struct({
+            currency: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.Number),
+          }),
+        ),
+        nextBillingCycleDetails: Schema.optional(
+          Schema.Struct({
+            billingFrequency: Schema.optional(Schema.String),
+          }),
+        ),
+        offerId: Schema.optional(Schema.String),
+        productCategory: Schema.optional(Schema.String),
+        productType: Schema.optional(Schema.String),
+        productTypeId: Schema.optional(Schema.String),
+        purchaseDate: Schema.optional(Schema.String),
+        quantity: Schema.optional(Schema.Number),
+        reseller: Schema.optional(
+          Schema.Struct({
+            resellerId: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        renewalTermDetails: Schema.optional(
+          Schema.Struct({
+            billingFrequency: Schema.optional(Schema.String),
+            productId: Schema.optional(Schema.String),
+            productTypeId: Schema.optional(Schema.String),
+            skuId: Schema.optional(Schema.String),
+            termDuration: Schema.optional(Schema.String),
+            quantity: Schema.optional(Schema.Number),
+            termEndDate: Schema.optional(Schema.String),
+          }),
+        ),
+        skuId: Schema.optional(Schema.String),
+        skuDescription: Schema.optional(Schema.String),
+        systemOverrides: Schema.optional(
+          Schema.Struct({
+            cancellation: Schema.optional(
+              Schema.Literals(["NotAllowed", "Allowed"]),
+            ),
+            cancellationAllowedEndDate: Schema.optional(Schema.String),
+          }),
+        ),
+        resourceUri: Schema.optional(Schema.String),
+        termDuration: Schema.optional(Schema.String),
+        termStartDate: Schema.optional(Schema.String),
+        termEndDate: Schema.optional(Schema.String),
+        provisioningTenantId: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Unknown",
+            "Active",
+            "Disabled",
+            "Deleted",
+            "Warned",
+            "Expiring",
+            "Expired",
+            "AutoRenew",
+            "Cancelled",
+            "Suspended",
+            "Failed",
+          ]),
+        ),
+        operationStatus: Schema.optional(
+          Schema.Literals(["Other", "None", "LockedForUpdate"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        subscriptionId: Schema.optional(Schema.String),
+        suspensionReasons: Schema.optional(Schema.Array(Schema.String)),
+        suspensionReasonDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              effectiveDate: Schema.optional(Schema.String),
+              reason: Schema.optional(
+                Schema.Literals([
+                  "None",
+                  "Cancelled",
+                  "PastDue",
+                  "SuspiciousActivity",
+                  "Other",
+                  "Transferred",
+                  "PolicyViolation",
+                  "SpendingLimitReached",
+                  "Expired",
+                ]),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptionAliases/{aliasName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsAliasesCreateOrUpdateInput =
@@ -4765,11 +6108,11 @@ export const BillingSubscriptionsAliasesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     aliasName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptionAliases/{aliasName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsAliasesGetInput =
@@ -4816,7 +6159,6 @@ export const BillingSubscriptionsAliasesGet =
 export const BillingSubscriptionsAliasesListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeDeleted: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -4828,6 +6170,7 @@ export const BillingSubscriptionsAliasesListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptionAliases",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsAliasesListByBillingAccountInput =
@@ -4896,11 +6239,13 @@ export const BillingSubscriptionsCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    cancellationReason: Schema.Literals(["Other", "Compromise", "Dispute"]),
+    customerId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}/cancel",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsCancelInput =
@@ -4931,11 +6276,11 @@ export const BillingSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsDeleteInput =
@@ -4966,12 +6311,12 @@ export const BillingSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsGetInput =
@@ -5022,12 +6367,12 @@ export const BillingSubscriptionsGetByBillingProfileInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingSubscriptions/{billingSubscriptionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsGetByBillingProfileInput =
@@ -5076,7 +6421,6 @@ export const BillingSubscriptionsGetByBillingProfile =
 export const BillingSubscriptionsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeDeleted: Schema.optional(Schema.Boolean),
     includeTenantSubscriptions: Schema.optional(Schema.Boolean),
     includeFailed: Schema.optional(Schema.Boolean),
@@ -5091,6 +6435,7 @@ export const BillingSubscriptionsListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsListByBillingAccountInput =
@@ -5165,7 +6510,6 @@ export const BillingSubscriptionsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeDeleted: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -5178,6 +6522,7 @@ export const BillingSubscriptionsListByBillingProfileInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingSubscriptions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsListByBillingProfileInput =
@@ -5252,7 +6597,6 @@ export const BillingSubscriptionsListByCustomerInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeDeleted: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -5265,6 +6609,7 @@ export const BillingSubscriptionsListByCustomerInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingSubscriptions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsListByCustomerInput =
@@ -5339,7 +6684,6 @@ export const BillingSubscriptionsListByCustomerAtBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeDeleted: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -5352,6 +6696,7 @@ export const BillingSubscriptionsListByCustomerAtBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/billingSubscriptions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsListByCustomerAtBillingAccountInput =
@@ -5425,7 +6770,6 @@ export const BillingSubscriptionsListByEnrollmentAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -5436,6 +6780,7 @@ export const BillingSubscriptionsListByEnrollmentAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingSubscriptions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsListByEnrollmentAccountInput =
@@ -5508,7 +6853,6 @@ export const BillingSubscriptionsListByInvoiceSectionInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeDeleted: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -5521,6 +6865,7 @@ export const BillingSubscriptionsListByInvoiceSectionInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingSubscriptions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsListByInvoiceSectionInput =
@@ -5595,11 +6940,13 @@ export const BillingSubscriptionsMergeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    targetBillingSubscriptionName: Schema.optional(Schema.String),
+    quantity: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}/merge",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsMergeInput =
@@ -5648,11 +6995,13 @@ export const BillingSubscriptionsMoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    destinationInvoiceSectionId: Schema.optional(Schema.String),
+    destinationEnrollmentAccountId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}/move",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsMoveInput =
@@ -5701,11 +7050,16 @@ export const BillingSubscriptionsSplitInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    targetProductTypeId: Schema.optional(Schema.String),
+    targetSkuId: Schema.optional(Schema.String),
+    quantity: Schema.optional(Schema.Number),
+    termDuration: Schema.optional(Schema.String),
+    billingFrequency: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}/split",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsSplitInput =
@@ -5754,11 +7108,168 @@ export const BillingSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        autoRenew: Schema.optional(Schema.Literals(["Off", "On"])),
+        beneficiaryTenantId: Schema.optional(Schema.String),
+        beneficiary: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
+        ),
+        billingFrequency: Schema.optional(Schema.String),
+        billingProfileId: Schema.optional(Schema.String),
+        billingPolicies: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        billingProfileDisplayName: Schema.optional(Schema.String),
+        billingProfileName: Schema.optional(Schema.String),
+        consumptionCostCenter: Schema.optional(Schema.String),
+        customerId: Schema.optional(Schema.String),
+        customerDisplayName: Schema.optional(Schema.String),
+        customerName: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        enrollmentAccountId: Schema.optional(Schema.String),
+        enrollmentAccountDisplayName: Schema.optional(Schema.String),
+        enrollmentAccountSubscriptionDetails: Schema.optional(
+          Schema.Struct({
+            enrollmentAccountStartDate: Schema.optional(Schema.String),
+            subscriptionEnrollmentAccountStatus: Schema.optional(
+              Schema.Literals([
+                "Active",
+                "Cancelled",
+                "Expired",
+                "Deleted",
+                "TransferredOut",
+                "Transferring",
+                "Inactive",
+              ]),
+            ),
+          }),
+        ),
+        invoiceSectionId: Schema.optional(Schema.String),
+        invoiceSectionDisplayName: Schema.optional(Schema.String),
+        invoiceSectionName: Schema.optional(Schema.String),
+        lastMonthCharges: Schema.optional(
+          Schema.Struct({
+            currency: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.Number),
+          }),
+        ),
+        monthToDateCharges: Schema.optional(
+          Schema.Struct({
+            currency: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.Number),
+          }),
+        ),
+        nextBillingCycleDetails: Schema.optional(
+          Schema.Struct({
+            billingFrequency: Schema.optional(Schema.String),
+          }),
+        ),
+        offerId: Schema.optional(Schema.String),
+        productCategory: Schema.optional(Schema.String),
+        productType: Schema.optional(Schema.String),
+        productTypeId: Schema.optional(Schema.String),
+        purchaseDate: Schema.optional(Schema.String),
+        quantity: Schema.optional(Schema.Number),
+        reseller: Schema.optional(
+          Schema.Struct({
+            resellerId: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        renewalTermDetails: Schema.optional(
+          Schema.Struct({
+            billingFrequency: Schema.optional(Schema.String),
+            productId: Schema.optional(Schema.String),
+            productTypeId: Schema.optional(Schema.String),
+            skuId: Schema.optional(Schema.String),
+            termDuration: Schema.optional(Schema.String),
+            quantity: Schema.optional(Schema.Number),
+            termEndDate: Schema.optional(Schema.String),
+          }),
+        ),
+        skuId: Schema.optional(Schema.String),
+        skuDescription: Schema.optional(Schema.String),
+        systemOverrides: Schema.optional(
+          Schema.Struct({
+            cancellation: Schema.optional(
+              Schema.Literals(["NotAllowed", "Allowed"]),
+            ),
+            cancellationAllowedEndDate: Schema.optional(Schema.String),
+          }),
+        ),
+        resourceUri: Schema.optional(Schema.String),
+        termDuration: Schema.optional(Schema.String),
+        termStartDate: Schema.optional(Schema.String),
+        termEndDate: Schema.optional(Schema.String),
+        provisioningTenantId: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Unknown",
+            "Active",
+            "Disabled",
+            "Deleted",
+            "Warned",
+            "Expiring",
+            "Expired",
+            "AutoRenew",
+            "Cancelled",
+            "Suspended",
+            "Failed",
+          ]),
+        ),
+        operationStatus: Schema.optional(
+          Schema.Literals(["Other", "None", "LockedForUpdate"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        subscriptionId: Schema.optional(Schema.String),
+        suspensionReasons: Schema.optional(Schema.Array(Schema.String)),
+        suspensionReasonDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              effectiveDate: Schema.optional(Schema.String),
+              reason: Schema.optional(
+                Schema.Literals([
+                  "None",
+                  "Cancelled",
+                  "PastDue",
+                  "SuspiciousActivity",
+                  "Other",
+                  "Transferred",
+                  "PolicyViolation",
+                  "SpendingLimitReached",
+                  "Expired",
+                ]),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsUpdateInput =
@@ -5807,11 +7318,13 @@ export const BillingSubscriptionsValidateMoveEligibilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    destinationInvoiceSectionId: Schema.optional(Schema.String),
+    destinationEnrollmentAccountId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}/validateMoveEligibility",
+      apiVersion: "2024-04-01",
     }),
   );
 export type BillingSubscriptionsValidateMoveEligibilityInput =
@@ -5881,11 +7394,11 @@ export const CustomersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   billingProfileName: Schema.String.pipe(T.PathParam()),
   customerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type CustomersGetInput = typeof CustomersGetInput.Type;
@@ -5930,11 +7443,11 @@ export const CustomersGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CustomersGetByBillingAccountInput =
@@ -5981,7 +7494,6 @@ export const CustomersGetByBillingAccount =
 export const CustomersListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     expand: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -5993,6 +7505,7 @@ export const CustomersListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CustomersListByBillingAccountInput =
@@ -6061,7 +7574,6 @@ export const CustomersListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     expand: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -6073,6 +7585,7 @@ export const CustomersListByBillingProfileInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CustomersListByBillingProfileInput =
@@ -6141,11 +7654,11 @@ export const CustomersListByBillingProfile =
 export const DepartmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   departmentName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type DepartmentsGetInput = typeof DepartmentsGetInput.Type;
@@ -6188,7 +7701,6 @@ export const DepartmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DepartmentsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -6198,6 +7710,7 @@ export const DepartmentsListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type DepartmentsListByBillingAccountInput =
@@ -6264,11 +7777,11 @@ export const EnrollmentAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type EnrollmentAccountsGetInput = typeof EnrollmentAccountsGetInput.Type;
@@ -6317,11 +7830,11 @@ export const EnrollmentAccountsGetByDepartmentInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/enrollmentAccounts/{enrollmentAccountName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type EnrollmentAccountsGetByDepartmentInput =
@@ -6369,7 +7882,6 @@ export const EnrollmentAccountsGetByDepartment =
 export const EnrollmentAccountsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -6380,6 +7892,7 @@ export const EnrollmentAccountsListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts",
+      apiVersion: "2024-04-01",
     }),
   );
 export type EnrollmentAccountsListByBillingAccountInput =
@@ -6447,7 +7960,6 @@ export const EnrollmentAccountsListByDepartmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -6458,6 +7970,7 @@ export const EnrollmentAccountsListByDepartmentInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/enrollmentAccounts",
+      apiVersion: "2024-04-01",
     }),
   );
 export type EnrollmentAccountsListByDepartmentInput =
@@ -6525,11 +8038,11 @@ export const EnrollmentAccountsListByDepartment =
 export const InvoicesAmendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   invoiceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/amend",
+    apiVersion: "2024-04-01",
   }),
 );
 export type InvoicesAmendInput = typeof InvoicesAmendInput.Type;
@@ -6555,12 +8068,12 @@ export const InvoicesDownloadByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     documentName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/download",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoicesDownloadByBillingAccountInput =
@@ -6594,12 +8107,12 @@ export const InvoicesDownloadByBillingSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     documentName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/{subscriptionId}/invoices/{invoiceName}/download",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoicesDownloadByBillingSubscriptionInput =
@@ -6632,11 +8145,11 @@ export const InvoicesDownloadByBillingSubscription =
 export const InvoicesDownloadDocumentsByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/downloadDocuments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoicesDownloadDocumentsByBillingAccountInput =
@@ -6667,11 +8180,11 @@ export const InvoicesDownloadDocumentsByBillingAccount =
 export const InvoicesDownloadDocumentsByBillingSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/{subscriptionId}/downloadDocuments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoicesDownloadDocumentsByBillingSubscriptionInput =
@@ -6703,11 +8216,11 @@ export const InvoicesDownloadSummaryByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/downloadSummary",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoicesDownloadSummaryByBillingAccountInput =
@@ -6741,11 +8254,55 @@ export const InvoiceSectionsCreateOrUpdateInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        displayName: Schema.optional(Schema.String),
+        state: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "Active",
+            "Deleted",
+            "Disabled",
+            "UnderReview",
+            "Warned",
+            "Restricted",
+          ]),
+        ),
+        reasonCode: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "PastDue",
+            "UnusualActivity",
+            "SpendingLimitReached",
+            "SpendingLimitExpired",
+          ]),
+        ),
+        systemId: Schema.optional(Schema.String),
+        targetCloud: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoiceSectionsCreateOrUpdateInput =
@@ -6795,11 +8352,11 @@ export const InvoiceSectionsDeleteInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoiceSectionsDeleteInput = typeof InvoiceSectionsDeleteInput.Type;
@@ -6831,11 +8388,11 @@ export const InvoiceSectionsGetInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoiceSectionsGetInput = typeof InvoiceSectionsGetInput.Type;
@@ -6881,7 +8438,6 @@ export const InvoiceSectionsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeDeleted: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -6893,6 +8449,7 @@ export const InvoiceSectionsListByBillingProfileInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoiceSectionsListByBillingProfileInput =
@@ -6963,11 +8520,11 @@ export const InvoiceSectionsValidateDeleteEligibilityInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/validateDeleteEligibility",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoiceSectionsValidateDeleteEligibilityInput =
@@ -7016,11 +8573,11 @@ export const InvoiceSectionsValidateDeleteEligibility =
 // Input Schema
 export const InvoicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   invoiceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Billing/billingAccounts/default/invoices/{invoiceName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type InvoicesGetInput = typeof InvoicesGetInput.Type;
@@ -7063,11 +8620,11 @@ export const InvoicesGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoicesGetByBillingAccountInput =
@@ -7116,11 +8673,11 @@ export const InvoicesGetByBillingSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/{subscriptionId}/invoices/{invoiceName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoicesGetByBillingSubscriptionInput =
@@ -7167,7 +8724,6 @@ export const InvoicesGetByBillingSubscription =
 export const InvoicesListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     periodStartDate: Schema.optional(Schema.String),
     periodEndDate: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -7180,6 +8736,7 @@ export const InvoicesListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoicesListByBillingAccountInput =
@@ -7249,7 +8806,6 @@ export const InvoicesListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     periodStartDate: Schema.optional(Schema.String),
     periodEndDate: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -7262,6 +8818,7 @@ export const InvoicesListByBillingProfileInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoices",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoicesListByBillingProfileInput =
@@ -7331,7 +8888,6 @@ export const InvoicesListByBillingProfile =
 export const InvoicesListByBillingSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     periodStartDate: Schema.optional(Schema.String),
     periodEndDate: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -7344,6 +8900,7 @@ export const InvoicesListByBillingSubscriptionInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/{subscriptionId}/invoices",
+      apiVersion: "2024-04-01",
     }),
   );
 export type InvoicesListByBillingSubscriptionInput =
@@ -7409,10 +8966,14 @@ export const InvoicesListByBillingSubscription =
     outputSchema: InvoicesListByBillingSubscriptionOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Billing/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Billing/operations",
+    apiVersion: "2024-04-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -7455,11 +9016,11 @@ export const PartnerTransfersCancelInput =
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
     transferName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/transfers/{transferName}/cancel",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PartnerTransfersCancelInput =
@@ -7512,11 +9073,11 @@ export const PartnerTransfersGetInput =
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
     transferName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/transfers/{transferName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PartnerTransfersGetInput = typeof PartnerTransfersGetInput.Type;
@@ -7565,11 +9126,17 @@ export const PartnerTransfersInitiateInput =
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
     transferName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        recipientEmailId: Schema.optional(Schema.String),
+        resellerId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/transfers/{transferName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PartnerTransfersInitiateInput =
@@ -7621,11 +9188,11 @@ export const PartnerTransfersListInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/transfers",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PartnerTransfersListInput = typeof PartnerTransfersListInput.Type;
@@ -7687,11 +9254,11 @@ export const PartnerTransfersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PaymentMethodsDeleteByUserInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     paymentMethodName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Billing/paymentMethods/{paymentMethodName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PaymentMethodsDeleteByUserInput =
@@ -7721,11 +9288,11 @@ export const PaymentMethodsGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     paymentMethodName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/paymentMethods/{paymentMethodName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PaymentMethodsGetByBillingAccountInput =
@@ -7774,11 +9341,11 @@ export const PaymentMethodsGetByBillingProfileInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     paymentMethodName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/paymentMethodLinks/{paymentMethodName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PaymentMethodsGetByBillingProfileInput =
@@ -7826,11 +9393,11 @@ export const PaymentMethodsGetByBillingProfile =
 export const PaymentMethodsGetByUserInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     paymentMethodName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/paymentMethods/{paymentMethodName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PaymentMethodsGetByUserInput =
@@ -7877,11 +9444,11 @@ export const PaymentMethodsGetByUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PaymentMethodsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/paymentMethods",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PaymentMethodsListByBillingAccountInput =
@@ -7943,11 +9510,11 @@ export const PaymentMethodsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/paymentMethodLinks",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PaymentMethodsListByBillingProfileInput =
@@ -8007,12 +9574,11 @@ export const PaymentMethodsListByBillingProfile =
   }));
 // Input Schema
 export const PaymentMethodsListByUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/paymentMethods",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PaymentMethodsListByUserInput =
@@ -8073,11 +9639,81 @@ export const PaymentMethodsListByUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PoliciesCreateOrUpdateByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        enterpriseAgreementPolicies: Schema.optional(
+          Schema.Struct({
+            authenticationType: Schema.optional(
+              Schema.Literals([
+                "Other",
+                "MicrosoftAccountOnly",
+                "MixedAccount",
+                "OrganizationalAccountCrossTenant",
+                "OrganizationalAccountOnly",
+              ]),
+            ),
+            accountOwnerViewCharges: Schema.optional(
+              Schema.Literals(["Other", "Allowed", "Disabled", "NotAllowed"]),
+            ),
+            departmentAdminViewCharges: Schema.optional(
+              Schema.Literals(["Other", "Allowed", "Disabled", "NotAllowed"]),
+            ),
+          }),
+        ),
+        marketplacePurchases: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "AllAllowed",
+            "Disabled",
+            "NotAllowed",
+            "OnlyFreeAllowed",
+          ]),
+        ),
+        reservationPurchases: Schema.optional(
+          Schema.Literals(["Other", "Allowed", "Disabled", "NotAllowed"]),
+        ),
+        savingsPlanPurchases: Schema.optional(
+          Schema.Literals(["Other", "Allowed", "Disabled", "NotAllowed"]),
+        ),
+        policies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+              policyType: Schema.optional(
+                Schema.Literals([
+                  "Other",
+                  "UserControlled",
+                  "SystemControlled",
+                ]),
+              ),
+              scope: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/policies/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PoliciesCreateOrUpdateByBillingAccountInput =
@@ -8124,11 +9760,87 @@ export const PoliciesCreateOrUpdateByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        enterpriseAgreementPolicies: Schema.optional(
+          Schema.Struct({
+            authenticationType: Schema.optional(
+              Schema.Literals([
+                "Other",
+                "MicrosoftAccountOnly",
+                "MixedAccount",
+                "OrganizationalAccountCrossTenant",
+                "OrganizationalAccountOnly",
+              ]),
+            ),
+            accountOwnerViewCharges: Schema.optional(
+              Schema.Literals(["Other", "Allowed", "Disabled", "NotAllowed"]),
+            ),
+            departmentAdminViewCharges: Schema.optional(
+              Schema.Literals(["Other", "Allowed", "Disabled", "NotAllowed"]),
+            ),
+          }),
+        ),
+        invoiceSectionLabelManagement: Schema.optional(
+          Schema.Literals(["Other", "Allowed", "NotAllowed"]),
+        ),
+        marketplacePurchases: Schema.optional(
+          Schema.Literals([
+            "Other",
+            "AllAllowed",
+            "Disabled",
+            "NotAllowed",
+            "OnlyFreeAllowed",
+          ]),
+        ),
+        reservationPurchases: Schema.optional(
+          Schema.Literals(["Other", "Allowed", "Disabled", "NotAllowed"]),
+        ),
+        savingsPlanPurchases: Schema.optional(
+          Schema.Literals(["Other", "Allowed", "Disabled", "NotAllowed"]),
+        ),
+        viewCharges: Schema.optional(
+          Schema.Literals(["Other", "Allowed", "NotAllowed"]),
+        ),
+        policies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+              policyType: Schema.optional(
+                Schema.Literals([
+                  "Other",
+                  "UserControlled",
+                  "SystemControlled",
+                ]),
+              ),
+              scope: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/policies/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PoliciesCreateOrUpdateByBillingProfileInput =
@@ -8177,11 +9889,48 @@ export const PoliciesCreateOrUpdateByCustomerInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        viewCharges: Schema.Literals(["Other", "Allowed", "NotAllowed"]),
+        policies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+              policyType: Schema.optional(
+                Schema.Literals([
+                  "Other",
+                  "UserControlled",
+                  "SystemControlled",
+                ]),
+              ),
+              scope: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/policies/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PoliciesCreateOrUpdateByCustomerInput =
@@ -8230,11 +9979,48 @@ export const PoliciesCreateOrUpdateByCustomerAtBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Canceled",
+            "Failed",
+            "New",
+            "Pending",
+            "Provisioning",
+            "PendingBilling",
+            "ConfirmedBilling",
+            "Creating",
+            "Created",
+            "Expired",
+          ]),
+        ),
+        viewCharges: Schema.Literals(["Other", "Allowed", "NotAllowed"]),
+        policies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+              policyType: Schema.optional(
+                Schema.Literals([
+                  "Other",
+                  "UserControlled",
+                  "SystemControlled",
+                ]),
+              ),
+              scope: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/policies/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PoliciesCreateOrUpdateByCustomerAtBillingAccountInput =
@@ -8281,11 +10067,11 @@ export const PoliciesCreateOrUpdateByCustomerAtBillingAccount =
 export const PoliciesGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/policies/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PoliciesGetByBillingAccountInput =
@@ -8333,11 +10119,11 @@ export const PoliciesGetByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/policies/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PoliciesGetByBillingProfileInput =
@@ -8388,11 +10174,11 @@ export const PoliciesGetByCustomerInput =
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/policies/{policyName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PoliciesGetByCustomerInput = typeof PoliciesGetByCustomerInput.Type;
@@ -8442,11 +10228,11 @@ export const PoliciesGetByCustomerAtBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/policies/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PoliciesGetByCustomerAtBillingAccountInput =
@@ -8493,11 +10279,11 @@ export const PoliciesGetByCustomerAtBillingAccount =
 export const PoliciesGetBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Billing/policies/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type PoliciesGetBySubscriptionInput =
@@ -8544,11 +10330,11 @@ export const PoliciesGetBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ProductsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   productName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/products/{productName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type ProductsGetInput = typeof ProductsGetInput.Type;
@@ -8591,7 +10377,6 @@ export const ProductsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ProductsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -8602,6 +10387,7 @@ export const ProductsListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/products",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ProductsListByBillingAccountInput =
@@ -8669,7 +10455,6 @@ export const ProductsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -8680,6 +10465,7 @@ export const ProductsListByBillingProfileInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/products",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ProductsListByBillingProfileInput =
@@ -8748,7 +10534,6 @@ export const ProductsListByCustomerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -8759,6 +10544,7 @@ export const ProductsListByCustomerInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/products",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ProductsListByCustomerInput =
@@ -8829,7 +10615,6 @@ export const ProductsListByInvoiceSectionInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -8840,6 +10625,7 @@ export const ProductsListByInvoiceSectionInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/products",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ProductsListByInvoiceSectionInput =
@@ -8908,11 +10694,12 @@ export const ProductsListByInvoiceSection =
 export const ProductsMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   productName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  destinationInvoiceSectionId: Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/products/{productName}/move",
+    apiVersion: "2024-04-01",
   }),
 );
 export type ProductsMoveInput = typeof ProductsMoveInput.Type;
@@ -8955,11 +10742,61 @@ export const ProductsMove = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ProductsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   productName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      autoRenew: Schema.optional(Schema.Literals(["Off", "On"])),
+      availabilityId: Schema.optional(Schema.String),
+      billingFrequency: Schema.optional(Schema.String),
+      billingProfileId: Schema.optional(Schema.String),
+      billingProfileDisplayName: Schema.optional(Schema.String),
+      customerId: Schema.optional(Schema.String),
+      customerDisplayName: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.String),
+      endDate: Schema.optional(Schema.String),
+      invoiceSectionId: Schema.optional(Schema.String),
+      invoiceSectionDisplayName: Schema.optional(Schema.String),
+      lastCharge: Schema.optional(
+        Schema.Struct({
+          currency: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.Number),
+        }),
+      ),
+      lastChargeDate: Schema.optional(Schema.String),
+      productType: Schema.optional(Schema.String),
+      productTypeId: Schema.optional(Schema.String),
+      skuId: Schema.optional(Schema.String),
+      skuDescription: Schema.optional(Schema.String),
+      purchaseDate: Schema.optional(Schema.String),
+      quantity: Schema.optional(Schema.Number),
+      status: Schema.optional(
+        Schema.Literals([
+          "Other",
+          "Active",
+          "Disabled",
+          "Deleted",
+          "PastDue",
+          "Expiring",
+          "Expired",
+          "AutoRenew",
+          "Canceled",
+          "Suspended",
+        ]),
+      ),
+      tenantId: Schema.optional(Schema.String),
+      reseller: Schema.optional(
+        Schema.Struct({
+          resellerId: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/products/{productName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type ProductsUpdateInput = typeof ProductsUpdateInput.Type;
@@ -9003,11 +10840,12 @@ export const ProductsValidateMoveEligibilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    destinationInvoiceSectionId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/products/{productName}/validateMoveEligibility",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ProductsValidateMoveEligibilityInput =
@@ -9065,11 +10903,31 @@ export const ProductsValidateMoveEligibility =
 export const RecipientTransfersAcceptInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transferName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        productDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              productType: Schema.optional(
+                Schema.Literals([
+                  "AzureSubscription",
+                  "AzureReservation",
+                  "Department",
+                  "SavingsPlan",
+                  "SAAS",
+                ]),
+              ),
+              productId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/transfers/{transferName}/accept",
+      apiVersion: "2024-04-01",
     }),
   );
 export type RecipientTransfersAcceptInput =
@@ -9116,11 +10974,11 @@ export const RecipientTransfersAccept = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RecipientTransfersDeclineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transferName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/transfers/{transferName}/decline",
+      apiVersion: "2024-04-01",
     }),
   );
 export type RecipientTransfersDeclineInput =
@@ -9167,11 +11025,11 @@ export const RecipientTransfersDecline = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RecipientTransfersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transferName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/transfers/{transferName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type RecipientTransfersGetInput = typeof RecipientTransfersGetInput.Type;
@@ -9215,10 +11073,12 @@ export const RecipientTransfersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const RecipientTransfersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Billing/transfers" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/transfers",
+      apiVersion: "2024-04-01",
+    }),
   );
 export type RecipientTransfersListInput =
   typeof RecipientTransfersListInput.Type;
@@ -9278,11 +11138,31 @@ export const RecipientTransfersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RecipientTransfersValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transferName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        productDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              productType: Schema.optional(
+                Schema.Literals([
+                  "AzureSubscription",
+                  "AzureReservation",
+                  "Department",
+                  "SavingsPlan",
+                  "SAAS",
+                ]),
+              ),
+              productId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/transfers/{transferName}/validate",
+      apiVersion: "2024-04-01",
     }),
   );
 export type RecipientTransfersValidateInput =
@@ -9334,12 +11214,12 @@ export const ReservationOrdersGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     reservationOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders/{reservationOrderId}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ReservationOrdersGetByBillingAccountInput =
@@ -9389,7 +11269,6 @@ export const ReservationOrdersGetByBillingAccount =
 export const ReservationOrdersListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     skiptoken: Schema.optional(Schema.Number),
@@ -9397,6 +11276,7 @@ export const ReservationOrdersListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ReservationOrdersListByBillingAccountInput =
@@ -9464,12 +11344,12 @@ export const ReservationsGetByReservationOrderInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ReservationsGetByReservationOrderInput =
@@ -9520,7 +11400,6 @@ export const ReservationsGetByReservationOrder =
 export const ReservationsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     skiptoken: Schema.optional(Schema.Number),
@@ -9531,6 +11410,7 @@ export const ReservationsListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservations",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ReservationsListByBillingAccountInput =
@@ -9613,7 +11493,6 @@ export const ReservationsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     skiptoken: Schema.optional(Schema.Number),
@@ -9624,6 +11503,7 @@ export const ReservationsListByBillingProfileInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/reservations",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ReservationsListByBillingProfileInput =
@@ -9707,11 +11587,11 @@ export const ReservationsListByReservationOrderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     reservationOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders/{reservationOrderId}/reservations",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ReservationsListByReservationOrderInput =
@@ -9777,11 +11657,88 @@ export const ReservationsUpdateByBillingAccountInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        appliedScopeType: Schema.optional(
+          Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+        ),
+        appliedScopeProperties: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            managementGroupId: Schema.optional(Schema.String),
+            subscriptionId: Schema.optional(Schema.String),
+            resourceGroupId: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+          }),
+        ),
+        instanceFlexibility: Schema.optional(Schema.Literals(["On", "Off"])),
+        displayName: Schema.optional(Schema.String),
+        renew: Schema.optional(Schema.Boolean),
+        renewProperties: Schema.optional(
+          Schema.Struct({
+            purchaseProperties: Schema.optional(
+              Schema.Struct({
+                sku: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                  }),
+                ),
+                location: Schema.optional(Schema.String),
+                properties: Schema.optional(
+                  Schema.Struct({
+                    reservedResourceType: Schema.optional(Schema.String),
+                    billingScopeId: Schema.optional(Schema.String),
+                    term: Schema.optional(Schema.String),
+                    billingPlan: Schema.optional(
+                      Schema.Literals(["Upfront", "Monthly"]),
+                    ),
+                    quantity: Schema.optional(Schema.Number),
+                    displayName: Schema.optional(Schema.String),
+                    appliedScopeType: Schema.optional(
+                      Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+                    ),
+                    appliedScopes: Schema.optional(Schema.Array(Schema.String)),
+                    appliedScopeProperties: Schema.optional(
+                      Schema.Struct({
+                        tenantId: Schema.optional(Schema.String),
+                        managementGroupId: Schema.optional(Schema.String),
+                        subscriptionId: Schema.optional(Schema.String),
+                        resourceGroupId: Schema.optional(Schema.String),
+                        displayName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    renew: Schema.optional(Schema.Boolean),
+                    reservedResourceProperties: Schema.optional(
+                      Schema.Struct({
+                        instanceFlexibility: Schema.optional(
+                          Schema.Literals(["On", "Off"]),
+                        ),
+                      }),
+                    ),
+                    instanceFlexibility: Schema.optional(
+                      Schema.Literals(["On", "Off"]),
+                    ),
+                    reviewDateTime: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        reviewDateTime: Schema.optional(Schema.String),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ReservationsUpdateByBillingAccountInput =
@@ -9830,12 +11787,12 @@ export const SavingsPlanOrdersGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlanOrders/{savingsPlanOrderId}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SavingsPlanOrdersGetByBillingAccountInput =
@@ -9883,7 +11840,6 @@ export const SavingsPlanOrdersGetByBillingAccount =
 export const SavingsPlanOrdersListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     skiptoken: Schema.optional(Schema.Number),
@@ -9891,6 +11847,7 @@ export const SavingsPlanOrdersListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlanOrders",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SavingsPlanOrdersListByBillingAccountInput =
@@ -9956,12 +11913,12 @@ export const SavingsPlansGetByBillingAccountInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     savingsPlanId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SavingsPlansGetByBillingAccountInput =
@@ -10010,7 +11967,6 @@ export const SavingsPlansGetByBillingAccount =
 export const SavingsPlansListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     skiptoken: Schema.optional(Schema.Number),
@@ -10021,6 +11977,7 @@ export const SavingsPlansListByBillingAccountInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlans",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SavingsPlansListByBillingAccountInput =
@@ -10088,11 +12045,11 @@ export const SavingsPlansListBySavingsPlanOrderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SavingsPlansListBySavingsPlanOrderInput =
@@ -10156,11 +12113,77 @@ export const SavingsPlansUpdateByBillingAccountInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     savingsPlanId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        appliedScopeType: Schema.optional(
+          Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+        ),
+        appliedScopeProperties: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            managementGroupId: Schema.optional(Schema.String),
+            subscriptionId: Schema.optional(Schema.String),
+            resourceGroupId: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+          }),
+        ),
+        renew: Schema.optional(Schema.Boolean),
+        renewProperties: Schema.optional(
+          Schema.Struct({
+            purchaseProperties: Schema.optional(
+              Schema.Struct({
+                sku: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                  }),
+                ),
+                properties: Schema.optional(
+                  Schema.Struct({
+                    displayName: Schema.optional(Schema.String),
+                    billingScopeId: Schema.optional(Schema.String),
+                    term: Schema.optional(
+                      Schema.Literals(["P1Y", "P3Y", "P5Y"]),
+                    ),
+                    billingPlan: Schema.optional(Schema.Literals(["P1M"])),
+                    appliedScopeType: Schema.optional(
+                      Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+                    ),
+                    commitment: Schema.optional(
+                      Schema.Struct({
+                        currencyCode: Schema.optional(Schema.String),
+                        amount: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    renew: Schema.optional(Schema.Boolean),
+                    appliedScopeProperties: Schema.optional(
+                      Schema.Struct({
+                        tenantId: Schema.optional(Schema.String),
+                        managementGroupId: Schema.optional(Schema.String),
+                        subscriptionId: Schema.optional(Schema.String),
+                        resourceGroupId: Schema.optional(Schema.String),
+                        displayName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SavingsPlansUpdateByBillingAccountInput =
@@ -10210,11 +12233,77 @@ export const SavingsPlansValidateUpdateByBillingAccountInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     savingsPlanId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    benefits: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          displayName: Schema.optional(Schema.String),
+          appliedScopeType: Schema.optional(
+            Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+          ),
+          appliedScopeProperties: Schema.optional(
+            Schema.Struct({
+              tenantId: Schema.optional(Schema.String),
+              managementGroupId: Schema.optional(Schema.String),
+              subscriptionId: Schema.optional(Schema.String),
+              resourceGroupId: Schema.optional(Schema.String),
+              displayName: Schema.optional(Schema.String),
+            }),
+          ),
+          renew: Schema.optional(Schema.Boolean),
+          renewProperties: Schema.optional(
+            Schema.Struct({
+              purchaseProperties: Schema.optional(
+                Schema.Struct({
+                  sku: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  properties: Schema.optional(
+                    Schema.Struct({
+                      displayName: Schema.optional(Schema.String),
+                      billingScopeId: Schema.optional(Schema.String),
+                      term: Schema.optional(
+                        Schema.Literals(["P1Y", "P3Y", "P5Y"]),
+                      ),
+                      billingPlan: Schema.optional(Schema.Literals(["P1M"])),
+                      appliedScopeType: Schema.optional(
+                        Schema.Literals([
+                          "Single",
+                          "Shared",
+                          "ManagementGroup",
+                        ]),
+                      ),
+                      commitment: Schema.optional(
+                        Schema.Struct({
+                          currencyCode: Schema.optional(Schema.String),
+                          amount: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      renew: Schema.optional(Schema.Boolean),
+                      appliedScopeProperties: Schema.optional(
+                        Schema.Struct({
+                          tenantId: Schema.optional(Schema.String),
+                          managementGroupId: Schema.optional(Schema.String),
+                          subscriptionId: Schema.optional(Schema.String),
+                          resourceGroupId: Schema.optional(Schema.String),
+                          displayName: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/validate",
+      apiVersion: "2024-04-01",
     }),
   );
 export type SavingsPlansValidateUpdateByBillingAccountInput =
@@ -10256,13 +12345,13 @@ export const TransactionsGetTransactionSummaryByInvoiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     search: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/transactionSummary",
+      apiVersion: "2024-04-01",
     }),
   );
 export type TransactionsGetTransactionSummaryByInvoiceInput =
@@ -10301,7 +12390,6 @@ export const TransactionsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     periodStartDate: Schema.String,
     periodEndDate: Schema.String,
     type: Schema.Literals(["Other", "Billed", "Unbilled"]),
@@ -10315,6 +12403,7 @@ export const TransactionsListByBillingProfileInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/transactions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type TransactionsListByBillingProfileInput =
@@ -10387,7 +12476,6 @@ export const TransactionsListByCustomerInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     periodStartDate: Schema.String,
     periodEndDate: Schema.String,
     type: Schema.Literals(["Other", "Billed", "Unbilled"]),
@@ -10401,6 +12489,7 @@ export const TransactionsListByCustomerInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/transactions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type TransactionsListByCustomerInput =
@@ -10474,7 +12563,6 @@ export const TransactionsListByInvoiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -10485,6 +12573,7 @@ export const TransactionsListByInvoiceInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/transactions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type TransactionsListByInvoiceInput =
@@ -10555,7 +12644,6 @@ export const TransactionsListByInvoiceSectionInput =
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     periodStartDate: Schema.String,
     periodEndDate: Schema.String,
     type: Schema.Literals(["Other", "Billed", "Unbilled"]),
@@ -10569,6 +12657,7 @@ export const TransactionsListByInvoiceSectionInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/transactions",
+      apiVersion: "2024-04-01",
     }),
   );
 export type TransactionsListByInvoiceSectionInput =
@@ -10641,11 +12730,11 @@ export const TransactionsTransactionsDownloadByInvoiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/transactionsDownload",
+      apiVersion: "2024-04-01",
     }),
   );
 export type TransactionsTransactionsDownloadByInvoiceInput =
@@ -10679,11 +12768,11 @@ export const TransfersCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   billingProfileName: Schema.String.pipe(T.PathParam()),
   invoiceSectionName: Schema.String.pipe(T.PathParam()),
   transferName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/transfers/{transferName}/cancel",
+    apiVersion: "2024-04-01",
   }),
 );
 export type TransfersCancelInput = typeof TransfersCancelInput.Type;
@@ -10730,11 +12819,11 @@ export const TransfersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   billingProfileName: Schema.String.pipe(T.PathParam()),
   invoiceSectionName: Schema.String.pipe(T.PathParam()),
   transferName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/transfers/{transferName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type TransfersGetInput = typeof TransfersGetInput.Type;
@@ -10782,12 +12871,17 @@ export const TransfersInitiateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
     transferName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        recipientEmailId: Schema.optional(Schema.String),
+      }),
+    ),
   },
 ).pipe(
   T.Http({
     method: "PUT",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/transfers/{transferName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type TransfersInitiateInput = typeof TransfersInitiateInput.Type;
@@ -10834,11 +12928,11 @@ export const TransfersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   billingProfileName: Schema.String.pipe(T.PathParam()),
   invoiceSectionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/transfers",
+    apiVersion: "2024-04-01",
   }),
 );
 export type TransfersListInput = typeof TransfersListInput.Type;

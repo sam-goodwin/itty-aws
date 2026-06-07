@@ -12,7 +12,11 @@ import * as T from "../traits.ts";
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.PowerBI/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.PowerBI/operations",
+    apiVersion: "2020-06-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -52,10 +56,102 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PowerBIResourcesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+              properties: Schema.optional(
+                Schema.Struct({
+                  privateEndpoint: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  privateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(
+                        Schema.Literals([
+                          "Pending",
+                          "Approved",
+                          "Rejected",
+                          "Disconnected",
+                        ]),
+                      ),
+                      description: Schema.optional(Schema.String),
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  provisioningState: Schema.optional(
+                    Schema.Literals([
+                      "Creating",
+                      "Updating",
+                      "Deleting",
+                      "Succeeded",
+                      "Canceled",
+                      "Failed",
+                    ]),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PowerBIResourcesCreateInput =
@@ -174,6 +270,7 @@ export const PowerBIResourcesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PowerBIResourcesDeleteInput =
@@ -201,6 +298,7 @@ export const PowerBIResourcesListByResourceNameInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PowerBIResourcesListByResourceNameInput =
@@ -316,10 +414,102 @@ export const PowerBIResourcesListByResourceName =
   }));
 // Input Schema
 export const PowerBIResourcesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+              properties: Schema.optional(
+                Schema.Struct({
+                  privateEndpoint: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  privateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(
+                        Schema.Literals([
+                          "Pending",
+                          "Approved",
+                          "Rejected",
+                          "Disconnected",
+                        ]),
+                      ),
+                      description: Schema.optional(Schema.String),
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  provisioningState: Schema.optional(
+                    Schema.Literals([
+                      "Creating",
+                      "Updating",
+                      "Deleting",
+                      "Succeeded",
+                      "Canceled",
+                      "Failed",
+                    ]),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PowerBIResourcesUpdateInput =
@@ -434,10 +624,62 @@ export const PowerBIResourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Pending",
+                "Approved",
+                "Rejected",
+                "Disconnected",
+              ]),
+            ),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateEndpointConnections/{privateEndpointName}",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -517,6 +759,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateEndpointConnections/{privateEndpointName}",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -545,6 +788,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateEndpointConnections/{privateEndpointName}",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -627,6 +871,7 @@ export const PrivateEndpointConnectionsListByResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateEndpointConnections",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PrivateEndpointConnectionsListByResourceInput =
@@ -728,6 +973,7 @@ export const PrivateLinkResourcesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -770,6 +1016,7 @@ export const PrivateLinkResourcesListByResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateLinkResources",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PrivateLinkResourcesListByResourceInput =
@@ -816,6 +1063,7 @@ export const PrivateLinkServiceResourceOperationResultsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/operationResults/{operationId}",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PrivateLinkServiceResourceOperationResultsGetInput =
@@ -881,6 +1129,7 @@ export const PrivateLinkServicesForPowerBIListBySubscriptionIdInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PrivateLinkServicesForPowerBIListBySubscriptionIdInput =
@@ -1000,6 +1249,7 @@ export const PrivateLinkServicesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI",
+      apiVersion: "2020-06-01",
     }),
   );
 export type PrivateLinkServicesListByResourceGroupInput =

@@ -14,11 +14,78 @@ export const AlertProcessingRulesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertProcessingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        scopes: Schema.Array(Schema.String),
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              field: Schema.optional(
+                Schema.Literals([
+                  "Severity",
+                  "MonitorService",
+                  "MonitorCondition",
+                  "SignalType",
+                  "TargetResourceType",
+                  "TargetResource",
+                  "TargetResourceGroup",
+                  "AlertRuleId",
+                  "AlertRuleName",
+                  "Description",
+                  "AlertContext",
+                ]),
+              ),
+              operator: Schema.optional(
+                Schema.Literals([
+                  "Equals",
+                  "NotEquals",
+                  "Contains",
+                  "DoesNotContain",
+                ]),
+              ),
+              values: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+        schedule: Schema.optional(
+          Schema.Struct({
+            effectiveFrom: Schema.optional(Schema.String),
+            effectiveUntil: Schema.optional(Schema.String),
+            timeZone: Schema.optional(Schema.String),
+            recurrences: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  recurrenceType: Schema.Literals([
+                    "Daily",
+                    "Weekly",
+                    "Monthly",
+                  ]),
+                  startTime: Schema.optional(Schema.String),
+                  endTime: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        actions: Schema.Array(
+          Schema.Struct({
+            actionType: Schema.Literals([
+              "AddActionGroups",
+              "RemoveAllActionGroups",
+            ]),
+          }),
+        ),
+        description: Schema.optional(Schema.String),
+        enabled: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/actionRules/{alertProcessingRuleName}",
+      apiVersion: "2021-08-08",
     }),
   );
 export type AlertProcessingRulesCreateOrUpdateInput =
@@ -54,11 +121,11 @@ export const AlertProcessingRulesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertProcessingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/actionRules/{alertProcessingRuleName}",
+      apiVersion: "2021-08-08",
     }),
   );
 export type AlertProcessingRulesDeleteInput =
@@ -91,11 +158,11 @@ export const AlertProcessingRulesGetByNameInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertProcessingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/actionRules/{alertProcessingRuleName}",
+      apiVersion: "2021-08-08",
     }),
   );
 export type AlertProcessingRulesGetByNameInput =
@@ -130,11 +197,11 @@ export const AlertProcessingRulesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/actionRules",
+      apiVersion: "2021-08-08",
     }),
   );
 export type AlertProcessingRulesListByResourceGroupInput =
@@ -172,11 +239,11 @@ export const AlertProcessingRulesListByResourceGroup =
 export const AlertProcessingRulesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AlertsManagement/actionRules",
+      apiVersion: "2021-08-08",
     }),
   );
 export type AlertProcessingRulesListBySubscriptionInput =
@@ -215,11 +282,17 @@ export const AlertProcessingRulesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertProcessingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        enabled: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/actionRules/{alertProcessingRuleName}",
+      apiVersion: "2021-08-08",
     }),
   );
 export type AlertProcessingRulesUpdateInput =
@@ -257,6 +330,7 @@ export const AlertsChangeStateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/{scope}/providers/Microsoft.AlertsManagement/alerts/{alertId}/changestate",
+    apiVersion: "2019-03-01",
   }),
 );
 export type AlertsChangeStateInput = typeof AlertsChangeStateInput.Type;
@@ -285,6 +359,7 @@ export const AlertsGetAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.AlertsManagement/alerts",
+    apiVersion: "2019-03-01",
   }),
 );
 export type AlertsGetAllInput = typeof AlertsGetAllInput.Type;
@@ -319,6 +394,7 @@ export const AlertsGetByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.AlertsManagement/alerts/{alertId}",
+    apiVersion: "2019-03-01",
   }),
 );
 export type AlertsGetByIdInput = typeof AlertsGetByIdInput.Type;
@@ -342,12 +418,13 @@ export const AlertsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AlertsGetByIdOutput,
 }));
 // Input Schema
-export const AlertsGetHistoryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const AlertsGetHistoryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.AlertsManagement/alerts/{alertId}/history",
+    apiVersion: "2019-03-01",
   }),
 );
 export type AlertsGetHistoryInput = typeof AlertsGetHistoryInput.Type;
@@ -379,6 +456,7 @@ export const AlertsGetSummaryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.AlertsManagement/alertsSummary",
+    apiVersion: "2019-03-01",
   }),
 );
 export type AlertsGetSummaryInput = typeof AlertsGetSummaryInput.Type;
@@ -408,6 +486,7 @@ export const AlertsMetaDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AlertsManagement/alertsMetaData",
+    apiVersion: "2019-03-01",
   }),
 );
 export type AlertsMetaDataInput = typeof AlertsMetaDataInput.Type;
@@ -437,6 +516,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AlertsManagement/operations",
+    apiVersion: "2019-03-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -474,11 +554,50 @@ export const PrometheusRuleGroupsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.String),
+      enabled: Schema.optional(Schema.Boolean),
+      clusterName: Schema.optional(Schema.String),
+      scopes: Schema.Array(Schema.String),
+      interval: Schema.optional(Schema.String),
+      rules: Schema.Array(
+        Schema.Struct({
+          record: Schema.optional(Schema.String),
+          alert: Schema.optional(Schema.String),
+          enabled: Schema.optional(Schema.Boolean),
+          expression: Schema.String,
+          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          severity: Schema.optional(Schema.Number),
+          for: Schema.optional(Schema.String),
+          annotations: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          actions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                actionGroupId: Schema.optional(Schema.String),
+                actionProperties: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+              }),
+            ),
+          ),
+          resolveConfiguration: Schema.optional(
+            Schema.Struct({
+              autoResolved: Schema.optional(Schema.Boolean),
+              timeToResolve: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups/{ruleGroupName}",
+      apiVersion: "2023-03-01",
     }),
   );
 export type PrometheusRuleGroupsCreateOrUpdateInput =
@@ -528,11 +647,11 @@ export const PrometheusRuleGroupsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups/{ruleGroupName}",
+      apiVersion: "2023-03-01",
     }),
   );
 export type PrometheusRuleGroupsDeleteInput =
@@ -565,11 +684,11 @@ export const PrometheusRuleGroupsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups/{ruleGroupName}",
+      apiVersion: "2023-03-01",
     }),
   );
 export type PrometheusRuleGroupsGetInput =
@@ -619,11 +738,11 @@ export const PrometheusRuleGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups",
+      apiVersion: "2023-03-01",
     }),
   );
 export type PrometheusRuleGroupsListByResourceGroupInput =
@@ -687,11 +806,11 @@ export const PrometheusRuleGroupsListByResourceGroup =
 export const PrometheusRuleGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AlertsManagement/prometheusRuleGroups",
+      apiVersion: "2023-03-01",
     }),
   );
 export type PrometheusRuleGroupsListBySubscriptionInput =
@@ -756,11 +875,17 @@ export const PrometheusRuleGroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        enabled: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups/{ruleGroupName}",
+      apiVersion: "2023-03-01",
     }),
   );
 export type PrometheusRuleGroupsUpdateInput =
@@ -807,10 +932,66 @@ export const PrometheusRuleGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SmartDetectorAlertRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        state: Schema.Literals(["Enabled", "Disabled"]),
+        severity: Schema.Literals(["Sev0", "Sev1", "Sev2", "Sev3", "Sev4"]),
+        frequency: Schema.String,
+        detector: Schema.Struct({
+          id: Schema.String,
+          parameters: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          name: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+          supportedResourceTypes: Schema.optional(Schema.Array(Schema.String)),
+          imagePaths: Schema.optional(Schema.Array(Schema.String)),
+          parameterDefinitions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                displayName: Schema.optional(Schema.String),
+                description: Schema.optional(Schema.String),
+                type: Schema.optional(
+                  Schema.Literals([
+                    "String",
+                    "Integer",
+                    "Double",
+                    "Boolean",
+                    "DateTime",
+                  ]),
+                ),
+                isMandatory: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          ),
+          supportedCadences: Schema.optional(Schema.Array(Schema.Number)),
+        }),
+        scope: Schema.Array(Schema.String),
+        actionGroups: Schema.Struct({
+          customEmailSubject: Schema.optional(Schema.String),
+          customWebhookPayload: Schema.optional(Schema.String),
+          groupIds: Schema.Array(Schema.String),
+        }),
+        throttling: Schema.optional(
+          Schema.Struct({
+            duration: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules/{alertRuleName}",
+      apiVersion: "2021-04-01",
     }),
   );
 export type SmartDetectorAlertRulesCreateOrUpdateInput =
@@ -843,6 +1024,7 @@ export const SmartDetectorAlertRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules/{alertRuleName}",
+      apiVersion: "2021-04-01",
     }),
   );
 export type SmartDetectorAlertRulesDeleteInput =
@@ -869,6 +1051,7 @@ export const SmartDetectorAlertRulesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules/{alertRuleName}",
+      apiVersion: "2021-04-01",
     }),
   );
 export type SmartDetectorAlertRulesGetInput =
@@ -902,6 +1085,7 @@ export const SmartDetectorAlertRulesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/microsoft.alertsManagement/smartDetectorAlertRules",
+      apiVersion: "2021-04-01",
     }),
   );
 export type SmartDetectorAlertRulesListInput =
@@ -942,6 +1126,7 @@ export const SmartDetectorAlertRulesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules",
+      apiVersion: "2021-04-01",
     }),
   );
 export type SmartDetectorAlertRulesListByResourceGroupInput =
@@ -977,10 +1162,38 @@ export const SmartDetectorAlertRulesListByResourceGroup =
   }));
 // Input Schema
 export const SmartDetectorAlertRulesPatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        severity: Schema.optional(
+          Schema.Literals(["Sev0", "Sev1", "Sev2", "Sev3", "Sev4"]),
+        ),
+        frequency: Schema.optional(Schema.String),
+        actionGroups: Schema.optional(
+          Schema.Struct({
+            customEmailSubject: Schema.optional(Schema.String),
+            customWebhookPayload: Schema.optional(Schema.String),
+            groupIds: Schema.Array(Schema.String),
+          }),
+        ),
+        throttling: Schema.optional(
+          Schema.Struct({
+            duration: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules/{alertRuleName}",
+      apiVersion: "2021-04-01",
     }),
   );
 export type SmartDetectorAlertRulesPatchInput =

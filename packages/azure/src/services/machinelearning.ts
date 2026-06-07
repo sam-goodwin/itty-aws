@@ -15,6 +15,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.MachineLearning/operations",
+    apiVersion: "2019-10-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -49,10 +50,53 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WorkspacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        userStorageAccountId: Schema.String,
+        ownerEmail: Schema.String,
+        workspaceType: Schema.optional(
+          Schema.Literals([
+            "Production",
+            "Free",
+            "Anonymous",
+            "PaidStandard",
+            "PaidPremium",
+          ]),
+        ),
+        workspaceState: Schema.optional(
+          Schema.Literals([
+            "Deleted",
+            "Enabled",
+            "Disabled",
+            "Migrated",
+            "Updated",
+            "Registered",
+            "Unregistered",
+          ]),
+        ),
+        workspaceId: Schema.optional(Schema.String),
+        creationTime: Schema.optional(Schema.String),
+        studioEndpoint: Schema.optional(Schema.String),
+        keyVaultIdentifierId: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}",
+      apiVersion: "2019-10-01",
     }),
   );
 export type WorkspacesCreateOrUpdateInput =
@@ -93,6 +137,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}",
+    apiVersion: "2019-10-01",
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -116,6 +161,7 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}",
+    apiVersion: "2019-10-01",
   }),
 );
 export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
@@ -151,6 +197,7 @@ export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearning/workspaces",
+    apiVersion: "2019-10-01",
   }),
 );
 export type WorkspacesListInput = typeof WorkspacesListInput.Type;
@@ -192,6 +239,7 @@ export const WorkspacesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces",
+      apiVersion: "2019-10-01",
     }),
   );
 export type WorkspacesListByResourceGroupInput =
@@ -237,6 +285,7 @@ export const WorkspacesListWorkspaceKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}/listWorkspaceKeys",
+      apiVersion: "2019-10-01",
     }),
   );
 export type WorkspacesListWorkspaceKeysInput =
@@ -267,6 +316,7 @@ export const WorkspacesResyncStorageKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}/resyncStorageKeys",
+      apiVersion: "2019-10-01",
     }),
   );
 export type WorkspacesResyncStorageKeysInput =
@@ -289,12 +339,35 @@ export const WorkspacesResyncStorageKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      workspaceState: Schema.optional(
+        Schema.Literals([
+          "Deleted",
+          "Enabled",
+          "Disabled",
+          "Migrated",
+          "Updated",
+          "Registered",
+          "Unregistered",
+        ]),
+      ),
+      keyVaultIdentifierId: Schema.optional(Schema.String),
+      sku: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          tier: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearning/workspaces/{workspaceName}",
+    apiVersion: "2019-10-01",
   }),
 );
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;

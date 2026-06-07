@@ -13,11 +13,11 @@ export const AzureBareMetalInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/{azureBareMetalInstanceName}",
+      apiVersion: "2023-04-06",
     }),
   );
 export type AzureBareMetalInstancesGetInput =
@@ -54,11 +54,11 @@ export const AzureBareMetalInstancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances",
+      apiVersion: "2023-04-06",
     }),
   );
 export type AzureBareMetalInstancesListByResourceGroupInput =
@@ -100,11 +100,11 @@ export const AzureBareMetalInstancesListByResourceGroup =
 export const AzureBareMetalInstancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances",
+      apiVersion: "2023-04-06",
     }),
   );
 export type AzureBareMetalInstancesListBySubscriptionInput =
@@ -146,11 +146,11 @@ export const AzureBareMetalInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/{azureBareMetalInstanceName}",
+      apiVersion: "2023-04-06",
     }),
   );
 export type AzureBareMetalInstancesUpdateInput =
@@ -186,11 +186,63 @@ export const AzureBareMetalStorageInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        azureBareMetalStorageInstanceUniqueIdentifier: Schema.optional(
+          Schema.String,
+        ),
+        storageProperties: Schema.optional(
+          Schema.Struct({
+            provisioningState: Schema.optional(
+              Schema.Literals([
+                "Accepted",
+                "Creating",
+                "Updating",
+                "Failed",
+                "Succeeded",
+                "Deleting",
+                "Canceled",
+                "Migrating",
+              ]),
+            ),
+            offeringType: Schema.optional(Schema.String),
+            storageType: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.String),
+            hardwareType: Schema.optional(Schema.String),
+            workloadType: Schema.optional(Schema.String),
+            storageBillingProperties: Schema.optional(
+              Schema.Struct({
+                billingMode: Schema.optional(Schema.String),
+                azureBareMetalStorageInstanceSize: Schema.optional(
+                  Schema.String,
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances/{azureBareMetalStorageInstanceName}",
+      apiVersion: "2023-04-06",
     }),
   );
 export type AzureBareMetalStorageInstancesCreateInput =
@@ -224,11 +276,11 @@ export const AzureBareMetalStorageInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances/{azureBareMetalStorageInstanceName}",
+      apiVersion: "2023-04-06",
     }),
   );
 export type AzureBareMetalStorageInstancesDeleteInput =
@@ -258,11 +310,11 @@ export const AzureBareMetalStorageInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances/{azureBareMetalStorageInstanceName}",
+      apiVersion: "2023-04-06",
     }),
   );
 export type AzureBareMetalStorageInstancesGetInput =
@@ -298,11 +350,11 @@ export const AzureBareMetalStorageInstancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances",
+      apiVersion: "2023-04-06",
     }),
   );
 export type AzureBareMetalStorageInstancesListByResourceGroupInput =
@@ -344,11 +396,11 @@ export const AzureBareMetalStorageInstancesListByResourceGroup =
 export const AzureBareMetalStorageInstancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances",
+      apiVersion: "2023-04-06",
     }),
   );
 export type AzureBareMetalStorageInstancesListBySubscriptionInput =
@@ -390,11 +442,11 @@ export const AzureBareMetalStorageInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances/{azureBareMetalStorageInstanceName}",
+      apiVersion: "2023-04-06",
     }),
   );
 export type AzureBareMetalStorageInstancesUpdateInput =
@@ -426,12 +478,13 @@ export const AzureBareMetalStorageInstancesUpdate =
     outputSchema: AzureBareMetalStorageInstancesUpdateOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.BareMetalInfrastructure/operations",
+    apiVersion: "2023-04-06",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;

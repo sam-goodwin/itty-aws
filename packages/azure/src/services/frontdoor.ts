@@ -14,11 +14,12 @@ export const EndpointsPurgeContentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     frontDoorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    contentPaths: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/purge",
+      apiVersion: "2025-11-01",
     }),
   );
 export type EndpointsPurgeContentInput = typeof EndpointsPurgeContentInput.Type;
@@ -51,11 +52,46 @@ export const ExperimentsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        endpointA: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            endpoint: Schema.optional(Schema.String),
+          }),
+        ),
+        endpointB: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            endpoint: Schema.optional(Schema.String),
+          }),
+        ),
+        enabledState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        resourceState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Enabling",
+            "Enabled",
+            "Disabling",
+            "Disabled",
+            "Deleting",
+          ]),
+        ),
+        status: Schema.optional(Schema.String),
+        scriptFileUri: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ExperimentsCreateOrUpdateInput =
@@ -96,12 +132,12 @@ export const ExperimentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type ExperimentsDeleteInput = typeof ExperimentsDeleteInput.Type;
@@ -130,11 +166,11 @@ export const ExperimentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
   experimentName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type ExperimentsGetInput = typeof ExperimentsGetInput.Type;
@@ -169,11 +205,11 @@ export const ExperimentsListByProfileInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ExperimentsListByProfileInput =
@@ -218,12 +254,19 @@ export const ExperimentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        enabledState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      }),
+    ),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type ExperimentsUpdateInput = typeof ExperimentsUpdateInput.Type;
@@ -258,11 +301,16 @@ export const ExperimentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const FrontDoorNameAvailabilityCheckInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals([
+      "Microsoft.Network/frontDoors",
+      "Microsoft.Network/frontDoors/frontendEndpoints",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Network/checkFrontDoorNameAvailability",
+      apiVersion: "2025-11-01",
     }),
   );
 export type FrontDoorNameAvailabilityCheckInput =
@@ -295,11 +343,16 @@ export const FrontDoorNameAvailabilityCheck =
 export const FrontDoorNameAvailabilityWithSubscriptionCheckInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals([
+      "Microsoft.Network/frontDoors",
+      "Microsoft.Network/frontDoors/frontendEndpoints",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/checkFrontDoorNameAvailability",
+      apiVersion: "2025-11-01",
     }),
   );
 export type FrontDoorNameAvailabilityWithSubscriptionCheckInput =
@@ -335,11 +388,67 @@ export const FrontDoorsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     frontDoorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        friendlyName: Schema.optional(Schema.String),
+        routingRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        loadBalancingSettings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        healthProbeSettings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        backendPools: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        frontendEndpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        backendPoolsSettings: Schema.optional(
+          Schema.Struct({
+            enforceCertificateNameCheck: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            sendRecvTimeoutSeconds: Schema.optional(Schema.Number),
+          }),
+        ),
+        enabledState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type FrontDoorsCreateOrUpdateInput =
@@ -377,11 +486,11 @@ export const FrontDoorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   frontDoorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type FrontDoorsDeleteInput = typeof FrontDoorsDeleteInput.Type;
@@ -408,11 +517,11 @@ export const FrontDoorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   frontDoorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type FrontDoorsGetInput = typeof FrontDoorsGetInput.Type;
@@ -443,11 +552,11 @@ export const FrontDoorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const FrontDoorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/frontDoors",
+    apiVersion: "2025-11-01",
   }),
 );
 export type FrontDoorsListInput = typeof FrontDoorsListInput.Type;
@@ -483,11 +592,11 @@ export const FrontDoorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors",
+      apiVersion: "2025-11-01",
     }),
   );
 export type FrontDoorsListByResourceGroupInput =
@@ -529,11 +638,12 @@ export const FrontDoorsValidateCustomDomainInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     frontDoorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    hostName: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/validateCustomDomain",
+      apiVersion: "2025-11-01",
     }),
   );
 export type FrontDoorsValidateCustomDomainInput =
@@ -570,11 +680,11 @@ export const FrontendEndpointsDisableHttpsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     frontDoorName: Schema.String.pipe(T.PathParam()),
     frontendEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/disableHttps",
+      apiVersion: "2025-11-01",
     }),
   );
 export type FrontendEndpointsDisableHttpsInput =
@@ -608,11 +718,30 @@ export const FrontendEndpointsEnableHttpsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     frontDoorName: Schema.String.pipe(T.PathParam()),
     frontendEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    certificateSource: Schema.Literals(["AzureKeyVault", "FrontDoor"]),
+    protocolType: Schema.Literals(["ServerNameIndication"]),
+    minimumTlsVersion: Schema.Literals(["1.0", "1.2"]),
+    keyVaultCertificateSourceParameters: Schema.optional(
+      Schema.Struct({
+        vault: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        secretName: Schema.optional(Schema.String),
+        secretVersion: Schema.optional(Schema.String),
+      }),
+    ),
+    frontDoorCertificateSourceParameters: Schema.optional(
+      Schema.Struct({
+        certificateType: Schema.optional(Schema.Literals(["Dedicated"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/enableHttps",
+      apiVersion: "2025-11-01",
     }),
   );
 export type FrontendEndpointsEnableHttpsInput =
@@ -646,11 +775,11 @@ export const FrontendEndpointsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     frontDoorName: Schema.String.pipe(T.PathParam()),
     frontendEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type FrontendEndpointsGetInput = typeof FrontendEndpointsGetInput.Type;
@@ -686,11 +815,11 @@ export const FrontendEndpointsListByFrontDoorInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     frontDoorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints",
+      apiVersion: "2025-11-01",
     }),
   );
 export type FrontendEndpointsListByFrontDoorInput =
@@ -729,11 +858,11 @@ export const FrontendEndpointsListByFrontDoor =
 export const ManagedRuleSetsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/frontDoorWebApplicationFirewallManagedRuleSets",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ManagedRuleSetsListInput = typeof ManagedRuleSetsListInput.Type;
@@ -771,11 +900,32 @@ export const NetworkExperimentProfilesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        resourceState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Enabling",
+            "Enabled",
+            "Disabling",
+            "Disabled",
+            "Deleting",
+          ]),
+        ),
+        enabledState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type NetworkExperimentProfilesCreateOrUpdateInput =
@@ -813,11 +963,11 @@ export const NetworkExperimentProfilesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type NetworkExperimentProfilesDeleteInput =
@@ -849,11 +999,11 @@ export const NetworkExperimentProfilesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type NetworkExperimentProfilesGetInput =
@@ -889,11 +1039,11 @@ export const NetworkExperimentProfilesGet =
 export const NetworkExperimentProfilesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/NetworkExperimentProfiles",
+      apiVersion: "2025-11-01",
     }),
   );
 export type NetworkExperimentProfilesListInput =
@@ -933,11 +1083,11 @@ export const NetworkExperimentProfilesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles",
+      apiVersion: "2025-11-01",
     }),
   );
 export type NetworkExperimentProfilesListByResourceGroupInput =
@@ -979,11 +1129,17 @@ export const NetworkExperimentProfilesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        enabledState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type NetworkExperimentProfilesUpdateInput =
@@ -1023,11 +1179,355 @@ export const PoliciesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        policySettings: Schema.optional(
+          Schema.Struct({
+            enabledState: Schema.optional(
+              Schema.Literals(["Disabled", "Enabled"]),
+            ),
+            mode: Schema.optional(Schema.Literals(["Prevention", "Detection"])),
+            redirectUrl: Schema.optional(Schema.String),
+            customBlockResponseStatusCode: Schema.optional(Schema.Number),
+            customBlockResponseBody: Schema.optional(Schema.String),
+            requestBodyCheck: Schema.optional(
+              Schema.Literals(["Disabled", "Enabled"]),
+            ),
+            javascriptChallengeExpirationInMinutes: Schema.optional(
+              Schema.Number,
+            ),
+            captchaExpirationInMinutes: Schema.optional(Schema.Number),
+            logScrubbing: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                scrubbingRules: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      matchVariable: Schema.Literals([
+                        "RequestIPAddress",
+                        "RequestUri",
+                        "QueryStringArgNames",
+                        "RequestHeaderNames",
+                        "RequestCookieNames",
+                        "RequestBodyPostArgNames",
+                        "RequestBodyJsonArgNames",
+                      ]),
+                      selectorMatchOperator: Schema.Literals([
+                        "EqualsAny",
+                        "Equals",
+                      ]),
+                      selector: Schema.optional(Schema.String),
+                      state: Schema.optional(
+                        Schema.Literals(["Enabled", "Disabled"]),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        customRules: Schema.optional(
+          Schema.Struct({
+            rules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  priority: Schema.Number,
+                  enabledState: Schema.optional(
+                    Schema.Literals(["Disabled", "Enabled"]),
+                  ),
+                  ruleType: Schema.Literals(["MatchRule", "RateLimitRule"]),
+                  rateLimitDurationInMinutes: Schema.optional(Schema.Number),
+                  rateLimitThreshold: Schema.optional(Schema.Number),
+                  groupBy: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        variableName: Schema.Literals([
+                          "SocketAddr",
+                          "GeoLocation",
+                          "None",
+                        ]),
+                      }),
+                    ),
+                  ),
+                  matchConditions: Schema.Array(
+                    Schema.Struct({
+                      matchVariable: Schema.Literals([
+                        "RemoteAddr",
+                        "RequestMethod",
+                        "QueryString",
+                        "PostArgs",
+                        "RequestUri",
+                        "RequestHeader",
+                        "RequestBody",
+                        "Cookies",
+                        "SocketAddr",
+                        "JA4",
+                      ]),
+                      selector: Schema.optional(Schema.String),
+                      operator: Schema.Literals([
+                        "Any",
+                        "IPMatch",
+                        "GeoMatch",
+                        "Equal",
+                        "Contains",
+                        "LessThan",
+                        "GreaterThan",
+                        "LessThanOrEqual",
+                        "GreaterThanOrEqual",
+                        "BeginsWith",
+                        "EndsWith",
+                        "RegEx",
+                        "ServiceTagMatch",
+                        "AsnMatch",
+                        "ClientFingerprint",
+                      ]),
+                      negateCondition: Schema.optional(Schema.Boolean),
+                      matchValue: Schema.Array(Schema.String),
+                      transforms: Schema.optional(
+                        Schema.Array(
+                          Schema.Literals([
+                            "Lowercase",
+                            "Uppercase",
+                            "Trim",
+                            "UrlDecode",
+                            "UrlEncode",
+                            "RemoveNulls",
+                          ]),
+                        ),
+                      ),
+                    }),
+                  ),
+                  action: Schema.Literals([
+                    "Allow",
+                    "Block",
+                    "Log",
+                    "Redirect",
+                    "AnomalyScoring",
+                    "JSChallenge",
+                    "CAPTCHA",
+                  ]),
+                }),
+              ),
+            ),
+          }),
+        ),
+        managedRules: Schema.optional(
+          Schema.Struct({
+            managedRuleSets: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  ruleSetType: Schema.String,
+                  ruleSetVersion: Schema.String,
+                  ruleSetAction: Schema.optional(
+                    Schema.Literals(["Block", "Log", "Redirect"]),
+                  ),
+                  exclusions: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        matchVariable: Schema.Literals([
+                          "RequestHeaderNames",
+                          "RequestCookieNames",
+                          "QueryStringArgNames",
+                          "RequestBodyPostArgNames",
+                          "RequestBodyJsonArgNames",
+                        ]),
+                        selectorMatchOperator: Schema.Literals([
+                          "Equals",
+                          "Contains",
+                          "StartsWith",
+                          "EndsWith",
+                          "EqualsAny",
+                        ]),
+                        selector: Schema.String,
+                      }),
+                    ),
+                  ),
+                  ruleGroupOverrides: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        ruleGroupName: Schema.String,
+                        exclusions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              matchVariable: Schema.Literals([
+                                "RequestHeaderNames",
+                                "RequestCookieNames",
+                                "QueryStringArgNames",
+                                "RequestBodyPostArgNames",
+                                "RequestBodyJsonArgNames",
+                              ]),
+                              selectorMatchOperator: Schema.Literals([
+                                "Equals",
+                                "Contains",
+                                "StartsWith",
+                                "EndsWith",
+                                "EqualsAny",
+                              ]),
+                              selector: Schema.String,
+                            }),
+                          ),
+                        ),
+                        rules: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              ruleId: Schema.String,
+                              enabledState: Schema.optional(
+                                Schema.Literals(["Disabled", "Enabled"]),
+                              ),
+                              action: Schema.optional(
+                                Schema.Literals([
+                                  "Allow",
+                                  "Block",
+                                  "Log",
+                                  "Redirect",
+                                  "AnomalyScoring",
+                                  "JSChallenge",
+                                  "CAPTCHA",
+                                ]),
+                              ),
+                              sensitivity: Schema.optional(
+                                Schema.Literals(["Low", "Medium", "High"]),
+                              ),
+                              exclusions: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    matchVariable: Schema.Literals([
+                                      "RequestHeaderNames",
+                                      "RequestCookieNames",
+                                      "QueryStringArgNames",
+                                      "RequestBodyPostArgNames",
+                                      "RequestBodyJsonArgNames",
+                                    ]),
+                                    selectorMatchOperator: Schema.Literals([
+                                      "Equals",
+                                      "Contains",
+                                      "StartsWith",
+                                      "EndsWith",
+                                      "EqualsAny",
+                                    ]),
+                                    selector: Schema.String,
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            exceptionsList: Schema.optional(
+              Schema.Struct({
+                exceptions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      matchVariable: Schema.Literals([
+                        "RequestUri",
+                        "SocketAddr",
+                        "RequestHeaderNames",
+                      ]),
+                      selectorMatchOperator: Schema.optional(
+                        Schema.Literals(["Equals"]),
+                      ),
+                      selector: Schema.optional(Schema.String),
+                      valueMatchOperator: Schema.Literals([
+                        "Equals",
+                        "Contains",
+                        "StartsWith",
+                        "EndsWith",
+                        "EqualsAny",
+                        "IPMatch",
+                      ]),
+                      matchValues: Schema.Array(Schema.String),
+                      scopes: Schema.Array(
+                        Schema.Struct({
+                          ruleSetType: Schema.String,
+                          ruleSetVersion: Schema.String,
+                          ruleGroupScopes: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                ruleGroupName: Schema.String,
+                                ruleScopes: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      ruleId: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        frontendEndpointLinks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        routingRuleLinks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        securityPolicyLinks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        resourceState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Enabling",
+            "Enabled",
+            "Disabling",
+            "Disabled",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(
+          Schema.Literals([
+            "Classic_AzureFrontDoor",
+            "Standard_AzureFrontDoor",
+            "Premium_AzureFrontDoor",
+          ]),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type PoliciesCreateOrUpdateInput =
@@ -1065,11 +1565,11 @@ export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   policyName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type PoliciesDeleteInput = typeof PoliciesDeleteInput.Type;
@@ -1096,11 +1596,11 @@ export const PoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   policyName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type PoliciesGetInput = typeof PoliciesGetInput.Type;
@@ -1132,11 +1632,11 @@ export const PoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+    apiVersion: "2025-11-01",
   }),
 );
 export type PoliciesListInput = typeof PoliciesListInput.Type;
@@ -1172,11 +1672,11 @@ export const PoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PoliciesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+      apiVersion: "2025-11-01",
     }),
   );
 export type PoliciesListBySubscriptionInput =
@@ -1217,11 +1717,12 @@ export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   policyName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type PoliciesUpdateInput = typeof PoliciesUpdateInput.Type;
@@ -1255,11 +1756,11 @@ export const PreconfiguredEndpointsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/preconfiguredEndpoints",
+      apiVersion: "2025-11-01",
     }),
   );
 export type PreconfiguredEndpointsListInput =
@@ -1304,7 +1805,6 @@ export const ReportsGetLatencyScorecardsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     endDateTimeUTC: Schema.optional(Schema.String),
     country: Schema.optional(Schema.String),
     aggregationInterval: Schema.Literals(["Daily", "Weekly", "Monthly"]),
@@ -1312,6 +1812,7 @@ export const ReportsGetLatencyScorecardsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/latencyScorecard",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ReportsGetLatencyScorecardsInput =
@@ -1355,7 +1856,6 @@ export const ReportsGetTimeseriesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     startDateTimeUTC: Schema.String,
     endDateTimeUTC: Schema.String,
     aggregationInterval: Schema.Literals(["Hourly", "Daily"]),
@@ -1371,6 +1871,7 @@ export const ReportsGetTimeseriesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/timeseries",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ReportsGetTimeseriesInput = typeof ReportsGetTimeseriesInput.Type;
@@ -1415,11 +1916,110 @@ export const RulesEnginesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     frontDoorName: Schema.String.pipe(T.PathParam()),
     rulesEngineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        rules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              priority: Schema.Number,
+              action: Schema.Struct({
+                requestHeaderActions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      headerActionType: Schema.Literals([
+                        "Append",
+                        "Delete",
+                        "Overwrite",
+                      ]),
+                      headerName: Schema.String,
+                      value: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                responseHeaderActions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      headerActionType: Schema.Literals([
+                        "Append",
+                        "Delete",
+                        "Overwrite",
+                      ]),
+                      headerName: Schema.String,
+                      value: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                routeConfigurationOverride: Schema.optional(
+                  Schema.Struct({
+                    "@odata.type": Schema.String,
+                  }),
+                ),
+              }),
+              matchConditions: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    rulesEngineMatchVariable: Schema.Literals([
+                      "IsMobile",
+                      "RemoteAddr",
+                      "RequestMethod",
+                      "QueryString",
+                      "PostArgs",
+                      "RequestUri",
+                      "RequestPath",
+                      "RequestFilename",
+                      "RequestFilenameExtension",
+                      "RequestHeader",
+                      "RequestBody",
+                      "RequestScheme",
+                    ]),
+                    selector: Schema.optional(Schema.String),
+                    rulesEngineOperator: Schema.Literals([
+                      "Any",
+                      "IPMatch",
+                      "GeoMatch",
+                      "Equal",
+                      "Contains",
+                      "LessThan",
+                      "GreaterThan",
+                      "LessThanOrEqual",
+                      "GreaterThanOrEqual",
+                      "BeginsWith",
+                      "EndsWith",
+                    ]),
+                    negateCondition: Schema.optional(Schema.Boolean),
+                    rulesEngineMatchValue: Schema.Array(Schema.String),
+                    transforms: Schema.optional(
+                      Schema.Array(
+                        Schema.Literals([
+                          "Lowercase",
+                          "Uppercase",
+                          "Trim",
+                          "UrlDecode",
+                          "UrlEncode",
+                          "RemoveNulls",
+                        ]),
+                      ),
+                    ),
+                  }),
+                ),
+              ),
+              matchProcessingBehavior: Schema.optional(
+                Schema.Literals(["Continue", "Stop"]),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type RulesEnginesCreateOrUpdateInput =
@@ -1458,11 +2058,11 @@ export const RulesEnginesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     frontDoorName: Schema.String.pipe(T.PathParam()),
     rulesEngineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type RulesEnginesDeleteInput = typeof RulesEnginesDeleteInput.Type;
@@ -1491,11 +2091,11 @@ export const RulesEnginesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   frontDoorName: Schema.String.pipe(T.PathParam()),
   rulesEngineName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type RulesEnginesGetInput = typeof RulesEnginesGetInput.Type;
@@ -1528,11 +2128,11 @@ export const RulesEnginesListByFrontDoorInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     frontDoorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines",
+      apiVersion: "2025-11-01",
     }),
   );
 export type RulesEnginesListByFrontDoorInput =

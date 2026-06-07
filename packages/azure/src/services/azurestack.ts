@@ -17,6 +17,7 @@ export const CloudManifestFileGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.AzureStack/cloudManifestFiles/{verificationVersion}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type CloudManifestFileGetInput = typeof CloudManifestFileGetInput.Type;
@@ -50,6 +51,7 @@ export const CloudManifestFileListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.AzureStack/cloudManifestFiles",
+      apiVersion: "2022-06-01",
     }),
   );
 export type CloudManifestFileListInput = typeof CloudManifestFileListInput.Type;
@@ -81,11 +83,11 @@ export const CustomerSubscriptionsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionName}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type CustomerSubscriptionsCreateInput =
@@ -123,11 +125,11 @@ export const CustomerSubscriptionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionName}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type CustomerSubscriptionsDeleteInput =
@@ -160,11 +162,11 @@ export const CustomerSubscriptionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionName}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type CustomerSubscriptionsGetInput =
@@ -202,11 +204,11 @@ export const CustomerSubscriptionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions",
+      apiVersion: "2022-06-01",
     }),
   );
 export type CustomerSubscriptionsListInput =
@@ -251,6 +253,7 @@ export const DeploymentLicenseCreateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStack/generateDeploymentLicense",
+      apiVersion: "2022-06-01",
     }),
   );
 export type DeploymentLicenseCreateInput =
@@ -279,7 +282,11 @@ export const DeploymentLicenseCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.AzureStack/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.AzureStack/operations",
+    apiVersion: "2022-06-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -318,11 +325,11 @@ export const ProductsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroup: Schema.String.pipe(T.PathParam()),
   registrationName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}",
+    apiVersion: "2022-06-01",
   }),
 );
 export type ProductsGetInput = typeof ProductsGetInput.Type;
@@ -355,11 +362,11 @@ export const ProductsGetProductInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/getProduct",
+      apiVersion: "2022-06-01",
     }),
   );
 export type ProductsGetProductInput = typeof ProductsGetProductInput.Type;
@@ -393,11 +400,11 @@ export const ProductsGetProductsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/getProducts",
+      apiVersion: "2022-06-01",
     }),
   );
 export type ProductsGetProductsInput = typeof ProductsGetProductsInput.Type;
@@ -437,11 +444,11 @@ export const ProductsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroup: Schema.String.pipe(T.PathParam()),
   registrationName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products",
+    apiVersion: "2022-06-01",
   }),
 );
 export type ProductsListInput = typeof ProductsListInput.Type;
@@ -481,11 +488,11 @@ export const ProductsListDetailsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/listDetails",
+      apiVersion: "2022-06-01",
     }),
   );
 export type ProductsListDetailsInput = typeof ProductsListDetailsInput.Type;
@@ -550,11 +557,11 @@ export const ProductsListProductsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/listProducts",
+      apiVersion: "2022-06-01",
     }),
   );
 export type ProductsListProductsInput = typeof ProductsListProductsInput.Type;
@@ -597,12 +604,12 @@ export const ProductsUploadLogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/uploadProductLog",
+    apiVersion: "2022-06-01",
   }),
 );
 export type ProductsUploadLogInput = typeof ProductsUploadLogInput.Type;
@@ -643,11 +650,11 @@ export const RegistrationsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type RegistrationsCreateOrUpdateInput =
@@ -687,11 +694,11 @@ export const RegistrationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type RegistrationsDeleteInput = typeof RegistrationsDeleteInput.Type;
@@ -724,6 +731,7 @@ export const RegistrationsEnableRemoteManagementInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/enableRemoteManagement",
+      apiVersion: "2022-06-01",
     }),
   );
 export type RegistrationsEnableRemoteManagementInput =
@@ -753,11 +761,11 @@ export const RegistrationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroup: Schema.String.pipe(T.PathParam()),
   registrationName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}",
+    apiVersion: "2022-06-01",
   }),
 );
 export type RegistrationsGetInput = typeof RegistrationsGetInput.Type;
@@ -794,11 +802,11 @@ export const RegistrationsGetActivationKeyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/getactivationkey",
+      apiVersion: "2022-06-01",
     }),
   );
 export type RegistrationsGetActivationKeyInput =
@@ -831,12 +839,12 @@ export const RegistrationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations",
+    apiVersion: "2022-06-01",
   }),
 );
 export type RegistrationsListInput = typeof RegistrationsListInput.Type;
@@ -876,11 +884,11 @@ export const RegistrationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const RegistrationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStack/registrations",
+      apiVersion: "2022-06-01",
     }),
   );
 export type RegistrationsListBySubscriptionInput =
@@ -924,11 +932,11 @@ export const RegistrationsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type RegistrationsUpdateInput = typeof RegistrationsUpdateInput.Type;

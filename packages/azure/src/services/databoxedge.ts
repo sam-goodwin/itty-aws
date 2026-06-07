@@ -7,7 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AddonsCreateOrUpdateInput =
@@ -17,11 +17,12 @@ export const AddonsCreateOrUpdateInput =
     deviceName: Schema.String.pipe(T.PathParam()),
     roleName: Schema.String.pipe(T.PathParam()),
     addonName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    kind: Schema.Literals(["IotEdge", "ArcForKubernetes"]),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons/{addonName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type AddonsCreateOrUpdateInput = typeof AddonsCreateOrUpdateInput.Type;
@@ -73,11 +74,11 @@ export const AddonsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   deviceName: Schema.String.pipe(T.PathParam()),
   roleName: Schema.String.pipe(T.PathParam()),
   addonName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons/{addonName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type AddonsDeleteInput = typeof AddonsDeleteInput.Type;
@@ -108,11 +109,11 @@ export const AddonsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   deviceName: Schema.String.pipe(T.PathParam()),
   roleName: Schema.String.pipe(T.PathParam()),
   addonName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons/{addonName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type AddonsGetInput = typeof AddonsGetInput.Type;
@@ -160,11 +161,11 @@ export const AddonsListByRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   roleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons",
+    apiVersion: "2023-12-01",
   }),
 );
 export type AddonsListByRoleInput = typeof AddonsListByRoleInput.Type;
@@ -228,11 +229,11 @@ export const AlertsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/alerts/{name}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type AlertsGetInput = typeof AlertsGetInput.Type;
@@ -279,11 +280,11 @@ export const AlertsListByDataBoxEdgeDeviceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/alerts",
+      apiVersion: "2023-12-01",
     }),
   );
 export type AlertsListByDataBoxEdgeDeviceInput =
@@ -346,12 +347,12 @@ export const AlertsListByDataBoxEdgeDevice =
 export const AvailableSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBoxEdge/availableSkus",
+    apiVersion: "2023-12-01",
   }),
 );
 export type AvailableSkusListInput = typeof AvailableSkusListInput.Type;
@@ -465,11 +466,27 @@ export const BandwidthSchedulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      start: Schema.String,
+      stop: Schema.String,
+      rateInMbps: Schema.Number,
+      days: Schema.Array(
+        Schema.Literals([
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ]),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules/{name}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BandwidthSchedulesCreateOrUpdateInput =
@@ -521,11 +538,11 @@ export const BandwidthSchedulesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules/{name}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BandwidthSchedulesDeleteInput =
@@ -560,11 +577,11 @@ export const BandwidthSchedulesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules/{name}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BandwidthSchedulesGetInput = typeof BandwidthSchedulesGetInput.Type;
@@ -615,11 +632,11 @@ export const BandwidthSchedulesListByDataBoxEdgeDeviceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BandwidthSchedulesListByDataBoxEdgeDeviceInput =
@@ -686,11 +703,32 @@ export const ContainersCreateOrUpdateInput =
     deviceName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      containerStatus: Schema.optional(
+        Schema.Literals([
+          "OK",
+          "Offline",
+          "Unknown",
+          "Updating",
+          "NeedsAttention",
+        ]),
+      ),
+      dataFormat: Schema.Literals(["BlockBlob", "PageBlob", "AzureFile"]),
+      refreshDetails: Schema.optional(
+        Schema.Struct({
+          inProgressRefreshJobId: Schema.optional(Schema.String),
+          lastCompletedRefreshJobTimeInUTC: Schema.optional(Schema.String),
+          errorManifestFile: Schema.optional(Schema.String),
+          lastJob: Schema.optional(Schema.String),
+        }),
+      ),
+      createdDateTime: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ContainersCreateOrUpdateInput =
@@ -744,11 +782,11 @@ export const ContainersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   deviceName: Schema.String.pipe(T.PathParam()),
   storageAccountName: Schema.String.pipe(T.PathParam()),
   containerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ContainersDeleteInput = typeof ContainersDeleteInput.Type;
@@ -779,11 +817,11 @@ export const ContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   deviceName: Schema.String.pipe(T.PathParam()),
   storageAccountName: Schema.String.pipe(T.PathParam()),
   containerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ContainersGetInput = typeof ContainersGetInput.Type;
@@ -832,11 +870,11 @@ export const ContainersListByStorageAccountInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ContainersListByStorageAccountInput =
@@ -904,12 +942,12 @@ export const ContainersRefreshInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     deviceName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}/refresh",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ContainersRefreshInput = typeof ContainersRefreshInput.Type;
@@ -939,12 +977,25 @@ export const DeviceCapacityCheckCheckResourceCreationFeasibilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     capacityName: Schema.optional(Schema.String),
+    properties: Schema.Struct({
+      vmPlacementQuery: Schema.Array(Schema.Array(Schema.String)),
+      vmPlacementResults: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            vmSize: Schema.optional(Schema.Array(Schema.String)),
+            isFeasible: Schema.optional(Schema.Boolean),
+            messageCode: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/deviceCapacityCheck",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DeviceCapacityCheckCheckResourceCreationFeasibilityInput =
@@ -977,11 +1028,11 @@ export const DeviceCapacityInfoGetDeviceCapacityInfoInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/deviceCapacityInfo/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DeviceCapacityInfoGetDeviceCapacityInfoInput =
@@ -1031,11 +1082,190 @@ export const DevicesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+        dataBoxEdgeDeviceStatus: Schema.optional(
+          Schema.Literals([
+            "ReadyToSetup",
+            "Online",
+            "Offline",
+            "NeedsAttention",
+            "Disconnected",
+            "PartiallyDisconnected",
+            "Maintenance",
+          ]),
+        ),
+        serialNumber: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        modelDescription: Schema.optional(Schema.String),
+        deviceType: Schema.optional(Schema.Literals(["DataBoxEdgeDevice"])),
+        friendlyName: Schema.optional(Schema.String),
+        culture: Schema.optional(Schema.String),
+        deviceModel: Schema.optional(Schema.String),
+        deviceSoftwareVersion: Schema.optional(Schema.String),
+        deviceLocalCapacity: Schema.optional(Schema.Number),
+        timeZone: Schema.optional(Schema.String),
+        deviceHcsVersion: Schema.optional(Schema.String),
+        configuredRoleTypes: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "IOT",
+              "ASA",
+              "Functions",
+              "Cognitive",
+              "MEC",
+              "CloudEdgeManagement",
+              "Kubernetes",
+            ]),
+          ),
+        ),
+        nodeCount: Schema.optional(Schema.Number),
+        resourceMoveDetails: Schema.optional(
+          Schema.Struct({
+            operationInProgress: Schema.optional(
+              Schema.Literals([
+                "None",
+                "ResourceMoveInProgress",
+                "ResourceMoveFailed",
+              ]),
+            ),
+            operationInProgressLockTimeoutInUTC: Schema.optional(Schema.String),
+          }),
+        ),
+        edgeProfile: Schema.optional(
+          Schema.Struct({
+            subscription: Schema.optional(
+              Schema.Struct({
+                registrationId: Schema.optional(Schema.String),
+                id: Schema.optional(Schema.String),
+                state: Schema.optional(
+                  Schema.Literals([
+                    "Registered",
+                    "Warned",
+                    "Suspended",
+                    "Deleted",
+                    "Unregistered",
+                  ]),
+                ),
+                registrationDate: Schema.optional(Schema.String),
+                subscriptionId: Schema.optional(Schema.String),
+                properties: Schema.optional(
+                  Schema.Struct({
+                    tenantId: Schema.optional(Schema.String),
+                    locationPlacementId: Schema.optional(Schema.String),
+                    quotaId: Schema.optional(Schema.String),
+                    serializedDetails: Schema.optional(Schema.String),
+                    registeredFeatures: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          state: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        dataResidency: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["GeoZoneReplication", "ZoneReplication"]),
+            ),
+          }),
+        ),
+        kubernetesWorkloadProfile: Schema.optional(Schema.String),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(
+          Schema.Literals([
+            "Gateway",
+            "Edge",
+            "TEA_1Node",
+            "TEA_1Node_UPS",
+            "TEA_1Node_Heater",
+            "TEA_1Node_UPS_Heater",
+            "TEA_4Node_Heater",
+            "TEA_4Node_UPS_Heater",
+            "TMA",
+            "TDC",
+            "TCA_Small",
+            "GPU",
+            "TCA_Large",
+            "EdgeP_Base",
+            "EdgeP_High",
+            "EdgePR_Base",
+            "EdgePR_Base_UPS",
+            "EP2_64_1VPU_W",
+            "EP2_128_1T4_Mx1_W",
+            "EP2_256_2T4_W",
+            "EdgeMR_Mini",
+            "RCA_Small",
+            "RCA_Large",
+            "RDC",
+            "Management",
+            "EP2_64_Mx1_W",
+            "EP2_128_GPU1_Mx1_W",
+            "EP2_256_GPU2_Mx1",
+            "EdgeMR_TCP",
+          ]),
+        ),
+        tier: Schema.optional(Schema.Literals(["Standard"])),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.optional(
+      Schema.Literals([
+        "AzureDataBoxGateway",
+        "AzureStackEdge",
+        "AzureStackHub",
+        "AzureModularDataCentre",
+      ]),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesCreateOrUpdateInput = typeof DevicesCreateOrUpdateInput.Type;
@@ -1085,11 +1315,25 @@ export const DevicesCreateOrUpdateSecuritySettingsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      deviceAdminPassword: Schema.Struct({
+        value: Schema.String,
+        encryptionCertThumbprint: Schema.optional(Schema.String),
+        encryptionAlgorithm: Schema.Literals([
+          "None",
+          "AES256",
+          "RSAES_PKCS1_v_1_5",
+        ]),
+      }),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/securitySettings/default/update",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesCreateOrUpdateSecuritySettingsInput =
@@ -1120,11 +1364,11 @@ export const DevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DevicesDeleteInput = typeof DevicesDeleteInput.Type;
@@ -1152,11 +1396,11 @@ export const DevicesDownloadUpdatesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/downloadUpdates",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesDownloadUpdatesInput =
@@ -1189,11 +1433,11 @@ export const DevicesGenerateCertificateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/generateCertificate",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesGenerateCertificateInput =
@@ -1203,7 +1447,7 @@ export type DevicesGenerateCertificateInput =
 export const DevicesGenerateCertificateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicKey: Schema.optional(Schema.String),
-    privateKey: Schema.optional(SensitiveString),
+    privateKey: Schema.optional(SensitiveOutputString),
     expiryTimeInUTC: Schema.optional(Schema.String),
   });
 export type DevicesGenerateCertificateOutput =
@@ -1229,11 +1473,11 @@ export const DevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DevicesGetInput = typeof DevicesGetInput.Type;
@@ -1279,11 +1523,11 @@ export const DevicesGetExtendedInformationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/getExtendedInformation",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesGetExtendedInformationInput =
@@ -1319,11 +1563,11 @@ export const DevicesGetNetworkSettingsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/networkSettings/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesGetNetworkSettingsInput =
@@ -1374,11 +1618,11 @@ export const DevicesGetUpdateSummaryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/updateSummary/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesGetUpdateSummaryInput =
@@ -1429,11 +1673,11 @@ export const DevicesInstallUpdatesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/installUpdates",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesInstallUpdatesInput = typeof DevicesInstallUpdatesInput.Type;
@@ -1464,12 +1708,12 @@ export const DevicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesListByResourceGroupInput =
@@ -1533,12 +1777,12 @@ export const DevicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DevicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesListBySubscriptionInput =
@@ -1603,11 +1847,11 @@ export const DevicesScanForUpdatesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/scanForUpdates",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesScanForUpdatesInput = typeof DevicesScanForUpdatesInput.Type;
@@ -1638,11 +1882,34 @@ export const DevicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+      ),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      edgeProfile: Schema.optional(
+        Schema.Struct({
+          subscription: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DevicesUpdateInput = typeof DevicesUpdateInput.Type;
@@ -1688,11 +1955,25 @@ export const DevicesUpdateExtendedInformationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    clientSecretStoreId: Schema.optional(Schema.String),
+    clientSecretStoreUrl: Schema.optional(Schema.String),
+    channelIntegrityKeyName: Schema.optional(Schema.String),
+    channelIntegrityKeyVersion: Schema.optional(Schema.String),
+    syncStatus: Schema.optional(
+      Schema.Literals([
+        "KeyVaultSynced",
+        "KeyVaultSyncFailed",
+        "KeyVaultNotConfigured",
+        "KeyVaultSyncPending",
+        "KeyVaultSyncing",
+        "KeyVaultNotSynced",
+      ]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/updateExtendedInformation",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesUpdateExtendedInformationInput =
@@ -1728,11 +2009,17 @@ export const DevicesUploadCertificateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      authenticationType: Schema.optional(
+        Schema.Literals(["Invalid", "AzureActiveDirectory"]),
+      ),
+      certificate: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/uploadCertificate",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevicesUploadCertificateInput =
@@ -1776,11 +2063,11 @@ export const DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsInput 
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticProactiveLogCollectionSettings/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsInput =
@@ -1832,11 +2119,11 @@ export const DiagnosticSettingsGetDiagnosticRemoteSupportSettingsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticRemoteSupportSettings/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DiagnosticSettingsGetDiagnosticRemoteSupportSettingsInput =
@@ -1886,11 +2173,14 @@ export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsInp
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      userConsent: Schema.Literals(["Enabled", "Disabled"]),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticProactiveLogCollectionSettings/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsInput =
@@ -1942,11 +2232,31 @@ export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      remoteSupportSettingsList: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            remoteApplicationType: Schema.optional(
+              Schema.Literals([
+                "Powershell",
+                "WAC",
+                "LocalUI",
+                "AllApplications",
+              ]),
+            ),
+            accessLevel: Schema.optional(
+              Schema.Literals(["None", "ReadOnly", "ReadWrite", "FullAccess"]),
+            ),
+            expirationTimeStampInUTC: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticRemoteSupportSettings/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput =
@@ -1996,11 +2306,11 @@ export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/jobs/{name}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type JobsGetInput = typeof JobsGetInput.Type;
@@ -2048,11 +2358,46 @@ export const MonitoringConfigCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     roleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      metricConfigurations: Schema.Array(
+        Schema.Struct({
+          resourceId: Schema.String,
+          mdmAccount: Schema.optional(Schema.String),
+          metricNameSpace: Schema.optional(Schema.String),
+          counterSets: Schema.Array(
+            Schema.Struct({
+              counters: Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  instance: Schema.optional(Schema.String),
+                  dimensionFilter: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        sourceType: Schema.String,
+                        sourceName: Schema.String,
+                      }),
+                    ),
+                  ),
+                  additionalDimensions: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        sourceType: Schema.String,
+                        sourceName: Schema.String,
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type MonitoringConfigCreateOrUpdateInput =
@@ -2104,11 +2449,11 @@ export const MonitoringConfigDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     roleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type MonitoringConfigDeleteInput =
@@ -2143,11 +2488,11 @@ export const MonitoringConfigGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     roleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type MonitoringConfigGetInput = typeof MonitoringConfigGetInput.Type;
@@ -2196,11 +2541,11 @@ export const MonitoringConfigListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     roleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig",
+      apiVersion: "2023-12-01",
     }),
   );
 export type MonitoringConfigListInput = typeof MonitoringConfigListInput.Type;
@@ -2265,11 +2610,11 @@ export const NodesListByDataBoxEdgeDeviceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/nodes",
+      apiVersion: "2023-12-01",
     }),
   );
 export type NodesListByDataBoxEdgeDeviceInput =
@@ -2305,12 +2650,13 @@ export const NodesListByDataBoxEdgeDevice =
     outputSchema: NodesListByDataBoxEdgeDeviceOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataBoxEdge/operations",
+    apiVersion: "2023-12-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -2440,11 +2786,11 @@ export const OperationsStatusGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/operationsStatus/{name}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type OperationsStatusGetInput = typeof OperationsStatusGetInput.Type;
@@ -2492,11 +2838,132 @@ export const OrdersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        orderId: Schema.optional(Schema.String),
+        contactInformation: Schema.Struct({
+          contactPerson: Schema.String,
+          companyName: Schema.String,
+          phone: Schema.String,
+          emailList: Schema.Array(Schema.String),
+        }),
+        shippingAddress: Schema.optional(
+          Schema.Struct({
+            addressLine1: Schema.optional(Schema.String),
+            addressLine2: Schema.optional(Schema.String),
+            addressLine3: Schema.optional(Schema.String),
+            postalCode: Schema.optional(Schema.String),
+            city: Schema.optional(Schema.String),
+            state: Schema.optional(Schema.String),
+            country: Schema.String,
+          }),
+        ),
+        currentStatus: Schema.optional(
+          Schema.Struct({
+            status: Schema.Literals([
+              "Untracked",
+              "AwaitingFulfillment",
+              "AwaitingPreparation",
+              "AwaitingShipment",
+              "Shipped",
+              "Arriving",
+              "Delivered",
+              "ReplacementRequested",
+              "LostDevice",
+              "Declined",
+              "ReturnInitiated",
+              "AwaitingReturnShipment",
+              "ShippedBack",
+              "CollectedAtMicrosoft",
+              "AwaitingPickup",
+              "PickupCompleted",
+              "AwaitingDrop",
+            ]),
+            updateDateTime: Schema.optional(Schema.String),
+            comments: Schema.optional(Schema.String),
+            trackingInformation: Schema.optional(
+              Schema.Struct({
+                serialNumber: Schema.optional(Schema.String),
+                carrierName: Schema.optional(Schema.String),
+                trackingId: Schema.optional(Schema.String),
+                trackingUrl: Schema.optional(Schema.String),
+              }),
+            ),
+            additionalOrderDetails: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        orderHistory: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              status: Schema.Literals([
+                "Untracked",
+                "AwaitingFulfillment",
+                "AwaitingPreparation",
+                "AwaitingShipment",
+                "Shipped",
+                "Arriving",
+                "Delivered",
+                "ReplacementRequested",
+                "LostDevice",
+                "Declined",
+                "ReturnInitiated",
+                "AwaitingReturnShipment",
+                "ShippedBack",
+                "CollectedAtMicrosoft",
+                "AwaitingPickup",
+                "PickupCompleted",
+                "AwaitingDrop",
+              ]),
+              updateDateTime: Schema.optional(Schema.String),
+              comments: Schema.optional(Schema.String),
+              trackingInformation: Schema.optional(
+                Schema.Struct({
+                  serialNumber: Schema.optional(Schema.String),
+                  carrierName: Schema.optional(Schema.String),
+                  trackingId: Schema.optional(Schema.String),
+                  trackingUrl: Schema.optional(Schema.String),
+                }),
+              ),
+              additionalOrderDetails: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+            }),
+          ),
+        ),
+        serialNumber: Schema.optional(Schema.String),
+        deliveryTrackingInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              serialNumber: Schema.optional(Schema.String),
+              carrierName: Schema.optional(Schema.String),
+              trackingId: Schema.optional(Schema.String),
+              trackingUrl: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        returnTrackingInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              serialNumber: Schema.optional(Schema.String),
+              carrierName: Schema.optional(Schema.String),
+              trackingId: Schema.optional(Schema.String),
+              trackingUrl: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        shipmentType: Schema.optional(
+          Schema.Literals(["NotApplicable", "ShippedToCustomer", "SelfPickup"]),
+        ),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type OrdersCreateOrUpdateInput = typeof OrdersCreateOrUpdateInput.Type;
@@ -2544,11 +3011,11 @@ export const OrdersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default",
+    apiVersion: "2023-12-01",
   }),
 );
 export type OrdersDeleteInput = typeof OrdersDeleteInput.Type;
@@ -2575,11 +3042,11 @@ export const OrdersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default",
+    apiVersion: "2023-12-01",
   }),
 );
 export type OrdersGetInput = typeof OrdersGetInput.Type;
@@ -2625,11 +3092,11 @@ export const OrdersListByDataBoxEdgeDeviceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders",
+      apiVersion: "2023-12-01",
     }),
   );
 export type OrdersListByDataBoxEdgeDeviceInput =
@@ -2694,11 +3161,11 @@ export const OrdersListDCAccessCodeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default/listDCAccessCode",
+      apiVersion: "2023-12-01",
     }),
   );
 export type OrdersListDCAccessCodeInput =
@@ -2738,11 +3205,20 @@ export const RolesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    kind: Schema.Literals([
+      "IOT",
+      "ASA",
+      "Functions",
+      "Cognitive",
+      "MEC",
+      "CloudEdgeManagement",
+      "Kubernetes",
+    ]),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{name}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type RolesCreateOrUpdateInput = typeof RolesCreateOrUpdateInput.Type;
@@ -2790,11 +3266,11 @@ export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{name}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type RolesDeleteInput = typeof RolesDeleteInput.Type;
@@ -2823,11 +3299,11 @@ export const RolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{name}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type RolesGetInput = typeof RolesGetInput.Type;
@@ -2874,11 +3350,11 @@ export const RolesListByDataBoxEdgeDeviceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles",
+      apiVersion: "2023-12-01",
     }),
   );
 export type RolesListByDataBoxEdgeDeviceInput =
@@ -2944,11 +3420,80 @@ export const SharesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.String),
+      shareStatus: Schema.Literals([
+        "Offline",
+        "Unknown",
+        "OK",
+        "Updating",
+        "NeedsAttention",
+      ]),
+      monitoringStatus: Schema.Literals(["Enabled", "Disabled"]),
+      azureContainerInfo: Schema.optional(
+        Schema.Struct({
+          storageAccountCredentialId: Schema.String,
+          containerName: Schema.String,
+          dataFormat: Schema.Literals(["BlockBlob", "PageBlob", "AzureFile"]),
+        }),
+      ),
+      accessProtocol: Schema.Literals(["SMB", "NFS"]),
+      userAccessRights: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            userId: Schema.String,
+            accessType: Schema.Literals(["Change", "Read", "Custom"]),
+          }),
+        ),
+      ),
+      clientAccessRights: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            client: Schema.String,
+            accessPermission: Schema.Literals([
+              "NoAccess",
+              "ReadOnly",
+              "ReadWrite",
+            ]),
+          }),
+        ),
+      ),
+      refreshDetails: Schema.optional(
+        Schema.Struct({
+          inProgressRefreshJobId: Schema.optional(Schema.String),
+          lastCompletedRefreshJobTimeInUTC: Schema.optional(Schema.String),
+          errorManifestFile: Schema.optional(Schema.String),
+          lastJob: Schema.optional(Schema.String),
+        }),
+      ),
+      shareMappings: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            shareId: Schema.String,
+            roleId: Schema.optional(Schema.String),
+            mountPoint: Schema.optional(Schema.String),
+            mountType: Schema.optional(Schema.Literals(["Volume", "HostPath"])),
+            roleType: Schema.optional(
+              Schema.Literals([
+                "IOT",
+                "ASA",
+                "Functions",
+                "Cognitive",
+                "MEC",
+                "CloudEdgeManagement",
+                "Kubernetes",
+              ]),
+            ),
+          }),
+        ),
+      ),
+      dataPolicy: Schema.optional(Schema.Literals(["Cloud", "Local"])),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type SharesCreateOrUpdateInput = typeof SharesCreateOrUpdateInput.Type;
@@ -2998,11 +3543,11 @@ export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type SharesDeleteInput = typeof SharesDeleteInput.Type;
@@ -3031,11 +3576,11 @@ export const SharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type SharesGetInput = typeof SharesGetInput.Type;
@@ -3082,11 +3627,11 @@ export const SharesListByDataBoxEdgeDeviceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares",
+      apiVersion: "2023-12-01",
     }),
   );
 export type SharesListByDataBoxEdgeDeviceInput =
@@ -3151,11 +3696,11 @@ export const SharesRefreshInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}/refresh",
+    apiVersion: "2023-12-01",
   }),
 );
 export type SharesRefreshInput = typeof SharesRefreshInput.Type;
@@ -3185,11 +3730,31 @@ export const StorageAccountCredentialsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      alias: Schema.String,
+      userName: Schema.optional(Schema.String),
+      accountKey: Schema.optional(
+        Schema.Struct({
+          value: Schema.String,
+          encryptionCertThumbprint: Schema.optional(Schema.String),
+          encryptionAlgorithm: Schema.Literals([
+            "None",
+            "AES256",
+            "RSAES_PKCS1_v_1_5",
+          ]),
+        }),
+      ),
+      connectionString: Schema.optional(SensitiveString),
+      sslStatus: Schema.Literals(["Enabled", "Disabled"]),
+      blobDomainName: Schema.optional(Schema.String),
+      accountType: Schema.Literals(["GeneralPurposeStorage", "BlobStorage"]),
+      storageAccountId: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials/{name}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type StorageAccountCredentialsCreateOrUpdateInput =
@@ -3241,11 +3806,11 @@ export const StorageAccountCredentialsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials/{name}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type StorageAccountCredentialsDeleteInput =
@@ -3279,11 +3844,11 @@ export const StorageAccountCredentialsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials/{name}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type StorageAccountCredentialsGetInput =
@@ -3334,11 +3899,11 @@ export const StorageAccountCredentialsListByDataBoxEdgeDeviceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials",
+      apiVersion: "2023-12-01",
     }),
   );
 export type StorageAccountCredentialsListByDataBoxEdgeDeviceInput =
@@ -3404,11 +3969,27 @@ export const StorageAccountsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.String),
+      storageAccountStatus: Schema.optional(
+        Schema.Literals([
+          "OK",
+          "Offline",
+          "Unknown",
+          "Updating",
+          "NeedsAttention",
+        ]),
+      ),
+      dataPolicy: Schema.Literals(["Cloud", "Local"]),
+      storageAccountCredentialId: Schema.optional(Schema.String),
+      blobEndpoint: Schema.optional(Schema.String),
+      containerCount: Schema.optional(Schema.Number),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type StorageAccountsCreateOrUpdateInput =
@@ -3460,11 +4041,11 @@ export const StorageAccountsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type StorageAccountsDeleteInput = typeof StorageAccountsDeleteInput.Type;
@@ -3498,11 +4079,11 @@ export const StorageAccountsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     storageAccountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type StorageAccountsGetInput = typeof StorageAccountsGetInput.Type;
@@ -3550,11 +4131,11 @@ export const StorageAccountsListByDataBoxEdgeDeviceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts",
+      apiVersion: "2023-12-01",
     }),
   );
 export type StorageAccountsListByDataBoxEdgeDeviceInput =
@@ -3619,11 +4200,19 @@ export const SupportPackagesTriggerSupportPackageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      minimumTimeStamp: Schema.optional(Schema.String),
+      maximumTimeStamp: Schema.optional(Schema.String),
+      include: Schema.optional(Schema.String),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggerSupportPackage",
+      apiVersion: "2023-12-01",
     }),
   );
 export type SupportPackagesTriggerSupportPackageInput =
@@ -3656,11 +4245,12 @@ export const TriggersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    kind: Schema.Literals(["FileEvent", "PeriodicTimerEvent"]),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggers/{name}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type TriggersCreateOrUpdateInput =
@@ -3712,11 +4302,11 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggers/{name}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
@@ -3745,11 +4335,11 @@ export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggers/{name}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type TriggersGetInput = typeof TriggersGetInput.Type;
@@ -3796,12 +4386,12 @@ export const TriggersListByDataBoxEdgeDeviceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggers",
+      apiVersion: "2023-12-01",
     }),
   );
 export type TriggersListByDataBoxEdgeDeviceInput =
@@ -3868,11 +4458,33 @@ export const UsersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      encryptedPassword: Schema.optional(
+        Schema.Struct({
+          value: Schema.String,
+          encryptionCertThumbprint: Schema.optional(Schema.String),
+          encryptionAlgorithm: Schema.Literals([
+            "None",
+            "AES256",
+            "RSAES_PKCS1_v_1_5",
+          ]),
+        }),
+      ),
+      shareAccessRights: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            shareId: Schema.String,
+            accessType: Schema.Literals(["Change", "Read", "Custom"]),
+          }),
+        ),
+      ),
+      userType: Schema.Literals(["Share", "LocalManagement", "ARM"]),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users/{name}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
@@ -3920,11 +4532,11 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users/{name}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;
@@ -3953,11 +4565,11 @@ export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users/{name}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type UsersGetInput = typeof UsersGetInput.Type;
@@ -4004,12 +4616,12 @@ export const UsersListByDataBoxEdgeDeviceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users",
+      apiVersion: "2023-12-01",
     }),
   );
 export type UsersListByDataBoxEdgeDeviceInput =

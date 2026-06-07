@@ -13,11 +13,11 @@ export const FeaturesDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   featureName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}/disable",
+    apiVersion: "2026-04-30",
   }),
 );
 export type FeaturesDisableInput = typeof FeaturesDisableInput.Type;
@@ -98,11 +98,11 @@ export const FeaturesEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   featureName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}/enable",
+    apiVersion: "2026-04-30",
   }),
 );
 export type FeaturesEnableInput = typeof FeaturesEnableInput.Type;
@@ -183,11 +183,11 @@ export const FeaturesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   featureName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}",
+    apiVersion: "2026-04-30",
   }),
 );
 export type FeaturesGetInput = typeof FeaturesGetInput.Type;
@@ -232,11 +232,11 @@ export const FeaturesListBySubscriptionLocationResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features",
+      apiVersion: "2026-04-30",
     }),
   );
 export type FeaturesListBySubscriptionLocationResourceInput =
@@ -300,11 +300,18 @@ export const GuestSubscriptionsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     guestSubscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
+      apiVersion: "2026-04-30",
     }),
   );
 export type GuestSubscriptionsCreateInput =
@@ -355,11 +362,11 @@ export const GuestSubscriptionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     guestSubscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
+      apiVersion: "2026-04-30",
     }),
   );
 export type GuestSubscriptionsDeleteInput =
@@ -392,11 +399,11 @@ export const GuestSubscriptionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     guestSubscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
+      apiVersion: "2026-04-30",
     }),
   );
 export type GuestSubscriptionsGetInput = typeof GuestSubscriptionsGetInput.Type;
@@ -445,11 +452,11 @@ export const GuestSubscriptionsListBySubscriptionLocationResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions",
+      apiVersion: "2026-04-30",
     }),
   );
 export type GuestSubscriptionsListBySubscriptionLocationResourceInput =
@@ -508,12 +515,13 @@ export const GuestSubscriptionsListBySubscriptionLocationResource =
     outputSchema: GuestSubscriptionsListBySubscriptionLocationResourceOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ComputeLimit/operations",
+    apiVersion: "2026-04-30",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -560,11 +568,26 @@ export const SharedLimitsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        resourceName: Schema.optional(
+          Schema.Struct({
+            value: Schema.String,
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        limit: Schema.optional(Schema.Number),
+        unit: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
+      apiVersion: "2026-04-30",
     }),
   );
 export type SharedLimitsCreateInput = typeof SharedLimitsCreateInput.Type;
@@ -611,11 +634,11 @@ export const SharedLimitsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
+      apiVersion: "2026-04-30",
     }),
   );
 export type SharedLimitsDeleteInput = typeof SharedLimitsDeleteInput.Type;
@@ -642,11 +665,11 @@ export const SharedLimitsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
+    apiVersion: "2026-04-30",
   }),
 );
 export type SharedLimitsGetInput = typeof SharedLimitsGetInput.Type;
@@ -691,11 +714,11 @@ export const SharedLimitsListBySubscriptionLocationResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits",
+      apiVersion: "2026-04-30",
     }),
   );
 export type SharedLimitsListBySubscriptionLocationResourceInput =
@@ -758,11 +781,11 @@ export const VmFamiliesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   vmFamilyName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/vmFamilies/{vmFamilyName}",
+    apiVersion: "2026-04-30",
   }),
 );
 export type VmFamiliesGetInput = typeof VmFamiliesGetInput.Type;
@@ -807,12 +830,12 @@ export const VmFamiliesListBySubscriptionLocationResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/vmFamilies",
+      apiVersion: "2026-04-30",
     }),
   );
 export type VmFamiliesListBySubscriptionLocationResourceInput =

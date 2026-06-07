@@ -9,12 +9,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.VirtualMachineImages/operations",
+    apiVersion: "2025-10-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -58,11 +59,33 @@ export const TriggersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        kind: Schema.String,
+        status: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type TriggersCreateOrUpdateInput =
@@ -110,11 +133,11 @@ export const TriggersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}",
+    apiVersion: "2025-10-01",
   }),
 );
 export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
@@ -139,11 +162,11 @@ export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}",
+    apiVersion: "2025-10-01",
   }),
 );
 export type TriggersGetInput = typeof TriggersGetInput.Type;
@@ -187,11 +210,11 @@ export const TriggersListByImageTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers",
+      apiVersion: "2025-10-01",
     }),
   );
 export type TriggersListByImageTemplateInput =
@@ -255,11 +278,11 @@ export const VirtualMachineImageTemplatesCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/cancel",
+      apiVersion: "2025-10-01",
     }),
   );
 export type VirtualMachineImageTemplatesCancelInput =
@@ -289,11 +312,188 @@ export const VirtualMachineImageTemplatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.Struct({
+          type: Schema.String,
+        }),
+        customize: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.String,
+              name: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        optimize: Schema.optional(
+          Schema.Struct({
+            vmBoot: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+              }),
+            ),
+            workload: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                scriptUri: Schema.optional(Schema.String),
+                sha256Checksum: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        validate: Schema.optional(
+          Schema.Struct({
+            continueDistributeOnFailure: Schema.optional(Schema.Boolean),
+            sourceValidationOnly: Schema.optional(Schema.Boolean),
+            inVMValidations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.String,
+                  name: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        distribute: Schema.Array(
+          Schema.Struct({
+            type: Schema.String,
+            runOutputName: Schema.String,
+            artifactTags: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        errorHandling: Schema.optional(
+          Schema.Struct({
+            onCustomizerError: Schema.optional(
+              Schema.Literals(["cleanup", "abort"]),
+            ),
+            onValidationError: Schema.optional(
+              Schema.Literals(["cleanup", "abort"]),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+            "Canceled",
+          ]),
+        ),
+        provisioningError: Schema.optional(
+          Schema.Struct({
+            provisioningErrorCode: Schema.optional(
+              Schema.Literals([
+                "BadSourceType",
+                "BadPIRSource",
+                "BadManagedImageSource",
+                "BadSharedImageVersionSource",
+                "BadCustomizerType",
+                "UnsupportedCustomizerType",
+                "NoCustomizerScript",
+                "BadValidatorType",
+                "UnsupportedValidatorType",
+                "NoValidatorScript",
+                "BadDistributeType",
+                "BadSharedImageDistribute",
+                "BadStagingResourceGroup",
+                "ServerError",
+                "Other",
+              ]),
+            ),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        lastRunStatus: Schema.optional(
+          Schema.Struct({
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            runState: Schema.optional(
+              Schema.Literals([
+                "Running",
+                "Canceling",
+                "Succeeded",
+                "PartiallySucceeded",
+                "Failed",
+                "Canceled",
+              ]),
+            ),
+            runSubState: Schema.optional(
+              Schema.Literals([
+                "Queued",
+                "Building",
+                "Customizing",
+                "Optimizing",
+                "Validating",
+                "Distributing",
+              ]),
+            ),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        buildTimeoutInMinutes: Schema.optional(Schema.Number),
+        vmProfile: Schema.optional(
+          Schema.Struct({
+            vmSize: Schema.optional(Schema.String),
+            osDiskSizeGB: Schema.optional(Schema.Number),
+            userAssignedIdentities: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            vnetConfig: Schema.optional(
+              Schema.Struct({
+                subnetId: Schema.optional(Schema.String),
+                containerInstanceSubnetId: Schema.optional(Schema.String),
+                proxyVmSize: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        additionalDataDisks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              sizeGB: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        stagingResourceGroup: Schema.optional(Schema.String),
+        exactStagingResourceGroup: Schema.optional(Schema.String),
+        autoRun: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          }),
+        ),
+        managedResourceTags: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+      }),
+    ),
+    identity: Schema.Struct({
+      type: Schema.optional(Schema.Literals(["UserAssigned", "None"])),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type VirtualMachineImageTemplatesCreateOrUpdateInput =
@@ -341,11 +541,11 @@ export const VirtualMachineImageTemplatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type VirtualMachineImageTemplatesDeleteInput =
@@ -375,11 +575,11 @@ export const VirtualMachineImageTemplatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type VirtualMachineImageTemplatesGetInput =
@@ -427,11 +627,11 @@ export const VirtualMachineImageTemplatesGetRunOutputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/runOutputs/{runOutputName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type VirtualMachineImageTemplatesGetRunOutputInput =
@@ -478,11 +678,11 @@ export const VirtualMachineImageTemplatesGetRunOutput =
 export const VirtualMachineImageTemplatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VirtualMachineImages/imageTemplates",
+      apiVersion: "2025-10-01",
     }),
   );
 export type VirtualMachineImageTemplatesListInput =
@@ -546,11 +746,11 @@ export const VirtualMachineImageTemplatesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates",
+      apiVersion: "2025-10-01",
     }),
   );
 export type VirtualMachineImageTemplatesListByResourceGroupInput =
@@ -615,11 +815,11 @@ export const VirtualMachineImageTemplatesListRunOutputsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/runOutputs",
+      apiVersion: "2025-10-01",
     }),
   );
 export type VirtualMachineImageTemplatesListRunOutputsInput =
@@ -684,11 +884,11 @@ export const VirtualMachineImageTemplatesRunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run",
+      apiVersion: "2025-10-01",
     }),
   );
 export type VirtualMachineImageTemplatesRunInput =
@@ -718,11 +918,57 @@ export const VirtualMachineImageTemplatesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.Literals(["UserAssigned", "None"])),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        distribute: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.String,
+              runOutputName: Schema.String,
+              artifactTags: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+            }),
+          ),
+        ),
+        vmProfile: Schema.optional(
+          Schema.Struct({
+            vmSize: Schema.optional(Schema.String),
+            osDiskSizeGB: Schema.optional(Schema.Number),
+            userAssignedIdentities: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            vnetConfig: Schema.optional(
+              Schema.Struct({
+                subnetId: Schema.optional(Schema.String),
+                containerInstanceSubnetId: Schema.optional(Schema.String),
+                proxyVmSize: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type VirtualMachineImageTemplatesUpdateInput =

@@ -7,17 +7,74 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AppAttachPackageCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Provisioning", "Failed", "Canceled"]),
+      ),
+      image: Schema.optional(
+        Schema.Struct({
+          packageAlias: Schema.optional(Schema.String),
+          imagePath: Schema.optional(Schema.String),
+          packageName: Schema.optional(Schema.String),
+          packageFamilyName: Schema.optional(Schema.String),
+          packageFullName: Schema.optional(Schema.String),
+          displayName: Schema.optional(Schema.NullOr(Schema.String)),
+          packageRelativePath: Schema.optional(Schema.String),
+          isRegularRegistration: Schema.optional(Schema.Boolean),
+          isActive: Schema.optional(Schema.Boolean),
+          packageDependencies: Schema.optional(
+            Schema.NullOr(
+              Schema.Array(
+                Schema.Struct({
+                  dependencyName: Schema.optional(Schema.String),
+                  publisher: Schema.optional(Schema.String),
+                  minVersion: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          ),
+          version: Schema.optional(Schema.String),
+          lastUpdated: Schema.optional(Schema.String),
+          packageApplications: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                appId: Schema.optional(Schema.String),
+                description: Schema.optional(Schema.String),
+                appUserModelID: Schema.optional(Schema.String),
+                friendlyName: Schema.optional(Schema.String),
+                iconImageName: Schema.optional(Schema.String),
+                rawIcon: Schema.optional(Schema.String),
+                rawPng: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          certificateName: Schema.optional(Schema.NullOr(Schema.String)),
+          certificateExpiry: Schema.optional(Schema.NullOr(Schema.String)),
+          isPackageTimestamped: Schema.optional(
+            Schema.NullOr(Schema.Literals(["Timestamped", "NotTimestamped"])),
+          ),
+        }),
+      ),
+      hostPoolReferences: Schema.optional(Schema.Array(Schema.String)),
+      keyVaultURL: Schema.optional(Schema.String),
+      failHealthCheckOnStagingFailure: Schema.optional(
+        Schema.Literals(["Unhealthy", "NeedsAssistance", "DoNotFail"]),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type AppAttachPackageCreateOrUpdateInput =
@@ -65,11 +122,11 @@ export const AppAttachPackageDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type AppAttachPackageDeleteInput =
@@ -100,11 +157,11 @@ export const AppAttachPackageGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type AppAttachPackageGetInput = typeof AppAttachPackageGetInput.Type;
@@ -149,11 +206,25 @@ export const AppAttachPackageInfoImportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    path: Schema.optional(Schema.String),
+    packageArchitecture: Schema.optional(
+      Schema.NullOr(
+        Schema.Literals([
+          "ARM",
+          "ARM64",
+          "x86",
+          "x64",
+          "Neutral",
+          "x86a64",
+          "ALL",
+        ]),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/importAppAttachPackageInfo",
+      apiVersion: "2025-10-10",
     }),
   );
 export type AppAttachPackageInfoImportInput =
@@ -219,12 +290,12 @@ export const AppAttachPackageListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages",
+      apiVersion: "2025-10-10",
     }),
   );
 export type AppAttachPackageListByResourceGroupInput =
@@ -289,12 +360,12 @@ export const AppAttachPackageListByResourceGroup =
 export const AppAttachPackageListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/appAttachPackages",
+      apiVersion: "2025-10-10",
     }),
   );
 export type AppAttachPackageListBySubscriptionInput =
@@ -359,11 +430,81 @@ export const AppAttachPackageUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        image: Schema.optional(
+          Schema.Struct({
+            packageAlias: Schema.optional(Schema.String),
+            imagePath: Schema.optional(Schema.String),
+            packageName: Schema.optional(Schema.String),
+            packageFamilyName: Schema.optional(Schema.String),
+            packageFullName: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.NullOr(Schema.String)),
+            packageRelativePath: Schema.optional(Schema.String),
+            isRegularRegistration: Schema.optional(Schema.Boolean),
+            isActive: Schema.optional(Schema.Boolean),
+            packageDependencies: Schema.optional(
+              Schema.NullOr(
+                Schema.Array(
+                  Schema.Struct({
+                    dependencyName: Schema.optional(Schema.String),
+                    publisher: Schema.optional(Schema.String),
+                    minVersion: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            ),
+            version: Schema.optional(Schema.String),
+            lastUpdated: Schema.optional(Schema.String),
+            packageApplications: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  appId: Schema.optional(Schema.String),
+                  description: Schema.optional(Schema.String),
+                  appUserModelID: Schema.optional(Schema.String),
+                  friendlyName: Schema.optional(Schema.String),
+                  iconImageName: Schema.optional(Schema.String),
+                  rawIcon: Schema.optional(Schema.String),
+                  rawPng: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            certificateName: Schema.optional(Schema.NullOr(Schema.String)),
+            certificateExpiry: Schema.optional(Schema.NullOr(Schema.String)),
+            isPackageTimestamped: Schema.optional(
+              Schema.NullOr(Schema.Literals(["Timestamped", "NotTimestamped"])),
+            ),
+          }),
+        ),
+        hostPoolReferences: Schema.optional(Schema.Array(Schema.String)),
+        keyVaultURL: Schema.optional(Schema.String),
+        failHealthCheckOnStagingFailure: Schema.optional(
+          Schema.Literals(["Unhealthy", "NeedsAssistance", "DoNotFail"]),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type AppAttachPackageUpdateInput =
@@ -412,11 +553,67 @@ export const ApplicationGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    managedBy: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned"]),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.Struct({
+      objectId: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      friendlyName: Schema.optional(Schema.String),
+      hostPoolArmPath: Schema.String,
+      workspaceArmPath: Schema.optional(Schema.String),
+      applicationGroupType: Schema.Literals(["RemoteApp", "Desktop"]),
+      cloudPcResource: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      showInFeed: Schema.optional(Schema.Boolean),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ApplicationGroupsCreateOrUpdateInput =
@@ -464,11 +661,11 @@ export const ApplicationGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ApplicationGroupsDeleteInput =
@@ -499,11 +696,11 @@ export const ApplicationGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ApplicationGroupsGetInput = typeof ApplicationGroupsGetInput.Type;
@@ -550,7 +747,6 @@ export const ApplicationGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
@@ -559,6 +755,7 @@ export const ApplicationGroupsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ApplicationGroupsListByResourceGroupInput =
@@ -626,12 +823,12 @@ export const ApplicationGroupsListByResourceGroup =
 export const ApplicationGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/applicationGroups",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ApplicationGroupsListBySubscriptionInput =
@@ -696,11 +893,38 @@ export const ApplicationGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        friendlyName: Schema.optional(Schema.String),
+        showInFeed: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ApplicationGroupsUpdateInput =
@@ -749,11 +973,46 @@ export const ApplicationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.Struct({
+      objectId: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      friendlyName: Schema.optional(Schema.String),
+      filePath: Schema.optional(Schema.String),
+      msixPackageFamilyName: Schema.optional(Schema.NullOr(Schema.String)),
+      msixPackageApplicationId: Schema.optional(Schema.NullOr(Schema.String)),
+      applicationType: Schema.optional(
+        Schema.Literals(["InBuilt", "MsixApplication"]),
+      ),
+      commandLineSetting: Schema.Literals(["DoNotAllow", "Allow", "Require"]),
+      commandLineArguments: Schema.optional(Schema.String),
+      showInPortal: Schema.optional(Schema.Boolean),
+      iconPath: Schema.optional(Schema.String),
+      iconIndex: Schema.optional(Schema.Number),
+      iconHash: Schema.optional(Schema.String),
+      iconContent: Schema.optional(Schema.String),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ApplicationsCreateOrUpdateInput =
@@ -802,11 +1061,11 @@ export const ApplicationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
@@ -831,11 +1090,11 @@ export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type ApplicationsGetInput = typeof ApplicationsGetInput.Type;
@@ -878,7 +1137,6 @@ export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ApplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -886,6 +1144,7 @@ export const ApplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications",
+    apiVersion: "2025-10-10",
   }),
 );
 export type ApplicationsListInput = typeof ApplicationsListInput.Type;
@@ -951,11 +1210,30 @@ export const ApplicationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        friendlyName: Schema.optional(Schema.String),
+        filePath: Schema.optional(Schema.String),
+        commandLineSetting: Schema.optional(
+          Schema.Literals(["DoNotAllow", "Allow", "Require"]),
+        ),
+        commandLineArguments: Schema.optional(Schema.String),
+        showInPortal: Schema.optional(Schema.Boolean),
+        iconPath: Schema.optional(Schema.String),
+        iconIndex: Schema.optional(Schema.Number),
+        msixPackageFamilyName: Schema.optional(Schema.NullOr(Schema.String)),
+        msixPackageApplicationId: Schema.optional(Schema.NullOr(Schema.String)),
+        applicationType: Schema.optional(
+          Schema.Literals(["InBuilt", "MsixApplication"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
@@ -999,11 +1277,11 @@ export const ApplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DesktopsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/desktops/{desktopName}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type DesktopsGetInput = typeof DesktopsGetInput.Type;
@@ -1046,7 +1324,6 @@ export const DesktopsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DesktopsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -1054,6 +1331,7 @@ export const DesktopsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/desktops",
+    apiVersion: "2025-10-10",
   }),
 );
 export type DesktopsListInput = typeof DesktopsListInput.Type;
@@ -1116,11 +1394,17 @@ export const DesktopsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DesktopsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+      friendlyName: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/desktops/{desktopName}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type DesktopsUpdateInput = typeof DesktopsUpdateInput.Type;
@@ -1164,11 +1448,182 @@ export const HostPoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    managedBy: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned"]),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.Struct({
+      objectId: Schema.optional(Schema.String),
+      friendlyName: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      hostPoolType: Schema.Literals(["Personal", "Pooled", "BYODesktop"]),
+      personalDesktopAssignmentType: Schema.optional(
+        Schema.NullOr(Schema.Literals(["Automatic", "Direct"])),
+      ),
+      customRdpProperty: Schema.optional(Schema.String),
+      maxSessionLimit: Schema.optional(Schema.NullOr(Schema.Number)),
+      loadBalancerType: Schema.Literals([
+        "BreadthFirst",
+        "DepthFirst",
+        "Persistent",
+        "MultiplePersistent",
+      ]),
+      ring: Schema.optional(Schema.NullOr(Schema.Number)),
+      validationEnvironment: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      registrationInfo: Schema.optional(
+        Schema.Struct({
+          expirationTime: Schema.optional(Schema.NullOr(Schema.String)),
+          token: Schema.optional(Schema.String),
+          registrationTokenOperation: Schema.optional(
+            Schema.Literals(["Delete", "None", "Update"]),
+          ),
+        }),
+      ),
+      vmTemplate: Schema.optional(Schema.String),
+      applicationGroupReferences: Schema.optional(
+        Schema.NullOr(Schema.Array(Schema.String)),
+      ),
+      appAttachPackageReferences: Schema.optional(Schema.Array(Schema.String)),
+      ssoadfsAuthority: Schema.optional(Schema.String),
+      ssoClientId: Schema.optional(Schema.String),
+      ssoClientSecretKeyVaultPath: Schema.optional(SensitiveString),
+      ssoSecretType: Schema.optional(
+        Schema.NullOr(
+          Schema.Literals([
+            "SharedKey",
+            "Certificate",
+            "SharedKeyInKeyVault",
+            "CertificateInKeyVault",
+          ]),
+        ),
+      ),
+      preferredAppGroupType: Schema.Literals([
+        "None",
+        "Desktop",
+        "RailApplications",
+      ]),
+      startVMOnConnect: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      cloudPcResource: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      publicNetworkAccess: Schema.optional(
+        Schema.NullOr(
+          Schema.Literals([
+            "Enabled",
+            "Disabled",
+            "EnabledForSessionHostsOnly",
+            "EnabledForClientsOnly",
+          ]),
+        ),
+      ),
+      agentUpdate: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.Literals(["Default", "Scheduled"])),
+          useSessionHostLocalTime: Schema.optional(Schema.Boolean),
+          maintenanceWindowTimeZone: Schema.optional(Schema.String),
+          maintenanceWindows: Schema.optional(
+            Schema.NullOr(
+              Schema.Array(
+                Schema.Struct({
+                  hour: Schema.optional(Schema.Number),
+                  dayOfWeek: Schema.optional(
+                    Schema.Literals([
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday",
+                      "Sunday",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+          ),
+        }),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.NullOr(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type HostPoolsCreateOrUpdateInput =
@@ -1216,12 +1671,12 @@ export const HostPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const HostPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   force: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type HostPoolsDeleteInput = typeof HostPoolsDeleteInput.Type;
@@ -1247,11 +1702,11 @@ export const HostPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const HostPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type HostPoolsGetInput = typeof HostPoolsGetInput.Type;
@@ -1293,7 +1748,6 @@ export const HostPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const HostPoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -1301,6 +1755,7 @@ export const HostPoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/hostPools",
+    apiVersion: "2025-10-10",
   }),
 );
 export type HostPoolsListInput = typeof HostPoolsListInput.Type;
@@ -1363,7 +1818,6 @@ export const HostPoolsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -1371,6 +1825,7 @@ export const HostPoolsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools",
+      apiVersion: "2025-10-10",
     }),
   );
 export type HostPoolsListByResourceGroupInput =
@@ -1438,11 +1893,11 @@ export const HostPoolsListRegistrationTokensInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/listRegistrationTokens",
+      apiVersion: "2025-10-10",
     }),
   );
 export type HostPoolsListRegistrationTokensInput =
@@ -1482,11 +1937,11 @@ export const HostPoolsRetrieveRegistrationTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/retrieveRegistrationToken",
+      apiVersion: "2025-10-10",
     }),
   );
 export type HostPoolsRetrieveRegistrationTokenInput =
@@ -1521,11 +1976,122 @@ export const HostPoolsRetrieveRegistrationToken =
 export const HostPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      friendlyName: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      customRdpProperty: Schema.optional(Schema.String),
+      maxSessionLimit: Schema.optional(Schema.NullOr(Schema.Number)),
+      personalDesktopAssignmentType: Schema.optional(
+        Schema.NullOr(Schema.Literals(["Automatic", "Direct"])),
+      ),
+      loadBalancerType: Schema.optional(
+        Schema.Literals([
+          "BreadthFirst",
+          "DepthFirst",
+          "Persistent",
+          "MultiplePersistent",
+        ]),
+      ),
+      ring: Schema.optional(Schema.NullOr(Schema.Number)),
+      validationEnvironment: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      registrationInfo: Schema.optional(
+        Schema.Struct({
+          expirationTime: Schema.optional(Schema.NullOr(Schema.String)),
+          registrationTokenOperation: Schema.optional(
+            Schema.Literals(["Delete", "None", "Update"]),
+          ),
+        }),
+      ),
+      vmTemplate: Schema.optional(Schema.String),
+      ssoadfsAuthority: Schema.optional(Schema.String),
+      ssoClientId: Schema.optional(Schema.String),
+      ssoClientSecretKeyVaultPath: Schema.optional(SensitiveString),
+      ssoSecretType: Schema.optional(
+        Schema.NullOr(
+          Schema.Literals([
+            "SharedKey",
+            "Certificate",
+            "SharedKeyInKeyVault",
+            "CertificateInKeyVault",
+          ]),
+        ),
+      ),
+      preferredAppGroupType: Schema.optional(
+        Schema.Literals(["None", "Desktop", "RailApplications"]),
+      ),
+      startVMOnConnect: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      publicNetworkAccess: Schema.optional(
+        Schema.NullOr(
+          Schema.Literals([
+            "Enabled",
+            "Disabled",
+            "EnabledForSessionHostsOnly",
+            "EnabledForClientsOnly",
+          ]),
+        ),
+      ),
+      agentUpdate: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.Literals(["Default", "Scheduled"])),
+          useSessionHostLocalTime: Schema.optional(Schema.Boolean),
+          maintenanceWindowTimeZone: Schema.optional(Schema.String),
+          maintenanceWindows: Schema.optional(
+            Schema.NullOr(
+              Schema.Array(
+                Schema.Struct({
+                  hour: Schema.optional(Schema.Number),
+                  dayOfWeek: Schema.optional(
+                    Schema.Literals([
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday",
+                      "Sunday",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals(["None", "SystemAssigned"]),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type HostPoolsUpdateInput = typeof HostPoolsUpdateInput.Type;
@@ -1568,11 +2134,12 @@ export const HostPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const MsixImagesExpandInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  uri: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/expandMsixImage",
+    apiVersion: "2025-10-10",
   }),
 );
 export type MsixImagesExpandInput = typeof MsixImagesExpandInput.Type;
@@ -1635,11 +2202,61 @@ export const MSIXPackagesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.Struct({
+      imagePath: Schema.optional(Schema.String),
+      packageName: Schema.optional(Schema.String),
+      packageFamilyName: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.NullOr(Schema.String)),
+      packageRelativePath: Schema.optional(Schema.String),
+      isRegularRegistration: Schema.optional(Schema.Boolean),
+      isActive: Schema.optional(Schema.Boolean),
+      packageDependencies: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            dependencyName: Schema.optional(Schema.String),
+            publisher: Schema.optional(Schema.String),
+            minVersion: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      version: Schema.optional(Schema.String),
+      lastUpdated: Schema.optional(Schema.String),
+      packageApplications: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            appId: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            appUserModelID: Schema.optional(Schema.String),
+            friendlyName: Schema.optional(Schema.String),
+            iconImageName: Schema.optional(Schema.String),
+            rawIcon: Schema.optional(Schema.String),
+            rawPng: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type MSIXPackagesCreateOrUpdateInput =
@@ -1688,11 +2305,11 @@ export const MSIXPackagesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type MSIXPackagesDeleteInput = typeof MSIXPackagesDeleteInput.Type;
@@ -1717,11 +2334,11 @@ export const MSIXPackagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const MSIXPackagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type MSIXPackagesGetInput = typeof MSIXPackagesGetInput.Type;
@@ -1764,7 +2381,6 @@ export const MSIXPackagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const MSIXPackagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -1772,6 +2388,7 @@ export const MSIXPackagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages",
+    apiVersion: "2025-10-10",
   }),
 );
 export type MSIXPackagesListInput = typeof MSIXPackagesListInput.Type;
@@ -1837,11 +2454,35 @@ export const MSIXPackagesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        isActive: Schema.optional(Schema.Boolean),
+        isRegularRegistration: Schema.optional(Schema.Boolean),
+        displayName: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type MSIXPackagesUpdateInput = typeof MSIXPackagesUpdateInput.Type;
@@ -1882,12 +2523,13 @@ export const MSIXPackagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MSIXPackagesUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DesktopVirtualization/operations",
+    apiVersion: "2025-10-10",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1945,11 +2587,11 @@ export const PrivateEndpointConnectionsDeleteByHostPoolInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type PrivateEndpointConnectionsDeleteByHostPoolInput =
@@ -1981,11 +2623,11 @@ export const PrivateEndpointConnectionsDeleteByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type PrivateEndpointConnectionsDeleteByWorkspaceInput =
@@ -2017,11 +2659,11 @@ export const PrivateEndpointConnectionsGetByHostPoolInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type PrivateEndpointConnectionsGetByHostPoolInput =
@@ -2071,11 +2713,11 @@ export const PrivateEndpointConnectionsGetByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type PrivateEndpointConnectionsGetByWorkspaceInput =
@@ -2124,7 +2766,6 @@ export const PrivateEndpointConnectionsListByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -2132,6 +2773,7 @@ export const PrivateEndpointConnectionsListByHostPoolInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections",
+      apiVersion: "2025-10-10",
     }),
   );
 export type PrivateEndpointConnectionsListByHostPoolInput =
@@ -2199,11 +2841,11 @@ export const PrivateEndpointConnectionsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateEndpointConnections",
+      apiVersion: "2025-10-10",
     }),
   );
 export type PrivateEndpointConnectionsListByWorkspaceInput =
@@ -2269,11 +2911,31 @@ export const PrivateEndpointConnectionsUpdateByHostPoolInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type PrivateEndpointConnectionsUpdateByHostPoolInput =
@@ -2323,11 +2985,31 @@ export const PrivateEndpointConnectionsUpdateByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type PrivateEndpointConnectionsUpdateByWorkspaceInput =
@@ -2376,7 +3058,6 @@ export const PrivateLinkResourcesListByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -2384,6 +3065,7 @@ export const PrivateLinkResourcesListByHostPoolInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateLinkResources",
+      apiVersion: "2025-10-10",
     }),
   );
 export type PrivateLinkResourcesListByHostPoolInput =
@@ -2451,7 +3133,6 @@ export const PrivateLinkResourcesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -2459,6 +3140,7 @@ export const PrivateLinkResourcesListByWorkspaceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateLinkResources",
+      apiVersion: "2025-10-10",
     }),
   );
 export type PrivateLinkResourcesListByWorkspaceInput =
@@ -2526,11 +3208,111 @@ export const ScalingPlanPersonalSchedulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.Struct({
+      daysOfWeek: Schema.optional(
+        Schema.Array(
+          Schema.Literals([
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ]),
+        ),
+      ),
+      rampUpStartTime: Schema.optional(
+        Schema.Struct({
+          hour: Schema.Number,
+          minute: Schema.Number,
+        }),
+      ),
+      rampUpAutoStartHosts: Schema.optional(
+        Schema.Literals(["None", "WithAssignedUser", "All"]),
+      ),
+      rampUpStartVMOnConnect: Schema.optional(
+        Schema.Literals(["Enable", "Disable"]),
+      ),
+      rampUpActionOnDisconnect: Schema.optional(
+        Schema.Literals(["None", "Deallocate"]),
+      ),
+      rampUpMinutesToWaitOnDisconnect: Schema.optional(Schema.Number),
+      rampUpActionOnLogoff: Schema.optional(
+        Schema.Literals(["None", "Deallocate"]),
+      ),
+      rampUpMinutesToWaitOnLogoff: Schema.optional(Schema.Number),
+      peakStartTime: Schema.optional(
+        Schema.Struct({
+          hour: Schema.Number,
+          minute: Schema.Number,
+        }),
+      ),
+      peakStartVMOnConnect: Schema.optional(
+        Schema.Literals(["Enable", "Disable"]),
+      ),
+      peakActionOnDisconnect: Schema.optional(
+        Schema.Literals(["None", "Deallocate"]),
+      ),
+      peakMinutesToWaitOnDisconnect: Schema.optional(Schema.Number),
+      peakActionOnLogoff: Schema.optional(
+        Schema.Literals(["None", "Deallocate"]),
+      ),
+      peakMinutesToWaitOnLogoff: Schema.optional(Schema.Number),
+      rampDownStartTime: Schema.optional(
+        Schema.Struct({
+          hour: Schema.Number,
+          minute: Schema.Number,
+        }),
+      ),
+      rampDownStartVMOnConnect: Schema.optional(
+        Schema.Literals(["Enable", "Disable"]),
+      ),
+      rampDownActionOnDisconnect: Schema.optional(
+        Schema.Literals(["None", "Deallocate"]),
+      ),
+      rampDownMinutesToWaitOnDisconnect: Schema.optional(Schema.Number),
+      rampDownActionOnLogoff: Schema.optional(
+        Schema.Literals(["None", "Deallocate", "Hibernate"]),
+      ),
+      rampDownMinutesToWaitOnLogoff: Schema.optional(Schema.Number),
+      offPeakStartTime: Schema.optional(
+        Schema.Struct({
+          hour: Schema.Number,
+          minute: Schema.Number,
+        }),
+      ),
+      offPeakStartVMOnConnect: Schema.optional(
+        Schema.Literals(["Enable", "Disable"]),
+      ),
+      offPeakActionOnDisconnect: Schema.optional(
+        Schema.Literals(["None", "Deallocate", "Hibernate"]),
+      ),
+      offPeakMinutesToWaitOnDisconnect: Schema.optional(Schema.Number),
+      offPeakActionOnLogoff: Schema.optional(
+        Schema.Literals(["None", "Deallocate", "Hibernate"]),
+      ),
+      offPeakMinutesToWaitOnLogoff: Schema.optional(Schema.Number),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlanPersonalSchedulesCreateInput =
@@ -2578,11 +3360,11 @@ export const ScalingPlanPersonalSchedulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlanPersonalSchedulesDeleteInput =
@@ -2612,11 +3394,11 @@ export const ScalingPlanPersonalSchedulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlanPersonalSchedulesGetInput =
@@ -2664,7 +3446,6 @@ export const ScalingPlanPersonalSchedulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -2672,6 +3453,7 @@ export const ScalingPlanPersonalSchedulesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlanPersonalSchedulesListInput =
@@ -2739,11 +3521,99 @@ export const ScalingPlanPersonalSchedulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        daysOfWeek: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+            ]),
+          ),
+        ),
+        rampUpStartTime: Schema.optional(
+          Schema.Struct({
+            hour: Schema.Number,
+            minute: Schema.Number,
+          }),
+        ),
+        rampUpAutoStartHosts: Schema.optional(
+          Schema.Literals(["None", "WithAssignedUser", "All"]),
+        ),
+        rampUpStartVMOnConnect: Schema.optional(
+          Schema.Literals(["Enable", "Disable"]),
+        ),
+        rampUpActionOnDisconnect: Schema.optional(
+          Schema.Literals(["None", "Deallocate"]),
+        ),
+        rampUpMinutesToWaitOnDisconnect: Schema.optional(Schema.Number),
+        rampUpActionOnLogoff: Schema.optional(
+          Schema.Literals(["None", "Deallocate"]),
+        ),
+        rampUpMinutesToWaitOnLogoff: Schema.optional(Schema.Number),
+        peakStartTime: Schema.optional(
+          Schema.Struct({
+            hour: Schema.Number,
+            minute: Schema.Number,
+          }),
+        ),
+        peakStartVMOnConnect: Schema.optional(
+          Schema.Literals(["Enable", "Disable"]),
+        ),
+        peakActionOnDisconnect: Schema.optional(
+          Schema.Literals(["None", "Deallocate"]),
+        ),
+        peakMinutesToWaitOnDisconnect: Schema.optional(Schema.Number),
+        peakActionOnLogoff: Schema.optional(
+          Schema.Literals(["None", "Deallocate"]),
+        ),
+        peakMinutesToWaitOnLogoff: Schema.optional(Schema.Number),
+        rampDownStartTime: Schema.optional(
+          Schema.Struct({
+            hour: Schema.Number,
+            minute: Schema.Number,
+          }),
+        ),
+        rampDownStartVMOnConnect: Schema.optional(
+          Schema.Literals(["Enable", "Disable"]),
+        ),
+        rampDownActionOnDisconnect: Schema.optional(
+          Schema.Literals(["None", "Deallocate"]),
+        ),
+        rampDownMinutesToWaitOnDisconnect: Schema.optional(Schema.Number),
+        rampDownActionOnLogoff: Schema.optional(
+          Schema.Literals(["None", "Deallocate", "Hibernate"]),
+        ),
+        rampDownMinutesToWaitOnLogoff: Schema.optional(Schema.Number),
+        offPeakStartTime: Schema.optional(
+          Schema.Struct({
+            hour: Schema.Number,
+            minute: Schema.Number,
+          }),
+        ),
+        offPeakStartVMOnConnect: Schema.optional(
+          Schema.Literals(["Enable", "Disable"]),
+        ),
+        offPeakActionOnDisconnect: Schema.optional(
+          Schema.Literals(["None", "Deallocate", "Hibernate"]),
+        ),
+        offPeakMinutesToWaitOnDisconnect: Schema.optional(Schema.Number),
+        offPeakActionOnLogoff: Schema.optional(
+          Schema.Literals(["None", "Deallocate", "Hibernate"]),
+        ),
+        offPeakMinutesToWaitOnLogoff: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlanPersonalSchedulesUpdateInput =
@@ -2791,11 +3661,89 @@ export const ScalingPlanPooledSchedulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.Struct({
+      daysOfWeek: Schema.optional(
+        Schema.Array(
+          Schema.Literals([
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ]),
+        ),
+      ),
+      rampUpStartTime: Schema.optional(
+        Schema.Struct({
+          hour: Schema.Number,
+          minute: Schema.Number,
+        }),
+      ),
+      rampUpLoadBalancingAlgorithm: Schema.optional(
+        Schema.Literals(["BreadthFirst", "DepthFirst"]),
+      ),
+      rampUpMinimumHostsPct: Schema.optional(Schema.Number),
+      rampUpCapacityThresholdPct: Schema.optional(Schema.Number),
+      peakStartTime: Schema.optional(
+        Schema.Struct({
+          hour: Schema.Number,
+          minute: Schema.Number,
+        }),
+      ),
+      peakLoadBalancingAlgorithm: Schema.optional(
+        Schema.Literals(["BreadthFirst", "DepthFirst"]),
+      ),
+      rampDownStartTime: Schema.optional(
+        Schema.Struct({
+          hour: Schema.Number,
+          minute: Schema.Number,
+        }),
+      ),
+      rampDownLoadBalancingAlgorithm: Schema.optional(
+        Schema.Literals(["BreadthFirst", "DepthFirst"]),
+      ),
+      rampDownMinimumHostsPct: Schema.optional(Schema.Number),
+      rampDownCapacityThresholdPct: Schema.optional(Schema.Number),
+      rampDownForceLogoffUsers: Schema.optional(Schema.Boolean),
+      rampDownStopHostsWhen: Schema.optional(
+        Schema.Literals(["ZeroSessions", "ZeroActiveSessions"]),
+      ),
+      rampDownWaitTimeMinutes: Schema.optional(Schema.Number),
+      rampDownNotificationMessage: Schema.optional(Schema.String),
+      offPeakStartTime: Schema.optional(
+        Schema.Struct({
+          hour: Schema.Number,
+          minute: Schema.Number,
+        }),
+      ),
+      offPeakLoadBalancingAlgorithm: Schema.optional(
+        Schema.Literals(["BreadthFirst", "DepthFirst"]),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlanPooledSchedulesCreateInput =
@@ -2843,11 +3791,11 @@ export const ScalingPlanPooledSchedulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlanPooledSchedulesDeleteInput =
@@ -2877,11 +3825,11 @@ export const ScalingPlanPooledSchedulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlanPooledSchedulesGetInput =
@@ -2929,7 +3877,6 @@ export const ScalingPlanPooledSchedulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -2937,6 +3884,7 @@ export const ScalingPlanPooledSchedulesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlanPooledSchedulesListInput =
@@ -3004,11 +3952,91 @@ export const ScalingPlanPooledSchedulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        daysOfWeek: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+            ]),
+          ),
+        ),
+        rampUpStartTime: Schema.optional(
+          Schema.Struct({
+            hour: Schema.Number,
+            minute: Schema.Number,
+          }),
+        ),
+        rampUpLoadBalancingAlgorithm: Schema.optional(
+          Schema.Literals(["BreadthFirst", "DepthFirst"]),
+        ),
+        rampUpMinimumHostsPct: Schema.optional(Schema.Number),
+        rampUpCapacityThresholdPct: Schema.optional(Schema.Number),
+        peakStartTime: Schema.optional(
+          Schema.Struct({
+            hour: Schema.Number,
+            minute: Schema.Number,
+          }),
+        ),
+        peakLoadBalancingAlgorithm: Schema.optional(
+          Schema.Literals(["BreadthFirst", "DepthFirst"]),
+        ),
+        rampDownStartTime: Schema.optional(
+          Schema.Struct({
+            hour: Schema.Number,
+            minute: Schema.Number,
+          }),
+        ),
+        rampDownLoadBalancingAlgorithm: Schema.optional(
+          Schema.Literals(["BreadthFirst", "DepthFirst"]),
+        ),
+        rampDownMinimumHostsPct: Schema.optional(Schema.Number),
+        rampDownCapacityThresholdPct: Schema.optional(Schema.Number),
+        rampDownForceLogoffUsers: Schema.optional(Schema.Boolean),
+        rampDownStopHostsWhen: Schema.optional(
+          Schema.Literals(["ZeroSessions", "ZeroActiveSessions"]),
+        ),
+        rampDownWaitTimeMinutes: Schema.optional(Schema.Number),
+        rampDownNotificationMessage: Schema.optional(Schema.String),
+        offPeakStartTime: Schema.optional(
+          Schema.Struct({
+            hour: Schema.Number,
+            minute: Schema.Number,
+          }),
+        ),
+        offPeakLoadBalancingAlgorithm: Schema.optional(
+          Schema.Literals(["BreadthFirst", "DepthFirst"]),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlanPooledSchedulesUpdateInput =
@@ -3056,11 +4084,139 @@ export const ScalingPlansCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    managedBy: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned"]),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.Struct({
+      objectId: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      friendlyName: Schema.optional(Schema.String),
+      timeZone: Schema.String,
+      hostPoolType: Schema.optional(Schema.Literals(["Pooled"])),
+      exclusionTag: Schema.optional(Schema.String),
+      schedules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            daysOfWeek: Schema.optional(
+              Schema.Array(
+                Schema.Literals([
+                  "Sunday",
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                ]),
+              ),
+            ),
+            rampUpStartTime: Schema.optional(
+              Schema.Struct({
+                hour: Schema.Number,
+                minute: Schema.Number,
+              }),
+            ),
+            rampUpLoadBalancingAlgorithm: Schema.optional(
+              Schema.Literals(["BreadthFirst", "DepthFirst"]),
+            ),
+            rampUpMinimumHostsPct: Schema.optional(Schema.Number),
+            rampUpCapacityThresholdPct: Schema.optional(Schema.Number),
+            peakStartTime: Schema.optional(
+              Schema.Struct({
+                hour: Schema.Number,
+                minute: Schema.Number,
+              }),
+            ),
+            peakLoadBalancingAlgorithm: Schema.optional(
+              Schema.Literals(["BreadthFirst", "DepthFirst"]),
+            ),
+            rampDownStartTime: Schema.optional(
+              Schema.Struct({
+                hour: Schema.Number,
+                minute: Schema.Number,
+              }),
+            ),
+            rampDownLoadBalancingAlgorithm: Schema.optional(
+              Schema.Literals(["BreadthFirst", "DepthFirst"]),
+            ),
+            rampDownMinimumHostsPct: Schema.optional(Schema.Number),
+            rampDownCapacityThresholdPct: Schema.optional(Schema.Number),
+            rampDownForceLogoffUsers: Schema.optional(Schema.Boolean),
+            rampDownStopHostsWhen: Schema.optional(
+              Schema.Literals(["ZeroSessions", "ZeroActiveSessions"]),
+            ),
+            rampDownWaitTimeMinutes: Schema.optional(Schema.Number),
+            rampDownNotificationMessage: Schema.optional(Schema.String),
+            offPeakStartTime: Schema.optional(
+              Schema.Struct({
+                hour: Schema.Number,
+                minute: Schema.Number,
+              }),
+            ),
+            offPeakLoadBalancingAlgorithm: Schema.optional(
+              Schema.Literals(["BreadthFirst", "DepthFirst"]),
+            ),
+          }),
+        ),
+      ),
+      hostPoolReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            hostPoolArmPath: Schema.optional(Schema.String),
+            scalingPlanEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlansCreateInput = typeof ScalingPlansCreateInput.Type;
@@ -3105,11 +4261,11 @@ export const ScalingPlansDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlansDeleteInput = typeof ScalingPlansDeleteInput.Type;
@@ -3134,11 +4290,11 @@ export const ScalingPlansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ScalingPlansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type ScalingPlansGetInput = typeof ScalingPlansGetInput.Type;
@@ -3182,7 +4338,6 @@ export const ScalingPlansListByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -3190,6 +4345,7 @@ export const ScalingPlansListByHostPoolInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/scalingPlans",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlansListByHostPoolInput =
@@ -3258,7 +4414,6 @@ export const ScalingPlansListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -3266,6 +4421,7 @@ export const ScalingPlansListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlansListByResourceGroupInput =
@@ -3332,7 +4488,6 @@ export const ScalingPlansListByResourceGroup =
 export const ScalingPlansListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -3340,6 +4495,7 @@ export const ScalingPlansListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/scalingPlans",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlansListBySubscriptionInput =
@@ -3406,11 +4562,96 @@ export const ScalingPlansUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        friendlyName: Schema.optional(Schema.String),
+        timeZone: Schema.optional(Schema.String),
+        exclusionTag: Schema.optional(Schema.String),
+        schedules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              daysOfWeek: Schema.optional(
+                Schema.Array(
+                  Schema.Literals([
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                  ]),
+                ),
+              ),
+              rampUpStartTime: Schema.optional(
+                Schema.Struct({
+                  hour: Schema.Number,
+                  minute: Schema.Number,
+                }),
+              ),
+              rampUpLoadBalancingAlgorithm: Schema.optional(
+                Schema.Literals(["BreadthFirst", "DepthFirst"]),
+              ),
+              rampUpMinimumHostsPct: Schema.optional(Schema.Number),
+              rampUpCapacityThresholdPct: Schema.optional(Schema.Number),
+              peakStartTime: Schema.optional(
+                Schema.Struct({
+                  hour: Schema.Number,
+                  minute: Schema.Number,
+                }),
+              ),
+              peakLoadBalancingAlgorithm: Schema.optional(
+                Schema.Literals(["BreadthFirst", "DepthFirst"]),
+              ),
+              rampDownStartTime: Schema.optional(
+                Schema.Struct({
+                  hour: Schema.Number,
+                  minute: Schema.Number,
+                }),
+              ),
+              rampDownLoadBalancingAlgorithm: Schema.optional(
+                Schema.Literals(["BreadthFirst", "DepthFirst"]),
+              ),
+              rampDownMinimumHostsPct: Schema.optional(Schema.Number),
+              rampDownCapacityThresholdPct: Schema.optional(Schema.Number),
+              rampDownForceLogoffUsers: Schema.optional(Schema.Boolean),
+              rampDownStopHostsWhen: Schema.optional(
+                Schema.Literals(["ZeroSessions", "ZeroActiveSessions"]),
+              ),
+              rampDownWaitTimeMinutes: Schema.optional(Schema.Number),
+              rampDownNotificationMessage: Schema.optional(Schema.String),
+              offPeakStartTime: Schema.optional(
+                Schema.Struct({
+                  hour: Schema.Number,
+                  minute: Schema.Number,
+                }),
+              ),
+              offPeakLoadBalancingAlgorithm: Schema.optional(
+                Schema.Literals(["BreadthFirst", "DepthFirst"]),
+              ),
+            }),
+          ),
+        ),
+        hostPoolReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              hostPoolArmPath: Schema.optional(Schema.String),
+              scalingPlanEnabled: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type ScalingPlansUpdateInput = typeof ScalingPlansUpdateInput.Type;
@@ -3455,12 +4696,12 @@ export const SessionHostsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type SessionHostsDeleteInput = typeof SessionHostsDeleteInput.Type;
@@ -3486,11 +4727,11 @@ export const SessionHostsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SessionHostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type SessionHostsGetInput = typeof SessionHostsGetInput.Type;
@@ -3533,7 +4774,6 @@ export const SessionHostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SessionHostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -3541,6 +4781,7 @@ export const SessionHostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts",
+    apiVersion: "2025-10-10",
   }),
 );
 export type SessionHostsListInput = typeof SessionHostsListInput.Type;
@@ -3606,12 +4847,36 @@ export const SessionHostsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     force: Schema.optional(Schema.Boolean),
+    properties: Schema.optional(
+      Schema.Struct({
+        allowNewSession: Schema.optional(Schema.Boolean),
+        assignedUser: Schema.optional(Schema.String),
+        friendlyName: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type SessionHostsUpdateInput = typeof SessionHostsUpdateInput.Type;
@@ -3657,7 +4922,6 @@ export const StartMenuItemsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -3665,6 +4929,7 @@ export const StartMenuItemsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/startMenuItems",
+      apiVersion: "2025-10-10",
     }),
   );
 export type StartMenuItemsListInput = typeof StartMenuItemsListInput.Type;
@@ -3729,12 +4994,12 @@ export const UserSessionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions/{userSessionId}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type UserSessionsDeleteInput = typeof UserSessionsDeleteInput.Type;
@@ -3761,11 +5026,11 @@ export const UserSessionsDisconnectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions/{userSessionId}/disconnect",
+      apiVersion: "2025-10-10",
     }),
   );
 export type UserSessionsDisconnectInput =
@@ -3795,11 +5060,11 @@ export const UserSessionsDisconnect = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const UserSessionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions/{userSessionId}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type UserSessionsGetInput = typeof UserSessionsGetInput.Type;
@@ -3842,7 +5107,6 @@ export const UserSessionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const UserSessionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -3850,6 +5114,7 @@ export const UserSessionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions",
+    apiVersion: "2025-10-10",
   }),
 );
 export type UserSessionsListInput = typeof UserSessionsListInput.Type;
@@ -3915,7 +5180,6 @@ export const UserSessionsListByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
@@ -3924,6 +5188,7 @@ export const UserSessionsListByHostPoolInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/userSessions",
+      apiVersion: "2025-10-10",
     }),
   );
 export type UserSessionsListByHostPoolInput =
@@ -3993,11 +5258,13 @@ export const UserSessionsSendMessageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    messageTitle: Schema.optional(Schema.String),
+    messageBody: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions/{userSessionId}/sendMessage",
+      apiVersion: "2025-10-10",
     }),
   );
 export type UserSessionsSendMessageInput =
@@ -4028,11 +5295,106 @@ export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    managedBy: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned"]),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        objectId: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        friendlyName: Schema.optional(Schema.String),
+        applicationGroupReferences: Schema.optional(
+          Schema.NullOr(Schema.Array(Schema.String)),
+        ),
+        cloudPcResource: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        publicNetworkAccess: Schema.optional(
+          Schema.NullOr(Schema.Literals(["Enabled", "Disabled"])),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                type: Schema.optional(Schema.String),
+                systemData: Schema.optional(
+                  Schema.Struct({
+                    createdBy: Schema.optional(Schema.String),
+                    createdByType: Schema.optional(
+                      Schema.Literals([
+                        "User",
+                        "Application",
+                        "ManagedIdentity",
+                        "Key",
+                      ]),
+                    ),
+                    createdAt: Schema.optional(Schema.String),
+                    lastModifiedBy: Schema.optional(Schema.String),
+                    lastModifiedByType: Schema.optional(
+                      Schema.Literals([
+                        "User",
+                        "Application",
+                        "ManagedIdentity",
+                        "Key",
+                      ]),
+                    ),
+                    lastModifiedAt: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}",
+      apiVersion: "2025-10-10",
     }),
   );
 export type WorkspacesCreateOrUpdateInput =
@@ -4080,11 +5442,11 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -4109,11 +5471,11 @@ export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
@@ -4157,7 +5519,6 @@ export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -4165,6 +5526,7 @@ export const WorkspacesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces",
+      apiVersion: "2025-10-10",
     }),
   );
 export type WorkspacesListByResourceGroupInput =
@@ -4231,11 +5593,11 @@ export const WorkspacesListByResourceGroup =
 export const WorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/workspaces",
+      apiVersion: "2025-10-10",
     }),
   );
 export type WorkspacesListBySubscriptionInput =
@@ -4298,11 +5660,26 @@ export const WorkspacesListBySubscription =
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+      friendlyName: Schema.optional(Schema.String),
+      applicationGroupReferences: Schema.optional(
+        Schema.NullOr(Schema.Array(Schema.String)),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.NullOr(Schema.Literals(["Enabled", "Disabled"])),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}",
+    apiVersion: "2025-10-10",
   }),
 );
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;

@@ -9,12 +9,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StandbyPool/operations",
+    apiVersion: "2025-10-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -62,11 +63,11 @@ export const StandbyContainerGroupPoolRuntimeViewsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
     runtimeView: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews/{runtimeView}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyContainerGroupPoolRuntimeViewsGetInput =
@@ -117,11 +118,11 @@ export const StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput =
@@ -186,11 +187,43 @@ export const StandbyContainerGroupPoolsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        elasticityProfile: Schema.Struct({
+          maxReadyCapacity: Schema.Number,
+          refillPolicy: Schema.optional(Schema.Literals(["always"])),
+          dynamicSizing: Schema.optional(
+            Schema.Struct({
+              enabled: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        }),
+        containerGroupProperties: Schema.Struct({
+          containerGroupProfile: Schema.Struct({
+            id: Schema.String,
+            revision: Schema.optional(Schema.Number),
+          }),
+          subnetIds: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.String,
+              }),
+            ),
+          ),
+        }),
+        zones: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "Deleting"]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyContainerGroupPoolsCreateOrUpdateInput =
@@ -240,11 +273,11 @@ export const StandbyContainerGroupPoolsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyContainerGroupPoolsDeleteInput =
@@ -276,11 +309,11 @@ export const StandbyContainerGroupPoolsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyContainerGroupPoolsGetInput =
@@ -329,11 +362,11 @@ export const StandbyContainerGroupPoolsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyContainerGroupPoolsListByResourceGroupInput =
@@ -395,11 +428,11 @@ export const StandbyContainerGroupPoolsListByResourceGroup =
 export const StandbyContainerGroupPoolsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StandbyPool/standbyContainerGroupPools",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyContainerGroupPoolsListBySubscriptionInput =
@@ -462,11 +495,43 @@ export const StandbyContainerGroupPoolsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        elasticityProfile: Schema.optional(
+          Schema.Struct({
+            maxReadyCapacity: Schema.Number,
+            refillPolicy: Schema.optional(Schema.Literals(["always"])),
+            dynamicSizing: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        containerGroupProperties: Schema.optional(
+          Schema.Struct({
+            containerGroupProfile: Schema.Struct({
+              id: Schema.String,
+              revision: Schema.optional(Schema.Number),
+            }),
+            subnetIds: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+        zones: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyContainerGroupPoolsUpdateInput =
@@ -517,11 +582,11 @@ export const StandbyVirtualMachinePoolRuntimeViewsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
     runtimeView: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews/{runtimeView}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyVirtualMachinePoolRuntimeViewsGetInput =
@@ -572,11 +637,11 @@ export const StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput =
@@ -641,11 +706,38 @@ export const StandbyVirtualMachinePoolsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        elasticityProfile: Schema.optional(
+          Schema.Struct({
+            maxReadyCapacity: Schema.Number,
+            minReadyCapacity: Schema.optional(Schema.Number),
+            postProvisioningDelay: Schema.optional(Schema.String),
+            dynamicSizing: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        virtualMachineState: Schema.Literals([
+          "Running",
+          "Deallocated",
+          "Hibernated",
+        ]),
+        attachedVirtualMachineScaleSetId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "Deleting"]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyVirtualMachinePoolsCreateOrUpdateInput =
@@ -695,11 +787,11 @@ export const StandbyVirtualMachinePoolsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyVirtualMachinePoolsDeleteInput =
@@ -731,11 +823,11 @@ export const StandbyVirtualMachinePoolsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyVirtualMachinePoolsGetInput =
@@ -784,11 +876,11 @@ export const StandbyVirtualMachinePoolsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyVirtualMachinePoolsListByResourceGroupInput =
@@ -850,11 +942,11 @@ export const StandbyVirtualMachinePoolsListByResourceGroup =
 export const StandbyVirtualMachinePoolsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyVirtualMachinePoolsListBySubscriptionInput =
@@ -917,11 +1009,32 @@ export const StandbyVirtualMachinePoolsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        elasticityProfile: Schema.optional(
+          Schema.Struct({
+            maxReadyCapacity: Schema.Number,
+            minReadyCapacity: Schema.optional(Schema.Number),
+            postProvisioningDelay: Schema.optional(Schema.String),
+            dynamicSizing: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        virtualMachineState: Schema.optional(
+          Schema.Literals(["Running", "Deallocated", "Hibernated"]),
+        ),
+        attachedVirtualMachineScaleSetId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyVirtualMachinePoolsUpdateInput =
@@ -972,11 +1085,11 @@ export const StandbyVirtualMachinesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/standbyVirtualMachines/{standbyVirtualMachineName}",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyVirtualMachinesGetInput =
@@ -1028,11 +1141,11 @@ export const StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput 
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/standbyVirtualMachines",
+      apiVersion: "2025-10-01",
     }),
   );
 export type StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput =

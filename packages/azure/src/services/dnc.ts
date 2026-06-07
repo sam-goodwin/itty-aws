@@ -12,11 +12,27 @@ import * as T from "../traits.ts";
 export const ControllerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      resourceGuid: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Deleting", "Succeeded", "Failed", "Provisioning"]),
+      ),
+      dncAppId: Schema.optional(Schema.String),
+      dncTenantId: Schema.optional(Schema.String),
+      dncEndpoint: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controller/{resourceName}",
+    apiVersion: "2021-03-15",
   }),
 );
 export type ControllerCreateInput = typeof ControllerCreateInput.Type;
@@ -49,11 +65,11 @@ export const ControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ControllerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controller/{resourceName}",
+    apiVersion: "2021-03-15",
   }),
 );
 export type ControllerDeleteInput = typeof ControllerDeleteInput.Type;
@@ -79,11 +95,11 @@ export const ControllerGetDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controller/{resourceName}",
+      apiVersion: "2021-03-15",
     }),
   );
 export type ControllerGetDetailsInput = typeof ControllerGetDetailsInput.Type;
@@ -117,11 +133,12 @@ export const ControllerGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ControllerPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controller/{resourceName}",
+    apiVersion: "2021-03-15",
   }),
 );
 export type ControllerPatchInput = typeof ControllerPatchInput.Type;
@@ -153,11 +170,11 @@ export const DelegatedNetworkListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controllers",
+      apiVersion: "2021-03-15",
     }),
   );
 export type DelegatedNetworkListByResourceGroupInput =
@@ -197,11 +214,11 @@ export const DelegatedNetworkListByResourceGroup =
 export const DelegatedNetworkListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DelegatedNetwork/controllers",
+      apiVersion: "2021-03-15",
     }),
   );
 export type DelegatedNetworkListBySubscriptionInput =
@@ -241,11 +258,11 @@ export const DelegatedSubnetServiceDeleteDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets/{resourceName}",
+      apiVersion: "2021-03-15",
     }),
   );
 export type DelegatedSubnetServiceDeleteDetailsInput =
@@ -275,11 +292,11 @@ export const DelegatedSubnetServiceGetDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets/{resourceName}",
+      apiVersion: "2021-03-15",
     }),
   );
 export type DelegatedSubnetServiceGetDetailsInput =
@@ -315,11 +332,11 @@ export const DelegatedSubnetServiceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets",
+      apiVersion: "2021-03-15",
     }),
   );
 export type DelegatedSubnetServiceListByResourceGroupInput =
@@ -359,11 +376,11 @@ export const DelegatedSubnetServiceListByResourceGroup =
 export const DelegatedSubnetServiceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DelegatedNetwork/delegatedSubnets",
+      apiVersion: "2021-03-15",
     }),
   );
 export type DelegatedSubnetServiceListBySubscriptionInput =
@@ -403,11 +420,12 @@ export const DelegatedSubnetServicePatchDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets/{resourceName}",
+      apiVersion: "2021-03-15",
     }),
   );
 export type DelegatedSubnetServicePatchDetailsInput =
@@ -443,11 +461,34 @@ export const DelegatedSubnetServicePutDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        resourceGuid: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Deleting", "Succeeded", "Failed", "Provisioning"]),
+        ),
+        subnetDetails: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        controllerDetails: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets/{resourceName}",
+      apiVersion: "2021-03-15",
     }),
   );
 export type DelegatedSubnetServicePutDetailsInput =
@@ -479,12 +520,13 @@ export const DelegatedSubnetServicePutDetails =
     outputSchema: DelegatedSubnetServicePutDetailsOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DelegatedNetwork/operations",
+    apiVersion: "2021-03-15",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -530,11 +572,40 @@ export const OrchestratorInstanceServiceCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        resourceGuid: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Deleting", "Succeeded", "Failed", "Provisioning"]),
+        ),
+        orchestratorAppId: Schema.optional(Schema.String),
+        orchestratorTenantId: Schema.optional(Schema.String),
+        clusterRootCA: Schema.optional(Schema.String),
+        apiServerEndpoint: Schema.optional(Schema.String),
+        privateLinkResourceId: Schema.optional(Schema.String),
+        controllerDetails: Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    kind: Schema.Literals(["Kubernetes"]),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators/{resourceName}",
+      apiVersion: "2021-03-15",
     }),
   );
 export type OrchestratorInstanceServiceCreateInput =
@@ -578,11 +649,11 @@ export const OrchestratorInstanceServiceDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators/{resourceName}",
+      apiVersion: "2021-03-15",
     }),
   );
 export type OrchestratorInstanceServiceDeleteInput =
@@ -612,11 +683,11 @@ export const OrchestratorInstanceServiceGetDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators/{resourceName}",
+      apiVersion: "2021-03-15",
     }),
   );
 export type OrchestratorInstanceServiceGetDetailsInput =
@@ -660,11 +731,11 @@ export const OrchestratorInstanceServiceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators",
+      apiVersion: "2021-03-15",
     }),
   );
 export type OrchestratorInstanceServiceListByResourceGroupInput =
@@ -712,11 +783,11 @@ export const OrchestratorInstanceServiceListByResourceGroup =
 export const OrchestratorInstanceServiceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DelegatedNetwork/orchestrators",
+      apiVersion: "2021-03-15",
     }),
   );
 export type OrchestratorInstanceServiceListBySubscriptionInput =
@@ -764,11 +835,12 @@ export const OrchestratorInstanceServicePatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators/{resourceName}",
+      apiVersion: "2021-03-15",
     }),
   );
 export type OrchestratorInstanceServicePatchInput =

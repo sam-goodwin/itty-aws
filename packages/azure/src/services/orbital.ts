@@ -12,11 +12,11 @@ import * as T from "../traits.ts";
 export const AvailableGroundStationsListByCapabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/availableGroundStations",
+      apiVersion: "2022-11-01",
     }),
   );
 export type AvailableGroundStationsListByCapabilityInput =
@@ -65,11 +65,73 @@ export const ContactProfilesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "creating",
+          "succeeded",
+          "failed",
+          "canceled",
+          "updating",
+          "deleting",
+        ]),
+      ),
+      minimumViableContactDuration: Schema.optional(Schema.String),
+      minimumElevationDegrees: Schema.optional(Schema.Number),
+      autoTrackingConfiguration: Schema.optional(
+        Schema.Literals(["disabled", "xBand", "sBand"]),
+      ),
+      eventHubUri: Schema.optional(Schema.String),
+      networkConfiguration: Schema.Struct({
+        subnetId: Schema.String,
+      }),
+      thirdPartyConfigurations: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            providerName: Schema.String,
+            missionConfiguration: Schema.String,
+          }),
+        ),
+      ),
+      links: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          polarization: Schema.Literals([
+            "RHCP",
+            "LHCP",
+            "linearVertical",
+            "linearHorizontal",
+          ]),
+          direction: Schema.Literals(["Uplink", "Downlink"]),
+          gainOverTemperature: Schema.optional(Schema.Number),
+          eirpdBW: Schema.optional(Schema.Number),
+          channels: Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              centerFrequencyMHz: Schema.Number,
+              bandwidthMHz: Schema.Number,
+              endPoint: Schema.Struct({
+                ipAddress: Schema.String,
+                endPointName: Schema.String,
+                port: Schema.String,
+                protocol: Schema.Literals(["TCP", "UDP"]),
+              }),
+              modulationConfiguration: Schema.optional(Schema.String),
+              demodulationConfiguration: Schema.optional(Schema.String),
+              encodingConfiguration: Schema.optional(Schema.String),
+              decodingConfiguration: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ContactProfilesCreateOrUpdateInput =
@@ -117,11 +179,11 @@ export const ContactProfilesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ContactProfilesDeleteInput = typeof ContactProfilesDeleteInput.Type;
@@ -151,11 +213,11 @@ export const ContactProfilesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ContactProfilesGetInput = typeof ContactProfilesGetInput.Type;
@@ -200,11 +262,11 @@ export const ContactProfilesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ContactProfilesListInput = typeof ContactProfilesListInput.Type;
@@ -265,11 +327,11 @@ export const ContactProfilesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ContactProfilesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/contactProfiles",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ContactProfilesListBySubscriptionInput =
@@ -333,11 +395,12 @@ export const ContactProfilesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ContactProfilesUpdateTagsInput =
@@ -385,11 +448,54 @@ export const ContactProfilesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ContactsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "creating",
+        "succeeded",
+        "failed",
+        "canceled",
+        "updating",
+        "deleting",
+      ]),
+    ),
+    status: Schema.optional(
+      Schema.Literals([
+        "scheduled",
+        "cancelled",
+        "succeeded",
+        "failed",
+        "providerCancelled",
+      ]),
+    ),
+    reservationStartTime: Schema.String,
+    reservationEndTime: Schema.String,
+    rxStartTime: Schema.optional(Schema.String),
+    rxEndTime: Schema.optional(Schema.String),
+    txStartTime: Schema.optional(Schema.String),
+    txEndTime: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+    maximumElevationDegrees: Schema.optional(Schema.Number),
+    startAzimuthDegrees: Schema.optional(Schema.Number),
+    endAzimuthDegrees: Schema.optional(Schema.Number),
+    groundStationName: Schema.String,
+    startElevationDegrees: Schema.optional(Schema.Number),
+    endElevationDegrees: Schema.optional(Schema.Number),
+    antennaConfiguration: Schema.optional(
+      Schema.Struct({
+        destinationIp: Schema.optional(Schema.String),
+        sourceIps: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    contactProfile: Schema.Struct({
+      id: Schema.String,
+    }),
+  }),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts/{contactName}",
+    apiVersion: "2022-11-01",
   }),
 );
 export type ContactsCreateInput = typeof ContactsCreateInput.Type;
@@ -432,11 +538,11 @@ export const ContactsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ContactsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts/{contactName}",
+    apiVersion: "2022-11-01",
   }),
 );
 export type ContactsDeleteInput = typeof ContactsDeleteInput.Type;
@@ -461,11 +567,11 @@ export const ContactsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ContactsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts/{contactName}",
+    apiVersion: "2022-11-01",
   }),
 );
 export type ContactsGetInput = typeof ContactsGetInput.Type;
@@ -508,11 +614,11 @@ export const ContactsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ContactsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts",
+    apiVersion: "2022-11-01",
   }),
 );
 export type ContactsListInput = typeof ContactsListInput.Type;
@@ -573,11 +679,18 @@ export const EdgeSitesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      globalCommunicationsSite: Schema.Struct({
+        id: Schema.String,
+      }),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type EdgeSitesCreateOrUpdateInput =
@@ -625,11 +738,11 @@ export const EdgeSitesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const EdgeSitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type EdgeSitesDeleteInput = typeof EdgeSitesDeleteInput.Type;
@@ -654,11 +767,11 @@ export const EdgeSitesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EdgeSitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type EdgeSitesGetInput = typeof EdgeSitesGetInput.Type;
@@ -701,11 +814,11 @@ export const EdgeSitesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EdgeSitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites",
+    apiVersion: "2024-03-01",
   }),
 );
 export type EdgeSitesListInput = typeof EdgeSitesListInput.Type;
@@ -765,11 +878,11 @@ export const EdgeSitesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EdgeSitesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/edgeSites",
+      apiVersion: "2024-03-01",
     }),
   );
 export type EdgeSitesListBySubscriptionInput =
@@ -834,11 +947,11 @@ export const EdgeSitesListL2ConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}/listL2Connections",
+      apiVersion: "2024-03-01",
     }),
   );
 export type EdgeSitesListL2ConnectionsInput =
@@ -878,11 +991,12 @@ export const EdgeSitesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type EdgeSitesUpdateTagsInput = typeof EdgeSitesUpdateTagsInput.Type;
@@ -926,11 +1040,11 @@ export const EdgeSitesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GlobalCommunicationsSitesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/globalCommunicationsSites",
+      apiVersion: "2024-03-01",
     }),
   );
 export type GlobalCommunicationsSitesListBySubscriptionInput =
@@ -994,11 +1108,29 @@ export const GroundStationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        city: Schema.optional(Schema.String),
+        capabilities: Schema.Array(
+          Schema.Literals(["EarthObservation", "Communication"]),
+        ),
+        providerName: Schema.optional(Schema.String),
+        longitudeDegrees: Schema.optional(Schema.Number),
+        latitudeDegrees: Schema.optional(Schema.Number),
+        altitudeMeters: Schema.optional(Schema.Number),
+        releaseMode: Schema.optional(Schema.Literals(["Preview", "GA"])),
+        globalCommunicationsSite: Schema.Struct({
+          id: Schema.String,
+        }),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type GroundStationsCreateOrUpdateInput =
@@ -1046,11 +1178,11 @@ export const GroundStationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type GroundStationsDeleteInput = typeof GroundStationsDeleteInput.Type;
@@ -1079,12 +1211,12 @@ export const GroundStationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type GroundStationsGetInput = typeof GroundStationsGetInput.Type;
@@ -1129,11 +1261,11 @@ export const GroundStationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations",
+      apiVersion: "2024-03-01",
     }),
   );
 export type GroundStationsListInput = typeof GroundStationsListInput.Type;
@@ -1194,11 +1326,11 @@ export const GroundStationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GroundStationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/groundStations",
+      apiVersion: "2024-03-01",
     }),
   );
 export type GroundStationsListBySubscriptionInput =
@@ -1262,11 +1394,11 @@ export const GroundStationsListL2ConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}/listL2Connections",
+      apiVersion: "2024-03-01",
     }),
   );
 export type GroundStationsListL2ConnectionsInput =
@@ -1305,11 +1437,12 @@ export const GroundStationsUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type GroundStationsUpdateTagsInput =
@@ -1358,11 +1491,39 @@ export const L2ConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Updating",
+          "Deleting",
+        ]),
+      ),
+      circuitId: Schema.optional(Schema.String),
+      edgeSite: Schema.Struct({
+        id: Schema.String,
+      }),
+      edgeSitePartnerRouter: Schema.Struct({
+        name: Schema.String,
+      }),
+      groundStation: Schema.Struct({
+        id: Schema.String,
+      }),
+      groundStationPartnerRouter: Schema.Struct({
+        name: Schema.String,
+      }),
+      vlanId: Schema.Number,
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type L2ConnectionsCreateOrUpdateInput =
@@ -1411,11 +1572,11 @@ export const L2ConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type L2ConnectionsDeleteInput = typeof L2ConnectionsDeleteInput.Type;
@@ -1441,11 +1602,11 @@ export const L2ConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const L2ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type L2ConnectionsGetInput = typeof L2ConnectionsGetInput.Type;
@@ -1491,12 +1652,12 @@ export const L2ConnectionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections",
+    apiVersion: "2024-03-01",
   }),
 );
 export type L2ConnectionsListInput = typeof L2ConnectionsListInput.Type;
@@ -1557,11 +1718,11 @@ export const L2ConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const L2ConnectionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/l2Connections",
+      apiVersion: "2024-03-01",
     }),
   );
 export type L2ConnectionsListBySubscriptionInput =
@@ -1625,11 +1786,12 @@ export const L2ConnectionsUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type L2ConnectionsUpdateTagsInput =
@@ -1674,10 +1836,14 @@ export const L2ConnectionsUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Orbital/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Orbital/operations",
+    apiVersion: "2022-11-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -1723,11 +1889,11 @@ export const OperationsResultsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/locations/{location}/operationResults/{operationId}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type OperationsResultsGetInput = typeof OperationsResultsGetInput.Type;
@@ -1775,11 +1941,51 @@ export const SpacecraftsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "creating",
+          "succeeded",
+          "failed",
+          "canceled",
+          "updating",
+          "deleting",
+        ]),
+      ),
+      noradId: Schema.optional(Schema.String),
+      titleLine: Schema.String,
+      tleLine1: Schema.String,
+      tleLine2: Schema.String,
+      links: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          centerFrequencyMHz: Schema.Number,
+          bandwidthMHz: Schema.Number,
+          direction: Schema.Literals(["Uplink", "Downlink"]),
+          polarization: Schema.Literals([
+            "RHCP",
+            "LHCP",
+            "linearVertical",
+            "linearHorizontal",
+          ]),
+          authorizations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                groundStation: Schema.String,
+                expirationDate: Schema.String,
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type SpacecraftsCreateOrUpdateInput =
@@ -1828,12 +2034,12 @@ export const SpacecraftsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
+    apiVersion: "2022-11-01",
   }),
 );
 export type SpacecraftsDeleteInput = typeof SpacecraftsDeleteInput.Type;
@@ -1858,11 +2064,11 @@ export const SpacecraftsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SpacecraftsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
+    apiVersion: "2022-11-01",
   }),
 );
 export type SpacecraftsGetInput = typeof SpacecraftsGetInput.Type;
@@ -1905,11 +2111,11 @@ export const SpacecraftsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SpacecraftsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts",
+    apiVersion: "2022-11-01",
   }),
 );
 export type SpacecraftsListInput = typeof SpacecraftsListInput.Type;
@@ -1970,11 +2176,17 @@ export const SpacecraftsListAvailableContactsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    contactProfile: Schema.Struct({
+      id: Schema.String,
+    }),
+    groundStationName: Schema.String,
+    startTime: Schema.String,
+    endTime: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/listAvailableContacts",
+      apiVersion: "2022-11-01",
     }),
   );
 export type SpacecraftsListAvailableContactsInput =
@@ -2030,11 +2242,11 @@ export const SpacecraftsListAvailableContacts =
 export const SpacecraftsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/spacecrafts",
+      apiVersion: "2022-11-01",
     }),
   );
 export type SpacecraftsListBySubscriptionInput =
@@ -2098,11 +2310,12 @@ export const SpacecraftsUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type SpacecraftsUpdateTagsInput = typeof SpacecraftsUpdateTagsInput.Type;

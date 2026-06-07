@@ -11,11 +11,50 @@ import * as T from "../traits.ts";
 // Input Schema
 export const AttestationsCreateOrUpdateAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      policyAssignmentId: Schema.String,
+      policyDefinitionReferenceId: Schema.optional(Schema.String),
+      complianceState: Schema.optional(
+        Schema.Literals(["Compliant", "NonCompliant", "Unknown"]),
+      ),
+      expiresOn: Schema.optional(Schema.String),
+      owner: Schema.optional(Schema.String),
+      comments: Schema.optional(Schema.String),
+      evidence: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            sourceUri: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      lastComplianceStateChangeAt: Schema.optional(Schema.String),
+      assessmentDate: Schema.optional(Schema.String),
+      metadata: Schema.optional(Schema.Unknown),
+    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type AttestationsCreateOrUpdateAtResourceInput =
@@ -47,11 +86,50 @@ export const AttestationsCreateOrUpdateAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      policyAssignmentId: Schema.String,
+      policyDefinitionReferenceId: Schema.optional(Schema.String),
+      complianceState: Schema.optional(
+        Schema.Literals(["Compliant", "NonCompliant", "Unknown"]),
+      ),
+      expiresOn: Schema.optional(Schema.String),
+      owner: Schema.optional(Schema.String),
+      comments: Schema.optional(Schema.String),
+      evidence: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            sourceUri: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      lastComplianceStateChangeAt: Schema.optional(Schema.String),
+      assessmentDate: Schema.optional(Schema.String),
+      metadata: Schema.optional(Schema.Unknown),
+    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type AttestationsCreateOrUpdateAtResourceGroupInput =
@@ -84,11 +162,50 @@ export const AttestationsCreateOrUpdateAtResourceGroup =
 export const AttestationsCreateOrUpdateAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      policyAssignmentId: Schema.String,
+      policyDefinitionReferenceId: Schema.optional(Schema.String),
+      complianceState: Schema.optional(
+        Schema.Literals(["Compliant", "NonCompliant", "Unknown"]),
+      ),
+      expiresOn: Schema.optional(Schema.String),
+      owner: Schema.optional(Schema.String),
+      comments: Schema.optional(Schema.String),
+      evidence: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            sourceUri: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      lastComplianceStateChangeAt: Schema.optional(Schema.String),
+      assessmentDate: Schema.optional(Schema.String),
+      metadata: Schema.optional(Schema.Unknown),
+    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type AttestationsCreateOrUpdateAtSubscriptionInput =
@@ -118,12 +235,11 @@ export const AttestationsCreateOrUpdateAtSubscription =
   }));
 // Input Schema
 export const AttestationsDeleteAtResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type AttestationsDeleteAtResourceInput =
@@ -151,11 +267,11 @@ export const AttestationsDeleteAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type AttestationsDeleteAtResourceGroupInput =
@@ -184,11 +300,11 @@ export const AttestationsDeleteAtResourceGroup =
 export const AttestationsDeleteAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type AttestationsDeleteAtSubscriptionInput =
@@ -214,12 +330,11 @@ export const AttestationsDeleteAtSubscription =
   }));
 // Input Schema
 export const AttestationsGetAtResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type AttestationsGetAtResourceInput =
@@ -252,11 +367,11 @@ export const AttestationsGetAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type AttestationsGetAtResourceGroupInput =
@@ -289,11 +404,11 @@ export const AttestationsGetAtResourceGroup =
 export const AttestationsGetAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type AttestationsGetAtSubscriptionInput =
@@ -323,12 +438,11 @@ export const AttestationsGetAtSubscription =
   }));
 // Input Schema
 export const AttestationsListForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/attestations",
+      apiVersion: "2024-10-01",
     }),
   );
 export type AttestationsListForResourceInput =
@@ -368,11 +482,11 @@ export const AttestationsListForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations",
+      apiVersion: "2024-10-01",
     }),
   );
 export type AttestationsListForResourceGroupInput =
@@ -412,11 +526,11 @@ export const AttestationsListForResourceGroup =
 export const AttestationsListForSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations",
+      apiVersion: "2024-10-01",
     }),
   );
 export type AttestationsListForSubscriptionInput =
@@ -457,6 +571,7 @@ export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type ComponentPolicyStatesListQueryResultsForPolicyDefinitionInput =
@@ -544,6 +659,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceInput =
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type ComponentPolicyStatesListQueryResultsForResourceInput =
@@ -630,6 +746,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type ComponentPolicyStatesListQueryResultsForResourceGroupInput =
@@ -716,6 +833,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAss
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput =
@@ -804,6 +922,7 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type ComponentPolicyStatesListQueryResultsForSubscriptionInput =
@@ -890,6 +1009,7 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssi
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput =
@@ -979,6 +1099,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.PolicyInsights/operations",
+    apiVersion: "2024-10-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1019,6 +1140,7 @@ export const PolicyEventsListQueryResultsForManagementGroupInput =
     T.Http({
       method: "POST",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyEventsListQueryResultsForManagementGroupInput =
@@ -1098,6 +1220,7 @@ export const PolicyEventsListQueryResultsForPolicyDefinitionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyEventsListQueryResultsForPolicyDefinitionInput =
@@ -1177,6 +1300,7 @@ export const PolicyEventsListQueryResultsForPolicySetDefinitionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyEventsListQueryResultsForPolicySetDefinitionInput =
@@ -1256,6 +1380,7 @@ export const PolicyEventsListQueryResultsForResourceInput =
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyEventsListQueryResultsForResourceInput =
@@ -1335,6 +1460,7 @@ export const PolicyEventsListQueryResultsForResourceGroupInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyEventsListQueryResultsForResourceGroupInput =
@@ -1414,6 +1540,7 @@ export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentIn
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentInput =
@@ -1495,6 +1622,7 @@ export const PolicyEventsListQueryResultsForSubscriptionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyEventsListQueryResultsForSubscriptionInput =
@@ -1574,6 +1702,7 @@ export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentInp
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentInput =
@@ -1655,6 +1784,7 @@ export const PolicyMetadataGetResourceInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.PolicyInsights/policyMetadata/{resourceName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyMetadataGetResourceInput =
@@ -1696,6 +1826,7 @@ export const PolicyMetadataListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.PolicyInsights/policyMetadata",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyMetadataListInput = typeof PolicyMetadataListInput.Type;
@@ -1737,11 +1868,26 @@ export const PolicyMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PolicyRestrictionsCheckAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    resourceDetails: Schema.optional(
+      Schema.Struct({
+        resourceContent: Schema.Unknown,
+        apiVersion: Schema.optional(Schema.String),
+        scope: Schema.optional(Schema.String),
+      }),
+    ),
+    pendingFields: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          field: Schema.String,
+          values: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyRestrictionsCheckAtManagementGroupScopeInput =
@@ -1846,11 +1992,25 @@ export const PolicyRestrictionsCheckAtResourceGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    resourceDetails: Schema.Struct({
+      resourceContent: Schema.Unknown,
+      apiVersion: Schema.optional(Schema.String),
+      scope: Schema.optional(Schema.String),
+    }),
+    pendingFields: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          field: Schema.String,
+          values: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+    ),
+    includeAuditEffect: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyRestrictionsCheckAtResourceGroupScopeInput =
@@ -1956,11 +2116,25 @@ export const PolicyRestrictionsCheckAtResourceGroupScope =
 export const PolicyRestrictionsCheckAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    resourceDetails: Schema.Struct({
+      resourceContent: Schema.Unknown,
+      apiVersion: Schema.optional(Schema.String),
+      scope: Schema.optional(Schema.String),
+    }),
+    pendingFields: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          field: Schema.String,
+          values: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+    ),
+    includeAuditEffect: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyRestrictionsCheckAtSubscriptionScopeInput =
@@ -2067,6 +2241,7 @@ export const PolicyStatesListQueryResultsForManagementGroupInput =
     T.Http({
       method: "POST",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesListQueryResultsForManagementGroupInput =
@@ -2171,6 +2346,7 @@ export const PolicyStatesListQueryResultsForPolicyDefinitionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesListQueryResultsForPolicyDefinitionInput =
@@ -2275,6 +2451,7 @@ export const PolicyStatesListQueryResultsForPolicySetDefinitionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesListQueryResultsForPolicySetDefinitionInput =
@@ -2379,6 +2556,7 @@ export const PolicyStatesListQueryResultsForResourceInput =
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesListQueryResultsForResourceInput =
@@ -2483,6 +2661,7 @@ export const PolicyStatesListQueryResultsForResourceGroupInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesListQueryResultsForResourceGroupInput =
@@ -2587,6 +2766,7 @@ export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentIn
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput =
@@ -2693,6 +2873,7 @@ export const PolicyStatesListQueryResultsForSubscriptionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesListQueryResultsForSubscriptionInput =
@@ -2797,6 +2978,7 @@ export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInp
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput =
@@ -2903,6 +3085,7 @@ export const PolicyStatesSummarizeForManagementGroupInput =
     T.Http({
       method: "POST",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesSummarizeForManagementGroupInput =
@@ -3093,6 +3276,7 @@ export const PolicyStatesSummarizeForPolicyDefinitionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesSummarizeForPolicyDefinitionInput =
@@ -3283,6 +3467,7 @@ export const PolicyStatesSummarizeForPolicySetDefinitionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesSummarizeForPolicySetDefinitionInput =
@@ -3473,6 +3658,7 @@ export const PolicyStatesSummarizeForResourceInput =
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesSummarizeForResourceInput =
@@ -3663,6 +3849,7 @@ export const PolicyStatesSummarizeForResourceGroupInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesSummarizeForResourceGroupInput =
@@ -3853,6 +4040,7 @@ export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentInput =
@@ -4045,6 +4233,7 @@ export const PolicyStatesSummarizeForSubscriptionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesSummarizeForSubscriptionInput =
@@ -4235,6 +4424,7 @@ export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentInput =
@@ -4426,6 +4616,7 @@ export const PolicyStatesTriggerResourceGroupEvaluationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesTriggerResourceGroupEvaluationInput =
@@ -4452,6 +4643,7 @@ export const PolicyStatesTriggerSubscriptionEvaluationInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation",
+      apiVersion: "2024-10-01",
     }),
   );
 export type PolicyStatesTriggerSubscriptionEvaluationInput =
@@ -4478,6 +4670,7 @@ export const RemediationsCancelAtManagementGroupInput =
     T.Http({
       method: "POST",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/cancel",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsCancelAtManagementGroupInput =
@@ -4556,6 +4749,7 @@ export const RemediationsCancelAtResourceInput =
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/cancel",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsCancelAtResourceInput =
@@ -4634,6 +4828,7 @@ export const RemediationsCancelAtResourceGroupInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/cancel",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsCancelAtResourceGroupInput =
@@ -4712,6 +4907,7 @@ export const RemediationsCancelAtSubscriptionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/cancel",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsCancelAtSubscriptionInput =
@@ -4786,10 +4982,63 @@ export const RemediationsCancelAtSubscription =
   }));
 // Input Schema
 export const RemediationsCreateOrUpdateAtManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        policyAssignmentId: Schema.optional(Schema.String),
+        policyDefinitionReferenceId: Schema.optional(Schema.String),
+        resourceDiscoveryMode: Schema.optional(
+          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        createdOn: Schema.optional(Schema.String),
+        lastUpdatedOn: Schema.optional(Schema.String),
+        filters: Schema.optional(
+          Schema.Struct({
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            resourceIds: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        deploymentStatus: Schema.optional(
+          Schema.Struct({
+            totalDeployments: Schema.optional(Schema.Number),
+            successfulDeployments: Schema.optional(Schema.Number),
+            failedDeployments: Schema.optional(Schema.Number),
+          }),
+        ),
+        statusMessage: Schema.optional(Schema.String),
+        correlationId: Schema.optional(Schema.String),
+        resourceCount: Schema.optional(Schema.Number),
+        parallelDeployments: Schema.optional(Schema.Number),
+        failureThreshold: Schema.optional(
+          Schema.Struct({
+            percentage: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsCreateOrUpdateAtManagementGroupInput =
@@ -4864,10 +5113,63 @@ export const RemediationsCreateOrUpdateAtManagementGroup =
   }));
 // Input Schema
 export const RemediationsCreateOrUpdateAtResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        policyAssignmentId: Schema.optional(Schema.String),
+        policyDefinitionReferenceId: Schema.optional(Schema.String),
+        resourceDiscoveryMode: Schema.optional(
+          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        createdOn: Schema.optional(Schema.String),
+        lastUpdatedOn: Schema.optional(Schema.String),
+        filters: Schema.optional(
+          Schema.Struct({
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            resourceIds: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        deploymentStatus: Schema.optional(
+          Schema.Struct({
+            totalDeployments: Schema.optional(Schema.Number),
+            successfulDeployments: Schema.optional(Schema.Number),
+            failedDeployments: Schema.optional(Schema.Number),
+          }),
+        ),
+        statusMessage: Schema.optional(Schema.String),
+        correlationId: Schema.optional(Schema.String),
+        resourceCount: Schema.optional(Schema.Number),
+        parallelDeployments: Schema.optional(Schema.Number),
+        failureThreshold: Schema.optional(
+          Schema.Struct({
+            percentage: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsCreateOrUpdateAtResourceInput =
@@ -4942,10 +5244,63 @@ export const RemediationsCreateOrUpdateAtResource =
   }));
 // Input Schema
 export const RemediationsCreateOrUpdateAtResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        policyAssignmentId: Schema.optional(Schema.String),
+        policyDefinitionReferenceId: Schema.optional(Schema.String),
+        resourceDiscoveryMode: Schema.optional(
+          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        createdOn: Schema.optional(Schema.String),
+        lastUpdatedOn: Schema.optional(Schema.String),
+        filters: Schema.optional(
+          Schema.Struct({
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            resourceIds: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        deploymentStatus: Schema.optional(
+          Schema.Struct({
+            totalDeployments: Schema.optional(Schema.Number),
+            successfulDeployments: Schema.optional(Schema.Number),
+            failedDeployments: Schema.optional(Schema.Number),
+          }),
+        ),
+        statusMessage: Schema.optional(Schema.String),
+        correlationId: Schema.optional(Schema.String),
+        resourceCount: Schema.optional(Schema.Number),
+        parallelDeployments: Schema.optional(Schema.Number),
+        failureThreshold: Schema.optional(
+          Schema.Struct({
+            percentage: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsCreateOrUpdateAtResourceGroupInput =
@@ -5020,10 +5375,63 @@ export const RemediationsCreateOrUpdateAtResourceGroup =
   }));
 // Input Schema
 export const RemediationsCreateOrUpdateAtSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        policyAssignmentId: Schema.optional(Schema.String),
+        policyDefinitionReferenceId: Schema.optional(Schema.String),
+        resourceDiscoveryMode: Schema.optional(
+          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        createdOn: Schema.optional(Schema.String),
+        lastUpdatedOn: Schema.optional(Schema.String),
+        filters: Schema.optional(
+          Schema.Struct({
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            resourceIds: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        deploymentStatus: Schema.optional(
+          Schema.Struct({
+            totalDeployments: Schema.optional(Schema.Number),
+            successfulDeployments: Schema.optional(Schema.Number),
+            failedDeployments: Schema.optional(Schema.Number),
+          }),
+        ),
+        statusMessage: Schema.optional(Schema.String),
+        correlationId: Schema.optional(Schema.String),
+        resourceCount: Schema.optional(Schema.Number),
+        parallelDeployments: Schema.optional(Schema.Number),
+        failureThreshold: Schema.optional(
+          Schema.Struct({
+            percentage: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsCreateOrUpdateAtSubscriptionInput =
@@ -5102,6 +5510,7 @@ export const RemediationsDeleteAtManagementGroupInput =
     T.Http({
       method: "DELETE",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsDeleteAtManagementGroupInput =
@@ -5180,6 +5589,7 @@ export const RemediationsDeleteAtResourceInput =
     T.Http({
       method: "DELETE",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsDeleteAtResourceInput =
@@ -5258,6 +5668,7 @@ export const RemediationsDeleteAtResourceGroupInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsDeleteAtResourceGroupInput =
@@ -5336,6 +5747,7 @@ export const RemediationsDeleteAtSubscriptionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsDeleteAtSubscriptionInput =
@@ -5414,6 +5826,7 @@ export const RemediationsGetAtManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsGetAtManagementGroupInput =
@@ -5492,6 +5905,7 @@ export const RemediationsGetAtResourceInput =
     T.Http({
       method: "GET",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsGetAtResourceInput =
@@ -5571,6 +5985,7 @@ export const RemediationsGetAtResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsGetAtResourceGroupInput =
@@ -5649,6 +6064,7 @@ export const RemediationsGetAtSubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsGetAtSubscriptionInput =
@@ -5727,6 +6143,7 @@ export const RemediationsListDeploymentsAtManagementGroupInput =
     T.Http({
       method: "POST",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsListDeploymentsAtManagementGroupInput =
@@ -5783,6 +6200,7 @@ export const RemediationsListDeploymentsAtResourceInput =
     T.Http({
       method: "POST",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsListDeploymentsAtResourceInput =
@@ -5839,6 +6257,7 @@ export const RemediationsListDeploymentsAtResourceGroupInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsListDeploymentsAtResourceGroupInput =
@@ -5895,6 +6314,7 @@ export const RemediationsListDeploymentsAtSubscriptionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsListDeploymentsAtSubscriptionInput =
@@ -5951,6 +6371,7 @@ export const RemediationsListForManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsListForManagementGroupInput =
@@ -6049,6 +6470,7 @@ export const RemediationsListForResourceInput =
     T.Http({
       method: "GET",
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsListForResourceInput =
@@ -6148,6 +6570,7 @@ export const RemediationsListForResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsListForResourceGroupInput =
@@ -6246,6 +6669,7 @@ export const RemediationsListForSubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations",
+      apiVersion: "2024-10-01",
     }),
   );
 export type RemediationsListForSubscriptionInput =

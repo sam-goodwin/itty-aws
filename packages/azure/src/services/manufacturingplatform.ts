@@ -14,11 +14,167 @@ export const ManufacturingDataServicesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        version: Schema.optional(Schema.String),
+        enableCopilot: Schema.optional(Schema.Boolean),
+        enableDiagnosticSettings: Schema.optional(Schema.Boolean),
+        aadApplicationId: Schema.String,
+        aksAdminGroupId: Schema.optional(Schema.String),
+        serviceUrl: Schema.optional(Schema.String),
+        aksProfile: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        storageProfile: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        databaseProfile: Schema.optional(
+          Schema.Struct({
+            cosmosId: Schema.optional(Schema.String),
+          }),
+        ),
+        adxProfile: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            uri: Schema.optional(Schema.String),
+            dataIngestionUri: Schema.optional(Schema.String),
+          }),
+        ),
+        redisProfile: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        monitoringProfile: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        eventHubProfile: Schema.optional(
+          Schema.Struct({
+            adxInstanceId: Schema.optional(Schema.String),
+            hostName: Schema.optional(Schema.String),
+          }),
+        ),
+        functionAppProfile: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        openAIProfile: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            gptModelName: Schema.optional(Schema.String),
+            gptModelVersion: Schema.optional(Schema.String),
+            gptModelCapacity: Schema.optional(Schema.Number),
+            gptModelSkuName: Schema.optional(Schema.String),
+            embeddingModelName: Schema.optional(Schema.String),
+            embeddingModelVersion: Schema.optional(Schema.String),
+            embeddingModelSkuName: Schema.optional(Schema.String),
+            embeddingModelCapacity: Schema.optional(Schema.Number),
+          }),
+        ),
+        managedResourceGroupConfiguration: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            location: Schema.String,
+          }),
+        ),
+        managedOnBehalfOfConfiguration: Schema.optional(
+          Schema.Struct({
+            moboBrokerResources: Schema.Array(
+              Schema.Struct({
+                id: Schema.String,
+              }),
+            ),
+          }),
+        ),
+        cmkProfile: Schema.optional(
+          Schema.Struct({
+            keyUri: Schema.String,
+          }),
+        ),
+        fabricProfile: Schema.optional(
+          Schema.Struct({
+            keyUri: Schema.String,
+            oneLakeUri: Schema.String,
+            oneLakePath: Schema.String,
+          }),
+        ),
+        userManagedOpenAIProfile: Schema.optional(
+          Schema.Struct({
+            id: Schema.String,
+            gptModelDeploymentName: Schema.String,
+            embeddingModelDeploymentName: Schema.String,
+            embeddingModelType: Schema.optional(Schema.String),
+          }),
+        ),
+        denyAssignmentExclusions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        resourceState: Schema.optional(Schema.Literals(["Active", "Inactive"])),
+        redundancyState: Schema.optional(Schema.Literals(["Zonal", "None"])),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ManufacturingDataServicesCreateOrUpdateInput =
@@ -68,11 +224,11 @@ export const ManufacturingDataServicesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ManufacturingDataServicesDeleteInput =
@@ -104,11 +260,11 @@ export const ManufacturingDataServicesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ManufacturingDataServicesGetInput =
@@ -158,11 +314,11 @@ export const ManufacturingDataServicesListAvailableVersionsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}/listAvailableVersions",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ManufacturingDataServicesListAvailableVersionsInput =
@@ -202,11 +358,11 @@ export const ManufacturingDataServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ManufacturingDataServicesListByResourceGroupInput =
@@ -268,11 +424,11 @@ export const ManufacturingDataServicesListByResourceGroup =
 export const ManufacturingDataServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ManufacturingDataServicesListBySubscriptionInput =
@@ -335,11 +491,87 @@ export const ManufacturingDataServicesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(
+          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        version: Schema.optional(Schema.String),
+        enableCopilot: Schema.optional(Schema.Boolean),
+        enableDiagnosticSettings: Schema.optional(Schema.Boolean),
+        openAIProfile: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            gptModelName: Schema.optional(Schema.String),
+            gptModelVersion: Schema.optional(Schema.String),
+            gptModelCapacity: Schema.optional(Schema.Number),
+            gptModelSkuName: Schema.optional(Schema.String),
+            embeddingModelName: Schema.optional(Schema.String),
+            embeddingModelVersion: Schema.optional(Schema.String),
+            embeddingModelSkuName: Schema.optional(Schema.String),
+            embeddingModelCapacity: Schema.optional(Schema.Number),
+          }),
+        ),
+        fabricProfile: Schema.optional(
+          Schema.Struct({
+            keyUri: Schema.optional(Schema.String),
+            oneLakeUri: Schema.optional(Schema.String),
+            oneLakePath: Schema.optional(Schema.String),
+          }),
+        ),
+        userManagedOpenAIProfile: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            gptModelDeploymentName: Schema.optional(Schema.String),
+            embeddingModelDeploymentName: Schema.optional(Schema.String),
+          }),
+        ),
+        denyAssignmentExclusions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        resourceState: Schema.optional(Schema.Literals(["Active", "Inactive"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
+      apiVersion: "2025-03-01",
     }),
   );
 export type ManufacturingDataServicesUpdateInput =
@@ -384,12 +616,13 @@ export const ManufacturingDataServicesUpdate =
     outputSchema: ManufacturingDataServicesUpdateOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ManufacturingPlatform/operations",
+    apiVersion: "2025-03-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;

@@ -14,12 +14,92 @@ export const ElasticSansCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      sku: Schema.Struct({
+        name: Schema.Literals(["Premium_LRS", "Premium_ZRS"]),
+        tier: Schema.optional(Schema.Literals(["Premium"])),
+      }),
+      availabilityZones: Schema.optional(Schema.Array(Schema.String)),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Invalid",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Pending",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Deleted",
+          "Restoring",
+        ]),
+      ),
+      baseSizeTiB: Schema.Number,
+      extendedCapacitySizeTiB: Schema.Number,
+      totalVolumeSizeGiB: Schema.optional(Schema.Number),
+      volumeGroupCount: Schema.optional(Schema.Number),
+      totalIops: Schema.optional(Schema.Number),
+      totalMBps: Schema.optional(Schema.Number),
+      totalSizeTiB: Schema.optional(Schema.Number),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      autoScaleProperties: Schema.optional(
+        Schema.Struct({
+          scaleUpProperties: Schema.optional(
+            Schema.Struct({
+              unusedSizeTiB: Schema.optional(Schema.Number),
+              increaseCapacityUnitByTiB: Schema.optional(Schema.Number),
+              capacityUnitScaleUpLimitTiB: Schema.optional(Schema.Number),
+              autoScalePolicyEnforcement: Schema.optional(
+                Schema.Literals(["None", "Enabled", "Disabled"]),
+              ),
+            }),
+          ),
+        }),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   },
 ).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ElasticSansCreateInput = typeof ElasticSansCreateInput.Type;
@@ -66,12 +146,12 @@ export const ElasticSansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ElasticSansDeleteInput = typeof ElasticSansDeleteInput.Type;
@@ -98,11 +178,11 @@ export const ElasticSansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   elasticSanName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ElasticSansGetInput = typeof ElasticSansGetInput.Type;
@@ -147,11 +227,11 @@ export const ElasticSansListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ElasticSansListByResourceGroupInput =
@@ -213,11 +293,11 @@ export const ElasticSansListByResourceGroup =
 export const ElasticSansListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ElasticSan/elasticSans",
+      apiVersion: "2025-09-01",
     }),
   );
 export type ElasticSansListBySubscriptionInput =
@@ -280,12 +360,36 @@ export const ElasticSansUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        baseSizeTiB: Schema.optional(Schema.Number),
+        extendedCapacitySizeTiB: Schema.optional(Schema.Number),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        autoScaleProperties: Schema.optional(
+          Schema.Struct({
+            scaleUpProperties: Schema.optional(
+              Schema.Struct({
+                unusedSizeTiB: Schema.optional(Schema.Number),
+                increaseCapacityUnitByTiB: Schema.optional(Schema.Number),
+                capacityUnitScaleUpLimitTiB: Schema.optional(Schema.Number),
+                autoScalePolicyEnforcement: Schema.optional(
+                  Schema.Literals(["None", "Enabled", "Disabled"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type ElasticSansUpdateInput = typeof ElasticSansUpdateInput.Type;
@@ -327,10 +431,14 @@ export const ElasticSansUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ElasticSansUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.ElasticSan/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.ElasticSan/operations",
+    apiVersion: "2025-09-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -377,11 +485,40 @@ export const PrivateEndpointConnectionsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Invalid",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Pending",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Deleted",
+          "Restoring",
+        ]),
+      ),
+      privateEndpoint: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+      privateLinkServiceConnectionState: Schema.Struct({
+        status: Schema.optional(
+          Schema.Literals(["Pending", "Approved", "Failed", "Rejected"]),
+        ),
+        description: Schema.optional(Schema.String),
+        actionsRequired: Schema.optional(Schema.String),
+      }),
+      groupIds: Schema.optional(Schema.Array(Schema.String)),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -433,11 +570,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -471,11 +608,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -526,11 +663,11 @@ export const PrivateEndpointConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -595,11 +732,11 @@ export const PrivateLinkResourcesListByElasticSanInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateLinkResources",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PrivateLinkResourcesListByElasticSanInput =
@@ -661,12 +798,12 @@ export const PrivateLinkResourcesListByElasticSan =
 // Input Schema
 export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $filter: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ElasticSan/skus",
+    apiVersion: "2025-09-01",
   }),
 );
 export type SkusListInput = typeof SkusListInput.Type;
@@ -720,11 +857,119 @@ export const VolumeGroupsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
     volumeGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Invalid",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Pending",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Deleted",
+            "Restoring",
+          ]),
+        ),
+        protocolType: Schema.optional(Schema.Literals(["Iscsi", "None"])),
+        encryption: Schema.optional(
+          Schema.Literals([
+            "EncryptionAtRestWithPlatformKey",
+            "EncryptionAtRestWithCustomerManagedKey",
+          ]),
+        ),
+        encryptionProperties: Schema.optional(
+          Schema.Struct({
+            keyVaultProperties: Schema.optional(
+              Schema.Struct({
+                keyName: Schema.optional(Schema.String),
+                keyVersion: Schema.optional(Schema.String),
+                keyVaultUri: Schema.optional(Schema.String),
+                currentVersionedKeyIdentifier: Schema.optional(Schema.String),
+                lastKeyRotationTimestamp: Schema.optional(Schema.String),
+                currentVersionedKeyExpirationTimestamp: Schema.optional(
+                  Schema.String,
+                ),
+              }),
+            ),
+            identity: Schema.optional(
+              Schema.Struct({
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        networkAcls: Schema.optional(
+          Schema.Struct({
+            virtualNetworkRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.String,
+                  action: Schema.optional(Schema.Literals(["Allow"])),
+                }),
+              ),
+            ),
+          }),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        enforceDataIntegrityCheckForIscsi: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VolumeGroupsCreateInput = typeof VolumeGroupsCreateInput.Type;
@@ -773,11 +1018,11 @@ export const VolumeGroupsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
     volumeGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VolumeGroupsDeleteInput = typeof VolumeGroupsDeleteInput.Type;
@@ -806,11 +1051,11 @@ export const VolumeGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   elasticSanName: Schema.String.pipe(T.PathParam()),
   volumeGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type VolumeGroupsGetInput = typeof VolumeGroupsGetInput.Type;
@@ -857,11 +1102,11 @@ export const VolumeGroupsListByElasticSanInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VolumeGroupsListByElasticSanInput =
@@ -927,11 +1172,72 @@ export const VolumeGroupsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
     volumeGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        protocolType: Schema.optional(Schema.Literals(["Iscsi", "None"])),
+        encryption: Schema.optional(
+          Schema.Literals([
+            "EncryptionAtRestWithPlatformKey",
+            "EncryptionAtRestWithCustomerManagedKey",
+          ]),
+        ),
+        encryptionProperties: Schema.optional(
+          Schema.Struct({
+            keyVaultProperties: Schema.optional(
+              Schema.Struct({
+                keyName: Schema.optional(Schema.String),
+                keyVersion: Schema.optional(Schema.String),
+                keyVaultUri: Schema.optional(Schema.String),
+                currentVersionedKeyIdentifier: Schema.optional(Schema.String),
+                lastKeyRotationTimestamp: Schema.optional(Schema.String),
+                currentVersionedKeyExpirationTimestamp: Schema.optional(
+                  Schema.String,
+                ),
+              }),
+            ),
+            identity: Schema.optional(
+              Schema.Struct({
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        networkAcls: Schema.optional(
+          Schema.Struct({
+            virtualNetworkRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.String,
+                  action: Schema.optional(Schema.Literals(["Allow"])),
+                }),
+              ),
+            ),
+          }),
+        ),
+        enforceDataIntegrityCheckForIscsi: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VolumeGroupsUpdateInput = typeof VolumeGroupsUpdateInput.Type;
@@ -980,11 +1286,81 @@ export const VolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   elasticSanName: Schema.String.pipe(T.PathParam()),
   volumeGroupName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.Struct({
+    volumeId: Schema.optional(Schema.String),
+    creationData: Schema.optional(
+      Schema.Struct({
+        createSource: Schema.optional(
+          Schema.Literals([
+            "None",
+            "VolumeSnapshot",
+            "DiskSnapshot",
+            "Disk",
+            "DiskRestorePoint",
+          ]),
+        ),
+        sourceId: Schema.optional(Schema.String),
+      }),
+    ),
+    sizeGiB: Schema.Number,
+    storageTarget: Schema.optional(
+      Schema.Struct({
+        targetIqn: Schema.optional(Schema.String),
+        targetPortalHostname: Schema.optional(Schema.String),
+        targetPortalPort: Schema.optional(Schema.Number),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Invalid",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Pending",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Deleted",
+            "Restoring",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Invalid",
+            "Unknown",
+            "Healthy",
+            "Unhealthy",
+            "Updating",
+            "Running",
+            "Stopped",
+            "Stopped (deallocated)",
+          ]),
+        ),
+      }),
+    ),
+    managedBy: Schema.optional(
+      Schema.Struct({
+        resourceId: Schema.optional(Schema.String),
+      }),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Invalid",
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Pending",
+        "Creating",
+        "Updating",
+        "Deleting",
+        "Deleted",
+        "Restoring",
+      ]),
+    ),
+  }),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type VolumesCreateInput = typeof VolumesCreateInput.Type;
@@ -1033,11 +1409,11 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   elasticSanName: Schema.String.pipe(T.PathParam()),
   volumeGroupName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;
@@ -1070,11 +1446,11 @@ export const VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   elasticSanName: Schema.String.pipe(T.PathParam()),
   volumeGroupName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type VolumesGetInput = typeof VolumesGetInput.Type;
@@ -1123,11 +1499,11 @@ export const VolumesListByVolumeGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
     volumeGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VolumesListByVolumeGroupInput =
@@ -1196,11 +1572,32 @@ export const VolumeSnapshotsCreateInput =
     elasticSanName: Schema.String.pipe(T.PathParam()),
     volumeGroupName: Schema.String.pipe(T.PathParam()),
     snapshotName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      creationData: Schema.Struct({
+        sourceId: Schema.String,
+      }),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Invalid",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Pending",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Deleted",
+          "Restoring",
+        ]),
+      ),
+      sourceVolumeSizeGiB: Schema.optional(Schema.Number),
+      volumeName: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VolumeSnapshotsCreateInput = typeof VolumeSnapshotsCreateInput.Type;
@@ -1254,11 +1651,11 @@ export const VolumeSnapshotsDeleteInput =
     elasticSanName: Schema.String.pipe(T.PathParam()),
     volumeGroupName: Schema.String.pipe(T.PathParam()),
     snapshotName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VolumeSnapshotsDeleteInput = typeof VolumeSnapshotsDeleteInput.Type;
@@ -1294,11 +1691,11 @@ export const VolumeSnapshotsGetInput =
     elasticSanName: Schema.String.pipe(T.PathParam()),
     volumeGroupName: Schema.String.pipe(T.PathParam()),
     snapshotName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VolumeSnapshotsGetInput = typeof VolumeSnapshotsGetInput.Type;
@@ -1348,12 +1745,12 @@ export const VolumeSnapshotsListByVolumeGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
     volumeGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots",
+      apiVersion: "2025-09-01",
     }),
   );
 export type VolumeSnapshotsListByVolumeGroupInput =
@@ -1420,11 +1817,12 @@ export const VolumesPreBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   elasticSanName: Schema.String.pipe(T.PathParam()),
   volumeGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  volumeNames: Schema.Array(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/preBackup",
+    apiVersion: "2025-09-01",
   }),
 );
 export type VolumesPreBackupInput = typeof VolumesPreBackupInput.Type;
@@ -1458,12 +1856,13 @@ export const VolumesPreRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
     volumeGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    diskSnapshotIds: Schema.Array(Schema.String),
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/preRestore",
+    apiVersion: "2025-09-01",
   }),
 );
 export type VolumesPreRestoreInput = typeof VolumesPreRestoreInput.Type;
@@ -1496,11 +1895,21 @@ export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   elasticSanName: Schema.String.pipe(T.PathParam()),
   volumeGroupName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      sizeGiB: Schema.optional(Schema.Number),
+      managedBy: Schema.optional(
+        Schema.Struct({
+          resourceId: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
+    apiVersion: "2025-09-01",
   }),
 );
 export type VolumesUpdateInput = typeof VolumesUpdateInput.Type;

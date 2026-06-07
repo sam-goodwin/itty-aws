@@ -13,11 +13,13 @@ export const CheckNameAvailabilityPostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataReplication/locations/{location}/checkNameAvailability",
+      apiVersion: "2024-09-01",
     }),
   );
 export type CheckNameAvailabilityPostInput =
@@ -55,11 +57,22 @@ export const DeploymentPreflightPostInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deploymentId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    resources: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          location: Schema.optional(Schema.String),
+          apiVersion: Schema.optional(Schema.String),
+          properties: Schema.optional(Schema.Unknown),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/deployments/{deploymentId}/preflight",
+      apiVersion: "2024-09-01",
     }),
   );
 export type DeploymentPreflightPostInput =
@@ -107,11 +120,29 @@ export const EmailConfigurationCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     emailConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        sendToOwners: Schema.Boolean,
+        customEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
+        locale: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Deleted",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/alertSettings/{emailConfigurationName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type EmailConfigurationCreateInput =
@@ -164,11 +195,11 @@ export const EmailConfigurationGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     emailConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/alertSettings/{emailConfigurationName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type EmailConfigurationGetInput = typeof EmailConfigurationGetInput.Type;
@@ -219,11 +250,11 @@ export const EmailConfigurationListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/alertSettings",
+      apiVersion: "2024-09-01",
     }),
   );
 export type EmailConfigurationListInput =
@@ -289,11 +320,11 @@ export const EventGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
   eventName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/events/{eventName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type EventGetInput = typeof EventGetInput.Type;
@@ -339,7 +370,6 @@ export const EventListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   odataOptions: Schema.optional(Schema.String),
   continuationToken: Schema.optional(Schema.String),
   pageSize: Schema.optional(Schema.Number),
@@ -347,6 +377,7 @@ export const EventListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/events",
+    apiVersion: "2024-09-01",
   }),
 );
 export type EventListInput = typeof EventListInput.Type;
@@ -401,12 +432,88 @@ export const FabricAgentCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     fabricName: Schema.String.pipe(T.PathParam()),
     fabricAgentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        correlationId: Schema.optional(Schema.String),
+        machineId: Schema.String,
+        machineName: Schema.String,
+        authenticationIdentity: Schema.Struct({
+          tenantId: Schema.String,
+          applicationId: Schema.String,
+          objectId: Schema.String,
+          audience: Schema.String,
+          aadAuthority: Schema.String,
+        }),
+        resourceAccessIdentity: Schema.Struct({
+          tenantId: Schema.String,
+          applicationId: Schema.String,
+          objectId: Schema.String,
+          audience: Schema.String,
+          aadAuthority: Schema.String,
+        }),
+        isResponsive: Schema.optional(Schema.Boolean),
+        lastHeartbeat: Schema.optional(Schema.String),
+        versionNumber: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Deleted",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        healthErrors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              affectedResourceType: Schema.optional(Schema.String),
+              affectedResourceCorrelationIds: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              childErrors: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    healthCategory: Schema.optional(Schema.String),
+                    category: Schema.optional(Schema.String),
+                    severity: Schema.optional(Schema.String),
+                    source: Schema.optional(Schema.String),
+                    creationTime: Schema.optional(Schema.String),
+                    isCustomerResolvable: Schema.optional(Schema.Boolean),
+                    summary: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    causes: Schema.optional(Schema.String),
+                    recommendation: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              code: Schema.optional(Schema.String),
+              healthCategory: Schema.optional(Schema.String),
+              category: Schema.optional(Schema.String),
+              severity: Schema.optional(Schema.String),
+              source: Schema.optional(Schema.String),
+              creationTime: Schema.optional(Schema.String),
+              isCustomerResolvable: Schema.optional(Schema.Boolean),
+              summary: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              causes: Schema.optional(Schema.String),
+              recommendation: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        customProperties: Schema.Struct({
+          instanceType: Schema.String,
+        }),
+      }),
+    ),
   },
 ).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}/fabricAgents/{fabricAgentName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type FabricAgentCreateInput = typeof FabricAgentCreateInput.Type;
@@ -455,12 +562,12 @@ export const FabricAgentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     fabricName: Schema.String.pipe(T.PathParam()),
     fabricAgentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}/fabricAgents/{fabricAgentName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type FabricAgentDeleteInput = typeof FabricAgentDeleteInput.Type;
@@ -489,11 +596,11 @@ export const FabricAgentGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fabricName: Schema.String.pipe(T.PathParam()),
   fabricAgentName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}/fabricAgents/{fabricAgentName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type FabricAgentGetInput = typeof FabricAgentGetInput.Type;
@@ -539,11 +646,11 @@ export const FabricAgentListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fabricName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}/fabricAgents",
+    apiVersion: "2024-09-01",
   }),
 );
 export type FabricAgentListInput = typeof FabricAgentListInput.Type;
@@ -593,11 +700,74 @@ export const FabricCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fabricName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Deleted",
+          "Failed",
+          "Succeeded",
+          "Updating",
+        ]),
+      ),
+      serviceEndpoint: Schema.optional(Schema.String),
+      serviceResourceId: Schema.optional(Schema.String),
+      health: Schema.optional(
+        Schema.Literals(["Normal", "Warning", "Critical"]),
+      ),
+      healthErrors: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            affectedResourceType: Schema.optional(Schema.String),
+            affectedResourceCorrelationIds: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            childErrors: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  healthCategory: Schema.optional(Schema.String),
+                  category: Schema.optional(Schema.String),
+                  severity: Schema.optional(Schema.String),
+                  source: Schema.optional(Schema.String),
+                  creationTime: Schema.optional(Schema.String),
+                  isCustomerResolvable: Schema.optional(Schema.Boolean),
+                  summary: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  causes: Schema.optional(Schema.String),
+                  recommendation: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            code: Schema.optional(Schema.String),
+            healthCategory: Schema.optional(Schema.String),
+            category: Schema.optional(Schema.String),
+            severity: Schema.optional(Schema.String),
+            source: Schema.optional(Schema.String),
+            creationTime: Schema.optional(Schema.String),
+            isCustomerResolvable: Schema.optional(Schema.Boolean),
+            summary: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            causes: Schema.optional(Schema.String),
+            recommendation: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      customProperties: Schema.Struct({
+        instanceType: Schema.String,
+      }),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type FabricCreateInput = typeof FabricCreateInput.Type;
@@ -642,11 +812,11 @@ export const FabricDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fabricName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type FabricDeleteInput = typeof FabricDeleteInput.Type;
@@ -673,11 +843,11 @@ export const FabricGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fabricName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type FabricGetInput = typeof FabricGetInput.Type;
@@ -721,12 +891,12 @@ export const FabricGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FabricListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   continuationToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics",
+    apiVersion: "2024-09-01",
   }),
 );
 export type FabricListInput = typeof FabricListInput.Type;
@@ -775,11 +945,11 @@ export const FabricList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FabricListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataReplication/replicationFabrics",
+      apiVersion: "2024-09-01",
     }),
   );
 export type FabricListBySubscriptionInput =
@@ -842,11 +1012,90 @@ export const FabricUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fabricName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Deleted",
+          "Failed",
+          "Succeeded",
+          "Updating",
+        ]),
+      ),
+      serviceEndpoint: Schema.optional(Schema.String),
+      serviceResourceId: Schema.optional(Schema.String),
+      health: Schema.optional(
+        Schema.Literals(["Normal", "Warning", "Critical"]),
+      ),
+      healthErrors: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            affectedResourceType: Schema.optional(Schema.String),
+            affectedResourceCorrelationIds: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            childErrors: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  healthCategory: Schema.optional(Schema.String),
+                  category: Schema.optional(Schema.String),
+                  severity: Schema.optional(Schema.String),
+                  source: Schema.optional(Schema.String),
+                  creationTime: Schema.optional(Schema.String),
+                  isCustomerResolvable: Schema.optional(Schema.Boolean),
+                  summary: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  causes: Schema.optional(Schema.String),
+                  recommendation: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            code: Schema.optional(Schema.String),
+            healthCategory: Schema.optional(Schema.String),
+            category: Schema.optional(Schema.String),
+            severity: Schema.optional(Schema.String),
+            source: Schema.optional(Schema.String),
+            creationTime: Schema.optional(Schema.String),
+            isCustomerResolvable: Schema.optional(Schema.Boolean),
+            summary: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            causes: Schema.optional(Schema.String),
+            recommendation: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      customProperties: Schema.Struct({
+        instanceType: Schema.String,
+      }),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type FabricUpdateInput = typeof FabricUpdateInput.Type;
@@ -892,11 +1141,11 @@ export const JobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/jobs/{jobName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type JobGetInput = typeof JobGetInput.Type;
@@ -942,7 +1191,6 @@ export const JobListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   odataOptions: Schema.optional(Schema.String),
   continuationToken: Schema.optional(Schema.String),
   pageSize: Schema.optional(Schema.Number),
@@ -950,6 +1198,7 @@ export const JobListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/jobs",
+    apiVersion: "2024-09-01",
   }),
 );
 export type JobListInput = typeof JobListInput.Type;
@@ -1004,11 +1253,11 @@ export const LocationBasedOperationResultsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/locations/{location}/operationResults/{operationId}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type LocationBasedOperationResultsGetInput =
@@ -1049,11 +1298,11 @@ export const OperationResultsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/operationResults/{operationId}/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/{operationId}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type OperationResultsGetInput = typeof OperationResultsGetInput.Type;
@@ -1085,12 +1334,13 @@ export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationResultsGetOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataReplication/operations",
+    apiVersion: "2024-09-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1137,11 +1387,29 @@ export const PolicyCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
   policyName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Deleted",
+          "Failed",
+          "Succeeded",
+          "Updating",
+        ]),
+      ),
+      customProperties: Schema.Struct({
+        instanceType: Schema.String,
+      }),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies/{policyName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type PolicyCreateInput = typeof PolicyCreateInput.Type;
@@ -1188,11 +1456,11 @@ export const PolicyDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
   policyName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies/{policyName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type PolicyDeleteInput = typeof PolicyDeleteInput.Type;
@@ -1221,11 +1489,11 @@ export const PolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
   policyName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies/{policyName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type PolicyGetInput = typeof PolicyGetInput.Type;
@@ -1271,11 +1539,11 @@ export const PolicyListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies",
+    apiVersion: "2024-09-01",
   }),
 );
 export type PolicyListInput = typeof PolicyListInput.Type;
@@ -1327,11 +1595,103 @@ export const PrivateEndpointConnectionProxiesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Deleted",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        remotePrivateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.String,
+            privateLinkServiceConnections: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  groupIds: Schema.optional(Schema.Array(Schema.String)),
+                  requestMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            manualPrivateLinkServiceConnections: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  groupIds: Schema.optional(Schema.Array(Schema.String)),
+                  requestMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            privateLinkServiceProxies: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  remotePrivateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(
+                        Schema.Literals([
+                          "Approved",
+                          "Disconnected",
+                          "Pending",
+                          "Rejected",
+                        ]),
+                      ),
+                      description: Schema.optional(Schema.String),
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  remotePrivateEndpointConnection: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  groupConnectivityInformation: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        groupId: Schema.optional(Schema.String),
+                        memberName: Schema.optional(Schema.String),
+                        customerVisibleFqdns: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        internalFqdn: Schema.optional(Schema.String),
+                        redirectMapId: Schema.optional(Schema.String),
+                        privateLinkServiceArmRegion: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            connectionDetails: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  privateIpAddress: Schema.optional(Schema.String),
+                  linkIdentifier: Schema.optional(Schema.String),
+                  groupId: Schema.optional(Schema.String),
+                  memberName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type PrivateEndpointConnectionProxiesCreateInput =
@@ -1383,11 +1743,11 @@ export const PrivateEndpointConnectionProxiesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type PrivateEndpointConnectionProxiesDeleteInput =
@@ -1421,11 +1781,11 @@ export const PrivateEndpointConnectionProxiesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type PrivateEndpointConnectionProxiesGetInput =
@@ -1476,11 +1836,11 @@ export const PrivateEndpointConnectionProxiesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnectionProxies",
+      apiVersion: "2024-09-01",
     }),
   );
 export type PrivateEndpointConnectionProxiesListInput =
@@ -1546,11 +1906,103 @@ export const PrivateEndpointConnectionProxiesValidateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Deleted",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        remotePrivateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.String,
+            privateLinkServiceConnections: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  groupIds: Schema.optional(Schema.Array(Schema.String)),
+                  requestMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            manualPrivateLinkServiceConnections: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  groupIds: Schema.optional(Schema.Array(Schema.String)),
+                  requestMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            privateLinkServiceProxies: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  remotePrivateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(
+                        Schema.Literals([
+                          "Approved",
+                          "Disconnected",
+                          "Pending",
+                          "Rejected",
+                        ]),
+                      ),
+                      description: Schema.optional(Schema.String),
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  remotePrivateEndpointConnection: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  groupConnectivityInformation: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        groupId: Schema.optional(Schema.String),
+                        memberName: Schema.optional(Schema.String),
+                        customerVisibleFqdns: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        internalFqdn: Schema.optional(Schema.String),
+                        redirectMapId: Schema.optional(Schema.String),
+                        privateLinkServiceArmRegion: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            connectionDetails: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  privateIpAddress: Schema.optional(Schema.String),
+                  linkIdentifier: Schema.optional(Schema.String),
+                  groupId: Schema.optional(Schema.String),
+                  memberName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyName}/validate",
+      apiVersion: "2024-09-01",
     }),
   );
 export type PrivateEndpointConnectionProxiesValidateInput =
@@ -1602,11 +2054,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1640,11 +2092,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -1695,11 +2147,11 @@ export const PrivateEndpointConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnections",
+      apiVersion: "2024-09-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -1765,11 +2217,45 @@ export const PrivateEndpointConnectionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Deleted",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Approved",
+                "Disconnected",
+                "Pending",
+                "Rejected",
+              ]),
+            ),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type PrivateEndpointConnectionsUpdateInput =
@@ -1821,11 +2307,11 @@ export const PrivateLinkResourcesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     privateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -1877,11 +2363,11 @@ export const PrivateLinkResourcesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateLinkResources",
+      apiVersion: "2024-09-01",
     }),
   );
 export type PrivateLinkResourcesListInput =
@@ -1948,11 +2434,209 @@ export const ProtectedItemCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     protectedItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        policyName: Schema.String,
+        replicationExtensionName: Schema.String,
+        correlationId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Deleted",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        protectionState: Schema.optional(
+          Schema.Literals([
+            "UnprotectedStatesBegin",
+            "EnablingProtection",
+            "EnablingFailed",
+            "DisablingProtection",
+            "MarkedForDeletion",
+            "DisablingFailed",
+            "UnprotectedStatesEnd",
+            "InitialReplicationStatesBegin",
+            "InitialReplicationInProgress",
+            "InitialReplicationCompletedOnPrimary",
+            "InitialReplicationCompletedOnRecovery",
+            "InitialReplicationFailed",
+            "InitialReplicationStatesEnd",
+            "ProtectedStatesBegin",
+            "Protected",
+            "ProtectedStatesEnd",
+            "PlannedFailoverTransitionStatesBegin",
+            "PlannedFailoverInitiated",
+            "PlannedFailoverCompleting",
+            "PlannedFailoverCompleted",
+            "PlannedFailoverFailed",
+            "PlannedFailoverCompletionFailed",
+            "PlannedFailoverTransitionStatesEnd",
+            "UnplannedFailoverTransitionStatesBegin",
+            "UnplannedFailoverInitiated",
+            "UnplannedFailoverCompleting",
+            "UnplannedFailoverCompleted",
+            "UnplannedFailoverFailed",
+            "UnplannedFailoverCompletionFailed",
+            "UnplannedFailoverTransitionStatesEnd",
+            "CommitFailoverStatesBegin",
+            "CommitFailoverInProgressOnPrimary",
+            "CommitFailoverInProgressOnRecovery",
+            "CommitFailoverCompleted",
+            "CommitFailoverFailedOnPrimary",
+            "CommitFailoverFailedOnRecovery",
+            "CommitFailoverStatesEnd",
+            "CancelFailoverStatesBegin",
+            "CancelFailoverInProgressOnPrimary",
+            "CancelFailoverInProgressOnRecovery",
+            "CancelFailoverFailedOnPrimary",
+            "CancelFailoverFailedOnRecovery",
+            "CancelFailoverStatesEnd",
+            "ChangeRecoveryPointStatesBegin",
+            "ChangeRecoveryPointInitiated",
+            "ChangeRecoveryPointCompleted",
+            "ChangeRecoveryPointFailed",
+            "ChangeRecoveryPointStatesEnd",
+            "ReprotectStatesBegin",
+            "ReprotectInitiated",
+            "ReprotectFailed",
+            "ReprotectStatesEnd",
+          ]),
+        ),
+        protectionStateDescription: Schema.optional(Schema.String),
+        testFailoverState: Schema.optional(
+          Schema.Literals([
+            "None",
+            "TestFailoverInitiated",
+            "TestFailoverCompleting",
+            "TestFailoverCompleted",
+            "TestFailoverFailed",
+            "TestFailoverCompletionFailed",
+            "TestFailoverCleanupInitiated",
+            "TestFailoverCleanupCompleting",
+            "MarkedForDeletion",
+          ]),
+        ),
+        testFailoverStateDescription: Schema.optional(Schema.String),
+        resynchronizationState: Schema.optional(
+          Schema.Literals([
+            "None",
+            "ResynchronizationInitiated",
+            "ResynchronizationCompleted",
+            "ResynchronizationFailed",
+          ]),
+        ),
+        fabricObjectId: Schema.optional(Schema.String),
+        fabricObjectName: Schema.optional(Schema.String),
+        sourceFabricProviderId: Schema.optional(Schema.String),
+        targetFabricProviderId: Schema.optional(Schema.String),
+        fabricId: Schema.optional(Schema.String),
+        targetFabricId: Schema.optional(Schema.String),
+        fabricAgentId: Schema.optional(Schema.String),
+        targetFabricAgentId: Schema.optional(Schema.String),
+        resyncRequired: Schema.optional(Schema.Boolean),
+        lastSuccessfulPlannedFailoverTime: Schema.optional(Schema.String),
+        lastSuccessfulUnplannedFailoverTime: Schema.optional(Schema.String),
+        lastSuccessfulTestFailoverTime: Schema.optional(Schema.String),
+        currentJob: Schema.optional(
+          Schema.Struct({
+            scenarioName: Schema.optional(Schema.String),
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+            state: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+          }),
+        ),
+        allowedJobs: Schema.optional(Schema.Array(Schema.String)),
+        lastFailedEnableProtectionJob: Schema.optional(
+          Schema.Struct({
+            scenarioName: Schema.optional(Schema.String),
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+            state: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+          }),
+        ),
+        lastFailedPlannedFailoverJob: Schema.optional(
+          Schema.Struct({
+            scenarioName: Schema.optional(Schema.String),
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+            state: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+          }),
+        ),
+        lastTestFailoverJob: Schema.optional(
+          Schema.Struct({
+            scenarioName: Schema.optional(Schema.String),
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+            state: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+          }),
+        ),
+        replicationHealth: Schema.optional(
+          Schema.Literals(["Normal", "Warning", "Critical"]),
+        ),
+        healthErrors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              affectedResourceType: Schema.optional(Schema.String),
+              affectedResourceCorrelationIds: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              childErrors: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    healthCategory: Schema.optional(Schema.String),
+                    category: Schema.optional(Schema.String),
+                    severity: Schema.optional(Schema.String),
+                    source: Schema.optional(Schema.String),
+                    creationTime: Schema.optional(Schema.String),
+                    isCustomerResolvable: Schema.optional(Schema.Boolean),
+                    summary: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    causes: Schema.optional(Schema.String),
+                    recommendation: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              code: Schema.optional(Schema.String),
+              healthCategory: Schema.optional(Schema.String),
+              category: Schema.optional(Schema.String),
+              severity: Schema.optional(Schema.String),
+              source: Schema.optional(Schema.String),
+              creationTime: Schema.optional(Schema.String),
+              isCustomerResolvable: Schema.optional(Schema.Boolean),
+              summary: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              causes: Schema.optional(Schema.String),
+              recommendation: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        customProperties: Schema.Struct({
+          instanceType: Schema.String,
+        }),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProtectedItemCreateInput = typeof ProtectedItemCreateInput.Type;
@@ -2001,12 +2685,12 @@ export const ProtectedItemDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     protectedItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     forceDelete: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProtectedItemDeleteInput = typeof ProtectedItemDeleteInput.Type;
@@ -2037,11 +2721,11 @@ export const ProtectedItemGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
   protectedItemName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type ProtectedItemGetInput = typeof ProtectedItemGetInput.Type;
@@ -2090,7 +2774,6 @@ export const ProtectedItemListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     odataOptions: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -2099,6 +2782,7 @@ export const ProtectedItemListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems",
+    apiVersion: "2024-09-01",
   }),
 );
 export type ProtectedItemListInput = typeof ProtectedItemListInput.Type;
@@ -2164,11 +2848,16 @@ export const ProtectedItemPlannedFailoverInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     protectedItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      customProperties: Schema.Struct({
+        instanceType: Schema.String,
+      }),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}/plannedFailover",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProtectedItemPlannedFailoverInput =
@@ -2208,11 +2897,37 @@ export const ProtectedItemUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     protectedItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        customProperties: Schema.optional(
+          Schema.Struct({
+            instanceType: Schema.String,
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProtectedItemUpdateInput = typeof ProtectedItemUpdateInput.Type;
@@ -2261,11 +2976,11 @@ export const RecoveryPointGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   vaultName: Schema.String.pipe(T.PathParam()),
   protectedItemName: Schema.String.pipe(T.PathParam()),
   recoveryPointName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type RecoveryPointGetInput = typeof RecoveryPointGetInput.Type;
@@ -2316,12 +3031,12 @@ export const RecoveryPointListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     protectedItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}/recoveryPoints",
+    apiVersion: "2024-09-01",
   }),
 );
 export type RecoveryPointListInput = typeof RecoveryPointListInput.Type;
@@ -2385,11 +3100,29 @@ export const ReplicationExtensionCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     replicationExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Deleted",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        customProperties: Schema.Struct({
+          instanceType: Schema.String,
+        }),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationExtensions/{replicationExtensionName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ReplicationExtensionCreateInput =
@@ -2442,11 +3175,11 @@ export const ReplicationExtensionDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     replicationExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationExtensions/{replicationExtensionName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ReplicationExtensionDeleteInput =
@@ -2481,11 +3214,11 @@ export const ReplicationExtensionGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     replicationExtensionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationExtensions/{replicationExtensionName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ReplicationExtensionGetInput =
@@ -2537,11 +3270,11 @@ export const ReplicationExtensionListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationExtensions",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ReplicationExtensionListInput =
@@ -2606,11 +3339,53 @@ export const VaultCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Deleted",
+          "Failed",
+          "Succeeded",
+          "Updating",
+        ]),
+      ),
+      serviceResourceId: Schema.optional(Schema.String),
+      vaultType: Schema.optional(
+        Schema.Literals(["DisasterRecovery", "Migrate"]),
+      ),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type VaultCreateInput = typeof VaultCreateInput.Type;
@@ -2655,11 +3430,11 @@ export const VaultDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type VaultDeleteInput = typeof VaultDeleteInput.Type;
@@ -2686,11 +3461,11 @@ export const VaultGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type VaultGetInput = typeof VaultGetInput.Type;
@@ -2734,12 +3509,12 @@ export const VaultGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const VaultListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   continuationToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults",
+    apiVersion: "2024-09-01",
   }),
 );
 export type VaultListInput = typeof VaultListInput.Type;
@@ -2788,11 +3563,11 @@ export const VaultList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const VaultListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataReplication/replicationVaults",
+      apiVersion: "2024-09-01",
     }),
   );
 export type VaultListBySubscriptionInput =
@@ -2855,11 +3630,55 @@ export const VaultUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Deleted",
+          "Failed",
+          "Succeeded",
+          "Updating",
+        ]),
+      ),
+      serviceResourceId: Schema.optional(Schema.String),
+      vaultType: Schema.optional(
+        Schema.Literals(["DisasterRecovery", "Migrate"]),
+      ),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type VaultUpdateInput = typeof VaultUpdateInput.Type;

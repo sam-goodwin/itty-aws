@@ -16,11 +16,11 @@ export const CloudEndpointsAfsShareMetadataCertificatePublicKeysInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/afsShareMetadataCertificatePublicKeys",
+      apiVersion: "2022-09-01",
     }),
   );
 export type CloudEndpointsAfsShareMetadataCertificatePublicKeysInput =
@@ -59,11 +59,19 @@ export const CloudEndpointsCreateInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        storageAccountResourceId: Schema.optional(Schema.String),
+        azureFileShareName: Schema.optional(Schema.String),
+        storageAccountTenantId: Schema.optional(Schema.String),
+        friendlyName: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type CloudEndpointsCreateInput = typeof CloudEndpointsCreateInput.Type;
@@ -116,11 +124,11 @@ export const CloudEndpointsDeleteInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type CloudEndpointsDeleteInput = typeof CloudEndpointsDeleteInput.Type;
@@ -155,12 +163,12 @@ export const CloudEndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
+    apiVersion: "2022-09-01",
   }),
 );
 export type CloudEndpointsGetInput = typeof CloudEndpointsGetInput.Type;
@@ -210,11 +218,11 @@ export const CloudEndpointsListBySyncGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints",
+      apiVersion: "2022-09-01",
     }),
   );
 export type CloudEndpointsListBySyncGroupInput =
@@ -284,11 +292,12 @@ export const CloudEndpointsPostBackupInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    azureFileShare: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postbackup",
+      apiVersion: "2022-09-01",
     }),
   );
 export type CloudEndpointsPostBackupInput =
@@ -331,11 +340,26 @@ export const CloudEndpointsPostRestoreInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    partition: Schema.optional(Schema.String),
+    replicaGroup: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+    azureFileShareUri: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    sourceAzureFileShareUri: Schema.optional(Schema.String),
+    failedFileList: Schema.optional(Schema.String),
+    restoreFileSpec: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          path: Schema.optional(Schema.String),
+          isdir: Schema.optional(Schema.Boolean),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postrestore",
+      apiVersion: "2022-09-01",
     }),
   );
 export type CloudEndpointsPostRestoreInput =
@@ -372,11 +396,12 @@ export const CloudEndpointsPreBackupInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    azureFileShare: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prebackup",
+      apiVersion: "2022-09-01",
     }),
   );
 export type CloudEndpointsPreBackupInput =
@@ -413,11 +438,27 @@ export const CloudEndpointsPreRestoreInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    partition: Schema.optional(Schema.String),
+    replicaGroup: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+    azureFileShareUri: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    sourceAzureFileShareUri: Schema.optional(Schema.String),
+    backupMetadataPropertyBag: Schema.optional(Schema.String),
+    restoreFileSpec: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          path: Schema.optional(Schema.String),
+          isdir: Schema.optional(Schema.Boolean),
+        }),
+      ),
+    ),
+    pauseWaitForSyncDrainTimePeriodInSeconds: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prerestore",
+      apiVersion: "2022-09-01",
     }),
   );
 export type CloudEndpointsPreRestoreInput =
@@ -454,11 +495,11 @@ export const CloudEndpointsRestoreheartbeatInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/restoreheartbeat",
+      apiVersion: "2022-09-01",
     }),
   );
 export type CloudEndpointsRestoreheartbeatInput =
@@ -494,11 +535,16 @@ export const CloudEndpointsTriggerChangeDetectionInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     cloudEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    directoryPath: Schema.optional(Schema.String),
+    changeDetectionMode: Schema.optional(
+      Schema.Literals(["Default", "Recursive"]),
+    ),
+    paths: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/triggerChangeDetection",
+      apiVersion: "2022-09-01",
     }),
   );
 export type CloudEndpointsTriggerChangeDetectionInput =
@@ -532,11 +578,11 @@ export const LocationOperationStatusInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type LocationOperationStatusInput =
@@ -598,12 +644,13 @@ export const LocationOperationStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StorageSync/operations",
+    apiVersion: "2022-09-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -681,11 +728,11 @@ export const OperationStatusGetInput =
     locationName: Schema.String.pipe(T.PathParam()),
     workflowId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/locations/{locationName}/workflows/{workflowId}/operations/{operationId}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
@@ -749,7 +796,6 @@ export const PrivateEndpointConnectionsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         groupIds: Schema.optional(Schema.Array(Schema.String)),
@@ -770,10 +816,28 @@ export const PrivateEndpointConnectionsCreateInput =
         ),
       }),
     ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -826,11 +890,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -864,11 +928,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -919,11 +983,11 @@ export const PrivateEndpointConnectionsListByStorageSyncServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections",
+      apiVersion: "2022-09-01",
     }),
   );
 export type PrivateEndpointConnectionsListByStorageSyncServiceInput =
@@ -990,11 +1054,11 @@ export const PrivateLinkResourcesListByStorageSyncServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateLinkResources",
+      apiVersion: "2022-09-01",
     }),
   );
 export type PrivateLinkResourcesListByStorageSyncServiceInput =
@@ -1061,11 +1125,26 @@ export const RegisteredServersCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     serverId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        serverCertificate: Schema.optional(Schema.String),
+        agentVersion: Schema.optional(Schema.String),
+        serverOSVersion: Schema.optional(Schema.String),
+        lastHeartBeat: Schema.optional(Schema.String),
+        serverRole: Schema.optional(Schema.String),
+        clusterId: Schema.optional(Schema.String),
+        clusterName: Schema.optional(Schema.String),
+        serverId: Schema.optional(Schema.String),
+        friendlyName: Schema.optional(Schema.String),
+        applicationId: Schema.optional(Schema.String),
+        identity: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type RegisteredServersCreateInput =
@@ -1118,11 +1197,11 @@ export const RegisteredServersDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     serverId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type RegisteredServersDeleteInput =
@@ -1157,11 +1236,11 @@ export const RegisteredServersGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     serverId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type RegisteredServersGetInput = typeof RegisteredServersGetInput.Type;
@@ -1211,11 +1290,11 @@ export const RegisteredServersListByStorageSyncServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers",
+      apiVersion: "2022-09-01",
     }),
   );
 export type RegisteredServersListByStorageSyncServiceInput =
@@ -1283,11 +1362,12 @@ export const RegisteredServersTriggerRolloverInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     serverId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    serverCertificate: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}/triggerRollover",
+      apiVersion: "2022-09-01",
     }),
   );
 export type RegisteredServersTriggerRolloverInput =
@@ -1321,11 +1401,17 @@ export const RegisteredServersUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     serverId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        identity: Schema.optional(Schema.Boolean),
+        applicationId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type RegisteredServersUpdateInput =
@@ -1379,11 +1465,39 @@ export const ServerEndpointsCreateInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     serverEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        serverLocalPath: Schema.optional(Schema.String),
+        cloudTiering: Schema.optional(Schema.Literals(["on", "off"])),
+        volumeFreeSpacePercent: Schema.optional(Schema.Number),
+        tierFilesOlderThanDays: Schema.optional(Schema.Number),
+        friendlyName: Schema.optional(Schema.String),
+        serverResourceId: Schema.optional(Schema.String),
+        offlineDataTransfer: Schema.optional(Schema.Literals(["on", "off"])),
+        offlineDataTransferShareName: Schema.optional(Schema.String),
+        initialDownloadPolicy: Schema.optional(
+          Schema.Literals([
+            "NamespaceOnly",
+            "NamespaceThenModifiedFiles",
+            "AvoidTieredFiles",
+          ]),
+        ),
+        localCacheMode: Schema.optional(
+          Schema.Literals([
+            "DownloadNewAndModifiedFiles",
+            "UpdateLocallyCachedFiles",
+          ]),
+        ),
+        initialUploadPolicy: Schema.optional(
+          Schema.Literals(["ServerAuthoritative", "Merge"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type ServerEndpointsCreateInput = typeof ServerEndpointsCreateInput.Type;
@@ -1437,11 +1551,11 @@ export const ServerEndpointsDeleteInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     serverEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type ServerEndpointsDeleteInput = typeof ServerEndpointsDeleteInput.Type;
@@ -1477,11 +1591,11 @@ export const ServerEndpointsGetInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     serverEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type ServerEndpointsGetInput = typeof ServerEndpointsGetInput.Type;
@@ -1531,11 +1645,11 @@ export const ServerEndpointsListBySyncGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints",
+      apiVersion: "2022-09-01",
     }),
   );
 export type ServerEndpointsListBySyncGroupInput =
@@ -1605,11 +1719,13 @@ export const ServerEndpointsRecallActionInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     serverEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    pattern: Schema.optional(Schema.String),
+    recallPath: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}/recallAction",
+      apiVersion: "2022-09-01",
     }),
   );
 export type ServerEndpointsRecallActionInput =
@@ -1646,11 +1762,26 @@ export const ServerEndpointsUpdateInput =
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     serverEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        cloudTiering: Schema.optional(Schema.Literals(["on", "off"])),
+        volumeFreeSpacePercent: Schema.optional(Schema.Number),
+        tierFilesOlderThanDays: Schema.optional(Schema.Number),
+        offlineDataTransfer: Schema.optional(Schema.Literals(["on", "off"])),
+        offlineDataTransferShareName: Schema.optional(Schema.String),
+        localCacheMode: Schema.optional(
+          Schema.Literals([
+            "DownloadNewAndModifiedFiles",
+            "UpdateLocallyCachedFiles",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type ServerEndpointsUpdateInput = typeof ServerEndpointsUpdateInput.Type;
@@ -1701,11 +1832,13 @@ export const StorageSyncServicesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.StorageSync/storageSyncServices"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/checkNameAvailability",
+      apiVersion: "2022-09-01",
     }),
   );
 export type StorageSyncServicesCheckNameAvailabilityInput =
@@ -1740,11 +1873,42 @@ export const StorageSyncServicesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        incomingTrafficPolicy: Schema.optional(
+          Schema.Literals(["AllowAllTraffic", "AllowVirtualNetworksOnly"]),
+        ),
+        useIdentity: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type StorageSyncServicesCreateInput =
@@ -1795,11 +1959,11 @@ export const StorageSyncServicesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type StorageSyncServicesDeleteInput =
@@ -1832,11 +1996,11 @@ export const StorageSyncServicesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type StorageSyncServicesGetInput =
@@ -1886,11 +2050,11 @@ export const StorageSyncServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices",
+      apiVersion: "2022-09-01",
     }),
   );
 export type StorageSyncServicesListByResourceGroupInput =
@@ -1954,11 +2118,11 @@ export const StorageSyncServicesListByResourceGroup =
 export const StorageSyncServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/storageSyncServices",
+      apiVersion: "2022-09-01",
     }),
   );
 export type StorageSyncServicesListBySubscriptionInput =
@@ -2023,11 +2187,41 @@ export const StorageSyncServicesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        incomingTrafficPolicy: Schema.optional(
+          Schema.Literals(["AllowAllTraffic", "AllowVirtualNetworksOnly"]),
+        ),
+        useIdentity: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
+      apiVersion: "2022-09-01",
     }),
   );
 export type StorageSyncServicesUpdateInput =
@@ -2078,11 +2272,12 @@ export const SyncGroupsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageSyncServiceName: Schema.String.pipe(T.PathParam()),
   syncGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(Schema.Unknown),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
+    apiVersion: "2022-09-01",
   }),
 );
 export type SyncGroupsCreateInput = typeof SyncGroupsCreateInput.Type;
@@ -2131,11 +2326,11 @@ export const SyncGroupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageSyncServiceName: Schema.String.pipe(T.PathParam()),
   syncGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
+    apiVersion: "2022-09-01",
   }),
 );
 export type SyncGroupsDeleteInput = typeof SyncGroupsDeleteInput.Type;
@@ -2164,11 +2359,11 @@ export const SyncGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageSyncServiceName: Schema.String.pipe(T.PathParam()),
   syncGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
+    apiVersion: "2022-09-01",
   }),
 );
 export type SyncGroupsGetInput = typeof SyncGroupsGetInput.Type;
@@ -2215,11 +2410,11 @@ export const SyncGroupsListByStorageSyncServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups",
+      apiVersion: "2022-09-01",
     }),
   );
 export type SyncGroupsListByStorageSyncServiceInput =
@@ -2286,11 +2481,11 @@ export const WorkflowsAbortInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageSyncServiceName: Schema.String.pipe(T.PathParam()),
   workflowId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows/{workflowId}/abort",
+    apiVersion: "2022-09-01",
   }),
 );
 export type WorkflowsAbortInput = typeof WorkflowsAbortInput.Type;
@@ -2319,11 +2514,11 @@ export const WorkflowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageSyncServiceName: Schema.String.pipe(T.PathParam()),
   workflowId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows/{workflowId}",
+    apiVersion: "2022-09-01",
   }),
 );
 export type WorkflowsGetInput = typeof WorkflowsGetInput.Type;
@@ -2370,11 +2565,11 @@ export const WorkflowsListByStorageSyncServiceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageSyncServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows",
+      apiVersion: "2022-09-01",
     }),
   );
 export type WorkflowsListByStorageSyncServiceInput =

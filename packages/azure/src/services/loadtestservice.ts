@@ -14,11 +14,56 @@ export const LoadTestsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     loadTestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "Deleted"]),
+        ),
+        dataPlaneURI: Schema.optional(Schema.String),
+        encryption: Schema.optional(
+          Schema.Struct({
+            identity: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                ),
+                resourceId: Schema.optional(Schema.NullOr(Schema.String)),
+              }),
+            ),
+            keyUrl: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
+      apiVersion: "2022-12-01",
     }),
   );
 export type LoadTestsCreateOrUpdateInput =
@@ -68,11 +113,11 @@ export const LoadTestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   loadTestName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
+    apiVersion: "2022-12-01",
   }),
 );
 export type LoadTestsDeleteInput = typeof LoadTestsDeleteInput.Type;
@@ -99,11 +144,11 @@ export const LoadTestsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   loadTestName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
+    apiVersion: "2022-12-01",
   }),
 );
 export type LoadTestsGetInput = typeof LoadTestsGetInput.Type;
@@ -148,11 +193,11 @@ export const LoadTestsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests",
+      apiVersion: "2022-12-01",
     }),
   );
 export type LoadTestsListByResourceGroupInput =
@@ -214,11 +259,11 @@ export const LoadTestsListByResourceGroup =
 export const LoadTestsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/loadTests",
+      apiVersion: "2022-12-01",
     }),
   );
 export type LoadTestsListBySubscriptionInput =
@@ -282,11 +327,11 @@ export const LoadTestsListOutboundNetworkDependenciesEndpointsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     loadTestName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}/outboundNetworkDependenciesEndpoints",
+      apiVersion: "2022-12-01",
     }),
   );
 export type LoadTestsListOutboundNetworkDependenciesEndpointsInput =
@@ -339,11 +384,51 @@ export const LoadTestsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   loadTestName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+      encryption: Schema.optional(
+        Schema.Struct({
+          identity: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["SystemAssigned", "UserAssigned"]),
+              ),
+              resourceId: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
+          ),
+          keyUrl: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
+    apiVersion: "2022-12-01",
   }),
 );
 export type LoadTestsUpdateInput = typeof LoadTestsUpdateInput.Type;
@@ -384,12 +469,13 @@ export const LoadTestsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LoadTestsUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.LoadTestService/operations",
+    apiVersion: "2025-09-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -438,11 +524,11 @@ export const PlaywrightQuotasGetInput =
     playwrightQuotaName: Schema.Literals(["ExecutionMinutes"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/playwrightQuotas/{playwrightQuotaName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlaywrightQuotasGetInput = typeof PlaywrightQuotasGetInput.Type;
@@ -488,11 +574,11 @@ export const PlaywrightQuotasListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/playwrightQuotas",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlaywrightQuotasListBySubscriptionInput =
@@ -557,11 +643,11 @@ export const PlaywrightWorkspaceQuotasGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     playwrightWorkspaceName: Schema.String.pipe(T.PathParam()),
     quotaName: Schema.Literals(["ExecutionMinutes"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}/quotas/{quotaName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlaywrightWorkspaceQuotasGetInput =
@@ -612,11 +698,11 @@ export const PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     playwrightWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}/quotas",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceInput =
@@ -679,13 +765,13 @@ export const PlaywrightWorkspaceQuotasListByPlaywrightWorkspace =
 export const PlaywrightWorkspacesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/checkNameAvailability",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlaywrightWorkspacesCheckNameAvailabilityInput =
@@ -721,11 +807,33 @@ export const PlaywrightWorkspacesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     playwrightWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        dataplaneUri: Schema.optional(Schema.String),
+        regionalAffinity: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        localAuth: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        workspaceId: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlaywrightWorkspacesCreateOrUpdateInput =
@@ -775,11 +883,11 @@ export const PlaywrightWorkspacesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     playwrightWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlaywrightWorkspacesDeleteInput =
@@ -812,11 +920,11 @@ export const PlaywrightWorkspacesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     playwrightWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlaywrightWorkspacesGetInput =
@@ -866,11 +974,11 @@ export const PlaywrightWorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlaywrightWorkspacesListByResourceGroupInput =
@@ -932,11 +1040,11 @@ export const PlaywrightWorkspacesListByResourceGroup =
 export const PlaywrightWorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/playwrightWorkspaces",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlaywrightWorkspacesListBySubscriptionInput =
@@ -999,11 +1107,20 @@ export const PlaywrightWorkspacesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     playwrightWorkspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        regionalAffinity: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        localAuth: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
+      apiVersion: "2025-09-01",
     }),
   );
 export type PlaywrightWorkspacesUpdateInput =
@@ -1054,11 +1171,24 @@ export const QuotasCheckAvailabilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     quotaBucketName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        currentUsage: Schema.optional(Schema.Number),
+        currentQuota: Schema.optional(Schema.Number),
+        newQuota: Schema.optional(Schema.Number),
+        dimensions: Schema.optional(
+          Schema.Struct({
+            subscriptionId: Schema.optional(Schema.String),
+            location: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/quotas/{quotaBucketName}/checkAvailability",
+      apiVersion: "2022-12-01",
     }),
   );
 export type QuotasCheckAvailabilityInput =
@@ -1114,11 +1244,11 @@ export const QuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   quotaBucketName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/quotas/{quotaBucketName}",
+    apiVersion: "2022-12-01",
   }),
 );
 export type QuotasGetInput = typeof QuotasGetInput.Type;
@@ -1162,11 +1292,11 @@ export const QuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QuotasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/quotas",
+    apiVersion: "2022-12-01",
   }),
 );
 export type QuotasListInput = typeof QuotasListInput.Type;

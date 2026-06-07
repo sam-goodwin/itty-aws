@@ -14,11 +14,11 @@ export const CatalogsCountDevicesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/countDevices",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CatalogsCountDevicesInput = typeof CatalogsCountDevicesInput.Type;
@@ -51,11 +51,29 @@ export const CatalogsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CatalogsCreateOrUpdateInput =
@@ -105,11 +123,11 @@ export const CatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type CatalogsDeleteInput = typeof CatalogsDeleteInput.Type;
@@ -136,11 +154,11 @@ export const CatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type CatalogsGetInput = typeof CatalogsGetInput.Type;
@@ -185,11 +203,11 @@ export const CatalogsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CatalogsListByResourceGroupInput =
@@ -252,11 +270,11 @@ export const CatalogsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CatalogsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureSphere/catalogs",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CatalogsListBySubscriptionInput =
@@ -320,11 +338,11 @@ export const CatalogsListDeploymentsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/listDeployments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CatalogsListDeploymentsInput =
@@ -390,11 +408,12 @@ export const CatalogsListDeviceGroupsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    deviceGroupName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/listDeviceGroups",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CatalogsListDeviceGroupsInput =
@@ -460,11 +479,11 @@ export const CatalogsListDeviceInsightsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/listDeviceInsights",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CatalogsListDeviceInsightsInput =
@@ -511,11 +530,11 @@ export const CatalogsListDevicesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/listDevices",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CatalogsListDevicesInput = typeof CatalogsListDevicesInput.Type;
@@ -576,11 +595,12 @@ export const CatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type CatalogsUpdateInput = typeof CatalogsUpdateInput.Type;
@@ -626,11 +646,61 @@ export const CatalogsUploadImageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        image: Schema.optional(Schema.String),
+        imageId: Schema.optional(Schema.String),
+        imageName: Schema.optional(Schema.String),
+        regionalDataBoundary: Schema.optional(Schema.Literals(["None", "EU"])),
+        uri: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        componentId: Schema.optional(Schema.String),
+        imageType: Schema.optional(
+          Schema.Literals([
+            "InvalidImageType",
+            "OneBl",
+            "PlutonRuntime",
+            "WifiFirmware",
+            "SecurityMonitor",
+            "NormalWorldLoader",
+            "NormalWorldDtb",
+            "NormalWorldKernel",
+            "RootFs",
+            "Services",
+            "Applications",
+            "FwConfig",
+            "BootManifest",
+            "Nwfs",
+            "TrustedKeystore",
+            "Policy",
+            "CustomerBoardConfig",
+            "UpdateCertStore",
+            "BaseSystemUpdateManifest",
+            "FirmwareUpdateManifest",
+            "CustomerUpdateManifest",
+            "RecoveryManifest",
+            "ManifestSet",
+            "Other",
+          ]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/uploadImage",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CatalogsUploadImageInput = typeof CatalogsUploadImageInput.Type;
@@ -659,11 +729,11 @@ export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
   serialNumber: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/certificates/{serialNumber}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type CertificatesGetInput = typeof CertificatesGetInput.Type;
@@ -710,11 +780,11 @@ export const CertificatesListByCatalogInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/certificates",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CertificatesListByCatalogInput =
@@ -781,11 +851,11 @@ export const CertificatesRetrieveCertChainInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
     serialNumber: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/certificates/{serialNumber}/retrieveCertChain",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CertificatesRetrieveCertChainInput =
@@ -821,11 +891,12 @@ export const CertificatesRetrieveProofOfPossessionNonceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
     serialNumber: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    proofOfPossessionNonce: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/certificates/{serialNumber}/retrieveProofOfPossessionNonce",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CertificatesRetrieveProofOfPossessionNonceInput =
@@ -881,11 +952,61 @@ export const DeploymentsCreateOrUpdateInput =
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        deploymentId: Schema.optional(Schema.String),
+        deployedImages: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        deploymentDateUtc: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type DeploymentsCreateOrUpdateInput =
@@ -942,12 +1063,12 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
@@ -980,11 +1101,11 @@ export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   productName: Schema.String.pipe(T.PathParam()),
   deviceGroupName: Schema.String.pipe(T.PathParam()),
   deploymentName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type DeploymentsGetInput = typeof DeploymentsGetInput.Type;
@@ -1035,11 +1156,11 @@ export const DeploymentsListByDeviceGroupInput =
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments",
+      apiVersion: "2024-04-01",
     }),
   );
 export type DeploymentsListByDeviceGroupInput =
@@ -1108,11 +1229,12 @@ export const DeviceGroupsClaimDevicesInput =
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    deviceIdentifiers: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/claimDevices",
+      apiVersion: "2024-04-01",
     }),
   );
 export type DeviceGroupsClaimDevicesInput =
@@ -1149,11 +1271,11 @@ export const DeviceGroupsCountDevicesInput =
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/countDevices",
+      apiVersion: "2024-04-01",
     }),
   );
 export type DeviceGroupsCountDevicesInput =
@@ -1192,11 +1314,36 @@ export const DeviceGroupsCreateOrUpdateInput =
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        osFeedType: Schema.optional(Schema.Literals(["Retail", "RetailEval"])),
+        updatePolicy: Schema.optional(
+          Schema.Literals(["UpdateAll", "No3rdPartyAppUpdates"]),
+        ),
+        allowCrashDumpsCollection: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        regionalDataBoundary: Schema.optional(Schema.Literals(["None", "EU"])),
+        hasDeployment: Schema.optional(Schema.Boolean),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type DeviceGroupsCreateOrUpdateInput =
@@ -1251,11 +1398,11 @@ export const DeviceGroupsDeleteInput =
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type DeviceGroupsDeleteInput = typeof DeviceGroupsDeleteInput.Type;
@@ -1286,11 +1433,11 @@ export const DeviceGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   catalogName: Schema.String.pipe(T.PathParam()),
   productName: Schema.String.pipe(T.PathParam()),
   deviceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type DeviceGroupsGetInput = typeof DeviceGroupsGetInput.Type;
@@ -1339,11 +1486,11 @@ export const DeviceGroupsListByProductInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups",
+      apiVersion: "2024-04-01",
     }),
   );
 export type DeviceGroupsListByProductInput =
@@ -1412,11 +1559,24 @@ export const DeviceGroupsUpdateInput =
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        osFeedType: Schema.optional(Schema.Literals(["Retail", "RetailEval"])),
+        updatePolicy: Schema.optional(
+          Schema.Literals(["UpdateAll", "No3rdPartyAppUpdates"]),
+        ),
+        allowCrashDumpsCollection: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        regionalDataBoundary: Schema.optional(Schema.Literals(["None", "EU"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type DeviceGroupsUpdateInput = typeof DeviceGroupsUpdateInput.Type;
@@ -1468,11 +1628,32 @@ export const DevicesCreateOrUpdateInput =
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        deviceId: Schema.optional(Schema.String),
+        chipSku: Schema.optional(Schema.String),
+        lastAvailableOsVersion: Schema.optional(Schema.String),
+        lastInstalledOsVersion: Schema.optional(Schema.String),
+        lastOsUpdateUtc: Schema.optional(Schema.String),
+        lastUpdateRequestUtc: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type DevicesCreateOrUpdateInput = typeof DevicesCreateOrUpdateInput.Type;
@@ -1527,11 +1708,11 @@ export const DevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   productName: Schema.String.pipe(T.PathParam()),
   deviceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type DevicesDeleteInput = typeof DevicesDeleteInput.Type;
@@ -1565,11 +1746,14 @@ export const DevicesGenerateCapabilityImageInput =
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    capabilities: Schema.Array(
+      Schema.Literals(["ApplicationDevelopment", "FieldServicing"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}/generateCapabilityImage",
+      apiVersion: "2024-04-01",
     }),
   );
 export type DevicesGenerateCapabilityImageInput =
@@ -1608,11 +1792,11 @@ export const DevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   productName: Schema.String.pipe(T.PathParam()),
   deviceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type DevicesGetInput = typeof DevicesGetInput.Type;
@@ -1663,11 +1847,11 @@ export const DevicesListByDeviceGroupInput =
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices",
+      apiVersion: "2024-04-01",
     }),
   );
 export type DevicesListByDeviceGroupInput =
@@ -1737,11 +1921,16 @@ export const DevicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   productName: Schema.String.pipe(T.PathParam()),
   deviceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      deviceGroupId: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type DevicesUpdateInput = typeof DevicesUpdateInput.Type;
@@ -1791,11 +1980,61 @@ export const ImagesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
     imageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        image: Schema.optional(Schema.String),
+        imageId: Schema.optional(Schema.String),
+        imageName: Schema.optional(Schema.String),
+        regionalDataBoundary: Schema.optional(Schema.Literals(["None", "EU"])),
+        uri: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        componentId: Schema.optional(Schema.String),
+        imageType: Schema.optional(
+          Schema.Literals([
+            "InvalidImageType",
+            "OneBl",
+            "PlutonRuntime",
+            "WifiFirmware",
+            "SecurityMonitor",
+            "NormalWorldLoader",
+            "NormalWorldDtb",
+            "NormalWorldKernel",
+            "RootFs",
+            "Services",
+            "Applications",
+            "FwConfig",
+            "BootManifest",
+            "Nwfs",
+            "TrustedKeystore",
+            "Policy",
+            "CustomerBoardConfig",
+            "UpdateCertStore",
+            "BaseSystemUpdateManifest",
+            "FirmwareUpdateManifest",
+            "CustomerUpdateManifest",
+            "RecoveryManifest",
+            "ManifestSet",
+            "Other",
+          ]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images/{imageName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ImagesCreateOrUpdateInput = typeof ImagesCreateOrUpdateInput.Type;
@@ -1845,11 +2084,11 @@ export const ImagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
   imageName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images/{imageName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type ImagesDeleteInput = typeof ImagesDeleteInput.Type;
@@ -1878,11 +2117,11 @@ export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
   imageName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images/{imageName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type ImagesGetInput = typeof ImagesGetInput.Type;
@@ -1929,11 +2168,11 @@ export const ImagesListByCatalogInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ImagesListByCatalogInput = typeof ImagesListByCatalogInput.Type;
@@ -1990,12 +2229,13 @@ export const ImagesListByCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ImagesListByCatalogOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzureSphere/operations",
+    apiVersion: "2024-04-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -2043,11 +2283,11 @@ export const ProductsCountDevicesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/countDevices",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ProductsCountDevicesInput = typeof ProductsCountDevicesInput.Type;
@@ -2082,11 +2322,27 @@ export const ProductsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ProductsCreateOrUpdateInput =
@@ -2138,11 +2394,11 @@ export const ProductsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
   productName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type ProductsDeleteInput = typeof ProductsDeleteInput.Type;
@@ -2172,11 +2428,11 @@ export const ProductsGenerateDefaultDeviceGroupsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/generateDefaultDeviceGroups",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ProductsGenerateDefaultDeviceGroupsInput =
@@ -2242,11 +2498,11 @@ export const ProductsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
   productName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type ProductsGetInput = typeof ProductsGetInput.Type;
@@ -2293,11 +2549,11 @@ export const ProductsListByCatalogInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products",
+      apiVersion: "2024-04-01",
     }),
   );
 export type ProductsListByCatalogInput = typeof ProductsListByCatalogInput.Type;
@@ -2362,11 +2618,16 @@ export const ProductsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
   productName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
+    apiVersion: "2024-04-01",
   }),
 );
 export type ProductsUpdateInput = typeof ProductsUpdateInput.Type;

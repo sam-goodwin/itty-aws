@@ -13,10 +13,44 @@ export const JobCollectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobCollectionName: Schema.String.pipe(T.PathParam()),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(
+              Schema.Literals(["Standard", "Free", "P10Premium", "P20Premium"]),
+            ),
+          }),
+        ),
+        state: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "Suspended", "Deleted"]),
+        ),
+        quota: Schema.optional(
+          Schema.Struct({
+            maxJobCount: Schema.optional(Schema.Number),
+            maxJobOccurrence: Schema.optional(Schema.Number),
+            maxRecurrence: Schema.optional(
+              Schema.Struct({
+                frequency: Schema.optional(
+                  Schema.Literals(["Minute", "Hour", "Day", "Week", "Month"]),
+                ),
+                interval: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}",
+      apiVersion: "2016-03-01",
     }),
   );
 export type JobCollectionsCreateOrUpdateInput =
@@ -83,6 +117,7 @@ export const JobCollectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}",
+      apiVersion: "2016-03-01",
     }),
   );
 export type JobCollectionsDeleteInput = typeof JobCollectionsDeleteInput.Type;
@@ -114,6 +149,7 @@ export const JobCollectionsDisableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/disable",
+      apiVersion: "2016-03-01",
     }),
   );
 export type JobCollectionsDisableInput = typeof JobCollectionsDisableInput.Type;
@@ -146,6 +182,7 @@ export const JobCollectionsEnableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/enable",
+      apiVersion: "2016-03-01",
     }),
   );
 export type JobCollectionsEnableInput = typeof JobCollectionsEnableInput.Type;
@@ -178,6 +215,7 @@ export const JobCollectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}",
+    apiVersion: "2016-03-01",
   }),
 );
 export type JobCollectionsGetInput = typeof JobCollectionsGetInput.Type;
@@ -240,6 +278,7 @@ export const JobCollectionsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections",
+      apiVersion: "2016-03-01",
     }),
   );
 export type JobCollectionsListByResourceGroupInput =
@@ -325,6 +364,7 @@ export const JobCollectionsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Scheduler/jobCollections",
+      apiVersion: "2016-03-01",
     }),
   );
 export type JobCollectionsListBySubscriptionInput =
@@ -407,10 +447,44 @@ export const JobCollectionsPatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobCollectionName: Schema.String.pipe(T.PathParam()),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(
+              Schema.Literals(["Standard", "Free", "P10Premium", "P20Premium"]),
+            ),
+          }),
+        ),
+        state: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "Suspended", "Deleted"]),
+        ),
+        quota: Schema.optional(
+          Schema.Struct({
+            maxJobCount: Schema.optional(Schema.Number),
+            maxJobOccurrence: Schema.optional(Schema.Number),
+            maxRecurrence: Schema.optional(
+              Schema.Struct({
+                frequency: Schema.optional(
+                  Schema.Literals(["Minute", "Hour", "Day", "Week", "Month"]),
+                ),
+                interval: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}",
+      apiVersion: "2016-03-01",
     }),
   );
 export type JobCollectionsPatchInput = typeof JobCollectionsPatchInput.Type;
@@ -471,10 +545,329 @@ export const JobsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobCollectionName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        startTime: Schema.optional(Schema.String),
+        action: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals([
+                "Http",
+                "Https",
+                "StorageQueue",
+                "ServiceBusQueue",
+                "ServiceBusTopic",
+              ]),
+            ),
+            request: Schema.optional(
+              Schema.Struct({
+                authentication: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.Literals([
+                      "NotSpecified",
+                      "ClientCertificate",
+                      "ActiveDirectoryOAuth",
+                      "Basic",
+                    ]),
+                  }),
+                ),
+                uri: Schema.optional(Schema.String),
+                method: Schema.optional(Schema.String),
+                body: Schema.optional(Schema.String),
+                headers: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+              }),
+            ),
+            queueMessage: Schema.optional(
+              Schema.Struct({
+                storageAccount: Schema.optional(Schema.String),
+                queueName: Schema.optional(Schema.String),
+                sasToken: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+            serviceBusQueueMessage: Schema.optional(
+              Schema.Struct({
+                authentication: Schema.optional(
+                  Schema.Struct({
+                    sasKey: Schema.optional(Schema.String),
+                    sasKeyName: Schema.optional(Schema.String),
+                    type: Schema.optional(
+                      Schema.Literals(["NotSpecified", "SharedAccessKey"]),
+                    ),
+                  }),
+                ),
+                brokeredMessageProperties: Schema.optional(
+                  Schema.Struct({
+                    contentType: Schema.optional(Schema.String),
+                    correlationId: Schema.optional(Schema.String),
+                    forcePersistence: Schema.optional(Schema.Boolean),
+                    label: Schema.optional(Schema.String),
+                    messageId: Schema.optional(Schema.String),
+                    partitionKey: Schema.optional(Schema.String),
+                    replyTo: Schema.optional(Schema.String),
+                    replyToSessionId: Schema.optional(Schema.String),
+                    scheduledEnqueueTimeUtc: Schema.optional(Schema.String),
+                    sessionId: Schema.optional(Schema.String),
+                    timeToLive: Schema.optional(Schema.String),
+                    to: Schema.optional(Schema.String),
+                    viaPartitionKey: Schema.optional(Schema.String),
+                  }),
+                ),
+                customMessageProperties: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                message: Schema.optional(Schema.String),
+                namespace: Schema.optional(Schema.String),
+                transportType: Schema.optional(
+                  Schema.Literals(["NotSpecified", "NetMessaging", "AMQP"]),
+                ),
+              }),
+            ),
+            serviceBusTopicMessage: Schema.optional(
+              Schema.Struct({
+                authentication: Schema.optional(
+                  Schema.Struct({
+                    sasKey: Schema.optional(Schema.String),
+                    sasKeyName: Schema.optional(Schema.String),
+                    type: Schema.optional(
+                      Schema.Literals(["NotSpecified", "SharedAccessKey"]),
+                    ),
+                  }),
+                ),
+                brokeredMessageProperties: Schema.optional(
+                  Schema.Struct({
+                    contentType: Schema.optional(Schema.String),
+                    correlationId: Schema.optional(Schema.String),
+                    forcePersistence: Schema.optional(Schema.Boolean),
+                    label: Schema.optional(Schema.String),
+                    messageId: Schema.optional(Schema.String),
+                    partitionKey: Schema.optional(Schema.String),
+                    replyTo: Schema.optional(Schema.String),
+                    replyToSessionId: Schema.optional(Schema.String),
+                    scheduledEnqueueTimeUtc: Schema.optional(Schema.String),
+                    sessionId: Schema.optional(Schema.String),
+                    timeToLive: Schema.optional(Schema.String),
+                    to: Schema.optional(Schema.String),
+                    viaPartitionKey: Schema.optional(Schema.String),
+                  }),
+                ),
+                customMessageProperties: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+                message: Schema.optional(Schema.String),
+                namespace: Schema.optional(Schema.String),
+                transportType: Schema.optional(
+                  Schema.Literals(["NotSpecified", "NetMessaging", "AMQP"]),
+                ),
+              }),
+            ),
+            retryPolicy: Schema.optional(
+              Schema.Struct({
+                retryType: Schema.optional(Schema.Literals(["None", "Fixed"])),
+                retryInterval: Schema.optional(Schema.String),
+                retryCount: Schema.optional(Schema.Number),
+              }),
+            ),
+            errorAction: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals([
+                    "Http",
+                    "Https",
+                    "StorageQueue",
+                    "ServiceBusQueue",
+                    "ServiceBusTopic",
+                  ]),
+                ),
+                request: Schema.optional(
+                  Schema.Struct({
+                    authentication: Schema.optional(
+                      Schema.Struct({
+                        type: Schema.Literals([
+                          "NotSpecified",
+                          "ClientCertificate",
+                          "ActiveDirectoryOAuth",
+                          "Basic",
+                        ]),
+                      }),
+                    ),
+                    uri: Schema.optional(Schema.String),
+                    method: Schema.optional(Schema.String),
+                    body: Schema.optional(Schema.String),
+                    headers: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                  }),
+                ),
+                queueMessage: Schema.optional(
+                  Schema.Struct({
+                    storageAccount: Schema.optional(Schema.String),
+                    queueName: Schema.optional(Schema.String),
+                    sasToken: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                  }),
+                ),
+                serviceBusQueueMessage: Schema.optional(
+                  Schema.Struct({
+                    authentication: Schema.optional(
+                      Schema.Struct({
+                        sasKey: Schema.optional(Schema.String),
+                        sasKeyName: Schema.optional(Schema.String),
+                        type: Schema.optional(
+                          Schema.Literals(["NotSpecified", "SharedAccessKey"]),
+                        ),
+                      }),
+                    ),
+                    brokeredMessageProperties: Schema.optional(
+                      Schema.Struct({
+                        contentType: Schema.optional(Schema.String),
+                        correlationId: Schema.optional(Schema.String),
+                        forcePersistence: Schema.optional(Schema.Boolean),
+                        label: Schema.optional(Schema.String),
+                        messageId: Schema.optional(Schema.String),
+                        partitionKey: Schema.optional(Schema.String),
+                        replyTo: Schema.optional(Schema.String),
+                        replyToSessionId: Schema.optional(Schema.String),
+                        scheduledEnqueueTimeUtc: Schema.optional(Schema.String),
+                        sessionId: Schema.optional(Schema.String),
+                        timeToLive: Schema.optional(Schema.String),
+                        to: Schema.optional(Schema.String),
+                        viaPartitionKey: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    customMessageProperties: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                    message: Schema.optional(Schema.String),
+                    namespace: Schema.optional(Schema.String),
+                    transportType: Schema.optional(
+                      Schema.Literals(["NotSpecified", "NetMessaging", "AMQP"]),
+                    ),
+                  }),
+                ),
+                serviceBusTopicMessage: Schema.optional(
+                  Schema.Struct({
+                    authentication: Schema.optional(
+                      Schema.Struct({
+                        sasKey: Schema.optional(Schema.String),
+                        sasKeyName: Schema.optional(Schema.String),
+                        type: Schema.optional(
+                          Schema.Literals(["NotSpecified", "SharedAccessKey"]),
+                        ),
+                      }),
+                    ),
+                    brokeredMessageProperties: Schema.optional(
+                      Schema.Struct({
+                        contentType: Schema.optional(Schema.String),
+                        correlationId: Schema.optional(Schema.String),
+                        forcePersistence: Schema.optional(Schema.Boolean),
+                        label: Schema.optional(Schema.String),
+                        messageId: Schema.optional(Schema.String),
+                        partitionKey: Schema.optional(Schema.String),
+                        replyTo: Schema.optional(Schema.String),
+                        replyToSessionId: Schema.optional(Schema.String),
+                        scheduledEnqueueTimeUtc: Schema.optional(Schema.String),
+                        sessionId: Schema.optional(Schema.String),
+                        timeToLive: Schema.optional(Schema.String),
+                        to: Schema.optional(Schema.String),
+                        viaPartitionKey: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    customMessageProperties: Schema.optional(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                    message: Schema.optional(Schema.String),
+                    namespace: Schema.optional(Schema.String),
+                    transportType: Schema.optional(
+                      Schema.Literals(["NotSpecified", "NetMessaging", "AMQP"]),
+                    ),
+                  }),
+                ),
+                retryPolicy: Schema.optional(
+                  Schema.Struct({
+                    retryType: Schema.optional(
+                      Schema.Literals(["None", "Fixed"]),
+                    ),
+                    retryInterval: Schema.optional(Schema.String),
+                    retryCount: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        recurrence: Schema.optional(
+          Schema.Struct({
+            frequency: Schema.optional(
+              Schema.Literals(["Minute", "Hour", "Day", "Week", "Month"]),
+            ),
+            interval: Schema.optional(Schema.Number),
+            count: Schema.optional(Schema.Number),
+            endTime: Schema.optional(Schema.String),
+            schedule: Schema.optional(
+              Schema.Struct({
+                weekDays: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals([
+                      "Sunday",
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday",
+                    ]),
+                  ),
+                ),
+                hours: Schema.optional(Schema.Array(Schema.Number)),
+                minutes: Schema.optional(Schema.Array(Schema.Number)),
+                monthDays: Schema.optional(Schema.Array(Schema.Number)),
+                monthlyOccurrences: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      day: Schema.optional(
+                        Schema.Literals([
+                          "Monday",
+                          "Tuesday",
+                          "Wednesday",
+                          "Thursday",
+                          "Friday",
+                          "Saturday",
+                          "Sunday",
+                        ]),
+                      ),
+                      Occurrence: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        state: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "Faulted", "Completed"]),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            executionCount: Schema.optional(Schema.Number),
+            failureCount: Schema.optional(Schema.Number),
+            faultedCount: Schema.optional(Schema.Number),
+            lastExecutionTime: Schema.optional(Schema.String),
+            nextExecutionTime: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}",
+      apiVersion: "2016-03-01",
     }),
   );
 export type JobsCreateOrUpdateInput = typeof JobsCreateOrUpdateInput.Type;
@@ -824,6 +1217,7 @@ export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}",
+    apiVersion: "2016-03-01",
   }),
 );
 export type JobsDeleteInput = typeof JobsDeleteInput.Type;
@@ -853,6 +1247,7 @@ export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}",
+    apiVersion: "2016-03-01",
   }),
 );
 export type JobsGetInput = typeof JobsGetInput.Type;
@@ -1203,6 +1598,7 @@ export const JobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs",
+    apiVersion: "2016-03-01",
   }),
 );
 export type JobsListInput = typeof JobsListInput.Type;
@@ -1584,6 +1980,7 @@ export const JobsListJobHistoryInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history",
+      apiVersion: "2016-03-01",
     }),
   );
 export type JobsListJobHistoryInput = typeof JobsListJobHistoryInput.Type;
@@ -1640,10 +2037,329 @@ export const JobsPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobCollectionName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      startTime: Schema.optional(Schema.String),
+      action: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(
+            Schema.Literals([
+              "Http",
+              "Https",
+              "StorageQueue",
+              "ServiceBusQueue",
+              "ServiceBusTopic",
+            ]),
+          ),
+          request: Schema.optional(
+            Schema.Struct({
+              authentication: Schema.optional(
+                Schema.Struct({
+                  type: Schema.Literals([
+                    "NotSpecified",
+                    "ClientCertificate",
+                    "ActiveDirectoryOAuth",
+                    "Basic",
+                  ]),
+                }),
+              ),
+              uri: Schema.optional(Schema.String),
+              method: Schema.optional(Schema.String),
+              body: Schema.optional(Schema.String),
+              headers: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+            }),
+          ),
+          queueMessage: Schema.optional(
+            Schema.Struct({
+              storageAccount: Schema.optional(Schema.String),
+              queueName: Schema.optional(Schema.String),
+              sasToken: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+            }),
+          ),
+          serviceBusQueueMessage: Schema.optional(
+            Schema.Struct({
+              authentication: Schema.optional(
+                Schema.Struct({
+                  sasKey: Schema.optional(Schema.String),
+                  sasKeyName: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals(["NotSpecified", "SharedAccessKey"]),
+                  ),
+                }),
+              ),
+              brokeredMessageProperties: Schema.optional(
+                Schema.Struct({
+                  contentType: Schema.optional(Schema.String),
+                  correlationId: Schema.optional(Schema.String),
+                  forcePersistence: Schema.optional(Schema.Boolean),
+                  label: Schema.optional(Schema.String),
+                  messageId: Schema.optional(Schema.String),
+                  partitionKey: Schema.optional(Schema.String),
+                  replyTo: Schema.optional(Schema.String),
+                  replyToSessionId: Schema.optional(Schema.String),
+                  scheduledEnqueueTimeUtc: Schema.optional(Schema.String),
+                  sessionId: Schema.optional(Schema.String),
+                  timeToLive: Schema.optional(Schema.String),
+                  to: Schema.optional(Schema.String),
+                  viaPartitionKey: Schema.optional(Schema.String),
+                }),
+              ),
+              customMessageProperties: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              message: Schema.optional(Schema.String),
+              namespace: Schema.optional(Schema.String),
+              transportType: Schema.optional(
+                Schema.Literals(["NotSpecified", "NetMessaging", "AMQP"]),
+              ),
+            }),
+          ),
+          serviceBusTopicMessage: Schema.optional(
+            Schema.Struct({
+              authentication: Schema.optional(
+                Schema.Struct({
+                  sasKey: Schema.optional(Schema.String),
+                  sasKeyName: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals(["NotSpecified", "SharedAccessKey"]),
+                  ),
+                }),
+              ),
+              brokeredMessageProperties: Schema.optional(
+                Schema.Struct({
+                  contentType: Schema.optional(Schema.String),
+                  correlationId: Schema.optional(Schema.String),
+                  forcePersistence: Schema.optional(Schema.Boolean),
+                  label: Schema.optional(Schema.String),
+                  messageId: Schema.optional(Schema.String),
+                  partitionKey: Schema.optional(Schema.String),
+                  replyTo: Schema.optional(Schema.String),
+                  replyToSessionId: Schema.optional(Schema.String),
+                  scheduledEnqueueTimeUtc: Schema.optional(Schema.String),
+                  sessionId: Schema.optional(Schema.String),
+                  timeToLive: Schema.optional(Schema.String),
+                  to: Schema.optional(Schema.String),
+                  viaPartitionKey: Schema.optional(Schema.String),
+                }),
+              ),
+              customMessageProperties: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              message: Schema.optional(Schema.String),
+              namespace: Schema.optional(Schema.String),
+              transportType: Schema.optional(
+                Schema.Literals(["NotSpecified", "NetMessaging", "AMQP"]),
+              ),
+            }),
+          ),
+          retryPolicy: Schema.optional(
+            Schema.Struct({
+              retryType: Schema.optional(Schema.Literals(["None", "Fixed"])),
+              retryInterval: Schema.optional(Schema.String),
+              retryCount: Schema.optional(Schema.Number),
+            }),
+          ),
+          errorAction: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals([
+                  "Http",
+                  "Https",
+                  "StorageQueue",
+                  "ServiceBusQueue",
+                  "ServiceBusTopic",
+                ]),
+              ),
+              request: Schema.optional(
+                Schema.Struct({
+                  authentication: Schema.optional(
+                    Schema.Struct({
+                      type: Schema.Literals([
+                        "NotSpecified",
+                        "ClientCertificate",
+                        "ActiveDirectoryOAuth",
+                        "Basic",
+                      ]),
+                    }),
+                  ),
+                  uri: Schema.optional(Schema.String),
+                  method: Schema.optional(Schema.String),
+                  body: Schema.optional(Schema.String),
+                  headers: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                }),
+              ),
+              queueMessage: Schema.optional(
+                Schema.Struct({
+                  storageAccount: Schema.optional(Schema.String),
+                  queueName: Schema.optional(Schema.String),
+                  sasToken: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                }),
+              ),
+              serviceBusQueueMessage: Schema.optional(
+                Schema.Struct({
+                  authentication: Schema.optional(
+                    Schema.Struct({
+                      sasKey: Schema.optional(Schema.String),
+                      sasKeyName: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["NotSpecified", "SharedAccessKey"]),
+                      ),
+                    }),
+                  ),
+                  brokeredMessageProperties: Schema.optional(
+                    Schema.Struct({
+                      contentType: Schema.optional(Schema.String),
+                      correlationId: Schema.optional(Schema.String),
+                      forcePersistence: Schema.optional(Schema.Boolean),
+                      label: Schema.optional(Schema.String),
+                      messageId: Schema.optional(Schema.String),
+                      partitionKey: Schema.optional(Schema.String),
+                      replyTo: Schema.optional(Schema.String),
+                      replyToSessionId: Schema.optional(Schema.String),
+                      scheduledEnqueueTimeUtc: Schema.optional(Schema.String),
+                      sessionId: Schema.optional(Schema.String),
+                      timeToLive: Schema.optional(Schema.String),
+                      to: Schema.optional(Schema.String),
+                      viaPartitionKey: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  customMessageProperties: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  message: Schema.optional(Schema.String),
+                  namespace: Schema.optional(Schema.String),
+                  transportType: Schema.optional(
+                    Schema.Literals(["NotSpecified", "NetMessaging", "AMQP"]),
+                  ),
+                }),
+              ),
+              serviceBusTopicMessage: Schema.optional(
+                Schema.Struct({
+                  authentication: Schema.optional(
+                    Schema.Struct({
+                      sasKey: Schema.optional(Schema.String),
+                      sasKeyName: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["NotSpecified", "SharedAccessKey"]),
+                      ),
+                    }),
+                  ),
+                  brokeredMessageProperties: Schema.optional(
+                    Schema.Struct({
+                      contentType: Schema.optional(Schema.String),
+                      correlationId: Schema.optional(Schema.String),
+                      forcePersistence: Schema.optional(Schema.Boolean),
+                      label: Schema.optional(Schema.String),
+                      messageId: Schema.optional(Schema.String),
+                      partitionKey: Schema.optional(Schema.String),
+                      replyTo: Schema.optional(Schema.String),
+                      replyToSessionId: Schema.optional(Schema.String),
+                      scheduledEnqueueTimeUtc: Schema.optional(Schema.String),
+                      sessionId: Schema.optional(Schema.String),
+                      timeToLive: Schema.optional(Schema.String),
+                      to: Schema.optional(Schema.String),
+                      viaPartitionKey: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  customMessageProperties: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  message: Schema.optional(Schema.String),
+                  namespace: Schema.optional(Schema.String),
+                  transportType: Schema.optional(
+                    Schema.Literals(["NotSpecified", "NetMessaging", "AMQP"]),
+                  ),
+                }),
+              ),
+              retryPolicy: Schema.optional(
+                Schema.Struct({
+                  retryType: Schema.optional(
+                    Schema.Literals(["None", "Fixed"]),
+                  ),
+                  retryInterval: Schema.optional(Schema.String),
+                  retryCount: Schema.optional(Schema.Number),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+      recurrence: Schema.optional(
+        Schema.Struct({
+          frequency: Schema.optional(
+            Schema.Literals(["Minute", "Hour", "Day", "Week", "Month"]),
+          ),
+          interval: Schema.optional(Schema.Number),
+          count: Schema.optional(Schema.Number),
+          endTime: Schema.optional(Schema.String),
+          schedule: Schema.optional(
+            Schema.Struct({
+              weekDays: Schema.optional(
+                Schema.Array(
+                  Schema.Literals([
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                  ]),
+                ),
+              ),
+              hours: Schema.optional(Schema.Array(Schema.Number)),
+              minutes: Schema.optional(Schema.Array(Schema.Number)),
+              monthDays: Schema.optional(Schema.Array(Schema.Number)),
+              monthlyOccurrences: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    day: Schema.optional(
+                      Schema.Literals([
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday",
+                      ]),
+                    ),
+                    Occurrence: Schema.optional(Schema.Number),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+      state: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled", "Faulted", "Completed"]),
+      ),
+      status: Schema.optional(
+        Schema.Struct({
+          executionCount: Schema.optional(Schema.Number),
+          failureCount: Schema.optional(Schema.Number),
+          faultedCount: Schema.optional(Schema.Number),
+          lastExecutionTime: Schema.optional(Schema.String),
+          nextExecutionTime: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}",
+    apiVersion: "2016-03-01",
   }),
 );
 export type JobsPatchInput = typeof JobsPatchInput.Type;
@@ -1992,6 +2708,7 @@ export const JobsRunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/run",
+    apiVersion: "2016-03-01",
   }),
 );
 export type JobsRunInput = typeof JobsRunInput.Type;

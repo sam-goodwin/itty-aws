@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const DpsCertificateCreateOrUpdateInput =
@@ -14,10 +15,40 @@ export const DpsCertificateCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        subject: Schema.optional(Schema.String),
+        expiry: Schema.optional(Schema.String),
+        thumbprint: Schema.optional(Schema.String),
+        isVerified: Schema.optional(Schema.Boolean),
+        certificate: Schema.optional(Schema.String),
+        created: Schema.optional(Schema.String),
+        updated: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates/{certificateName}",
+      apiVersion: "2022-12-12",
     }),
   );
 export type DpsCertificateCreateOrUpdateInput =
@@ -95,6 +126,7 @@ export const DpsCertificateDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates/{certificateName}",
+      apiVersion: "2022-12-12",
     }),
   );
 export type DpsCertificateDeleteInput = typeof DpsCertificateDeleteInput.Type;
@@ -149,6 +181,7 @@ export const DpsCertificateGenerateVerificationCodeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates/{certificateName}/generateVerificationCode",
+      apiVersion: "2022-12-12",
     }),
   );
 export type DpsCertificateGenerateVerificationCodeInput =
@@ -210,6 +243,7 @@ export const DpsCertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates/{certificateName}",
+    apiVersion: "2022-12-12",
   }),
 );
 export type DpsCertificateGetInput = typeof DpsCertificateGetInput.Type;
@@ -271,6 +305,7 @@ export const DpsCertificateListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates",
+      apiVersion: "2022-12-12",
     }),
   );
 export type DpsCertificateListInput = typeof DpsCertificateListInput.Type;
@@ -353,10 +388,12 @@ export const DpsCertificateVerifyCertificateInput =
     "certificate.lastUpdated": Schema.optional(Schema.String),
     "certificate.hasPrivateKey": Schema.optional(Schema.Boolean),
     "certificate.nonce": Schema.optional(Schema.String),
+    certificate: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/certificates/{certificateName}/verify",
+      apiVersion: "2022-12-12",
     }),
   );
 export type DpsCertificateVerifyCertificateInput =
@@ -424,10 +461,13 @@ export const DpsCertificateVerifyCertificate =
   }));
 // Input Schema
 export const IotDpsResourceCheckProvisioningServiceNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Devices/checkProvisioningServiceNameAvailability",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceCheckProvisioningServiceNameAvailabilityInput =
@@ -459,10 +499,158 @@ export const IotDpsResourceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
+    etag: Schema.optional(Schema.String),
+    properties: Schema.Struct({
+      state: Schema.optional(
+        Schema.Literals([
+          "Activating",
+          "Active",
+          "Deleting",
+          "Deleted",
+          "ActivationFailed",
+          "DeletionFailed",
+          "Transitioning",
+          "Suspending",
+          "Suspended",
+          "Resuming",
+          "FailingOver",
+          "FailoverFailed",
+        ]),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      ipFilterRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            filterName: Schema.String,
+            action: Schema.Literals(["Accept", "Reject"]),
+            ipMask: Schema.String,
+            target: Schema.optional(
+              Schema.Literals(["all", "serviceApi", "deviceApi"]),
+            ),
+          }),
+        ),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            properties: Schema.Struct({
+              privateEndpoint: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+              privateLinkServiceConnectionState: Schema.Struct({
+                status: Schema.Literals([
+                  "Pending",
+                  "Approved",
+                  "Rejected",
+                  "Disconnected",
+                ]),
+                description: Schema.String,
+                actionsRequired: Schema.optional(Schema.String),
+              }),
+            }),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      iotHubs: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            applyAllocationPolicy: Schema.optional(Schema.Boolean),
+            allocationWeight: Schema.optional(Schema.Number),
+            name: Schema.optional(Schema.String),
+            connectionString: SensitiveString,
+            location: Schema.String,
+          }),
+        ),
+      ),
+      allocationPolicy: Schema.optional(
+        Schema.Literals(["Hashed", "GeoLatency", "Static"]),
+      ),
+      serviceOperationsHostName: Schema.optional(Schema.String),
+      deviceProvisioningHostName: Schema.optional(Schema.String),
+      idScope: Schema.optional(Schema.String),
+      authorizationPolicies: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            keyName: Schema.String,
+            primaryKey: Schema.optional(Schema.String),
+            secondaryKey: Schema.optional(Schema.String),
+            rights: Schema.Literals([
+              "ServiceConfig",
+              "EnrollmentRead",
+              "EnrollmentWrite",
+              "DeviceConnect",
+              "RegistrationStatusRead",
+              "RegistrationStatusWrite",
+            ]),
+          }),
+        ),
+      ),
+      enableDataResidency: Schema.optional(Schema.Boolean),
+      portalOperationsHostName: Schema.optional(Schema.String),
+    }),
+    sku: Schema.Struct({
+      name: Schema.optional(Schema.Literals(["S1"])),
+      tier: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.String,
+    resourcegroup: Schema.optional(Schema.String),
+    subscriptionid: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceCreateOrUpdateInput =
@@ -498,10 +686,46 @@ export const IotDpsResourceCreateOrUpdate =
   }));
 // Input Schema
 export const IotDpsResourceCreateOrUpdatePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.Struct({
+      privateEndpoint: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+      privateLinkServiceConnectionState: Schema.Struct({
+        status: Schema.Literals([
+          "Pending",
+          "Approved",
+          "Rejected",
+          "Disconnected",
+        ]),
+        description: Schema.String,
+        actionsRequired: Schema.optional(Schema.String),
+      }),
+    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceCreateOrUpdatePrivateEndpointConnectionInput =
@@ -568,6 +792,7 @@ export const IotDpsResourceDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceDeleteInput = typeof IotDpsResourceDeleteInput.Type;
@@ -598,6 +823,7 @@ export const IotDpsResourceDeletePrivateEndpointConnectionInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceDeletePrivateEndpointConnectionInput =
@@ -665,6 +891,7 @@ export const IotDpsResourceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
+    apiVersion: "2022-12-12",
   }),
 );
 export type IotDpsResourceGetInput = typeof IotDpsResourceGetInput.Type;
@@ -706,6 +933,7 @@ export const IotDpsResourceGetOperationResultInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/operationresults/{operationId}",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceGetOperationResultInput =
@@ -746,6 +974,7 @@ export const IotDpsResourceGetPrivateEndpointConnectionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceGetPrivateEndpointConnectionInput =
@@ -809,6 +1038,7 @@ export const IotDpsResourceGetPrivateLinkResourcesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateLinkResources/{groupId}",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceGetPrivateLinkResourcesInput =
@@ -848,6 +1078,7 @@ export const IotDpsResourceListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceListByResourceGroupInput =
@@ -891,6 +1122,7 @@ export const IotDpsResourceListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Devices/provisioningServices",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceListBySubscriptionInput =
@@ -937,6 +1169,7 @@ export const IotDpsResourceListKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/listkeys",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceListKeysInput =
@@ -992,6 +1225,7 @@ export const IotDpsResourceListKeysForKeyNameInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/keys/{keyName}/listkeys",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceListKeysForKeyNameInput =
@@ -1036,6 +1270,7 @@ export const IotDpsResourceListPrivateEndpointConnectionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateEndpointConnections",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceListPrivateEndpointConnectionsInput =
@@ -1101,6 +1336,7 @@ export const IotDpsResourceListPrivateLinkResourcesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{resourceName}/privateLinkResources",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceListPrivateLinkResourcesInput =
@@ -1147,6 +1383,7 @@ export const IotDpsResourceListValidSkusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/skus",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceListValidSkusInput =
@@ -1187,10 +1424,12 @@ export const IotDpsResourceUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     provisioningServiceName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}",
+      apiVersion: "2022-12-12",
     }),
   );
 export type IotDpsResourceUpdateInput = typeof IotDpsResourceUpdateInput.Type;
@@ -1227,7 +1466,11 @@ export const IotDpsResourceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Devices/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Devices/operations",
+    apiVersion: "2022-12-12",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 

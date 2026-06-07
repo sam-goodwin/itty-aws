@@ -15,11 +15,60 @@ export const AgentsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
     agentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.String),
+      agentVersion: Schema.optional(Schema.String),
+      arcResourceId: Schema.String,
+      arcVmUuid: Schema.String,
+      agentStatus: Schema.optional(
+        Schema.Literals([
+          "Registering",
+          "Offline",
+          "Online",
+          "Executing",
+          "RequiresAttention",
+          "Unregistering",
+        ]),
+      ),
+      lastStatusUpdate: Schema.optional(Schema.String),
+      localIPAddress: Schema.optional(Schema.String),
+      memoryInMB: Schema.optional(Schema.Number),
+      numberOfCores: Schema.optional(Schema.Number),
+      uptimeInSeconds: Schema.optional(Schema.Number),
+      timeZone: Schema.optional(Schema.String),
+      uploadLimitSchedule: Schema.optional(
+        Schema.Struct({
+          weeklyRecurrences: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                startTime: Schema.Struct({
+                  hour: Schema.Number,
+                  minute: Schema.optional(Schema.Literals([0, 30])),
+                }),
+                endTime: Schema.Struct({
+                  hour: Schema.Number,
+                  minute: Schema.optional(Schema.Literals([0, 30])),
+                }),
+              }),
+            ),
+          ),
+        }),
+      ),
+      errorDetails: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+        }),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Canceled", "Failed", "Deleting"]),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type AgentsCreateOrUpdateInput = typeof AgentsCreateOrUpdateInput.Type;
@@ -69,11 +118,11 @@ export const AgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
   agentName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AgentsDeleteInput = typeof AgentsDeleteInput.Type;
@@ -102,11 +151,11 @@ export const AgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
   agentName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AgentsGetInput = typeof AgentsGetInput.Type;
@@ -152,11 +201,11 @@ export const AgentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AgentsListInput = typeof AgentsListInput.Type;
@@ -207,11 +256,34 @@ export const AgentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
   agentName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+      uploadLimitSchedule: Schema.optional(
+        Schema.Struct({
+          weeklyRecurrences: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                startTime: Schema.Struct({
+                  hour: Schema.Number,
+                  minute: Schema.optional(Schema.Literals([0, 30])),
+                }),
+                endTime: Schema.Struct({
+                  hour: Schema.Number,
+                  minute: Schema.optional(Schema.Literals([0, 30])),
+                }),
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type AgentsUpdateInput = typeof AgentsUpdateInput.Type;
@@ -259,11 +331,30 @@ export const ConnectionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.String),
+      connectionStatus: Schema.optional(
+        Schema.Literals([
+          "Approved",
+          "Rejected",
+          "Disconnected",
+          "Pending",
+          "Stale",
+        ]),
+      ),
+      privateLinkServiceId: Schema.String,
+      privateEndpointName: Schema.optional(Schema.String),
+      privateEndpointResourceId: Schema.optional(Schema.String),
+      jobList: Schema.optional(Schema.Array(Schema.String)),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Canceled", "Failed", "Deleting"]),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type ConnectionsCreateOrUpdateInput =
@@ -316,12 +407,12 @@ export const ConnectionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ConnectionsDeleteInput = typeof ConnectionsDeleteInput.Type;
@@ -351,11 +442,11 @@ export const ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ConnectionsGetInput = typeof ConnectionsGetInput.Type;
@@ -401,11 +492,11 @@ export const ConnectionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ConnectionsListInput = typeof ConnectionsListInput.Type;
@@ -457,11 +548,50 @@ export const EndpointsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      endpointType: Schema.Literals([
+        "AzureStorageBlobContainer",
+        "NfsMount",
+        "AzureStorageSmbFileShare",
+        "SmbMount",
+        "AzureMultiCloudConnector",
+        "AzureStorageNfsFileShare",
+        "S3WithHMAC",
+      ]),
+      description: Schema.optional(Schema.String),
+      endpointKind: Schema.optional(Schema.Literals(["Source", "Target"])),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Canceled", "Failed", "Deleting"]),
+      ),
+    }),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                principalId: Schema.optional(Schema.String),
+                clientId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type EndpointsCreateOrUpdateInput =
@@ -513,11 +643,11 @@ export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type EndpointsDeleteInput = typeof EndpointsDeleteInput.Type;
@@ -546,11 +676,11 @@ export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type EndpointsGetInput = typeof EndpointsGetInput.Type;
@@ -596,11 +726,11 @@ export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints",
+    apiVersion: "2025-12-01",
   }),
 );
 export type EndpointsListInput = typeof EndpointsListInput.Type;
@@ -651,11 +781,48 @@ export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      endpointType: Schema.Literals([
+        "AzureStorageBlobContainer",
+        "NfsMount",
+        "AzureStorageSmbFileShare",
+        "SmbMount",
+        "AzureMultiCloudConnector",
+        "AzureStorageNfsFileShare",
+        "S3WithHMAC",
+      ]),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.NullOr(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type EndpointsUpdateInput = typeof EndpointsUpdateInput.Type;
@@ -704,11 +871,101 @@ export const JobDefinitionsCreateOrUpdateInput =
     storageMoverName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     jobDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.String),
+      jobType: Schema.optional(
+        Schema.Literals(["OnPremToCloud", "CloudToCloud"]),
+      ),
+      copyMode: Schema.Literals(["Additive", "Mirror"]),
+      sourceName: Schema.String,
+      sourceResourceId: Schema.optional(Schema.String),
+      sourceSubpath: Schema.optional(Schema.String),
+      targetName: Schema.String,
+      targetResourceId: Schema.optional(Schema.String),
+      targetSubpath: Schema.optional(Schema.String),
+      latestJobRunName: Schema.optional(Schema.String),
+      latestJobRunResourceId: Schema.optional(Schema.String),
+      latestJobRunStatus: Schema.optional(
+        Schema.Literals([
+          "Queued",
+          "Started",
+          "Running",
+          "CancelRequested",
+          "Canceling",
+          "Canceled",
+          "Failed",
+          "Succeeded",
+          "PausedByBandwidthManagement",
+        ]),
+      ),
+      agentName: Schema.optional(Schema.String),
+      agentResourceId: Schema.optional(Schema.String),
+      sourceTargetMap: Schema.optional(
+        Schema.Struct({
+          value: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                sourceEndpoint: Schema.Struct({
+                  properties: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      sourceEndpointResourceId: Schema.optional(Schema.String),
+                      awsS3BucketId: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+                targetEndpoint: Schema.Struct({
+                  properties: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      targetEndpointResourceId: Schema.optional(Schema.String),
+                      azureStorageAccountResourceId: Schema.optional(
+                        Schema.String,
+                      ),
+                      azureStorageBlobContainerName: Schema.optional(
+                        Schema.String,
+                      ),
+                    }),
+                  ),
+                }),
+              }),
+            ),
+          ),
+        }),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Canceled", "Failed", "Deleting"]),
+      ),
+      connections: Schema.optional(Schema.Array(Schema.String)),
+      schedule: Schema.optional(
+        Schema.Struct({
+          frequency: Schema.optional(
+            Schema.Literals(["Monthly", "Weekly", "Daily", "Onetime", "None"]),
+          ),
+          isActive: Schema.optional(Schema.Boolean),
+          executionTime: Schema.optional(
+            Schema.Struct({
+              hour: Schema.optional(Schema.Number),
+              minute: Schema.optional(Schema.Literals([0, 30])),
+            }),
+          ),
+          startDate: Schema.optional(Schema.String),
+          daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
+          daysOfMonth: Schema.optional(Schema.Array(Schema.Number)),
+          cronExpression: Schema.optional(Schema.String),
+          endDate: Schema.optional(Schema.String),
+        }),
+      ),
+      dataIntegrityValidation: Schema.optional(
+        Schema.Literals(["SaveVerifyFileMD5", "SaveFileMD5", "None"]),
+      ),
+      preservePermissions: Schema.optional(Schema.Boolean),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type JobDefinitionsCreateOrUpdateInput =
@@ -762,11 +1019,11 @@ export const JobDefinitionsDeleteInput =
     storageMoverName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     jobDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type JobDefinitionsDeleteInput = typeof JobDefinitionsDeleteInput.Type;
@@ -801,12 +1058,12 @@ export const JobDefinitionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     storageMoverName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     jobDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type JobDefinitionsGetInput = typeof JobDefinitionsGetInput.Type;
@@ -856,11 +1113,11 @@ export const JobDefinitionsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions",
+      apiVersion: "2025-12-01",
     }),
   );
 export type JobDefinitionsListInput = typeof JobDefinitionsListInput.Type;
@@ -925,11 +1182,11 @@ export const JobDefinitionsStartJobInput =
     storageMoverName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     jobDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/startJob",
+      apiVersion: "2025-12-01",
     }),
   );
 export type JobDefinitionsStartJobInput =
@@ -968,11 +1225,11 @@ export const JobDefinitionsStopJobInput =
     storageMoverName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     jobDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/stopJob",
+      apiVersion: "2025-12-01",
     }),
   );
 export type JobDefinitionsStopJobInput = typeof JobDefinitionsStopJobInput.Type;
@@ -1010,11 +1267,47 @@ export const JobDefinitionsUpdateInput =
     storageMoverName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     jobDefinitionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        copyMode: Schema.optional(Schema.Literals(["Additive", "Mirror"])),
+        agentName: Schema.optional(Schema.String),
+        connections: Schema.optional(Schema.Array(Schema.String)),
+        dataIntegrityValidation: Schema.optional(
+          Schema.Literals(["SaveVerifyFileMD5", "SaveFileMD5", "None"]),
+        ),
+        schedule: Schema.optional(
+          Schema.Struct({
+            frequency: Schema.optional(
+              Schema.Literals([
+                "Monthly",
+                "Weekly",
+                "Daily",
+                "Onetime",
+                "None",
+              ]),
+            ),
+            isActive: Schema.optional(Schema.Boolean),
+            executionTime: Schema.optional(
+              Schema.Struct({
+                hour: Schema.optional(Schema.Number),
+                minute: Schema.optional(Schema.Literals([0, 30])),
+              }),
+            ),
+            startDate: Schema.optional(Schema.String),
+            daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
+            daysOfMonth: Schema.optional(Schema.Array(Schema.Number)),
+            cronExpression: Schema.optional(Schema.String),
+            endDate: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type JobDefinitionsUpdateInput = typeof JobDefinitionsUpdateInput.Type;
@@ -1067,11 +1360,11 @@ export const JobRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   projectName: Schema.String.pipe(T.PathParam()),
   jobDefinitionName: Schema.String.pipe(T.PathParam()),
   jobRunName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/jobRuns/{jobRunName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type JobRunsGetInput = typeof JobRunsGetInput.Type;
@@ -1121,11 +1414,11 @@ export const JobRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   storageMoverName: Schema.String.pipe(T.PathParam()),
   projectName: Schema.String.pipe(T.PathParam()),
   jobDefinitionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/jobRuns",
+    apiVersion: "2025-12-01",
   }),
 );
 export type JobRunsListInput = typeof JobRunsListInput.Type;
@@ -1173,12 +1466,13 @@ export const JobRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobRunsListOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StorageMover/operations",
+    apiVersion: "2025-12-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1226,11 +1520,19 @@ export const ProjectsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Canceled", "Failed", "Deleting"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type ProjectsCreateOrUpdateInput =
@@ -1282,11 +1584,11 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
   projectName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
@@ -1315,11 +1617,11 @@ export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
   projectName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ProjectsGetInput = typeof ProjectsGetInput.Type;
@@ -1365,11 +1667,11 @@ export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ProjectsListInput = typeof ProjectsListInput.Type;
@@ -1420,11 +1722,16 @@ export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
   projectName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type ProjectsUpdateInput = typeof ProjectsUpdateInput.Type;
@@ -1471,11 +1778,21 @@ export const StorageMoversCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Canceled", "Failed", "Deleting"]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type StorageMoversCreateOrUpdateInput =
@@ -1526,11 +1843,11 @@ export const StorageMoversDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type StorageMoversDeleteInput = typeof StorageMoversDeleteInput.Type;
@@ -1558,11 +1875,11 @@ export const StorageMoversGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageMoverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
+    apiVersion: "2025-12-01",
   }),
 );
 export type StorageMoversGetInput = typeof StorageMoversGetInput.Type;
@@ -1609,12 +1926,12 @@ export const StorageMoversListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers",
+    apiVersion: "2025-12-01",
   }),
 );
 export type StorageMoversListInput = typeof StorageMoversListInput.Type;
@@ -1673,11 +1990,11 @@ export const StorageMoversList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const StorageMoversListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageMover/storageMovers",
+      apiVersion: "2025-12-01",
     }),
   );
 export type StorageMoversListBySubscriptionInput =
@@ -1740,11 +2057,17 @@ export const StorageMoversUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageMoverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
+      apiVersion: "2025-12-01",
     }),
   );
 export type StorageMoversUpdateInput = typeof StorageMoversUpdateInput.Type;

@@ -16,11 +16,11 @@ export const GuestConfigurationAssignmentReportsGetInput =
     vmName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
     reportId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports/{reportId}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentReportsGetInput =
@@ -118,11 +118,11 @@ export const GuestConfigurationAssignmentReportsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentReportsListInput =
@@ -231,11 +231,11 @@ export const GuestConfigurationAssignmentReportsVMSSGetInput =
     vmssName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}/reports/{id}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentReportsVMSSGetInput =
@@ -333,11 +333,11 @@ export const GuestConfigurationAssignmentReportsVMSSListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmssName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}/reports",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentReportsVMSSListInput =
@@ -445,11 +445,170 @@ export const GuestConfigurationAssignmentsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        targetResourceId: Schema.optional(Schema.NullOr(Schema.String)),
+        guestConfiguration: Schema.optional(
+          Schema.Struct({
+            kind: Schema.optional(Schema.Literals(["DSC"])),
+            name: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            contentUri: Schema.optional(Schema.String),
+            contentHash: Schema.optional(Schema.String),
+            contentManagedIdentity: Schema.optional(Schema.String),
+            assignmentType: Schema.optional(
+              Schema.Literals([
+                "Audit",
+                "DeployAndAutoCorrect",
+                "ApplyAndAutoCorrect",
+                "ApplyAndMonitor",
+              ]),
+            ),
+            assignmentSource: Schema.optional(Schema.NullOr(Schema.String)),
+            contentType: Schema.optional(Schema.NullOr(Schema.String)),
+            configurationParameter: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            configurationProtectedParameter: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            configurationSetting: Schema.optional(
+              Schema.Struct({
+                configurationMode: Schema.optional(
+                  Schema.Literals([
+                    "ApplyOnly",
+                    "ApplyAndMonitor",
+                    "ApplyAndAutoCorrect",
+                  ]),
+                ),
+                allowModuleOverwrite: Schema.optional(Schema.Boolean),
+                actionAfterReboot: Schema.optional(
+                  Schema.Literals([
+                    "ContinueConfiguration",
+                    "StopConfiguration",
+                  ]),
+                ),
+                refreshFrequencyMins: Schema.optional(Schema.Number),
+                rebootIfNeeded: Schema.optional(Schema.Boolean),
+                configurationModeFrequencyMins: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        complianceStatus: Schema.optional(
+          Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+        ),
+        lastComplianceStatusChecked: Schema.optional(
+          Schema.NullOr(Schema.String),
+        ),
+        latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
+        parameterHash: Schema.optional(Schema.NullOr(Schema.String)),
+        latestAssignmentReport: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            reportId: Schema.optional(Schema.String),
+            assignment: Schema.optional(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                configuration: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    version: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            vm: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                uuid: Schema.optional(Schema.String),
+              }),
+            ),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            complianceStatus: Schema.optional(
+              Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+            ),
+            operationType: Schema.optional(
+              Schema.Literals(["Consistency", "Initial"]),
+            ),
+            resources: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  complianceStatus: Schema.optional(
+                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+                  ),
+                  resourceId: Schema.optional(Schema.String),
+                  reasons: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        phrase: Schema.optional(Schema.String),
+                        code: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  properties: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+        context: Schema.optional(Schema.String),
+        assignmentHash: Schema.optional(Schema.NullOr(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "Created"]),
+        ),
+        resourceType: Schema.optional(Schema.NullOr(Schema.String)),
+        vmssVMList: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              vmId: Schema.optional(Schema.String),
+              vmResourceId: Schema.optional(Schema.String),
+              complianceStatus: Schema.optional(
+                Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+              ),
+              latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
+              lastComplianceChecked: Schema.optional(
+                Schema.NullOr(Schema.String),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.String,
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentsCreateOrUpdateInput =
@@ -488,11 +647,11 @@ export const GuestConfigurationAssignmentsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentsDeleteInput =
@@ -526,11 +685,11 @@ export const GuestConfigurationAssignmentsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentsGetInput =
@@ -568,11 +727,11 @@ export const GuestConfigurationAssignmentsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentsListInput =
@@ -615,11 +774,11 @@ export const GuestConfigurationAssignmentsRGListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentsRGListInput =
@@ -660,11 +819,11 @@ export const GuestConfigurationAssignmentsRGList =
 export const GuestConfigurationAssignmentsSubscriptionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentsSubscriptionListInput =
@@ -707,11 +866,169 @@ export const GuestConfigurationAssignmentsVMSSCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmssName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        targetResourceId: Schema.optional(Schema.NullOr(Schema.String)),
+        guestConfiguration: Schema.optional(
+          Schema.Struct({
+            kind: Schema.optional(Schema.Literals(["DSC"])),
+            name: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            contentUri: Schema.optional(Schema.String),
+            contentHash: Schema.optional(Schema.String),
+            contentManagedIdentity: Schema.optional(Schema.String),
+            assignmentType: Schema.optional(
+              Schema.Literals([
+                "Audit",
+                "DeployAndAutoCorrect",
+                "ApplyAndAutoCorrect",
+                "ApplyAndMonitor",
+              ]),
+            ),
+            assignmentSource: Schema.optional(Schema.NullOr(Schema.String)),
+            contentType: Schema.optional(Schema.NullOr(Schema.String)),
+            configurationParameter: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            configurationProtectedParameter: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            configurationSetting: Schema.optional(
+              Schema.Struct({
+                configurationMode: Schema.optional(
+                  Schema.Literals([
+                    "ApplyOnly",
+                    "ApplyAndMonitor",
+                    "ApplyAndAutoCorrect",
+                  ]),
+                ),
+                allowModuleOverwrite: Schema.optional(Schema.Boolean),
+                actionAfterReboot: Schema.optional(
+                  Schema.Literals([
+                    "ContinueConfiguration",
+                    "StopConfiguration",
+                  ]),
+                ),
+                refreshFrequencyMins: Schema.optional(Schema.Number),
+                rebootIfNeeded: Schema.optional(Schema.Boolean),
+                configurationModeFrequencyMins: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        complianceStatus: Schema.optional(
+          Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+        ),
+        lastComplianceStatusChecked: Schema.optional(
+          Schema.NullOr(Schema.String),
+        ),
+        latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
+        parameterHash: Schema.optional(Schema.NullOr(Schema.String)),
+        latestAssignmentReport: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            reportId: Schema.optional(Schema.String),
+            assignment: Schema.optional(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                configuration: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    version: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            vm: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                uuid: Schema.optional(Schema.String),
+              }),
+            ),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            complianceStatus: Schema.optional(
+              Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+            ),
+            operationType: Schema.optional(
+              Schema.Literals(["Consistency", "Initial"]),
+            ),
+            resources: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  complianceStatus: Schema.optional(
+                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+                  ),
+                  resourceId: Schema.optional(Schema.String),
+                  reasons: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        phrase: Schema.optional(Schema.String),
+                        code: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  properties: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+        context: Schema.optional(Schema.String),
+        assignmentHash: Schema.optional(Schema.NullOr(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "Created"]),
+        ),
+        resourceType: Schema.optional(Schema.NullOr(Schema.String)),
+        vmssVMList: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              vmId: Schema.optional(Schema.String),
+              vmResourceId: Schema.optional(Schema.String),
+              complianceStatus: Schema.optional(
+                Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+              ),
+              latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
+              lastComplianceChecked: Schema.optional(
+                Schema.NullOr(Schema.String),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentsVMSSCreateOrUpdateInput =
@@ -750,11 +1067,11 @@ export const GuestConfigurationAssignmentsVMSSDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmssName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentsVMSSDeleteInput =
@@ -793,11 +1110,11 @@ export const GuestConfigurationAssignmentsVMSSGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmssName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentsVMSSGetInput =
@@ -835,11 +1152,11 @@ export const GuestConfigurationAssignmentsVMSSListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmssName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationAssignmentsVMSSListInput =
@@ -884,11 +1201,170 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateIn
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        targetResourceId: Schema.optional(Schema.NullOr(Schema.String)),
+        guestConfiguration: Schema.optional(
+          Schema.Struct({
+            kind: Schema.optional(Schema.Literals(["DSC"])),
+            name: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            contentUri: Schema.optional(Schema.String),
+            contentHash: Schema.optional(Schema.String),
+            contentManagedIdentity: Schema.optional(Schema.String),
+            assignmentType: Schema.optional(
+              Schema.Literals([
+                "Audit",
+                "DeployAndAutoCorrect",
+                "ApplyAndAutoCorrect",
+                "ApplyAndMonitor",
+              ]),
+            ),
+            assignmentSource: Schema.optional(Schema.NullOr(Schema.String)),
+            contentType: Schema.optional(Schema.NullOr(Schema.String)),
+            configurationParameter: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            configurationProtectedParameter: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            configurationSetting: Schema.optional(
+              Schema.Struct({
+                configurationMode: Schema.optional(
+                  Schema.Literals([
+                    "ApplyOnly",
+                    "ApplyAndMonitor",
+                    "ApplyAndAutoCorrect",
+                  ]),
+                ),
+                allowModuleOverwrite: Schema.optional(Schema.Boolean),
+                actionAfterReboot: Schema.optional(
+                  Schema.Literals([
+                    "ContinueConfiguration",
+                    "StopConfiguration",
+                  ]),
+                ),
+                refreshFrequencyMins: Schema.optional(Schema.Number),
+                rebootIfNeeded: Schema.optional(Schema.Boolean),
+                configurationModeFrequencyMins: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        complianceStatus: Schema.optional(
+          Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+        ),
+        lastComplianceStatusChecked: Schema.optional(
+          Schema.NullOr(Schema.String),
+        ),
+        latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
+        parameterHash: Schema.optional(Schema.NullOr(Schema.String)),
+        latestAssignmentReport: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            reportId: Schema.optional(Schema.String),
+            assignment: Schema.optional(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                configuration: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    version: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            vm: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                uuid: Schema.optional(Schema.String),
+              }),
+            ),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            complianceStatus: Schema.optional(
+              Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+            ),
+            operationType: Schema.optional(
+              Schema.Literals(["Consistency", "Initial"]),
+            ),
+            resources: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  complianceStatus: Schema.optional(
+                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+                  ),
+                  resourceId: Schema.optional(Schema.String),
+                  reasons: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        phrase: Schema.optional(Schema.String),
+                        code: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  properties: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+        context: Schema.optional(Schema.String),
+        assignmentHash: Schema.optional(Schema.NullOr(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "Created"]),
+        ),
+        resourceType: Schema.optional(Schema.NullOr(Schema.String)),
+        vmssVMList: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              vmId: Schema.optional(Schema.String),
+              vmResourceId: Schema.optional(Schema.String),
+              complianceStatus: Schema.optional(
+                Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+              ),
+              latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
+              lastComplianceChecked: Schema.optional(
+                Schema.NullOr(Schema.String),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.String,
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateInput =
@@ -929,11 +1405,11 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput =
@@ -968,11 +1444,11 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsGetInput =
@@ -1010,11 +1486,11 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsListInput =
@@ -1060,11 +1536,11 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetInput 
     vmName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
     reportId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports/{reportId}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetInput =
@@ -1164,11 +1640,11 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListInput
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListInput =
@@ -1279,11 +1755,11 @@ export const GuestConfigurationHCRPAssignmentReportsGetInput =
     machineName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
     reportId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports/{reportId}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationHCRPAssignmentReportsGetInput =
@@ -1381,11 +1857,11 @@ export const GuestConfigurationHCRPAssignmentReportsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationHCRPAssignmentReportsListInput =
@@ -1493,11 +1969,170 @@ export const GuestConfigurationHCRPAssignmentsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        targetResourceId: Schema.optional(Schema.NullOr(Schema.String)),
+        guestConfiguration: Schema.optional(
+          Schema.Struct({
+            kind: Schema.optional(Schema.Literals(["DSC"])),
+            name: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            contentUri: Schema.optional(Schema.String),
+            contentHash: Schema.optional(Schema.String),
+            contentManagedIdentity: Schema.optional(Schema.String),
+            assignmentType: Schema.optional(
+              Schema.Literals([
+                "Audit",
+                "DeployAndAutoCorrect",
+                "ApplyAndAutoCorrect",
+                "ApplyAndMonitor",
+              ]),
+            ),
+            assignmentSource: Schema.optional(Schema.NullOr(Schema.String)),
+            contentType: Schema.optional(Schema.NullOr(Schema.String)),
+            configurationParameter: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            configurationProtectedParameter: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            configurationSetting: Schema.optional(
+              Schema.Struct({
+                configurationMode: Schema.optional(
+                  Schema.Literals([
+                    "ApplyOnly",
+                    "ApplyAndMonitor",
+                    "ApplyAndAutoCorrect",
+                  ]),
+                ),
+                allowModuleOverwrite: Schema.optional(Schema.Boolean),
+                actionAfterReboot: Schema.optional(
+                  Schema.Literals([
+                    "ContinueConfiguration",
+                    "StopConfiguration",
+                  ]),
+                ),
+                refreshFrequencyMins: Schema.optional(Schema.Number),
+                rebootIfNeeded: Schema.optional(Schema.Boolean),
+                configurationModeFrequencyMins: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+        complianceStatus: Schema.optional(
+          Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+        ),
+        lastComplianceStatusChecked: Schema.optional(
+          Schema.NullOr(Schema.String),
+        ),
+        latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
+        parameterHash: Schema.optional(Schema.NullOr(Schema.String)),
+        latestAssignmentReport: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            reportId: Schema.optional(Schema.String),
+            assignment: Schema.optional(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                configuration: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    version: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            vm: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                uuid: Schema.optional(Schema.String),
+              }),
+            ),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            complianceStatus: Schema.optional(
+              Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+            ),
+            operationType: Schema.optional(
+              Schema.Literals(["Consistency", "Initial"]),
+            ),
+            resources: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  complianceStatus: Schema.optional(
+                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+                  ),
+                  resourceId: Schema.optional(Schema.String),
+                  reasons: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        phrase: Schema.optional(Schema.String),
+                        code: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  properties: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+        context: Schema.optional(Schema.String),
+        assignmentHash: Schema.optional(Schema.NullOr(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "Created"]),
+        ),
+        resourceType: Schema.optional(Schema.NullOr(Schema.String)),
+        vmssVMList: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              vmId: Schema.optional(Schema.String),
+              vmResourceId: Schema.optional(Schema.String),
+              complianceStatus: Schema.optional(
+                Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
+              ),
+              latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
+              lastComplianceChecked: Schema.optional(
+                Schema.NullOr(Schema.String),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.String,
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationHCRPAssignmentsCreateOrUpdateInput =
@@ -1536,11 +2171,11 @@ export const GuestConfigurationHCRPAssignmentsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationHCRPAssignmentsDeleteInput =
@@ -1574,11 +2209,11 @@ export const GuestConfigurationHCRPAssignmentsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationHCRPAssignmentsGetInput =
@@ -1616,11 +2251,11 @@ export const GuestConfigurationHCRPAssignmentsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
+      apiVersion: "2024-04-05",
     }),
   );
 export type GuestConfigurationHCRPAssignmentsListInput =
@@ -1659,12 +2294,13 @@ export const GuestConfigurationHCRPAssignmentsList =
     outputSchema: GuestConfigurationHCRPAssignmentsListOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.GuestConfiguration/operations",
+    apiVersion: "2024-04-05",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;

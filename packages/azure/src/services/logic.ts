@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const IntegrationAccountAgreementsCreateOrUpdateInput =
@@ -14,10 +15,1190 @@ export const IntegrationAccountAgreementsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     agreementName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      createdTime: Schema.optional(Schema.String),
+      changedTime: Schema.optional(Schema.String),
+      metadata: Schema.optional(Schema.Struct({})),
+      agreementType: Schema.Literals(["NotSpecified", "AS2", "X12", "Edifact"]),
+      hostPartner: Schema.String,
+      guestPartner: Schema.String,
+      hostIdentity: Schema.Struct({
+        qualifier: Schema.String,
+        value: Schema.String,
+      }),
+      guestIdentity: Schema.Struct({
+        qualifier: Schema.String,
+        value: Schema.String,
+      }),
+      content: Schema.Struct({
+        aS2: Schema.optional(
+          Schema.Struct({
+            receiveAgreement: Schema.Struct({
+              senderBusinessIdentity: Schema.Struct({
+                qualifier: Schema.String,
+                value: Schema.String,
+              }),
+              receiverBusinessIdentity: Schema.Struct({
+                qualifier: Schema.String,
+                value: Schema.String,
+              }),
+              protocolSettings: Schema.Struct({
+                messageConnectionSettings: Schema.Struct({
+                  ignoreCertificateNameMismatch: Schema.Boolean,
+                  supportHttpStatusCodeContinue: Schema.Boolean,
+                  keepHttpConnectionAlive: Schema.Boolean,
+                  unfoldHttpHeaders: Schema.Boolean,
+                }),
+                acknowledgementConnectionSettings: Schema.Struct({
+                  ignoreCertificateNameMismatch: Schema.Boolean,
+                  supportHttpStatusCodeContinue: Schema.Boolean,
+                  keepHttpConnectionAlive: Schema.Boolean,
+                  unfoldHttpHeaders: Schema.Boolean,
+                }),
+                mdnSettings: Schema.Struct({
+                  needMDN: Schema.Boolean,
+                  signMDN: Schema.Boolean,
+                  sendMDNAsynchronously: Schema.Boolean,
+                  receiptDeliveryUrl: Schema.optional(Schema.String),
+                  dispositionNotificationTo: Schema.optional(Schema.String),
+                  signOutboundMDNIfOptional: Schema.Boolean,
+                  mdnText: Schema.optional(Schema.String),
+                  sendInboundMDNToMessageBox: Schema.Boolean,
+                  micHashingAlgorithm: Schema.Literals([
+                    "NotSpecified",
+                    "None",
+                    "MD5",
+                    "SHA1",
+                    "SHA2256",
+                    "SHA2384",
+                    "SHA2512",
+                  ]),
+                }),
+                securitySettings: Schema.Struct({
+                  overrideGroupSigningCertificate: Schema.Boolean,
+                  signingCertificateName: Schema.optional(Schema.String),
+                  encryptionCertificateName: Schema.optional(Schema.String),
+                  enableNRRForInboundEncodedMessages: Schema.Boolean,
+                  enableNRRForInboundDecodedMessages: Schema.Boolean,
+                  enableNRRForOutboundMDN: Schema.Boolean,
+                  enableNRRForOutboundEncodedMessages: Schema.Boolean,
+                  enableNRRForOutboundDecodedMessages: Schema.Boolean,
+                  enableNRRForInboundMDN: Schema.Boolean,
+                  sha2AlgorithmFormat: Schema.optional(Schema.String),
+                }),
+                validationSettings: Schema.Struct({
+                  overrideMessageProperties: Schema.Boolean,
+                  encryptMessage: Schema.Boolean,
+                  signMessage: Schema.Boolean,
+                  compressMessage: Schema.Boolean,
+                  checkDuplicateMessage: Schema.Boolean,
+                  interchangeDuplicatesValidityDays: Schema.Number,
+                  checkCertificateRevocationListOnSend: Schema.Boolean,
+                  checkCertificateRevocationListOnReceive: Schema.Boolean,
+                  encryptionAlgorithm: Schema.Literals([
+                    "NotSpecified",
+                    "None",
+                    "DES3",
+                    "RC2",
+                    "AES128",
+                    "AES192",
+                    "AES256",
+                  ]),
+                  signingAlgorithm: Schema.optional(
+                    Schema.Literals([
+                      "NotSpecified",
+                      "Default",
+                      "SHA1",
+                      "SHA2256",
+                      "SHA2384",
+                      "SHA2512",
+                    ]),
+                  ),
+                }),
+                envelopeSettings: Schema.Struct({
+                  messageContentType: Schema.String,
+                  transmitFileNameInMimeHeader: Schema.Boolean,
+                  fileNameTemplate: Schema.String,
+                  suspendMessageOnFileNameGenerationError: Schema.Boolean,
+                  autogenerateFileName: Schema.Boolean,
+                }),
+                errorSettings: Schema.Struct({
+                  suspendDuplicateMessage: Schema.Boolean,
+                  resendIfMDNNotReceived: Schema.Boolean,
+                }),
+              }),
+            }),
+            sendAgreement: Schema.Struct({
+              senderBusinessIdentity: Schema.Struct({
+                qualifier: Schema.String,
+                value: Schema.String,
+              }),
+              receiverBusinessIdentity: Schema.Struct({
+                qualifier: Schema.String,
+                value: Schema.String,
+              }),
+              protocolSettings: Schema.Struct({
+                messageConnectionSettings: Schema.Struct({
+                  ignoreCertificateNameMismatch: Schema.Boolean,
+                  supportHttpStatusCodeContinue: Schema.Boolean,
+                  keepHttpConnectionAlive: Schema.Boolean,
+                  unfoldHttpHeaders: Schema.Boolean,
+                }),
+                acknowledgementConnectionSettings: Schema.Struct({
+                  ignoreCertificateNameMismatch: Schema.Boolean,
+                  supportHttpStatusCodeContinue: Schema.Boolean,
+                  keepHttpConnectionAlive: Schema.Boolean,
+                  unfoldHttpHeaders: Schema.Boolean,
+                }),
+                mdnSettings: Schema.Struct({
+                  needMDN: Schema.Boolean,
+                  signMDN: Schema.Boolean,
+                  sendMDNAsynchronously: Schema.Boolean,
+                  receiptDeliveryUrl: Schema.optional(Schema.String),
+                  dispositionNotificationTo: Schema.optional(Schema.String),
+                  signOutboundMDNIfOptional: Schema.Boolean,
+                  mdnText: Schema.optional(Schema.String),
+                  sendInboundMDNToMessageBox: Schema.Boolean,
+                  micHashingAlgorithm: Schema.Literals([
+                    "NotSpecified",
+                    "None",
+                    "MD5",
+                    "SHA1",
+                    "SHA2256",
+                    "SHA2384",
+                    "SHA2512",
+                  ]),
+                }),
+                securitySettings: Schema.Struct({
+                  overrideGroupSigningCertificate: Schema.Boolean,
+                  signingCertificateName: Schema.optional(Schema.String),
+                  encryptionCertificateName: Schema.optional(Schema.String),
+                  enableNRRForInboundEncodedMessages: Schema.Boolean,
+                  enableNRRForInboundDecodedMessages: Schema.Boolean,
+                  enableNRRForOutboundMDN: Schema.Boolean,
+                  enableNRRForOutboundEncodedMessages: Schema.Boolean,
+                  enableNRRForOutboundDecodedMessages: Schema.Boolean,
+                  enableNRRForInboundMDN: Schema.Boolean,
+                  sha2AlgorithmFormat: Schema.optional(Schema.String),
+                }),
+                validationSettings: Schema.Struct({
+                  overrideMessageProperties: Schema.Boolean,
+                  encryptMessage: Schema.Boolean,
+                  signMessage: Schema.Boolean,
+                  compressMessage: Schema.Boolean,
+                  checkDuplicateMessage: Schema.Boolean,
+                  interchangeDuplicatesValidityDays: Schema.Number,
+                  checkCertificateRevocationListOnSend: Schema.Boolean,
+                  checkCertificateRevocationListOnReceive: Schema.Boolean,
+                  encryptionAlgorithm: Schema.Literals([
+                    "NotSpecified",
+                    "None",
+                    "DES3",
+                    "RC2",
+                    "AES128",
+                    "AES192",
+                    "AES256",
+                  ]),
+                  signingAlgorithm: Schema.optional(
+                    Schema.Literals([
+                      "NotSpecified",
+                      "Default",
+                      "SHA1",
+                      "SHA2256",
+                      "SHA2384",
+                      "SHA2512",
+                    ]),
+                  ),
+                }),
+                envelopeSettings: Schema.Struct({
+                  messageContentType: Schema.String,
+                  transmitFileNameInMimeHeader: Schema.Boolean,
+                  fileNameTemplate: Schema.String,
+                  suspendMessageOnFileNameGenerationError: Schema.Boolean,
+                  autogenerateFileName: Schema.Boolean,
+                }),
+                errorSettings: Schema.Struct({
+                  suspendDuplicateMessage: Schema.Boolean,
+                  resendIfMDNNotReceived: Schema.Boolean,
+                }),
+              }),
+            }),
+          }),
+        ),
+        x12: Schema.optional(
+          Schema.Struct({
+            receiveAgreement: Schema.Struct({
+              senderBusinessIdentity: Schema.Struct({
+                qualifier: Schema.String,
+                value: Schema.String,
+              }),
+              receiverBusinessIdentity: Schema.Struct({
+                qualifier: Schema.String,
+                value: Schema.String,
+              }),
+              protocolSettings: Schema.Struct({
+                validationSettings: Schema.Struct({
+                  validateCharacterSet: Schema.Boolean,
+                  checkDuplicateInterchangeControlNumber: Schema.Boolean,
+                  interchangeControlNumberValidityDays: Schema.Number,
+                  checkDuplicateGroupControlNumber: Schema.Boolean,
+                  checkDuplicateTransactionSetControlNumber: Schema.Boolean,
+                  validateEDITypes: Schema.Boolean,
+                  validateXSDTypes: Schema.Boolean,
+                  allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                  trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                  trailingSeparatorPolicy: Schema.Literals([
+                    "NotSpecified",
+                    "NotAllowed",
+                    "Optional",
+                    "Mandatory",
+                  ]),
+                }),
+                framingSettings: Schema.Struct({
+                  dataElementSeparator: Schema.Number,
+                  componentSeparator: Schema.Number,
+                  replaceSeparatorsInPayload: Schema.Boolean,
+                  replaceCharacter: Schema.Number,
+                  segmentTerminator: Schema.Number,
+                  characterSet: Schema.Literals([
+                    "NotSpecified",
+                    "Basic",
+                    "Extended",
+                    "UTF8",
+                  ]),
+                  segmentTerminatorSuffix: Schema.Literals([
+                    "NotSpecified",
+                    "None",
+                    "CR",
+                    "LF",
+                    "CRLF",
+                  ]),
+                }),
+                envelopeSettings: Schema.Struct({
+                  controlStandardsId: Schema.Number,
+                  useControlStandardsIdAsRepetitionCharacter: Schema.Boolean,
+                  senderApplicationId: Schema.String,
+                  receiverApplicationId: Schema.String,
+                  controlVersionNumber: Schema.String,
+                  interchangeControlNumberLowerBound: Schema.Number,
+                  interchangeControlNumberUpperBound: Schema.Number,
+                  rolloverInterchangeControlNumber: Schema.Boolean,
+                  enableDefaultGroupHeaders: Schema.Boolean,
+                  functionalGroupId: Schema.optional(Schema.String),
+                  groupControlNumberLowerBound: Schema.Number,
+                  groupControlNumberUpperBound: Schema.Number,
+                  rolloverGroupControlNumber: Schema.Boolean,
+                  groupHeaderAgencyCode: Schema.String,
+                  groupHeaderVersion: Schema.String,
+                  transactionSetControlNumberLowerBound: Schema.Number,
+                  transactionSetControlNumberUpperBound: Schema.Number,
+                  rolloverTransactionSetControlNumber: Schema.Boolean,
+                  transactionSetControlNumberPrefix: Schema.optional(
+                    Schema.String,
+                  ),
+                  transactionSetControlNumberSuffix: Schema.optional(
+                    Schema.String,
+                  ),
+                  overwriteExistingTransactionSetControlNumber: Schema.Boolean,
+                  groupHeaderDateFormat: Schema.Literals([
+                    "NotSpecified",
+                    "CCYYMMDD",
+                    "YYMMDD",
+                  ]),
+                  groupHeaderTimeFormat: Schema.Literals([
+                    "NotSpecified",
+                    "HHMM",
+                    "HHMMSS",
+                    "HHMMSSdd",
+                    "HHMMSSd",
+                  ]),
+                  usageIndicator: Schema.Literals([
+                    "NotSpecified",
+                    "Test",
+                    "Information",
+                    "Production",
+                  ]),
+                }),
+                acknowledgementSettings: Schema.Struct({
+                  needTechnicalAcknowledgement: Schema.Boolean,
+                  batchTechnicalAcknowledgements: Schema.Boolean,
+                  needFunctionalAcknowledgement: Schema.Boolean,
+                  functionalAcknowledgementVersion: Schema.optional(
+                    Schema.String,
+                  ),
+                  batchFunctionalAcknowledgements: Schema.Boolean,
+                  needImplementationAcknowledgement: Schema.Boolean,
+                  implementationAcknowledgementVersion: Schema.optional(
+                    Schema.String,
+                  ),
+                  batchImplementationAcknowledgements: Schema.Boolean,
+                  needLoopForValidMessages: Schema.Boolean,
+                  sendSynchronousAcknowledgement: Schema.Boolean,
+                  acknowledgementControlNumberPrefix: Schema.optional(
+                    Schema.String,
+                  ),
+                  acknowledgementControlNumberSuffix: Schema.optional(
+                    Schema.String,
+                  ),
+                  acknowledgementControlNumberLowerBound: Schema.Number,
+                  acknowledgementControlNumberUpperBound: Schema.Number,
+                  rolloverAcknowledgementControlNumber: Schema.Boolean,
+                }),
+                messageFilter: Schema.Struct({
+                  messageFilterType: Schema.Literals([
+                    "NotSpecified",
+                    "Include",
+                    "Exclude",
+                  ]),
+                }),
+                securitySettings: Schema.Struct({
+                  authorizationQualifier: Schema.String,
+                  authorizationValue: Schema.optional(Schema.String),
+                  securityQualifier: Schema.String,
+                  passwordValue: Schema.optional(SensitiveString),
+                }),
+                processingSettings: Schema.Struct({
+                  maskSecurityInfo: Schema.Boolean,
+                  convertImpliedDecimal: Schema.Boolean,
+                  preserveInterchange: Schema.Boolean,
+                  suspendInterchangeOnError: Schema.Boolean,
+                  createEmptyXmlTagsForTrailingSeparators: Schema.Boolean,
+                  useDotAsDecimalSeparator: Schema.Boolean,
+                }),
+                envelopeOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      targetNamespace: Schema.String,
+                      protocolVersion: Schema.String,
+                      messageId: Schema.String,
+                      responsibleAgencyCode: Schema.String,
+                      headerVersion: Schema.String,
+                      senderApplicationId: Schema.String,
+                      receiverApplicationId: Schema.String,
+                      functionalIdentifierCode: Schema.optional(Schema.String),
+                      dateFormat: Schema.Literals([
+                        "NotSpecified",
+                        "CCYYMMDD",
+                        "YYMMDD",
+                      ]),
+                      timeFormat: Schema.Literals([
+                        "NotSpecified",
+                        "HHMM",
+                        "HHMMSS",
+                        "HHMMSSdd",
+                        "HHMMSSd",
+                      ]),
+                    }),
+                  ),
+                ),
+                validationOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      messageId: Schema.String,
+                      validateEDITypes: Schema.Boolean,
+                      validateXSDTypes: Schema.Boolean,
+                      allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                      validateCharacterSet: Schema.Boolean,
+                      trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                      trailingSeparatorPolicy: Schema.Literals([
+                        "NotSpecified",
+                        "NotAllowed",
+                        "Optional",
+                        "Mandatory",
+                      ]),
+                    }),
+                  ),
+                ),
+                messageFilterList: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      messageId: Schema.String,
+                    }),
+                  ),
+                ),
+                schemaReferences: Schema.Array(
+                  Schema.Struct({
+                    messageId: Schema.String,
+                    senderApplicationId: Schema.optional(Schema.String),
+                    schemaVersion: Schema.String,
+                    schemaName: Schema.String,
+                  }),
+                ),
+                x12DelimiterOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      protocolVersion: Schema.optional(Schema.String),
+                      messageId: Schema.optional(Schema.String),
+                      dataElementSeparator: Schema.Number,
+                      componentSeparator: Schema.Number,
+                      segmentTerminator: Schema.Number,
+                      segmentTerminatorSuffix: Schema.Literals([
+                        "NotSpecified",
+                        "None",
+                        "CR",
+                        "LF",
+                        "CRLF",
+                      ]),
+                      replaceCharacter: Schema.Number,
+                      replaceSeparatorsInPayload: Schema.Boolean,
+                      targetNamespace: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            }),
+            sendAgreement: Schema.Struct({
+              senderBusinessIdentity: Schema.Struct({
+                qualifier: Schema.String,
+                value: Schema.String,
+              }),
+              receiverBusinessIdentity: Schema.Struct({
+                qualifier: Schema.String,
+                value: Schema.String,
+              }),
+              protocolSettings: Schema.Struct({
+                validationSettings: Schema.Struct({
+                  validateCharacterSet: Schema.Boolean,
+                  checkDuplicateInterchangeControlNumber: Schema.Boolean,
+                  interchangeControlNumberValidityDays: Schema.Number,
+                  checkDuplicateGroupControlNumber: Schema.Boolean,
+                  checkDuplicateTransactionSetControlNumber: Schema.Boolean,
+                  validateEDITypes: Schema.Boolean,
+                  validateXSDTypes: Schema.Boolean,
+                  allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                  trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                  trailingSeparatorPolicy: Schema.Literals([
+                    "NotSpecified",
+                    "NotAllowed",
+                    "Optional",
+                    "Mandatory",
+                  ]),
+                }),
+                framingSettings: Schema.Struct({
+                  dataElementSeparator: Schema.Number,
+                  componentSeparator: Schema.Number,
+                  replaceSeparatorsInPayload: Schema.Boolean,
+                  replaceCharacter: Schema.Number,
+                  segmentTerminator: Schema.Number,
+                  characterSet: Schema.Literals([
+                    "NotSpecified",
+                    "Basic",
+                    "Extended",
+                    "UTF8",
+                  ]),
+                  segmentTerminatorSuffix: Schema.Literals([
+                    "NotSpecified",
+                    "None",
+                    "CR",
+                    "LF",
+                    "CRLF",
+                  ]),
+                }),
+                envelopeSettings: Schema.Struct({
+                  controlStandardsId: Schema.Number,
+                  useControlStandardsIdAsRepetitionCharacter: Schema.Boolean,
+                  senderApplicationId: Schema.String,
+                  receiverApplicationId: Schema.String,
+                  controlVersionNumber: Schema.String,
+                  interchangeControlNumberLowerBound: Schema.Number,
+                  interchangeControlNumberUpperBound: Schema.Number,
+                  rolloverInterchangeControlNumber: Schema.Boolean,
+                  enableDefaultGroupHeaders: Schema.Boolean,
+                  functionalGroupId: Schema.optional(Schema.String),
+                  groupControlNumberLowerBound: Schema.Number,
+                  groupControlNumberUpperBound: Schema.Number,
+                  rolloverGroupControlNumber: Schema.Boolean,
+                  groupHeaderAgencyCode: Schema.String,
+                  groupHeaderVersion: Schema.String,
+                  transactionSetControlNumberLowerBound: Schema.Number,
+                  transactionSetControlNumberUpperBound: Schema.Number,
+                  rolloverTransactionSetControlNumber: Schema.Boolean,
+                  transactionSetControlNumberPrefix: Schema.optional(
+                    Schema.String,
+                  ),
+                  transactionSetControlNumberSuffix: Schema.optional(
+                    Schema.String,
+                  ),
+                  overwriteExistingTransactionSetControlNumber: Schema.Boolean,
+                  groupHeaderDateFormat: Schema.Literals([
+                    "NotSpecified",
+                    "CCYYMMDD",
+                    "YYMMDD",
+                  ]),
+                  groupHeaderTimeFormat: Schema.Literals([
+                    "NotSpecified",
+                    "HHMM",
+                    "HHMMSS",
+                    "HHMMSSdd",
+                    "HHMMSSd",
+                  ]),
+                  usageIndicator: Schema.Literals([
+                    "NotSpecified",
+                    "Test",
+                    "Information",
+                    "Production",
+                  ]),
+                }),
+                acknowledgementSettings: Schema.Struct({
+                  needTechnicalAcknowledgement: Schema.Boolean,
+                  batchTechnicalAcknowledgements: Schema.Boolean,
+                  needFunctionalAcknowledgement: Schema.Boolean,
+                  functionalAcknowledgementVersion: Schema.optional(
+                    Schema.String,
+                  ),
+                  batchFunctionalAcknowledgements: Schema.Boolean,
+                  needImplementationAcknowledgement: Schema.Boolean,
+                  implementationAcknowledgementVersion: Schema.optional(
+                    Schema.String,
+                  ),
+                  batchImplementationAcknowledgements: Schema.Boolean,
+                  needLoopForValidMessages: Schema.Boolean,
+                  sendSynchronousAcknowledgement: Schema.Boolean,
+                  acknowledgementControlNumberPrefix: Schema.optional(
+                    Schema.String,
+                  ),
+                  acknowledgementControlNumberSuffix: Schema.optional(
+                    Schema.String,
+                  ),
+                  acknowledgementControlNumberLowerBound: Schema.Number,
+                  acknowledgementControlNumberUpperBound: Schema.Number,
+                  rolloverAcknowledgementControlNumber: Schema.Boolean,
+                }),
+                messageFilter: Schema.Struct({
+                  messageFilterType: Schema.Literals([
+                    "NotSpecified",
+                    "Include",
+                    "Exclude",
+                  ]),
+                }),
+                securitySettings: Schema.Struct({
+                  authorizationQualifier: Schema.String,
+                  authorizationValue: Schema.optional(Schema.String),
+                  securityQualifier: Schema.String,
+                  passwordValue: Schema.optional(SensitiveString),
+                }),
+                processingSettings: Schema.Struct({
+                  maskSecurityInfo: Schema.Boolean,
+                  convertImpliedDecimal: Schema.Boolean,
+                  preserveInterchange: Schema.Boolean,
+                  suspendInterchangeOnError: Schema.Boolean,
+                  createEmptyXmlTagsForTrailingSeparators: Schema.Boolean,
+                  useDotAsDecimalSeparator: Schema.Boolean,
+                }),
+                envelopeOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      targetNamespace: Schema.String,
+                      protocolVersion: Schema.String,
+                      messageId: Schema.String,
+                      responsibleAgencyCode: Schema.String,
+                      headerVersion: Schema.String,
+                      senderApplicationId: Schema.String,
+                      receiverApplicationId: Schema.String,
+                      functionalIdentifierCode: Schema.optional(Schema.String),
+                      dateFormat: Schema.Literals([
+                        "NotSpecified",
+                        "CCYYMMDD",
+                        "YYMMDD",
+                      ]),
+                      timeFormat: Schema.Literals([
+                        "NotSpecified",
+                        "HHMM",
+                        "HHMMSS",
+                        "HHMMSSdd",
+                        "HHMMSSd",
+                      ]),
+                    }),
+                  ),
+                ),
+                validationOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      messageId: Schema.String,
+                      validateEDITypes: Schema.Boolean,
+                      validateXSDTypes: Schema.Boolean,
+                      allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                      validateCharacterSet: Schema.Boolean,
+                      trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                      trailingSeparatorPolicy: Schema.Literals([
+                        "NotSpecified",
+                        "NotAllowed",
+                        "Optional",
+                        "Mandatory",
+                      ]),
+                    }),
+                  ),
+                ),
+                messageFilterList: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      messageId: Schema.String,
+                    }),
+                  ),
+                ),
+                schemaReferences: Schema.Array(
+                  Schema.Struct({
+                    messageId: Schema.String,
+                    senderApplicationId: Schema.optional(Schema.String),
+                    schemaVersion: Schema.String,
+                    schemaName: Schema.String,
+                  }),
+                ),
+                x12DelimiterOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      protocolVersion: Schema.optional(Schema.String),
+                      messageId: Schema.optional(Schema.String),
+                      dataElementSeparator: Schema.Number,
+                      componentSeparator: Schema.Number,
+                      segmentTerminator: Schema.Number,
+                      segmentTerminatorSuffix: Schema.Literals([
+                        "NotSpecified",
+                        "None",
+                        "CR",
+                        "LF",
+                        "CRLF",
+                      ]),
+                      replaceCharacter: Schema.Number,
+                      replaceSeparatorsInPayload: Schema.Boolean,
+                      targetNamespace: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            }),
+          }),
+        ),
+        edifact: Schema.optional(
+          Schema.Struct({
+            receiveAgreement: Schema.Struct({
+              senderBusinessIdentity: Schema.Struct({
+                qualifier: Schema.String,
+                value: Schema.String,
+              }),
+              receiverBusinessIdentity: Schema.Struct({
+                qualifier: Schema.String,
+                value: Schema.String,
+              }),
+              protocolSettings: Schema.Struct({
+                validationSettings: Schema.Struct({
+                  validateCharacterSet: Schema.Boolean,
+                  checkDuplicateInterchangeControlNumber: Schema.Boolean,
+                  interchangeControlNumberValidityDays: Schema.Number,
+                  checkDuplicateGroupControlNumber: Schema.Boolean,
+                  checkDuplicateTransactionSetControlNumber: Schema.Boolean,
+                  validateEDITypes: Schema.Boolean,
+                  validateXSDTypes: Schema.Boolean,
+                  allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                  trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                  trailingSeparatorPolicy: Schema.Literals([
+                    "NotSpecified",
+                    "NotAllowed",
+                    "Optional",
+                    "Mandatory",
+                  ]),
+                }),
+                framingSettings: Schema.Struct({
+                  serviceCodeListDirectoryVersion: Schema.optional(
+                    Schema.String,
+                  ),
+                  characterEncoding: Schema.optional(Schema.String),
+                  protocolVersion: Schema.Number,
+                  dataElementSeparator: Schema.Number,
+                  componentSeparator: Schema.Number,
+                  segmentTerminator: Schema.Number,
+                  releaseIndicator: Schema.Number,
+                  repetitionSeparator: Schema.Number,
+                  characterSet: Schema.Literals([
+                    "NotSpecified",
+                    "UNOB",
+                    "UNOA",
+                    "UNOC",
+                    "UNOD",
+                    "UNOE",
+                    "UNOF",
+                    "UNOG",
+                    "UNOH",
+                    "UNOI",
+                    "UNOJ",
+                    "UNOK",
+                    "UNOX",
+                    "UNOY",
+                    "KECA",
+                  ]),
+                  decimalPointIndicator: Schema.Literals([
+                    "NotSpecified",
+                    "Comma",
+                    "Decimal",
+                  ]),
+                  segmentTerminatorSuffix: Schema.Literals([
+                    "NotSpecified",
+                    "None",
+                    "CR",
+                    "LF",
+                    "CRLF",
+                  ]),
+                }),
+                envelopeSettings: Schema.Struct({
+                  groupAssociationAssignedCode: Schema.optional(Schema.String),
+                  communicationAgreementId: Schema.optional(Schema.String),
+                  applyDelimiterStringAdvice: Schema.Boolean,
+                  createGroupingSegments: Schema.Boolean,
+                  enableDefaultGroupHeaders: Schema.Boolean,
+                  recipientReferencePasswordValue:
+                    Schema.optional(SensitiveString),
+                  recipientReferencePasswordQualifier:
+                    Schema.optional(SensitiveString),
+                  applicationReferenceId: Schema.optional(Schema.String),
+                  processingPriorityCode: Schema.optional(Schema.String),
+                  interchangeControlNumberLowerBound: Schema.Number,
+                  interchangeControlNumberUpperBound: Schema.Number,
+                  rolloverInterchangeControlNumber: Schema.Boolean,
+                  interchangeControlNumberPrefix: Schema.optional(
+                    Schema.String,
+                  ),
+                  interchangeControlNumberSuffix: Schema.optional(
+                    Schema.String,
+                  ),
+                  senderReverseRoutingAddress: Schema.optional(Schema.String),
+                  receiverReverseRoutingAddress: Schema.optional(Schema.String),
+                  functionalGroupId: Schema.optional(Schema.String),
+                  groupControllingAgencyCode: Schema.optional(Schema.String),
+                  groupMessageVersion: Schema.optional(Schema.String),
+                  groupMessageRelease: Schema.optional(Schema.String),
+                  groupControlNumberLowerBound: Schema.Number,
+                  groupControlNumberUpperBound: Schema.Number,
+                  rolloverGroupControlNumber: Schema.Boolean,
+                  groupControlNumberPrefix: Schema.optional(Schema.String),
+                  groupControlNumberSuffix: Schema.optional(Schema.String),
+                  groupApplicationReceiverQualifier: Schema.optional(
+                    Schema.String,
+                  ),
+                  groupApplicationReceiverId: Schema.optional(Schema.String),
+                  groupApplicationSenderQualifier: Schema.optional(
+                    Schema.String,
+                  ),
+                  groupApplicationSenderId: Schema.optional(Schema.String),
+                  groupApplicationPassword: Schema.optional(SensitiveString),
+                  overwriteExistingTransactionSetControlNumber: Schema.Boolean,
+                  transactionSetControlNumberPrefix: Schema.optional(
+                    Schema.String,
+                  ),
+                  transactionSetControlNumberSuffix: Schema.optional(
+                    Schema.String,
+                  ),
+                  transactionSetControlNumberLowerBound: Schema.Number,
+                  transactionSetControlNumberUpperBound: Schema.Number,
+                  rolloverTransactionSetControlNumber: Schema.Boolean,
+                  isTestInterchange: Schema.Boolean,
+                  senderInternalIdentification: Schema.optional(Schema.String),
+                  senderInternalSubIdentification: Schema.optional(
+                    Schema.String,
+                  ),
+                  receiverInternalIdentification: Schema.optional(
+                    Schema.String,
+                  ),
+                  receiverInternalSubIdentification: Schema.optional(
+                    Schema.String,
+                  ),
+                }),
+                acknowledgementSettings: Schema.Struct({
+                  needTechnicalAcknowledgement: Schema.Boolean,
+                  batchTechnicalAcknowledgements: Schema.Boolean,
+                  needFunctionalAcknowledgement: Schema.Boolean,
+                  batchFunctionalAcknowledgements: Schema.Boolean,
+                  needLoopForValidMessages: Schema.Boolean,
+                  sendSynchronousAcknowledgement: Schema.Boolean,
+                  acknowledgementControlNumberPrefix: Schema.optional(
+                    Schema.String,
+                  ),
+                  acknowledgementControlNumberSuffix: Schema.optional(
+                    Schema.String,
+                  ),
+                  acknowledgementControlNumberLowerBound: Schema.Number,
+                  acknowledgementControlNumberUpperBound: Schema.Number,
+                  rolloverAcknowledgementControlNumber: Schema.Boolean,
+                }),
+                messageFilter: Schema.Struct({
+                  messageFilterType: Schema.Literals([
+                    "NotSpecified",
+                    "Include",
+                    "Exclude",
+                  ]),
+                }),
+                processingSettings: Schema.Struct({
+                  maskSecurityInfo: Schema.Boolean,
+                  preserveInterchange: Schema.Boolean,
+                  suspendInterchangeOnError: Schema.Boolean,
+                  createEmptyXmlTagsForTrailingSeparators: Schema.Boolean,
+                  useDotAsDecimalSeparator: Schema.Boolean,
+                }),
+                envelopeOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      messageId: Schema.optional(Schema.String),
+                      messageVersion: Schema.optional(Schema.String),
+                      messageRelease: Schema.optional(Schema.String),
+                      messageAssociationAssignedCode: Schema.optional(
+                        Schema.String,
+                      ),
+                      targetNamespace: Schema.optional(Schema.String),
+                      functionalGroupId: Schema.optional(Schema.String),
+                      senderApplicationQualifier: Schema.optional(
+                        Schema.String,
+                      ),
+                      senderApplicationId: Schema.optional(Schema.String),
+                      receiverApplicationQualifier: Schema.optional(
+                        Schema.String,
+                      ),
+                      receiverApplicationId: Schema.optional(Schema.String),
+                      controllingAgencyCode: Schema.optional(Schema.String),
+                      groupHeaderMessageVersion: Schema.optional(Schema.String),
+                      groupHeaderMessageRelease: Schema.optional(Schema.String),
+                      associationAssignedCode: Schema.optional(Schema.String),
+                      applicationPassword: Schema.optional(SensitiveString),
+                    }),
+                  ),
+                ),
+                messageFilterList: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      messageId: Schema.String,
+                    }),
+                  ),
+                ),
+                schemaReferences: Schema.Array(
+                  Schema.Struct({
+                    messageId: Schema.String,
+                    messageVersion: Schema.String,
+                    messageRelease: Schema.String,
+                    senderApplicationId: Schema.optional(Schema.String),
+                    senderApplicationQualifier: Schema.optional(Schema.String),
+                    associationAssignedCode: Schema.optional(Schema.String),
+                    schemaName: Schema.String,
+                  }),
+                ),
+                validationOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      messageId: Schema.String,
+                      enforceCharacterSet: Schema.Boolean,
+                      validateEDITypes: Schema.Boolean,
+                      validateXSDTypes: Schema.Boolean,
+                      allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                      trailingSeparatorPolicy: Schema.Literals([
+                        "NotSpecified",
+                        "NotAllowed",
+                        "Optional",
+                        "Mandatory",
+                      ]),
+                      trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                    }),
+                  ),
+                ),
+                edifactDelimiterOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      messageId: Schema.optional(Schema.String),
+                      messageVersion: Schema.optional(Schema.String),
+                      messageRelease: Schema.optional(Schema.String),
+                      dataElementSeparator: Schema.Number,
+                      componentSeparator: Schema.Number,
+                      segmentTerminator: Schema.Number,
+                      repetitionSeparator: Schema.Number,
+                      segmentTerminatorSuffix: Schema.Literals([
+                        "NotSpecified",
+                        "None",
+                        "CR",
+                        "LF",
+                        "CRLF",
+                      ]),
+                      decimalPointIndicator: Schema.Literals([
+                        "NotSpecified",
+                        "Comma",
+                        "Decimal",
+                      ]),
+                      releaseIndicator: Schema.Number,
+                      messageAssociationAssignedCode: Schema.optional(
+                        Schema.String,
+                      ),
+                      targetNamespace: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            }),
+            sendAgreement: Schema.Struct({
+              senderBusinessIdentity: Schema.Struct({
+                qualifier: Schema.String,
+                value: Schema.String,
+              }),
+              receiverBusinessIdentity: Schema.Struct({
+                qualifier: Schema.String,
+                value: Schema.String,
+              }),
+              protocolSettings: Schema.Struct({
+                validationSettings: Schema.Struct({
+                  validateCharacterSet: Schema.Boolean,
+                  checkDuplicateInterchangeControlNumber: Schema.Boolean,
+                  interchangeControlNumberValidityDays: Schema.Number,
+                  checkDuplicateGroupControlNumber: Schema.Boolean,
+                  checkDuplicateTransactionSetControlNumber: Schema.Boolean,
+                  validateEDITypes: Schema.Boolean,
+                  validateXSDTypes: Schema.Boolean,
+                  allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                  trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                  trailingSeparatorPolicy: Schema.Literals([
+                    "NotSpecified",
+                    "NotAllowed",
+                    "Optional",
+                    "Mandatory",
+                  ]),
+                }),
+                framingSettings: Schema.Struct({
+                  serviceCodeListDirectoryVersion: Schema.optional(
+                    Schema.String,
+                  ),
+                  characterEncoding: Schema.optional(Schema.String),
+                  protocolVersion: Schema.Number,
+                  dataElementSeparator: Schema.Number,
+                  componentSeparator: Schema.Number,
+                  segmentTerminator: Schema.Number,
+                  releaseIndicator: Schema.Number,
+                  repetitionSeparator: Schema.Number,
+                  characterSet: Schema.Literals([
+                    "NotSpecified",
+                    "UNOB",
+                    "UNOA",
+                    "UNOC",
+                    "UNOD",
+                    "UNOE",
+                    "UNOF",
+                    "UNOG",
+                    "UNOH",
+                    "UNOI",
+                    "UNOJ",
+                    "UNOK",
+                    "UNOX",
+                    "UNOY",
+                    "KECA",
+                  ]),
+                  decimalPointIndicator: Schema.Literals([
+                    "NotSpecified",
+                    "Comma",
+                    "Decimal",
+                  ]),
+                  segmentTerminatorSuffix: Schema.Literals([
+                    "NotSpecified",
+                    "None",
+                    "CR",
+                    "LF",
+                    "CRLF",
+                  ]),
+                }),
+                envelopeSettings: Schema.Struct({
+                  groupAssociationAssignedCode: Schema.optional(Schema.String),
+                  communicationAgreementId: Schema.optional(Schema.String),
+                  applyDelimiterStringAdvice: Schema.Boolean,
+                  createGroupingSegments: Schema.Boolean,
+                  enableDefaultGroupHeaders: Schema.Boolean,
+                  recipientReferencePasswordValue:
+                    Schema.optional(SensitiveString),
+                  recipientReferencePasswordQualifier:
+                    Schema.optional(SensitiveString),
+                  applicationReferenceId: Schema.optional(Schema.String),
+                  processingPriorityCode: Schema.optional(Schema.String),
+                  interchangeControlNumberLowerBound: Schema.Number,
+                  interchangeControlNumberUpperBound: Schema.Number,
+                  rolloverInterchangeControlNumber: Schema.Boolean,
+                  interchangeControlNumberPrefix: Schema.optional(
+                    Schema.String,
+                  ),
+                  interchangeControlNumberSuffix: Schema.optional(
+                    Schema.String,
+                  ),
+                  senderReverseRoutingAddress: Schema.optional(Schema.String),
+                  receiverReverseRoutingAddress: Schema.optional(Schema.String),
+                  functionalGroupId: Schema.optional(Schema.String),
+                  groupControllingAgencyCode: Schema.optional(Schema.String),
+                  groupMessageVersion: Schema.optional(Schema.String),
+                  groupMessageRelease: Schema.optional(Schema.String),
+                  groupControlNumberLowerBound: Schema.Number,
+                  groupControlNumberUpperBound: Schema.Number,
+                  rolloverGroupControlNumber: Schema.Boolean,
+                  groupControlNumberPrefix: Schema.optional(Schema.String),
+                  groupControlNumberSuffix: Schema.optional(Schema.String),
+                  groupApplicationReceiverQualifier: Schema.optional(
+                    Schema.String,
+                  ),
+                  groupApplicationReceiverId: Schema.optional(Schema.String),
+                  groupApplicationSenderQualifier: Schema.optional(
+                    Schema.String,
+                  ),
+                  groupApplicationSenderId: Schema.optional(Schema.String),
+                  groupApplicationPassword: Schema.optional(SensitiveString),
+                  overwriteExistingTransactionSetControlNumber: Schema.Boolean,
+                  transactionSetControlNumberPrefix: Schema.optional(
+                    Schema.String,
+                  ),
+                  transactionSetControlNumberSuffix: Schema.optional(
+                    Schema.String,
+                  ),
+                  transactionSetControlNumberLowerBound: Schema.Number,
+                  transactionSetControlNumberUpperBound: Schema.Number,
+                  rolloverTransactionSetControlNumber: Schema.Boolean,
+                  isTestInterchange: Schema.Boolean,
+                  senderInternalIdentification: Schema.optional(Schema.String),
+                  senderInternalSubIdentification: Schema.optional(
+                    Schema.String,
+                  ),
+                  receiverInternalIdentification: Schema.optional(
+                    Schema.String,
+                  ),
+                  receiverInternalSubIdentification: Schema.optional(
+                    Schema.String,
+                  ),
+                }),
+                acknowledgementSettings: Schema.Struct({
+                  needTechnicalAcknowledgement: Schema.Boolean,
+                  batchTechnicalAcknowledgements: Schema.Boolean,
+                  needFunctionalAcknowledgement: Schema.Boolean,
+                  batchFunctionalAcknowledgements: Schema.Boolean,
+                  needLoopForValidMessages: Schema.Boolean,
+                  sendSynchronousAcknowledgement: Schema.Boolean,
+                  acknowledgementControlNumberPrefix: Schema.optional(
+                    Schema.String,
+                  ),
+                  acknowledgementControlNumberSuffix: Schema.optional(
+                    Schema.String,
+                  ),
+                  acknowledgementControlNumberLowerBound: Schema.Number,
+                  acknowledgementControlNumberUpperBound: Schema.Number,
+                  rolloverAcknowledgementControlNumber: Schema.Boolean,
+                }),
+                messageFilter: Schema.Struct({
+                  messageFilterType: Schema.Literals([
+                    "NotSpecified",
+                    "Include",
+                    "Exclude",
+                  ]),
+                }),
+                processingSettings: Schema.Struct({
+                  maskSecurityInfo: Schema.Boolean,
+                  preserveInterchange: Schema.Boolean,
+                  suspendInterchangeOnError: Schema.Boolean,
+                  createEmptyXmlTagsForTrailingSeparators: Schema.Boolean,
+                  useDotAsDecimalSeparator: Schema.Boolean,
+                }),
+                envelopeOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      messageId: Schema.optional(Schema.String),
+                      messageVersion: Schema.optional(Schema.String),
+                      messageRelease: Schema.optional(Schema.String),
+                      messageAssociationAssignedCode: Schema.optional(
+                        Schema.String,
+                      ),
+                      targetNamespace: Schema.optional(Schema.String),
+                      functionalGroupId: Schema.optional(Schema.String),
+                      senderApplicationQualifier: Schema.optional(
+                        Schema.String,
+                      ),
+                      senderApplicationId: Schema.optional(Schema.String),
+                      receiverApplicationQualifier: Schema.optional(
+                        Schema.String,
+                      ),
+                      receiverApplicationId: Schema.optional(Schema.String),
+                      controllingAgencyCode: Schema.optional(Schema.String),
+                      groupHeaderMessageVersion: Schema.optional(Schema.String),
+                      groupHeaderMessageRelease: Schema.optional(Schema.String),
+                      associationAssignedCode: Schema.optional(Schema.String),
+                      applicationPassword: Schema.optional(SensitiveString),
+                    }),
+                  ),
+                ),
+                messageFilterList: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      messageId: Schema.String,
+                    }),
+                  ),
+                ),
+                schemaReferences: Schema.Array(
+                  Schema.Struct({
+                    messageId: Schema.String,
+                    messageVersion: Schema.String,
+                    messageRelease: Schema.String,
+                    senderApplicationId: Schema.optional(Schema.String),
+                    senderApplicationQualifier: Schema.optional(Schema.String),
+                    associationAssignedCode: Schema.optional(Schema.String),
+                    schemaName: Schema.String,
+                  }),
+                ),
+                validationOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      messageId: Schema.String,
+                      enforceCharacterSet: Schema.Boolean,
+                      validateEDITypes: Schema.Boolean,
+                      validateXSDTypes: Schema.Boolean,
+                      allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                      trailingSeparatorPolicy: Schema.Literals([
+                        "NotSpecified",
+                        "NotAllowed",
+                        "Optional",
+                        "Mandatory",
+                      ]),
+                      trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+                    }),
+                  ),
+                ),
+                edifactDelimiterOverrides: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      messageId: Schema.optional(Schema.String),
+                      messageVersion: Schema.optional(Schema.String),
+                      messageRelease: Schema.optional(Schema.String),
+                      dataElementSeparator: Schema.Number,
+                      componentSeparator: Schema.Number,
+                      segmentTerminator: Schema.Number,
+                      repetitionSeparator: Schema.Number,
+                      segmentTerminatorSuffix: Schema.Literals([
+                        "NotSpecified",
+                        "None",
+                        "CR",
+                        "LF",
+                        "CRLF",
+                      ]),
+                      decimalPointIndicator: Schema.Literals([
+                        "NotSpecified",
+                        "Comma",
+                        "Decimal",
+                      ]),
+                      releaseIndicator: Schema.Number,
+                      messageAssociationAssignedCode: Schema.optional(
+                        Schema.String,
+                      ),
+                      targetNamespace: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            }),
+          }),
+        ),
+      }),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountAgreementsCreateOrUpdateInput =
@@ -58,6 +1239,7 @@ export const IntegrationAccountAgreementsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountAgreementsDeleteInput =
@@ -92,6 +1274,7 @@ export const IntegrationAccountAgreementsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountAgreementsGetInput =
@@ -133,6 +1316,7 @@ export const IntegrationAccountAgreementsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountAgreementsListInput =
@@ -177,10 +1361,15 @@ export const IntegrationAccountAgreementsListContentCallbackUrlInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     agreementName: Schema.String.pipe(T.PathParam()),
+    notAfter: Schema.optional(Schema.String),
+    keyType: Schema.optional(
+      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}/listContentCallbackUrl",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountAgreementsListContentCallbackUrlInput =
@@ -226,10 +1415,21 @@ export const IntegrationAccountAssembliesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     assemblyArtifactName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      createdTime: Schema.optional(Schema.String),
+      changedTime: Schema.optional(Schema.String),
+      metadata: Schema.optional(Schema.Unknown),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/assemblies/{assemblyArtifactName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountAssembliesCreateOrUpdateInput =
@@ -270,6 +1470,7 @@ export const IntegrationAccountAssembliesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/assemblies/{assemblyArtifactName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountAssembliesDeleteInput =
@@ -304,6 +1505,7 @@ export const IntegrationAccountAssembliesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/assemblies/{assemblyArtifactName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountAssembliesGetInput =
@@ -343,6 +1545,7 @@ export const IntegrationAccountAssembliesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/assemblies",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountAssembliesListInput =
@@ -388,6 +1591,7 @@ export const IntegrationAccountAssembliesListContentCallbackUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/assemblies/{assemblyArtifactName}/listContentCallbackUrl",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountAssembliesListContentCallbackUrlInput =
@@ -433,10 +1637,21 @@ export const IntegrationAccountBatchConfigurationsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     batchConfigurationName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      createdTime: Schema.optional(Schema.String),
+      changedTime: Schema.optional(Schema.String),
+      metadata: Schema.optional(Schema.Unknown),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/batchConfigurations/{batchConfigurationName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountBatchConfigurationsCreateOrUpdateInput =
@@ -477,6 +1692,7 @@ export const IntegrationAccountBatchConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/batchConfigurations/{batchConfigurationName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountBatchConfigurationsDeleteInput =
@@ -511,6 +1727,7 @@ export const IntegrationAccountBatchConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/batchConfigurations/{batchConfigurationName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountBatchConfigurationsGetInput =
@@ -550,6 +1767,7 @@ export const IntegrationAccountBatchConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/batchConfigurations",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountBatchConfigurationsListInput =
@@ -591,10 +1809,33 @@ export const IntegrationAccountCertificatesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      createdTime: Schema.optional(Schema.String),
+      changedTime: Schema.optional(Schema.String),
+      metadata: Schema.optional(Schema.Struct({})),
+      key: Schema.optional(
+        Schema.Struct({
+          keyVault: Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+          keyName: Schema.String,
+          keyVersion: Schema.optional(Schema.String),
+        }),
+      ),
+      publicCertificate: Schema.optional(Schema.String),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/certificates/{certificateName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountCertificatesCreateOrUpdateInput =
@@ -635,6 +1876,7 @@ export const IntegrationAccountCertificatesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/certificates/{certificateName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountCertificatesDeleteInput =
@@ -669,6 +1911,7 @@ export const IntegrationAccountCertificatesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/certificates/{certificateName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountCertificatesGetInput =
@@ -709,6 +1952,7 @@ export const IntegrationAccountCertificatesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/certificates",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountCertificatesListInput =
@@ -752,10 +1996,49 @@ export const IntegrationAccountMapsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     mapName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      mapType: Schema.Literals([
+        "NotSpecified",
+        "Xslt",
+        "Xslt20",
+        "Xslt30",
+        "Liquid",
+      ]),
+      parametersSchema: Schema.optional(
+        Schema.Struct({
+          ref: Schema.optional(Schema.String),
+        }),
+      ),
+      createdTime: Schema.optional(Schema.String),
+      changedTime: Schema.optional(Schema.String),
+      content: Schema.optional(Schema.String),
+      contentType: Schema.optional(Schema.String),
+      contentLink: Schema.optional(
+        Schema.Struct({
+          uri: Schema.optional(Schema.String),
+          contentVersion: Schema.optional(Schema.String),
+          contentSize: Schema.optional(Schema.Number),
+          contentHash: Schema.optional(
+            Schema.Struct({
+              algorithm: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+          metadata: Schema.optional(Schema.Struct({})),
+        }),
+      ),
+      metadata: Schema.optional(Schema.Struct({})),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps/{mapName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountMapsCreateOrUpdateInput =
@@ -796,6 +2079,7 @@ export const IntegrationAccountMapsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps/{mapName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountMapsDeleteInput =
@@ -830,6 +2114,7 @@ export const IntegrationAccountMapsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps/{mapName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountMapsGetInput =
@@ -872,6 +2157,7 @@ export const IntegrationAccountMapsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountMapsListInput =
@@ -917,10 +2203,15 @@ export const IntegrationAccountMapsListContentCallbackUrlInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     mapName: Schema.String.pipe(T.PathParam()),
+    notAfter: Schema.optional(Schema.String),
+    keyType: Schema.optional(
+      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps/{mapName}/listContentCallbackUrl",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountMapsListContentCallbackUrlInput =
@@ -966,10 +2257,36 @@ export const IntegrationAccountPartnersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     partnerName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      partnerType: Schema.Literals(["NotSpecified", "B2B"]),
+      createdTime: Schema.optional(Schema.String),
+      changedTime: Schema.optional(Schema.String),
+      metadata: Schema.optional(Schema.Struct({})),
+      content: Schema.Struct({
+        b2b: Schema.optional(
+          Schema.Struct({
+            businessIdentities: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  qualifier: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners/{partnerName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountPartnersCreateOrUpdateInput =
@@ -1010,6 +2327,7 @@ export const IntegrationAccountPartnersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners/{partnerName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountPartnersDeleteInput =
@@ -1044,6 +2362,7 @@ export const IntegrationAccountPartnersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners/{partnerName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountPartnersGetInput =
@@ -1085,6 +2404,7 @@ export const IntegrationAccountPartnersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountPartnersListInput =
@@ -1129,10 +2449,15 @@ export const IntegrationAccountPartnersListContentCallbackUrlInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     partnerName: Schema.String.pipe(T.PathParam()),
+    notAfter: Schema.optional(Schema.String),
+    keyType: Schema.optional(
+      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners/{partnerName}/listContentCallbackUrl",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountPartnersListContentCallbackUrlInput =
@@ -1178,10 +2503,41 @@ export const IntegrationAccountSchemasCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      schemaType: Schema.Literals(["NotSpecified", "Xml"]),
+      targetNamespace: Schema.optional(Schema.String),
+      documentName: Schema.optional(Schema.String),
+      fileName: Schema.optional(Schema.String),
+      createdTime: Schema.optional(Schema.String),
+      changedTime: Schema.optional(Schema.String),
+      metadata: Schema.optional(Schema.Struct({})),
+      content: Schema.optional(Schema.String),
+      contentType: Schema.optional(Schema.String),
+      contentLink: Schema.optional(
+        Schema.Struct({
+          uri: Schema.optional(Schema.String),
+          contentVersion: Schema.optional(Schema.String),
+          contentSize: Schema.optional(Schema.Number),
+          contentHash: Schema.optional(
+            Schema.Struct({
+              algorithm: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+          metadata: Schema.optional(Schema.Struct({})),
+        }),
+      ),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas/{schemaName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountSchemasCreateOrUpdateInput =
@@ -1222,6 +2578,7 @@ export const IntegrationAccountSchemasDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas/{schemaName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountSchemasDeleteInput =
@@ -1256,6 +2613,7 @@ export const IntegrationAccountSchemasGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas/{schemaName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountSchemasGetInput =
@@ -1297,6 +2655,7 @@ export const IntegrationAccountSchemasListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountSchemasListInput =
@@ -1341,10 +2700,15 @@ export const IntegrationAccountSchemasListContentCallbackUrlInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
+    notAfter: Schema.optional(Schema.String),
+    keyType: Schema.optional(
+      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas/{schemaName}/listContentCallbackUrl",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountSchemasListContentCallbackUrlInput =
@@ -1389,10 +2753,42 @@ export const IntegrationAccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        integrationServiceEnvironment: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        state: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Completed",
+            "Enabled",
+            "Disabled",
+            "Deleted",
+            "Suspended",
+          ]),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["NotSpecified", "Free", "Basic", "Standard"]),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountsCreateOrUpdateInput =
@@ -1431,6 +2827,7 @@ export const IntegrationAccountsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountsDeleteInput =
@@ -1461,10 +2858,21 @@ export const IntegrationAccountSessionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     sessionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      createdTime: Schema.optional(Schema.String),
+      changedTime: Schema.optional(Schema.String),
+      content: Schema.optional(Schema.Struct({})),
+    }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/sessions/{sessionName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountSessionsCreateOrUpdateInput =
@@ -1505,6 +2913,7 @@ export const IntegrationAccountSessionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/sessions/{sessionName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountSessionsDeleteInput =
@@ -1539,6 +2948,7 @@ export const IntegrationAccountSessionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/sessions/{sessionName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountSessionsGetInput =
@@ -1580,6 +2990,7 @@ export const IntegrationAccountSessionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/sessions",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountSessionsListInput =
@@ -1627,6 +3038,7 @@ export const IntegrationAccountsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountsGetInput =
@@ -1666,6 +3078,7 @@ export const IntegrationAccountsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountsListByResourceGroupInput =
@@ -1710,6 +3123,7 @@ export const IntegrationAccountsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Logic/integrationAccounts",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountsListBySubscriptionInput =
@@ -1750,10 +3164,15 @@ export const IntegrationAccountsListCallbackUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
+    notAfter: Schema.optional(Schema.String),
+    keyType: Schema.optional(
+      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/listCallbackUrl",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountsListCallbackUrlInput =
@@ -1784,10 +3203,17 @@ export const IntegrationAccountsListKeyVaultKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
+    keyVault: Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+    skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/listKeyVaultKeys",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountsListKeyVaultKeysInput =
@@ -1832,10 +3258,53 @@ export const IntegrationAccountsLogTrackingEventsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
+    sourceType: Schema.String,
+    trackEventsOptions: Schema.optional(
+      Schema.Literals(["None", "DisableSourceInfoEnrich"]),
+    ),
+    events: Schema.Array(
+      Schema.Struct({
+        eventLevel: Schema.Literals([
+          "LogAlways",
+          "Critical",
+          "Error",
+          "Warning",
+          "Informational",
+          "Verbose",
+        ]),
+        eventTime: Schema.String,
+        recordType: Schema.Literals([
+          "NotSpecified",
+          "Custom",
+          "AS2Message",
+          "AS2MDN",
+          "X12Interchange",
+          "X12FunctionalGroup",
+          "X12TransactionSet",
+          "X12InterchangeAcknowledgment",
+          "X12FunctionalGroupAcknowledgment",
+          "X12TransactionSetAcknowledgment",
+          "EdifactInterchange",
+          "EdifactFunctionalGroup",
+          "EdifactTransactionSet",
+          "EdifactInterchangeAcknowledgment",
+          "EdifactFunctionalGroupAcknowledgment",
+          "EdifactTransactionSetAcknowledgment",
+        ]),
+        record: Schema.optional(Schema.Struct({})),
+        error: Schema.optional(
+          Schema.Struct({
+            message: Schema.optional(Schema.String),
+            code: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/logTrackingEvents",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountsLogTrackingEventsInput =
@@ -1864,10 +3333,14 @@ export const IntegrationAccountsRegenerateAccessKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
+    keyType: Schema.optional(
+      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/regenerateAccessKey",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountsRegenerateAccessKeyInput =
@@ -1902,10 +3375,42 @@ export const IntegrationAccountsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        integrationServiceEnvironment: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        state: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Completed",
+            "Enabled",
+            "Disabled",
+            "Deleted",
+            "Suspended",
+          ]),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["NotSpecified", "Free", "Basic", "Standard"]),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationAccountsUpdateInput =
@@ -1946,6 +3451,7 @@ export const IntegrationServiceEnvironmentManagedApiOperationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis/{apiName}/apiOperations",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentManagedApiOperationsListInput =
@@ -1993,6 +3499,7 @@ export const IntegrationServiceEnvironmentManagedApisDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis/{apiName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentManagedApisDeleteInput =
@@ -2027,6 +3534,7 @@ export const IntegrationServiceEnvironmentManagedApisGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis/{apiName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentManagedApisGetInput =
@@ -2066,6 +3574,7 @@ export const IntegrationServiceEnvironmentManagedApisListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentManagedApisListInput =
@@ -2108,10 +3617,181 @@ export const IntegrationServiceEnvironmentManagedApisPutInput =
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     apiName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        connectionParameters: Schema.optional(
+          Schema.Record(Schema.String, Schema.Struct({})),
+        ),
+        metadata: Schema.optional(
+          Schema.Struct({
+            source: Schema.optional(Schema.String),
+            brandColor: Schema.optional(Schema.String),
+            hideKey: Schema.optional(Schema.String),
+            tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+            ApiType: Schema.optional(
+              Schema.Literals(["NotSpecified", "Rest", "Soap"]),
+            ),
+            wsdlService: Schema.optional(
+              Schema.Struct({
+                qualifiedName: Schema.optional(Schema.String),
+                EndpointQualifiedNames: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+              }),
+            ),
+            wsdlImportMethod: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "SoapToRest",
+                "SoapPassThrough",
+              ]),
+            ),
+            connectionType: Schema.optional(Schema.String),
+            provisioningState: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "Accepted",
+                "Running",
+                "Ready",
+                "Creating",
+                "Created",
+                "Deleting",
+                "Deleted",
+                "Canceled",
+                "Failed",
+                "Succeeded",
+                "Moving",
+                "Updating",
+                "Registering",
+                "Registered",
+                "Unregistering",
+                "Unregistered",
+                "Completed",
+                "Renewing",
+                "Pending",
+                "Waiting",
+                "InProgress",
+              ]),
+            ),
+            deploymentParameters: Schema.optional(
+              Schema.Struct({
+                packageContentLink: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    isRequired: Schema.optional(Schema.Boolean),
+                    displayName: Schema.optional(Schema.String),
+                    description: Schema.optional(Schema.String),
+                    visibility: Schema.optional(
+                      Schema.Literals(["NotSpecified", "Default", "Internal"]),
+                    ),
+                  }),
+                ),
+                redisCacheConnectionString: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    isRequired: Schema.optional(Schema.Boolean),
+                    displayName: Schema.optional(Schema.String),
+                    description: Schema.optional(Schema.String),
+                    visibility: Schema.optional(
+                      Schema.Literals(["NotSpecified", "Default", "Internal"]),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        runtimeUrls: Schema.optional(Schema.Array(Schema.String)),
+        generalInformation: Schema.optional(
+          Schema.Struct({
+            iconUrl: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            termsOfUseUrl: Schema.optional(Schema.String),
+            releaseTag: Schema.optional(Schema.String),
+            tier: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "Enterprise",
+                "Standard",
+                "Premium",
+              ]),
+            ),
+          }),
+        ),
+        capabilities: Schema.optional(Schema.Array(Schema.String)),
+        backendService: Schema.optional(
+          Schema.Struct({
+            serviceUrl: Schema.optional(Schema.String),
+          }),
+        ),
+        policies: Schema.optional(
+          Schema.Struct({
+            content: Schema.optional(Schema.String),
+            contentLink: Schema.optional(Schema.String),
+          }),
+        ),
+        apiDefinitionUrl: Schema.optional(Schema.String),
+        apiDefinitions: Schema.optional(
+          Schema.Struct({
+            originalSwaggerUrl: Schema.optional(Schema.String),
+            modifiedSwaggerUrl: Schema.optional(Schema.String),
+          }),
+        ),
+        integrationServiceEnvironment: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Ready",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "Moving",
+            "Updating",
+            "Registering",
+            "Registered",
+            "Unregistering",
+            "Unregistered",
+            "Completed",
+            "Renewing",
+            "Pending",
+            "Waiting",
+            "InProgress",
+          ]),
+        ),
+        category: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Enterprise",
+            "Standard",
+            "Premium",
+          ]),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis/{apiName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentManagedApisPutInput =
@@ -2151,6 +3831,7 @@ export const IntegrationServiceEnvironmentNetworkHealthGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/health/network",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentNetworkHealthGetInput =
@@ -2253,10 +3934,159 @@ export const IntegrationServiceEnvironmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Ready",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "Moving",
+            "Updating",
+            "Registering",
+            "Registered",
+            "Unregistering",
+            "Unregistered",
+            "Completed",
+            "Renewing",
+            "Pending",
+            "Waiting",
+            "InProgress",
+          ]),
+        ),
+        state: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Completed",
+            "Enabled",
+            "Disabled",
+            "Deleted",
+            "Suspended",
+          ]),
+        ),
+        integrationServiceEnvironmentId: Schema.optional(Schema.String),
+        endpointsConfiguration: Schema.optional(
+          Schema.Struct({
+            workflow: Schema.optional(
+              Schema.Struct({
+                outgoingIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                accessEndpointIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            connector: Schema.optional(
+              Schema.Struct({
+                outgoingIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                accessEndpointIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        networkConfiguration: Schema.optional(
+          Schema.Struct({
+            virtualNetworkAddressSpace: Schema.optional(Schema.String),
+            accessEndpoint: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["NotSpecified", "External", "Internal"]),
+                ),
+              }),
+            ),
+            subnets: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        encryptionConfiguration: Schema.optional(
+          Schema.Struct({
+            encryptionKeyReference: Schema.optional(
+              Schema.Struct({
+                keyVault: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    name: Schema.optional(Schema.String),
+                    type: Schema.optional(Schema.String),
+                  }),
+                ),
+                keyName: Schema.optional(Schema.String),
+                keyVersion: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(
+          Schema.Literals(["NotSpecified", "Premium", "Developer"]),
+        ),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
+        tenantId: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentsCreateOrUpdateInput =
@@ -2295,6 +4125,7 @@ export const IntegrationServiceEnvironmentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentsDeleteInput =
@@ -2327,6 +4158,7 @@ export const IntegrationServiceEnvironmentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentsGetInput =
@@ -2365,6 +4197,7 @@ export const IntegrationServiceEnvironmentSkusListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/skus",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentSkusListInput =
@@ -2424,6 +4257,7 @@ export const IntegrationServiceEnvironmentsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentsListByResourceGroupInput =
@@ -2468,6 +4302,7 @@ export const IntegrationServiceEnvironmentsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Logic/integrationServiceEnvironments",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentsListBySubscriptionInput =
@@ -2512,6 +4347,7 @@ export const IntegrationServiceEnvironmentsRestartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/restart",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentsRestartInput =
@@ -2540,10 +4376,159 @@ export const IntegrationServiceEnvironmentsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Ready",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "Moving",
+            "Updating",
+            "Registering",
+            "Registered",
+            "Unregistering",
+            "Unregistered",
+            "Completed",
+            "Renewing",
+            "Pending",
+            "Waiting",
+            "InProgress",
+          ]),
+        ),
+        state: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Completed",
+            "Enabled",
+            "Disabled",
+            "Deleted",
+            "Suspended",
+          ]),
+        ),
+        integrationServiceEnvironmentId: Schema.optional(Schema.String),
+        endpointsConfiguration: Schema.optional(
+          Schema.Struct({
+            workflow: Schema.optional(
+              Schema.Struct({
+                outgoingIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                accessEndpointIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            connector: Schema.optional(
+              Schema.Struct({
+                outgoingIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                accessEndpointIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        networkConfiguration: Schema.optional(
+          Schema.Struct({
+            virtualNetworkAddressSpace: Schema.optional(Schema.String),
+            accessEndpoint: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals(["NotSpecified", "External", "Internal"]),
+                ),
+              }),
+            ),
+            subnets: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        encryptionConfiguration: Schema.optional(
+          Schema.Struct({
+            encryptionKeyReference: Schema.optional(
+              Schema.Struct({
+                keyVault: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    name: Schema.optional(Schema.String),
+                    type: Schema.optional(Schema.String),
+                  }),
+                ),
+                keyName: Schema.optional(Schema.String),
+                keyVersion: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(
+          Schema.Literals(["NotSpecified", "Premium", "Developer"]),
+        ),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
+        tenantId: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type IntegrationServiceEnvironmentsUpdateInput =
@@ -2577,7 +4562,11 @@ export const IntegrationServiceEnvironmentsUpdate =
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Logic/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Logic/operations",
+    apiVersion: "2019-05-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -2624,6 +4613,7 @@ export const WorkflowRunActionRepetitionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunActionRepetitionsGetInput =
@@ -2667,6 +4657,7 @@ export const WorkflowRunActionRepetitionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunActionRepetitionsListInput =
@@ -2717,6 +4708,7 @@ export const WorkflowRunActionRepetitionsListExpressionTracesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}/listExpressionTraces",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunActionRepetitionsListExpressionTracesInput =
@@ -2771,6 +4763,7 @@ export const WorkflowRunActionRepetitionsRequestHistoriesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}/requestHistories/{requestHistoryName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunActionRepetitionsRequestHistoriesGetInput =
@@ -2816,6 +4809,7 @@ export const WorkflowRunActionRepetitionsRequestHistoriesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}/requestHistories",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunActionRepetitionsRequestHistoriesListInput =
@@ -2867,6 +4861,7 @@ export const WorkflowRunActionRequestHistoriesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/requestHistories/{requestHistoryName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunActionRequestHistoriesGetInput =
@@ -2910,6 +4905,7 @@ export const WorkflowRunActionRequestHistoriesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/requestHistories",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunActionRequestHistoriesListInput =
@@ -2960,6 +4956,7 @@ export const WorkflowRunActionScopeRepetitionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/scopeRepetitions/{repetitionName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunActionScopeRepetitionsGetInput =
@@ -3003,6 +5000,7 @@ export const WorkflowRunActionScopeRepetitionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/scopeRepetitions",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunActionScopeRepetitionsListInput =
@@ -3052,6 +5050,7 @@ export const WorkflowRunActionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunActionsGetInput = typeof WorkflowRunActionsGetInput.Type;
@@ -3091,6 +5090,7 @@ export const WorkflowRunActionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunActionsListInput =
@@ -3138,6 +5138,7 @@ export const WorkflowRunActionsListExpressionTracesInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/listExpressionTraces",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunActionsListExpressionTracesInput =
@@ -3189,6 +5190,7 @@ export const WorkflowRunOperationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/operations/{operationId}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunOperationsGetInput =
@@ -3227,6 +5229,7 @@ export const WorkflowRunsCancelInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/cancel",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowRunsCancelInput = typeof WorkflowRunsCancelInput.Type;
@@ -3256,6 +5259,7 @@ export const WorkflowRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}",
+    apiVersion: "2019-05-01",
   }),
 );
 export type WorkflowRunsGetInput = typeof WorkflowRunsGetInput.Type;
@@ -3288,6 +5292,7 @@ export const WorkflowRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs",
+    apiVersion: "2019-05-01",
   }),
 );
 export type WorkflowRunsListInput = typeof WorkflowRunsListInput.Type;
@@ -3325,10 +5330,301 @@ export const WorkflowsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Ready",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "Moving",
+            "Updating",
+            "Registering",
+            "Registered",
+            "Unregistering",
+            "Unregistered",
+            "Completed",
+            "Renewing",
+            "Pending",
+            "Waiting",
+            "InProgress",
+          ]),
+        ),
+        createdTime: Schema.optional(Schema.String),
+        changedTime: Schema.optional(Schema.String),
+        state: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Completed",
+            "Enabled",
+            "Disabled",
+            "Deleted",
+            "Suspended",
+          ]),
+        ),
+        version: Schema.optional(Schema.String),
+        accessEndpoint: Schema.optional(Schema.String),
+        endpointsConfiguration: Schema.optional(
+          Schema.Struct({
+            workflow: Schema.optional(
+              Schema.Struct({
+                outgoingIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                accessEndpointIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            connector: Schema.optional(
+              Schema.Struct({
+                outgoingIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                accessEndpointIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        accessControl: Schema.optional(
+          Schema.Struct({
+            triggers: Schema.optional(
+              Schema.Struct({
+                allowedCallerIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      addressRange: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                openAuthenticationPolicies: Schema.optional(
+                  Schema.Struct({
+                    policies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          type: Schema.optional(Schema.Literals(["AAD"])),
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            contents: Schema.optional(
+              Schema.Struct({
+                allowedCallerIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      addressRange: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                openAuthenticationPolicies: Schema.optional(
+                  Schema.Struct({
+                    policies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          type: Schema.optional(Schema.Literals(["AAD"])),
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            actions: Schema.optional(
+              Schema.Struct({
+                allowedCallerIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      addressRange: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                openAuthenticationPolicies: Schema.optional(
+                  Schema.Struct({
+                    policies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          type: Schema.optional(Schema.Literals(["AAD"])),
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            workflowManagement: Schema.optional(
+              Schema.Struct({
+                allowedCallerIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      addressRange: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                openAuthenticationPolicies: Schema.optional(
+                  Schema.Struct({
+                    policies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          type: Schema.optional(Schema.Literals(["AAD"])),
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.Literals([
+              "NotSpecified",
+              "Free",
+              "Shared",
+              "Basic",
+              "Standard",
+              "Premium",
+            ]),
+            plan: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                type: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        integrationAccount: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        integrationServiceEnvironment: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        definition: Schema.optional(Schema.Struct({})),
+        parameters: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals([
+                  "NotSpecified",
+                  "String",
+                  "SecureString",
+                  "Int",
+                  "Float",
+                  "Bool",
+                  "Array",
+                  "Object",
+                  "SecureObject",
+                ]),
+              ),
+              value: Schema.optional(Schema.Struct({})),
+              metadata: Schema.optional(Schema.Struct({})),
+              description: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
+        tenantId: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowsCreateOrUpdateInput =
@@ -3367,6 +5663,7 @@ export const WorkflowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}",
+    apiVersion: "2019-05-01",
   }),
 );
 export type WorkflowsDeleteInput = typeof WorkflowsDeleteInput.Type;
@@ -3394,6 +5691,7 @@ export const WorkflowsDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/disable",
+    apiVersion: "2019-05-01",
   }),
 );
 export type WorkflowsDisableInput = typeof WorkflowsDisableInput.Type;
@@ -3421,6 +5719,7 @@ export const WorkflowsEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/enable",
+    apiVersion: "2019-05-01",
   }),
 );
 export type WorkflowsEnableInput = typeof WorkflowsEnableInput.Type;
@@ -3445,10 +5744,12 @@ export const WorkflowsGenerateUpgradedDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
+    targetSchemaVersion: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/generateUpgradedDefinition",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowsGenerateUpgradedDefinitionInput =
@@ -3480,6 +5781,7 @@ export const WorkflowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}",
+    apiVersion: "2019-05-01",
   }),
 );
 export type WorkflowsGetInput = typeof WorkflowsGetInput.Type;
@@ -3515,6 +5817,7 @@ export const WorkflowsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowsListByResourceGroupInput =
@@ -3561,6 +5864,7 @@ export const WorkflowsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Logic/workflows",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowsListBySubscriptionInput =
@@ -3603,10 +5907,15 @@ export const WorkflowsListCallbackUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
+    notAfter: Schema.optional(Schema.String),
+    keyType: Schema.optional(
+      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/listCallbackUrl",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowsListCallbackUrlInput =
@@ -3655,6 +5964,7 @@ export const WorkflowsListSwaggerInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/listSwagger",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowsListSwaggerInput = typeof WorkflowsListSwaggerInput.Type;
@@ -3681,10 +5991,14 @@ export const WorkflowsListSwagger = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WorkflowsMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/move",
+    apiVersion: "2019-05-01",
   }),
 );
 export type WorkflowsMoveInput = typeof WorkflowsMoveInput.Type;
@@ -3709,10 +6023,14 @@ export const WorkflowsRegenerateAccessKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
+    keyType: Schema.optional(
+      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/regenerateAccessKey",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowsRegenerateAccessKeyInput =
@@ -3744,6 +6062,7 @@ export const WorkflowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}",
+    apiVersion: "2019-05-01",
   }),
 );
 export type WorkflowsUpdateInput = typeof WorkflowsUpdateInput.Type;
@@ -3775,10 +6094,300 @@ export const WorkflowsValidateByLocationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Ready",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "Moving",
+            "Updating",
+            "Registering",
+            "Registered",
+            "Unregistering",
+            "Unregistered",
+            "Completed",
+            "Renewing",
+            "Pending",
+            "Waiting",
+            "InProgress",
+          ]),
+        ),
+        createdTime: Schema.optional(Schema.String),
+        changedTime: Schema.optional(Schema.String),
+        state: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Completed",
+            "Enabled",
+            "Disabled",
+            "Deleted",
+            "Suspended",
+          ]),
+        ),
+        version: Schema.optional(Schema.String),
+        accessEndpoint: Schema.optional(Schema.String),
+        endpointsConfiguration: Schema.optional(
+          Schema.Struct({
+            workflow: Schema.optional(
+              Schema.Struct({
+                outgoingIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                accessEndpointIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            connector: Schema.optional(
+              Schema.Struct({
+                outgoingIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                accessEndpointIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        accessControl: Schema.optional(
+          Schema.Struct({
+            triggers: Schema.optional(
+              Schema.Struct({
+                allowedCallerIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      addressRange: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                openAuthenticationPolicies: Schema.optional(
+                  Schema.Struct({
+                    policies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          type: Schema.optional(Schema.Literals(["AAD"])),
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            contents: Schema.optional(
+              Schema.Struct({
+                allowedCallerIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      addressRange: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                openAuthenticationPolicies: Schema.optional(
+                  Schema.Struct({
+                    policies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          type: Schema.optional(Schema.Literals(["AAD"])),
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            actions: Schema.optional(
+              Schema.Struct({
+                allowedCallerIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      addressRange: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                openAuthenticationPolicies: Schema.optional(
+                  Schema.Struct({
+                    policies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          type: Schema.optional(Schema.Literals(["AAD"])),
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            workflowManagement: Schema.optional(
+              Schema.Struct({
+                allowedCallerIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      addressRange: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                openAuthenticationPolicies: Schema.optional(
+                  Schema.Struct({
+                    policies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          type: Schema.optional(Schema.Literals(["AAD"])),
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.Literals([
+              "NotSpecified",
+              "Free",
+              "Shared",
+              "Basic",
+              "Standard",
+              "Premium",
+            ]),
+            plan: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                type: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        integrationAccount: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        integrationServiceEnvironment: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        definition: Schema.optional(Schema.Struct({})),
+        parameters: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals([
+                  "NotSpecified",
+                  "String",
+                  "SecureString",
+                  "Int",
+                  "Float",
+                  "Bool",
+                  "Array",
+                  "Object",
+                  "SecureObject",
+                ]),
+              ),
+              value: Schema.optional(Schema.Struct({})),
+              metadata: Schema.optional(Schema.Struct({})),
+              description: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
+        tenantId: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/locations/{location}/workflows/{workflowName}/validate",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowsValidateByLocationInput =
@@ -3809,10 +6418,301 @@ export const WorkflowsValidateByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Ready",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "Moving",
+            "Updating",
+            "Registering",
+            "Registered",
+            "Unregistering",
+            "Unregistered",
+            "Completed",
+            "Renewing",
+            "Pending",
+            "Waiting",
+            "InProgress",
+          ]),
+        ),
+        createdTime: Schema.optional(Schema.String),
+        changedTime: Schema.optional(Schema.String),
+        state: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Completed",
+            "Enabled",
+            "Disabled",
+            "Deleted",
+            "Suspended",
+          ]),
+        ),
+        version: Schema.optional(Schema.String),
+        accessEndpoint: Schema.optional(Schema.String),
+        endpointsConfiguration: Schema.optional(
+          Schema.Struct({
+            workflow: Schema.optional(
+              Schema.Struct({
+                outgoingIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                accessEndpointIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            connector: Schema.optional(
+              Schema.Struct({
+                outgoingIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                accessEndpointIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      address: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        accessControl: Schema.optional(
+          Schema.Struct({
+            triggers: Schema.optional(
+              Schema.Struct({
+                allowedCallerIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      addressRange: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                openAuthenticationPolicies: Schema.optional(
+                  Schema.Struct({
+                    policies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          type: Schema.optional(Schema.Literals(["AAD"])),
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            contents: Schema.optional(
+              Schema.Struct({
+                allowedCallerIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      addressRange: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                openAuthenticationPolicies: Schema.optional(
+                  Schema.Struct({
+                    policies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          type: Schema.optional(Schema.Literals(["AAD"])),
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            actions: Schema.optional(
+              Schema.Struct({
+                allowedCallerIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      addressRange: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                openAuthenticationPolicies: Schema.optional(
+                  Schema.Struct({
+                    policies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          type: Schema.optional(Schema.Literals(["AAD"])),
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            workflowManagement: Schema.optional(
+              Schema.Struct({
+                allowedCallerIpAddresses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      addressRange: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                openAuthenticationPolicies: Schema.optional(
+                  Schema.Struct({
+                    policies: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          type: Schema.optional(Schema.Literals(["AAD"])),
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                value: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.Literals([
+              "NotSpecified",
+              "Free",
+              "Shared",
+              "Basic",
+              "Standard",
+              "Premium",
+            ]),
+            plan: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                type: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        integrationAccount: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        integrationServiceEnvironment: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        definition: Schema.optional(Schema.Struct({})),
+        parameters: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals([
+                  "NotSpecified",
+                  "String",
+                  "SecureString",
+                  "Int",
+                  "Float",
+                  "Bool",
+                  "Array",
+                  "Object",
+                  "SecureObject",
+                ]),
+              ),
+              value: Schema.optional(Schema.Struct({})),
+              metadata: Schema.optional(Schema.Struct({})),
+              description: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
+        tenantId: Schema.optional(Schema.String),
+        principalId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/validate",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowsValidateByResourceGroupInput =
@@ -3847,6 +6747,7 @@ export const WorkflowTriggerHistoriesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/histories/{historyName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowTriggerHistoriesGetInput =
@@ -3887,6 +6788,7 @@ export const WorkflowTriggerHistoriesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/histories",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowTriggerHistoriesListInput =
@@ -3933,6 +6835,7 @@ export const WorkflowTriggerHistoriesResubmitInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/histories/{historyName}/resubmit",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowTriggerHistoriesResubmitInput =
@@ -3968,6 +6871,7 @@ export const WorkflowTriggersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowTriggersGetInput = typeof WorkflowTriggersGetInput.Type;
@@ -4001,6 +6905,7 @@ export const WorkflowTriggersGetSchemaJsonInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/schemas/json",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowTriggersGetSchemaJsonInput =
@@ -4039,6 +6944,7 @@ export const WorkflowTriggersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowTriggersListInput = typeof WorkflowTriggersListInput.Type;
@@ -4082,6 +6988,7 @@ export const WorkflowTriggersListCallbackUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowTriggersListCallbackUrlInput =
@@ -4131,6 +7038,7 @@ export const WorkflowTriggersResetInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/reset",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowTriggersResetInput = typeof WorkflowTriggersResetInput.Type;
@@ -4165,6 +7073,7 @@ export const WorkflowTriggersRunInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/run",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowTriggersRunInput = typeof WorkflowTriggersRunInput.Type;
@@ -4192,10 +7101,16 @@ export const WorkflowTriggersSetStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
+    source: Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/setState",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowTriggersSetStateInput =
@@ -4231,6 +7146,7 @@ export const WorkflowVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/versions/{versionId}",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowVersionsGetInput = typeof WorkflowVersionsGetInput.Type;
@@ -4268,6 +7184,7 @@ export const WorkflowVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/versions",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowVersionsListInput = typeof WorkflowVersionsListInput.Type;
@@ -4311,10 +7228,15 @@ export const WorkflowVersionTriggersListCallbackUrlInput =
     workflowName: Schema.String.pipe(T.PathParam()),
     versionId: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
+    notAfter: Schema.optional(Schema.String),
+    keyType: Schema.optional(
+      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/versions/{versionId}/triggers/{triggerName}/listCallbackUrl",
+      apiVersion: "2019-05-01",
     }),
   );
 export type WorkflowVersionTriggersListCallbackUrlInput =

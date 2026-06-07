@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const CommunityTrainingsCreateInput =
@@ -14,11 +15,56 @@ export const CommunityTrainingsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communityTrainingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        portalName: Schema.String,
+        portalAdminEmailAddress: Schema.String,
+        portalOwnerOrganizationName: Schema.String,
+        portalOwnerEmailAddress: Schema.String,
+        identityConfiguration: Schema.Struct({
+          identityType: Schema.String,
+          teamsEnabled: Schema.optional(Schema.Boolean),
+          tenantId: Schema.String,
+          domainName: Schema.String,
+          clientId: Schema.String,
+          clientSecret: SensitiveString,
+          b2cAuthenticationPolicy: Schema.optional(Schema.String),
+          b2cPasswordResetPolicy: Schema.optional(SensitiveString),
+          customLoginParameters: Schema.optional(Schema.String),
+        }),
+        zoneRedundancyEnabled: Schema.Boolean,
+        disasterRecoveryEnabled: Schema.Boolean,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
+      apiVersion: "2023-11-01",
     }),
   );
 export type CommunityTrainingsCreateInput =
@@ -69,11 +115,11 @@ export const CommunityTrainingsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communityTrainingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
+      apiVersion: "2023-11-01",
     }),
   );
 export type CommunityTrainingsDeleteInput =
@@ -106,11 +152,11 @@ export const CommunityTrainingsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communityTrainingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
+      apiVersion: "2023-11-01",
     }),
   );
 export type CommunityTrainingsGetInput = typeof CommunityTrainingsGetInput.Type;
@@ -159,11 +205,11 @@ export const CommunityTrainingsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings",
+      apiVersion: "2023-11-01",
     }),
   );
 export type CommunityTrainingsListByResourceGroupInput =
@@ -225,11 +271,11 @@ export const CommunityTrainingsListByResourceGroup =
 export const CommunityTrainingsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Community/communityTrainings",
+      apiVersion: "2023-11-01",
     }),
   );
 export type CommunityTrainingsListBySubscriptionInput =
@@ -292,11 +338,40 @@ export const CommunityTrainingsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communityTrainingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        identityConfiguration: Schema.optional(
+          Schema.Struct({
+            identityType: Schema.optional(Schema.String),
+            teamsEnabled: Schema.optional(Schema.Boolean),
+            tenantId: Schema.optional(Schema.String),
+            domainName: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+            clientSecret: Schema.optional(SensitiveString),
+            b2cAuthenticationPolicy: Schema.optional(Schema.String),
+            b2cPasswordResetPolicy: Schema.optional(SensitiveString),
+            customLoginParameters: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
+      apiVersion: "2023-11-01",
     }),
   );
 export type CommunityTrainingsUpdateInput =
@@ -342,10 +417,14 @@ export const CommunityTrainingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Community/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Community/operations",
+    apiVersion: "2023-11-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 

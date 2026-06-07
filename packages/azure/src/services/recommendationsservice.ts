@@ -7,18 +7,19 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecommendationsService/checkNameAvailability",
+      apiVersion: "2022-02-01",
     }),
   );
 export type AccountsCheckNameAvailabilityInput =
@@ -53,11 +54,56 @@ export const AccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        configuration: Schema.optional(Schema.Literals(["Free", "Capacity"])),
+        endpointAuthentications: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              aadTenantID: Schema.optional(Schema.String),
+              principalID: Schema.optional(Schema.String),
+              principalType: Schema.optional(
+                Schema.Literals(["Application", "User"]),
+              ),
+            }),
+          ),
+        ),
+        cors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              allowedOrigins: Schema.Array(Schema.String),
+              allowedMethods: Schema.optional(Schema.Array(Schema.String)),
+              allowedHeaders: Schema.optional(Schema.Array(Schema.String)),
+              exposedHeaders: Schema.optional(Schema.Array(Schema.String)),
+              maxAgeInSeconds: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        reportsConnectionString: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
+      apiVersion: "2022-02-01",
     }),
   );
 export type AccountsCreateOrUpdateInput =
@@ -91,11 +137,11 @@ export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
+    apiVersion: "2022-02-01",
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -120,11 +166,11 @@ export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
+    apiVersion: "2022-02-01",
   }),
 );
 export type AccountsGetInput = typeof AccountsGetInput.Type;
@@ -154,12 +200,12 @@ export const AccountsGetStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/status",
+    apiVersion: "2022-02-01",
   }),
 );
 export type AccountsGetStatusInput = typeof AccountsGetStatusInput.Type;
@@ -203,11 +249,11 @@ export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts",
+      apiVersion: "2022-02-01",
     }),
   );
 export type AccountsListByResourceGroupInput =
@@ -248,11 +294,11 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecommendationsService/accounts",
+      apiVersion: "2022-02-01",
     }),
   );
 export type AccountsListBySubscriptionInput =
@@ -292,11 +338,39 @@ export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      endpointAuthentications: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            aadTenantID: Schema.optional(Schema.String),
+            principalID: Schema.optional(Schema.String),
+            principalType: Schema.optional(
+              Schema.Literals(["Application", "User"]),
+            ),
+          }),
+        ),
+      ),
+      cors: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            allowedOrigins: Schema.Array(Schema.String),
+            allowedMethods: Schema.optional(Schema.Array(Schema.String)),
+            allowedHeaders: Schema.optional(Schema.Array(Schema.String)),
+            exposedHeaders: Schema.optional(Schema.Array(Schema.String)),
+            maxAgeInSeconds: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
+      reportsConnectionString: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
+    apiVersion: "2022-02-01",
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -326,11 +400,42 @@ export const ModelingCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        features: Schema.optional(
+          Schema.Literals(["Basic", "Standard", "Premium"]),
+        ),
+        frequency: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+        size: Schema.optional(Schema.Literals(["Small", "Medium", "Large"])),
+        inputData: Schema.optional(
+          Schema.Struct({
+            connectionString: Schema.optional(SensitiveString),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
+      apiVersion: "2022-02-01",
     }),
   );
 export type ModelingCreateOrUpdateInput =
@@ -364,11 +469,11 @@ export const ModelingCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ModelingDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
+    apiVersion: "2022-02-01",
   }),
 );
 export type ModelingDeleteInput = typeof ModelingDeleteInput.Type;
@@ -393,11 +498,11 @@ export const ModelingDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ModelingGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
+    apiVersion: "2022-02-01",
   }),
 );
 export type ModelingGetInput = typeof ModelingGetInput.Type;
@@ -427,11 +532,11 @@ export const ModelingListByAccountResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling",
+      apiVersion: "2022-02-01",
     }),
   );
 export type ModelingListByAccountResourceInput =
@@ -471,11 +576,21 @@ export const ModelingListByAccountResource =
 export const ModelingUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      inputData: Schema.optional(
+        Schema.Struct({
+          connectionString: Schema.optional(SensitiveString),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling/{modelingName}",
+    apiVersion: "2022-02-01",
   }),
 );
 export type ModelingUpdateInput = typeof ModelingUpdateInput.Type;
@@ -501,12 +616,13 @@ export const ModelingUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ModelingUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.RecommendationsService/operations",
+    apiVersion: "2022-02-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -552,11 +668,11 @@ export const OperationStatusesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.RecommendationsService/locations/{location}/operationStatuses/{operationId}",
+      apiVersion: "2022-02-01",
     }),
   );
 export type OperationStatusesGetInput = typeof OperationStatusesGetInput.Type;
@@ -639,11 +755,35 @@ export const ServiceEndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        preAllocatedCapacity: Schema.optional(Schema.Number),
+        pairedLocation: Schema.optional(Schema.String),
+        url: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
+      apiVersion: "2022-02-01",
     }),
   );
 export type ServiceEndpointsCreateOrUpdateInput =
@@ -677,11 +817,11 @@ export const ServiceEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
+      apiVersion: "2022-02-01",
     }),
   );
 export type ServiceEndpointsDeleteInput =
@@ -712,11 +852,11 @@ export const ServiceEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
+      apiVersion: "2022-02-01",
     }),
   );
 export type ServiceEndpointsGetInput = typeof ServiceEndpointsGetInput.Type;
@@ -747,11 +887,11 @@ export const ServiceEndpointsListByAccountResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints",
+      apiVersion: "2022-02-01",
     }),
   );
 export type ServiceEndpointsListByAccountResourceInput =
@@ -792,11 +932,12 @@ export const ServiceEndpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints/{serviceEndpointName}",
+      apiVersion: "2022-02-01",
     }),
   );
 export type ServiceEndpointsUpdateInput =

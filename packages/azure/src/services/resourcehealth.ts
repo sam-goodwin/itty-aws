@@ -12,11 +12,11 @@ import * as T from "../traits.ts";
 export const AvailabilityStatusesGetByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses/current",
+      apiVersion: "2025-05-01",
     }),
   );
 export type AvailabilityStatusesGetByResourceInput =
@@ -113,11 +113,11 @@ export const AvailabilityStatusesGetByResource =
 export const AvailabilityStatusesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses",
+      apiVersion: "2025-05-01",
     }),
   );
 export type AvailabilityStatusesListInput =
@@ -226,11 +226,11 @@ export const AvailabilityStatusesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceHealth/availabilityStatuses",
+      apiVersion: "2025-05-01",
     }),
   );
 export type AvailabilityStatusesListByResourceGroupInput =
@@ -338,11 +338,11 @@ export const AvailabilityStatusesListByResourceGroup =
 export const AvailabilityStatusesListBySubscriptionIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/availabilityStatuses",
+      apiVersion: "2025-05-01",
     }),
   );
 export type AvailabilityStatusesListBySubscriptionIdInput =
@@ -449,11 +449,11 @@ export const AvailabilityStatusesListBySubscriptionId =
 export const ChildAvailabilityStatusesGetByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses/current",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ChildAvailabilityStatusesGetByResourceInput =
@@ -550,11 +550,11 @@ export const ChildAvailabilityStatusesGetByResource =
 export const ChildAvailabilityStatusesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ChildAvailabilityStatusesListInput =
@@ -661,11 +661,11 @@ export const ChildAvailabilityStatusesList =
 export const ChildResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ResourceHealth/childResources",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ChildResourcesListInput = typeof ChildResourcesListInput.Type;
@@ -767,13 +767,12 @@ export const ChildResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const EmergingIssuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    "api-version": Schema.String,
-  },
+  {},
 ).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ResourceHealth/emergingIssues/{issueName}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type EmergingIssuesGetInput = typeof EmergingIssuesGetInput.Type;
@@ -813,12 +812,11 @@ export const EmergingIssuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const EmergingIssuesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ResourceHealth/emergingIssues",
+      apiVersion: "2025-05-01",
     }),
   );
 export type EmergingIssuesListInput = typeof EmergingIssuesListInput.Type;
@@ -877,11 +875,11 @@ export const EmergingIssuesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/fetchBillingCommunicationDetails",
+      apiVersion: "2025-05-01",
     }),
   );
 export type EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdInput =
@@ -929,11 +927,11 @@ export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId
 export const EventFetchDetailsBySubscriptionIdAndTrackingIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/fetchEventDetails",
+      apiVersion: "2025-05-01",
     }),
   );
 export type EventFetchDetailsBySubscriptionIdAndTrackingIdInput =
@@ -977,12 +975,11 @@ export const EventFetchDetailsBySubscriptionIdAndTrackingId =
   }));
 // Input Schema
 export const EventFetchDetailsByTenantIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/fetchEventDetails",
+      apiVersion: "2025-05-01",
     }),
   );
 export type EventFetchDetailsByTenantIdAndTrackingIdInput =
@@ -1027,11 +1024,11 @@ export const EventFetchDetailsByTenantIdAndTrackingId =
 export const EventGetBySubscriptionIdAndTrackingIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type EventGetBySubscriptionIdAndTrackingIdInput =
@@ -1075,12 +1072,11 @@ export const EventGetBySubscriptionIdAndTrackingId =
   }));
 // Input Schema
 export const EventGetByTenantIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type EventGetByTenantIdAndTrackingIdInput =
@@ -1125,11 +1121,11 @@ export const EventGetByTenantIdAndTrackingId =
 export const EventsListBySingleResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ResourceHealth/events",
+      apiVersion: "2025-05-01",
     }),
   );
 export type EventsListBySingleResourceInput =
@@ -1191,11 +1187,11 @@ export const EventsListBySingleResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const EventsListBySubscriptionIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events",
+      apiVersion: "2025-05-01",
     }),
   );
 export type EventsListBySubscriptionIdInput =
@@ -1255,12 +1251,11 @@ export const EventsListBySubscriptionId = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const EventsListByTenantIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ResourceHealth/events",
+      apiVersion: "2025-05-01",
     }),
   );
 export type EventsListByTenantIdInput = typeof EventsListByTenantIdInput.Type;
@@ -1319,11 +1314,11 @@ export const EventsListByTenantId = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ImpactedResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources/{impactedResourceName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ImpactedResourcesGetInput = typeof ImpactedResourcesGetInput.Type;
@@ -1366,12 +1361,11 @@ export const ImpactedResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ImpactedResourcesGetByTenantIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources/{impactedResourceName}",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ImpactedResourcesGetByTenantIdInput =
@@ -1416,11 +1410,11 @@ export const ImpactedResourcesGetByTenantId =
 export const ImpactedResourcesListBySubscriptionIdAndEventIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ImpactedResourcesListBySubscriptionIdAndEventIdInput =
@@ -1479,12 +1473,11 @@ export const ImpactedResourcesListBySubscriptionIdAndEventId =
   }));
 // Input Schema
 export const ImpactedResourcesListByTenantIdAndEventIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
+      apiVersion: "2025-05-01",
     }),
   );
 export type ImpactedResourcesListByTenantIdAndEventIdInput =
@@ -1544,12 +1537,12 @@ export const ImpactedResourcesListByTenantIdAndEventId =
 export const MetadataGetEntityInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ResourceHealth/metadata/{name}",
+    apiVersion: "2025-05-01",
   }),
 );
 export type MetadataGetEntityInput = typeof MetadataGetEntityInput.Type;
@@ -1589,12 +1582,13 @@ export const MetadataGetEntity = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MetadataGetEntityOutput,
 }));
 // Input Schema
-export const MetadataListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const MetadataListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ResourceHealth/metadata",
+    apiVersion: "2025-05-01",
   }),
 );
 export type MetadataListInput = typeof MetadataListInput.Type;
@@ -1649,12 +1643,13 @@ export const MetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MetadataListOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ResourceHealth/operations",
+    apiVersion: "2025-05-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1691,11 +1686,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/listSecurityAdvisoryImpactedResources",
+      apiVersion: "2025-05-01",
     }),
   );
 export type SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput =
@@ -1756,12 +1751,11 @@ export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId =
   }));
 // Input Schema
 export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/listSecurityAdvisoryImpactedResources",
+      apiVersion: "2025-05-01",
     }),
   );
 export type SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput =

@@ -15,11 +15,17 @@ export const AccountCapabilityHostsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     capabilityHostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.NullOr(Schema.String)),
+      tags: Schema.optional(
+        Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountCapabilityHostsCreateOrUpdateInput =
@@ -71,11 +77,11 @@ export const AccountCapabilityHostsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     capabilityHostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountCapabilityHostsDeleteInput =
@@ -109,11 +115,11 @@ export const AccountCapabilityHostsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     capabilityHostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountCapabilityHostsGetInput =
@@ -165,11 +171,11 @@ export const AccountCapabilityHostsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountCapabilityHostsListInput =
@@ -238,11 +244,183 @@ export const AccountConnectionsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      authType: Schema.Literals([
+        "PAT",
+        "ManagedIdentity",
+        "UsernamePassword",
+        "None",
+        "SAS",
+        "AccountKey",
+        "ServicePrincipal",
+        "AccessKey",
+        "ApiKey",
+        "CustomKeys",
+        "OAuth2",
+        "AAD",
+        "DelegatedSAS",
+        "ProjectManagedIdentity",
+        "AccountManagedIdentity",
+        "UserEntraToken",
+        "AgentUserImpersonation",
+        "AgenticIdentityToken",
+        "AgenticUser",
+      ]),
+      category: Schema.optional(
+        Schema.Literals([
+          "PythonFeed",
+          "ContainerRegistry",
+          "Git",
+          "S3",
+          "Snowflake",
+          "AzureKeyVault",
+          "AzureSqlDb",
+          "AzureSynapseAnalytics",
+          "AzureMySqlDb",
+          "AzurePostgresDb",
+          "ADLSGen2",
+          "AzureContainerAppEnvironment",
+          "Redis",
+          "ApiKey",
+          "AzureOpenAI",
+          "AIServices",
+          "CognitiveSearch",
+          "CognitiveService",
+          "CustomKeys",
+          "AzureBlob",
+          "AzureStorageAccount",
+          "AzureOneLake",
+          "CosmosDb",
+          "CosmosDbMongoDbApi",
+          "AzureDataExplorer",
+          "AzureMariaDb",
+          "AzureDatabricksDeltaLake",
+          "AzureSqlMi",
+          "AzureTableStorage",
+          "AmazonRdsForOracle",
+          "AmazonRdsForSqlServer",
+          "AmazonRedshift",
+          "Db2",
+          "Drill",
+          "GoogleBigQuery",
+          "Greenplum",
+          "Hbase",
+          "Hive",
+          "Impala",
+          "Informix",
+          "MariaDb",
+          "MicrosoftAccess",
+          "MySql",
+          "Netezza",
+          "Oracle",
+          "Phoenix",
+          "PostgreSql",
+          "Presto",
+          "SapOpenHub",
+          "SapBw",
+          "SapHana",
+          "SapTable",
+          "Spark",
+          "SqlServer",
+          "Sybase",
+          "Teradata",
+          "Vertica",
+          "Pinecone",
+          "Databricks",
+          "Cassandra",
+          "Couchbase",
+          "MongoDbV2",
+          "MongoDbAtlas",
+          "AmazonS3Compatible",
+          "FileServer",
+          "FtpServer",
+          "GoogleCloudStorage",
+          "Hdfs",
+          "OracleCloudStorage",
+          "Sftp",
+          "GenericHttp",
+          "ODataRest",
+          "Odbc",
+          "GenericRest",
+          "RemoteTool",
+          "AmazonMws",
+          "Concur",
+          "Dynamics",
+          "DynamicsAx",
+          "DynamicsCrm",
+          "GoogleAdWords",
+          "Hubspot",
+          "Jira",
+          "Magento",
+          "Marketo",
+          "Office365",
+          "Eloqua",
+          "Responsys",
+          "OracleServiceCloud",
+          "PayPal",
+          "QuickBooks",
+          "Salesforce",
+          "SalesforceServiceCloud",
+          "SalesforceMarketingCloud",
+          "SapCloudForCustomer",
+          "SapEcc",
+          "ServiceNow",
+          "SharePointOnlineList",
+          "Shopify",
+          "Square",
+          "WebTable",
+          "Xero",
+          "Zoho",
+          "GenericContainerRegistry",
+          "Elasticsearch",
+          "AppInsights",
+          "AppConfig",
+          "OpenAI",
+          "Serp",
+          "BingLLMSearch",
+          "Serverless",
+          "ManagedOnlineEndpoint",
+          "ApiManagement",
+          "ModelGateway",
+          "GroundingWithBingSearch",
+          "GroundingWithCustomSearch",
+          "Sharepoint",
+          "MicrosoftFabric",
+          "PowerPlatformEnvironment",
+          "RemoteA2A",
+        ]),
+      ),
+      createdByWorkspaceArmId: Schema.optional(Schema.String),
+      error: Schema.optional(Schema.String),
+      expiryTime: Schema.optional(Schema.String),
+      group: Schema.optional(
+        Schema.Literals([
+          "Azure",
+          "AzureAI",
+          "Database",
+          "NoSQL",
+          "File",
+          "GenericProtocol",
+          "ServicesAndApps",
+        ]),
+      ),
+      isSharedToAll: Schema.optional(Schema.Boolean),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      peRequirement: Schema.optional(
+        Schema.Literals(["Required", "NotRequired", "NotApplicable"]),
+      ),
+      peStatus: Schema.optional(
+        Schema.Literals(["Inactive", "Active", "NotApplicable"]),
+      ),
+      sharedUserList: Schema.optional(Schema.Array(Schema.String)),
+      target: Schema.optional(Schema.String),
+      useWorkspaceManagedIdentity: Schema.optional(Schema.Boolean),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountConnectionsCreateInput =
@@ -295,11 +473,11 @@ export const AccountConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountConnectionsDeleteInput =
@@ -334,11 +512,11 @@ export const AccountConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountConnectionsGetInput = typeof AccountConnectionsGetInput.Type;
@@ -389,7 +567,6 @@ export const AccountConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     target: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
     includeAll: Schema.optional(Schema.Boolean),
@@ -397,6 +574,7 @@ export const AccountConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountConnectionsListInput =
@@ -468,11 +646,185 @@ export const AccountConnectionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        authType: Schema.Literals([
+          "PAT",
+          "ManagedIdentity",
+          "UsernamePassword",
+          "None",
+          "SAS",
+          "AccountKey",
+          "ServicePrincipal",
+          "AccessKey",
+          "ApiKey",
+          "CustomKeys",
+          "OAuth2",
+          "AAD",
+          "DelegatedSAS",
+          "ProjectManagedIdentity",
+          "AccountManagedIdentity",
+          "UserEntraToken",
+          "AgentUserImpersonation",
+          "AgenticIdentityToken",
+          "AgenticUser",
+        ]),
+        category: Schema.optional(
+          Schema.Literals([
+            "PythonFeed",
+            "ContainerRegistry",
+            "Git",
+            "S3",
+            "Snowflake",
+            "AzureKeyVault",
+            "AzureSqlDb",
+            "AzureSynapseAnalytics",
+            "AzureMySqlDb",
+            "AzurePostgresDb",
+            "ADLSGen2",
+            "AzureContainerAppEnvironment",
+            "Redis",
+            "ApiKey",
+            "AzureOpenAI",
+            "AIServices",
+            "CognitiveSearch",
+            "CognitiveService",
+            "CustomKeys",
+            "AzureBlob",
+            "AzureStorageAccount",
+            "AzureOneLake",
+            "CosmosDb",
+            "CosmosDbMongoDbApi",
+            "AzureDataExplorer",
+            "AzureMariaDb",
+            "AzureDatabricksDeltaLake",
+            "AzureSqlMi",
+            "AzureTableStorage",
+            "AmazonRdsForOracle",
+            "AmazonRdsForSqlServer",
+            "AmazonRedshift",
+            "Db2",
+            "Drill",
+            "GoogleBigQuery",
+            "Greenplum",
+            "Hbase",
+            "Hive",
+            "Impala",
+            "Informix",
+            "MariaDb",
+            "MicrosoftAccess",
+            "MySql",
+            "Netezza",
+            "Oracle",
+            "Phoenix",
+            "PostgreSql",
+            "Presto",
+            "SapOpenHub",
+            "SapBw",
+            "SapHana",
+            "SapTable",
+            "Spark",
+            "SqlServer",
+            "Sybase",
+            "Teradata",
+            "Vertica",
+            "Pinecone",
+            "Databricks",
+            "Cassandra",
+            "Couchbase",
+            "MongoDbV2",
+            "MongoDbAtlas",
+            "AmazonS3Compatible",
+            "FileServer",
+            "FtpServer",
+            "GoogleCloudStorage",
+            "Hdfs",
+            "OracleCloudStorage",
+            "Sftp",
+            "GenericHttp",
+            "ODataRest",
+            "Odbc",
+            "GenericRest",
+            "RemoteTool",
+            "AmazonMws",
+            "Concur",
+            "Dynamics",
+            "DynamicsAx",
+            "DynamicsCrm",
+            "GoogleAdWords",
+            "Hubspot",
+            "Jira",
+            "Magento",
+            "Marketo",
+            "Office365",
+            "Eloqua",
+            "Responsys",
+            "OracleServiceCloud",
+            "PayPal",
+            "QuickBooks",
+            "Salesforce",
+            "SalesforceServiceCloud",
+            "SalesforceMarketingCloud",
+            "SapCloudForCustomer",
+            "SapEcc",
+            "ServiceNow",
+            "SharePointOnlineList",
+            "Shopify",
+            "Square",
+            "WebTable",
+            "Xero",
+            "Zoho",
+            "GenericContainerRegistry",
+            "Elasticsearch",
+            "AppInsights",
+            "AppConfig",
+            "OpenAI",
+            "Serp",
+            "BingLLMSearch",
+            "Serverless",
+            "ManagedOnlineEndpoint",
+            "ApiManagement",
+            "ModelGateway",
+            "GroundingWithBingSearch",
+            "GroundingWithCustomSearch",
+            "Sharepoint",
+            "MicrosoftFabric",
+            "PowerPlatformEnvironment",
+            "RemoteA2A",
+          ]),
+        ),
+        createdByWorkspaceArmId: Schema.optional(Schema.String),
+        error: Schema.optional(Schema.String),
+        expiryTime: Schema.optional(Schema.String),
+        group: Schema.optional(
+          Schema.Literals([
+            "Azure",
+            "AzureAI",
+            "Database",
+            "NoSQL",
+            "File",
+            "GenericProtocol",
+            "ServicesAndApps",
+          ]),
+        ),
+        isSharedToAll: Schema.optional(Schema.Boolean),
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        peRequirement: Schema.optional(
+          Schema.Literals(["Required", "NotRequired", "NotApplicable"]),
+        ),
+        peStatus: Schema.optional(
+          Schema.Literals(["Inactive", "Active", "NotApplicable"]),
+        ),
+        sharedUserList: Schema.optional(Schema.Array(Schema.String)),
+        target: Schema.optional(Schema.String),
+        useWorkspaceManagedIdentity: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountConnectionsUpdateInput =
@@ -523,11 +875,317 @@ export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Creating",
+          "Deleting",
+          "Moving",
+          "Failed",
+          "Succeeded",
+          "Canceled",
+          "ResolvingDNS",
+        ]),
+      ),
+      endpoint: Schema.optional(Schema.String),
+      internalId: Schema.optional(Schema.String),
+      capabilities: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      isMigrated: Schema.optional(Schema.Boolean),
+      migrationToken: Schema.optional(Schema.String),
+      skuChangeInfo: Schema.optional(
+        Schema.Struct({
+          countOfDowngrades: Schema.optional(Schema.Number),
+          countOfUpgradesAfterDowngrades: Schema.optional(Schema.Number),
+          lastChangeDate: Schema.optional(Schema.String),
+        }),
+      ),
+      customSubDomainName: Schema.optional(Schema.String),
+      networkAcls: Schema.optional(
+        Schema.Struct({
+          defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+          bypass: Schema.optional(Schema.Literals(["None", "AzureServices"])),
+          ipRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                value: Schema.String,
+              }),
+            ),
+          ),
+          virtualNetworkRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.String,
+                state: Schema.optional(Schema.String),
+                ignoreMissingVnetServiceEndpoint: Schema.optional(
+                  Schema.Boolean,
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      encryption: Schema.optional(
+        Schema.Struct({
+          keyVaultProperties: Schema.optional(
+            Schema.Struct({
+              keyName: Schema.optional(Schema.String),
+              keyVersion: Schema.optional(Schema.String),
+              keyVaultUri: Schema.optional(Schema.String),
+              identityClientId: Schema.optional(Schema.String),
+            }),
+          ),
+          keySource: Schema.optional(
+            Schema.Literals([
+              "Microsoft.CognitiveServices",
+              "Microsoft.KeyVault",
+            ]),
+          ),
+        }),
+      ),
+      userOwnedStorage: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourceId: Schema.optional(Schema.String),
+            identityClientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      amlWorkspace: Schema.optional(
+        Schema.Struct({
+          resourceId: Schema.optional(Schema.String),
+          identityClientId: Schema.optional(Schema.String),
+        }),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      apiProperties: Schema.optional(
+        Schema.Struct({
+          qnaRuntimeEndpoint: Schema.optional(Schema.String),
+          qnaAzureSearchEndpointKey: Schema.optional(Schema.String),
+          qnaAzureSearchEndpointId: Schema.optional(Schema.String),
+          statisticsEnabled: Schema.optional(Schema.Boolean),
+          eventHubConnectionString: Schema.optional(Schema.String),
+          storageAccountConnectionString: Schema.optional(Schema.String),
+          aadClientId: Schema.optional(Schema.String),
+          aadTenantId: Schema.optional(Schema.String),
+          superUser: Schema.optional(Schema.String),
+          websiteName: Schema.optional(Schema.String),
+        }),
+      ),
+      dateCreated: Schema.optional(Schema.String),
+      callRateLimit: Schema.optional(
+        Schema.Struct({
+          count: Schema.optional(Schema.Number),
+          renewalPeriod: Schema.optional(Schema.Number),
+          rules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                renewalPeriod: Schema.optional(Schema.Number),
+                count: Schema.optional(Schema.Number),
+                minCount: Schema.optional(Schema.Number),
+                dynamicThrottlingEnabled: Schema.optional(Schema.Boolean),
+                matchPatterns: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      path: Schema.optional(Schema.String),
+                      method: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      dynamicThrottlingEnabled: Schema.optional(Schema.Boolean),
+      storedCompletionsDisabled: Schema.optional(Schema.Boolean),
+      quotaLimit: Schema.optional(
+        Schema.Struct({
+          count: Schema.optional(Schema.Number),
+          renewalPeriod: Schema.optional(Schema.Number),
+          rules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                renewalPeriod: Schema.optional(Schema.Number),
+                count: Schema.optional(Schema.Number),
+                minCount: Schema.optional(Schema.Number),
+                dynamicThrottlingEnabled: Schema.optional(Schema.Boolean),
+                matchPatterns: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      path: Schema.optional(Schema.String),
+                      method: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      restrictOutboundNetworkAccess: Schema.optional(Schema.Boolean),
+      allowedFqdnList: Schema.optional(Schema.Array(Schema.String)),
+      disableLocalAuth: Schema.optional(Schema.Boolean),
+      endpoints: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      restore: Schema.optional(Schema.Boolean),
+      deletionDate: Schema.optional(Schema.String),
+      scheduledPurgeDate: Schema.optional(Schema.String),
+      locations: Schema.optional(
+        Schema.Struct({
+          routingMethod: Schema.optional(
+            Schema.Literals(["Priority", "Weighted", "Performance"]),
+          ),
+          regions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.Number),
+                customsubdomain: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      commitmentPlanAssociations: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            commitmentPlanId: Schema.optional(Schema.String),
+            commitmentPlanLocation: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      abusePenalty: Schema.optional(
+        Schema.Struct({
+          action: Schema.optional(Schema.Literals(["Throttle", "Block"])),
+          rateLimitPercentage: Schema.optional(Schema.Number),
+          expiration: Schema.optional(Schema.String),
+        }),
+      ),
+      raiMonitorConfig: Schema.optional(
+        Schema.Struct({
+          adxStorageResourceId: Schema.optional(Schema.String),
+          identityClientId: Schema.optional(Schema.String),
+        }),
+      ),
+      networkInjections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            scenario: Schema.optional(Schema.Literals(["none", "agent"])),
+            subnetArmId: Schema.optional(Schema.String),
+            useMicrosoftManagedNetwork: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      ),
+      allowProjectManagement: Schema.optional(Schema.Boolean),
+      defaultProject: Schema.optional(Schema.String),
+      associatedProjects: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(
+        Schema.Literals(["Free", "Basic", "Standard", "Premium", "Enterprise"]),
+      ),
+      size: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+        ]),
+      ),
+      tenantId: Schema.optional(Schema.String),
+      principalId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type AccountsCreateInput = typeof AccountsCreateInput.Type;
@@ -572,11 +1230,11 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -603,11 +1261,11 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type AccountsGetInput = typeof AccountsGetInput.Type;
@@ -650,11 +1308,11 @@ export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/accounts",
+    apiVersion: "2026-03-01",
   }),
 );
 export type AccountsListInput = typeof AccountsListInput.Type;
@@ -714,11 +1372,11 @@ export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountsListByResourceGroupInput =
@@ -784,11 +1442,11 @@ export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/listKeys",
+    apiVersion: "2026-03-01",
   }),
 );
 export type AccountsListKeysInput = typeof AccountsListKeysInput.Type;
@@ -821,11 +1479,11 @@ export const AccountsListModelsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/models",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountsListModelsInput = typeof AccountsListModelsInput.Type;
@@ -892,11 +1550,11 @@ export const AccountsListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/skus",
+    apiVersion: "2026-03-01",
   }),
 );
 export type AccountsListSkusInput = typeof AccountsListSkusInput.Type;
@@ -951,12 +1609,12 @@ export const AccountsListUsagesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/usages",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountsListUsagesInput = typeof AccountsListUsagesInput.Type;
@@ -1018,11 +1676,12 @@ export const AccountsRegenerateKeyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keyName: Schema.Literals(["Key1", "Key2"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/regenerateKey",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AccountsRegenerateKeyInput = typeof AccountsRegenerateKeyInput.Type;
@@ -1056,11 +1715,317 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Creating",
+          "Deleting",
+          "Moving",
+          "Failed",
+          "Succeeded",
+          "Canceled",
+          "ResolvingDNS",
+        ]),
+      ),
+      endpoint: Schema.optional(Schema.String),
+      internalId: Schema.optional(Schema.String),
+      capabilities: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      isMigrated: Schema.optional(Schema.Boolean),
+      migrationToken: Schema.optional(Schema.String),
+      skuChangeInfo: Schema.optional(
+        Schema.Struct({
+          countOfDowngrades: Schema.optional(Schema.Number),
+          countOfUpgradesAfterDowngrades: Schema.optional(Schema.Number),
+          lastChangeDate: Schema.optional(Schema.String),
+        }),
+      ),
+      customSubDomainName: Schema.optional(Schema.String),
+      networkAcls: Schema.optional(
+        Schema.Struct({
+          defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+          bypass: Schema.optional(Schema.Literals(["None", "AzureServices"])),
+          ipRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                value: Schema.String,
+              }),
+            ),
+          ),
+          virtualNetworkRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.String,
+                state: Schema.optional(Schema.String),
+                ignoreMissingVnetServiceEndpoint: Schema.optional(
+                  Schema.Boolean,
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      encryption: Schema.optional(
+        Schema.Struct({
+          keyVaultProperties: Schema.optional(
+            Schema.Struct({
+              keyName: Schema.optional(Schema.String),
+              keyVersion: Schema.optional(Schema.String),
+              keyVaultUri: Schema.optional(Schema.String),
+              identityClientId: Schema.optional(Schema.String),
+            }),
+          ),
+          keySource: Schema.optional(
+            Schema.Literals([
+              "Microsoft.CognitiveServices",
+              "Microsoft.KeyVault",
+            ]),
+          ),
+        }),
+      ),
+      userOwnedStorage: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourceId: Schema.optional(Schema.String),
+            identityClientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      amlWorkspace: Schema.optional(
+        Schema.Struct({
+          resourceId: Schema.optional(Schema.String),
+          identityClientId: Schema.optional(Schema.String),
+        }),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      apiProperties: Schema.optional(
+        Schema.Struct({
+          qnaRuntimeEndpoint: Schema.optional(Schema.String),
+          qnaAzureSearchEndpointKey: Schema.optional(Schema.String),
+          qnaAzureSearchEndpointId: Schema.optional(Schema.String),
+          statisticsEnabled: Schema.optional(Schema.Boolean),
+          eventHubConnectionString: Schema.optional(Schema.String),
+          storageAccountConnectionString: Schema.optional(Schema.String),
+          aadClientId: Schema.optional(Schema.String),
+          aadTenantId: Schema.optional(Schema.String),
+          superUser: Schema.optional(Schema.String),
+          websiteName: Schema.optional(Schema.String),
+        }),
+      ),
+      dateCreated: Schema.optional(Schema.String),
+      callRateLimit: Schema.optional(
+        Schema.Struct({
+          count: Schema.optional(Schema.Number),
+          renewalPeriod: Schema.optional(Schema.Number),
+          rules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                renewalPeriod: Schema.optional(Schema.Number),
+                count: Schema.optional(Schema.Number),
+                minCount: Schema.optional(Schema.Number),
+                dynamicThrottlingEnabled: Schema.optional(Schema.Boolean),
+                matchPatterns: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      path: Schema.optional(Schema.String),
+                      method: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      dynamicThrottlingEnabled: Schema.optional(Schema.Boolean),
+      storedCompletionsDisabled: Schema.optional(Schema.Boolean),
+      quotaLimit: Schema.optional(
+        Schema.Struct({
+          count: Schema.optional(Schema.Number),
+          renewalPeriod: Schema.optional(Schema.Number),
+          rules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                renewalPeriod: Schema.optional(Schema.Number),
+                count: Schema.optional(Schema.Number),
+                minCount: Schema.optional(Schema.Number),
+                dynamicThrottlingEnabled: Schema.optional(Schema.Boolean),
+                matchPatterns: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      path: Schema.optional(Schema.String),
+                      method: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      restrictOutboundNetworkAccess: Schema.optional(Schema.Boolean),
+      allowedFqdnList: Schema.optional(Schema.Array(Schema.String)),
+      disableLocalAuth: Schema.optional(Schema.Boolean),
+      endpoints: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      restore: Schema.optional(Schema.Boolean),
+      deletionDate: Schema.optional(Schema.String),
+      scheduledPurgeDate: Schema.optional(Schema.String),
+      locations: Schema.optional(
+        Schema.Struct({
+          routingMethod: Schema.optional(
+            Schema.Literals(["Priority", "Weighted", "Performance"]),
+          ),
+          regions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.Number),
+                customsubdomain: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      commitmentPlanAssociations: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            commitmentPlanId: Schema.optional(Schema.String),
+            commitmentPlanLocation: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      abusePenalty: Schema.optional(
+        Schema.Struct({
+          action: Schema.optional(Schema.Literals(["Throttle", "Block"])),
+          rateLimitPercentage: Schema.optional(Schema.Number),
+          expiration: Schema.optional(Schema.String),
+        }),
+      ),
+      raiMonitorConfig: Schema.optional(
+        Schema.Struct({
+          adxStorageResourceId: Schema.optional(Schema.String),
+          identityClientId: Schema.optional(Schema.String),
+        }),
+      ),
+      networkInjections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            scenario: Schema.optional(Schema.Literals(["none", "agent"])),
+            subnetArmId: Schema.optional(Schema.String),
+            useMicrosoftManagedNetwork: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      ),
+      allowProjectManagement: Schema.optional(Schema.Boolean),
+      defaultProject: Schema.optional(Schema.String),
+      associatedProjects: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(
+        Schema.Literals(["Free", "Basic", "Standard", "Premium", "Enterprise"]),
+      ),
+      size: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+        ]),
+      ),
+      tenantId: Schema.optional(Schema.String),
+      principalId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -1108,11 +2073,17 @@ export const AgentApplicationsCreateOrUpdateInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.NullOr(Schema.String)),
+      tags: Schema.optional(
+        Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentApplicationsCreateOrUpdateInput =
@@ -1166,11 +2137,11 @@ export const AgentApplicationsDeleteInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentApplicationsDeleteInput =
@@ -1207,11 +2178,11 @@ export const AgentApplicationsDisableInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/disable",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentApplicationsDisableInput =
@@ -1248,11 +2219,11 @@ export const AgentApplicationsEnableInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/enable",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentApplicationsEnableInput =
@@ -1289,11 +2260,11 @@ export const AgentApplicationsGetInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentApplicationsGetInput = typeof AgentApplicationsGetInput.Type;
@@ -1345,7 +2316,6 @@ export const AgentApplicationsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     count: Schema.optional(Schema.Number),
     $skip: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -1357,6 +2327,7 @@ export const AgentApplicationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentApplicationsListInput = typeof AgentApplicationsListInput.Type;
@@ -1433,11 +2404,11 @@ export const AgentApplicationsListAgentsInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/listAgents",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentApplicationsListAgentsInput =
@@ -1512,11 +2483,17 @@ export const AgentDeploymentsCreateOrUpdateInput =
     projectName: Schema.String.pipe(T.PathParam()),
     appName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.NullOr(Schema.String)),
+      tags: Schema.optional(
+        Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentDeploymentsCreateOrUpdateInput =
@@ -1572,11 +2549,11 @@ export const AgentDeploymentsDeleteInput =
     projectName: Schema.String.pipe(T.PathParam()),
     appName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentDeploymentsDeleteInput =
@@ -1615,11 +2592,11 @@ export const AgentDeploymentsGetInput =
     projectName: Schema.String.pipe(T.PathParam()),
     appName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentDeploymentsGetInput = typeof AgentDeploymentsGetInput.Type;
@@ -1671,7 +2648,6 @@ export const AgentDeploymentsListInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     appName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     count: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
     names: Schema.optional(Schema.String),
@@ -1681,6 +2657,7 @@ export const AgentDeploymentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentDeploymentsListInput = typeof AgentDeploymentsListInput.Type;
@@ -1756,11 +2733,11 @@ export const AgentDeploymentsStartInput =
     projectName: Schema.String.pipe(T.PathParam()),
     appName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}/start",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentDeploymentsStartInput = typeof AgentDeploymentsStartInput.Type;
@@ -1798,11 +2775,11 @@ export const AgentDeploymentsStopInput =
     projectName: Schema.String.pipe(T.PathParam()),
     appName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}/stop",
+      apiVersion: "2026-03-01",
     }),
   );
 export type AgentDeploymentsStopInput = typeof AgentDeploymentsStopInput.Type;
@@ -1834,11 +2811,60 @@ export const AgentDeploymentsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CalculateModelCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    model: Schema.optional(
+      Schema.Struct({
+        publisher: Schema.optional(Schema.String),
+        format: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+        source: Schema.optional(Schema.String),
+        sourceAccount: Schema.optional(Schema.String),
+        callRateLimit: Schema.optional(
+          Schema.Struct({
+            count: Schema.optional(Schema.Number),
+            renewalPeriod: Schema.optional(Schema.Number),
+            rules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  renewalPeriod: Schema.optional(Schema.Number),
+                  count: Schema.optional(Schema.Number),
+                  minCount: Schema.optional(Schema.Number),
+                  dynamicThrottlingEnabled: Schema.optional(Schema.Boolean),
+                  matchPatterns: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        path: Schema.optional(Schema.String),
+                        method: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    skuName: Schema.optional(Schema.String),
+    workloads: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          requestPerMinute: Schema.optional(Schema.Number),
+          requestParameters: Schema.optional(
+            Schema.Struct({
+              avgPromptTokens: Schema.optional(Schema.Number),
+              avgGeneratedTokens: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/calculateModelCapacity",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CalculateModelCapacityInput =
@@ -1910,11 +2936,14 @@ export const calculateModelCapacity = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CheckDomainAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    subdomainName: Schema.String,
+    type: Schema.String,
+    kind: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/checkDomainAvailability",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CheckDomainAvailabilityInput =
@@ -1950,11 +2979,14 @@ export const CheckSkuAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    skus: Schema.Array(Schema.String),
+    kind: Schema.String,
+    type: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/checkSkuAvailability",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CheckSkuAvailabilityInput = typeof CheckSkuAvailabilityInput.Type;
@@ -1998,11 +3030,118 @@ export const CommitmentPlansCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Creating",
+            "Deleting",
+            "Moving",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+        commitmentPlanGuid: Schema.optional(Schema.String),
+        hostingModel: Schema.optional(
+          Schema.Literals([
+            "Web",
+            "ConnectedContainer",
+            "DisconnectedContainer",
+            "ProvisionedWeb",
+          ]),
+        ),
+        planType: Schema.optional(Schema.String),
+        current: Schema.optional(
+          Schema.Struct({
+            tier: Schema.optional(Schema.String),
+            count: Schema.optional(Schema.Number),
+            quota: Schema.optional(
+              Schema.Struct({
+                quantity: Schema.optional(Schema.Number),
+                unit: Schema.optional(Schema.String),
+              }),
+            ),
+            startDate: Schema.optional(Schema.String),
+            endDate: Schema.optional(Schema.String),
+          }),
+        ),
+        autoRenew: Schema.optional(Schema.Boolean),
+        next: Schema.optional(
+          Schema.Struct({
+            tier: Schema.optional(Schema.String),
+            count: Schema.optional(Schema.Number),
+            quota: Schema.optional(
+              Schema.Struct({
+                quantity: Schema.optional(Schema.Number),
+                unit: Schema.optional(Schema.String),
+              }),
+            ),
+            startDate: Schema.optional(Schema.String),
+            endDate: Schema.optional(Schema.String),
+          }),
+        ),
+        last: Schema.optional(
+          Schema.Struct({
+            tier: Schema.optional(Schema.String),
+            count: Schema.optional(Schema.Number),
+            quota: Schema.optional(
+              Schema.Struct({
+                quantity: Schema.optional(Schema.Number),
+                unit: Schema.optional(Schema.String),
+              }),
+            ),
+            startDate: Schema.optional(Schema.String),
+            endDate: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningIssues: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals([
+            "Free",
+            "Basic",
+            "Standard",
+            "Premium",
+            "Enterprise",
+          ]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansCreateOrUpdateInput =
@@ -2054,11 +3193,18 @@ export const CommitmentPlansCreateOrUpdateAssociationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
     commitmentPlanAssociationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        accountId: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansCreateOrUpdateAssociationInput =
@@ -2109,11 +3255,118 @@ export const CommitmentPlansCreateOrUpdatePlanInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Creating",
+            "Deleting",
+            "Moving",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+        commitmentPlanGuid: Schema.optional(Schema.String),
+        hostingModel: Schema.optional(
+          Schema.Literals([
+            "Web",
+            "ConnectedContainer",
+            "DisconnectedContainer",
+            "ProvisionedWeb",
+          ]),
+        ),
+        planType: Schema.optional(Schema.String),
+        current: Schema.optional(
+          Schema.Struct({
+            tier: Schema.optional(Schema.String),
+            count: Schema.optional(Schema.Number),
+            quota: Schema.optional(
+              Schema.Struct({
+                quantity: Schema.optional(Schema.Number),
+                unit: Schema.optional(Schema.String),
+              }),
+            ),
+            startDate: Schema.optional(Schema.String),
+            endDate: Schema.optional(Schema.String),
+          }),
+        ),
+        autoRenew: Schema.optional(Schema.Boolean),
+        next: Schema.optional(
+          Schema.Struct({
+            tier: Schema.optional(Schema.String),
+            count: Schema.optional(Schema.Number),
+            quota: Schema.optional(
+              Schema.Struct({
+                quantity: Schema.optional(Schema.Number),
+                unit: Schema.optional(Schema.String),
+              }),
+            ),
+            startDate: Schema.optional(Schema.String),
+            endDate: Schema.optional(Schema.String),
+          }),
+        ),
+        last: Schema.optional(
+          Schema.Struct({
+            tier: Schema.optional(Schema.String),
+            count: Schema.optional(Schema.Number),
+            quota: Schema.optional(
+              Schema.Struct({
+                quantity: Schema.optional(Schema.Number),
+                unit: Schema.optional(Schema.String),
+              }),
+            ),
+            startDate: Schema.optional(Schema.String),
+            endDate: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningIssues: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals([
+            "Free",
+            "Basic",
+            "Standard",
+            "Premium",
+            "Enterprise",
+          ]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansCreateOrUpdatePlanInput =
@@ -2164,11 +3417,11 @@ export const CommitmentPlansDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansDeleteInput = typeof CommitmentPlansDeleteInput.Type;
@@ -2202,11 +3455,11 @@ export const CommitmentPlansDeleteAssociationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
     commitmentPlanAssociationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansDeleteAssociationInput =
@@ -2239,11 +3492,11 @@ export const CommitmentPlansDeletePlanInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansDeletePlanInput =
@@ -2277,11 +3530,11 @@ export const CommitmentPlansGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansGetInput = typeof CommitmentPlansGetInput.Type;
@@ -2330,11 +3583,11 @@ export const CommitmentPlansGetAssociationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
     commitmentPlanAssociationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansGetAssociationInput =
@@ -2385,11 +3638,11 @@ export const CommitmentPlansGetPlanInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansGetPlanInput =
@@ -2440,11 +3693,11 @@ export const CommitmentPlansListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansListInput = typeof CommitmentPlansListInput.Type;
@@ -2508,11 +3761,11 @@ export const CommitmentPlansListAssociationsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansListAssociationsInput =
@@ -2578,11 +3831,11 @@ export const CommitmentPlansListPlansByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansListPlansByResourceGroupInput =
@@ -2646,11 +3899,11 @@ export const CommitmentPlansListPlansByResourceGroup =
 export const CommitmentPlansListPlansBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/commitmentPlans",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansListPlansBySubscriptionInput =
@@ -2715,11 +3968,29 @@ export const CommitmentPlansUpdatePlanInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals([
+            "Free",
+            "Basic",
+            "Standard",
+            "Premium",
+            "Enterprise",
+          ]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentPlansUpdatePlanInput =
@@ -2769,11 +4040,11 @@ export const CommitmentTiersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/commitmentTiers",
+      apiVersion: "2026-03-01",
     }),
   );
 export type CommitmentTiersListInput = typeof CommitmentTiersListInput.Type;
@@ -2835,11 +4106,18 @@ export const DefenderForAISettingsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     defenderForAISettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        state: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DefenderForAISettingsCreateOrUpdateInput =
@@ -2891,11 +4169,11 @@ export const DefenderForAISettingsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     defenderForAISettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DefenderForAISettingsGetInput =
@@ -2947,11 +4225,11 @@ export const DefenderForAISettingsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DefenderForAISettingsListInput =
@@ -3020,11 +4298,18 @@ export const DefenderForAISettingsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     defenderForAISettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        state: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DefenderForAISettingsUpdateInput =
@@ -3077,11 +4362,11 @@ export const DeletedAccountsGetInput =
     location: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroupName}/deletedAccounts/{accountName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DeletedAccountsGetInput = typeof DeletedAccountsGetInput.Type;
@@ -3127,11 +4412,11 @@ export const DeletedAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const DeletedAccountsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/deletedAccounts",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DeletedAccountsListInput = typeof DeletedAccountsListInput.Type;
@@ -3194,11 +4479,11 @@ export const DeletedAccountsPurgeInput =
     location: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroupName}/deletedAccounts/{accountName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DeletedAccountsPurgeInput = typeof DeletedAccountsPurgeInput.Type;
@@ -3231,11 +4516,203 @@ export const DeploymentsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Creating",
+            "Deleting",
+            "Moving",
+            "Failed",
+            "Succeeded",
+            "Disabled",
+            "Canceled",
+          ]),
+        ),
+        model: Schema.optional(
+          Schema.Struct({
+            publisher: Schema.optional(Schema.String),
+            format: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            source: Schema.optional(Schema.String),
+            sourceAccount: Schema.optional(Schema.String),
+            callRateLimit: Schema.optional(
+              Schema.Struct({
+                count: Schema.optional(Schema.Number),
+                renewalPeriod: Schema.optional(Schema.Number),
+                rules: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      renewalPeriod: Schema.optional(Schema.Number),
+                      count: Schema.optional(Schema.Number),
+                      minCount: Schema.optional(Schema.Number),
+                      dynamicThrottlingEnabled: Schema.optional(Schema.Boolean),
+                      matchPatterns: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            path: Schema.optional(Schema.String),
+                            method: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        scaleSettings: Schema.optional(
+          Schema.Struct({
+            scaleType: Schema.optional(Schema.Literals(["Standard", "Manual"])),
+            capacity: Schema.optional(Schema.Number),
+            activeCapacity: Schema.optional(Schema.Number),
+          }),
+        ),
+        capabilities: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        raiPolicyName: Schema.optional(Schema.String),
+        callRateLimit: Schema.optional(
+          Schema.Struct({
+            count: Schema.optional(Schema.Number),
+            renewalPeriod: Schema.optional(Schema.Number),
+            rules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  renewalPeriod: Schema.optional(Schema.Number),
+                  count: Schema.optional(Schema.Number),
+                  minCount: Schema.optional(Schema.Number),
+                  dynamicThrottlingEnabled: Schema.optional(Schema.Boolean),
+                  matchPatterns: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        path: Schema.optional(Schema.String),
+                        method: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        rateLimits: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              renewalPeriod: Schema.optional(Schema.Number),
+              count: Schema.optional(Schema.Number),
+              minCount: Schema.optional(Schema.Number),
+              dynamicThrottlingEnabled: Schema.optional(Schema.Boolean),
+              matchPatterns: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    path: Schema.optional(Schema.String),
+                    method: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        versionUpgradeOption: Schema.optional(
+          Schema.Literals([
+            "OnceNewDefaultVersionAvailable",
+            "OnceCurrentVersionExpired",
+            "NoAutoUpgrade",
+          ]),
+        ),
+        dynamicThrottlingEnabled: Schema.optional(Schema.Boolean),
+        currentCapacity: Schema.optional(Schema.Number),
+        capacitySettings: Schema.optional(
+          Schema.Struct({
+            designatedCapacity: Schema.optional(Schema.Number),
+            priority: Schema.optional(Schema.Number),
+          }),
+        ),
+        parentDeploymentName: Schema.optional(Schema.String),
+        spilloverDeploymentName: Schema.optional(Schema.String),
+        serviceTier: Schema.optional(Schema.Literals(["Default", "Priority"])),
+        deploymentState: Schema.optional(
+          Schema.Literals(["Running", "Paused"]),
+        ),
+        routing: Schema.optional(
+          Schema.Struct({
+            mode: Schema.optional(
+              Schema.Literals(["cost", "balanced", "accuracy"]),
+            ),
+            models: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  publisher: Schema.optional(Schema.String),
+                  format: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  version: Schema.optional(Schema.String),
+                  source: Schema.optional(Schema.String),
+                  sourceAccount: Schema.optional(Schema.String),
+                  callRateLimit: Schema.optional(
+                    Schema.Struct({
+                      count: Schema.optional(Schema.Number),
+                      renewalPeriod: Schema.optional(Schema.Number),
+                      rules: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            key: Schema.optional(Schema.String),
+                            renewalPeriod: Schema.optional(Schema.Number),
+                            count: Schema.optional(Schema.Number),
+                            minCount: Schema.optional(Schema.Number),
+                            dynamicThrottlingEnabled: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            matchPatterns: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  path: Schema.optional(Schema.String),
+                                  method: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals([
+            "Free",
+            "Basic",
+            "Standard",
+            "Premium",
+            "Enterprise",
+          ]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DeploymentsCreateOrUpdateInput =
@@ -3288,12 +4765,12 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
@@ -3322,11 +4799,11 @@ export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   deploymentName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DeploymentsGetInput = typeof DeploymentsGetInput.Type;
@@ -3372,11 +4849,11 @@ export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DeploymentsListInput = typeof DeploymentsListInput.Type;
@@ -3440,11 +4917,11 @@ export const DeploymentsListSkusInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/skus",
+      apiVersion: "2026-03-01",
     }),
   );
 export type DeploymentsListSkusInput = typeof DeploymentsListSkusInput.Type;
@@ -3509,11 +4986,11 @@ export const DeploymentsPauseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   deploymentName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/pause",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DeploymentsPauseInput = typeof DeploymentsPauseInput.Type;
@@ -3565,12 +5042,12 @@ export const DeploymentsResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/resume",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DeploymentsResumeInput = typeof DeploymentsResumeInput.Type;
@@ -3621,12 +5098,30 @@ export const DeploymentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals([
+            "Free",
+            "Basic",
+            "Standard",
+            "Premium",
+            "Enterprise",
+          ]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type DeploymentsUpdateInput = typeof DeploymentsUpdateInput.Type;
@@ -3675,11 +5170,31 @@ export const EncryptionScopesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     encryptionScopeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        keyVaultProperties: Schema.optional(
+          Schema.Struct({
+            keyName: Schema.optional(Schema.String),
+            keyVersion: Schema.optional(Schema.String),
+            keyVaultUri: Schema.optional(Schema.String),
+            identityClientId: Schema.optional(Schema.String),
+          }),
+        ),
+        keySource: Schema.optional(
+          Schema.Literals([
+            "Microsoft.CognitiveServices",
+            "Microsoft.KeyVault",
+          ]),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EncryptionScopesCreateOrUpdateInput =
@@ -3731,11 +5246,11 @@ export const EncryptionScopesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     encryptionScopeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EncryptionScopesDeleteInput =
@@ -3770,11 +5285,11 @@ export const EncryptionScopesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     encryptionScopeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EncryptionScopesGetInput = typeof EncryptionScopesGetInput.Type;
@@ -3822,11 +5337,11 @@ export const EncryptionScopesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes",
+      apiVersion: "2026-03-01",
     }),
   );
 export type EncryptionScopesListInput = typeof EncryptionScopesListInput.Type;
@@ -3891,7 +5406,6 @@ export const LocationBasedModelCapacitiesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     modelFormat: Schema.String,
     modelName: Schema.String,
     modelVersion: Schema.String,
@@ -3899,6 +5413,7 @@ export const LocationBasedModelCapacitiesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/modelCapacities",
+      apiVersion: "2026-03-01",
     }),
   );
 export type LocationBasedModelCapacitiesListInput =
@@ -3968,11 +5483,11 @@ export const ManagedNetworkProvisionsProvisionManagedNetworkInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     managedNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/provision",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ManagedNetworkProvisionsProvisionManagedNetworkInput =
@@ -4008,11 +5523,11 @@ export const ManagedNetworkSettingsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     managedNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ManagedNetworkSettingsGetInput =
@@ -4064,11 +5579,11 @@ export const ManagedNetworkSettingsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ManagedNetworkSettingsListInput =
@@ -4137,11 +5652,96 @@ export const ManagedNetworkSettingsPatchInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     managedNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        managedNetwork: Schema.optional(
+          Schema.Struct({
+            isolationMode: Schema.optional(
+              Schema.Literals([
+                "Disabled",
+                "AllowInternetOutbound",
+                "AllowOnlyApprovedOutbound",
+              ]),
+            ),
+            networkId: Schema.optional(Schema.String),
+            outboundRules: Schema.optional(
+              Schema.NullOr(
+                Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    category: Schema.optional(
+                      Schema.Literals([
+                        "Required",
+                        "Recommended",
+                        "UserDefined",
+                        "Dependency",
+                      ]),
+                    ),
+                    status: Schema.optional(
+                      Schema.Literals([
+                        "Inactive",
+                        "Active",
+                        "Provisioning",
+                        "Deleting",
+                        "Failed",
+                      ]),
+                    ),
+                    type: Schema.Literals([
+                      "FQDN",
+                      "PrivateEndpoint",
+                      "ServiceTag",
+                    ]),
+                    errorInformation: Schema.optional(Schema.String),
+                    parentRuleNames: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                  }),
+                ),
+              ),
+            ),
+            status: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals(["Inactive", "Active"]),
+                ),
+              }),
+            ),
+            firewallSku: Schema.optional(
+              Schema.Literals(["Standard", "Basic"]),
+            ),
+            managedNetworkKind: Schema.optional(Schema.Literals(["V1", "V2"])),
+            firewallPublicIpAddress: Schema.optional(
+              Schema.NullOr(Schema.String),
+            ),
+            provisioningState: Schema.optional(
+              Schema.Literals([
+                "Deferred",
+                "Updating",
+                "Succeeded",
+                "Failed",
+                "Deleting",
+                "Deleted",
+              ]),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deferred",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+            "Deleted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ManagedNetworkSettingsPatchInput =
@@ -4194,11 +5794,96 @@ export const ManagedNetworkSettingsPutInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     managedNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        managedNetwork: Schema.optional(
+          Schema.Struct({
+            isolationMode: Schema.optional(
+              Schema.Literals([
+                "Disabled",
+                "AllowInternetOutbound",
+                "AllowOnlyApprovedOutbound",
+              ]),
+            ),
+            networkId: Schema.optional(Schema.String),
+            outboundRules: Schema.optional(
+              Schema.NullOr(
+                Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    category: Schema.optional(
+                      Schema.Literals([
+                        "Required",
+                        "Recommended",
+                        "UserDefined",
+                        "Dependency",
+                      ]),
+                    ),
+                    status: Schema.optional(
+                      Schema.Literals([
+                        "Inactive",
+                        "Active",
+                        "Provisioning",
+                        "Deleting",
+                        "Failed",
+                      ]),
+                    ),
+                    type: Schema.Literals([
+                      "FQDN",
+                      "PrivateEndpoint",
+                      "ServiceTag",
+                    ]),
+                    errorInformation: Schema.optional(Schema.String),
+                    parentRuleNames: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                  }),
+                ),
+              ),
+            ),
+            status: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals(["Inactive", "Active"]),
+                ),
+              }),
+            ),
+            firewallSku: Schema.optional(
+              Schema.Literals(["Standard", "Basic"]),
+            ),
+            managedNetworkKind: Schema.optional(Schema.Literals(["V1", "V2"])),
+            firewallPublicIpAddress: Schema.optional(
+              Schema.NullOr(Schema.String),
+            ),
+            provisioningState: Schema.optional(
+              Schema.Literals([
+                "Deferred",
+                "Updating",
+                "Succeeded",
+                "Failed",
+                "Deleting",
+                "Deleted",
+              ]),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deferred",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+            "Deleted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ManagedNetworkSettingsPutInput =
@@ -4248,7 +5933,6 @@ export const ManagedNetworkSettingsPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ModelCapacitiesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     modelFormat: Schema.String,
     modelName: Schema.String,
     modelVersion: Schema.String,
@@ -4256,6 +5940,7 @@ export const ModelCapacitiesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/modelCapacities",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ModelCapacitiesListInput = typeof ModelCapacitiesListInput.Type;
@@ -4318,11 +6003,11 @@ export const ModelCapacitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ModelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/models",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ModelsListInput = typeof ModelsListInput.Type;
@@ -4396,11 +6081,11 @@ export const NetworkSecurityPerimeterConfigurationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     nspConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations/{nspConfigurationName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsGetInput =
@@ -4451,11 +6136,11 @@ export const NetworkSecurityPerimeterConfigurationsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations",
+      apiVersion: "2026-03-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsListInput =
@@ -4523,11 +6208,11 @@ export const NetworkSecurityPerimeterConfigurationsReconcileInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     nspConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations/{nspConfigurationName}/reconcile",
+      apiVersion: "2026-03-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsReconcileInput =
@@ -4573,12 +6258,13 @@ export const NetworkSecurityPerimeterConfigurationsReconcile =
     outputSchema: NetworkSecurityPerimeterConfigurationsReconcileOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.CognitiveServices/operations",
+    apiVersion: "2026-03-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -4627,11 +6313,33 @@ export const OutboundRuleCreateOrUpdateInput =
     accountName: Schema.String.pipe(T.PathParam()),
     managedNetworkName: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      category: Schema.optional(
+        Schema.Literals([
+          "Required",
+          "Recommended",
+          "UserDefined",
+          "Dependency",
+        ]),
+      ),
+      status: Schema.optional(
+        Schema.Literals([
+          "Inactive",
+          "Active",
+          "Provisioning",
+          "Deleting",
+          "Failed",
+        ]),
+      ),
+      type: Schema.Literals(["FQDN", "PrivateEndpoint", "ServiceTag"]),
+      errorInformation: Schema.optional(Schema.String),
+      parentRuleNames: Schema.optional(Schema.Array(Schema.String)),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OutboundRuleCreateOrUpdateInput =
@@ -4686,11 +6394,11 @@ export const OutboundRuleDeleteInput =
     accountName: Schema.String.pipe(T.PathParam()),
     managedNetworkName: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type OutboundRuleDeleteInput = typeof OutboundRuleDeleteInput.Type;
@@ -4721,11 +6429,11 @@ export const OutboundRuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountName: Schema.String.pipe(T.PathParam()),
   managedNetworkName: Schema.String.pipe(T.PathParam()),
   ruleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type OutboundRuleGetInput = typeof OutboundRuleGetInput.Type;
@@ -4773,11 +6481,11 @@ export const OutboundRuleListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   managedNetworkName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules",
+    apiVersion: "2026-03-01",
   }),
 );
 export type OutboundRuleListInput = typeof OutboundRuleListInput.Type;
@@ -4844,12 +6552,92 @@ export const OutboundRulesPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     managedNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        isolationMode: Schema.optional(
+          Schema.Literals([
+            "Disabled",
+            "AllowInternetOutbound",
+            "AllowOnlyApprovedOutbound",
+          ]),
+        ),
+        networkId: Schema.optional(Schema.String),
+        outboundRules: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                category: Schema.optional(
+                  Schema.Literals([
+                    "Required",
+                    "Recommended",
+                    "UserDefined",
+                    "Dependency",
+                  ]),
+                ),
+                status: Schema.optional(
+                  Schema.Literals([
+                    "Inactive",
+                    "Active",
+                    "Provisioning",
+                    "Deleting",
+                    "Failed",
+                  ]),
+                ),
+                type: Schema.Literals([
+                  "FQDN",
+                  "PrivateEndpoint",
+                  "ServiceTag",
+                ]),
+                errorInformation: Schema.optional(Schema.String),
+                parentRuleNames: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          ),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(Schema.Literals(["Inactive", "Active"])),
+          }),
+        ),
+        firewallSku: Schema.optional(Schema.Literals(["Standard", "Basic"])),
+        managedNetworkKind: Schema.optional(Schema.Literals(["V1", "V2"])),
+        firewallPublicIpAddress: Schema.optional(Schema.NullOr(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deferred",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+            "Deleted",
+          ]),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/batchOutboundRules",
+    apiVersion: "2026-03-01",
   }),
 );
 export type OutboundRulesPostInput = typeof OutboundRulesPostInput.Type;
@@ -4915,11 +6703,33 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -4971,11 +6781,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -5009,11 +6819,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -5064,11 +6874,11 @@ export const PrivateEndpointConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections",
+      apiVersion: "2026-03-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -5134,11 +6944,11 @@ export const PrivateLinkResourcesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateLinkResources",
+      apiVersion: "2026-03-01",
     }),
   );
 export type PrivateLinkResourcesListInput =
@@ -5207,11 +7017,35 @@ export const ProjectCapabilityHostsCreateOrUpdateInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     capabilityHostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      aiServicesConnections: Schema.optional(
+        Schema.NullOr(Schema.Array(Schema.String)),
+      ),
+      vectorStoreConnections: Schema.optional(
+        Schema.NullOr(Schema.Array(Schema.String)),
+      ),
+      storageConnections: Schema.optional(
+        Schema.NullOr(Schema.Array(Schema.String)),
+      ),
+      threadStorageConnections: Schema.optional(
+        Schema.NullOr(Schema.Array(Schema.String)),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Updating",
+          "Deleting",
+        ]),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ProjectCapabilityHostsCreateOrUpdateInput =
@@ -5265,11 +7099,11 @@ export const ProjectCapabilityHostsDeleteInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     capabilityHostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ProjectCapabilityHostsDeleteInput =
@@ -5305,11 +7139,11 @@ export const ProjectCapabilityHostsGetInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     capabilityHostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ProjectCapabilityHostsGetInput =
@@ -5363,11 +7197,11 @@ export const ProjectCapabilityHostsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ProjectCapabilityHostsListInput =
@@ -5438,11 +7272,183 @@ export const ProjectConnectionsCreateInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      authType: Schema.Literals([
+        "PAT",
+        "ManagedIdentity",
+        "UsernamePassword",
+        "None",
+        "SAS",
+        "AccountKey",
+        "ServicePrincipal",
+        "AccessKey",
+        "ApiKey",
+        "CustomKeys",
+        "OAuth2",
+        "AAD",
+        "DelegatedSAS",
+        "ProjectManagedIdentity",
+        "AccountManagedIdentity",
+        "UserEntraToken",
+        "AgentUserImpersonation",
+        "AgenticIdentityToken",
+        "AgenticUser",
+      ]),
+      category: Schema.optional(
+        Schema.Literals([
+          "PythonFeed",
+          "ContainerRegistry",
+          "Git",
+          "S3",
+          "Snowflake",
+          "AzureKeyVault",
+          "AzureSqlDb",
+          "AzureSynapseAnalytics",
+          "AzureMySqlDb",
+          "AzurePostgresDb",
+          "ADLSGen2",
+          "AzureContainerAppEnvironment",
+          "Redis",
+          "ApiKey",
+          "AzureOpenAI",
+          "AIServices",
+          "CognitiveSearch",
+          "CognitiveService",
+          "CustomKeys",
+          "AzureBlob",
+          "AzureStorageAccount",
+          "AzureOneLake",
+          "CosmosDb",
+          "CosmosDbMongoDbApi",
+          "AzureDataExplorer",
+          "AzureMariaDb",
+          "AzureDatabricksDeltaLake",
+          "AzureSqlMi",
+          "AzureTableStorage",
+          "AmazonRdsForOracle",
+          "AmazonRdsForSqlServer",
+          "AmazonRedshift",
+          "Db2",
+          "Drill",
+          "GoogleBigQuery",
+          "Greenplum",
+          "Hbase",
+          "Hive",
+          "Impala",
+          "Informix",
+          "MariaDb",
+          "MicrosoftAccess",
+          "MySql",
+          "Netezza",
+          "Oracle",
+          "Phoenix",
+          "PostgreSql",
+          "Presto",
+          "SapOpenHub",
+          "SapBw",
+          "SapHana",
+          "SapTable",
+          "Spark",
+          "SqlServer",
+          "Sybase",
+          "Teradata",
+          "Vertica",
+          "Pinecone",
+          "Databricks",
+          "Cassandra",
+          "Couchbase",
+          "MongoDbV2",
+          "MongoDbAtlas",
+          "AmazonS3Compatible",
+          "FileServer",
+          "FtpServer",
+          "GoogleCloudStorage",
+          "Hdfs",
+          "OracleCloudStorage",
+          "Sftp",
+          "GenericHttp",
+          "ODataRest",
+          "Odbc",
+          "GenericRest",
+          "RemoteTool",
+          "AmazonMws",
+          "Concur",
+          "Dynamics",
+          "DynamicsAx",
+          "DynamicsCrm",
+          "GoogleAdWords",
+          "Hubspot",
+          "Jira",
+          "Magento",
+          "Marketo",
+          "Office365",
+          "Eloqua",
+          "Responsys",
+          "OracleServiceCloud",
+          "PayPal",
+          "QuickBooks",
+          "Salesforce",
+          "SalesforceServiceCloud",
+          "SalesforceMarketingCloud",
+          "SapCloudForCustomer",
+          "SapEcc",
+          "ServiceNow",
+          "SharePointOnlineList",
+          "Shopify",
+          "Square",
+          "WebTable",
+          "Xero",
+          "Zoho",
+          "GenericContainerRegistry",
+          "Elasticsearch",
+          "AppInsights",
+          "AppConfig",
+          "OpenAI",
+          "Serp",
+          "BingLLMSearch",
+          "Serverless",
+          "ManagedOnlineEndpoint",
+          "ApiManagement",
+          "ModelGateway",
+          "GroundingWithBingSearch",
+          "GroundingWithCustomSearch",
+          "Sharepoint",
+          "MicrosoftFabric",
+          "PowerPlatformEnvironment",
+          "RemoteA2A",
+        ]),
+      ),
+      createdByWorkspaceArmId: Schema.optional(Schema.String),
+      error: Schema.optional(Schema.String),
+      expiryTime: Schema.optional(Schema.String),
+      group: Schema.optional(
+        Schema.Literals([
+          "Azure",
+          "AzureAI",
+          "Database",
+          "NoSQL",
+          "File",
+          "GenericProtocol",
+          "ServicesAndApps",
+        ]),
+      ),
+      isSharedToAll: Schema.optional(Schema.Boolean),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      peRequirement: Schema.optional(
+        Schema.Literals(["Required", "NotRequired", "NotApplicable"]),
+      ),
+      peStatus: Schema.optional(
+        Schema.Literals(["Inactive", "Active", "NotApplicable"]),
+      ),
+      sharedUserList: Schema.optional(Schema.Array(Schema.String)),
+      target: Schema.optional(Schema.String),
+      useWorkspaceManagedIdentity: Schema.optional(Schema.Boolean),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ProjectConnectionsCreateInput =
@@ -5497,11 +7503,11 @@ export const ProjectConnectionsDeleteInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ProjectConnectionsDeleteInput =
@@ -5538,11 +7544,11 @@ export const ProjectConnectionsGetInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ProjectConnectionsGetInput = typeof ProjectConnectionsGetInput.Type;
@@ -5595,7 +7601,6 @@ export const ProjectConnectionsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     target: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
     includeAll: Schema.optional(Schema.Boolean),
@@ -5603,6 +7608,7 @@ export const ProjectConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ProjectConnectionsListInput =
@@ -5676,11 +7682,185 @@ export const ProjectConnectionsUpdateInput =
     accountName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        authType: Schema.Literals([
+          "PAT",
+          "ManagedIdentity",
+          "UsernamePassword",
+          "None",
+          "SAS",
+          "AccountKey",
+          "ServicePrincipal",
+          "AccessKey",
+          "ApiKey",
+          "CustomKeys",
+          "OAuth2",
+          "AAD",
+          "DelegatedSAS",
+          "ProjectManagedIdentity",
+          "AccountManagedIdentity",
+          "UserEntraToken",
+          "AgentUserImpersonation",
+          "AgenticIdentityToken",
+          "AgenticUser",
+        ]),
+        category: Schema.optional(
+          Schema.Literals([
+            "PythonFeed",
+            "ContainerRegistry",
+            "Git",
+            "S3",
+            "Snowflake",
+            "AzureKeyVault",
+            "AzureSqlDb",
+            "AzureSynapseAnalytics",
+            "AzureMySqlDb",
+            "AzurePostgresDb",
+            "ADLSGen2",
+            "AzureContainerAppEnvironment",
+            "Redis",
+            "ApiKey",
+            "AzureOpenAI",
+            "AIServices",
+            "CognitiveSearch",
+            "CognitiveService",
+            "CustomKeys",
+            "AzureBlob",
+            "AzureStorageAccount",
+            "AzureOneLake",
+            "CosmosDb",
+            "CosmosDbMongoDbApi",
+            "AzureDataExplorer",
+            "AzureMariaDb",
+            "AzureDatabricksDeltaLake",
+            "AzureSqlMi",
+            "AzureTableStorage",
+            "AmazonRdsForOracle",
+            "AmazonRdsForSqlServer",
+            "AmazonRedshift",
+            "Db2",
+            "Drill",
+            "GoogleBigQuery",
+            "Greenplum",
+            "Hbase",
+            "Hive",
+            "Impala",
+            "Informix",
+            "MariaDb",
+            "MicrosoftAccess",
+            "MySql",
+            "Netezza",
+            "Oracle",
+            "Phoenix",
+            "PostgreSql",
+            "Presto",
+            "SapOpenHub",
+            "SapBw",
+            "SapHana",
+            "SapTable",
+            "Spark",
+            "SqlServer",
+            "Sybase",
+            "Teradata",
+            "Vertica",
+            "Pinecone",
+            "Databricks",
+            "Cassandra",
+            "Couchbase",
+            "MongoDbV2",
+            "MongoDbAtlas",
+            "AmazonS3Compatible",
+            "FileServer",
+            "FtpServer",
+            "GoogleCloudStorage",
+            "Hdfs",
+            "OracleCloudStorage",
+            "Sftp",
+            "GenericHttp",
+            "ODataRest",
+            "Odbc",
+            "GenericRest",
+            "RemoteTool",
+            "AmazonMws",
+            "Concur",
+            "Dynamics",
+            "DynamicsAx",
+            "DynamicsCrm",
+            "GoogleAdWords",
+            "Hubspot",
+            "Jira",
+            "Magento",
+            "Marketo",
+            "Office365",
+            "Eloqua",
+            "Responsys",
+            "OracleServiceCloud",
+            "PayPal",
+            "QuickBooks",
+            "Salesforce",
+            "SalesforceServiceCloud",
+            "SalesforceMarketingCloud",
+            "SapCloudForCustomer",
+            "SapEcc",
+            "ServiceNow",
+            "SharePointOnlineList",
+            "Shopify",
+            "Square",
+            "WebTable",
+            "Xero",
+            "Zoho",
+            "GenericContainerRegistry",
+            "Elasticsearch",
+            "AppInsights",
+            "AppConfig",
+            "OpenAI",
+            "Serp",
+            "BingLLMSearch",
+            "Serverless",
+            "ManagedOnlineEndpoint",
+            "ApiManagement",
+            "ModelGateway",
+            "GroundingWithBingSearch",
+            "GroundingWithCustomSearch",
+            "Sharepoint",
+            "MicrosoftFabric",
+            "PowerPlatformEnvironment",
+            "RemoteA2A",
+          ]),
+        ),
+        createdByWorkspaceArmId: Schema.optional(Schema.String),
+        error: Schema.optional(Schema.String),
+        expiryTime: Schema.optional(Schema.String),
+        group: Schema.optional(
+          Schema.Literals([
+            "Azure",
+            "AzureAI",
+            "Database",
+            "NoSQL",
+            "File",
+            "GenericProtocol",
+            "ServicesAndApps",
+          ]),
+        ),
+        isSharedToAll: Schema.optional(Schema.Boolean),
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        peRequirement: Schema.optional(
+          Schema.Literals(["Required", "NotRequired", "NotApplicable"]),
+        ),
+        peStatus: Schema.optional(
+          Schema.Literals(["Inactive", "Active", "NotApplicable"]),
+        ),
+        sharedUserList: Schema.optional(Schema.Array(Schema.String)),
+        target: Schema.optional(Schema.String),
+        useWorkspaceManagedIdentity: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type ProjectConnectionsUpdateInput =
@@ -5733,11 +7913,74 @@ export const ProjectsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   projectName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Creating",
+          "Deleting",
+          "Moving",
+          "Failed",
+          "Succeeded",
+          "Canceled",
+          "ResolvingDNS",
+        ]),
+      ),
+      displayName: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      endpoints: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      isDefault: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+        ]),
+      ),
+      tenantId: Schema.optional(Schema.String),
+      principalId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ProjectsCreateInput = typeof ProjectsCreateInput.Type;
@@ -5784,11 +8027,11 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   projectName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
@@ -5817,11 +8060,11 @@ export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   projectName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ProjectsGetInput = typeof ProjectsGetInput.Type;
@@ -5867,11 +8110,11 @@ export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ProjectsListInput = typeof ProjectsListInput.Type;
@@ -5934,11 +8177,74 @@ export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   projectName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Creating",
+          "Deleting",
+          "Moving",
+          "Failed",
+          "Succeeded",
+          "Canceled",
+          "ResolvingDNS",
+        ]),
+      ),
+      displayName: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      endpoints: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      isDefault: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+        ]),
+      ),
+      tenantId: Schema.optional(Schema.String),
+      principalId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ProjectsUpdateInput = typeof ProjectsUpdateInput.Type;
@@ -5984,11 +8290,34 @@ export const QuotaTiersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     default: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        currentTierName: Schema.optional(Schema.String),
+        tierUpgradePolicy: Schema.optional(
+          Schema.Literals(["OnceUpgradeIsAvailable", "NoAutoUpgrade"]),
+        ),
+        assignmentDate: Schema.optional(Schema.String),
+        tierUpgradeEligibilityInfo: Schema.optional(
+          Schema.Struct({
+            nextTierName: Schema.optional(Schema.NullOr(Schema.String)),
+            upgradeAvailabilityStatus: Schema.optional(
+              Schema.Literals(["Available", "NotAvailable"]),
+            ),
+            upgradeApplicableDate: Schema.optional(
+              Schema.NullOr(Schema.String),
+            ),
+            upgradeUnavailabilityReason: Schema.optional(
+              Schema.NullOr(Schema.String),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers/{default}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type QuotaTiersCreateOrUpdateInput =
@@ -6038,11 +8367,11 @@ export const QuotaTiersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const QuotaTiersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers/{default}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type QuotaTiersGetInput = typeof QuotaTiersGetInput.Type;
@@ -6087,11 +8416,11 @@ export const QuotaTiersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QuotaTiersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers",
+      apiVersion: "2026-03-01",
     }),
   );
 export type QuotaTiersListBySubscriptionInput =
@@ -6154,11 +8483,32 @@ export const QuotaTiersListBySubscription =
 export const QuotaTiersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      currentTierName: Schema.optional(Schema.String),
+      tierUpgradePolicy: Schema.optional(
+        Schema.Literals(["OnceUpgradeIsAvailable", "NoAutoUpgrade"]),
+      ),
+      assignmentDate: Schema.optional(Schema.String),
+      tierUpgradeEligibilityInfo: Schema.optional(
+        Schema.Struct({
+          nextTierName: Schema.optional(Schema.NullOr(Schema.String)),
+          upgradeAvailabilityStatus: Schema.optional(
+            Schema.Literals(["Available", "NotAvailable"]),
+          ),
+          upgradeApplicableDate: Schema.optional(Schema.NullOr(Schema.String)),
+          upgradeUnavailabilityReason: Schema.optional(
+            Schema.NullOr(Schema.String),
+          ),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers/{default}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type QuotaTiersUpdateInput = typeof QuotaTiersUpdateInput.Type;
@@ -6208,11 +8558,11 @@ export const RaiBlocklistItemsBatchAddInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     raiBlocklistName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/addRaiBlocklistItems",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiBlocklistItemsBatchAddInput =
@@ -6265,11 +8615,11 @@ export const RaiBlocklistItemsBatchDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     raiBlocklistName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/deleteRaiBlocklistItems",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiBlocklistItemsBatchDeleteInput =
@@ -6304,11 +8654,19 @@ export const RaiBlocklistItemsCreateOrUpdateInput =
     accountName: Schema.String.pipe(T.PathParam()),
     raiBlocklistName: Schema.String.pipe(T.PathParam()),
     raiBlocklistItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        pattern: Schema.optional(Schema.String),
+        isRegex: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiBlocklistItemsCreateOrUpdateInput =
@@ -6362,11 +8720,11 @@ export const RaiBlocklistItemsDeleteInput =
     accountName: Schema.String.pipe(T.PathParam()),
     raiBlocklistName: Schema.String.pipe(T.PathParam()),
     raiBlocklistItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiBlocklistItemsDeleteInput =
@@ -6403,11 +8761,11 @@ export const RaiBlocklistItemsGetInput =
     accountName: Schema.String.pipe(T.PathParam()),
     raiBlocklistName: Schema.String.pipe(T.PathParam()),
     raiBlocklistItemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiBlocklistItemsGetInput = typeof RaiBlocklistItemsGetInput.Type;
@@ -6459,11 +8817,11 @@ export const RaiBlocklistItemsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     raiBlocklistName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiBlocklistItemsListInput = typeof RaiBlocklistItemsListInput.Type;
@@ -6532,11 +8890,18 @@ export const RaiBlocklistsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     raiBlocklistName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiBlocklistsCreateOrUpdateInput =
@@ -6589,11 +8954,11 @@ export const RaiBlocklistsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     raiBlocklistName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiBlocklistsDeleteInput = typeof RaiBlocklistsDeleteInput.Type;
@@ -6623,11 +8988,11 @@ export const RaiBlocklistsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   raiBlocklistName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RaiBlocklistsGetInput = typeof RaiBlocklistsGetInput.Type;
@@ -6676,12 +9041,12 @@ export const RaiBlocklistsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RaiBlocklistsListInput = typeof RaiBlocklistsListInput.Type;
@@ -6745,11 +9110,11 @@ export const RaiContentFiltersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     filterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/raiContentFilters/{filterName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiContentFiltersGetInput = typeof RaiContentFiltersGetInput.Type;
@@ -6797,11 +9162,11 @@ export const RaiContentFiltersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/raiContentFilters",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiContentFiltersListInput = typeof RaiContentFiltersListInput.Type;
@@ -6866,11 +9231,26 @@ export const RaiExternalSafetyProviderCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     safetyProviderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        providerId: Schema.optional(Schema.String),
+        providerName: Schema.optional(Schema.String),
+        mode: Schema.optional(Schema.String),
+        url: Schema.optional(Schema.String),
+        secretName: Schema.optional(Schema.String),
+        managedIdentity: Schema.optional(Schema.String),
+        keyVaultUri: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiExternalSafetyProviderCreateOrUpdateInput =
@@ -6918,11 +9298,11 @@ export const RaiExternalSafetyProviderDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     safetyProviderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiExternalSafetyProviderDeleteInput =
@@ -6952,11 +9332,11 @@ export const RaiExternalSafetyProviderGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     safetyProviderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiExternalSafetyProviderGetInput =
@@ -7003,11 +9383,11 @@ export const RaiExternalSafetyProviderGet =
 export const RaiExternalSafetyProvidersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiExternalSafetyProvidersListInput =
@@ -7073,11 +9453,76 @@ export const RaiPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     raiPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals(["UserManaged", "SystemManaged"]),
+        ),
+        mode: Schema.optional(
+          Schema.Literals([
+            "Default",
+            "Deferred",
+            "Blocking",
+            "Asynchronous_filter",
+          ]),
+        ),
+        basePolicyName: Schema.optional(Schema.String),
+        contentFilters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              enabled: Schema.optional(Schema.Boolean),
+              severityThreshold: Schema.optional(
+                Schema.Literals(["Low", "Medium", "High"]),
+              ),
+              blocking: Schema.optional(Schema.Boolean),
+              source: Schema.optional(
+                Schema.Literals([
+                  "Prompt",
+                  "Completion",
+                  "PreToolCall",
+                  "PostToolCall",
+                  "PreRun",
+                  "PostRun",
+                ]),
+              ),
+              action: Schema.optional(
+                Schema.Literals([
+                  "None",
+                  "BLOCKING",
+                  "ANNOTATING",
+                  "HITL",
+                  "RETRY",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        customBlocklists: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              blocklistName: Schema.optional(Schema.String),
+              blocking: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+        safetyProviders: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              safetyProviderName: Schema.optional(Schema.String),
+              blocking: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiPoliciesCreateOrUpdateInput =
@@ -7130,12 +9575,12 @@ export const RaiPoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     raiPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RaiPoliciesDeleteInput = typeof RaiPoliciesDeleteInput.Type;
@@ -7164,11 +9609,11 @@ export const RaiPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   raiPolicyName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RaiPoliciesGetInput = typeof RaiPoliciesGetInput.Type;
@@ -7214,11 +9659,11 @@ export const RaiPoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RaiPoliciesListInput = typeof RaiPoliciesListInput.Type;
@@ -7282,11 +9727,33 @@ export const RaiToolLabelsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     raiToolConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        toolConnectionName: Schema.String,
+        accountScope: Schema.optional(
+          Schema.Struct({
+            labelValues: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        projectScopes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              project: Schema.String,
+              labelValues: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiToolLabelsCreateOrUpdateInput =
@@ -7339,11 +9806,11 @@ export const RaiToolLabelsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     raiToolConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiToolLabelsDeleteInput = typeof RaiToolLabelsDeleteInput.Type;
@@ -7373,11 +9840,11 @@ export const RaiToolLabelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   raiToolConnectionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RaiToolLabelsGetInput = typeof RaiToolLabelsGetInput.Type;
@@ -7426,12 +9893,12 @@ export const RaiToolLabelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RaiToolLabelsListInput = typeof RaiToolLabelsListInput.Type;
@@ -7496,11 +9963,25 @@ export const RaiTopicsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     raiTopicName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        topicId: Schema.optional(Schema.String),
+        topicName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        sampleBlobUrl: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+        failedReason: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type RaiTopicsCreateOrUpdateInput =
@@ -7552,11 +10033,11 @@ export const RaiTopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   raiTopicName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RaiTopicsDeleteInput = typeof RaiTopicsDeleteInput.Type;
@@ -7585,11 +10066,11 @@ export const RaiTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   raiTopicName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RaiTopicsGetInput = typeof RaiTopicsGetInput.Type;
@@ -7635,11 +10116,11 @@ export const RaiTopicsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics",
+    apiVersion: "2026-03-01",
   }),
 );
 export type RaiTopicsListInput = typeof RaiTopicsListInput.Type;
@@ -7699,11 +10180,11 @@ export const RaiTopicsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ResourceSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/skus",
+    apiVersion: "2026-03-01",
   }),
 );
 export type ResourceSkusListInput = typeof ResourceSkusListInput.Type;
@@ -7758,11 +10239,76 @@ export const SubscriptionRaiPolicyCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     raiPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals(["UserManaged", "SystemManaged"]),
+        ),
+        mode: Schema.optional(
+          Schema.Literals([
+            "Default",
+            "Deferred",
+            "Blocking",
+            "Asynchronous_filter",
+          ]),
+        ),
+        basePolicyName: Schema.optional(Schema.String),
+        contentFilters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              enabled: Schema.optional(Schema.Boolean),
+              severityThreshold: Schema.optional(
+                Schema.Literals(["Low", "Medium", "High"]),
+              ),
+              blocking: Schema.optional(Schema.Boolean),
+              source: Schema.optional(
+                Schema.Literals([
+                  "Prompt",
+                  "Completion",
+                  "PreToolCall",
+                  "PostToolCall",
+                  "PreRun",
+                  "PostRun",
+                ]),
+              ),
+              action: Schema.optional(
+                Schema.Literals([
+                  "None",
+                  "BLOCKING",
+                  "ANNOTATING",
+                  "HITL",
+                  "RETRY",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        customBlocklists: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              blocklistName: Schema.optional(Schema.String),
+              blocking: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+        safetyProviders: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              safetyProviderName: Schema.optional(Schema.String),
+              blocking: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SubscriptionRaiPolicyCreateOrUpdateInput =
@@ -7810,11 +10356,11 @@ export const SubscriptionRaiPolicyDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     raiPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SubscriptionRaiPolicyDeleteInput =
@@ -7845,11 +10391,11 @@ export const SubscriptionRaiPolicyGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     raiPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type SubscriptionRaiPolicyGetInput =
@@ -7900,11 +10446,26 @@ export const TestRaiExternalSafetyProviderCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     safetyProviderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        providerId: Schema.optional(Schema.String),
+        providerName: Schema.optional(Schema.String),
+        mode: Schema.optional(Schema.String),
+        url: Schema.optional(Schema.String),
+        secretName: Schema.optional(Schema.String),
+        managedIdentity: Schema.optional(Schema.String),
+        keyVaultUri: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/testRaiExternalSafetyProvider/{safetyProviderName}",
+      apiVersion: "2026-03-01",
     }),
   );
 export type TestRaiExternalSafetyProviderCreateOrUpdateInput =
@@ -7953,12 +10514,12 @@ export const TestRaiExternalSafetyProviderCreateOrUpdate =
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $filter: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/usages",
+    apiVersion: "2026-03-01",
   }),
 );
 export type UsagesListInput = typeof UsagesListInput.Type;

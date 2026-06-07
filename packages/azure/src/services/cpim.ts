@@ -10,10 +10,14 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const B2CTenantsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    countryCode: Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureActiveDirectory/checkNameAvailability",
+      apiVersion: "2021-04-01",
     }),
   );
 export type B2CTenantsCheckNameAvailabilityInput =
@@ -39,12 +43,28 @@ export const B2CTenantsCheckNameAvailability =
     outputSchema: B2CTenantsCheckNameAvailabilityOutput,
   }));
 // Input Schema
-export const B2CTenantsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const B2CTenantsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.String,
+  properties: Schema.Struct({
+    createTenantProperties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        countryCode: Schema.optional(Schema.String),
+      }),
+    ),
+  }),
+  sku: Schema.Struct({
+    name: Schema.optional(
+      Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
+    ),
+    tier: Schema.optional(Schema.Literals(["A0"])),
+  }),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/{resourceName}",
+    apiVersion: "2021-04-01",
   }),
 );
 export type B2CTenantsCreateInput = typeof B2CTenantsCreateInput.Type;
@@ -109,6 +129,7 @@ export const B2CTenantsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/{resourceName}",
+    apiVersion: "2021-04-01",
   }),
 );
 export type B2CTenantsDeleteInput = typeof B2CTenantsDeleteInput.Type;
@@ -132,6 +153,7 @@ export const B2CTenantsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/{resourceName}",
+    apiVersion: "2021-04-01",
   }),
 );
 export type B2CTenantsGetInput = typeof B2CTenantsGetInput.Type;
@@ -193,6 +215,7 @@ export const B2CTenantsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories",
+      apiVersion: "2021-04-01",
     }),
   );
 export type B2CTenantsListByResourceGroupInput =
@@ -276,6 +299,7 @@ export const B2CTenantsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureActiveDirectory/b2cDirectories",
+      apiVersion: "2021-04-01",
     }),
   );
 export type B2CTenantsListBySubscriptionInput =
@@ -354,12 +378,32 @@ export const B2CTenantsListBySubscription =
     outputSchema: B2CTenantsListBySubscriptionOutput,
   }));
 // Input Schema
-export const B2CTenantsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const B2CTenantsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(
+        Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
+      ),
+      tier: Schema.optional(Schema.Literals(["A0"])),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      billingConfig: Schema.optional(
+        Schema.Struct({
+          billingType: Schema.optional(Schema.Literals(["MAU", "Auths"])),
+          effectiveStartDateUtc: Schema.optional(Schema.String),
+        }),
+      ),
+      tenantId: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/{resourceName}",
+    apiVersion: "2021-04-01",
   }),
 );
 export type B2CTenantsUpdateInput = typeof B2CTenantsUpdateInput.Type;
@@ -419,11 +463,37 @@ export const B2CTenantsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const GuestUsagesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  },
 ).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages/{resourceName}",
+    apiVersion: "2021-04-01",
   }),
 );
 export type GuestUsagesCreateInput = typeof GuestUsagesCreateInput.Type;
@@ -475,6 +545,7 @@ export const GuestUsagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages/{resourceName}",
+    apiVersion: "2021-04-01",
   }),
 );
 export type GuestUsagesDeleteInput = typeof GuestUsagesDeleteInput.Type;
@@ -500,6 +571,7 @@ export const GuestUsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages/{resourceName}",
+    apiVersion: "2021-04-01",
   }),
 );
 export type GuestUsagesGetInput = typeof GuestUsagesGetInput.Type;
@@ -549,6 +621,7 @@ export const GuestUsagesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages",
+      apiVersion: "2021-04-01",
     }),
   );
 export type GuestUsagesListByResourceGroupInput =
@@ -618,6 +691,7 @@ export const GuestUsagesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureActiveDirectory/guestUsages",
+      apiVersion: "2021-04-01",
     }),
   );
 export type GuestUsagesListBySubscriptionInput =
@@ -683,11 +757,14 @@ export const GuestUsagesListBySubscription =
   }));
 // Input Schema
 export const GuestUsagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages/{resourceName}",
+    apiVersion: "2021-04-01",
   }),
 );
 export type GuestUsagesUpdateInput = typeof GuestUsagesUpdateInput.Type;
@@ -739,6 +816,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzureActiveDirectory/operations",
+    apiVersion: "2021-04-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;

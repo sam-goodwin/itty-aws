@@ -7,7 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const OpenShiftClustersCreateOrUpdateInput =
@@ -15,11 +15,173 @@ export const OpenShiftClustersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "AdminUpdating",
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        clusterProfile: Schema.optional(
+          Schema.Struct({
+            pullSecret: Schema.optional(Schema.String),
+            domain: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            resourceGroupId: Schema.optional(Schema.String),
+            fipsValidatedModules: Schema.optional(
+              Schema.Literals(["Disabled", "Enabled"]),
+            ),
+            oidcIssuer: Schema.optional(Schema.String),
+          }),
+        ),
+        consoleProfile: Schema.optional(
+          Schema.Struct({
+            url: Schema.optional(Schema.String),
+          }),
+        ),
+        servicePrincipalProfile: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            clientSecret: Schema.optional(SensitiveString),
+          }),
+        ),
+        platformWorkloadIdentityProfile: Schema.optional(
+          Schema.Struct({
+            upgradeableTo: Schema.optional(Schema.String),
+            platformWorkloadIdentities: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  resourceId: Schema.optional(Schema.String),
+                  clientId: Schema.optional(Schema.String),
+                  objectId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        networkProfile: Schema.optional(
+          Schema.Struct({
+            podCidr: Schema.optional(Schema.String),
+            serviceCidr: Schema.optional(Schema.String),
+            outboundType: Schema.optional(
+              Schema.Literals(["Loadbalancer", "UserDefinedRouting"]),
+            ),
+            loadBalancerProfile: Schema.optional(
+              Schema.Struct({
+                managedOutboundIps: Schema.optional(
+                  Schema.Struct({
+                    count: Schema.optional(Schema.Number),
+                  }),
+                ),
+                effectiveOutboundIps: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            preconfiguredNSG: Schema.optional(
+              Schema.Literals(["Disabled", "Enabled"]),
+            ),
+          }),
+        ),
+        masterProfile: Schema.optional(
+          Schema.Struct({
+            vmSize: Schema.optional(Schema.String),
+            subnetId: Schema.optional(Schema.String),
+            encryptionAtHost: Schema.optional(
+              Schema.Literals(["Disabled", "Enabled"]),
+            ),
+            diskEncryptionSetId: Schema.optional(Schema.String),
+          }),
+        ),
+        workerProfiles: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              vmSize: Schema.optional(Schema.String),
+              diskSizeGB: Schema.optional(Schema.Number),
+              subnetId: Schema.optional(Schema.String),
+              count: Schema.optional(Schema.Number),
+              encryptionAtHost: Schema.optional(
+                Schema.Literals(["Disabled", "Enabled"]),
+              ),
+              diskEncryptionSetId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        workerProfilesStatus: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              vmSize: Schema.optional(Schema.String),
+              diskSizeGB: Schema.optional(Schema.Number),
+              subnetId: Schema.optional(Schema.String),
+              count: Schema.optional(Schema.Number),
+              encryptionAtHost: Schema.optional(
+                Schema.Literals(["Disabled", "Enabled"]),
+              ),
+              diskEncryptionSetId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        apiserverProfile: Schema.optional(
+          Schema.Struct({
+            visibility: Schema.optional(Schema.Literals(["Private", "Public"])),
+            url: Schema.optional(Schema.String),
+            ip: Schema.optional(Schema.String),
+          }),
+        ),
+        ingressProfiles: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              visibility: Schema.optional(
+                Schema.Literals(["Private", "Public"]),
+              ),
+              ip: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
+      apiVersion: "2025-07-25",
     }),
   );
 export type OpenShiftClustersCreateOrUpdateInput =
@@ -71,11 +233,11 @@ export const OpenShiftClustersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
+      apiVersion: "2025-07-25",
     }),
   );
 export type OpenShiftClustersDeleteInput =
@@ -110,11 +272,11 @@ export const OpenShiftClustersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
+      apiVersion: "2025-07-25",
     }),
   );
 export type OpenShiftClustersGetInput = typeof OpenShiftClustersGetInput.Type;
@@ -163,11 +325,11 @@ export const OpenShiftClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const OpenShiftClustersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/openShiftClusters",
+      apiVersion: "2025-07-25",
     }),
   );
 export type OpenShiftClustersListInput = typeof OpenShiftClustersListInput.Type;
@@ -232,11 +394,11 @@ export const OpenShiftClustersListAdminCredentialsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}/listAdminCredentials",
+      apiVersion: "2025-07-25",
     }),
   );
 export type OpenShiftClustersListAdminCredentialsInput =
@@ -271,11 +433,11 @@ export const OpenShiftClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters",
+      apiVersion: "2025-07-25",
     }),
   );
 export type OpenShiftClustersListByResourceGroupInput =
@@ -341,11 +503,11 @@ export const OpenShiftClustersListCredentialsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}/listCredentials",
+      apiVersion: "2025-07-25",
     }),
   );
 export type OpenShiftClustersListCredentialsInput =
@@ -355,7 +517,7 @@ export type OpenShiftClustersListCredentialsInput =
 export const OpenShiftClustersListCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kubeadminUsername: Schema.optional(Schema.String),
-    kubeadminPassword: Schema.optional(SensitiveString),
+    kubeadminPassword: Schema.optional(SensitiveOutputString),
   });
 export type OpenShiftClustersListCredentialsOutput =
   typeof OpenShiftClustersListCredentialsOutput.Type;
@@ -382,11 +544,172 @@ export const OpenShiftClustersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "AdminUpdating",
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        clusterProfile: Schema.optional(
+          Schema.Struct({
+            pullSecret: Schema.optional(Schema.String),
+            domain: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            resourceGroupId: Schema.optional(Schema.String),
+            fipsValidatedModules: Schema.optional(
+              Schema.Literals(["Disabled", "Enabled"]),
+            ),
+            oidcIssuer: Schema.optional(Schema.String),
+          }),
+        ),
+        consoleProfile: Schema.optional(
+          Schema.Struct({
+            url: Schema.optional(Schema.String),
+          }),
+        ),
+        servicePrincipalProfile: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            clientSecret: Schema.optional(SensitiveString),
+          }),
+        ),
+        platformWorkloadIdentityProfile: Schema.optional(
+          Schema.Struct({
+            upgradeableTo: Schema.optional(Schema.String),
+            platformWorkloadIdentities: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  resourceId: Schema.optional(Schema.String),
+                  clientId: Schema.optional(Schema.String),
+                  objectId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        networkProfile: Schema.optional(
+          Schema.Struct({
+            podCidr: Schema.optional(Schema.String),
+            serviceCidr: Schema.optional(Schema.String),
+            outboundType: Schema.optional(
+              Schema.Literals(["Loadbalancer", "UserDefinedRouting"]),
+            ),
+            loadBalancerProfile: Schema.optional(
+              Schema.Struct({
+                managedOutboundIps: Schema.optional(
+                  Schema.Struct({
+                    count: Schema.optional(Schema.Number),
+                  }),
+                ),
+                effectiveOutboundIps: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            preconfiguredNSG: Schema.optional(
+              Schema.Literals(["Disabled", "Enabled"]),
+            ),
+          }),
+        ),
+        masterProfile: Schema.optional(
+          Schema.Struct({
+            vmSize: Schema.optional(Schema.String),
+            subnetId: Schema.optional(Schema.String),
+            encryptionAtHost: Schema.optional(
+              Schema.Literals(["Disabled", "Enabled"]),
+            ),
+            diskEncryptionSetId: Schema.optional(Schema.String),
+          }),
+        ),
+        workerProfiles: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              vmSize: Schema.optional(Schema.String),
+              diskSizeGB: Schema.optional(Schema.Number),
+              subnetId: Schema.optional(Schema.String),
+              count: Schema.optional(Schema.Number),
+              encryptionAtHost: Schema.optional(
+                Schema.Literals(["Disabled", "Enabled"]),
+              ),
+              diskEncryptionSetId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        workerProfilesStatus: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              vmSize: Schema.optional(Schema.String),
+              diskSizeGB: Schema.optional(Schema.Number),
+              subnetId: Schema.optional(Schema.String),
+              count: Schema.optional(Schema.Number),
+              encryptionAtHost: Schema.optional(
+                Schema.Literals(["Disabled", "Enabled"]),
+              ),
+              diskEncryptionSetId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        apiserverProfile: Schema.optional(
+          Schema.Struct({
+            visibility: Schema.optional(Schema.Literals(["Private", "Public"])),
+            url: Schema.optional(Schema.String),
+            ip: Schema.optional(Schema.String),
+          }),
+        ),
+        ingressProfiles: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              visibility: Schema.optional(
+                Schema.Literals(["Private", "Public"]),
+              ),
+              ip: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
+      apiVersion: "2025-07-25",
     }),
   );
 export type OpenShiftClustersUpdateInput =
@@ -439,11 +762,11 @@ export const OpenShiftVersionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     openShiftVersion: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/openShiftVersions/{openShiftVersion}",
+      apiVersion: "2025-07-25",
     }),
   );
 export type OpenShiftVersionsGetInput = typeof OpenShiftVersionsGetInput.Type;
@@ -493,11 +816,11 @@ export const OpenShiftVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/openShiftVersions",
+      apiVersion: "2025-07-25",
     }),
   );
 export type OpenShiftVersionsListInput = typeof OpenShiftVersionsListInput.Type;
@@ -558,12 +881,13 @@ export const OpenShiftVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.RedHatOpenShift/operations",
+    apiVersion: "2025-07-25",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -604,11 +928,11 @@ export const PlatformWorkloadIdentityRoleSetGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     openShiftMinorVersion: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/platformWorkloadIdentityRoleSets/{openShiftMinorVersion}",
+      apiVersion: "2025-07-25",
     }),
   );
 export type PlatformWorkloadIdentityRoleSetGetInput =
@@ -659,11 +983,11 @@ export const PlatformWorkloadIdentityRoleSetsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/platformWorkloadIdentityRoleSets",
+      apiVersion: "2025-07-25",
     }),
   );
 export type PlatformWorkloadIdentityRoleSetsListInput =

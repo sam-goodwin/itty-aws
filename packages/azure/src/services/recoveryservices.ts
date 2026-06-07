@@ -13,11 +13,11 @@ export const DeletedVaultsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   deletedVaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{deletedVaultName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type DeletedVaultsGetInput = typeof DeletedVaultsGetInput.Type;
@@ -66,11 +66,11 @@ export const DeletedVaultsGetOperationStatusInput =
     location: Schema.String.pipe(T.PathParam()),
     deletedVaultName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{deletedVaultName}/operations/{operationId}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type DeletedVaultsGetOperationStatusInput =
@@ -123,11 +123,11 @@ export const DeletedVaultsListBySubscriptionIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults",
+      apiVersion: "2026-01-01",
     }),
   );
 export type DeletedVaultsListBySubscriptionIdInput =
@@ -191,11 +191,14 @@ export const DeletedVaultsUndeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     deletedVaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      recoveryResourceGroupId: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{deletedVaultName}/undelete",
+      apiVersion: "2026-01-01",
     }),
   );
 export type DeletedVaultsUndeleteInput = typeof DeletedVaultsUndeleteInput.Type;
@@ -246,11 +249,11 @@ export const GetOperationResultInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/operationResults/{operationId}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type GetOperationResultInput = typeof GetOperationResultInput.Type;
@@ -299,11 +302,11 @@ export const GetOperationStatusInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/operationStatus/{operationId}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type GetOperationStatusInput = typeof GetOperationStatusInput.Type;
@@ -349,12 +352,13 @@ export const GetOperationStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetOperationStatusOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.RecoveryServices/operations",
+    apiVersion: "2026-01-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -413,11 +417,11 @@ export const PrivateLinkResourcesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     privateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -468,11 +472,11 @@ export const PrivateLinkResourcesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateLinkResources",
+      apiVersion: "2026-01-01",
     }),
   );
 export type PrivateLinkResourcesListInput =
@@ -537,11 +541,29 @@ export const RecoveryServicesCapabilitiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        dnsZones: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              subResource: Schema.optional(
+                Schema.Literals([
+                  "AzureBackup",
+                  "AzureBackup_secondary",
+                  "AzureSiteRecovery",
+                ]),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    type: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/capabilities",
+      apiVersion: "2026-01-01",
     }),
   );
 export type RecoveryServicesCapabilitiesInput =
@@ -574,11 +596,13 @@ export const RecoveryServicesCheckNameAvailabilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/locations/{location}/checkNameAvailability",
+      apiVersion: "2026-01-01",
     }),
   );
 export type RecoveryServicesCheckNameAvailabilityInput =
@@ -621,11 +645,11 @@ export const RegisteredIdentitiesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     identityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/registeredIdentities/{identityName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type RegisteredIdentitiesDeleteInput =
@@ -659,11 +683,11 @@ export const ReplicationUsagesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/replicationUsages",
+      apiVersion: "2026-01-01",
     }),
   );
 export type ReplicationUsagesListInput = typeof ReplicationUsagesListInput.Type;
@@ -724,11 +748,11 @@ export const UsagesListByVaultsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages",
+      apiVersion: "2026-01-01",
     }),
   );
 export type UsagesListByVaultsInput = typeof UsagesListByVaultsInput.Type;
@@ -786,11 +810,25 @@ export const VaultCertificatesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        authType: Schema.optional(
+          Schema.Literals([
+            "Invalid",
+            "ACS",
+            "AAD",
+            "AccessControlService",
+            "AzureActiveDirectory",
+          ]),
+        ),
+        certificate: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/certificates/{certificateName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type VaultCertificatesCreateInput =
@@ -841,11 +879,20 @@ export const VaultExtendedInfoCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        integrityKey: Schema.optional(Schema.String),
+        encryptionKey: Schema.optional(Schema.String),
+        encryptionKeyThumbprint: Schema.optional(Schema.String),
+        algorithm: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
+      apiVersion: "2026-01-01",
     }),
   );
 export type VaultExtendedInfoCreateOrUpdateInput =
@@ -895,11 +942,11 @@ export const VaultExtendedInfoGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
+      apiVersion: "2026-01-01",
     }),
   );
 export type VaultExtendedInfoGetInput = typeof VaultExtendedInfoGetInput.Type;
@@ -948,11 +995,20 @@ export const VaultExtendedInfoUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        integrityKey: Schema.optional(Schema.String),
+        encryptionKey: Schema.optional(Schema.String),
+        encryptionKeyThumbprint: Schema.optional(Schema.String),
+        algorithm: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
+      apiVersion: "2026-01-01",
     }),
   );
 export type VaultExtendedInfoUpdateInput =
@@ -1003,11 +1059,296 @@ export const VaultsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        upgradeDetails: Schema.optional(
+          Schema.Struct({
+            operationId: Schema.optional(Schema.String),
+            startTimeUtc: Schema.optional(Schema.String),
+            lastUpdatedTimeUtc: Schema.optional(Schema.String),
+            endTimeUtc: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Literals(["Unknown", "InProgress", "Upgraded", "Failed"]),
+            ),
+            message: Schema.optional(Schema.String),
+            triggerType: Schema.optional(
+              Schema.Literals(["UserTriggered", "ForcedUpgrade"]),
+            ),
+            upgradedResourceId: Schema.optional(Schema.String),
+            previousResourceId: Schema.optional(Schema.String),
+          }),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              properties: Schema.optional(
+                Schema.Struct({
+                  provisioningState: Schema.optional(
+                    Schema.Literals([
+                      "Succeeded",
+                      "Deleting",
+                      "Failed",
+                      "Pending",
+                    ]),
+                  ),
+                  privateEndpoint: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  privateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(
+                        Schema.Literals([
+                          "Pending",
+                          "Approved",
+                          "Rejected",
+                          "Disconnected",
+                        ]),
+                      ),
+                      description: Schema.optional(Schema.String),
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  groupIds: Schema.optional(
+                    Schema.Array(
+                      Schema.Literals([
+                        "AzureBackup",
+                        "AzureBackup_secondary",
+                        "AzureSiteRecovery",
+                      ]),
+                    ),
+                  ),
+                }),
+              ),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              location: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        privateEndpointStateForBackup: Schema.optional(
+          Schema.Literals(["None", "Enabled"]),
+        ),
+        privateEndpointStateForSiteRecovery: Schema.optional(
+          Schema.Literals(["None", "Enabled"]),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            keyVaultProperties: Schema.optional(
+              Schema.Struct({
+                keyUri: Schema.optional(Schema.String),
+              }),
+            ),
+            kekIdentity: Schema.optional(
+              Schema.Struct({
+                useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+            infrastructureEncryption: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+        moveDetails: Schema.optional(
+          Schema.Struct({
+            operationId: Schema.optional(Schema.String),
+            startTimeUtc: Schema.optional(Schema.String),
+            completionTimeUtc: Schema.optional(Schema.String),
+            sourceResourceId: Schema.optional(Schema.String),
+            targetResourceId: Schema.optional(Schema.String),
+          }),
+        ),
+        moveState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "InProgress",
+            "PrepareFailed",
+            "CommitFailed",
+            "PrepareTimedout",
+            "CommitTimedout",
+            "MoveSucceeded",
+            "Failure",
+            "CriticalFailure",
+            "PartialSuccess",
+          ]),
+        ),
+        backupStorageVersion: Schema.optional(
+          Schema.Literals(["V1", "V2", "Unassigned"]),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        monitoringSettings: Schema.optional(
+          Schema.Struct({
+            azureMonitorAlertSettings: Schema.optional(
+              Schema.Struct({
+                alertsForAllJobFailures: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                alertsForAllReplicationIssues: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                alertsForAllFailoverIssues: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+              }),
+            ),
+            classicAlertSettings: Schema.optional(
+              Schema.Struct({
+                alertsForCriticalOperations: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                emailNotificationsForSiteRecovery: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        costManagementSettings: Schema.optional(
+          Schema.Struct({
+            granularityLevel: Schema.optional(
+              Schema.Literals([
+                "VaultLevel",
+                "ProtectedItemLevel",
+                "ProtectedItemWithParentTag",
+              ]),
+            ),
+          }),
+        ),
+        restoreSettings: Schema.optional(
+          Schema.Struct({
+            crossSubscriptionRestoreSettings: Schema.optional(
+              Schema.Struct({
+                crossSubscriptionRestoreState: Schema.optional(
+                  Schema.Literals([
+                    "Enabled",
+                    "Disabled",
+                    "PermanentlyDisabled",
+                  ]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        redundancySettings: Schema.optional(
+          Schema.Struct({
+            standardTierStorageRedundancy: Schema.optional(
+              Schema.Literals([
+                "Invalid",
+                "LocallyRedundant",
+                "GeoRedundant",
+                "ZoneRedundant",
+              ]),
+            ),
+            crossRegionRestore: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+        securitySettings: Schema.optional(
+          Schema.Struct({
+            immutabilitySettings: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Literals(["Disabled", "Unlocked", "Locked"]),
+                ),
+              }),
+            ),
+            softDeleteSettings: Schema.optional(
+              Schema.Struct({
+                softDeleteState: Schema.optional(
+                  Schema.Literals([
+                    "Invalid",
+                    "Enabled",
+                    "Disabled",
+                    "AlwaysON",
+                  ]),
+                ),
+                softDeleteRetentionPeriodInDays: Schema.optional(Schema.Number),
+                enhancedSecurityState: Schema.optional(
+                  Schema.Literals([
+                    "Invalid",
+                    "Enabled",
+                    "Disabled",
+                    "AlwaysON",
+                  ]),
+                ),
+              }),
+            ),
+            multiUserAuthorization: Schema.optional(
+              Schema.Literals(["Invalid", "Enabled", "Disabled"]),
+            ),
+            sourceScanConfiguration: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Literals(["Invalid", "Enabled", "Disabled"]),
+                ),
+                sourceScanIdentity: Schema.optional(
+                  Schema.Struct({
+                    operationIdentityType: Schema.optional(
+                      Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                    ),
+                    userAssignedIdentity: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        secureScore: Schema.optional(
+          Schema.Literals(["None", "Minimum", "Adequate", "Maximum"]),
+        ),
+        bcdrSecurityLevel: Schema.optional(
+          Schema.Literals(["Poor", "Fair", "Good", "Excellent"]),
+        ),
+        resourceGuardOperationRequests: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "SystemAssigned",
+          "None",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["Standard", "RS0"]),
+        tier: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type VaultsCreateOrUpdateInput = typeof VaultsCreateOrUpdateInput.Type;
@@ -1055,11 +1396,11 @@ export const VaultsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type VaultsDeleteInput = typeof VaultsDeleteInput.Type;
@@ -1086,11 +1427,11 @@ export const VaultsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type VaultsGetInput = typeof VaultsGetInput.Type;
@@ -1135,11 +1476,11 @@ export const VaultsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults",
+      apiVersion: "2026-01-01",
     }),
   );
 export type VaultsListByResourceGroupInput =
@@ -1202,11 +1543,11 @@ export const VaultsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const VaultsListBySubscriptionIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/vaults",
+      apiVersion: "2026-01-01",
     }),
   );
 export type VaultsListBySubscriptionIdInput =
@@ -1269,11 +1610,282 @@ export const VaultsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(Schema.String),
+      upgradeDetails: Schema.optional(
+        Schema.Struct({
+          operationId: Schema.optional(Schema.String),
+          startTimeUtc: Schema.optional(Schema.String),
+          lastUpdatedTimeUtc: Schema.optional(Schema.String),
+          endTimeUtc: Schema.optional(Schema.String),
+          status: Schema.optional(
+            Schema.Literals(["Unknown", "InProgress", "Upgraded", "Failed"]),
+          ),
+          message: Schema.optional(Schema.String),
+          triggerType: Schema.optional(
+            Schema.Literals(["UserTriggered", "ForcedUpgrade"]),
+          ),
+          upgradedResourceId: Schema.optional(Schema.String),
+          previousResourceId: Schema.optional(Schema.String),
+        }),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            properties: Schema.optional(
+              Schema.Struct({
+                provisioningState: Schema.optional(
+                  Schema.Literals([
+                    "Succeeded",
+                    "Deleting",
+                    "Failed",
+                    "Pending",
+                  ]),
+                ),
+                privateEndpoint: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                privateLinkServiceConnectionState: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.optional(
+                      Schema.Literals([
+                        "Pending",
+                        "Approved",
+                        "Rejected",
+                        "Disconnected",
+                      ]),
+                    ),
+                    description: Schema.optional(Schema.String),
+                    actionsRequired: Schema.optional(Schema.String),
+                  }),
+                ),
+                groupIds: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals([
+                      "AzureBackup",
+                      "AzureBackup_secondary",
+                      "AzureSiteRecovery",
+                    ]),
+                  ),
+                ),
+              }),
+            ),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            location: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      privateEndpointStateForBackup: Schema.optional(
+        Schema.Literals(["None", "Enabled"]),
+      ),
+      privateEndpointStateForSiteRecovery: Schema.optional(
+        Schema.Literals(["None", "Enabled"]),
+      ),
+      encryption: Schema.optional(
+        Schema.Struct({
+          keyVaultProperties: Schema.optional(
+            Schema.Struct({
+              keyUri: Schema.optional(Schema.String),
+            }),
+          ),
+          kekIdentity: Schema.optional(
+            Schema.Struct({
+              useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
+              userAssignedIdentity: Schema.optional(Schema.String),
+            }),
+          ),
+          infrastructureEncryption: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+        }),
+      ),
+      moveDetails: Schema.optional(
+        Schema.Struct({
+          operationId: Schema.optional(Schema.String),
+          startTimeUtc: Schema.optional(Schema.String),
+          completionTimeUtc: Schema.optional(Schema.String),
+          sourceResourceId: Schema.optional(Schema.String),
+          targetResourceId: Schema.optional(Schema.String),
+        }),
+      ),
+      moveState: Schema.optional(
+        Schema.Literals([
+          "Unknown",
+          "InProgress",
+          "PrepareFailed",
+          "CommitFailed",
+          "PrepareTimedout",
+          "CommitTimedout",
+          "MoveSucceeded",
+          "Failure",
+          "CriticalFailure",
+          "PartialSuccess",
+        ]),
+      ),
+      backupStorageVersion: Schema.optional(
+        Schema.Literals(["V1", "V2", "Unassigned"]),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      monitoringSettings: Schema.optional(
+        Schema.Struct({
+          azureMonitorAlertSettings: Schema.optional(
+            Schema.Struct({
+              alertsForAllJobFailures: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled"]),
+              ),
+              alertsForAllReplicationIssues: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled"]),
+              ),
+              alertsForAllFailoverIssues: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled"]),
+              ),
+            }),
+          ),
+          classicAlertSettings: Schema.optional(
+            Schema.Struct({
+              alertsForCriticalOperations: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled"]),
+              ),
+              emailNotificationsForSiteRecovery: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled"]),
+              ),
+            }),
+          ),
+        }),
+      ),
+      costManagementSettings: Schema.optional(
+        Schema.Struct({
+          granularityLevel: Schema.optional(
+            Schema.Literals([
+              "VaultLevel",
+              "ProtectedItemLevel",
+              "ProtectedItemWithParentTag",
+            ]),
+          ),
+        }),
+      ),
+      restoreSettings: Schema.optional(
+        Schema.Struct({
+          crossSubscriptionRestoreSettings: Schema.optional(
+            Schema.Struct({
+              crossSubscriptionRestoreState: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled", "PermanentlyDisabled"]),
+              ),
+            }),
+          ),
+        }),
+      ),
+      redundancySettings: Schema.optional(
+        Schema.Struct({
+          standardTierStorageRedundancy: Schema.optional(
+            Schema.Literals([
+              "Invalid",
+              "LocallyRedundant",
+              "GeoRedundant",
+              "ZoneRedundant",
+            ]),
+          ),
+          crossRegionRestore: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+        }),
+      ),
+      securitySettings: Schema.optional(
+        Schema.Struct({
+          immutabilitySettings: Schema.optional(
+            Schema.Struct({
+              state: Schema.optional(
+                Schema.Literals(["Disabled", "Unlocked", "Locked"]),
+              ),
+            }),
+          ),
+          softDeleteSettings: Schema.optional(
+            Schema.Struct({
+              softDeleteState: Schema.optional(
+                Schema.Literals(["Invalid", "Enabled", "Disabled", "AlwaysON"]),
+              ),
+              softDeleteRetentionPeriodInDays: Schema.optional(Schema.Number),
+              enhancedSecurityState: Schema.optional(
+                Schema.Literals(["Invalid", "Enabled", "Disabled", "AlwaysON"]),
+              ),
+            }),
+          ),
+          multiUserAuthorization: Schema.optional(
+            Schema.Literals(["Invalid", "Enabled", "Disabled"]),
+          ),
+          sourceScanConfiguration: Schema.optional(
+            Schema.Struct({
+              state: Schema.optional(
+                Schema.Literals(["Invalid", "Enabled", "Disabled"]),
+              ),
+              sourceScanIdentity: Schema.optional(
+                Schema.Struct({
+                  operationIdentityType: Schema.optional(
+                    Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                  ),
+                  userAssignedIdentity: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+      secureScore: Schema.optional(
+        Schema.Literals(["None", "Minimum", "Adequate", "Maximum"]),
+      ),
+      bcdrSecurityLevel: Schema.optional(
+        Schema.Literals(["Poor", "Fair", "Good", "Excellent"]),
+      ),
+      resourceGuardOperationRequests: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+    }),
+  ),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["Standard", "RS0"]),
+      tier: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      size: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.String),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "SystemAssigned",
+        "None",
+        "UserAssigned",
+        "SystemAssigned, UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type VaultsUpdateInput = typeof VaultsUpdateInput.Type;

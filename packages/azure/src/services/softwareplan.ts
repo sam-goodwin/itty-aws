@@ -14,6 +14,7 @@ export const HybridUseBenefitCreateInput =
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits/{planId}",
+      apiVersion: "2019-12-01",
     }),
   );
 export type HybridUseBenefitCreateInput =
@@ -45,6 +46,7 @@ export const HybridUseBenefitDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits/{planId}",
+      apiVersion: "2019-12-01",
     }),
   );
 export type HybridUseBenefitDeleteInput =
@@ -72,6 +74,7 @@ export const HybridUseBenefitGetInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits/{planId}",
+      apiVersion: "2019-12-01",
     }),
   );
 export type HybridUseBenefitGetInput = typeof HybridUseBenefitGetInput.Type;
@@ -101,6 +104,7 @@ export const HybridUseBenefitListInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits",
+      apiVersion: "2019-12-01",
     }),
   );
 export type HybridUseBenefitListInput = typeof HybridUseBenefitListInput.Type;
@@ -139,6 +143,7 @@ export const HybridUseBenefitRevisionListInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits/{planId}/revisions",
+      apiVersion: "2019-12-01",
     }),
   );
 export type HybridUseBenefitRevisionListInput =
@@ -176,6 +181,7 @@ export const HybridUseBenefitUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits/{planId}",
+      apiVersion: "2019-12-01",
     }),
   );
 export type HybridUseBenefitUpdateInput =
@@ -208,6 +214,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.SoftwarePlan/operations",
+    apiVersion: "2019-12-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -252,6 +259,7 @@ export const SoftwarePlanRegisterInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SoftwarePlan/register",
+      apiVersion: "2019-12-01",
     }),
   );
 export type SoftwarePlanRegisterInput = typeof SoftwarePlanRegisterInput.Type;

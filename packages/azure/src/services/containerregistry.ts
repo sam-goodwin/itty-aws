@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const CacheRulesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -14,11 +15,29 @@ export const CacheRulesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   cacheRuleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      credentialSetResourceId: Schema.optional(Schema.String),
+      sourceRepository: Schema.optional(Schema.String),
+      targetRepository: Schema.optional(Schema.String),
+      creationDate: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules/{cacheRuleName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type CacheRulesCreateInput = typeof CacheRulesCreateInput.Type;
@@ -67,11 +86,11 @@ export const CacheRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   cacheRuleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules/{cacheRuleName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type CacheRulesDeleteInput = typeof CacheRulesDeleteInput.Type;
@@ -100,11 +119,11 @@ export const CacheRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   cacheRuleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules/{cacheRuleName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type CacheRulesGetInput = typeof CacheRulesGetInput.Type;
@@ -150,11 +169,11 @@ export const CacheRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules",
+    apiVersion: "2025-11-01",
   }),
 );
 export type CacheRulesListInput = typeof CacheRulesListInput.Type;
@@ -217,11 +236,16 @@ export const CacheRulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   cacheRuleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      credentialSetResourceId: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules/{cacheRuleName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type CacheRulesUpdateInput = typeof CacheRulesUpdateInput.Type;
@@ -271,11 +295,100 @@ export const ConnectedRegistriesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     connectedRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        mode: Schema.Literals(["ReadWrite", "ReadOnly", "Registry", "Mirror"]),
+        version: Schema.optional(Schema.String),
+        connectionState: Schema.optional(
+          Schema.Literals(["Online", "Offline", "Syncing", "Unhealthy"]),
+        ),
+        lastActivityTime: Schema.optional(Schema.String),
+        activation: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(Schema.Literals(["Active", "Inactive"])),
+          }),
+        ),
+        parent: Schema.Struct({
+          id: Schema.optional(Schema.String),
+          syncProperties: Schema.Struct({
+            tokenId: Schema.String,
+            schedule: Schema.optional(Schema.String),
+            syncWindow: Schema.optional(Schema.String),
+            messageTtl: Schema.String,
+            lastSyncTime: Schema.optional(Schema.String),
+            gatewayEndpoint: Schema.optional(Schema.String),
+          }),
+        }),
+        clientTokenIds: Schema.optional(Schema.Array(Schema.String)),
+        loginServer: Schema.optional(
+          Schema.Struct({
+            host: Schema.optional(Schema.String),
+            tls: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                certificate: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.Literals(["LocalDirectory"])),
+                    location: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        logging: Schema.optional(
+          Schema.Struct({
+            logLevel: Schema.optional(
+              Schema.Literals([
+                "Debug",
+                "Information",
+                "Warning",
+                "Error",
+                "None",
+              ]),
+            ),
+            auditLogStatus: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+        statusDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              code: Schema.optional(Schema.String),
+              description: Schema.optional(Schema.String),
+              timestamp: Schema.optional(Schema.String),
+              correlationId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        notificationsList: Schema.optional(Schema.Array(Schema.String)),
+        garbageCollection: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            schedule: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ConnectedRegistriesCreateInput =
@@ -328,11 +441,11 @@ export const ConnectedRegistriesDeactivateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     connectedRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}/deactivate",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ConnectedRegistriesDeactivateInput =
@@ -366,11 +479,11 @@ export const ConnectedRegistriesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     connectedRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ConnectedRegistriesDeleteInput =
@@ -405,11 +518,11 @@ export const ConnectedRegistriesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     connectedRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ConnectedRegistriesGetInput =
@@ -461,12 +574,12 @@ export const ConnectedRegistriesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ConnectedRegistriesListInput =
@@ -536,11 +649,46 @@ export const ConnectedRegistriesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     connectedRegistryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        syncProperties: Schema.optional(
+          Schema.Struct({
+            schedule: Schema.optional(Schema.String),
+            syncWindow: Schema.optional(Schema.String),
+            messageTtl: Schema.optional(Schema.String),
+          }),
+        ),
+        logging: Schema.optional(
+          Schema.Struct({
+            logLevel: Schema.optional(
+              Schema.Literals([
+                "Debug",
+                "Information",
+                "Warning",
+                "Error",
+                "None",
+              ]),
+            ),
+            auditLogStatus: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+        clientTokenIds: Schema.optional(Schema.Array(Schema.String)),
+        notificationsList: Schema.optional(Schema.Array(Schema.String)),
+        garbageCollection: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            schedule: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ConnectedRegistriesUpdateInput =
@@ -593,11 +741,68 @@ export const CredentialSetsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     credentialSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        loginServer: Schema.optional(Schema.String),
+        authCredentials: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.Literals(["Credential1"])),
+              usernameSecretIdentifier: Schema.optional(Schema.String),
+              passwordSecretIdentifier: Schema.optional(SensitiveString),
+              credentialHealth: Schema.optional(
+                Schema.Struct({
+                  status: Schema.optional(
+                    Schema.Literals(["Healthy", "Unhealthy"]),
+                  ),
+                  errorCode: Schema.optional(Schema.String),
+                  errorMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        creationDate: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type CredentialSetsCreateInput = typeof CredentialSetsCreateInput.Type;
@@ -648,11 +853,11 @@ export const CredentialSetsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     credentialSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type CredentialSetsDeleteInput = typeof CredentialSetsDeleteInput.Type;
@@ -685,12 +890,12 @@ export const CredentialSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     credentialSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type CredentialSetsGetInput = typeof CredentialSetsGetInput.Type;
@@ -738,11 +943,11 @@ export const CredentialSetsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets",
+      apiVersion: "2025-11-01",
     }),
   );
 export type CredentialSetsListInput = typeof CredentialSetsListInput.Type;
@@ -807,11 +1012,56 @@ export const CredentialSetsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     credentialSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        authCredentials: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.Literals(["Credential1"])),
+              usernameSecretIdentifier: Schema.optional(Schema.String),
+              passwordSecretIdentifier: Schema.optional(SensitiveString),
+              credentialHealth: Schema.optional(
+                Schema.Struct({
+                  status: Schema.optional(
+                    Schema.Literals(["Healthy", "Unhealthy"]),
+                  ),
+                  errorCode: Schema.optional(Schema.String),
+                  errorMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type CredentialSetsUpdateInput = typeof CredentialSetsUpdateInput.Type;
@@ -856,12 +1106,13 @@ export const CredentialSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ContainerRegistry/operations",
+    apiVersion: "2025-11-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -935,11 +1186,46 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Approved",
+                "Pending",
+                "Rejected",
+                "Disconnected",
+              ]),
+            ),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(
+              Schema.Literals(["None", "Recreate"]),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -991,11 +1277,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1029,11 +1315,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -1084,11 +1370,11 @@ export const PrivateEndpointConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections",
+      apiVersion: "2025-11-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -1153,11 +1439,13 @@ export const PrivateEndpointConnectionsList =
 export const RegistriesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.ContainerRegistry/registries"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerRegistry/checkNameAvailability",
+      apiVersion: "2025-11-01",
     }),
   );
 export type RegistriesCheckNameAvailabilityInput =
@@ -1190,11 +1478,175 @@ export const RegistriesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      loginServer: Schema.optional(Schema.String),
+      creationDate: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+      status: Schema.optional(
+        Schema.Struct({
+          displayStatus: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          timestamp: Schema.optional(Schema.String),
+        }),
+      ),
+      adminUserEnabled: Schema.optional(Schema.Boolean),
+      networkRuleSet: Schema.optional(
+        Schema.Struct({
+          defaultAction: Schema.Literals(["Allow", "Deny"]),
+          ipRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                action: Schema.optional(Schema.Literals(["Allow"])),
+                value: Schema.String,
+              }),
+            ),
+          ),
+        }),
+      ),
+      policies: Schema.optional(
+        Schema.Struct({
+          quarantinePolicy: Schema.optional(
+            Schema.Struct({
+              status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+            }),
+          ),
+          trustPolicy: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(Schema.Literals(["Notary"])),
+              status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+            }),
+          ),
+          retentionPolicy: Schema.optional(
+            Schema.Struct({
+              days: Schema.optional(Schema.Number),
+              lastUpdatedTime: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+            }),
+          ),
+          exportPolicy: Schema.optional(
+            Schema.Struct({
+              status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+            }),
+          ),
+          azureADAuthenticationAsArmPolicy: Schema.optional(
+            Schema.Struct({
+              status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+            }),
+          ),
+        }),
+      ),
+      encryption: Schema.optional(
+        Schema.Struct({
+          status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+          keyVaultProperties: Schema.optional(
+            Schema.Struct({
+              keyIdentifier: Schema.optional(Schema.String),
+              versionedKeyIdentifier: Schema.optional(Schema.String),
+              identity: Schema.optional(Schema.String),
+              keyRotationEnabled: Schema.optional(Schema.Boolean),
+              lastKeyRotationTimestamp: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      dataEndpointEnabled: Schema.optional(Schema.Boolean),
+      dataEndpointHostNames: Schema.optional(Schema.Array(Schema.String)),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      networkRuleBypassOptions: Schema.optional(
+        Schema.Literals(["AzureServices", "None"]),
+      ),
+      networkRuleBypassAllowedForTasks: Schema.optional(Schema.Boolean),
+      zoneRedundancy: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      anonymousPullEnabled: Schema.optional(Schema.Boolean),
+      roleAssignmentMode: Schema.optional(
+        Schema.Literals([
+          "AbacRepositoryPermissions",
+          "LegacyRegistryPermissions",
+        ]),
+      ),
+    }),
+  ),
+  sku: Schema.Struct({
+    name: Schema.Literals(["Classic", "Basic", "Standard", "Premium"]),
+    tier: Schema.optional(
+      Schema.Literals(["Classic", "Basic", "Standard", "Premium"]),
+    ),
+  }),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(
+        Schema.Literals([
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+          "None",
+        ]),
+      ),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type RegistriesCreateInput = typeof RegistriesCreateInput.Type;
@@ -1241,11 +1693,11 @@ export const RegistriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type RegistriesDeleteInput = typeof RegistriesDeleteInput.Type;
@@ -1273,11 +1725,14 @@ export const RegistriesGenerateCredentialsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tokenId: Schema.optional(Schema.String),
+    expiry: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.Literals(["password1", "password2"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/generateCredentials",
+      apiVersion: "2025-11-01",
     }),
   );
 export type RegistriesGenerateCredentialsInput =
@@ -1320,11 +1775,11 @@ export const RegistriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type RegistriesGetInput = typeof RegistriesGetInput.Type;
@@ -1370,6 +1825,7 @@ export const RegistriesGetBuildSourceUploadUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/listBuildSourceUploadUrl",
+      apiVersion: "2019-04-01",
     }),
   );
 export type RegistriesGetBuildSourceUploadUrlInput =
@@ -1400,11 +1856,11 @@ export const RegistriesGetPrivateLinkResourceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateLinkResources/{groupName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type RegistriesGetPrivateLinkResourceInput =
@@ -1455,11 +1911,25 @@ export const RegistriesImportImageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    source: Schema.Struct({
+      resourceId: Schema.optional(Schema.String),
+      registryUri: Schema.optional(Schema.String),
+      credentials: Schema.optional(
+        Schema.Struct({
+          username: Schema.optional(Schema.String),
+          password: SensitiveString,
+        }),
+      ),
+      sourceImage: Schema.String,
+    }),
+    targetTags: Schema.optional(Schema.Array(Schema.String)),
+    untaggedTargetRepositories: Schema.optional(Schema.Array(Schema.String)),
+    mode: Schema.optional(Schema.Literals(["NoForce", "Force"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/importImage",
+      apiVersion: "2025-11-01",
     }),
   );
 export type RegistriesImportImageInput = typeof RegistriesImportImageInput.Type;
@@ -1488,11 +1958,11 @@ export const RegistriesImportImage = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RegistriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerRegistry/registries",
+    apiVersion: "2025-11-01",
   }),
 );
 export type RegistriesListInput = typeof RegistriesListInput.Type;
@@ -1552,11 +2022,11 @@ export const RegistriesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries",
+      apiVersion: "2025-11-01",
     }),
   );
 export type RegistriesListByResourceGroupInput =
@@ -1622,11 +2092,11 @@ export const RegistriesListCredentialsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/listCredentials",
+      apiVersion: "2025-11-01",
     }),
   );
 export type RegistriesListCredentialsInput =
@@ -1669,11 +2139,11 @@ export const RegistriesListPrivateLinkResourcesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateLinkResources",
+      apiVersion: "2025-11-01",
     }),
   );
 export type RegistriesListPrivateLinkResourcesInput =
@@ -1740,11 +2210,11 @@ export const RegistriesListUsagesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/listUsages",
+      apiVersion: "2025-11-01",
     }),
   );
 export type RegistriesListUsagesInput = typeof RegistriesListUsagesInput.Type;
@@ -1786,11 +2256,12 @@ export const RegistriesRegenerateCredentialInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.Literals(["password", "password2"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/regenerateCredential",
+      apiVersion: "2025-11-01",
     }),
   );
 export type RegistriesRegenerateCredentialInput =
@@ -1828,10 +2299,14 @@ export const RegistriesRegenerateCredential =
   }));
 // Input Schema
 export const RegistriesScheduleRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
+    isArchiveEnabled: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scheduleRun",
+      apiVersion: "2019-04-01",
     }),
   );
 export type RegistriesScheduleRunInput = typeof RegistriesScheduleRunInput.Type;
@@ -1861,11 +2336,122 @@ export const RegistriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(
+        Schema.Literals([
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+          "None",
+        ]),
+      ),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["Classic", "Basic", "Standard", "Premium"]),
+      tier: Schema.optional(
+        Schema.Literals(["Classic", "Basic", "Standard", "Premium"]),
+      ),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      adminUserEnabled: Schema.optional(Schema.Boolean),
+      networkRuleSet: Schema.optional(
+        Schema.Struct({
+          defaultAction: Schema.Literals(["Allow", "Deny"]),
+          ipRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                action: Schema.optional(Schema.Literals(["Allow"])),
+                value: Schema.String,
+              }),
+            ),
+          ),
+        }),
+      ),
+      policies: Schema.optional(
+        Schema.Struct({
+          quarantinePolicy: Schema.optional(
+            Schema.Struct({
+              status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+            }),
+          ),
+          trustPolicy: Schema.optional(
+            Schema.Struct({
+              type: Schema.optional(Schema.Literals(["Notary"])),
+              status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+            }),
+          ),
+          retentionPolicy: Schema.optional(
+            Schema.Struct({
+              days: Schema.optional(Schema.Number),
+              lastUpdatedTime: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+            }),
+          ),
+          exportPolicy: Schema.optional(
+            Schema.Struct({
+              status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+            }),
+          ),
+          azureADAuthenticationAsArmPolicy: Schema.optional(
+            Schema.Struct({
+              status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+            }),
+          ),
+        }),
+      ),
+      encryption: Schema.optional(
+        Schema.Struct({
+          status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+          keyVaultProperties: Schema.optional(
+            Schema.Struct({
+              keyIdentifier: Schema.optional(Schema.String),
+              versionedKeyIdentifier: Schema.optional(Schema.String),
+              identity: Schema.optional(Schema.String),
+              keyRotationEnabled: Schema.optional(Schema.Boolean),
+              lastKeyRotationTimestamp: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      dataEndpointEnabled: Schema.optional(Schema.Boolean),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      networkRuleBypassOptions: Schema.optional(
+        Schema.Literals(["AzureServices", "None"]),
+      ),
+      networkRuleBypassAllowedForTasks: Schema.optional(Schema.Boolean),
+      anonymousPullEnabled: Schema.optional(Schema.Boolean),
+      roleAssignmentMode: Schema.optional(
+        Schema.Literals([
+          "AbacRepositoryPermissions",
+          "LegacyRegistryPermissions",
+        ]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type RegistriesUpdateInput = typeof RegistriesUpdateInput.Type;
@@ -1914,11 +2500,38 @@ export const ReplicationsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     replicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            displayStatus: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            timestamp: Schema.optional(Schema.String),
+          }),
+        ),
+        regionEndpointEnabled: Schema.optional(Schema.Boolean),
+        zoneRedundancy: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ReplicationsCreateInput = typeof ReplicationsCreateInput.Type;
@@ -1967,11 +2580,11 @@ export const ReplicationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     replicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ReplicationsDeleteInput = typeof ReplicationsDeleteInput.Type;
@@ -2000,11 +2613,11 @@ export const ReplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   replicationName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type ReplicationsGetInput = typeof ReplicationsGetInput.Type;
@@ -2050,11 +2663,11 @@ export const ReplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications",
+    apiVersion: "2025-11-01",
   }),
 );
 export type ReplicationsListInput = typeof ReplicationsListInput.Type;
@@ -2120,11 +2733,17 @@ export const ReplicationsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     replicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        regionEndpointEnabled: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
+      apiVersion: "2025-11-01",
     }),
   );
 export type ReplicationsUpdateInput = typeof ReplicationsUpdateInput.Type;
@@ -2173,6 +2792,7 @@ export const RunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs/{runId}/cancel",
+    apiVersion: "2019-04-01",
   }),
 );
 export type RunsCancelInput = typeof RunsCancelInput.Type;
@@ -2198,6 +2818,7 @@ export const RunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs/{runId}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type RunsGetInput = typeof RunsGetInput.Type;
@@ -2227,6 +2848,7 @@ export const RunsGetLogSasUrlInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs/{runId}/listLogSasUrl",
+    apiVersion: "2019-04-01",
   }),
 );
 export type RunsGetLogSasUrlInput = typeof RunsGetLogSasUrlInput.Type;
@@ -2257,6 +2879,7 @@ export const RunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs",
+    apiVersion: "2019-04-01",
   }),
 );
 export type RunsListInput = typeof RunsListInput.Type;
@@ -2290,10 +2913,12 @@ export const RunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const RunsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   runId: Schema.String.pipe(T.PathParam()),
+  isArchiveEnabled: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs/{runId}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type RunsUpdateInput = typeof RunsUpdateInput.Type;
@@ -2322,11 +2947,29 @@ export const ScopeMapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   scopeMapName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      creationDate: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+      actions: Schema.Array(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps/{scopeMapName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type ScopeMapsCreateInput = typeof ScopeMapsCreateInput.Type;
@@ -2373,11 +3016,11 @@ export const ScopeMapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   scopeMapName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps/{scopeMapName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type ScopeMapsDeleteInput = typeof ScopeMapsDeleteInput.Type;
@@ -2406,11 +3049,11 @@ export const ScopeMapsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   scopeMapName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps/{scopeMapName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type ScopeMapsGetInput = typeof ScopeMapsGetInput.Type;
@@ -2456,11 +3099,11 @@ export const ScopeMapsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps",
+    apiVersion: "2025-11-01",
   }),
 );
 export type ScopeMapsListInput = typeof ScopeMapsListInput.Type;
@@ -2523,11 +3166,17 @@ export const ScopeMapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   scopeMapName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+      actions: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps/{scopeMapName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type ScopeMapsUpdateInput = typeof ScopeMapsUpdateInput.Type;
@@ -2569,12 +3218,168 @@ export const ScopeMapsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ScopeMapsUpdateOutput,
 }));
 // Input Schema
-export const TasksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TasksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(
+        Schema.Literals([
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+          "None",
+        ]),
+      ),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+      creationDate: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+      platform: Schema.Struct({
+        os: Schema.Literals(["Windows", "Linux"]),
+        architecture: Schema.optional(Schema.Literals(["amd64", "x86", "arm"])),
+        variant: Schema.optional(Schema.Literals(["v6", "v7", "v8"])),
+      }),
+      agentConfiguration: Schema.optional(
+        Schema.Struct({
+          cpu: Schema.optional(Schema.Number),
+        }),
+      ),
+      timeout: Schema.optional(Schema.Number),
+      step: Schema.Struct({
+        type: Schema.Literals(["Docker", "FileTask", "EncodedTask"]),
+        baseImageDependencies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.Literals(["BuildTime", "RunTime"])),
+              registry: Schema.optional(Schema.String),
+              repository: Schema.optional(Schema.String),
+              tag: Schema.optional(Schema.String),
+              digest: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        contextPath: Schema.optional(Schema.String),
+        contextAccessToken: Schema.optional(Schema.String),
+      }),
+      trigger: Schema.optional(
+        Schema.Struct({
+          timerTriggers: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                schedule: Schema.String,
+                status: Schema.optional(
+                  Schema.Literals(["Disabled", "Enabled"]),
+                ),
+                name: Schema.String,
+              }),
+            ),
+          ),
+          sourceTriggers: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                sourceRepository: Schema.Struct({
+                  sourceControlType: Schema.Literals([
+                    "Github",
+                    "VisualStudioTeamService",
+                  ]),
+                  repositoryUrl: Schema.String,
+                  branch: Schema.optional(Schema.String),
+                  sourceControlAuthProperties: Schema.optional(
+                    Schema.Struct({
+                      tokenType: Schema.Literals(["PAT", "OAuth"]),
+                      token: Schema.String,
+                      refreshToken: Schema.optional(SensitiveString),
+                      scope: Schema.optional(Schema.String),
+                      expiresIn: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                }),
+                sourceTriggerEvents: Schema.Array(
+                  Schema.Literals(["commit", "pullrequest"]),
+                ),
+                status: Schema.optional(
+                  Schema.Literals(["Disabled", "Enabled"]),
+                ),
+                name: Schema.String,
+              }),
+            ),
+          ),
+          baseImageTrigger: Schema.optional(
+            Schema.Struct({
+              baseImageTriggerType: Schema.Literals(["All", "Runtime"]),
+              status: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+              name: Schema.String,
+            }),
+          ),
+        }),
+      ),
+      credentials: Schema.optional(
+        Schema.Struct({
+          sourceRegistry: Schema.optional(
+            Schema.Struct({
+              loginMode: Schema.optional(Schema.Literals(["None", "Default"])),
+            }),
+          ),
+          customRegistries: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                userName: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.String),
+                    type: Schema.optional(
+                      Schema.Literals(["Opaque", "Vaultsecret"]),
+                    ),
+                  }),
+                ),
+                password: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.String),
+                    type: Schema.optional(
+                      Schema.Literals(["Opaque", "Vaultsecret"]),
+                    ),
+                  }),
+                ),
+                identity: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type TasksCreateInput = typeof TasksCreateInput.Type;
@@ -2604,6 +3409,7 @@ export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type TasksDeleteInput = typeof TasksDeleteInput.Type;
@@ -2625,6 +3431,7 @@ export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type TasksGetInput = typeof TasksGetInput.Type;
@@ -2654,6 +3461,7 @@ export const TasksGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}/listDetails",
+    apiVersion: "2019-04-01",
   }),
 );
 export type TasksGetDetailsInput = typeof TasksGetDetailsInput.Type;
@@ -2683,6 +3491,7 @@ export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks",
+    apiVersion: "2019-04-01",
   }),
 );
 export type TasksListInput = typeof TasksListInput.Type;
@@ -2713,12 +3522,153 @@ export const TasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksListOutput,
 }));
 // Input Schema
-export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(
+        Schema.Literals([
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+          "None",
+        ]),
+      ),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      status: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+      platform: Schema.optional(
+        Schema.Struct({
+          os: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+          architecture: Schema.optional(
+            Schema.Literals(["amd64", "x86", "arm"]),
+          ),
+          variant: Schema.optional(Schema.Literals(["v6", "v7", "v8"])),
+        }),
+      ),
+      agentConfiguration: Schema.optional(
+        Schema.Struct({
+          cpu: Schema.optional(Schema.Number),
+        }),
+      ),
+      timeout: Schema.optional(Schema.Number),
+      step: Schema.optional(
+        Schema.Struct({
+          type: Schema.Literals(["Docker", "FileTask", "EncodedTask"]),
+          contextPath: Schema.optional(Schema.String),
+          contextAccessToken: Schema.optional(Schema.String),
+        }),
+      ),
+      trigger: Schema.optional(
+        Schema.Struct({
+          timerTriggers: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                schedule: Schema.optional(Schema.String),
+                status: Schema.optional(
+                  Schema.Literals(["Disabled", "Enabled"]),
+                ),
+                name: Schema.String,
+              }),
+            ),
+          ),
+          sourceTriggers: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                sourceRepository: Schema.optional(
+                  Schema.Struct({
+                    sourceControlType: Schema.optional(
+                      Schema.Literals(["Github", "VisualStudioTeamService"]),
+                    ),
+                    repositoryUrl: Schema.optional(Schema.String),
+                    branch: Schema.optional(Schema.String),
+                    sourceControlAuthProperties: Schema.optional(
+                      Schema.Struct({
+                        tokenType: Schema.optional(
+                          Schema.Literals(["PAT", "OAuth"]),
+                        ),
+                        token: Schema.optional(Schema.String),
+                        refreshToken: Schema.optional(SensitiveString),
+                        scope: Schema.optional(Schema.String),
+                        expiresIn: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                  }),
+                ),
+                sourceTriggerEvents: Schema.optional(
+                  Schema.Array(Schema.Literals(["commit", "pullrequest"])),
+                ),
+                status: Schema.optional(
+                  Schema.Literals(["Disabled", "Enabled"]),
+                ),
+                name: Schema.String,
+              }),
+            ),
+          ),
+          baseImageTrigger: Schema.optional(
+            Schema.Struct({
+              baseImageTriggerType: Schema.optional(
+                Schema.Literals(["All", "Runtime"]),
+              ),
+              status: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+              name: Schema.String,
+            }),
+          ),
+        }),
+      ),
+      credentials: Schema.optional(
+        Schema.Struct({
+          sourceRegistry: Schema.optional(
+            Schema.Struct({
+              loginMode: Schema.optional(Schema.Literals(["None", "Default"])),
+            }),
+          ),
+          customRegistries: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                userName: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.String),
+                    type: Schema.optional(
+                      Schema.Literals(["Opaque", "Vaultsecret"]),
+                    ),
+                  }),
+                ),
+                password: Schema.optional(
+                  Schema.Struct({
+                    value: Schema.optional(Schema.String),
+                    type: Schema.optional(
+                      Schema.Literals(["Opaque", "Vaultsecret"]),
+                    ),
+                  }),
+                ),
+                identity: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type TasksUpdateInput = typeof TasksUpdateInput.Type;
@@ -2747,11 +3697,56 @@ export const TokensCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   tokenName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      creationDate: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+      scopeMapId: Schema.optional(Schema.String),
+      credentials: Schema.optional(
+        Schema.Struct({
+          certificates: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(
+                  Schema.Literals(["certificate1", "certificate2"]),
+                ),
+                expiry: Schema.optional(Schema.String),
+                thumbprint: Schema.optional(Schema.String),
+                encodedPemCertificate: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          passwords: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                creationTime: Schema.optional(Schema.String),
+                expiry: Schema.optional(Schema.String),
+                name: Schema.optional(
+                  Schema.Literals(["password1", "password2"]),
+                ),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens/{tokenName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type TokensCreateInput = typeof TokensCreateInput.Type;
@@ -2798,11 +3793,11 @@ export const TokensDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   tokenName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens/{tokenName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type TokensDeleteInput = typeof TokensDeleteInput.Type;
@@ -2831,11 +3826,11 @@ export const TokensGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   tokenName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens/{tokenName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type TokensGetInput = typeof TokensGetInput.Type;
@@ -2881,11 +3876,11 @@ export const TokensListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens",
+    apiVersion: "2025-11-01",
   }),
 );
 export type TokensListInput = typeof TokensListInput.Type;
@@ -2948,11 +3943,45 @@ export const TokensUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   tokenName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      scopeMapId: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+      credentials: Schema.optional(
+        Schema.Struct({
+          certificates: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(
+                  Schema.Literals(["certificate1", "certificate2"]),
+                ),
+                expiry: Schema.optional(Schema.String),
+                thumbprint: Schema.optional(Schema.String),
+                encodedPemCertificate: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          passwords: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                creationTime: Schema.optional(Schema.String),
+                expiry: Schema.optional(Schema.String),
+                name: Schema.optional(
+                  Schema.Literals(["password1", "password2"]),
+                ),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens/{tokenName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type TokensUpdateInput = typeof TokensUpdateInput.Type;
@@ -2999,11 +4028,32 @@ export const WebhooksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      serviceUri: Schema.String,
+      customHeaders: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+      status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+      scope: Schema.optional(Schema.String),
+      actions: Schema.Array(
+        Schema.Literals([
+          "push",
+          "delete",
+          "quarantine",
+          "chart_push",
+          "chart_delete",
+        ]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type WebhooksCreateInput = typeof WebhooksCreateInput.Type;
@@ -3050,11 +4100,11 @@ export const WebhooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type WebhooksDeleteInput = typeof WebhooksDeleteInput.Type;
@@ -3083,11 +4133,11 @@ export const WebhooksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type WebhooksGetInput = typeof WebhooksGetInput.Type;
@@ -3135,11 +4185,11 @@ export const WebhooksGetCallbackConfigInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     webhookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}/getCallbackConfig",
+      apiVersion: "2025-11-01",
     }),
   );
 export type WebhooksGetCallbackConfigInput =
@@ -3175,11 +4225,11 @@ export const WebhooksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks",
+    apiVersion: "2025-11-01",
   }),
 );
 export type WebhooksListInput = typeof WebhooksListInput.Type;
@@ -3243,11 +4293,11 @@ export const WebhooksListEventsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
     webhookName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}/listEvents",
+      apiVersion: "2025-11-01",
     }),
   );
 export type WebhooksListEventsInput = typeof WebhooksListEventsInput.Type;
@@ -3286,11 +4336,11 @@ export const WebhooksPingInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}/ping",
+    apiVersion: "2025-11-01",
   }),
 );
 export type WebhooksPingInput = typeof WebhooksPingInput.Type;
@@ -3321,11 +4371,33 @@ export const WebhooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      serviceUri: Schema.optional(Schema.String),
+      customHeaders: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+      status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+      scope: Schema.optional(Schema.String),
+      actions: Schema.optional(
+        Schema.Array(
+          Schema.Literals([
+            "push",
+            "delete",
+            "quarantine",
+            "chart_push",
+            "chart_delete",
+          ]),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}",
+    apiVersion: "2025-11-01",
   }),
 );
 export type WebhooksUpdateInput = typeof WebhooksUpdateInput.Type;

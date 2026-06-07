@@ -15,11 +15,28 @@ export const AccessPolicyAssignmentCreateUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     accessPolicyAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Updating",
+            "Succeeded",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+        objectId: Schema.String,
+        objectIdAlias: Schema.String,
+        accessPolicyName: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AccessPolicyAssignmentCreateUpdateInput =
@@ -71,11 +88,11 @@ export const AccessPolicyAssignmentDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     accessPolicyAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AccessPolicyAssignmentDeleteInput =
@@ -109,11 +126,11 @@ export const AccessPolicyAssignmentGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     accessPolicyAssignmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AccessPolicyAssignmentGetInput =
@@ -165,11 +182,11 @@ export const AccessPolicyAssignmentListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AccessPolicyAssignmentListInput =
@@ -236,11 +253,27 @@ export const AccessPolicyCreateUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     accessPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Updating",
+            "Succeeded",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+        type: Schema.optional(Schema.Literals(["Custom", "BuiltIn"])),
+        permissions: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies/{accessPolicyName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AccessPolicyCreateUpdateInput =
@@ -293,11 +326,11 @@ export const AccessPolicyDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     accessPolicyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies/{accessPolicyName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AccessPolicyDeleteInput = typeof AccessPolicyDeleteInput.Type;
@@ -326,11 +359,11 @@ export const AccessPolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
   accessPolicyName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies/{accessPolicyName}",
+    apiVersion: "2024-11-01",
   }),
 );
 export type AccessPolicyGetInput = typeof AccessPolicyGetInput.Type;
@@ -376,11 +409,11 @@ export const AccessPolicyListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies",
+    apiVersion: "2024-11-01",
   }),
 );
 export type AccessPolicyListInput = typeof AccessPolicyListInput.Type;
@@ -443,11 +476,11 @@ export const AsyncOperationStatusGetInput =
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/locations/{location}/asyncOperations/{operationId}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AsyncOperationStatusGetInput =
@@ -533,11 +566,15 @@ export const FirewallRulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      startIP: Schema.String,
+      endIP: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules/{ruleName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type FirewallRulesCreateOrUpdateInput =
@@ -590,11 +627,11 @@ export const FirewallRulesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules/{ruleName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
@@ -624,11 +661,11 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
   ruleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules/{ruleName}",
+    apiVersion: "2024-11-01",
   }),
 );
 export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
@@ -677,12 +714,12 @@ export const FirewallRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules",
+    apiVersion: "2024-11-01",
   }),
 );
 export type FirewallRulesListInput = typeof FirewallRulesListInput.Type;
@@ -745,11 +782,18 @@ export const LinkedServerCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     linkedServerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      linkedRedisCacheId: Schema.String,
+      linkedRedisCacheLocation: Schema.String,
+      serverRole: Schema.Literals(["Primary", "Secondary"]),
+      geoReplicatedPrimaryHostName: Schema.optional(Schema.String),
+      primaryHostName: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers/{linkedServerName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type LinkedServerCreateInput = typeof LinkedServerCreateInput.Type;
@@ -798,11 +842,11 @@ export const LinkedServerDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     linkedServerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers/{linkedServerName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type LinkedServerDeleteInput = typeof LinkedServerDeleteInput.Type;
@@ -831,11 +875,11 @@ export const LinkedServerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
   linkedServerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers/{linkedServerName}",
+    apiVersion: "2024-11-01",
   }),
 );
 export type LinkedServerGetInput = typeof LinkedServerGetInput.Type;
@@ -881,11 +925,11 @@ export const LinkedServerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers",
+    apiVersion: "2024-11-01",
   }),
 );
 export type LinkedServerListInput = typeof LinkedServerListInput.Type;
@@ -943,10 +987,14 @@ export const LinkedServerList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LinkedServerListOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Cache/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Cache/operations",
+    apiVersion: "2024-11-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -986,11 +1034,31 @@ export const PatchSchedulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     default: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      scheduleEntries: Schema.Array(
+        Schema.Struct({
+          dayOfWeek: Schema.Literals([
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+            "Everyday",
+            "Weekend",
+          ]),
+          startHourUtc: Schema.Number,
+          maintenanceWindow: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type PatchSchedulesCreateOrUpdateInput =
@@ -1042,11 +1110,11 @@ export const PatchSchedulesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     default: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type PatchSchedulesDeleteInput = typeof PatchSchedulesDeleteInput.Type;
@@ -1079,12 +1147,12 @@ export const PatchSchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     default: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
+    apiVersion: "2024-11-01",
   }),
 );
 export type PatchSchedulesGetInput = typeof PatchSchedulesGetInput.Type;
@@ -1132,11 +1200,11 @@ export const PatchSchedulesListByRedisResourceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/patchSchedules",
+      apiVersion: "2024-11-01",
     }),
   );
 export type PatchSchedulesListByRedisResourceInput =
@@ -1202,11 +1270,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1240,11 +1308,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -1295,11 +1363,11 @@ export const PrivateEndpointConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections",
+      apiVersion: "2024-11-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -1365,7 +1433,6 @@ export const PrivateEndpointConnectionsPutInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         groupIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1386,10 +1453,28 @@ export const PrivateEndpointConnectionsPutInput =
         ),
       }),
     ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type PrivateEndpointConnectionsPutInput =
@@ -1441,11 +1526,11 @@ export const PrivateLinkResourcesListByRedisCacheInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateLinkResources",
+      apiVersion: "2024-11-01",
     }),
   );
 export type PrivateLinkResourcesListByRedisCacheInput =
@@ -1508,11 +1593,13 @@ export const PrivateLinkResourcesListByRedisCache =
 export const RedisCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/checkNameAvailability",
+      apiVersion: "2024-11-01",
     }),
   );
 export type RedisCheckNameAvailabilityInput =
@@ -1542,11 +1629,79 @@ export const RedisCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.Struct({
+    redisConfiguration: Schema.optional(
+      Schema.Struct({
+        "rdb-backup-enabled": Schema.optional(Schema.String),
+        "rdb-backup-frequency": Schema.optional(Schema.String),
+        "rdb-backup-max-snapshot-count": Schema.optional(Schema.String),
+        "rdb-storage-connection-string": Schema.optional(Schema.String),
+        "aof-backup-enabled": Schema.optional(Schema.String),
+        "aof-storage-connection-string-0": Schema.optional(Schema.String),
+        "aof-storage-connection-string-1": Schema.optional(Schema.String),
+        "maxfragmentationmemory-reserved": Schema.optional(Schema.String),
+        "maxmemory-policy": Schema.optional(Schema.String),
+        "maxmemory-reserved": Schema.optional(Schema.String),
+        "maxmemory-delta": Schema.optional(Schema.String),
+        maxclients: Schema.optional(Schema.String),
+        "notify-keyspace-events": Schema.optional(Schema.String),
+        "preferred-data-archive-auth-method": Schema.optional(Schema.String),
+        "preferred-data-persistence-auth-method": Schema.optional(
+          Schema.String,
+        ),
+        "zonal-configuration": Schema.optional(Schema.String),
+        authnotrequired: Schema.optional(Schema.String),
+        "storage-subscription-id": Schema.optional(Schema.String),
+        "aad-enabled": Schema.optional(Schema.String),
+      }),
+    ),
+    redisVersion: Schema.optional(Schema.String),
+    enableNonSslPort: Schema.optional(Schema.Boolean),
+    replicasPerMaster: Schema.optional(Schema.Number),
+    replicasPerPrimary: Schema.optional(Schema.Number),
+    tenantSettings: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    shardCount: Schema.optional(Schema.Number),
+    minimumTlsVersion: Schema.optional(Schema.Literals(["1.0", "1.1", "1.2"])),
+    publicNetworkAccess: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    updateChannel: Schema.optional(Schema.Literals(["Stable", "Preview"])),
+    disableAccessKeyAuthentication: Schema.optional(Schema.Boolean),
+    zonalAllocationPolicy: Schema.optional(
+      Schema.Literals(["Automatic", "UserDefined", "NoZones"]),
+    ),
+  }),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned, UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
+    apiVersion: "2024-11-01",
   }),
 );
 export type RedisCreateInput = typeof RedisCreateInput.Type;
@@ -1591,11 +1746,11 @@ export const RedisDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
+    apiVersion: "2024-11-01",
   }),
 );
 export type RedisDeleteInput = typeof RedisDeleteInput.Type;
@@ -1622,11 +1777,16 @@ export const RedisExportDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  format: Schema.optional(Schema.String),
+  prefix: Schema.String,
+  container: Schema.String,
+  "preferred-data-archive-auth-method": Schema.optional(Schema.String),
+  "storage-subscription-id": Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/export",
+    apiVersion: "2024-11-01",
   }),
 );
 export type RedisExportDataInput = typeof RedisExportDataInput.Type;
@@ -1653,11 +1813,11 @@ export const RedisFlushCacheInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/flush",
+    apiVersion: "2024-11-01",
   }),
 );
 export type RedisFlushCacheInput = typeof RedisFlushCacheInput.Type;
@@ -1736,11 +1896,16 @@ export const RedisForceRebootInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  rebootType: Schema.optional(
+    Schema.Literals(["PrimaryNode", "SecondaryNode", "AllNodes"]),
+  ),
+  shardId: Schema.optional(Schema.Number),
+  ports: Schema.optional(Schema.Array(Schema.Number)),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/forceReboot",
+    apiVersion: "2024-11-01",
   }),
 );
 export type RedisForceRebootInput = typeof RedisForceRebootInput.Type;
@@ -1771,11 +1936,11 @@ export const RedisGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
+    apiVersion: "2024-11-01",
   }),
 );
 export type RedisGetInput = typeof RedisGetInput.Type;
@@ -1820,11 +1985,15 @@ export const RedisImportDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  format: Schema.optional(Schema.String),
+  files: Schema.Array(Schema.String),
+  "preferred-data-archive-auth-method": Schema.optional(Schema.String),
+  "storage-subscription-id": Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/import",
+    apiVersion: "2024-11-01",
   }),
 );
 export type RedisImportDataInput = typeof RedisImportDataInput.Type;
@@ -1851,11 +2020,11 @@ export const RedisListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis",
+      apiVersion: "2024-11-01",
     }),
   );
 export type RedisListByResourceGroupInput =
@@ -1918,11 +2087,11 @@ export const RedisListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RedisListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/redis",
+      apiVersion: "2024-11-01",
     }),
   );
 export type RedisListBySubscriptionInput =
@@ -1985,11 +2154,11 @@ export const RedisListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/listKeys",
+    apiVersion: "2024-11-01",
   }),
 );
 export type RedisListKeysInput = typeof RedisListKeysInput.Type;
@@ -2020,12 +2189,12 @@ export const RedisListUpgradeNotificationsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     history: Schema.Number,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/listUpgradeNotifications",
+      apiVersion: "2024-11-01",
     }),
   );
 export type RedisListUpgradeNotificationsInput =
@@ -2069,11 +2238,12 @@ export const RedisRegenerateKeyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keyType: Schema.Literals(["Primary", "Secondary"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/regenerateKey",
+      apiVersion: "2024-11-01",
     }),
   );
 export type RedisRegenerateKeyInput = typeof RedisRegenerateKeyInput.Type;
@@ -2104,11 +2274,81 @@ export const RedisUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      redisConfiguration: Schema.optional(
+        Schema.Struct({
+          "rdb-backup-enabled": Schema.optional(Schema.String),
+          "rdb-backup-frequency": Schema.optional(Schema.String),
+          "rdb-backup-max-snapshot-count": Schema.optional(Schema.String),
+          "rdb-storage-connection-string": Schema.optional(Schema.String),
+          "aof-backup-enabled": Schema.optional(Schema.String),
+          "aof-storage-connection-string-0": Schema.optional(Schema.String),
+          "aof-storage-connection-string-1": Schema.optional(Schema.String),
+          "maxfragmentationmemory-reserved": Schema.optional(Schema.String),
+          "maxmemory-policy": Schema.optional(Schema.String),
+          "maxmemory-reserved": Schema.optional(Schema.String),
+          "maxmemory-delta": Schema.optional(Schema.String),
+          maxclients: Schema.optional(Schema.String),
+          "notify-keyspace-events": Schema.optional(Schema.String),
+          "preferred-data-archive-auth-method": Schema.optional(Schema.String),
+          "preferred-data-persistence-auth-method": Schema.optional(
+            Schema.String,
+          ),
+          "zonal-configuration": Schema.optional(Schema.String),
+          authnotrequired: Schema.optional(Schema.String),
+          "storage-subscription-id": Schema.optional(Schema.String),
+          "aad-enabled": Schema.optional(Schema.String),
+        }),
+      ),
+      redisVersion: Schema.optional(Schema.String),
+      enableNonSslPort: Schema.optional(Schema.Boolean),
+      replicasPerMaster: Schema.optional(Schema.Number),
+      replicasPerPrimary: Schema.optional(Schema.Number),
+      tenantSettings: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+      shardCount: Schema.optional(Schema.Number),
+      minimumTlsVersion: Schema.optional(
+        Schema.Literals(["1.0", "1.1", "1.2"]),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      updateChannel: Schema.optional(Schema.Literals(["Stable", "Preview"])),
+      disableAccessKeyAuthentication: Schema.optional(Schema.Boolean),
+      zonalAllocationPolicy: Schema.optional(
+        Schema.Literals(["Automatic", "UserDefined", "NoZones"]),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned, UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
+    apiVersion: "2024-11-01",
   }),
 );
 export type RedisUpdateInput = typeof RedisUpdateInput.Type;

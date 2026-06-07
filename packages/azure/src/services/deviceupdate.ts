@@ -7,14 +7,106 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
-export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Deleted",
+          "Failed",
+          "Canceled",
+          "Accepted",
+          "Creating",
+        ]),
+      ),
+      hostName: Schema.optional(Schema.String),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      sku: Schema.optional(Schema.Literals(["Free", "Standard"])),
+      encryption: Schema.optional(
+        Schema.Struct({
+          keyVaultKeyUri: Schema.optional(Schema.String),
+          userAssignedIdentity: Schema.optional(Schema.String),
+        }),
+      ),
+      locations: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            role: Schema.optional(Schema.Literals(["Primary", "Failover"])),
+          }),
+        ),
+      ),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.NullOr(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}",
+    apiVersion: "2023-07-01",
   }),
 );
 export type AccountsCreateInput = typeof AccountsCreateInput.Type;
@@ -56,6 +148,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}",
+    apiVersion: "2023-07-01",
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -79,6 +172,7 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}",
+    apiVersion: "2023-07-01",
   }),
 );
 export type AccountsGetInput = typeof AccountsGetInput.Type;
@@ -119,6 +213,7 @@ export const AccountsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts",
+      apiVersion: "2023-07-01",
     }),
   );
 export type AccountsListByResourceGroupInput =
@@ -181,6 +276,7 @@ export const AccountsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceUpdate/accounts",
+      apiVersion: "2023-07-01",
     }),
   );
 export type AccountsListBySubscriptionInput =
@@ -238,12 +334,37 @@ export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.NullOr(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      ),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}",
+    apiVersion: "2023-07-01",
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -287,6 +408,7 @@ export const CheckNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceUpdate/checknameavailability",
+      apiVersion: "2023-07-01",
     }),
   );
 export type CheckNameAvailabilityInput = typeof CheckNameAvailabilityInput.Type;
@@ -314,12 +436,42 @@ export const CheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const InstancesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const InstancesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Deleted",
+        "Failed",
+        "Canceled",
+        "Accepted",
+        "Creating",
+      ]),
+    ),
+    accountName: Schema.optional(Schema.String),
+    iotHubs: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          resourceId: Schema.String,
+        }),
+      ),
+    ),
+    enableDiagnostics: Schema.optional(Schema.Boolean),
+    diagnosticStorageProperties: Schema.optional(
+      Schema.Struct({
+        authenticationType: Schema.Literals(["KeyBased"]),
+        connectionString: Schema.optional(SensitiveString),
+        resourceId: Schema.String,
+      }),
+    ),
+  }),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/instances/{instanceName}",
+    apiVersion: "2023-07-01",
   }),
 );
 export type InstancesCreateInput = typeof InstancesCreateInput.Type;
@@ -361,6 +513,7 @@ export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/instances/{instanceName}",
+    apiVersion: "2023-07-01",
   }),
 );
 export type InstancesDeleteInput = typeof InstancesDeleteInput.Type;
@@ -384,6 +537,7 @@ export const InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/instances/{instanceName}",
+    apiVersion: "2023-07-01",
   }),
 );
 export type InstancesGetInput = typeof InstancesGetInput.Type;
@@ -424,6 +578,7 @@ export const InstancesListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/instances",
+      apiVersion: "2023-07-01",
     }),
   );
 export type InstancesListByAccountInput =
@@ -481,12 +636,13 @@ export const InstancesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/instances/{instanceName}",
+    apiVersion: "2023-07-01",
   }),
 );
 export type InstancesUpdateInput = typeof InstancesUpdateInput.Type;
@@ -528,6 +684,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DeviceUpdate/operations",
+    apiVersion: "2023-07-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -568,10 +725,94 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PrivateEndpointConnectionProxiesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    remotePrivateEndpoint: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        immutableSubscriptionId: Schema.optional(Schema.String),
+        immutableResourceId: Schema.optional(Schema.String),
+        vnetTrafficTag: Schema.optional(Schema.String),
+        manualPrivateLinkServiceConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              groupIds: Schema.optional(Schema.Array(Schema.String)),
+              requestMessage: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        privateLinkServiceConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              groupIds: Schema.optional(Schema.Array(Schema.String)),
+              requestMessage: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        privateLinkServiceProxies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              remotePrivateLinkServiceConnectionState: Schema.optional(
+                Schema.Struct({
+                  status: Schema.optional(
+                    Schema.Literals(["Pending", "Approved", "Rejected"]),
+                  ),
+                  description: Schema.optional(Schema.String),
+                  actionsRequired: Schema.optional(Schema.String),
+                }),
+              ),
+              remotePrivateEndpointConnection: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+              groupConnectivityInformation: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    groupId: Schema.optional(Schema.String),
+                    memberName: Schema.optional(Schema.String),
+                    customerVisibleFqdns: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    internalFqdn: Schema.optional(Schema.String),
+                    redirectMapId: Schema.optional(Schema.String),
+                    privateLinkServiceArmRegion: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        connectionDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              privateIpAddress: Schema.optional(Schema.String),
+              linkIdentifier: Schema.optional(Schema.String),
+              groupId: Schema.optional(Schema.String),
+              memberName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    status: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyId}",
+      apiVersion: "2023-07-01",
     }),
   );
 export type PrivateEndpointConnectionProxiesCreateOrUpdateInput =
@@ -674,6 +915,7 @@ export const PrivateEndpointConnectionProxiesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyId}",
+      apiVersion: "2023-07-01",
     }),
   );
 export type PrivateEndpointConnectionProxiesDeleteInput =
@@ -700,6 +942,7 @@ export const PrivateEndpointConnectionProxiesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyId}",
+      apiVersion: "2023-07-01",
     }),
   );
 export type PrivateEndpointConnectionProxiesGetInput =
@@ -802,6 +1045,7 @@ export const PrivateEndpointConnectionProxiesListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnectionProxies",
+      apiVersion: "2023-07-01",
     }),
   );
 export type PrivateEndpointConnectionProxiesListByAccountInput =
@@ -909,10 +1153,17 @@ export const PrivateEndpointConnectionProxiesListByAccount =
   }));
 // Input Schema
 export const PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    immutableSubscriptionId: Schema.optional(Schema.String),
+    immutableResourceId: Schema.optional(Schema.String),
+    vnetTrafficTag: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyId}/updatePrivateEndpointProperties",
+      apiVersion: "2023-07-01",
     }),
   );
 export type PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesInput =
@@ -937,10 +1188,94 @@ export const PrivateEndpointConnectionProxiesUpdatePrivateEndpointProperties =
   }));
 // Input Schema
 export const PrivateEndpointConnectionProxiesValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    remotePrivateEndpoint: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        immutableSubscriptionId: Schema.optional(Schema.String),
+        immutableResourceId: Schema.optional(Schema.String),
+        vnetTrafficTag: Schema.optional(Schema.String),
+        manualPrivateLinkServiceConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              groupIds: Schema.optional(Schema.Array(Schema.String)),
+              requestMessage: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        privateLinkServiceConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              groupIds: Schema.optional(Schema.Array(Schema.String)),
+              requestMessage: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        privateLinkServiceProxies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              remotePrivateLinkServiceConnectionState: Schema.optional(
+                Schema.Struct({
+                  status: Schema.optional(
+                    Schema.Literals(["Pending", "Approved", "Rejected"]),
+                  ),
+                  description: Schema.optional(Schema.String),
+                  actionsRequired: Schema.optional(Schema.String),
+                }),
+              ),
+              remotePrivateEndpointConnection: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+              groupConnectivityInformation: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    groupId: Schema.optional(Schema.String),
+                    memberName: Schema.optional(Schema.String),
+                    customerVisibleFqdns: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    internalFqdn: Schema.optional(Schema.String),
+                    redirectMapId: Schema.optional(Schema.String),
+                    privateLinkServiceArmRegion: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        connectionDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              privateIpAddress: Schema.optional(Schema.String),
+              linkIdentifier: Schema.optional(Schema.String),
+              groupId: Schema.optional(Schema.String),
+              memberName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    status: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyId}/validate",
+      apiVersion: "2023-07-01",
     }),
   );
 export type PrivateEndpointConnectionProxiesValidateInput =
@@ -983,10 +1318,28 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
         Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
       ),
     }),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2023-07-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1036,6 +1389,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2023-07-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1066,6 +1420,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2023-07-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -1112,6 +1467,7 @@ export const PrivateEndpointConnectionsListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnections",
+      apiVersion: "2023-07-01",
     }),
   );
 export type PrivateEndpointConnectionsListByAccountInput =
@@ -1172,6 +1528,7 @@ export const PrivateLinkResourcesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateLinkResources/{groupId}",
+      apiVersion: "2023-07-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -1217,6 +1574,7 @@ export const PrivateLinkResourcesListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateLinkResources",
+      apiVersion: "2023-07-01",
     }),
   );
 export type PrivateLinkResourcesListByAccountInput =

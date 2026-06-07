@@ -9,12 +9,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Marketplace/operations",
+    apiVersion: "2025-01-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -59,11 +60,20 @@ export const PrivateStoreAcknowledgeOfferNotificationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        acknowledge: Schema.optional(Schema.Boolean),
+        dismiss: Schema.optional(Schema.Boolean),
+        removeOffer: Schema.optional(Schema.Boolean),
+        addPlans: Schema.optional(Schema.Array(Schema.String)),
+        removePlans: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/offers/{offerId}/acknowledgeNotification",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreAcknowledgeOfferNotificationInput =
@@ -92,11 +102,11 @@ export const PrivateStoreAcknowledgeOfferNotification =
 export const PrivateStoreAdminRequestApprovalsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/adminRequestApprovals",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreAdminRequestApprovalsListInput =
@@ -159,11 +169,11 @@ export const PrivateStoreAdminRequestApprovalsList =
 export const PrivateStoreAnyExistingOffersInTheCollectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/anyExistingOffersInTheCollections",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreAnyExistingOffersInTheCollectionsInput =
@@ -193,11 +203,11 @@ export const PrivateStoreAnyExistingOffersInTheCollections =
 export const PrivateStoreBillingAccountsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/billingAccounts",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreBillingAccountsInput =
@@ -228,11 +238,17 @@ export const PrivateStoreBillingAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PrivateStoreBulkCollectionsActionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        collectionIds: Schema.optional(Schema.Array(Schema.String)),
+        action: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/bulkCollectionsAction",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreBulkCollectionsActionInput =
@@ -278,11 +294,11 @@ export const PrivateStoreCollectionApproveAllItemsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/approveAllItems",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionApproveAllItemsInput =
@@ -330,11 +346,34 @@ export const PrivateStoreCollectionCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        collectionId: Schema.optional(Schema.String),
+        collectionName: Schema.optional(Schema.String),
+        claim: Schema.optional(Schema.String),
+        allSubscriptions: Schema.optional(Schema.Boolean),
+        approveAllItems: Schema.optional(Schema.Boolean),
+        approveAllItemsModifiedAt: Schema.optional(Schema.String),
+        subscriptionsList: Schema.optional(Schema.Array(Schema.String)),
+        enabled: Schema.optional(Schema.Boolean),
+        numberOfOffers: Schema.optional(Schema.Number),
+        appliedRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals(["PrivateProducts", "TermsAndCondition"]),
+              ),
+              value: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionCreateOrUpdateInput =
@@ -382,11 +421,11 @@ export const PrivateStoreCollectionDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionDeleteInput =
@@ -416,11 +455,11 @@ export const PrivateStoreCollectionDisableApproveAllItemsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/disableApproveAllItems",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionDisableApproveAllItemsInput =
@@ -468,11 +507,11 @@ export const PrivateStoreCollectionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionGetInput =
@@ -520,11 +559,11 @@ export const PrivateStoreCollectionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PrivateStoreCollectionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionListInput =
@@ -590,11 +629,16 @@ export const PrivateStoreCollectionOfferContextsViewInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}/contextsView",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionOfferContextsViewInput =
@@ -644,11 +688,48 @@ export const PrivateStoreCollectionOfferCreateOrUpdateInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        uniqueOfferId: Schema.optional(Schema.String),
+        offerDisplayName: Schema.optional(Schema.String),
+        publisherDisplayName: Schema.optional(Schema.String),
+        eTag: Schema.optional(Schema.String),
+        privateStoreId: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        modifiedAt: Schema.optional(Schema.String),
+        specificPlanIdsLimitation: Schema.optional(Schema.Array(Schema.String)),
+        updateSuppressedDueIdempotence: Schema.optional(Schema.Boolean),
+        iconFileUris: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        isStopSell: Schema.optional(Schema.Boolean),
+        plans: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              skuId: Schema.optional(Schema.String),
+              planId: Schema.optional(Schema.String),
+              planDisplayName: Schema.optional(Schema.String),
+              accessibility: Schema.optional(
+                Schema.Literals([
+                  "Unknown",
+                  "Public",
+                  "PrivateTenantOnLevel",
+                  "PrivateSubscriptionOnLevel",
+                ]),
+              ),
+              altStackReference: Schema.optional(Schema.String),
+              stackType: Schema.optional(Schema.String),
+              isStopSell: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionOfferCreateOrUpdateInput =
@@ -698,11 +779,11 @@ export const PrivateStoreCollectionOfferDeleteInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionOfferDeleteInput =
@@ -734,11 +815,11 @@ export const PrivateStoreCollectionOfferGetInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionOfferGetInput =
@@ -787,11 +868,11 @@ export const PrivateStoreCollectionOfferListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionOfferListInput =
@@ -854,11 +935,16 @@ export const PrivateStoreCollectionOfferListByContextsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/mapOffersToContexts",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionOfferListByContextsInput =
@@ -945,11 +1031,11 @@ export const PrivateStoreCollectionOfferPostInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionOfferPostInput =
@@ -981,11 +1067,25 @@ export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        offerId: Schema.optional(Schema.String),
+        eTag: Schema.optional(Schema.String),
+        plansContext: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              context: Schema.optional(Schema.String),
+              planIds: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}/upsertOfferWithMultiContext",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput =
@@ -1034,11 +1134,11 @@ export const PrivateStoreCollectionPostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionPostInput =
@@ -1068,11 +1168,16 @@ export const PrivateStoreCollectionPost = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PrivateStoreCollectionsToSubscriptionsMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collectionsToSubscriptionsMapping",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionsToSubscriptionsMappingInput =
@@ -1111,11 +1216,18 @@ export const PrivateStoreCollectionTransferOffersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        targetCollections: Schema.optional(Schema.Array(Schema.String)),
+        operation: Schema.optional(Schema.String),
+        offerIdsList: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/transferOffers",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCollectionTransferOffersInput =
@@ -1162,11 +1274,34 @@ export const PrivateStoreCreateApprovalRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        offerId: Schema.optional(Schema.String),
+        offerDisplayName: Schema.optional(Schema.String),
+        publisherId: Schema.optional(Schema.String),
+        plansDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              planId: Schema.optional(Schema.String),
+              status: Schema.optional(
+                Schema.Literals(["Pending", "Rejected", "Approved", "None"]),
+              ),
+              requestDate: Schema.optional(Schema.Unknown),
+              justification: Schema.optional(Schema.String),
+              subscriptionId: Schema.optional(Schema.String),
+              subscriptionName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        isClosed: Schema.optional(Schema.Boolean),
+        messageCode: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCreateApprovalRequestInput =
@@ -1213,11 +1348,37 @@ export const PrivateStoreCreateApprovalRequest =
 export const PrivateStoreCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        availability: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+        privateStoreId: Schema.optional(Schema.String),
+        eTag: Schema.optional(Schema.String),
+        privateStoreName: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        isGov: Schema.optional(Schema.Boolean),
+        collectionIds: Schema.optional(Schema.Array(Schema.String)),
+        branding: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        notificationsSettings: Schema.optional(
+          Schema.Struct({
+            recipients: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  principalId: Schema.optional(Schema.String),
+                  emailAddress: Schema.optional(Schema.String),
+                  displayName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            sendToAllMarketplaceAdmins: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreCreateOrUpdateInput =
@@ -1246,11 +1407,11 @@ export const PrivateStoreCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PrivateStoreDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreDeleteInput = typeof PrivateStoreDeleteInput.Type;
@@ -1274,11 +1435,11 @@ export const PrivateStoreDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PrivateStoreFetchAllSubscriptionsInTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/fetchAllSubscriptionsInTenant",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreFetchAllSubscriptionsInTenantInput =
@@ -1327,11 +1488,11 @@ export const PrivateStoreFetchAllSubscriptionsInTenant =
 // Input Schema
 export const PrivateStoreGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
+    apiVersion: "2025-01-01",
   }),
 );
 export type PrivateStoreGetInput = typeof PrivateStoreGetInput.Type;
@@ -1374,12 +1535,12 @@ export const PrivateStoreGetAdminRequestApprovalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     adminRequestApprovalId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     publisherId: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/adminRequestApprovals/{adminRequestApprovalId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreGetAdminRequestApprovalInput =
@@ -1427,11 +1588,11 @@ export const PrivateStoreGetAdminRequestApproval =
 export const PrivateStoreGetApprovalRequestsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreGetApprovalRequestsListInput =
@@ -1495,11 +1656,11 @@ export const PrivateStoreGetRequestApprovalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreGetRequestApprovalInput =
@@ -1544,12 +1705,12 @@ export const PrivateStoreGetRequestApproval =
   }));
 // Input Schema
 export const PrivateStoreListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
   "use-cache": Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Marketplace/privateStores",
+    apiVersion: "2025-01-01",
   }),
 );
 export type PrivateStoreListInput = typeof PrivateStoreListInput.Type;
@@ -1608,11 +1769,11 @@ export const PrivateStoreList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PrivateStoreListNewPlansNotificationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/listNewPlansNotifications",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreListNewPlansNotificationsInput =
@@ -1660,11 +1821,12 @@ export const PrivateStoreListNewPlansNotifications =
 export const PrivateStoreListStopSellOffersPlansNotificationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    subscriptions: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/listStopSellOffersPlansNotifications",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreListStopSellOffersPlansNotificationsInput =
@@ -1714,11 +1876,11 @@ export const PrivateStoreListStopSellOffersPlansNotifications =
 export const PrivateStoreListSubscriptionsContextInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/listSubscriptionsContext",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreListSubscriptionsContextInput =
@@ -1748,11 +1910,18 @@ export const PrivateStoreListSubscriptionsContext =
 export const PrivateStoreQueryApprovedPlansInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        offerId: Schema.optional(Schema.String),
+        planIds: Schema.optional(Schema.Array(Schema.String)),
+        subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryApprovedPlans",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreQueryApprovedPlansInput =
@@ -1790,11 +1959,11 @@ export const PrivateStoreQueryApprovedPlans =
 export const PrivateStoreQueryNotificationsStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryNotificationsState",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreQueryNotificationsStateInput =
@@ -1880,11 +2049,11 @@ export const PrivateStoreQueryNotificationsState =
 export const PrivateStoreQueryOffersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryOffers",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreQueryOffersInput =
@@ -1957,11 +2126,18 @@ export const PrivateStoreQueryRequestApprovalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        publisherId: Schema.optional(Schema.String),
+        planIds: Schema.optional(Schema.Array(Schema.String)),
+        subscriptionId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}/query",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreQueryRequestApprovalInput =
@@ -2009,11 +2185,17 @@ export const PrivateStoreQueryRequestApproval =
 export const PrivateStoreQueryUserOffersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        offerIds: Schema.optional(Schema.Array(Schema.String)),
+        subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryUserOffers",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreQueryUserOffersInput =
@@ -2086,11 +2268,43 @@ export const PrivateStoreUpdateAdminRequestApprovalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     adminRequestApprovalId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        offerId: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        publisherId: Schema.optional(Schema.String),
+        adminAction: Schema.optional(Schema.Literals(["Approved", "Rejected"])),
+        approvedPlans: Schema.optional(Schema.Array(Schema.String)),
+        comment: Schema.optional(Schema.String),
+        administrator: Schema.optional(Schema.String),
+        plans: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              planId: Schema.optional(Schema.String),
+              planDisplayName: Schema.optional(Schema.String),
+              requesters: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    user: Schema.optional(Schema.String),
+                    date: Schema.optional(Schema.String),
+                    justification: Schema.optional(Schema.String),
+                    subscriptionId: Schema.optional(Schema.String),
+                    subscriptionName: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        collectionIds: Schema.optional(Schema.Array(Schema.String)),
+        icon: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/adminRequestApprovals/{adminRequestApprovalId}",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreUpdateAdminRequestApprovalInput =
@@ -2138,11 +2352,17 @@ export const PrivateStoreWithdrawPlanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        planId: Schema.optional(Schema.String),
+        publisherId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}/withdrawPlan",
+      apiVersion: "2025-01-01",
     }),
   );
 export type PrivateStoreWithdrawPlanInput =
@@ -2172,11 +2392,11 @@ export const PrivateStoreWithdrawPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const QueryRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
   collectionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/queryRules",
+    apiVersion: "2025-01-01",
   }),
 );
 export type QueryRulesInput = typeof QueryRulesInput.Type;
@@ -2212,11 +2432,16 @@ export const QueryRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const QueryUserRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryUserRules",
+    apiVersion: "2025-01-01",
   }),
 );
 export type QueryUserRulesInput = typeof QueryUserRulesInput.Type;
@@ -2253,11 +2478,22 @@ export const SetCollectionRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(
+            Schema.Literals(["PrivateProducts", "TermsAndCondition"]),
+          ),
+          value: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/setRules",
+      apiVersion: "2025-01-01",
     }),
   );
 export type SetCollectionRulesInput = typeof SetCollectionRulesInput.Type;

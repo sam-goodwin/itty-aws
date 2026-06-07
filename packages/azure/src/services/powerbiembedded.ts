@@ -11,7 +11,11 @@ import * as T from "../traits.ts";
 // Input Schema
 export const GetAvailableOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.PowerBI/operations" }),
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.PowerBI/operations",
+      apiVersion: "2016-01-29",
+    }),
   );
 export type GetAvailableOperationsInput =
   typeof GetAvailableOperationsInput.Type;
@@ -53,10 +57,13 @@ export const getAvailableOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WorkspaceCollectionsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/locations/{location}/checkNameAvailability",
+      apiVersion: "2016-01-29",
     }),
   );
 export type WorkspaceCollectionsCheckNameAvailabilityInput =
@@ -88,10 +95,19 @@ export const WorkspaceCollectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["S1"]),
+        tier: Schema.Literals(["Standard"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
+      apiVersion: "2016-01-29",
     }),
   );
 export type WorkspaceCollectionsCreateInput =
@@ -138,6 +154,7 @@ export const WorkspaceCollectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
+      apiVersion: "2016-01-29",
     }),
   );
 export type WorkspaceCollectionsDeleteInput =
@@ -171,6 +188,7 @@ export const WorkspaceCollectionsGetAccessKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}/listKeys",
+      apiVersion: "2016-01-29",
     }),
   );
 export type WorkspaceCollectionsGetAccessKeysInput =
@@ -206,6 +224,7 @@ export const WorkspaceCollectionsGetByNameInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
+      apiVersion: "2016-01-29",
     }),
   );
 export type WorkspaceCollectionsGetByNameInput =
@@ -250,6 +269,7 @@ export const WorkspaceCollectionsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections",
+      apiVersion: "2016-01-29",
     }),
   );
 export type WorkspaceCollectionsListByResourceGroupInput =
@@ -297,6 +317,7 @@ export const WorkspaceCollectionsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/workspaceCollections",
+      apiVersion: "2016-01-29",
     }),
   );
 export type WorkspaceCollectionsListBySubscriptionInput =
@@ -340,10 +361,13 @@ export const WorkspaceCollectionsListBySubscription =
 export const WorkspaceCollectionsMigrateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    targetResourceGroup: Schema.optional(Schema.String),
+    resources: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/moveResources",
+      apiVersion: "2016-01-29",
     }),
   );
 export type WorkspaceCollectionsMigrateInput =
@@ -372,10 +396,12 @@ export const WorkspaceCollectionsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
+    keyName: Schema.optional(Schema.Literals(["key1", "key2"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}/regenerateKey",
+      apiVersion: "2016-01-29",
     }),
   );
 export type WorkspaceCollectionsRegenerateKeyInput =
@@ -407,10 +433,18 @@ export const WorkspaceCollectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["S1"]),
+        tier: Schema.Literals(["Standard"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
+      apiVersion: "2016-01-29",
     }),
   );
 export type WorkspaceCollectionsUpdateInput =
@@ -456,6 +490,7 @@ export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}/workspaces",
+    apiVersion: "2016-01-29",
   }),
 );
 export type WorkspacesListInput = typeof WorkspacesListInput.Type;

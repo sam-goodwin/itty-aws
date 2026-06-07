@@ -11,11 +11,19 @@ import * as T from "../traits.ts";
 // Input Schema
 export const CopilotSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        accessControlEnabled: Schema.Boolean,
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.PortalServices/copilotSettings/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CopilotSettingsCreateOrUpdateInput =
@@ -58,12 +66,11 @@ export const CopilotSettingsCreateOrUpdate =
   }));
 // Input Schema
 export const CopilotSettingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.PortalServices/copilotSettings/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CopilotSettingsDeleteInput = typeof CopilotSettingsDeleteInput.Type;
@@ -88,12 +95,11 @@ export const CopilotSettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CopilotSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.PortalServices/copilotSettings/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CopilotSettingsGetInput = typeof CopilotSettingsGetInput.Type;
@@ -134,11 +140,16 @@ export const CopilotSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CopilotSettingsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        accessControlEnabled: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.PortalServices/copilotSettings/default",
+      apiVersion: "2024-04-01",
     }),
   );
 export type CopilotSettingsUpdateInput = typeof CopilotSettingsUpdateInput.Type;
@@ -180,12 +191,13 @@ export const CopilotSettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.PortalServices/operations",
+    apiVersion: "2024-04-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;

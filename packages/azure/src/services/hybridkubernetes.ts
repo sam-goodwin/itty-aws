@@ -13,11 +13,85 @@ export const ConnectedClusterCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals(["None", "SystemAssigned"]),
+    }),
+    kind: Schema.optional(Schema.Literals(["ProvisionedCluster"])),
+    properties: Schema.Struct({
+      agentPublicKeyCertificate: Schema.String,
+      kubernetesVersion: Schema.optional(Schema.String),
+      totalNodeCount: Schema.optional(Schema.Number),
+      totalCoreCount: Schema.optional(Schema.Number),
+      agentVersion: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Updating",
+          "Deleting",
+          "Accepted",
+        ]),
+      ),
+      distribution: Schema.optional(Schema.String),
+      distributionVersion: Schema.optional(Schema.String),
+      infrastructure: Schema.optional(Schema.String),
+      offering: Schema.optional(Schema.String),
+      managedIdentityCertificateExpirationTime: Schema.optional(Schema.String),
+      lastConnectivityTime: Schema.optional(Schema.String),
+      connectivityStatus: Schema.optional(
+        Schema.Literals(["Connecting", "Connected", "Offline", "Expired"]),
+      ),
+      privateLinkState: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      privateLinkScopeResourceId: Schema.optional(Schema.String),
+      azureHybridBenefit: Schema.optional(
+        Schema.Literals(["True", "False", "NotApplicable"]),
+      ),
+      aadProfile: Schema.optional(
+        Schema.Struct({
+          enableAzureRBAC: Schema.optional(Schema.Boolean),
+          adminGroupObjectIDs: Schema.optional(Schema.Array(Schema.String)),
+          tenantID: Schema.optional(Schema.String),
+        }),
+      ),
+      arcAgentProfile: Schema.optional(
+        Schema.Struct({
+          desiredAgentVersion: Schema.optional(Schema.String),
+          agentAutoUpgrade: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+        }),
+      ),
+      miscellaneousProperties: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ConnectedClusterCreateInput =
@@ -54,11 +128,11 @@ export const ConnectedClusterDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ConnectedClusterDeleteInput =
@@ -91,11 +165,11 @@ export const ConnectedClusterGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ConnectedClusterGetInput = typeof ConnectedClusterGetInput.Type;
@@ -128,11 +202,11 @@ export const ConnectedClusterListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ConnectedClusterListByResourceGroupInput =
@@ -174,11 +248,11 @@ export const ConnectedClusterListByResourceGroup =
 export const ConnectedClusterListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kubernetes/connectedClusters",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ConnectedClusterListBySubscriptionInput =
@@ -220,11 +294,13 @@ export const ConnectedClusterListClusterUserCredentialInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    authenticationMethod: Schema.Literals(["Token", "AAD"]),
+    clientProxy: Schema.Boolean,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}/listClusterUserCredential",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ConnectedClusterListClusterUserCredentialInput =
@@ -273,11 +349,21 @@ export const ConnectedClusterUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        distribution: Schema.optional(Schema.String),
+        distributionVersion: Schema.optional(Schema.String),
+        azureHybridBenefit: Schema.optional(
+          Schema.Literals(["True", "False", "NotApplicable"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ConnectedClusterUpdateInput =
@@ -310,10 +396,14 @@ export const ConnectedClusterUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Kubernetes/operations" }),
+export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Kubernetes/operations",
+    apiVersion: "2024-01-01",
+  }),
 );
 export type OperationsGetInput = typeof OperationsGetInput.Type;
 

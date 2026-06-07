@@ -15,11 +15,11 @@ export const ArtifactsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.PathParam()),
   imageName: Schema.String.pipe(T.PathParam()),
   artifactName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/artifacts/{artifactName}",
+    apiVersion: "2026-03-15",
   }),
 );
 export type ArtifactsGetInput = typeof ArtifactsGetInput.Type;
@@ -68,11 +68,11 @@ export const ArtifactsListByParentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     imageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/artifacts",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ArtifactsListByParentInput = typeof ArtifactsListByParentInput.Type;
@@ -140,11 +140,11 @@ export const ArtifactsListDownloadUriInput =
     name: Schema.String.pipe(T.PathParam()),
     imageName: Schema.String.pipe(T.PathParam()),
     artifactName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/artifacts/{artifactName}/listDownloadUri",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ArtifactsListDownloadUriInput =
@@ -189,11 +189,31 @@ export const ConfigTemplatesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        uniqueIdentifier: Schema.optional(Schema.String),
+        description: Schema.String,
+        latestVersion: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigTemplatesCreateOrUpdateInput =
@@ -243,11 +263,32 @@ export const ConfigTemplatesCreateVersionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    updateType: Schema.optional(Schema.Literals(["Major", "Minor", "Patch"])),
+    version: Schema.optional(Schema.String),
+    configTemplateVersion: Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/createVersion",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigTemplatesCreateVersionInput =
@@ -297,11 +338,11 @@ export const ConfigTemplatesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigTemplatesDeleteInput = typeof ConfigTemplatesDeleteInput.Type;
@@ -333,11 +374,11 @@ export const ConfigTemplatesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigTemplatesGetInput = typeof ConfigTemplatesGetInput.Type;
@@ -383,11 +424,11 @@ export const ConfigTemplatesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigTemplatesListByResourceGroupInput =
@@ -449,11 +490,11 @@ export const ConfigTemplatesListByResourceGroup =
 export const ConfigTemplatesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/configTemplates",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigTemplatesListBySubscriptionInput =
@@ -516,11 +557,12 @@ export const ConfigTemplatesRemoveVersionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    version: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/removeVersion",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigTemplatesRemoveVersionInput =
@@ -554,11 +596,17 @@ export const ConfigTemplatesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigTemplatesUpdateInput = typeof ConfigTemplatesUpdateInput.Type;
@@ -609,11 +657,11 @@ export const ConfigTemplateVersionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configTemplateName: Schema.String.pipe(T.PathParam()),
     configTemplateVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigTemplateVersionsGetInput =
@@ -665,11 +713,11 @@ export const ConfigTemplateVersionsListByConfigTemplateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigTemplateVersionsListByConfigTemplateInput =
@@ -732,11 +780,19 @@ export const ConfigTemplateVersionsListByConfigTemplate =
 export const ConfigurationReferencesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationReferenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+        configurationResourceId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigurationReferencesCreateOrUpdateInput =
@@ -782,11 +838,11 @@ export const ConfigurationReferencesCreateOrUpdate =
 export const ConfigurationReferencesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationReferenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigurationReferencesDeleteInput =
@@ -814,11 +870,11 @@ export const ConfigurationReferencesDelete =
 export const ConfigurationReferencesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationReferenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigurationReferencesGetInput =
@@ -863,12 +919,11 @@ export const ConfigurationReferencesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConfigurationReferencesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.Edge/configurationReferences",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigurationReferencesListInput =
@@ -929,11 +984,19 @@ export const ConfigurationReferencesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ConfigurationReferencesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationReferenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+        configurationResourceId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/{resourceUri}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigurationReferencesUpdateInput =
@@ -981,11 +1044,20 @@ export const ConfigurationsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigurationsCreateOrUpdateInput =
@@ -1035,11 +1107,11 @@ export const ConfigurationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigurationsDeleteInput = typeof ConfigurationsDeleteInput.Type;
@@ -1070,12 +1142,12 @@ export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type ConfigurationsGetInput = typeof ConfigurationsGetInput.Type;
@@ -1121,11 +1193,11 @@ export const ConfigurationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigurationsListByResourceGroupInput =
@@ -1187,11 +1259,11 @@ export const ConfigurationsListByResourceGroup =
 export const ConfigurationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/configurations",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigurationsListBySubscriptionInput =
@@ -1254,11 +1326,19 @@ export const ConfigurationsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ConfigurationsUpdateInput = typeof ConfigurationsUpdateInput.Type;
@@ -1307,11 +1387,40 @@ export const ContextsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     contextName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        capabilities: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            description: Schema.String,
+            state: Schema.optional(Schema.Literals(["active", "inactive"])),
+          }),
+        ),
+        hierarchies: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            description: Schema.String,
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ContextsCreateOrUpdateInput =
@@ -1361,11 +1470,11 @@ export const ContextsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   contextName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type ContextsDeleteInput = typeof ContextsDeleteInput.Type;
@@ -1392,11 +1501,11 @@ export const ContextsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   contextName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type ContextsGetInput = typeof ContextsGetInput.Type;
@@ -1441,11 +1550,11 @@ export const ContextsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ContextsListByResourceGroupInput =
@@ -1508,11 +1617,11 @@ export const ContextsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ContextsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/contexts",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ContextsListBySubscriptionInput =
@@ -1575,11 +1684,33 @@ export const ContextsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   contextName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      capabilities: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            description: Schema.String,
+            state: Schema.optional(Schema.Literals(["active", "inactive"])),
+          }),
+        ),
+      ),
+      hierarchies: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            description: Schema.String,
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type ContextsUpdateInput = typeof ContextsUpdateInput.Type;
@@ -1625,11 +1756,34 @@ export const DiagnosticsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diagnosticName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DiagnosticsCreateOrUpdateInput =
@@ -1680,12 +1834,12 @@ export const DiagnosticsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diagnosticName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type DiagnosticsDeleteInput = typeof DiagnosticsDeleteInput.Type;
@@ -1712,11 +1866,11 @@ export const DiagnosticsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   diagnosticName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type DiagnosticsGetInput = typeof DiagnosticsGetInput.Type;
@@ -1761,11 +1915,11 @@ export const DiagnosticsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DiagnosticsListByResourceGroupInput =
@@ -1827,11 +1981,11 @@ export const DiagnosticsListByResourceGroup =
 export const DiagnosticsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/diagnostics",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DiagnosticsListBySubscriptionInput =
@@ -1894,12 +2048,14 @@ export const DiagnosticsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diagnosticName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(Schema.Unknown),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type DiagnosticsUpdateInput = typeof DiagnosticsUpdateInput.Type;
@@ -1946,11 +2102,58 @@ export const DisconnectedOperationsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+        stampId: Schema.String,
+        billingModel: Schema.Literals(["Capacity"]),
+        connectionIntent: Schema.Literals(["Connected", "Disconnected"]),
+        connectionStatus: Schema.optional(
+          Schema.Literals(["Connected", "Disconnected"]),
+        ),
+        registrationStatus: Schema.optional(
+          Schema.Literals(["Registered", "Unregistered"]),
+        ),
+        deviceVersion: Schema.optional(Schema.String),
+        billingConfiguration: Schema.optional(
+          Schema.Struct({
+            autoRenew: Schema.Literals(["Enabled", "Disabled"]),
+            billingStatus: Schema.Literals(["Enabled", "Disabled", "Stopped"]),
+            current: Schema.Struct({
+              cores: Schema.Number,
+              pricingModel: Schema.Literals(["Trial", "Annual"]),
+              startDate: Schema.optional(Schema.String),
+              endDate: Schema.optional(Schema.String),
+            }),
+            upcoming: Schema.optional(
+              Schema.Struct({
+                cores: Schema.Number,
+                pricingModel: Schema.Literals(["Trial", "Annual"]),
+                startDate: Schema.optional(Schema.String),
+                endDate: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        benefitPlans: Schema.optional(
+          Schema.Struct({
+            azureHybridWindowsServerBenefit: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            windowsServerVmCount: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DisconnectedOperationsCreateOrUpdateInput =
@@ -2000,11 +2203,11 @@ export const DisconnectedOperationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DisconnectedOperationsDeleteInput =
@@ -2036,11 +2239,11 @@ export const DisconnectedOperationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DisconnectedOperationsGetInput =
@@ -2090,11 +2293,11 @@ export const DisconnectedOperationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DisconnectedOperationsListByResourceGroupInput =
@@ -2156,11 +2359,11 @@ export const DisconnectedOperationsListByResourceGroup =
 export const DisconnectedOperationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/disconnectedOperations",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DisconnectedOperationsListBySubscriptionInput =
@@ -2223,11 +2426,11 @@ export const DisconnectedOperationsListDeploymentManifestInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/listDeploymentManifest",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DisconnectedOperationsListDeploymentManifestInput =
@@ -2295,11 +2498,54 @@ export const DisconnectedOperationsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        connectionIntent: Schema.optional(
+          Schema.Literals(["Connected", "Disconnected"]),
+        ),
+        registrationStatus: Schema.optional(
+          Schema.Literals(["Registered", "Unregistered"]),
+        ),
+        deviceVersion: Schema.optional(Schema.String),
+        billingConfiguration: Schema.optional(
+          Schema.Struct({
+            autoRenew: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            current: Schema.optional(
+              Schema.Struct({
+                cores: Schema.optional(Schema.Number),
+                pricingModel: Schema.optional(
+                  Schema.Literals(["Trial", "Annual"]),
+                ),
+              }),
+            ),
+            upcoming: Schema.optional(
+              Schema.Struct({
+                cores: Schema.optional(Schema.Number),
+                pricingModel: Schema.optional(
+                  Schema.Literals(["Trial", "Annual"]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        benefitPlans: Schema.optional(
+          Schema.Struct({
+            azureHybridWindowsServerBenefit: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            windowsServerVmCount: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type DisconnectedOperationsUpdateInput =
@@ -2350,11 +2596,33 @@ export const DynamicConfigurationsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        currentVersion: Schema.String,
+        displayName: Schema.optional(Schema.String),
+        dynamicConfigurationType: Schema.optional(
+          Schema.Literals(["Shared", "Hierarchy"]),
+        ),
+        dynamicConfigurationModel: Schema.optional(
+          Schema.Literals(["Application", "Common"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicConfigurationsCreateOrUpdateInput =
@@ -2406,11 +2674,11 @@ export const DynamicConfigurationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicConfigurationsDeleteInput =
@@ -2445,11 +2713,11 @@ export const DynamicConfigurationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicConfigurationsGetInput =
@@ -2501,11 +2769,11 @@ export const DynamicConfigurationsListByConfigurationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicConfigurationsListByConfigurationInput =
@@ -2571,11 +2839,16 @@ export const DynamicConfigurationsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        currentVersion: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicConfigurationsUpdateInput =
@@ -2629,11 +2902,32 @@ export const DynamicConfigurationVersionsCreateOrUpdateInput =
     configurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        values: Schema.String,
+        schemaId: Schema.optional(Schema.String),
+        dynamicSchemaVersionId: Schema.optional(Schema.String),
+        displayState: Schema.optional(Schema.String),
+        state: Schema.optional(
+          Schema.Literals(["ConfigurationCompleted", "ConfigurationPending"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicConfigurationVersionsCreateOrUpdateInput =
@@ -2687,11 +2981,11 @@ export const DynamicConfigurationVersionsDeleteInput =
     configurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicConfigurationVersionsDeleteInput =
@@ -2727,11 +3021,11 @@ export const DynamicConfigurationVersionsGetInput =
     configurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicConfigurationVersionsGetInput =
@@ -2784,11 +3078,11 @@ export const DynamicConfigurationVersionsListByDynamicConfigurationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicConfigurationVersionsListByDynamicConfigurationInput =
@@ -2856,11 +3150,16 @@ export const DynamicConfigurationVersionsUpdateInput =
     configurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationName: Schema.String.pipe(T.PathParam()),
     dynamicConfigurationVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        values: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicConfigurationVersionsUpdateInput =
@@ -2913,11 +3212,33 @@ export const DynamicSchemasCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        configurationType: Schema.optional(
+          Schema.Literals(["Shared", "Hierarchy"]),
+        ),
+        configurationModel: Schema.optional(
+          Schema.Literals(["Application", "Common"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicSchemasCreateOrUpdateInput =
@@ -2969,11 +3290,11 @@ export const DynamicSchemasDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicSchemasDeleteInput = typeof DynamicSchemasDeleteInput.Type;
@@ -3006,12 +3327,12 @@ export const DynamicSchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type DynamicSchemasGetInput = typeof DynamicSchemasGetInput.Type;
@@ -3059,11 +3380,11 @@ export const DynamicSchemasListBySchemaInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicSchemasListBySchemaInput =
@@ -3130,11 +3451,32 @@ export const DynamicSchemasUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        configurationType: Schema.optional(
+          Schema.Literals(["Shared", "Hierarchy"]),
+        ),
+        configurationModel: Schema.optional(
+          Schema.Literals(["Application", "Common"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicSchemasUpdateInput = typeof DynamicSchemasUpdateInput.Type;
@@ -3186,11 +3528,27 @@ export const DynamicSchemaVersionsCreateOrUpdateInput =
     schemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        value: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicSchemaVersionsCreateOrUpdateInput =
@@ -3244,11 +3602,11 @@ export const DynamicSchemaVersionsDeleteInput =
     schemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicSchemaVersionsDeleteInput =
@@ -3285,11 +3643,11 @@ export const DynamicSchemaVersionsGetInput =
     schemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicSchemaVersionsGetInput =
@@ -3343,11 +3701,11 @@ export const DynamicSchemaVersionsListByDynamicSchemaInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicSchemaVersionsListByDynamicSchemaInput =
@@ -3415,11 +3773,16 @@ export const DynamicSchemaVersionsUpdateInput =
     schemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaName: Schema.String.pipe(T.PathParam()),
     dynamicSchemaVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        value: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type DynamicSchemaVersionsUpdateInput =
@@ -3475,11 +3838,63 @@ export const ExecutionsCreateOrUpdateInput =
     workflowName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
     executionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        workflowVersionId: Schema.String,
+        specification: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            updateTime: Schema.optional(Schema.String),
+            status: Schema.optional(Schema.Number),
+            statusMessage: Schema.optional(Schema.String),
+            stageHistory: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  status: Schema.optional(Schema.Number),
+                  statusMessage: Schema.optional(Schema.String),
+                  stage: Schema.optional(Schema.String),
+                  nextstage: Schema.optional(Schema.String),
+                  errorMessage: Schema.optional(Schema.String),
+                  isActive: Schema.optional(
+                    Schema.Literals(["active", "inactive"]),
+                  ),
+                  inputs: Schema.optional(
+                    Schema.Record(Schema.String, Schema.Unknown),
+                  ),
+                  outputs: Schema.optional(
+                    Schema.Record(Schema.String, Schema.Unknown),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ExecutionsCreateOrUpdateInput =
@@ -3535,11 +3950,11 @@ export const ExecutionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.PathParam()),
   versionName: Schema.String.pipe(T.PathParam()),
   executionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type ExecutionsDeleteInput = typeof ExecutionsDeleteInput.Type;
@@ -3572,11 +3987,11 @@ export const ExecutionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.PathParam()),
   versionName: Schema.String.pipe(T.PathParam()),
   executionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type ExecutionsGetInput = typeof ExecutionsGetInput.Type;
@@ -3627,11 +4042,11 @@ export const ExecutionsListByWorkflowVersionInput =
     contextName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions",
+      apiVersion: "2025-08-01",
     }),
   );
 export type ExecutionsListByWorkflowVersionInput =
@@ -3700,11 +4115,19 @@ export const ExecutionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.PathParam()),
   versionName: Schema.String.pipe(T.PathParam()),
   executionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      workflowVersionId: Schema.optional(Schema.String),
+      specification: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type ExecutionsUpdateInput = typeof ExecutionsUpdateInput.Type;
@@ -3756,11 +4179,27 @@ export const HardwareSettingsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     hardwareSettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+        totalCores: Schema.Number,
+        diskSpaceInGb: Schema.Number,
+        memoryInGb: Schema.Number,
+        oem: Schema.String,
+        hardwareSku: Schema.String,
+        nodes: Schema.Number,
+        versionAtRegistration: Schema.String,
+        solutionBuilderExtension: Schema.String,
+        deviceId: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type HardwareSettingsCreateOrUpdateInput =
@@ -3812,11 +4251,11 @@ export const HardwareSettingsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     hardwareSettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type HardwareSettingsDeleteInput =
@@ -3851,11 +4290,11 @@ export const HardwareSettingsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     hardwareSettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
+      apiVersion: "2026-03-15",
     }),
   );
 export type HardwareSettingsGetInput = typeof HardwareSettingsGetInput.Type;
@@ -3903,11 +4342,11 @@ export const HardwareSettingsListByParentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings",
+      apiVersion: "2026-03-15",
     }),
   );
 export type HardwareSettingsListByParentInput =
@@ -3972,11 +4411,11 @@ export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
   imageName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}",
+    apiVersion: "2026-03-15",
   }),
 );
 export type ImagesGetInput = typeof ImagesGetInput.Type;
@@ -4023,11 +4462,11 @@ export const ImagesListByDisconnectedOperationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ImagesListByDisconnectedOperationInput =
@@ -4093,11 +4532,11 @@ export const ImagesListDownloadUriInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     imageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/listDownloadUri",
+      apiVersion: "2026-03-15",
     }),
   );
 export type ImagesListDownloadUriInput = typeof ImagesListDownloadUriInput.Type;
@@ -4155,11 +4594,11 @@ export const InstanceHistoriesGetInput =
     solutionName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
     instanceHistoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}/histories/{instanceHistoryName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type InstanceHistoriesGetInput = typeof InstanceHistoriesGetInput.Type;
@@ -4213,11 +4652,11 @@ export const InstanceHistoriesListByInstanceInput =
     targetName: Schema.String.pipe(T.PathParam()),
     solutionName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}/histories",
+      apiVersion: "2025-08-01",
     }),
   );
 export type InstanceHistoriesListByInstanceInput =
@@ -4286,11 +4725,70 @@ export const InstancesCreateOrUpdateInput =
     targetName: Schema.String.pipe(T.PathParam()),
     solutionName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        solutionVersionId: Schema.String,
+        targetId: Schema.String,
+        activeState: Schema.optional(Schema.Literals(["active", "inactive"])),
+        reconciliationPolicy: Schema.optional(
+          Schema.Struct({
+            state: Schema.Literals(["inactive", "active"]),
+            interval: Schema.String,
+          }),
+        ),
+        solutionScope: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Struct({
+            lastModified: Schema.optional(Schema.String),
+            deployed: Schema.optional(Schema.Number),
+            expectedRunningJobId: Schema.optional(Schema.Number),
+            runningJobId: Schema.optional(Schema.Number),
+            status: Schema.optional(Schema.String),
+            statusDetails: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            targetStatuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  status: Schema.optional(Schema.String),
+                  componentStatuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                        status: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        deploymentTimestampEpoch: Schema.optional(Schema.Number),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type InstancesCreateOrUpdateInput =
@@ -4344,11 +4842,11 @@ export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   targetName: Schema.String.pipe(T.PathParam()),
   solutionName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type InstancesDeleteInput = typeof InstancesDeleteInput.Type;
@@ -4379,11 +4877,11 @@ export const InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   targetName: Schema.String.pipe(T.PathParam()),
   solutionName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type InstancesGetInput = typeof InstancesGetInput.Type;
@@ -4432,11 +4930,11 @@ export const InstancesListBySolutionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
     solutionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances",
+      apiVersion: "2025-08-01",
     }),
   );
 export type InstancesListBySolutionInput =
@@ -4504,11 +5002,25 @@ export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   targetName: Schema.String.pipe(T.PathParam()),
   solutionName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      solutionVersionId: Schema.optional(Schema.String),
+      targetId: Schema.optional(Schema.String),
+      activeState: Schema.optional(Schema.Literals(["active", "inactive"])),
+      reconciliationPolicy: Schema.optional(
+        Schema.Struct({
+          state: Schema.optional(Schema.Literals(["inactive", "active"])),
+          interval: Schema.optional(Schema.String),
+        }),
+      ),
+      solutionScope: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type InstancesUpdateInput = typeof InstancesUpdateInput.Type;
@@ -4553,11 +5065,11 @@ export const InstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.Edge/jobs/{jobName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type JobsGetInput = typeof JobsGetInput.Type;
@@ -4596,12 +5108,13 @@ export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsGetOutput,
 }));
 // Input Schema
-export const JobsListByTargetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const JobsListByTargetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.Edge/jobs",
+    apiVersion: "2025-08-01",
   }),
 );
 export type JobsListByTargetInput = typeof JobsListByTargetInput.Type;
@@ -4656,10 +5169,14 @@ export const JobsListByTarget = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsListByTargetOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Edge/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Edge/operations",
+    apiVersion: "2025-06-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -4703,11 +5220,27 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SchemaReferencesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaReferenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        schemaId: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemaReferencesCreateOrUpdateInput =
@@ -4753,11 +5286,11 @@ export const SchemaReferencesCreateOrUpdate =
 export const SchemaReferencesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaReferenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemaReferencesDeleteInput =
@@ -4786,11 +5319,11 @@ export const SchemaReferencesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SchemaReferencesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaReferenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemaReferencesGetInput = typeof SchemaReferencesGetInput.Type;
@@ -4831,12 +5364,11 @@ export const SchemaReferencesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SchemaReferencesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemaReferencesListByResourceGroupInput =
@@ -4896,11 +5428,16 @@ export const SchemaReferencesListByResourceGroup =
 export const SchemaReferencesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaReferenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        schemaId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemaReferencesUpdateInput =
@@ -4949,11 +5486,29 @@ export const SchemasCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        currentVersion: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemasCreateOrUpdateInput = typeof SchemasCreateOrUpdateInput.Type;
@@ -5003,11 +5558,32 @@ export const SchemasCreateVersionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    updateType: Schema.optional(Schema.Literals(["Major", "Minor", "Patch"])),
+    version: Schema.optional(Schema.String),
+    schemaVersion: Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/createVersion",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemasCreateVersionInput = typeof SchemasCreateVersionInput.Type;
@@ -5055,11 +5631,11 @@ export const SchemasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schemaName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type SchemasDeleteInput = typeof SchemasDeleteInput.Type;
@@ -5086,11 +5662,11 @@ export const SchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schemaName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type SchemasGetInput = typeof SchemasGetInput.Type;
@@ -5135,11 +5711,11 @@ export const SchemasListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemasListByResourceGroupInput =
@@ -5202,11 +5778,11 @@ export const SchemasListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SchemasListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/schemas",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemasListBySubscriptionInput =
@@ -5270,11 +5846,12 @@ export const SchemasRemoveVersionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    version: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/removeVersion",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemasRemoveVersionInput = typeof SchemasRemoveVersionInput.Type;
@@ -5306,11 +5883,13 @@ export const SchemasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schemaName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(Schema.Unknown),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type SchemasUpdateInput = typeof SchemasUpdateInput.Type;
@@ -5357,11 +5936,27 @@ export const SchemaVersionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     schemaVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        value: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemaVersionsCreateOrUpdateInput =
@@ -5413,11 +6008,11 @@ export const SchemaVersionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     schemaVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemaVersionsDeleteInput = typeof SchemaVersionsDeleteInput.Type;
@@ -5450,12 +6045,12 @@ export const SchemaVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     schemaVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type SchemaVersionsGetInput = typeof SchemaVersionsGetInput.Type;
@@ -5503,11 +6098,11 @@ export const SchemaVersionsListBySchemaInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemaVersionsListBySchemaInput =
@@ -5574,11 +6169,16 @@ export const SchemaVersionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     schemaVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        value: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SchemaVersionsUpdateInput = typeof SchemaVersionsUpdateInput.Type;
@@ -5629,11 +6229,26 @@ export const SiteReferencesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     contextName: Schema.String.pipe(T.PathParam()),
     siteReferenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        siteId: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SiteReferencesCreateOrUpdateInput =
@@ -5685,11 +6300,11 @@ export const SiteReferencesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     contextName: Schema.String.pipe(T.PathParam()),
     siteReferenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SiteReferencesDeleteInput = typeof SiteReferencesDeleteInput.Type;
@@ -5722,12 +6337,12 @@ export const SiteReferencesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     contextName: Schema.String.pipe(T.PathParam()),
     siteReferenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type SiteReferencesGetInput = typeof SiteReferencesGetInput.Type;
@@ -5775,11 +6390,11 @@ export const SiteReferencesListByContextInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     contextName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SiteReferencesListByContextInput =
@@ -5846,11 +6461,16 @@ export const SiteReferencesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     contextName: Schema.String.pipe(T.PathParam()),
     siteReferenceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        siteId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SiteReferencesUpdateInput = typeof SiteReferencesUpdateInput.Type;
@@ -5899,11 +6519,31 @@ export const SitesByServiceGroupCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicegroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        siteAddress: Schema.optional(
+          Schema.Struct({
+            streetAddress1: Schema.optional(Schema.String),
+            streetAddress2: Schema.optional(Schema.String),
+            city: Schema.optional(Schema.String),
+            stateOrProvince: Schema.optional(Schema.String),
+            country: Schema.optional(Schema.String),
+            postalCode: Schema.optional(Schema.String),
+          }),
+        ),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
+      apiVersion: "2025-06-01",
     }),
   );
 export type SitesByServiceGroupCreateOrUpdateInput =
@@ -5951,11 +6591,11 @@ export const SitesByServiceGroupDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicegroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
+      apiVersion: "2025-06-01",
     }),
   );
 export type SitesByServiceGroupDeleteInput =
@@ -5986,11 +6626,11 @@ export const SitesByServiceGroupGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicegroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
+      apiVersion: "2025-06-01",
     }),
   );
 export type SitesByServiceGroupGetInput =
@@ -6038,11 +6678,11 @@ export const SitesByServiceGroupGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SitesByServiceGroupListByServiceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicegroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites",
+      apiVersion: "2025-06-01",
     }),
   );
 export type SitesByServiceGroupListByServiceGroupInput =
@@ -6104,11 +6744,28 @@ export const SitesByServiceGroupUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicegroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        siteAddress: Schema.optional(
+          Schema.Struct({
+            streetAddress1: Schema.optional(Schema.String),
+            streetAddress2: Schema.optional(Schema.String),
+            city: Schema.optional(Schema.String),
+            stateOrProvince: Schema.optional(Schema.String),
+            country: Schema.optional(Schema.String),
+            postalCode: Schema.optional(Schema.String),
+          }),
+        ),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
+      apiVersion: "2025-06-01",
     }),
   );
 export type SitesByServiceGroupUpdateInput =
@@ -6157,11 +6814,31 @@ export const SitesBySubscriptionCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        siteAddress: Schema.optional(
+          Schema.Struct({
+            streetAddress1: Schema.optional(Schema.String),
+            streetAddress2: Schema.optional(Schema.String),
+            city: Schema.optional(Schema.String),
+            stateOrProvince: Schema.optional(Schema.String),
+            country: Schema.optional(Schema.String),
+            postalCode: Schema.optional(Schema.String),
+          }),
+        ),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
+      apiVersion: "2025-06-01",
     }),
   );
 export type SitesBySubscriptionCreateOrUpdateInput =
@@ -6209,11 +6886,11 @@ export const SitesBySubscriptionDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
+      apiVersion: "2025-06-01",
     }),
   );
 export type SitesBySubscriptionDeleteInput =
@@ -6244,11 +6921,11 @@ export const SitesBySubscriptionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
+      apiVersion: "2025-06-01",
     }),
   );
 export type SitesBySubscriptionGetInput =
@@ -6296,11 +6973,11 @@ export const SitesBySubscriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SitesBySubscriptionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites",
+      apiVersion: "2025-06-01",
     }),
   );
 export type SitesBySubscriptionListInput =
@@ -6363,11 +7040,28 @@ export const SitesBySubscriptionUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        siteAddress: Schema.optional(
+          Schema.Struct({
+            streetAddress1: Schema.optional(Schema.String),
+            streetAddress2: Schema.optional(Schema.String),
+            city: Schema.optional(Schema.String),
+            stateOrProvince: Schema.optional(Schema.String),
+            country: Schema.optional(Schema.String),
+            postalCode: Schema.optional(Schema.String),
+          }),
+        ),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
+      apiVersion: "2025-06-01",
     }),
   );
 export type SitesBySubscriptionUpdateInput =
@@ -6417,11 +7111,31 @@ export const SitesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        siteAddress: Schema.optional(
+          Schema.Struct({
+            streetAddress1: Schema.optional(Schema.String),
+            streetAddress2: Schema.optional(Schema.String),
+            city: Schema.optional(Schema.String),
+            stateOrProvince: Schema.optional(Schema.String),
+            country: Schema.optional(Schema.String),
+            postalCode: Schema.optional(Schema.String),
+          }),
+        ),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
+      apiVersion: "2025-06-01",
     }),
   );
 export type SitesCreateOrUpdateInput = typeof SitesCreateOrUpdateInput.Type;
@@ -6467,11 +7181,11 @@ export const SitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   siteName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
+    apiVersion: "2025-06-01",
   }),
 );
 export type SitesDeleteInput = typeof SitesDeleteInput.Type;
@@ -6498,11 +7212,11 @@ export const SitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   siteName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
+    apiVersion: "2025-06-01",
   }),
 );
 export type SitesGetInput = typeof SitesGetInput.Type;
@@ -6547,11 +7261,11 @@ export const SitesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites",
+      apiVersion: "2025-06-01",
     }),
   );
 export type SitesListByResourceGroupInput =
@@ -6615,11 +7329,28 @@ export const SitesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   siteName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      displayName: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      siteAddress: Schema.optional(
+        Schema.Struct({
+          streetAddress1: Schema.optional(Schema.String),
+          streetAddress2: Schema.optional(Schema.String),
+          city: Schema.optional(Schema.String),
+          stateOrProvince: Schema.optional(Schema.String),
+          country: Schema.optional(Schema.String),
+          postalCode: Schema.optional(Schema.String),
+        }),
+      ),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
+    apiVersion: "2025-06-01",
   }),
 );
 export type SitesUpdateInput = typeof SitesUpdateInput.Type;
@@ -6666,11 +7397,43 @@ export const SolutionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
     solutionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        solutionTemplateId: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        availableSolutionTemplateVersions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              solutionTemplateVersion: Schema.String,
+              latestConfigRevision: Schema.String,
+              isConfigured: Schema.Boolean,
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionsCreateOrUpdateInput =
@@ -6722,11 +7485,11 @@ export const SolutionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
   solutionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type SolutionsDeleteInput = typeof SolutionsDeleteInput.Type;
@@ -6755,11 +7518,11 @@ export const SolutionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
   solutionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type SolutionsGetInput = typeof SolutionsGetInput.Type;
@@ -6806,11 +7569,11 @@ export const SolutionsListByTargetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionsListByTargetInput = typeof SolutionsListByTargetInput.Type;
@@ -6875,11 +7638,12 @@ export const SolutionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
   solutionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(Schema.Unknown),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type SolutionsUpdateInput = typeof SolutionsUpdateInput.Type;
@@ -6926,11 +7690,34 @@ export const SolutionTemplatesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     solutionTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        uniqueIdentifier: Schema.optional(Schema.String),
+        description: Schema.String,
+        capabilities: Schema.Array(Schema.String),
+        latestVersion: Schema.optional(Schema.String),
+        state: Schema.optional(Schema.Literals(["active", "inactive"])),
+        enableExternalValidation: Schema.optional(Schema.Boolean),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplatesCreateOrUpdateInput =
@@ -6980,11 +7767,32 @@ export const SolutionTemplatesCreateVersionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     solutionTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    updateType: Schema.optional(Schema.Literals(["Major", "Minor", "Patch"])),
+    version: Schema.optional(Schema.String),
+    solutionTemplateVersion: Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/createVersion",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplatesCreateVersionInput =
@@ -7034,11 +7842,11 @@ export const SolutionTemplatesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     solutionTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplatesDeleteInput =
@@ -7071,11 +7879,11 @@ export const SolutionTemplatesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     solutionTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplatesGetInput = typeof SolutionTemplatesGetInput.Type;
@@ -7123,11 +7931,11 @@ export const SolutionTemplatesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplatesListByResourceGroupInput =
@@ -7189,11 +7997,11 @@ export const SolutionTemplatesListByResourceGroup =
 export const SolutionTemplatesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/solutionTemplates",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplatesListBySubscriptionInput =
@@ -7256,11 +8064,12 @@ export const SolutionTemplatesRemoveVersionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     solutionTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    version: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/removeVersion",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplatesRemoveVersionInput =
@@ -7292,11 +8101,20 @@ export const SolutionTemplatesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     solutionTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.optional(Schema.String),
+        capabilities: Schema.optional(Schema.Array(Schema.String)),
+        state: Schema.optional(Schema.Literals(["active", "inactive"])),
+        enableExternalValidation: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplatesUpdateInput =
@@ -7348,11 +8166,16 @@ export const SolutionTemplateVersionsBulkDeploySolutionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     solutionTemplateName: Schema.String.pipe(T.PathParam()),
     solutionTemplateVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    targets: Schema.Array(
+      Schema.Struct({
+        solutionVersionId: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkDeploySolution",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplateVersionsBulkDeploySolutionInput =
@@ -7386,11 +8209,33 @@ export const SolutionTemplateVersionsBulkPublishSolutionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     solutionTemplateName: Schema.String.pipe(T.PathParam()),
     solutionTemplateVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    targets: Schema.Array(
+      Schema.Struct({
+        targetId: Schema.String,
+        solutionInstanceName: Schema.optional(Schema.String),
+        solutionVersionId: Schema.optional(Schema.String),
+        solutionConfiguration: Schema.optional(Schema.String),
+      }),
+    ),
+    solutionInstanceName: Schema.optional(Schema.String),
+    solutionDependencies: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          solutionVersionId: Schema.optional(Schema.String),
+          solutionTemplateId: Schema.optional(Schema.String),
+          solutionTemplateVersion: Schema.optional(Schema.String),
+          solutionInstanceName: Schema.optional(Schema.String),
+          targetId: Schema.optional(Schema.String),
+          dependencies: Schema.optional(Schema.Array(Schema.Unknown)),
+        }),
+      ),
+    ),
+    solutionConfiguration: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkPublishSolution",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplateVersionsBulkPublishSolutionInput =
@@ -7424,11 +8269,32 @@ export const SolutionTemplateVersionsBulkReviewSolutionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     solutionTemplateName: Schema.String.pipe(T.PathParam()),
     solutionTemplateVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    targets: Schema.Array(
+      Schema.Struct({
+        targetId: Schema.String,
+        solutionInstanceName: Schema.optional(Schema.String),
+        solutionConfiguration: Schema.optional(Schema.String),
+      }),
+    ),
+    solutionInstanceName: Schema.optional(Schema.String),
+    solutionDependencies: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          solutionVersionId: Schema.optional(Schema.String),
+          solutionTemplateId: Schema.optional(Schema.String),
+          solutionTemplateVersion: Schema.optional(Schema.String),
+          solutionInstanceName: Schema.optional(Schema.String),
+          targetId: Schema.optional(Schema.String),
+          dependencies: Schema.optional(Schema.Array(Schema.Unknown)),
+        }),
+      ),
+    ),
+    solutionConfiguration: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkReviewSolution",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplateVersionsBulkReviewSolutionInput =
@@ -7462,11 +8328,11 @@ export const SolutionTemplateVersionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     solutionTemplateName: Schema.String.pipe(T.PathParam()),
     solutionTemplateVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplateVersionsGetInput =
@@ -7518,11 +8384,11 @@ export const SolutionTemplateVersionsListBySolutionTemplateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     solutionTemplateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionTemplateVersionsListBySolutionTemplateInput =
@@ -7589,11 +8455,161 @@ export const SolutionVersionsCreateOrUpdateInput =
     targetName: Schema.String.pipe(T.PathParam()),
     solutionName: Schema.String.pipe(T.PathParam()),
     solutionVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        solutionTemplateVersionId: Schema.optional(Schema.String),
+        revision: Schema.optional(Schema.Number),
+        targetDisplayName: Schema.optional(Schema.String),
+        configuration: Schema.optional(Schema.String),
+        targetLevelConfiguration: Schema.optional(Schema.String),
+        specification: Schema.Record(Schema.String, Schema.Unknown),
+        reviewId: Schema.optional(Schema.String),
+        externalValidationId: Schema.optional(Schema.String),
+        state: Schema.optional(
+          Schema.Literals([
+            "InReview",
+            "UpgradeInReview",
+            "ReadyToDeploy",
+            "ReadyToUpgrade",
+            "Deploying",
+            "Deployed",
+            "Failed",
+            "Undeployed",
+            "PendingExternalValidation",
+            "ExternalValidationFailed",
+            "Staging",
+            "NotApplicable",
+          ]),
+        ),
+        currentStage: Schema.optional(
+          Schema.Struct({
+            displayState: Schema.String,
+            stage: Schema.Literals([
+              "Configuration",
+              "Publish",
+              "Deployment",
+              "Uninstallation",
+              "ExternalValidation",
+              "Staging",
+              "Unstaging",
+            ]),
+            status: Schema.Literals([
+              "Pending",
+              "InProgress",
+              "Completed",
+              "Failed",
+              "None",
+            ]),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            childStages: Schema.optional(Schema.Array(Schema.Unknown)),
+          }),
+        ),
+        stages: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              displayState: Schema.String,
+              stage: Schema.Literals([
+                "Configuration",
+                "Publish",
+                "Deployment",
+                "Uninstallation",
+                "ExternalValidation",
+                "Staging",
+                "Unstaging",
+              ]),
+              status: Schema.Literals([
+                "Pending",
+                "InProgress",
+                "Completed",
+                "Failed",
+                "None",
+              ]),
+              startTime: Schema.optional(Schema.String),
+              endTime: Schema.optional(Schema.String),
+              childStages: Schema.optional(Schema.Array(Schema.Unknown)),
+            }),
+          ),
+        ),
+        solutionInstanceName: Schema.optional(Schema.String),
+        solutionDependencies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              solutionVersionId: Schema.String,
+              solutionInstanceName: Schema.optional(Schema.String),
+              solutionTemplateVersionId: Schema.String,
+              targetId: Schema.String,
+              dependencies: Schema.optional(Schema.Array(Schema.Unknown)),
+            }),
+          ),
+        ),
+        errorDetails: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  target: Schema.optional(Schema.String),
+                  details: Schema.optional(Schema.Array(Schema.Unknown)),
+                  additionalInfo: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.optional(Schema.String),
+                        info: Schema.optional(Schema.Unknown),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+        latestActionTrackingUri: Schema.optional(Schema.String),
+        latestActionTriggeredBy: Schema.optional(Schema.String),
+        actionType: Schema.optional(
+          Schema.Literals([
+            "deploy",
+            "publish",
+            "staging",
+            "externalValidation",
+          ]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionVersionsCreateOrUpdateInput =
@@ -7647,11 +8663,11 @@ export const SolutionVersionsDeleteInput =
     targetName: Schema.String.pipe(T.PathParam()),
     solutionName: Schema.String.pipe(T.PathParam()),
     solutionVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionVersionsDeleteInput =
@@ -7688,11 +8704,11 @@ export const SolutionVersionsGetInput =
     targetName: Schema.String.pipe(T.PathParam()),
     solutionName: Schema.String.pipe(T.PathParam()),
     solutionVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionVersionsGetInput = typeof SolutionVersionsGetInput.Type;
@@ -7742,11 +8758,11 @@ export const SolutionVersionsListBySolutionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
     solutionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionVersionsListBySolutionInput =
@@ -7814,11 +8830,18 @@ export const SolutionVersionsUpdateInput =
     targetName: Schema.String.pipe(T.PathParam()),
     solutionName: Schema.String.pipe(T.PathParam()),
     solutionVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        specification: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type SolutionVersionsUpdateInput =
@@ -7871,11 +8894,69 @@ export const TargetsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        description: Schema.String,
+        displayName: Schema.String,
+        contextId: Schema.String,
+        targetSpecification: Schema.Record(Schema.String, Schema.Unknown),
+        capabilities: Schema.Array(Schema.String),
+        hierarchyLevel: Schema.String,
+        status: Schema.optional(
+          Schema.Struct({
+            lastModified: Schema.optional(Schema.String),
+            deployed: Schema.optional(Schema.Number),
+            expectedRunningJobId: Schema.optional(Schema.Number),
+            runningJobId: Schema.optional(Schema.Number),
+            status: Schema.optional(Schema.String),
+            statusDetails: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            targetStatuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  status: Schema.optional(Schema.String),
+                  componentStatuses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                        status: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        solutionScope: Schema.optional(Schema.String),
+        state: Schema.optional(Schema.Literals(["active", "inactive"])),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TargetsCreateOrUpdateInput = typeof TargetsCreateOrUpdateInput.Type;
@@ -7924,11 +9005,11 @@ export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type TargetsDeleteInput = typeof TargetsDeleteInput.Type;
@@ -7955,11 +9036,11 @@ export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type TargetsGetInput = typeof TargetsGetInput.Type;
@@ -8005,11 +9086,12 @@ export const TargetsInstallSolutionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    solutionVersionId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/installSolution",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TargetsInstallSolutionInput =
@@ -8041,11 +9123,11 @@ export const TargetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TargetsListByResourceGroupInput =
@@ -8108,11 +9190,11 @@ export const TargetsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const TargetsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/targets",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TargetsListBySubscriptionInput =
@@ -8176,11 +9258,12 @@ export const TargetsPublishSolutionVersionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    solutionVersionId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/publishSolutionVersion",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TargetsPublishSolutionVersionInput =
@@ -8230,11 +9313,13 @@ export const TargetsRemoveRevisionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    solutionTemplateId: Schema.String,
+    solutionVersion: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/removeRevision",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TargetsRemoveRevisionInput = typeof TargetsRemoveRevisionInput.Type;
@@ -8266,11 +9351,25 @@ export const TargetsResolveConfigurationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    solutionTemplateVersionId: Schema.String,
+    solutionInstanceName: Schema.optional(Schema.String),
+    solutionDependencies: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          solutionVersionId: Schema.optional(Schema.String),
+          solutionTemplateId: Schema.optional(Schema.String),
+          solutionTemplateVersion: Schema.optional(Schema.String),
+          solutionInstanceName: Schema.optional(Schema.String),
+          targetId: Schema.optional(Schema.String),
+          dependencies: Schema.optional(Schema.Array(Schema.Unknown)),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/resolveConfiguration",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TargetsResolveConfigurationInput =
@@ -8305,11 +9404,25 @@ export const TargetsReviewSolutionVersionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    solutionTemplateVersionId: Schema.String,
+    solutionInstanceName: Schema.optional(Schema.String),
+    solutionDependencies: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          solutionVersionId: Schema.optional(Schema.String),
+          solutionTemplateId: Schema.optional(Schema.String),
+          solutionTemplateVersion: Schema.optional(Schema.String),
+          solutionInstanceName: Schema.optional(Schema.String),
+          targetId: Schema.optional(Schema.String),
+          dependencies: Schema.optional(Schema.Array(Schema.Unknown)),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/reviewSolutionVersion",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TargetsReviewSolutionVersionInput =
@@ -8359,11 +9472,13 @@ export const TargetsUninstallSolutionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    solutionTemplateId: Schema.String,
+    solutionInstanceName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/uninstallSolution",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TargetsUninstallSolutionInput =
@@ -8396,11 +9511,12 @@ export const TargetsUnstageSolutionVersionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    solutionVersionId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/unstageSolutionVersion",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TargetsUnstageSolutionVersionInput =
@@ -8449,11 +9565,26 @@ export const TargetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.String),
+      contextId: Schema.optional(Schema.String),
+      targetSpecification: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+      capabilities: Schema.optional(Schema.Array(Schema.String)),
+      hierarchyLevel: Schema.optional(Schema.String),
+      solutionScope: Schema.optional(Schema.String),
+      state: Schema.optional(Schema.Literals(["active", "inactive"])),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type TargetsUpdateInput = typeof TargetsUpdateInput.Type;
@@ -8499,11 +9630,47 @@ export const TargetsUpdateExternalValidationStatusInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    solutionVersionId: Schema.String,
+    errorDetails: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    externalValidationId: Schema.String,
+    validationStatus: Schema.Literals(["Valid", "Invalid"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/updateExternalValidationStatus",
+      apiVersion: "2025-08-01",
     }),
   );
 export type TargetsUpdateExternalValidationStatusInput =
@@ -8554,11 +9721,33 @@ export const WorkflowsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     contextName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        workflowTemplateId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type WorkflowsCreateOrUpdateInput =
@@ -8610,11 +9799,11 @@ export const WorkflowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   contextName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type WorkflowsDeleteInput = typeof WorkflowsDeleteInput.Type;
@@ -8643,11 +9832,11 @@ export const WorkflowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   contextName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type WorkflowsGetInput = typeof WorkflowsGetInput.Type;
@@ -8694,11 +9883,11 @@ export const WorkflowsListByContextInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     contextName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows",
+      apiVersion: "2025-08-01",
     }),
   );
 export type WorkflowsListByContextInput =
@@ -8764,11 +9953,26 @@ export const WorkflowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   contextName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      workflowTemplateId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Initialized",
+          "InProgress",
+          "Deleting",
+        ]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
+    apiVersion: "2025-08-01",
   }),
 );
 export type WorkflowsUpdateInput = typeof WorkflowsUpdateInput.Type;
@@ -8817,11 +10021,88 @@ export const WorkflowVersionsCreateOrUpdateInput =
     contextName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        revision: Schema.optional(Schema.Number),
+        configuration: Schema.optional(Schema.String),
+        stageSpec: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            specification: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            tasks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  targetId: Schema.optional(Schema.String),
+                  specification: Schema.Record(Schema.String, Schema.Unknown),
+                }),
+              ),
+            ),
+            taskOption: Schema.optional(
+              Schema.Struct({
+                concurrency: Schema.optional(Schema.Number),
+                errorAction: Schema.optional(
+                  Schema.Struct({
+                    mode: Schema.optional(
+                      Schema.Literals([
+                        "stopOnAnyFailure",
+                        "stopOnNFailures",
+                        "silentlyContinue",
+                      ]),
+                    ),
+                    maxToleratedFailures: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        reviewId: Schema.optional(Schema.String),
+        state: Schema.optional(
+          Schema.Literals([
+            "InReview",
+            "UpgradeInReview",
+            "ReadyToDeploy",
+            "ReadyToUpgrade",
+            "Deploying",
+            "Deployed",
+            "Failed",
+            "Undeployed",
+            "PendingExternalValidation",
+            "ExternalValidationFailed",
+            "Staging",
+            "NotApplicable",
+          ]),
+        ),
+        specification: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Initialized",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type WorkflowVersionsCreateOrUpdateInput =
@@ -8875,11 +10156,11 @@ export const WorkflowVersionsDeleteInput =
     contextName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type WorkflowVersionsDeleteInput =
@@ -8916,11 +10197,11 @@ export const WorkflowVersionsGetInput =
     contextName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type WorkflowVersionsGetInput = typeof WorkflowVersionsGetInput.Type;
@@ -8970,11 +10251,11 @@ export const WorkflowVersionsListByWorkflowInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     contextName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions",
+      apiVersion: "2025-08-01",
     }),
   );
 export type WorkflowVersionsListByWorkflowInput =
@@ -9042,11 +10323,54 @@ export const WorkflowVersionsUpdateInput =
     contextName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        stageSpec: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              specification: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
+              tasks: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    targetId: Schema.optional(Schema.String),
+                    specification: Schema.Record(Schema.String, Schema.Unknown),
+                  }),
+                ),
+              ),
+              taskOption: Schema.optional(
+                Schema.Struct({
+                  concurrency: Schema.optional(Schema.Number),
+                  errorAction: Schema.optional(
+                    Schema.Struct({
+                      mode: Schema.optional(
+                        Schema.Literals([
+                          "stopOnAnyFailure",
+                          "stopOnNFailures",
+                          "silentlyContinue",
+                        ]),
+                      ),
+                      maxToleratedFailures: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+        specification: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
+      apiVersion: "2025-08-01",
     }),
   );
 export type WorkflowVersionsUpdateInput =

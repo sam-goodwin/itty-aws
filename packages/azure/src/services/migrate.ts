@@ -15,11 +15,25 @@ export const AksAssessmentOperationsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "InProgress",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AksAssessmentOperationsCreateInput =
@@ -71,11 +85,11 @@ export const AksAssessmentOperationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AksAssessmentOperationsDeleteInput =
@@ -109,11 +123,11 @@ export const AksAssessmentOperationsDownloadUrlInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/downloadUrl",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AksAssessmentOperationsDownloadUrlInput =
@@ -150,11 +164,11 @@ export const AksAssessmentOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AksAssessmentOperationsGetInput =
@@ -206,7 +220,6 @@ export const AksAssessmentOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     continuationToken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
@@ -215,6 +228,7 @@ export const AksAssessmentOperationsListByAssessmentProjectInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AksAssessmentOperationsListByAssessmentProjectInput =
@@ -285,11 +299,11 @@ export const AksClusterOperationsGetInput =
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/clusters/{clusterName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AksClusterOperationsGetInput =
@@ -343,12 +357,12 @@ export const AksClusterOperationsListByAksAssessmentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/clusters",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AksClusterOperationsListByAksAssessmentInput =
@@ -416,12 +430,12 @@ export const AksCostDetailOperationsListByAksAssessmentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/costDetails",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AksCostDetailOperationsListByAksAssessmentInput =
@@ -489,11 +503,11 @@ export const AksOptionsOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentOptionsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessmentOptions/{assessmentOptionsName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AksOptionsOperationsGetInput =
@@ -545,11 +559,11 @@ export const AksOptionsOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessmentOptions",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AksOptionsOperationsListByAssessmentProjectInput =
@@ -616,11 +630,11 @@ export const AksSummaryOperationsGetInput =
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     summaryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/summaries/{summaryName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AksSummaryOperationsGetInput =
@@ -674,11 +688,11 @@ export const AksSummaryOperationsListByAksAssessmentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/summaries",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AksSummaryOperationsListByAksAssessmentInput =
@@ -747,11 +761,11 @@ export const AssessedMachinesOperationsGetInput =
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     assessedMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}/assessedMachines/{assessedMachineName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedMachinesOperationsGetInput =
@@ -806,7 +820,6 @@ export const AssessedMachinesOperationsListByAssessmentInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -815,6 +828,7 @@ export const AssessedMachinesOperationsListByAssessmentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}/assessedMachines",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedMachinesOperationsListByAssessmentInput =
@@ -888,11 +902,11 @@ export const AssessedSqlDatabaseV2OperationsGetInput =
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     assessedSqlDatabaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlDatabases/{assessedSqlDatabaseName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedSqlDatabaseV2OperationsGetInput =
@@ -947,7 +961,6 @@ export const AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Input =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -956,6 +969,7 @@ export const AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Input =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlDatabases",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Input =
@@ -1029,11 +1043,11 @@ export const AssessedSqlInstanceV2OperationsGetInput =
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     assessedSqlInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlInstances/{assessedSqlInstanceName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedSqlInstanceV2OperationsGetInput =
@@ -1088,7 +1102,6 @@ export const AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Input =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -1097,6 +1110,7 @@ export const AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Input =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlInstances",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Input =
@@ -1170,11 +1184,11 @@ export const AssessedSqlMachinesOperationsGetInput =
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     assessedSqlMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlMachines/{assessedSqlMachineName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedSqlMachinesOperationsGetInput =
@@ -1229,7 +1243,6 @@ export const AssessedSqlMachinesOperationsListBySqlAssessmentV2Input =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -1238,6 +1251,7 @@ export const AssessedSqlMachinesOperationsListBySqlAssessmentV2Input =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlMachines",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedSqlMachinesOperationsListBySqlAssessmentV2Input =
@@ -1311,11 +1325,11 @@ export const AssessedSqlRecommendedEntityOperationsGetInput =
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     recommendedAssessedEntityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/recommendedAssessedEntities/{recommendedAssessedEntityName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedSqlRecommendedEntityOperationsGetInput =
@@ -1370,7 +1384,6 @@ export const AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Input =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -1379,6 +1392,7 @@ export const AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Input =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/recommendedAssessedEntities",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Input =
@@ -1453,11 +1467,11 @@ export const AssessedWebApplicationOperationsGetInput =
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     assessedWorkload: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/assessedWebApps/{assessedWorkload}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedWebApplicationOperationsGetInput =
@@ -1510,7 +1524,6 @@ export const AssessedWebApplicationOperationsListByAksAssessmentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     continuationToken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
@@ -1519,6 +1532,7 @@ export const AssessedWebApplicationOperationsListByAksAssessmentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/assessedWebApps",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedWebApplicationOperationsListByAksAssessmentInput =
@@ -1591,11 +1605,11 @@ export const AssessedWebAppV2OperationsGetInput =
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     assessedWebAppName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/assessedWebApps/{assessedWebAppName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedWebAppV2OperationsGetInput =
@@ -1650,7 +1664,6 @@ export const AssessedWebAppV2OperationsListByWebAppAssessmentV2Input =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -1659,6 +1672,7 @@ export const AssessedWebAppV2OperationsListByWebAppAssessmentV2Input =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/assessedWebApps",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessedWebAppV2OperationsListByWebAppAssessmentV2Input =
@@ -1730,11 +1744,11 @@ export const AssessmentOptionsOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentOptionsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/assessmentOptions/{assessmentOptionsName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentOptionsOperationsGetInput =
@@ -1785,11 +1799,11 @@ export const AssessmentOptionsOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/assessmentOptions",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentOptionsOperationsListByAssessmentProjectInput =
@@ -1854,11 +1868,28 @@ export const AssessmentProjectsOperationsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentProjectsOperationsCreateInput =
@@ -1908,11 +1939,11 @@ export const AssessmentProjectsOperationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentProjectsOperationsDeleteInput =
@@ -1944,11 +1975,11 @@ export const AssessmentProjectsOperationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentProjectsOperationsGetInput =
@@ -1997,11 +2028,11 @@ export const AssessmentProjectsOperationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentProjectsOperationsListByResourceGroupInput =
@@ -2063,11 +2094,11 @@ export const AssessmentProjectsOperationsListByResourceGroup =
 export const AssessmentProjectsOperationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/assessmentProjects",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentProjectsOperationsListBySubscriptionInput =
@@ -2130,11 +2161,33 @@ export const AssessmentProjectsOperationsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        assessmentSolutionId: Schema.optional(Schema.String),
+        projectStatus: Schema.optional(Schema.Literals(["Active", "Inactive"])),
+        customerWorkspaceId: Schema.optional(Schema.String),
+        customerWorkspaceLocation: Schema.optional(Schema.String),
+        publicNetworkAccess: Schema.optional(Schema.String),
+        customerStorageAccountArmId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentProjectsOperationsUpdateInput =
@@ -2185,11 +2238,11 @@ export const AssessmentProjectSummaryOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     projectSummaryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/projectSummary/{projectSummaryName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentProjectSummaryOperationsGetInput =
@@ -2240,11 +2293,11 @@ export const AssessmentProjectSummaryOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/projectSummary",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentProjectSummaryOperationsListByAssessmentProjectInput =
@@ -2312,11 +2365,26 @@ export const AssessmentsOperationsCreateInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentsOperationsCreateInput =
@@ -2371,11 +2439,11 @@ export const AssessmentsOperationsDeleteInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentsOperationsDeleteInput =
@@ -2412,11 +2480,11 @@ export const AssessmentsOperationsDownloadUrlInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentsOperationsDownloadUrlInput =
@@ -2457,11 +2525,11 @@ export const AssessmentsOperationsGetInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentsOperationsGetInput =
@@ -2515,11 +2583,11 @@ export const AssessmentsOperationsListByGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AssessmentsOperationsListByGroupInput =
@@ -2588,11 +2656,11 @@ export const AvsAssessedMachinesOperationsGetInput =
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     avsAssessedMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}/avsAssessedMachines/{avsAssessedMachineName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AvsAssessedMachinesOperationsGetInput =
@@ -2647,7 +2715,6 @@ export const AvsAssessedMachinesOperationsListByAvsAssessmentInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -2656,6 +2723,7 @@ export const AvsAssessedMachinesOperationsListByAvsAssessmentInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}/avsAssessedMachines",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AvsAssessedMachinesOperationsListByAvsAssessmentInput =
@@ -2727,11 +2795,11 @@ export const AvsAssessmentOptionsOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     avsAssessmentOptionsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/avsAssessmentOptions/{avsAssessmentOptionsName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AvsAssessmentOptionsOperationsGetInput =
@@ -2782,11 +2850,11 @@ export const AvsAssessmentOptionsOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/avsAssessmentOptions",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AvsAssessmentOptionsOperationsListByAssessmentProjectInput =
@@ -2853,11 +2921,26 @@ export const AvsAssessmentsOperationsCreateInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AvsAssessmentsOperationsCreateInput =
@@ -2911,11 +2994,11 @@ export const AvsAssessmentsOperationsDeleteInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AvsAssessmentsOperationsDeleteInput =
@@ -2951,11 +3034,11 @@ export const AvsAssessmentsOperationsDownloadUrlInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}/downloadUrl",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AvsAssessmentsOperationsDownloadUrlInput =
@@ -2996,11 +3079,11 @@ export const AvsAssessmentsOperationsGetInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AvsAssessmentsOperationsGetInput =
@@ -3054,11 +3137,11 @@ export const AvsAssessmentsOperationsListByGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments",
+      apiVersion: "2024-01-15",
     }),
   );
 export type AvsAssessmentsOperationsListByGroupInput =
@@ -3123,11 +3206,11 @@ export const DatabaseInstancesControllerGetDatabaseInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databaseInstances/{databaseInstanceName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type DatabaseInstancesControllerGetDatabaseInstanceInput =
@@ -3195,11 +3278,11 @@ export const DatabaseInstancesControllerListDatabaseInstancesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databaseInstances",
+      apiVersion: "2023-01-01",
     }),
   );
 export type DatabaseInstancesControllerListDatabaseInstancesInput =
@@ -3274,11 +3357,11 @@ export const DatabasesControllerGetDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databases/{databaseName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type DatabasesControllerGetDatabaseInput =
@@ -3340,11 +3423,11 @@ export const DatabasesControllerListDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databases",
+      apiVersion: "2023-01-01",
     }),
   );
 export type DatabasesControllerListDatabasesInput =
@@ -3414,11 +3497,22 @@ export const DependencyMapControllerClientGroupMembersInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machineId: Schema.optional(Schema.String),
+    processGroupName: Schema.optional(Schema.String),
+    processName: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Struct({
+        machineIds: Schema.optional(Schema.Array(Schema.String)),
+        processIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/clientGroupMembers",
+      apiVersion: "2023-06-06",
     }),
   );
 export type DependencyMapControllerClientGroupMembersInput =
@@ -3450,11 +3544,13 @@ export const DependencyMapControllerExportDependenciesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/exportDependencies",
+      apiVersion: "2023-06-06",
     }),
   );
 export type DependencyMapControllerExportDependenciesInput =
@@ -3486,11 +3582,19 @@ export const DependencyMapControllerGenerateCoarseMapInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Struct({
+        machineIds: Schema.optional(Schema.Array(Schema.String)),
+        processIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/generateCoarseMap",
+      apiVersion: "2023-06-06",
     }),
   );
 export type DependencyMapControllerGenerateCoarseMapInput =
@@ -3522,11 +3626,20 @@ export const DependencyMapControllerGenerateDetailedMapInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machineId: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Struct({
+        machineIds: Schema.optional(Schema.Array(Schema.String)),
+        processIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/generateDetailedMap",
+      apiVersion: "2023-06-06",
     }),
   );
 export type DependencyMapControllerGenerateDetailedMapInput =
@@ -3558,11 +3671,20 @@ export const DependencyMapControllerServerGroupMembersInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    serverPort: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Struct({
+        machineIds: Schema.optional(Schema.Array(Schema.String)),
+        processIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/serverGroupMembers",
+      apiVersion: "2023-06-06",
     }),
   );
 export type DependencyMapControllerServerGroupMembersInput =
@@ -3593,11 +3715,11 @@ export const EventsControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents/{eventName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type EventsControllerDeleteInput =
@@ -3630,11 +3752,11 @@ export const EventsControllerGetEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents/{eventName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type EventsControllerGetEventInput =
@@ -3680,11 +3802,11 @@ export const EventsControllerListEventsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents",
+      apiVersion: "2023-01-01",
     }),
   );
 export type EventsControllerListEventsInput =
@@ -3739,11 +3861,26 @@ export const GroupsOperationsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type GroupsOperationsCreateInput =
@@ -3796,11 +3933,11 @@ export const GroupsOperationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type GroupsOperationsDeleteInput =
@@ -3835,11 +3972,11 @@ export const GroupsOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type GroupsOperationsGetInput = typeof GroupsOperationsGetInput.Type;
@@ -3887,11 +4024,11 @@ export const GroupsOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups",
+      apiVersion: "2024-01-15",
     }),
   );
 export type GroupsOperationsListByAssessmentProjectInput =
@@ -3957,11 +4094,18 @@ export const GroupsOperationsUpdateMachinesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    eTag: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        operationType: Schema.optional(Schema.Literals(["Add", "Remove"])),
+        machines: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/updateMachines",
+      apiVersion: "2024-01-15",
     }),
   );
 export type GroupsOperationsUpdateMachinesInput =
@@ -4015,11 +4159,68 @@ export const HypervClusterControllerCreateClusterInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        createdTimestamp: Schema.optional(Schema.String),
+        updatedTimestamp: Schema.optional(Schema.String),
+        fqdn: Schema.optional(Schema.String),
+        functionalLevel: Schema.optional(Schema.Number),
+        status: Schema.optional(Schema.String),
+        runAsAccountId: Schema.optional(Schema.String),
+        hostFqdnList: Schema.optional(Schema.Array(Schema.String)),
+        errors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              message: Schema.optional(Schema.String),
+              messageParameters: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              applianceName: Schema.optional(Schema.String),
+              id: Schema.optional(Schema.Number),
+              code: Schema.optional(Schema.String),
+              possibleCauses: Schema.optional(Schema.String),
+              recommendedAction: Schema.optional(Schema.String),
+              severity: Schema.optional(Schema.String),
+              summaryMessage: Schema.optional(Schema.String),
+              source: Schema.optional(
+                Schema.Literals([
+                  "RefreshFabricLayout",
+                  "RefreshFabricLayoutGuest",
+                  "RefreshFabricLayoutDependencyMap",
+                ]),
+              ),
+              updatedTimeStamp: Schema.optional(Schema.String),
+              runAsAccountId: Schema.optional(Schema.String),
+              discoveryScope: Schema.optional(
+                Schema.Literals([
+                  "AppsAndRoles",
+                  "DependencyMap",
+                  "StaticData",
+                  "SQLServerConnectionInfo",
+                  "DiscoveryTargets",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clusters/{clusterName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervClusterControllerCreateClusterInput =
@@ -4071,11 +4272,11 @@ export const HypervClusterControllerDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clusters/{clusterName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervClusterControllerDeleteInput =
@@ -4109,11 +4310,11 @@ export const HypervClusterControllerGetClusterInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clusters/{clusterName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervClusterControllerGetClusterInput =
@@ -4164,12 +4365,12 @@ export const HypervClusterControllerListByHypervSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clusters",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervClusterControllerListByHypervSiteInput =
@@ -4236,11 +4437,26 @@ export const HypervCollectorsOperationsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     hypervCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/hypervcollectors/{hypervCollectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type HypervCollectorsOperationsCreateInput =
@@ -4292,11 +4508,11 @@ export const HypervCollectorsOperationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     hypervCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/hypervcollectors/{hypervCollectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type HypervCollectorsOperationsDeleteInput =
@@ -4330,11 +4546,11 @@ export const HypervCollectorsOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     hypervCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/hypervcollectors/{hypervCollectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type HypervCollectorsOperationsGetInput =
@@ -4385,11 +4601,11 @@ export const HypervCollectorsOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/hypervcollectors",
+      apiVersion: "2024-01-15",
     }),
   );
 export type HypervCollectorsOperationsListByAssessmentProjectInput =
@@ -4454,11 +4670,22 @@ export const HypervDependencyMapControllerClientGroupMembersInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machineId: Schema.optional(Schema.String),
+    processGroupName: Schema.optional(Schema.String),
+    processName: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Struct({
+        machineIds: Schema.optional(Schema.Array(Schema.String)),
+        processIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clientGroupMembers",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervDependencyMapControllerClientGroupMembersInput =
@@ -4490,11 +4717,13 @@ export const HypervDependencyMapControllerExportDependenciesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/exportDependencies",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervDependencyMapControllerExportDependenciesInput =
@@ -4526,11 +4755,19 @@ export const HypervDependencyMapControllerGenerateCoarseMapInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Struct({
+        machineIds: Schema.optional(Schema.Array(Schema.String)),
+        processIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/generateCoarseMap",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervDependencyMapControllerGenerateCoarseMapInput =
@@ -4562,11 +4799,20 @@ export const HypervDependencyMapControllerGenerateDetailedMapInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machineId: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Struct({
+        machineIds: Schema.optional(Schema.Array(Schema.String)),
+        processIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/generateDetailedMap",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervDependencyMapControllerGenerateDetailedMapInput =
@@ -4598,11 +4844,20 @@ export const HypervDependencyMapControllerServerGroupMembersInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    serverPort: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Struct({
+        machineIds: Schema.optional(Schema.Array(Schema.String)),
+        processIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/serverGroupMembers",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervDependencyMapControllerServerGroupMembersInput =
@@ -4634,11 +4889,19 @@ export const HypervDependencyMapControllerUpdateDependencyMapStatusInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machines: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          machineId: Schema.optional(Schema.String),
+          isDependencyMapToBeEnabled: Schema.optional(Schema.Boolean),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/updateDependencyMapStatus",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervDependencyMapControllerUpdateDependencyMapStatusInput =
@@ -4672,11 +4935,66 @@ export const HypervHostControllerCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        createdTimestamp: Schema.optional(Schema.String),
+        updatedTimestamp: Schema.optional(Schema.String),
+        fqdn: Schema.optional(Schema.String),
+        runAsAccountId: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+        errors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              message: Schema.optional(Schema.String),
+              messageParameters: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              applianceName: Schema.optional(Schema.String),
+              id: Schema.optional(Schema.Number),
+              code: Schema.optional(Schema.String),
+              possibleCauses: Schema.optional(Schema.String),
+              recommendedAction: Schema.optional(Schema.String),
+              severity: Schema.optional(Schema.String),
+              summaryMessage: Schema.optional(Schema.String),
+              source: Schema.optional(
+                Schema.Literals([
+                  "RefreshFabricLayout",
+                  "RefreshFabricLayoutGuest",
+                  "RefreshFabricLayoutDependencyMap",
+                ]),
+              ),
+              updatedTimeStamp: Schema.optional(Schema.String),
+              runAsAccountId: Schema.optional(Schema.String),
+              discoveryScope: Schema.optional(
+                Schema.Literals([
+                  "AppsAndRoles",
+                  "DependencyMap",
+                  "StaticData",
+                  "SQLServerConnectionInfo",
+                  "DiscoveryTargets",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/hosts/{hostName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervHostControllerCreateInput =
@@ -4729,11 +5047,11 @@ export const HypervHostControllerDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/hosts/{hostName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervHostControllerDeleteInput =
@@ -4768,11 +5086,11 @@ export const HypervHostControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/hosts/{hostName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervHostControllerGetInput =
@@ -4824,12 +5142,12 @@ export const HypervHostControllerListByHypervSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/hosts",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervHostControllerListByHypervSiteInput =
@@ -4896,11 +5214,11 @@ export const HypervJobsControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/jobs/{jobName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervJobsControllerGetInput =
@@ -4952,11 +5270,11 @@ export const HypervJobsControllerListByVmwareSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/jobs",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervJobsControllerListByVmwareSiteInput =
@@ -5021,11 +5339,11 @@ export const HypervJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   siteName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/jobs/{jobName}",
+    apiVersion: "2023-06-06",
   }),
 );
 export type HypervJobsGetInput = typeof HypervJobsGetInput.Type;
@@ -5072,11 +5390,11 @@ export const HypervJobsListByHypervSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/jobs",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervJobsListByHypervSiteInput =
@@ -5143,11 +5461,11 @@ export const HypervMachinesControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines/{machineName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervMachinesControllerGetInput =
@@ -5199,7 +5517,6 @@ export const HypervMachinesControllerListByHypervSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -5208,6 +5525,7 @@ export const HypervMachinesControllerListByHypervSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervMachinesControllerListByHypervSiteInput =
@@ -5277,11 +5595,51 @@ export const HypervMachinesControllerUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        firmware: Schema.optional(Schema.String),
+        runAsAccountId: Schema.optional(Schema.String),
+        productSupportStatus: Schema.optional(
+          Schema.Struct({
+            currentVersion: Schema.optional(Schema.String),
+            esuStatus: Schema.optional(
+              Schema.Literals(["Unknown", "Active", "InActive"]),
+            ),
+            supportStatus: Schema.optional(
+              Schema.Literals(["Unknown", "Mainstream", "Extended"]),
+            ),
+            supportEndDate: Schema.optional(Schema.String),
+            esuYear: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "FirstYear",
+                "SecondYear",
+                "ThirdYear",
+                "UpgradeYear",
+              ]),
+            ),
+          }),
+        ),
+        numberOfProcessorCore: Schema.optional(Schema.Number),
+        allocatedMemoryInMb: Schema.optional(Schema.Number),
+        operatingSystemDetails: Schema.optional(
+          Schema.Struct({
+            osType: Schema.optional(Schema.String),
+            osName: Schema.optional(Schema.String),
+            osVersion: Schema.optional(Schema.String),
+            osArchitecture: Schema.optional(Schema.String),
+          }),
+        ),
+        biosSerialNumber: Schema.optional(Schema.String),
+        biosGuid: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines/{machineName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervMachinesControllerUpdateInput =
@@ -5332,11 +5690,18 @@ export const HypervMachinesControllerUpdatePropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    value: Schema.Array(
+      Schema.Struct({
+        machineArmId: Schema.String,
+        dependencyMapping: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/updateProperties",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervMachinesControllerUpdatePropertiesInput =
@@ -5370,11 +5735,11 @@ export const HypervOperationsStatusControllerGetHypervOperationsStatusInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     operationStatusName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/operationsStatus/{operationStatusName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervOperationsStatusControllerGetHypervOperationsStatusInput =
@@ -5426,11 +5791,11 @@ export const HypervRunAsAccountsControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/runAsAccounts/{accountName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervRunAsAccountsControllerGetInput =
@@ -5481,11 +5846,11 @@ export const HypervRunAsAccountsControllerListByHypervSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/runAsAccounts",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervRunAsAccountsControllerListByHypervSiteInput =
@@ -5550,11 +5915,11 @@ export const HypervSitesControllerComputeErrorSummaryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/computeErrorSummary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSitesControllerComputeErrorSummaryInput =
@@ -5599,11 +5964,11 @@ export const HypervSitesControllerComputeusageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/computeusage",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSitesControllerComputeusageInput =
@@ -5640,11 +6005,51 @@ export const HypervSitesControllerCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        masterSiteId: Schema.optional(Schema.String),
+        servicePrincipalIdentityDetails: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            applicationId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+            audience: Schema.optional(Schema.String),
+            aadAuthority: Schema.optional(Schema.String),
+            rawCertData: Schema.optional(Schema.String),
+          }),
+        ),
+        agentDetails: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            lastHeartBeatUtc: Schema.optional(Schema.String),
+            keyVaultUri: Schema.optional(Schema.String),
+            keyVaultId: Schema.optional(Schema.String),
+          }),
+        ),
+        applianceName: Schema.optional(Schema.String),
+        discoverySolutionId: Schema.optional(Schema.String),
+        serviceEndpoint: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSitesControllerCreateInput =
@@ -5695,11 +6100,11 @@ export const HypervSitesControllerDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSitesControllerDeleteInput =
@@ -5732,11 +6137,11 @@ export const HypervSitesControllerExportApplicationsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/exportApplications",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSitesControllerExportApplicationsInput =
@@ -5769,11 +6174,23 @@ export const HypervSitesControllerExportMachineErrorsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        discoveryScope: Schema.optional(
+          Schema.Literals([
+            "AppsAndRoles",
+            "DependencyMap",
+            "StaticData",
+            "SQLServerConnectionInfo",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/exportMachineErrors",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSitesControllerExportMachineErrorsInput =
@@ -5806,11 +6223,11 @@ export const HypervSitesControllerGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSitesControllerGetInput =
@@ -5861,11 +6278,11 @@ export const HypervSitesControllerListHealthSummaryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/listHealthSummary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSitesControllerListHealthSummaryInput =
@@ -5923,11 +6340,11 @@ export const HypervSitesControllerSummaryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/summary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSitesControllerSummaryInput =
@@ -5964,11 +6381,48 @@ export const HypervSitesControllerUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        servicePrincipalIdentityDetails: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            applicationId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+            audience: Schema.optional(Schema.String),
+            aadAuthority: Schema.optional(Schema.String),
+            rawCertData: Schema.optional(Schema.String),
+          }),
+        ),
+        agentDetails: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            lastHeartBeatUtc: Schema.optional(Schema.String),
+            keyVaultUri: Schema.optional(Schema.String),
+            keyVaultId: Schema.optional(Schema.String),
+          }),
+        ),
+        applianceName: Schema.optional(Schema.String),
+        discoverySolutionId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSitesControllerUpdateInput =
@@ -6018,11 +6472,11 @@ export const HypervSitesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSitesListByResourceGroupInput =
@@ -6086,11 +6540,11 @@ export const HypervSitesListByResourceGroup =
 export const HypervSitesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/hypervSites",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSitesListBySubscriptionInput =
@@ -6157,11 +6611,11 @@ export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryInput
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     default: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines/{machineName}/softwareInventories/{default}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryInput =
@@ -6216,11 +6670,11 @@ export const HypervSoftwareInventoriesControllerListByHypervMachineInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines/{machineName}/softwareinventories",
+      apiVersion: "2023-06-06",
     }),
   );
 export type HypervSoftwareInventoriesControllerListByHypervMachineInput =
@@ -6288,11 +6742,11 @@ export const IisWebApplicationsControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
     webApplicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/iisWebApplications/{webApplicationName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type IisWebApplicationsControllerGetInput =
@@ -6345,7 +6799,6 @@ export const IisWebApplicationsControllerListByWebAppSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
@@ -6354,6 +6807,7 @@ export const IisWebApplicationsControllerListByWebAppSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/iisWebApplications",
+      apiVersion: "2023-06-06",
     }),
   );
 export type IisWebApplicationsControllerListByWebAppSiteInput =
@@ -6425,11 +6879,16 @@ export const IisWebApplicationsControllerUpdateInput =
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
     webApplicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/iisWebApplications/{webApplicationName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type IisWebApplicationsControllerUpdateInput =
@@ -6483,11 +6942,11 @@ export const IisWebServersControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
     webServerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/iisWebServers/{webServerName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type IisWebServersControllerGetInput =
@@ -6541,7 +7000,6 @@ export const IisWebServersControllerListByWebAppSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
@@ -6550,6 +7008,7 @@ export const IisWebServersControllerListByWebAppSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/iisWebServers",
+      apiVersion: "2023-06-06",
     }),
   );
 export type IisWebServersControllerListByWebAppSiteInput =
@@ -6620,11 +7079,26 @@ export const ImportCollectorsOperationsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     importCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/importcollectors/{importCollectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type ImportCollectorsOperationsCreateInput =
@@ -6676,11 +7150,11 @@ export const ImportCollectorsOperationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     importCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/importcollectors/{importCollectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type ImportCollectorsOperationsDeleteInput =
@@ -6714,11 +7188,11 @@ export const ImportCollectorsOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     importCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/importcollectors/{importCollectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type ImportCollectorsOperationsGetInput =
@@ -6769,11 +7243,11 @@ export const ImportCollectorsOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/importcollectors",
+      apiVersion: "2024-01-15",
     }),
   );
 export type ImportCollectorsOperationsListByAssessmentProjectInput =
@@ -6839,11 +7313,11 @@ export const ImportJobsControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/jobs/{jobName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportJobsControllerGetInput =
@@ -6896,11 +7370,11 @@ export const ImportJobsControllerGetDeletejobInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/deleteJobs/{jobName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportJobsControllerGetDeletejobInput =
@@ -6952,11 +7426,11 @@ export const ImportJobsControllerGetExportjobInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/exportJobs/{jobName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportJobsControllerGetExportjobInput =
@@ -7004,11 +7478,11 @@ export const ImportJobsControllerGetImportjobInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/importJobs/{jobName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportJobsControllerGetImportjobInput =
@@ -7075,11 +7549,11 @@ export const ImportJobsControllerListByImportSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/jobs",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportJobsControllerListByImportSiteInput =
@@ -7144,11 +7618,11 @@ export const ImportJobsControllerListDeletejobsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/deleteJobs",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportJobsControllerListDeletejobsInput =
@@ -7215,11 +7689,11 @@ export const ImportJobsControllerListExportjobsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/exportJobs",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportJobsControllerListExportjobsInput =
@@ -7272,11 +7746,11 @@ export const ImportJobsControllerListImportjobsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/importJobs",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportJobsControllerListImportjobsInput =
@@ -7350,11 +7824,11 @@ export const ImportMachinesControllerDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/machines/{machineName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportMachinesControllerDeleteInput =
@@ -7388,11 +7862,11 @@ export const ImportMachinesControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/machines/{machineName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportMachinesControllerGetInput =
@@ -7444,7 +7918,6 @@ export const ImportMachinesControllerListByImportSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
@@ -7453,6 +7926,7 @@ export const ImportMachinesControllerListByImportSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/machines",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportMachinesControllerListByImportSiteInput =
@@ -7521,11 +7995,31 @@ export const ImportSitesControllerCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        discoverySolutionId: Schema.optional(Schema.String),
+        masterSiteId: Schema.optional(Schema.String),
+        serviceEndpoint: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportSitesControllerCreateInput =
@@ -7576,11 +8070,11 @@ export const ImportSitesControllerDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportSitesControllerDeleteInput =
@@ -7613,11 +8107,11 @@ export const ImportSitesControllerDeleteImportedMachinesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/deleteImportedMachines",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportSitesControllerDeleteImportedMachinesInput =
@@ -7652,11 +8146,13 @@ export const ImportSitesControllerExportUriInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    jobArmId: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/exportUri",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportSitesControllerExportUriInput =
@@ -7691,11 +8187,11 @@ export const ImportSitesControllerGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportSitesControllerGetInput =
@@ -7746,11 +8242,13 @@ export const ImportSitesControllerImportUriInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    jobArmId: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/importUri",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportSitesControllerImportUriInput =
@@ -7784,11 +8282,11 @@ export const ImportSitesControllerListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportSitesControllerListByResourceGroupInput =
@@ -7850,11 +8348,11 @@ export const ImportSitesControllerListByResourceGroup =
 export const ImportSitesControllerListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/importSites",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportSitesControllerListBySubscriptionInput =
@@ -7917,11 +8415,28 @@ export const ImportSitesControllerUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        discoverySolutionId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ImportSitesControllerUpdateInput =
@@ -7973,11 +8488,11 @@ export const MachinesControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MachinesControllerGetInput = typeof MachinesControllerGetInput.Type;
@@ -8027,11 +8542,11 @@ export const MachinesControllerGetMachineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/machines/{machineName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type MachinesControllerGetMachineInput =
@@ -8147,7 +8662,6 @@ export const MachinesControllerListByVmwareSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -8156,6 +8670,7 @@ export const MachinesControllerListByVmwareSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MachinesControllerListByVmwareSiteInput =
@@ -8223,11 +8738,11 @@ export const MachinesControllerListMachinesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/machines",
+      apiVersion: "2023-01-01",
     }),
   );
 export type MachinesControllerListMachinesInput =
@@ -8353,11 +8868,11 @@ export const MachinesControllerStartInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}/start",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MachinesControllerStartInput =
@@ -8392,11 +8907,11 @@ export const MachinesControllerStopInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}/stop",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MachinesControllerStopInput =
@@ -8431,11 +8946,51 @@ export const MachinesControllerUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        firmware: Schema.optional(Schema.String),
+        runAsAccountId: Schema.optional(Schema.String),
+        productSupportStatus: Schema.optional(
+          Schema.Struct({
+            currentVersion: Schema.optional(Schema.String),
+            esuStatus: Schema.optional(
+              Schema.Literals(["Unknown", "Active", "InActive"]),
+            ),
+            supportStatus: Schema.optional(
+              Schema.Literals(["Unknown", "Mainstream", "Extended"]),
+            ),
+            supportEndDate: Schema.optional(Schema.String),
+            esuYear: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "FirstYear",
+                "SecondYear",
+                "ThirdYear",
+                "UpgradeYear",
+              ]),
+            ),
+          }),
+        ),
+        numberOfProcessorCore: Schema.optional(Schema.Number),
+        allocatedMemoryInMb: Schema.optional(Schema.Number),
+        operatingSystemDetails: Schema.optional(
+          Schema.Struct({
+            osType: Schema.optional(Schema.String),
+            osName: Schema.optional(Schema.String),
+            osVersion: Schema.optional(Schema.String),
+            osArchitecture: Schema.optional(Schema.String),
+          }),
+        ),
+        biosSerialNumber: Schema.optional(Schema.String),
+        biosGuid: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MachinesControllerUpdateInput =
@@ -8488,11 +9043,11 @@ export const MachinesOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/machines/{machineName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type MachinesOperationsGetInput = typeof MachinesOperationsGetInput.Type;
@@ -8543,7 +9098,6 @@ export const MachinesOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -8552,6 +9106,7 @@ export const MachinesOperationsListByAssessmentProjectInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/machines",
+      apiVersion: "2024-01-15",
     }),
   );
 export type MachinesOperationsListByAssessmentProjectInput =
@@ -8620,11 +9175,68 @@ export const MasterSitesControllerCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["NotSpecified", "Enabled", "Disabled"]),
+        ),
+        allowMultipleSites: Schema.optional(Schema.Boolean),
+        sites: Schema.optional(Schema.Array(Schema.String)),
+        customerStorageAccountArmId: Schema.optional(Schema.String),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        nestedSites: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MasterSitesControllerCreateInput =
@@ -8675,11 +9287,11 @@ export const MasterSitesControllerDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MasterSitesControllerDeleteInput =
@@ -8712,11 +9324,12 @@ export const MasterSitesControllerErrorSummaryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    applianceName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/errorSummary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MasterSitesControllerErrorSummaryInput =
@@ -8761,11 +9374,11 @@ export const MasterSitesControllerGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MasterSitesControllerGetInput =
@@ -8817,11 +9430,11 @@ export const MasterSitesControllerListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MasterSitesControllerListByResourceGroupInput =
@@ -8885,11 +9498,11 @@ export const MasterSitesControllerListByResourceGroup =
 export const MasterSitesControllerListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/masterSites",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MasterSitesControllerListBySubscriptionInput =
@@ -8954,11 +9567,22 @@ export const MasterSitesControllerUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["NotSpecified", "Enabled", "Disabled"]),
+        ),
+        allowMultipleSites: Schema.optional(Schema.Boolean),
+        sites: Schema.optional(Schema.Array(Schema.String)),
+        customerStorageAccountArmId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MasterSitesControllerUpdateInput =
@@ -9010,11 +9634,11 @@ export const MasterSitesOperationsStatusControllerGetVmwareOperationStatusInput 
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     operationStatusName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/operationsStatus/{operationStatusName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type MasterSitesOperationsStatusControllerGetVmwareOperationStatusInput =
@@ -9065,11 +9689,11 @@ export const MigrateProjectsControllerDeleteMigrateProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type MigrateProjectsControllerDeleteMigrateProjectInput =
@@ -9101,11 +9725,11 @@ export const MigrateProjectsControllerGetMigrateProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type MigrateProjectsControllerGetMigrateProjectInput =
@@ -9287,11 +9911,46 @@ export const MigrateProjectsControllerGetToolRegistrationDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tool: Schema.optional(
+      Schema.Literals([
+        "ServerDiscovery",
+        "ServerAssessment",
+        "ServerMigration",
+        "Cloudamize",
+        "Turbonomic",
+        "Zerto",
+        "CorentTech",
+        "ServerAssessmentV1",
+        "ServerMigration_Replication",
+        "Carbonite",
+        "DataMigrationAssistant",
+        "DatabaseMigrationService",
+        "Device42",
+        "JetStream",
+        "RackWare",
+        "UnifyCloud",
+        "Flexera",
+        "ServerDiscovery_Import",
+        "Lakeside",
+        "AppServiceMigrationAssistant",
+        "Movere",
+        "CloudSphere",
+        "Modernization",
+        "ServerMigration_DataReplication",
+        "Unknown",
+      ]),
+    ),
+    applicationDetails: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        applicationId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/registrationDetails",
+      apiVersion: "2023-01-01",
     }),
   );
 export type MigrateProjectsControllerGetToolRegistrationDetailsInput =
@@ -9323,11 +9982,160 @@ export const MigrateProjectsControllerPatchMigrateProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        registeredTools: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "ServerDiscovery",
+              "ServerAssessment",
+              "ServerMigration",
+              "Cloudamize",
+              "Turbonomic",
+              "Zerto",
+              "CorentTech",
+              "ServerAssessmentV1",
+              "ServerMigration_Replication",
+              "Carbonite",
+              "DataMigrationAssistant",
+              "DatabaseMigrationService",
+              "Device42",
+              "JetStream",
+              "RackWare",
+              "UnifyCloud",
+              "Flexera",
+              "ServerDiscovery_Import",
+              "Lakeside",
+              "AppServiceMigrationAssistant",
+              "Movere",
+              "CloudSphere",
+              "Modernization",
+              "ServerMigration_DataReplication",
+              "Unknown",
+            ]),
+          ),
+        ),
+        serviceEndpoint: Schema.optional(Schema.String),
+        summary: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              instanceType: Schema.optional(Schema.String),
+              refreshSummaryState: Schema.optional(
+                Schema.Literals([
+                  "Started",
+                  "InProgress",
+                  "Completed",
+                  "Failed",
+                ]),
+              ),
+              lastSummaryRefreshedTime: Schema.optional(Schema.String),
+              extendedSummary: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+            }),
+          ),
+        ),
+        lastSummaryRefreshedTime: Schema.optional(Schema.String),
+        refreshSummaryState: Schema.optional(
+          Schema.Literals(["Started", "InProgress", "Completed", "Failed"]),
+        ),
+        utilityStorageAccountId: Schema.optional(Schema.String),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["NotSpecified", "Enabled", "Disabled"]),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              eTag: Schema.optional(Schema.String),
+              properties: Schema.optional(
+                Schema.Struct({
+                  provisioningState: Schema.optional(
+                    Schema.Literals([
+                      "Accepted",
+                      "InProgress",
+                      "Succeeded",
+                      "Failed",
+                      "Canceled",
+                    ]),
+                  ),
+                  privateEndpoint: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  privateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(
+                        Schema.Literals([
+                          "Approved",
+                          "Pending",
+                          "Rejected",
+                          "Disconnected",
+                        ]),
+                      ),
+                      description: Schema.optional(Schema.String),
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type MigrateProjectsControllerPatchMigrateProjectInput =
@@ -9509,11 +10317,160 @@ export const MigrateProjectsControllerPutMigrateProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        registeredTools: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "ServerDiscovery",
+              "ServerAssessment",
+              "ServerMigration",
+              "Cloudamize",
+              "Turbonomic",
+              "Zerto",
+              "CorentTech",
+              "ServerAssessmentV1",
+              "ServerMigration_Replication",
+              "Carbonite",
+              "DataMigrationAssistant",
+              "DatabaseMigrationService",
+              "Device42",
+              "JetStream",
+              "RackWare",
+              "UnifyCloud",
+              "Flexera",
+              "ServerDiscovery_Import",
+              "Lakeside",
+              "AppServiceMigrationAssistant",
+              "Movere",
+              "CloudSphere",
+              "Modernization",
+              "ServerMigration_DataReplication",
+              "Unknown",
+            ]),
+          ),
+        ),
+        serviceEndpoint: Schema.optional(Schema.String),
+        summary: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              instanceType: Schema.optional(Schema.String),
+              refreshSummaryState: Schema.optional(
+                Schema.Literals([
+                  "Started",
+                  "InProgress",
+                  "Completed",
+                  "Failed",
+                ]),
+              ),
+              lastSummaryRefreshedTime: Schema.optional(Schema.String),
+              extendedSummary: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+            }),
+          ),
+        ),
+        lastSummaryRefreshedTime: Schema.optional(Schema.String),
+        refreshSummaryState: Schema.optional(
+          Schema.Literals(["Started", "InProgress", "Completed", "Failed"]),
+        ),
+        utilityStorageAccountId: Schema.optional(Schema.String),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["NotSpecified", "Enabled", "Disabled"]),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              eTag: Schema.optional(Schema.String),
+              properties: Schema.optional(
+                Schema.Struct({
+                  provisioningState: Schema.optional(
+                    Schema.Literals([
+                      "Accepted",
+                      "InProgress",
+                      "Succeeded",
+                      "Failed",
+                      "Canceled",
+                    ]),
+                  ),
+                  privateEndpoint: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  privateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(
+                        Schema.Literals([
+                          "Approved",
+                          "Pending",
+                          "Rejected",
+                          "Disconnected",
+                        ]),
+                      ),
+                      description: Schema.optional(Schema.String),
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type MigrateProjectsControllerPutMigrateProjectInput =
@@ -9696,11 +10653,12 @@ export const MigrateProjectsControllerRefreshSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    goal: Schema.optional(Schema.Literals(["Servers", "Databases"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/refreshSummary",
+      apiVersion: "2023-01-01",
     }),
   );
 export type MigrateProjectsControllerRefreshSummaryInput =
@@ -9732,11 +10690,40 @@ export const MigrateProjectsControllerRegisterToolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tool: Schema.optional(
+      Schema.Literals([
+        "ServerDiscovery",
+        "ServerAssessment",
+        "ServerMigration",
+        "Cloudamize",
+        "Turbonomic",
+        "Zerto",
+        "CorentTech",
+        "ServerAssessmentV1",
+        "ServerMigration_Replication",
+        "Carbonite",
+        "DataMigrationAssistant",
+        "DatabaseMigrationService",
+        "Device42",
+        "JetStream",
+        "RackWare",
+        "UnifyCloud",
+        "Flexera",
+        "ServerDiscovery_Import",
+        "Lakeside",
+        "AppServiceMigrationAssistant",
+        "Movere",
+        "CloudSphere",
+        "Modernization",
+        "ServerMigration_DataReplication",
+        "Unknown",
+      ]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/registerTool",
+      apiVersion: "2023-01-01",
     }),
   );
 export type MigrateProjectsControllerRegisterToolInput =
@@ -9764,10 +10751,14 @@ export const MigrateProjectsControllerRegisterTool =
     outputSchema: MigrateProjectsControllerRegisterToolOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Migrate/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Migrate/operations",
+    apiVersion: "2024-01-15",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -9814,11 +10805,46 @@ export const PrivateEndpointConnectionControllerCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Approved",
+                "Pending",
+                "Rejected",
+                "Disconnected",
+              ]),
+            ),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateEndpointConnections/{peConnectionName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type PrivateEndpointConnectionControllerCreateInput =
@@ -9870,11 +10896,11 @@ export const PrivateEndpointConnectionControllerDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateEndpointConnections/{peConnectionName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type PrivateEndpointConnectionControllerDeleteInput =
@@ -9907,11 +10933,11 @@ export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionI
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnections/{peConnectionName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionInput =
@@ -9996,11 +11022,11 @@ export const PrivateEndpointConnectionControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateEndpointConnections/{peConnectionName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type PrivateEndpointConnectionControllerGetInput =
@@ -10051,11 +11077,11 @@ export const PrivateEndpointConnectionControllerGetPrivateEndpointConnectionInpu
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnections/{peConnectionName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type PrivateEndpointConnectionControllerGetPrivateEndpointConnectionInput =
@@ -10142,11 +11168,11 @@ export const PrivateEndpointConnectionControllerListByMasterSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateEndpointConnections",
+      apiVersion: "2023-06-06",
     }),
   );
 export type PrivateEndpointConnectionControllerListByMasterSiteInput =
@@ -10211,11 +11237,61 @@ export const PrivateEndpointConnectionControllerPutPrivateEndpointConnectionInpu
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    eTag: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "InProgress",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Approved",
+                "Pending",
+                "Rejected",
+                "Disconnected",
+              ]),
+            ),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnections/{peConnectionName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type PrivateEndpointConnectionControllerPutPrivateEndpointConnectionInput =
@@ -10303,11 +11379,11 @@ export const PrivateEndpointConnectionOperationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type PrivateEndpointConnectionOperationsDeleteInput =
@@ -10341,11 +11417,11 @@ export const PrivateEndpointConnectionOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type PrivateEndpointConnectionOperationsGetInput =
@@ -10396,11 +11472,11 @@ export const PrivateEndpointConnectionOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections",
+      apiVersion: "2024-01-15",
     }),
   );
 export type PrivateEndpointConnectionOperationsListByAssessmentProjectInput =
@@ -10468,11 +11544,31 @@ export const PrivateEndpointConnectionOperationsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type PrivateEndpointConnectionOperationsUpdateInput =
@@ -10523,11 +11619,115 @@ export const PrivateEndpointConnectionProxyControllerCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pecProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    eTag: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        remotePrivateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            manualPrivateLinkServiceConnections: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  groupIds: Schema.optional(Schema.Array(Schema.String)),
+                  requestMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            privateLinkServiceConnections: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  groupIds: Schema.optional(Schema.Array(Schema.String)),
+                  requestMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            privateLinkServiceProxies: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  groupConnectivityInformation: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        id: Schema.optional(Schema.String),
+                        groupId: Schema.optional(Schema.String),
+                        memberName: Schema.optional(Schema.String),
+                        customerVisibleFqdns: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        internalFqdn: Schema.optional(Schema.String),
+                        redirectMapId: Schema.optional(Schema.String),
+                        privateLinkServiceArmRegion: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                  ),
+                  remotePrivateEndpointConnection: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  remotePrivateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(
+                        Schema.Literals([
+                          "Approved",
+                          "Pending",
+                          "Rejected",
+                          "Disconnected",
+                        ]),
+                      ),
+                      description: Schema.optional(Schema.String),
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            connectionDetails: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  privateIpAddress: Schema.optional(Schema.String),
+                  linkIdentifier: Schema.optional(Schema.String),
+                  groupId: Schema.optional(Schema.String),
+                  memberName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        status: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Cancelled", "Running"]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnectionProxies/{pecProxyName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type PrivateEndpointConnectionProxyControllerCreateInput =
@@ -10666,11 +11866,11 @@ export const PrivateEndpointConnectionProxyControllerDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pecProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnectionProxies/{pecProxyName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type PrivateEndpointConnectionProxyControllerDeleteInput =
@@ -10704,11 +11904,11 @@ export const PrivateEndpointConnectionProxyControllerGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pecProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnectionProxies/{pecProxyName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type PrivateEndpointConnectionProxyControllerGetInput =
@@ -10846,11 +12046,11 @@ export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnecti
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnectionProxies",
+      apiVersion: "2023-01-01",
     }),
   );
 export type PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesInput =
@@ -11013,11 +12213,115 @@ export const PrivateEndpointConnectionProxyControllerValidateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pecProxyName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    eTag: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        remotePrivateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            manualPrivateLinkServiceConnections: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  groupIds: Schema.optional(Schema.Array(Schema.String)),
+                  requestMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            privateLinkServiceConnections: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  groupIds: Schema.optional(Schema.Array(Schema.String)),
+                  requestMessage: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            privateLinkServiceProxies: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  groupConnectivityInformation: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        id: Schema.optional(Schema.String),
+                        groupId: Schema.optional(Schema.String),
+                        memberName: Schema.optional(Schema.String),
+                        customerVisibleFqdns: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        internalFqdn: Schema.optional(Schema.String),
+                        redirectMapId: Schema.optional(Schema.String),
+                        privateLinkServiceArmRegion: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                  ),
+                  remotePrivateEndpointConnection: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  remotePrivateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(
+                        Schema.Literals([
+                          "Approved",
+                          "Pending",
+                          "Rejected",
+                          "Disconnected",
+                        ]),
+                      ),
+                      description: Schema.optional(Schema.String),
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            connectionDetails: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  privateIpAddress: Schema.optional(Schema.String),
+                  linkIdentifier: Schema.optional(Schema.String),
+                  groupId: Schema.optional(Schema.String),
+                  memberName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        status: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Cancelled", "Running"]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnectionProxies/{pecProxyName}/validate",
+      apiVersion: "2023-01-01",
     }),
   );
 export type PrivateEndpointConnectionProxyControllerValidateInput =
@@ -11155,11 +12459,11 @@ export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsIn
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnections",
+      apiVersion: "2023-01-01",
     }),
   );
 export type PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsInput =
@@ -11262,11 +12566,11 @@ export const PrivateLinkResourceControllerGetPrivateLinkResourceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type PrivateLinkResourceControllerGetPrivateLinkResourceInput =
@@ -11310,11 +12614,11 @@ export const PrivateLinkResourceControllerGetPrivateLinkResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateLinkResources",
+      apiVersion: "2023-01-01",
     }),
   );
 export type PrivateLinkResourceControllerGetPrivateLinkResourcesInput =
@@ -11366,11 +12670,11 @@ export const PrivateLinkResourceOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     privateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type PrivateLinkResourceOperationsGetInput =
@@ -11421,11 +12725,11 @@ export const PrivateLinkResourceOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateLinkResources",
+      apiVersion: "2024-01-15",
     }),
   );
 export type PrivateLinkResourceOperationsListByAssessmentProjectInput =
@@ -11491,11 +12795,11 @@ export const PrivateLinkResourcesControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     privateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type PrivateLinkResourcesControllerGetInput =
@@ -11546,11 +12850,11 @@ export const PrivateLinkResourcesControllerListByMasterSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateLinkResources",
+      apiVersion: "2023-06-06",
     }),
   );
 export type PrivateLinkResourcesControllerListByMasterSiteInput =
@@ -11613,11 +12917,11 @@ export const PrivateLinkResourcesControllerListByMasterSite =
 export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects",
+    apiVersion: "2023-01-01",
   }),
 );
 export type ProjectsListInput = typeof ProjectsListInput.Type;
@@ -11811,11 +13115,11 @@ export const ProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ProjectsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/migrateProjects",
+      apiVersion: "2023-01-01",
     }),
   );
 export type ProjectsListBySubscriptionInput =
@@ -12021,11 +13325,11 @@ export const RunAsAccountsControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/runAsAccounts/{accountName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type RunAsAccountsControllerGetInput =
@@ -12077,11 +13381,11 @@ export const RunAsAccountsControllerListByVmwareSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/runAsAccounts",
+      apiVersion: "2023-06-06",
     }),
   );
 export type RunAsAccountsControllerListByVmwareSiteInput =
@@ -12147,11 +13451,26 @@ export const ServerCollectorsOperationsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     serverCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/servercollectors/{serverCollectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type ServerCollectorsOperationsCreateInput =
@@ -12203,11 +13522,11 @@ export const ServerCollectorsOperationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     serverCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/servercollectors/{serverCollectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type ServerCollectorsOperationsDeleteInput =
@@ -12241,11 +13560,11 @@ export const ServerCollectorsOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     serverCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/servercollectors/{serverCollectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type ServerCollectorsOperationsGetInput =
@@ -12296,11 +13615,11 @@ export const ServerCollectorsOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/servercollectors",
+      apiVersion: "2024-01-15",
     }),
   );
 export type ServerCollectorsOperationsListByAssessmentProjectInput =
@@ -12365,11 +13684,22 @@ export const ServerDependencyMapControllerClientGroupMembersInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machineId: Schema.optional(Schema.String),
+    processGroupName: Schema.optional(Schema.String),
+    processName: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Struct({
+        machineIds: Schema.optional(Schema.Array(Schema.String)),
+        processIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/clientGroupMembers",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerDependencyMapControllerClientGroupMembersInput =
@@ -12401,11 +13731,13 @@ export const ServerDependencyMapControllerExportDependenciesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/exportDependencies",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerDependencyMapControllerExportDependenciesInput =
@@ -12437,11 +13769,19 @@ export const ServerDependencyMapControllerGenerateCoarseMapInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Struct({
+        machineIds: Schema.optional(Schema.Array(Schema.String)),
+        processIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/generateCoarseMap",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerDependencyMapControllerGenerateCoarseMapInput =
@@ -12473,11 +13813,20 @@ export const ServerDependencyMapControllerGenerateDetailedMapInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machineId: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Struct({
+        machineIds: Schema.optional(Schema.Array(Schema.String)),
+        processIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/generateDetailedMap",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerDependencyMapControllerGenerateDetailedMapInput =
@@ -12509,11 +13858,20 @@ export const ServerDependencyMapControllerServerGroupMembersInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    serverPort: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Struct({
+        machineIds: Schema.optional(Schema.Array(Schema.String)),
+        processIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/serverGroupMembers",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerDependencyMapControllerServerGroupMembersInput =
@@ -12546,11 +13904,11 @@ export const ServerJobsControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/jobs/{jobName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerJobsControllerGetInput =
@@ -12602,11 +13960,11 @@ export const ServerJobsControllerListByServerSiteResourceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/jobs",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerJobsControllerListByServerSiteResourceInput =
@@ -12672,11 +14030,11 @@ export const ServerOperationsStatusControllerGetServerSiteOperationsStatusInput 
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     operationStatusName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/operationsStatus/{operationStatusName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerOperationsStatusControllerGetServerSiteOperationsStatusInput =
@@ -12729,11 +14087,11 @@ export const ServerRunAsAccountsControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/runAsAccounts/{accountName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerRunAsAccountsControllerGetInput =
@@ -12784,11 +14142,11 @@ export const ServerRunAsAccountsControllerListByServerSiteResourceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/runAsAccounts",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerRunAsAccountsControllerListByServerSiteResourceInput =
@@ -12854,11 +14212,11 @@ export const ServersControllerDeleteMachineInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines/{machineName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServersControllerDeleteMachineInput =
@@ -12892,11 +14250,11 @@ export const ServersControllerGetMachineInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines/{machineName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServersControllerGetMachineInput =
@@ -12948,7 +14306,6 @@ export const ServersControllerListByServerSiteResourceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
@@ -12957,6 +14314,7 @@ export const ServersControllerListByServerSiteResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServersControllerListByServerSiteResourceInput =
@@ -13026,11 +14384,89 @@ export const ServersControllerUpdateMachineInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        fqdn: Schema.optional(Schema.String),
+        networkAdapters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              nicId: Schema.optional(Schema.String),
+              macAddress: Schema.optional(Schema.String),
+              ipAddressList: Schema.optional(Schema.Array(Schema.String)),
+              networkName: Schema.optional(Schema.String),
+              ipAddressType: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        hydratedFqdn: Schema.optional(Schema.String),
+        disks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              generatedId: Schema.optional(Schema.String),
+              maxSizeInBytes: Schema.optional(Schema.Number),
+              name: Schema.optional(Schema.String),
+              diskType: Schema.optional(Schema.String),
+              lun: Schema.optional(Schema.Number),
+              path: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        validationRequired: Schema.optional(Schema.String),
+        firmware: Schema.optional(Schema.String),
+        runAsAccountId: Schema.optional(Schema.String),
+        productSupportStatus: Schema.optional(
+          Schema.Struct({
+            currentVersion: Schema.optional(Schema.String),
+            esuStatus: Schema.optional(
+              Schema.Literals(["Unknown", "Active", "InActive"]),
+            ),
+            supportStatus: Schema.optional(
+              Schema.Literals(["Unknown", "Mainstream", "Extended"]),
+            ),
+            supportEndDate: Schema.optional(Schema.String),
+            esuYear: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "FirstYear",
+                "SecondYear",
+                "ThirdYear",
+                "UpgradeYear",
+              ]),
+            ),
+          }),
+        ),
+        numberOfProcessorCore: Schema.optional(Schema.Number),
+        allocatedMemoryInMb: Schema.optional(Schema.Number),
+        operatingSystemDetails: Schema.optional(
+          Schema.Struct({
+            osType: Schema.optional(Schema.String),
+            osName: Schema.optional(Schema.String),
+            osVersion: Schema.optional(Schema.String),
+            osArchitecture: Schema.optional(Schema.String),
+          }),
+        ),
+        biosSerialNumber: Schema.optional(Schema.String),
+        biosGuid: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines/{machineName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServersControllerUpdateMachineInput =
@@ -13081,11 +14517,11 @@ export const ServerSitesControllerComputeErrorSummaryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/computeErrorSummary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerComputeErrorSummaryInput =
@@ -13130,11 +14566,11 @@ export const ServerSitesControllerComputeusageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/computeusage",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerComputeusageInput =
@@ -13169,11 +14605,51 @@ export const ServerSitesControllerCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        masterSiteId: Schema.optional(Schema.String),
+        servicePrincipalIdentityDetails: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            applicationId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+            audience: Schema.optional(Schema.String),
+            aadAuthority: Schema.optional(Schema.String),
+            rawCertData: Schema.optional(Schema.String),
+          }),
+        ),
+        agentDetails: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            lastHeartBeatUtc: Schema.optional(Schema.String),
+            keyVaultUri: Schema.optional(Schema.String),
+            keyVaultId: Schema.optional(Schema.String),
+          }),
+        ),
+        applianceName: Schema.optional(Schema.String),
+        discoverySolutionId: Schema.optional(Schema.String),
+        serviceEndpoint: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerCreateInput =
@@ -13224,11 +14700,11 @@ export const ServerSitesControllerDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerDeleteInput =
@@ -13261,11 +14737,11 @@ export const ServerSitesControllerExportApplicationsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/exportApplications",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerExportApplicationsInput =
@@ -13298,11 +14774,23 @@ export const ServerSitesControllerExportMachineErrorsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        discoveryScope: Schema.optional(
+          Schema.Literals([
+            "AppsAndRoles",
+            "DependencyMap",
+            "StaticData",
+            "SQLServerConnectionInfo",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/exportMachineErrors",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerExportMachineErrorsInput =
@@ -13335,11 +14823,11 @@ export const ServerSitesControllerGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerGetInput =
@@ -13389,11 +14877,11 @@ export const ServerSitesControllerListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerListByResourceGroupInput =
@@ -13455,11 +14943,11 @@ export const ServerSitesControllerListByResourceGroup =
 export const ServerSitesControllerListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/serverSites",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerListBySubscriptionInput =
@@ -13522,11 +15010,11 @@ export const ServerSitesControllerListHealthSummaryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/listHealthSummary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerListHealthSummaryInput =
@@ -13584,11 +15072,11 @@ export const ServerSitesControllerRefreshSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/refreshSite",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerRefreshSiteInput =
@@ -13620,11 +15108,11 @@ export const ServerSitesControllerSummaryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/summary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerSummaryInput =
@@ -13659,11 +15147,37 @@ export const ServerSitesControllerUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        servicePrincipalIdentityDetails: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            applicationId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+            audience: Schema.optional(Schema.String),
+            aadAuthority: Schema.optional(Schema.String),
+            rawCertData: Schema.optional(Schema.String),
+          }),
+        ),
+        agentDetails: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            lastHeartBeatUtc: Schema.optional(Schema.String),
+            keyVaultUri: Schema.optional(Schema.String),
+            keyVaultId: Schema.optional(Schema.String),
+          }),
+        ),
+        applianceName: Schema.optional(Schema.String),
+        discoverySolutionId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerUpdateInput =
@@ -13714,11 +15228,19 @@ export const ServerSitesControllerUpdateDependencyMapStatusInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machines: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          machineId: Schema.optional(Schema.String),
+          isDependencyMapToBeEnabled: Schema.optional(Schema.Boolean),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/updateDependencyMapStatus",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerUpdateDependencyMapStatusInput =
@@ -13751,11 +15273,18 @@ export const ServerSitesControllerUpdatePropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    value: Schema.Array(
+      Schema.Struct({
+        machineArmId: Schema.String,
+        dependencyMapping: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/updateProperties",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSitesControllerUpdatePropertiesInput =
@@ -13789,11 +15318,11 @@ export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryInput
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     default: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines/{machineName}/softwareInventories/{default}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryInput =
@@ -13848,11 +15377,11 @@ export const ServerSoftwareInventoriesControllerListByServerInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines/{machineName}/softwareinventories",
+      apiVersion: "2023-06-06",
     }),
   );
 export type ServerSoftwareInventoriesControllerListByServerInput =
@@ -13918,11 +15447,11 @@ export const SitesControllerComputeErrorSummaryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/computeErrorSummary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerComputeErrorSummaryInput =
@@ -13967,11 +15496,11 @@ export const SitesControllerComputeusageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/computeusage",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerComputeusageInput =
@@ -14008,11 +15537,52 @@ export const SitesControllerCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        masterSiteId: Schema.optional(Schema.String),
+        servicePrincipalIdentityDetails: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            applicationId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+            audience: Schema.optional(Schema.String),
+            aadAuthority: Schema.optional(Schema.String),
+            rawCertData: Schema.optional(Schema.String),
+          }),
+        ),
+        agentDetails: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            lastHeartBeatUtc: Schema.optional(Schema.String),
+            keyVaultUri: Schema.optional(Schema.String),
+            keyVaultId: Schema.optional(Schema.String),
+          }),
+        ),
+        applianceName: Schema.optional(Schema.String),
+        discoverySolutionId: Schema.optional(Schema.String),
+        serviceEndpoint: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerCreateInput = typeof SitesControllerCreateInput.Type;
@@ -14062,11 +15632,11 @@ export const SitesControllerDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerDeleteInput = typeof SitesControllerDeleteInput.Type;
@@ -14098,11 +15668,11 @@ export const SitesControllerExportApplicationsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/exportApplications",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerExportApplicationsInput =
@@ -14135,11 +15705,23 @@ export const SitesControllerExportMachineErrorsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        discoveryScope: Schema.optional(
+          Schema.Literals([
+            "AppsAndRoles",
+            "DependencyMap",
+            "StaticData",
+            "SQLServerConnectionInfo",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/exportMachineErrors",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerExportMachineErrorsInput =
@@ -14172,11 +15754,12 @@ export const SitesControllerExportMachinesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/exportMachines",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerExportMachinesInput =
@@ -14209,11 +15792,11 @@ export const SitesControllerGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerGetInput = typeof SitesControllerGetInput.Type;
@@ -14259,11 +15842,11 @@ export const SitesControllerListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerListByResourceGroupInput =
@@ -14327,11 +15910,11 @@ export const SitesControllerListByResourceGroup =
 export const SitesControllerListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/vmwareSites",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerListBySubscriptionInput =
@@ -14396,11 +15979,11 @@ export const SitesControllerListHealthSummaryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/listHealthSummary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerListHealthSummaryInput =
@@ -14458,11 +16041,11 @@ export const SitesControllerSummaryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/summary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerSummaryInput =
@@ -14499,11 +16082,48 @@ export const SitesControllerUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        servicePrincipalIdentityDetails: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            applicationId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+            audience: Schema.optional(Schema.String),
+            aadAuthority: Schema.optional(Schema.String),
+            rawCertData: Schema.optional(Schema.String),
+          }),
+        ),
+        agentDetails: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            lastHeartBeatUtc: Schema.optional(Schema.String),
+            keyVaultUri: Schema.optional(Schema.String),
+            keyVaultId: Schema.optional(Schema.String),
+          }),
+        ),
+        applianceName: Schema.optional(Schema.String),
+        discoverySolutionId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SitesControllerUpdateInput = typeof SitesControllerUpdateInput.Type;
@@ -14552,11 +16172,11 @@ export const SolutionsControllerCleanupDataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}/cleanupData",
+      apiVersion: "2023-01-01",
     }),
   );
 export type SolutionsControllerCleanupDataInput =
@@ -14586,11 +16206,84 @@ export const SolutionsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        tool: Schema.optional(
+          Schema.Literals([
+            "ServerDiscovery",
+            "ServerAssessment",
+            "ServerMigration",
+            "Cloudamize",
+            "Turbonomic",
+            "Zerto",
+            "CorentTech",
+            "ServerAssessmentV1",
+            "ServerMigration_Replication",
+            "Carbonite",
+            "DataMigrationAssistant",
+            "DatabaseMigrationService",
+            "Device42",
+            "JetStream",
+            "RackWare",
+            "UnifyCloud",
+            "Flexera",
+            "ServerDiscovery_Import",
+            "Lakeside",
+            "AppServiceMigrationAssistant",
+            "Movere",
+            "CloudSphere",
+            "Modernization",
+            "ServerMigration_DataReplication",
+            "Unknown",
+          ]),
+        ),
+        purpose: Schema.optional(
+          Schema.Literals(["Discovery", "Assessment", "Migration"]),
+        ),
+        goal: Schema.optional(
+          Schema.Literals([
+            "Servers",
+            "Databases",
+            "DesktopVirtualization",
+            "WebApplications",
+            "DataCenter",
+          ]),
+        ),
+        status: Schema.optional(Schema.Literals(["Inactive", "Active"])),
+        cleanupState: Schema.optional(
+          Schema.Literals([
+            "None",
+            "Started",
+            "InProgress",
+            "Completed",
+            "Failed",
+          ]),
+        ),
+        summary: Schema.optional(
+          Schema.Struct({
+            instanceType: Schema.optional(Schema.String),
+          }),
+        ),
+        details: Schema.optional(
+          Schema.Struct({
+            groupCount: Schema.optional(Schema.Number),
+            assessmentCount: Schema.optional(Schema.Number),
+            extendedDetails: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type SolutionsControllerCreateInput =
@@ -14695,11 +16388,11 @@ export const SolutionsControllerDeleteSolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type SolutionsControllerDeleteSolutionInput =
@@ -14731,11 +16424,11 @@ export const SolutionsControllerGetConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}/getConfig",
+      apiVersion: "2023-01-01",
     }),
   );
 export type SolutionsControllerGetConfigInput =
@@ -14767,11 +16460,11 @@ export const SolutionsControllerGetSolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type SolutionsControllerGetSolutionInput =
@@ -14875,11 +16568,11 @@ export const SolutionsControllerListSolutionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions",
+      apiVersion: "2023-01-01",
     }),
   );
 export type SolutionsControllerListSolutionsInput =
@@ -14990,11 +16683,84 @@ export const SolutionsControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        tool: Schema.optional(
+          Schema.Literals([
+            "ServerDiscovery",
+            "ServerAssessment",
+            "ServerMigration",
+            "Cloudamize",
+            "Turbonomic",
+            "Zerto",
+            "CorentTech",
+            "ServerAssessmentV1",
+            "ServerMigration_Replication",
+            "Carbonite",
+            "DataMigrationAssistant",
+            "DatabaseMigrationService",
+            "Device42",
+            "JetStream",
+            "RackWare",
+            "UnifyCloud",
+            "Flexera",
+            "ServerDiscovery_Import",
+            "Lakeside",
+            "AppServiceMigrationAssistant",
+            "Movere",
+            "CloudSphere",
+            "Modernization",
+            "ServerMigration_DataReplication",
+            "Unknown",
+          ]),
+        ),
+        purpose: Schema.optional(
+          Schema.Literals(["Discovery", "Assessment", "Migration"]),
+        ),
+        goal: Schema.optional(
+          Schema.Literals([
+            "Servers",
+            "Databases",
+            "DesktopVirtualization",
+            "WebApplications",
+            "DataCenter",
+          ]),
+        ),
+        status: Schema.optional(Schema.Literals(["Inactive", "Active"])),
+        cleanupState: Schema.optional(
+          Schema.Literals([
+            "None",
+            "Started",
+            "InProgress",
+            "Completed",
+            "Failed",
+          ]),
+        ),
+        summary: Schema.optional(
+          Schema.Struct({
+            instanceType: Schema.optional(Schema.String),
+          }),
+        ),
+        details: Schema.optional(
+          Schema.Struct({
+            groupCount: Schema.optional(Schema.Number),
+            assessmentCount: Schema.optional(Schema.Number),
+            extendedDetails: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type SolutionsControllerUpdateInput =
@@ -15103,11 +16869,11 @@ export const SqlAssessmentOptionsOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentOptionsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlAssessmentOptions/{assessmentOptionsName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlAssessmentOptionsOperationsGetInput =
@@ -15158,11 +16924,11 @@ export const SqlAssessmentOptionsOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlAssessmentOptions",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlAssessmentOptionsOperationsListByAssessmentProjectInput =
@@ -15229,11 +16995,26 @@ export const SqlAssessmentV2OperationsCreateInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlAssessmentV2OperationsCreateInput =
@@ -15287,11 +17068,11 @@ export const SqlAssessmentV2OperationsDeleteInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlAssessmentV2OperationsDeleteInput =
@@ -15327,11 +17108,11 @@ export const SqlAssessmentV2OperationsDownloadUrlInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/downloadUrl",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlAssessmentV2OperationsDownloadUrlInput =
@@ -15372,11 +17153,11 @@ export const SqlAssessmentV2OperationsGetInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlAssessmentV2OperationsGetInput =
@@ -15429,11 +17210,11 @@ export const SqlAssessmentV2OperationsListByGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlAssessmentV2OperationsListByGroupInput =
@@ -15502,11 +17283,11 @@ export const SqlAssessmentV2SummaryOperationsGetInput =
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     summaryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/summaries/{summaryName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlAssessmentV2SummaryOperationsGetInput =
@@ -15561,11 +17342,11 @@ export const SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Input =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/summaries",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Input =
@@ -15634,11 +17415,11 @@ export const SqlAvailabilityGroupsControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
     sqlAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlAvailabilityGroups/{sqlAvailabilityGroupName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlAvailabilityGroupsControllerGetInput =
@@ -15691,7 +17472,6 @@ export const SqlAvailabilityGroupsControllerListBySqlSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
@@ -15700,6 +17480,7 @@ export const SqlAvailabilityGroupsControllerListBySqlSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlAvailabilityGroups",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlAvailabilityGroupsControllerListBySqlSiteInput =
@@ -15770,11 +17551,26 @@ export const SqlCollectorOperationsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     collectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlcollectors/{collectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlCollectorOperationsCreateInput =
@@ -15826,11 +17622,11 @@ export const SqlCollectorOperationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     collectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlcollectors/{collectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlCollectorOperationsDeleteInput =
@@ -15864,11 +17660,11 @@ export const SqlCollectorOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     collectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlcollectors/{collectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlCollectorOperationsGetInput =
@@ -15920,11 +17716,11 @@ export const SqlCollectorOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlcollectors",
+      apiVersion: "2024-01-15",
     }),
   );
 export type SqlCollectorOperationsListByAssessmentProjectInput =
@@ -15991,11 +17787,11 @@ export const SqlDatabasesControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
     sqlDatabaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlDatabases/{sqlDatabaseName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlDatabasesControllerGetInput =
@@ -16049,7 +17845,6 @@ export const SqlDatabasesControllerListBySqlSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
@@ -16058,6 +17853,7 @@ export const SqlDatabasesControllerListBySqlSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlDatabases",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlDatabasesControllerListBySqlSiteInput =
@@ -16129,11 +17925,27 @@ export const SqlDiscoverySiteDataSourceControllerCreateInput =
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
     discoverySiteDataSourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        discoverySiteId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlDiscoverySiteDataSourceControllerCreateInput =
@@ -16187,11 +17999,11 @@ export const SqlDiscoverySiteDataSourceControllerDeleteInput =
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
     discoverySiteDataSourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlDiscoverySiteDataSourceControllerDeleteInput =
@@ -16227,11 +18039,11 @@ export const SqlDiscoverySiteDataSourceControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
     discoverySiteDataSourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlDiscoverySiteDataSourceControllerGetInput =
@@ -16284,11 +18096,11 @@ export const SqlDiscoverySiteDataSourceControllerListBySqlSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/discoverySiteDataSources",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlDiscoverySiteDataSourceControllerListBySqlSiteInput =
@@ -16356,11 +18168,11 @@ export const SqlJobsControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/jobs/{jobName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlJobsControllerGetInput = typeof SqlJobsControllerGetInput.Type;
@@ -16414,11 +18226,11 @@ export const SqlJobsControllerListBySqlSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/jobs",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlJobsControllerListBySqlSiteInput =
@@ -16488,11 +18300,11 @@ export const SqlOperationsStatusControllerGetSqlOperationStatusInput =
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
     operationStatusName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/operationsStatus/{operationStatusName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlOperationsStatusControllerGetSqlOperationStatusInput =
@@ -16545,11 +18357,11 @@ export const SqlRunAsAccountsControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/runAsAccounts/{accountName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlRunAsAccountsControllerGetInput =
@@ -16602,11 +18414,11 @@ export const SqlRunAsAccountsControllerListBySqlSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/runAsAccounts",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlRunAsAccountsControllerListBySqlSiteInput =
@@ -16674,11 +18486,11 @@ export const SqlServersControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
     sqlServerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlServers/{sqlServerName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlServersControllerGetInput =
@@ -16732,7 +18544,6 @@ export const SqlServersControllerListBySqlSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
@@ -16741,6 +18552,7 @@ export const SqlServersControllerListBySqlSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlServers",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlServersControllerListBySqlSiteInput =
@@ -16812,11 +18624,104 @@ export const SqlServersControllerUpdateInput =
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
     sqlServerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        numberOfAgDatabases: Schema.optional(Schema.Number),
+        sqlFciProperties: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "Inherited",
+                "Initializing",
+                "Online",
+                "Offline",
+                "Failed",
+                "Pending",
+                "OnlinePending",
+                "OfflinePending",
+              ]),
+            ),
+            networkName: Schema.optional(Schema.String),
+            isMultiSubnet: Schema.optional(Schema.Boolean),
+            sharedDiskCount: Schema.optional(Schema.Number),
+          }),
+        ),
+        productSupportStatus: Schema.optional(
+          Schema.Struct({
+            currentVersion: Schema.optional(Schema.String),
+            esuStatus: Schema.optional(
+              Schema.Literals(["Unknown", "Active", "InActive"]),
+            ),
+            supportStatus: Schema.optional(
+              Schema.Literals(["Unknown", "Mainstream", "Extended"]),
+            ),
+            supportEndDate: Schema.optional(Schema.String),
+            esuYear: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "FirstYear",
+                "SecondYear",
+                "ThirdYear",
+                "UpgradeYear",
+              ]),
+            ),
+          }),
+        ),
+        version: Schema.optional(Schema.String),
+        numberOfUserDatabases: Schema.optional(Schema.Number),
+        sumOfUserDatabasesSizeInMb: Schema.optional(Schema.Number),
+        tempDbSizeInMb: Schema.optional(Schema.Number),
+        maxServerMemoryInUseInMb: Schema.optional(Schema.Number),
+        visibleOnlineCoreCount: Schema.optional(Schema.Number),
+        numOfLogins: Schema.optional(Schema.Number),
+        physicalCpuCount: Schema.optional(Schema.Number),
+        logicalCpuCount: Schema.optional(Schema.Number),
+        engineEdition: Schema.optional(Schema.String),
+        edition: Schema.optional(Schema.String),
+        isHighAvailabilityEnabled: Schema.optional(Schema.Boolean),
+        isClustered: Schema.optional(Schema.Boolean),
+        hyperthreadRatio: Schema.optional(Schema.Number),
+        sqlStartTime: Schema.optional(Schema.String),
+        runAsAccountId: Schema.optional(Schema.String),
+        hydratedRunAsAccountId: Schema.optional(Schema.String),
+        hostName: Schema.optional(Schema.String),
+        sqlServerName: Schema.optional(Schema.String),
+        portNumber: Schema.optional(Schema.Number),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        isDeleted: Schema.optional(Schema.Boolean),
+        createdTimestamp: Schema.optional(Schema.String),
+        updatedTimestamp: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "ContinuePending",
+            "Paused",
+            "PausePending",
+            "Running",
+            "StartPending",
+            "Stopped",
+            "StopPending",
+          ]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlServers/{sqlServerName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlServersControllerUpdateInput =
@@ -16870,11 +18775,54 @@ export const SqlSitesControllerCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        siteAppliancePropertiesCollection: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              servicePrincipalIdentityDetails: Schema.optional(
+                Schema.Struct({
+                  tenantId: Schema.optional(Schema.String),
+                  applicationId: Schema.optional(Schema.String),
+                  objectId: Schema.optional(Schema.String),
+                  audience: Schema.optional(Schema.String),
+                  aadAuthority: Schema.optional(Schema.String),
+                  rawCertData: Schema.optional(Schema.String),
+                }),
+              ),
+              agentDetails: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  version: Schema.optional(Schema.String),
+                  lastHeartBeatUtc: Schema.optional(Schema.String),
+                  keyVaultUri: Schema.optional(Schema.String),
+                  keyVaultId: Schema.optional(Schema.String),
+                }),
+              ),
+              applianceName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        discoveryScenario: Schema.optional(Schema.Literals(["Migrate", "DR"])),
+        serviceEndpoint: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlSitesControllerCreateInput =
@@ -16927,11 +18875,11 @@ export const SqlSitesControllerDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlSitesControllerDeleteInput =
@@ -16966,11 +18914,12 @@ export const SqlSitesControllerErrorSummaryInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    applianceName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/errorSummary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlSitesControllerErrorSummaryInput =
@@ -17017,11 +18966,11 @@ export const SqlSitesControllerExportSqlServerErrorsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/exportSqlServerErrors",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlSitesControllerExportSqlServerErrorsInput =
@@ -17055,11 +19004,13 @@ export const SqlSitesControllerExportSqlServersInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    applianceName: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/exportSqlServers",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlSitesControllerExportSqlServersInput =
@@ -17093,11 +19044,11 @@ export const SqlSitesControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlSitesControllerGetInput = typeof SqlSitesControllerGetInput.Type;
@@ -17148,11 +19099,11 @@ export const SqlSitesControllerListByMasterSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlSitesControllerListByMasterSiteInput =
@@ -17218,11 +19169,12 @@ export const SqlSitesControllerRefreshInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    applianceName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/refresh",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlSitesControllerRefreshInput =
@@ -17257,11 +19209,11 @@ export const SqlSitesControllerSummaryInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/summary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlSitesControllerSummaryInput =
@@ -17300,11 +19252,42 @@ export const SqlSitesControllerUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     sqlSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        siteAppliancePropertiesCollection: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              servicePrincipalIdentityDetails: Schema.optional(
+                Schema.Struct({
+                  tenantId: Schema.optional(Schema.String),
+                  applicationId: Schema.optional(Schema.String),
+                  objectId: Schema.optional(Schema.String),
+                  audience: Schema.optional(Schema.String),
+                  aadAuthority: Schema.optional(Schema.String),
+                  rawCertData: Schema.optional(Schema.String),
+                }),
+              ),
+              agentDetails: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  version: Schema.optional(Schema.String),
+                  lastHeartBeatUtc: Schema.optional(Schema.String),
+                  keyVaultUri: Schema.optional(Schema.String),
+                  keyVaultId: Schema.optional(Schema.String),
+                }),
+              ),
+              applianceName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        discoveryScenario: Schema.optional(Schema.Literals(["Migrate", "DR"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type SqlSitesControllerUpdateInput =
@@ -17358,11 +19341,11 @@ export const TomcatWebApplicationsControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
     webApplicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/tomcatWebApplications/{webApplicationName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type TomcatWebApplicationsControllerGetInput =
@@ -17415,7 +19398,6 @@ export const TomcatWebApplicationsControllerListByWebAppSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
@@ -17424,6 +19406,7 @@ export const TomcatWebApplicationsControllerListByWebAppSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/tomcatWebApplications",
+      apiVersion: "2023-06-06",
     }),
   );
 export type TomcatWebApplicationsControllerListByWebAppSiteInput =
@@ -17495,11 +19478,11 @@ export const TomcatWebApplicationsControllerUpdateInput =
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
     webApplicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/tomcatWebApplications/{webApplicationName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type TomcatWebApplicationsControllerUpdateInput =
@@ -17553,11 +19536,11 @@ export const TomcatWebServersControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
     webServerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/tomcatWebServers/{webServerName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type TomcatWebServersControllerGetInput =
@@ -17610,7 +19593,6 @@ export const TomcatWebServersControllerListByWebAppSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
@@ -17619,6 +19601,7 @@ export const TomcatWebServersControllerListByWebAppSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/tomcatWebServers",
+      apiVersion: "2023-06-06",
     }),
   );
 export type TomcatWebServersControllerListByWebAppSiteInput =
@@ -17689,11 +19672,70 @@ export const VcenterControllerCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     vcenterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        runAsAccountId: Schema.optional(Schema.String),
+        errors: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              message: Schema.optional(Schema.String),
+              messageParameters: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              applianceName: Schema.optional(Schema.String),
+              id: Schema.optional(Schema.Number),
+              code: Schema.optional(Schema.String),
+              possibleCauses: Schema.optional(Schema.String),
+              recommendedAction: Schema.optional(Schema.String),
+              severity: Schema.optional(Schema.String),
+              summaryMessage: Schema.optional(Schema.String),
+              source: Schema.optional(
+                Schema.Literals([
+                  "RefreshFabricLayout",
+                  "RefreshFabricLayoutGuest",
+                  "RefreshFabricLayoutDependencyMap",
+                ]),
+              ),
+              updatedTimeStamp: Schema.optional(Schema.String),
+              runAsAccountId: Schema.optional(Schema.String),
+              discoveryScope: Schema.optional(
+                Schema.Literals([
+                  "AppsAndRoles",
+                  "DependencyMap",
+                  "StaticData",
+                  "SQLServerConnectionInfo",
+                  "DiscoveryTargets",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        createdTimestamp: Schema.optional(Schema.String),
+        updatedTimestamp: Schema.optional(Schema.String),
+        fqdn: Schema.optional(Schema.String),
+        port: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+        perfStatisticsLevel: Schema.optional(Schema.String),
+        instanceUuid: Schema.optional(Schema.String),
+        friendlyName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/vcenters/{vcenterName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VcenterControllerCreateInput =
@@ -17746,11 +19788,11 @@ export const VcenterControllerDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     vcenterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/vcenters/{vcenterName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VcenterControllerDeleteInput =
@@ -17785,11 +19827,11 @@ export const VcenterControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     vcenterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/vcenters/{vcenterName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VcenterControllerGetInput = typeof VcenterControllerGetInput.Type;
@@ -17839,12 +19881,12 @@ export const VcenterControllerListByVmwareSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/vcenters",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VcenterControllerListByVmwareSiteInput =
@@ -17909,11 +19951,11 @@ export const VirtualDesktopUserControllerGetVirtualDesktopUserInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/virtualDesktopUsers/{virtualDesktopUserName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type VirtualDesktopUserControllerGetVirtualDesktopUserInput =
@@ -17989,11 +20031,11 @@ export const VirtualDesktopUserControllerListVirtualDesktopUsersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/virtualDesktopUsers",
+      apiVersion: "2023-01-01",
     }),
   );
 export type VirtualDesktopUserControllerListVirtualDesktopUsersInput =
@@ -18078,11 +20120,26 @@ export const VmwareCollectorsOperationsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     vmWareCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/vmwarecollectors/{vmWareCollectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type VmwareCollectorsOperationsCreateInput =
@@ -18134,11 +20191,11 @@ export const VmwareCollectorsOperationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     vmWareCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/vmwarecollectors/{vmWareCollectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type VmwareCollectorsOperationsDeleteInput =
@@ -18172,11 +20229,11 @@ export const VmwareCollectorsOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     vmWareCollectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/vmwarecollectors/{vmWareCollectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type VmwareCollectorsOperationsGetInput =
@@ -18227,11 +20284,11 @@ export const VmwareCollectorsOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/vmwarecollectors",
+      apiVersion: "2024-01-15",
     }),
   );
 export type VmwareCollectorsOperationsListByAssessmentProjectInput =
@@ -18297,11 +20354,11 @@ export const VmwareHostControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/hosts/{hostName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VmwareHostControllerGetInput =
@@ -18353,11 +20410,11 @@ export const VmwareHostControllerListByVmwareSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/hosts",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VmwareHostControllerListByVmwareSiteInput =
@@ -18423,11 +20480,11 @@ export const VmwareOperationsStatusGetVmwareOperationStatusInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     operationStatusName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/operationsStatus/{operationStatusName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VmwareOperationsStatusGetVmwareOperationStatusInput =
@@ -18477,11 +20534,19 @@ export const VmwarePropertiesControllerUpdateDependencyMapStatusInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machines: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          machineId: Schema.optional(Schema.String),
+          isDependencyMapToBeEnabled: Schema.optional(Schema.Boolean),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateDependencyMapStatus",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VmwarePropertiesControllerUpdateDependencyMapStatusInput =
@@ -18515,11 +20580,18 @@ export const VmwarePropertiesControllerUpdatePropertiesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    value: Schema.Array(
+      Schema.Struct({
+        machineArmId: Schema.String,
+        dependencyMapping: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateProperties",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VmwarePropertiesControllerUpdatePropertiesInput =
@@ -18551,11 +20623,19 @@ export const VmwarePropertiesControllerUpdateRunAsAccountInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machines: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          machineId: Schema.optional(Schema.String),
+          runAsAccountId: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateRunAsAccount",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VmwarePropertiesControllerUpdateRunAsAccountInput =
@@ -18588,11 +20668,19 @@ export const VmwarePropertiesControllerUpdateTagsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    machines: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          machineId: Schema.optional(Schema.String),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateTags",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VmwarePropertiesControllerUpdateTagsInput =
@@ -18627,11 +20715,11 @@ export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryInput
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     default: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}/softwareInventories/{default}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryInput =
@@ -18686,11 +20774,11 @@ export const VmwareSoftwareInventoriesControllerListByMachineResourceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}/softwareinventories",
+      apiVersion: "2023-06-06",
     }),
   );
 export type VmwareSoftwareInventoriesControllerListByMachineResourceInput =
@@ -18758,11 +20846,11 @@ export const WebAppAssessmentOptionsOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     assessmentOptionsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppAssessmentOptions/{assessmentOptionsName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppAssessmentOptionsOperationsGetInput =
@@ -18813,11 +20901,11 @@ export const WebAppAssessmentOptionsOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppAssessmentOptions",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppAssessmentOptionsOperationsListByAssessmentProjectInput =
@@ -18885,11 +20973,26 @@ export const WebAppAssessmentV2OperationsCreateInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppAssessmentV2OperationsCreateInput =
@@ -18943,11 +21046,11 @@ export const WebAppAssessmentV2OperationsDeleteInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppAssessmentV2OperationsDeleteInput =
@@ -18983,11 +21086,11 @@ export const WebAppAssessmentV2OperationsDownloadUrlInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/downloadUrl",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppAssessmentV2OperationsDownloadUrlInput =
@@ -19028,11 +21131,11 @@ export const WebAppAssessmentV2OperationsGetInput =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppAssessmentV2OperationsGetInput =
@@ -19085,11 +21188,11 @@ export const WebAppAssessmentV2OperationsListByGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppAssessmentV2OperationsListByGroupInput =
@@ -19158,11 +21261,11 @@ export const WebAppAssessmentV2SummaryOperationsGetInput =
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     summaryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/summaries/{summaryName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppAssessmentV2SummaryOperationsGetInput =
@@ -19217,11 +21320,11 @@ export const WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Input =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/summaries",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Input =
@@ -19291,11 +21394,26 @@ export const WebAppCollectorOperationsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     collectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppCollectors/{collectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppCollectorOperationsCreateInput =
@@ -19347,11 +21465,11 @@ export const WebAppCollectorOperationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     collectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppCollectors/{collectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppCollectorOperationsDeleteInput =
@@ -19385,11 +21503,11 @@ export const WebAppCollectorOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
     collectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppCollectors/{collectorName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppCollectorOperationsGetInput =
@@ -19440,11 +21558,11 @@ export const WebAppCollectorOperationsListByAssessmentProjectInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppCollectors",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppCollectorOperationsListByAssessmentProjectInput =
@@ -19511,11 +21629,27 @@ export const WebAppDiscoverySiteDataSourcesControllerCreateInput =
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
     discoverySiteDataSourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        discoverySiteId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppDiscoverySiteDataSourcesControllerCreateInput =
@@ -19569,11 +21703,11 @@ export const WebAppDiscoverySiteDataSourcesControllerDeleteInput =
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
     discoverySiteDataSourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppDiscoverySiteDataSourcesControllerDeleteInput =
@@ -19609,11 +21743,11 @@ export const WebAppDiscoverySiteDataSourcesControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
     discoverySiteDataSourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppDiscoverySiteDataSourcesControllerGetInput =
@@ -19666,11 +21800,11 @@ export const WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/discoverySiteDataSources",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteInput =
@@ -19739,11 +21873,11 @@ export const WebAppExtendedMachinesControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
     extendedMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/extendedMachines/{extendedMachineName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppExtendedMachinesControllerGetInput =
@@ -19796,7 +21930,6 @@ export const WebAppExtendedMachinesControllerListByWebAppSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
@@ -19805,6 +21938,7 @@ export const WebAppExtendedMachinesControllerListByWebAppSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/extendedMachines",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppExtendedMachinesControllerListByWebAppSiteInput =
@@ -19875,7 +22009,6 @@ export const WebApplicationsControllerListByWebAppSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
@@ -19884,6 +22017,7 @@ export const WebApplicationsControllerListByWebAppSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/webApplications",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebApplicationsControllerListByWebAppSiteInput =
@@ -19954,11 +22088,19 @@ export const WebAppPropertiesControllerUpdatePropertiesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    webApps: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          webAppArmId: Schema.optional(Schema.String),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/updateProperties",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppPropertiesControllerUpdatePropertiesInput =
@@ -19994,11 +22136,11 @@ export const WebAppRunAsAccountsControllerGetInput =
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/runasaccounts/{accountName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppRunAsAccountsControllerGetInput =
@@ -20051,11 +22193,11 @@ export const WebAppRunAsAccountsControllerListByWebAppSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/runasaccounts",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppRunAsAccountsControllerListByWebAppSiteInput =
@@ -20124,11 +22266,11 @@ export const WebAppServicePlanV2OperationsGetInput =
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
     webAppServicePlanName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/webAppServicePlans/{webAppServicePlanName}",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppServicePlanV2OperationsGetInput =
@@ -20183,7 +22325,6 @@ export const WebAppServicePlanV2OperationsListByWebAppAssessmentV2Input =
     projectName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     assessmentName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -20192,6 +22333,7 @@ export const WebAppServicePlanV2OperationsListByWebAppAssessmentV2Input =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/webAppServicePlans",
+      apiVersion: "2024-01-15",
     }),
   );
 export type WebAppServicePlanV2OperationsListByWebAppAssessmentV2Input =
@@ -20263,11 +22405,54 @@ export const WebAppSitesControllerCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        siteAppliancePropertiesCollection: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              servicePrincipalIdentityDetails: Schema.optional(
+                Schema.Struct({
+                  tenantId: Schema.optional(Schema.String),
+                  applicationId: Schema.optional(Schema.String),
+                  objectId: Schema.optional(Schema.String),
+                  audience: Schema.optional(Schema.String),
+                  aadAuthority: Schema.optional(Schema.String),
+                  rawCertData: Schema.optional(Schema.String),
+                }),
+              ),
+              agentDetails: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  version: Schema.optional(Schema.String),
+                  lastHeartBeatUtc: Schema.optional(Schema.String),
+                  keyVaultUri: Schema.optional(Schema.String),
+                  keyVaultId: Schema.optional(Schema.String),
+                }),
+              ),
+              applianceName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        discoveryScenario: Schema.optional(Schema.Literals(["Migrate", "DR"])),
+        serviceEndpoint: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Created",
+            "Updated",
+            "Running",
+            "Completed",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppSitesControllerCreateInput =
@@ -20320,11 +22505,11 @@ export const WebAppSitesControllerDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppSitesControllerDeleteInput =
@@ -20359,11 +22544,12 @@ export const WebAppSitesControllerErrorSummaryInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    applianceName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/errorSummary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppSitesControllerErrorSummaryInput =
@@ -20410,11 +22596,12 @@ export const WebAppSitesControllerExportInventoryInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/exportInventory",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppSitesControllerExportInventoryInput =
@@ -20448,11 +22635,11 @@ export const WebAppSitesControllerGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppSitesControllerGetInput =
@@ -20504,11 +22691,11 @@ export const WebAppSitesControllerListByMasterSiteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppSitesControllerListByMasterSiteInput =
@@ -20574,11 +22761,12 @@ export const WebAppSitesControllerRefreshInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    applianceName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/refresh",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppSitesControllerRefreshInput =
@@ -20612,11 +22800,11 @@ export const WebAppSitesControllerSummaryInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/summary",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppSitesControllerSummaryInput =
@@ -20654,11 +22842,42 @@ export const WebAppSitesControllerUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        siteAppliancePropertiesCollection: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              servicePrincipalIdentityDetails: Schema.optional(
+                Schema.Struct({
+                  tenantId: Schema.optional(Schema.String),
+                  applicationId: Schema.optional(Schema.String),
+                  objectId: Schema.optional(Schema.String),
+                  audience: Schema.optional(Schema.String),
+                  aadAuthority: Schema.optional(Schema.String),
+                  rawCertData: Schema.optional(Schema.String),
+                }),
+              ),
+              agentDetails: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  version: Schema.optional(Schema.String),
+                  lastHeartBeatUtc: Schema.optional(Schema.String),
+                  keyVaultUri: Schema.optional(Schema.String),
+                  keyVaultId: Schema.optional(Schema.String),
+                }),
+              ),
+              applianceName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        discoveryScenario: Schema.optional(Schema.Literals(["Migrate", "DR"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebAppSitesControllerUpdateInput =
@@ -20709,11 +22928,11 @@ export const WebServersControllerGetWebServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/webServers/{webServerId}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type WebServersControllerGetWebServerInput =
@@ -20788,7 +23007,6 @@ export const WebServersControllerListByWebAppSiteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
     webAppSiteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.String),
     continuationToken: Schema.optional(Schema.String),
@@ -20797,6 +23015,7 @@ export const WebServersControllerListByWebAppSiteInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/webServers",
+      apiVersion: "2023-06-06",
     }),
   );
 export type WebServersControllerListByWebAppSiteInput =
@@ -20865,11 +23084,11 @@ export const WebServersControllerListWebServersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/webServers",
+      apiVersion: "2023-01-01",
     }),
   );
 export type WebServersControllerListWebServersInput =
@@ -20949,11 +23168,11 @@ export const WebSitesControllerGetWebSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/webSites/{webSiteName}",
+      apiVersion: "2023-01-01",
     }),
   );
 export type WebSitesControllerGetWebSiteInput =
@@ -21055,11 +23274,11 @@ export const WebSitesControllerListWebSitesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/webSites",
+      apiVersion: "2023-01-01",
     }),
   );
 export type WebSitesControllerListWebSitesInput =

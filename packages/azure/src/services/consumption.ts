@@ -12,12 +12,12 @@ import * as T from "../traits.ts";
 export const AggregatedCostGetByManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Consumption/aggregatedcost",
+      apiVersion: "2024-08-01",
     }),
   );
 export type AggregatedCostGetByManagementGroupInput =
@@ -65,11 +65,11 @@ export const AggregatedCostGetForBillingPeriodByManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     billingPeriodName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/aggregatedCost",
+      apiVersion: "2024-08-01",
     }),
   );
 export type AggregatedCostGetForBillingPeriodByManagementGroupInput =
@@ -116,11 +116,11 @@ export const AggregatedCostGetForBillingPeriodByManagementGroup =
 export const BalancesGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/balances",
+      apiVersion: "2024-08-01",
     }),
   );
 export type BalancesGetByBillingAccountInput =
@@ -168,11 +168,11 @@ export const BalancesGetForBillingPeriodByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingPeriodName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/balances",
+      apiVersion: "2024-08-01",
     }),
   );
 export type BalancesGetForBillingPeriodByBillingAccountInput =
@@ -220,11 +220,125 @@ export const BudgetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     budgetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        category: Schema.Literals(["Cost"]),
+        amount: Schema.Number,
+        timeGrain: Schema.Literals([
+          "Monthly",
+          "Quarterly",
+          "Annually",
+          "BillingMonth",
+          "BillingQuarter",
+          "BillingAnnual",
+        ]),
+        timePeriod: Schema.Struct({
+          startDate: Schema.String,
+          endDate: Schema.optional(Schema.String),
+        }),
+        filter: Schema.optional(
+          Schema.Struct({
+            and: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  dimensions: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.String,
+                      operator: Schema.Literals(["In"]),
+                      values: Schema.Array(Schema.String),
+                    }),
+                  ),
+                  tags: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.String,
+                      operator: Schema.Literals(["In"]),
+                      values: Schema.Array(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            dimensions: Schema.optional(
+              Schema.Struct({
+                name: Schema.String,
+                operator: Schema.Literals(["In"]),
+                values: Schema.Array(Schema.String),
+              }),
+            ),
+            tags: Schema.optional(
+              Schema.Struct({
+                name: Schema.String,
+                operator: Schema.Literals(["In"]),
+                values: Schema.Array(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        currentSpend: Schema.optional(
+          Schema.Struct({
+            amount: Schema.optional(Schema.Number),
+            unit: Schema.optional(Schema.String),
+          }),
+        ),
+        notifications: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              enabled: Schema.Boolean,
+              operator: Schema.Literals([
+                "EqualTo",
+                "GreaterThan",
+                "GreaterThanOrEqualTo",
+              ]),
+              threshold: Schema.Number,
+              contactEmails: Schema.Array(Schema.String),
+              contactRoles: Schema.optional(Schema.Array(Schema.String)),
+              contactGroups: Schema.optional(Schema.Array(Schema.String)),
+              thresholdType: Schema.optional(
+                Schema.Literals(["Actual", "Forecasted"]),
+              ),
+              locale: Schema.optional(
+                Schema.Literals([
+                  "en-us",
+                  "ja-jp",
+                  "zh-cn",
+                  "de-de",
+                  "es-es",
+                  "fr-fr",
+                  "it-it",
+                  "ko-kr",
+                  "pt-br",
+                  "ru-ru",
+                  "zh-tw",
+                  "cs-cz",
+                  "pl-pl",
+                  "tr-tr",
+                  "da-dk",
+                  "en-gb",
+                  "hu-hu",
+                  "nb-no",
+                  "nl-nl",
+                  "pt-pt",
+                  "sv-se",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        forecastSpend: Schema.optional(
+          Schema.Struct({
+            amount: Schema.optional(Schema.Number),
+            unit: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
+      apiVersion: "2024-08-01",
     }),
   );
 export type BudgetsCreateOrUpdateInput = typeof BudgetsCreateOrUpdateInput.Type;
@@ -271,11 +385,11 @@ export const BudgetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const BudgetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   budgetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
+    apiVersion: "2024-08-01",
   }),
 );
 export type BudgetsDeleteInput = typeof BudgetsDeleteInput.Type;
@@ -300,11 +414,11 @@ export const BudgetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const BudgetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   budgetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
+    apiVersion: "2024-08-01",
   }),
 );
 export type BudgetsGetInput = typeof BudgetsGetInput.Type;
@@ -346,11 +460,11 @@ export const BudgetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const BudgetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.Consumption/budgets",
+    apiVersion: "2024-08-01",
   }),
 );
 export type BudgetsListInput = typeof BudgetsListInput.Type;
@@ -408,7 +522,6 @@ export const BudgetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ChargesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   startDate: Schema.optional(Schema.String),
   endDate: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
@@ -417,6 +530,7 @@ export const ChargesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.Consumption/charges",
+    apiVersion: "2024-08-01",
   }),
 );
 export type ChargesListInput = typeof ChargesListInput.Type;
@@ -478,11 +592,11 @@ export const ChargesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const CreditsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   billingAccountId: Schema.String.pipe(T.PathParam()),
   billingProfileId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/credits/balanceSummary",
+    apiVersion: "2024-08-01",
   }),
 );
 export type CreditsGetInput = typeof CreditsGetInput.Type;
@@ -525,12 +639,12 @@ export const CreditsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EventsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/events",
+      apiVersion: "2024-08-01",
     }),
   );
 export type EventsListByBillingAccountInput =
@@ -596,13 +710,13 @@ export const EventsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     startDate: Schema.String,
     endDate: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/events",
+      apiVersion: "2024-08-01",
     }),
   );
 export type EventsListByBillingProfileInput =
@@ -669,12 +783,12 @@ export const EventsListByBillingProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const LotsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/lots",
+      apiVersion: "2024-08-01",
     }),
   );
 export type LotsListByBillingAccountInput =
@@ -740,11 +854,11 @@ export const LotsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/lots",
+      apiVersion: "2024-08-01",
     }),
   );
 export type LotsListByBillingProfileInput =
@@ -810,12 +924,12 @@ export const LotsListByCustomerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     customerId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}/providers/Microsoft.Consumption/lots",
+      apiVersion: "2024-08-01",
     }),
   );
 export type LotsListByCustomerInput = typeof LotsListByCustomerInput.Type;
@@ -876,7 +990,6 @@ export const LotsListByCustomer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const MarketplacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
   $skiptoken: Schema.optional(Schema.String),
@@ -884,6 +997,7 @@ export const MarketplacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.Consumption/marketplaces",
+    apiVersion: "2024-08-01",
   }),
 );
 export type MarketplacesListInput = typeof MarketplacesListInput.Type;
@@ -944,12 +1058,13 @@ export const MarketplacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MarketplacesListOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Consumption/operations",
+    apiVersion: "2024-08-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -991,11 +1106,11 @@ export const PriceSheetDownloadByBillingAccountPeriodInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingPeriodName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/download",
+      apiVersion: "2024-08-01",
     }),
   );
 export type PriceSheetDownloadByBillingAccountPeriodInput =
@@ -1033,7 +1148,6 @@ export const PriceSheetDownloadByBillingAccountPeriod =
 // Input Schema
 export const PriceSheetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $skiptoken: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -1041,6 +1155,7 @@ export const PriceSheetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default",
+    apiVersion: "2024-08-01",
   }),
 );
 export type PriceSheetGetInput = typeof PriceSheetGetInput.Type;
@@ -1086,7 +1201,6 @@ export const PriceSheetGetByBillingPeriodInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     billingPeriodName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $skiptoken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -1094,6 +1208,7 @@ export const PriceSheetGetByBillingPeriodInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/default",
+      apiVersion: "2024-08-01",
     }),
   );
 export type PriceSheetGetByBillingPeriodInput =
@@ -1143,7 +1258,6 @@ export const PriceSheetGetByBillingPeriod =
 export const ReservationRecommendationDetailsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     scope: Schema.Literals(["Single", "Shared"]),
     region: Schema.String,
     term: Schema.Literals(["P1M", "P1Y", "P3Y"]),
@@ -1154,6 +1268,7 @@ export const ReservationRecommendationDetailsGetInput =
     T.Http({
       method: "GET",
       path: "/{resourceScope}/providers/Microsoft.Consumption/reservationRecommendationDetails",
+      apiVersion: "2024-08-01",
     }),
   );
 export type ReservationRecommendationDetailsGetInput =
@@ -1205,12 +1320,12 @@ export const ReservationRecommendationDetailsGet =
 export const ReservationRecommendationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceScope}/providers/Microsoft.Consumption/reservationRecommendations",
+      apiVersion: "2024-08-01",
     }),
   );
 export type ReservationRecommendationsListInput =
@@ -1280,7 +1395,6 @@ export const ReservationRecommendationsList =
 export const ReservationsDetailsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     startDate: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -1290,6 +1404,7 @@ export const ReservationsDetailsListInput =
     T.Http({
       method: "GET",
       path: "/{resourceScope}/providers/Microsoft.Consumption/reservationDetails",
+      apiVersion: "2024-08-01",
     }),
   );
 export type ReservationsDetailsListInput =
@@ -1358,12 +1473,12 @@ export const ReservationsDetailsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ReservationsDetailsListByReservationOrderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationDetails",
+      apiVersion: "2024-08-01",
     }),
   );
 export type ReservationsDetailsListByReservationOrderInput =
@@ -1428,12 +1543,12 @@ export const ReservationsDetailsListByReservationOrderAndReservationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationDetails",
+      apiVersion: "2024-08-01",
     }),
   );
 export type ReservationsDetailsListByReservationOrderAndReservationInput =
@@ -1498,7 +1613,6 @@ export const ReservationsDetailsListByReservationOrderAndReservation =
 export const ReservationsSummariesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     grain: Schema.Literals(["daily", "monthly"]),
     startDate: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
@@ -1509,6 +1623,7 @@ export const ReservationsSummariesListInput =
     T.Http({
       method: "GET",
       path: "/{resourceScope}/providers/Microsoft.Consumption/reservationSummaries",
+      apiVersion: "2024-08-01",
     }),
   );
 export type ReservationsSummariesListInput =
@@ -1578,13 +1693,13 @@ export const ReservationsSummariesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ReservationsSummariesListByReservationOrderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     grain: Schema.Literals(["daily", "monthly"]),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationSummaries",
+      apiVersion: "2024-08-01",
     }),
   );
 export type ReservationsSummariesListByReservationOrderInput =
@@ -1650,13 +1765,13 @@ export const ReservationsSummariesListByReservationOrderAndReservationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     grain: Schema.Literals(["daily", "monthly"]),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationSummaries",
+      apiVersion: "2024-08-01",
     }),
   );
 export type ReservationsSummariesListByReservationOrderAndReservationInput =
@@ -1723,7 +1838,6 @@ export const ReservationsSummariesListByReservationOrderAndReservation =
 export const ReservationTransactionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     useMarkupIfPartner: Schema.optional(Schema.Boolean),
     previewMarkupPercentage: Schema.optional(Schema.Number),
@@ -1731,6 +1845,7 @@ export const ReservationTransactionsListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/reservationTransactions",
+      apiVersion: "2024-08-01",
     }),
   );
 export type ReservationTransactionsListInput =
@@ -1798,12 +1913,12 @@ export const ReservationTransactionsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/reservationTransactions",
+      apiVersion: "2024-08-01",
     }),
   );
 export type ReservationTransactionsListByBillingProfileInput =
@@ -1867,11 +1982,11 @@ export const ReservationTransactionsListByBillingProfile =
 // Input Schema
 export const TagsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.Consumption/tags",
+    apiVersion: "2024-08-01",
   }),
 );
 export type TagsGetInput = typeof TagsGetInput.Type;
@@ -1912,7 +2027,6 @@ export const TagsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const UsageDetailsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
   $skiptoken: Schema.optional(Schema.String),
@@ -1924,6 +2038,7 @@ export const UsageDetailsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.Consumption/usageDetails",
+    apiVersion: "2024-08-01",
   }),
 );
 export type UsageDetailsListInput = typeof UsageDetailsListInput.Type;

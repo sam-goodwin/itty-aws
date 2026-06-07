@@ -7,15 +7,80 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    customResourceName: Schema.optional(Schema.String),
+    usedMemoryGB: Schema.optional(Schema.Number),
+    totalMemoryGB: Schema.optional(Schema.Number),
+    usedCpuMHz: Schema.optional(Schema.Number),
+    totalCpuMHz: Schema.optional(Schema.Number),
+    datastoreIds: Schema.optional(Schema.Array(Schema.String)),
+    networkIds: Schema.optional(Schema.Array(Schema.String)),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters/{clusterName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ClustersCreateInput = typeof ClustersCreateInput.Type;
@@ -109,6 +174,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters/{clusterName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -137,6 +203,7 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters/{clusterName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ClustersGetInput = typeof ClustersGetInput.Type;
@@ -229,6 +296,7 @@ export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/clusters",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ClustersListInput = typeof ClustersListInput.Type;
@@ -323,6 +391,7 @@ export const ClustersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ClustersListByResourceGroupInput =
@@ -429,10 +498,12 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters/{clusterName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -521,10 +592,71 @@ export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatastoresCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   datastoreName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    customResourceName: Schema.optional(Schema.String),
+    capacityGB: Schema.optional(Schema.Number),
+    freeSpaceGB: Schema.optional(Schema.Number),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores/{datastoreName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DatastoresCreateInput = typeof DatastoresCreateInput.Type;
@@ -616,6 +748,7 @@ export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores/{datastoreName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DatastoresDeleteInput = typeof DatastoresDeleteInput.Type;
@@ -644,6 +777,7 @@ export const DatastoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores/{datastoreName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DatastoresGetInput = typeof DatastoresGetInput.Type;
@@ -732,6 +866,7 @@ export const DatastoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/datastores",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DatastoresListInput = typeof DatastoresListInput.Type;
@@ -822,6 +957,7 @@ export const DatastoresListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DatastoresListByResourceGroupInput =
@@ -923,10 +1059,12 @@ export const DatastoresListByResourceGroup =
 // Input Schema
 export const DatastoresUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   datastoreName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores/{datastoreName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DatastoresUpdateInput = typeof DatastoresUpdateInput.Type;
@@ -1013,10 +1151,75 @@ export const DatastoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const HostsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   hostName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    vCenterId: Schema.optional(Schema.String),
+    moRefId: Schema.optional(Schema.String),
+    inventoryItemId: Schema.optional(Schema.String),
+    moName: Schema.optional(Schema.String),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    customResourceName: Schema.optional(Schema.String),
+    overallMemoryUsageGB: Schema.optional(Schema.Number),
+    memorySizeGB: Schema.optional(Schema.Number),
+    overallCpuUsageMHz: Schema.optional(Schema.Number),
+    cpuMhz: Schema.optional(Schema.Number),
+    datastoreIds: Schema.optional(Schema.Array(Schema.String)),
+    networkIds: Schema.optional(Schema.Array(Schema.String)),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts/{hostName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type HostsCreateInput = typeof HostsCreateInput.Type;
@@ -1110,6 +1313,7 @@ export const HostsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts/{hostName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type HostsDeleteInput = typeof HostsDeleteInput.Type;
@@ -1138,6 +1342,7 @@ export const HostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts/{hostName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type HostsGetInput = typeof HostsGetInput.Type;
@@ -1230,6 +1435,7 @@ export const HostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/hosts",
+    apiVersion: "2023-12-01",
   }),
 );
 export type HostsListInput = typeof HostsListInput.Type;
@@ -1324,6 +1530,7 @@ export const HostsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts",
+      apiVersion: "2023-12-01",
     }),
   );
 export type HostsListByResourceGroupInput =
@@ -1430,10 +1637,12 @@ export const HostsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const HostsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   hostName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts/{hostName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type HostsUpdateInput = typeof HostsUpdateInput.Type;
@@ -1524,10 +1733,38 @@ export const InventoryItemsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vcenterName: Schema.String.pipe(T.PathParam()),
     inventoryItemName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      inventoryType: Schema.Literals([
+        "ResourcePool",
+        "VirtualMachine",
+        "VirtualMachineTemplate",
+        "VirtualNetwork",
+        "Cluster",
+        "Datastore",
+        "Host",
+      ]),
+      managedResourceId: Schema.optional(Schema.String),
+      moRefId: Schema.optional(Schema.String),
+      moName: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Updating",
+          "Deleting",
+          "Accepted",
+          "Created",
+        ]),
+      ),
+    }),
+    kind: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems/{inventoryItemName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type InventoryItemsCreateInput = typeof InventoryItemsCreateInput.Type;
@@ -1579,6 +1816,7 @@ export const InventoryItemsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems/{inventoryItemName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type InventoryItemsDeleteInput = typeof InventoryItemsDeleteInput.Type;
@@ -1613,6 +1851,7 @@ export const InventoryItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems/{inventoryItemName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type InventoryItemsGetInput = typeof InventoryItemsGetInput.Type;
@@ -1661,6 +1900,7 @@ export const InventoryItemsListByVCenterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems",
+      apiVersion: "2023-12-01",
     }),
   );
 export type InventoryItemsListByVCenterInput =
@@ -1726,6 +1966,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ConnectedVMwarevSphere/operations",
+    apiVersion: "2023-12-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1762,10 +2003,81 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ResourcePoolsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePoolName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      uuid: Schema.optional(Schema.String),
+      vCenterId: Schema.optional(Schema.String),
+      moRefId: Schema.optional(Schema.String),
+      inventoryItemId: Schema.optional(Schema.String),
+      moName: Schema.optional(Schema.String),
+      cpuSharesLevel: Schema.optional(Schema.String),
+      cpuReservationMHz: Schema.optional(Schema.Number),
+      cpuLimitMHz: Schema.optional(Schema.Number),
+      memSharesLevel: Schema.optional(Schema.String),
+      memReservationMB: Schema.optional(Schema.Number),
+      memLimitMB: Schema.optional(Schema.Number),
+      memOverallUsageGB: Schema.optional(Schema.Number),
+      memCapacityGB: Schema.optional(Schema.Number),
+      cpuOverallUsageMHz: Schema.optional(Schema.Number),
+      cpuCapacityMHz: Schema.optional(Schema.Number),
+      customResourceName: Schema.optional(Schema.String),
+      datastoreIds: Schema.optional(Schema.Array(Schema.String)),
+      networkIds: Schema.optional(Schema.Array(Schema.String)),
+      statuses: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            status: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            severity: Schema.optional(Schema.String),
+            lastUpdatedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Updating",
+          "Deleting",
+          "Accepted",
+          "Created",
+        ]),
+      ),
+    }),
+    location: Schema.String,
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ResourcePoolsCreateInput = typeof ResourcePoolsCreateInput.Type;
@@ -1867,6 +2179,7 @@ export const ResourcePoolsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ResourcePoolsDeleteInput = typeof ResourcePoolsDeleteInput.Type;
@@ -1896,6 +2209,7 @@ export const ResourcePoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ResourcePoolsGetInput = typeof ResourcePoolsGetInput.Type;
@@ -1996,6 +2310,7 @@ export const ResourcePoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ResourcePoolsListInput = typeof ResourcePoolsListInput.Type;
@@ -2107,6 +2422,7 @@ export const ResourcePoolsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ResourcePoolsListByResourceGroupInput =
@@ -2219,10 +2535,12 @@ export const ResourcePoolsListByResourceGroup =
 export const ResourcePoolsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePoolName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ResourcePoolsUpdateInput = typeof ResourcePoolsUpdateInput.Type;
@@ -2318,10 +2636,76 @@ export const ResourcePoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const VCentersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   vcenterName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    fqdn: Schema.String,
+    port: Schema.optional(Schema.Number),
+    version: Schema.optional(Schema.String),
+    instanceUuid: Schema.optional(Schema.String),
+    connectionStatus: Schema.optional(Schema.String),
+    customResourceName: Schema.optional(Schema.String),
+    credentials: Schema.optional(
+      Schema.Struct({
+        username: Schema.optional(Schema.String),
+        password: Schema.optional(SensitiveString),
+      }),
+    ),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          severity: Schema.optional(Schema.String),
+          lastUpdatedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Provisioning",
+        "Updating",
+        "Deleting",
+        "Accepted",
+        "Created",
+      ]),
+    ),
+  }),
+  location: Schema.String,
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type VCentersCreateInput = typeof VCentersCreateInput.Type;
@@ -2339,7 +2723,7 @@ export const VCentersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     credentials: Schema.optional(
       Schema.Struct({
         username: Schema.optional(Schema.String),
-        password: Schema.optional(SensitiveString),
+        password: Schema.optional(SensitiveOutputString),
       }),
     ),
     statuses: Schema.optional(
@@ -2416,6 +2800,7 @@ export const VCentersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type VCentersDeleteInput = typeof VCentersDeleteInput.Type;
@@ -2444,6 +2829,7 @@ export const VCentersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type VCentersGetInput = typeof VCentersGetInput.Type;
@@ -2461,7 +2847,7 @@ export const VCentersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     credentials: Schema.optional(
       Schema.Struct({
         username: Schema.optional(Schema.String),
-        password: Schema.optional(SensitiveString),
+        password: Schema.optional(SensitiveOutputString),
       }),
     ),
     statuses: Schema.optional(
@@ -2537,6 +2923,7 @@ export const VCentersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/vcenters",
+    apiVersion: "2023-12-01",
   }),
 );
 export type VCentersListInput = typeof VCentersListInput.Type;
@@ -2557,7 +2944,7 @@ export const VCentersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         credentials: Schema.optional(
           Schema.Struct({
             username: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
+            password: Schema.optional(SensitiveOutputString),
           }),
         ),
         statuses: Schema.optional(
@@ -2632,6 +3019,7 @@ export const VCentersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VCentersListByResourceGroupInput =
@@ -2654,7 +3042,7 @@ export const VCentersListByResourceGroupOutput =
           credentials: Schema.optional(
             Schema.Struct({
               username: Schema.optional(Schema.String),
-              password: Schema.optional(SensitiveString),
+              password: Schema.optional(SensitiveOutputString),
             }),
           ),
           statuses: Schema.optional(
@@ -2739,10 +3127,12 @@ export const VCentersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VCentersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   vcenterName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type VCentersUpdateInput = typeof VCentersUpdateInput.Type;
@@ -2760,7 +3150,7 @@ export const VCentersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     credentials: Schema.optional(
       Schema.Struct({
         username: Schema.optional(Schema.String),
-        password: Schema.optional(SensitiveString),
+        password: Schema.optional(SensitiveOutputString),
       }),
     ),
     statuses: Schema.optional(
@@ -2831,10 +3221,237 @@ export const VCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const VirtualMachineInstancesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.Struct({
+      placementProfile: Schema.optional(
+        Schema.Struct({
+          resourcePoolId: Schema.optional(Schema.String),
+          clusterId: Schema.optional(Schema.String),
+          hostId: Schema.optional(Schema.String),
+          datastoreId: Schema.optional(Schema.String),
+        }),
+      ),
+      osProfile: Schema.optional(
+        Schema.Struct({
+          computerName: Schema.optional(Schema.String),
+          adminUsername: Schema.optional(Schema.String),
+          adminPassword: Schema.optional(SensitiveString),
+          guestId: Schema.optional(Schema.String),
+          osType: Schema.optional(
+            Schema.Literals(["Windows", "Linux", "Other"]),
+          ),
+          osSku: Schema.optional(Schema.String),
+          toolsRunningStatus: Schema.optional(Schema.String),
+          toolsVersionStatus: Schema.optional(Schema.String),
+          toolsVersion: Schema.optional(Schema.String),
+          windowsConfiguration: Schema.optional(
+            Schema.Struct({
+              fullName: Schema.optional(Schema.String),
+              orgName: Schema.optional(Schema.String),
+              domainName: Schema.optional(Schema.String),
+              domainUsername: Schema.optional(Schema.String),
+              domainUserPassword: Schema.optional(SensitiveString),
+              workGroupName: Schema.optional(Schema.String),
+              productId: Schema.optional(Schema.String),
+              autoLogon: Schema.optional(Schema.Boolean),
+              autoLogonCount: Schema.optional(Schema.Number),
+              timeZone: Schema.optional(Schema.String),
+              firstLogonCommands: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        }),
+      ),
+      hardwareProfile: Schema.optional(
+        Schema.Struct({
+          memorySizeMB: Schema.optional(Schema.Number),
+          numCPUs: Schema.optional(Schema.Number),
+          numCoresPerSocket: Schema.optional(Schema.Number),
+          cpuHotAddEnabled: Schema.optional(Schema.Boolean),
+          cpuHotRemoveEnabled: Schema.optional(Schema.Boolean),
+          memoryHotAddEnabled: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      networkProfile: Schema.optional(
+        Schema.Struct({
+          networkInterfaces: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                label: Schema.optional(Schema.String),
+                ipAddresses: Schema.optional(Schema.Array(Schema.String)),
+                macAddress: Schema.optional(Schema.String),
+                networkId: Schema.optional(Schema.String),
+                nicType: Schema.optional(
+                  Schema.Literals([
+                    "vmxnet3",
+                    "vmxnet2",
+                    "vmxnet",
+                    "e1000",
+                    "e1000e",
+                    "pcnet32",
+                  ]),
+                ),
+                powerOnBoot: Schema.optional(
+                  Schema.Literals(["enabled", "disabled"]),
+                ),
+                networkMoRefId: Schema.optional(Schema.String),
+                networkMoName: Schema.optional(Schema.String),
+                deviceKey: Schema.optional(Schema.Number),
+                ipSettings: Schema.optional(
+                  Schema.Struct({
+                    allocationMethod: Schema.optional(
+                      Schema.Literals([
+                        "unset",
+                        "dynamic",
+                        "static",
+                        "linklayer",
+                        "random",
+                        "other",
+                      ]),
+                    ),
+                    dnsServers: Schema.optional(Schema.Array(Schema.String)),
+                    gateway: Schema.optional(Schema.Array(Schema.String)),
+                    ipAddress: Schema.optional(Schema.String),
+                    subnetMask: Schema.optional(Schema.String),
+                    primaryWinsServer: Schema.optional(Schema.String),
+                    secondaryWinsServer: Schema.optional(Schema.String),
+                    ipAddressInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          allocationMethod: Schema.optional(Schema.String),
+                          ipAddress: Schema.optional(Schema.String),
+                          subnetMask: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      storageProfile: Schema.optional(
+        Schema.Struct({
+          disks: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                label: Schema.optional(Schema.String),
+                diskObjectId: Schema.optional(Schema.String),
+                diskSizeGB: Schema.optional(Schema.Number),
+                deviceKey: Schema.optional(Schema.Number),
+                diskMode: Schema.optional(
+                  Schema.Literals([
+                    "persistent",
+                    "independent_persistent",
+                    "independent_nonpersistent",
+                  ]),
+                ),
+                controllerKey: Schema.optional(Schema.Number),
+                unitNumber: Schema.optional(Schema.Number),
+                deviceName: Schema.optional(Schema.String),
+                diskType: Schema.optional(
+                  Schema.Literals([
+                    "flat",
+                    "pmem",
+                    "rawphysical",
+                    "rawvirtual",
+                    "sparse",
+                    "sesparse",
+                    "unknown",
+                  ]),
+                ),
+              }),
+            ),
+          ),
+          scsiControllers: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals([
+                    "lsilogic",
+                    "buslogic",
+                    "pvscsi",
+                    "lsilogicsas",
+                  ]),
+                ),
+                controllerKey: Schema.optional(Schema.Number),
+                busNumber: Schema.optional(Schema.Number),
+                scsiCtlrUnitNumber: Schema.optional(Schema.Number),
+                sharing: Schema.optional(
+                  Schema.Literals([
+                    "noSharing",
+                    "physicalSharing",
+                    "virtualSharing",
+                  ]),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      securityProfile: Schema.optional(
+        Schema.Struct({
+          uefiSettings: Schema.optional(
+            Schema.Struct({
+              secureBootEnabled: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        }),
+      ),
+      infrastructureProfile: Schema.optional(
+        Schema.Struct({
+          templateId: Schema.optional(Schema.String),
+          vCenterId: Schema.optional(Schema.String),
+          moRefId: Schema.optional(Schema.String),
+          inventoryItemId: Schema.optional(Schema.String),
+          moName: Schema.optional(Schema.String),
+          folderPath: Schema.optional(Schema.String),
+          instanceUuid: Schema.optional(Schema.String),
+          smbiosUuid: Schema.optional(Schema.String),
+          firmwareType: Schema.optional(Schema.Literals(["bios", "efi"])),
+          customResourceName: Schema.optional(Schema.String),
+        }),
+      ),
+      powerState: Schema.optional(Schema.String),
+      statuses: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            status: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            severity: Schema.optional(Schema.String),
+            lastUpdatedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Updating",
+          "Deleting",
+          "Accepted",
+          "Created",
+        ]),
+      ),
+      resourceUid: Schema.optional(Schema.String),
+    }),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineInstancesCreateOrUpdateInput =
@@ -2884,6 +3501,7 @@ export const VirtualMachineInstancesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineInstancesDeleteInput =
@@ -2915,6 +3533,7 @@ export const VirtualMachineInstancesGetInput =
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineInstancesGetInput =
@@ -2962,6 +3581,7 @@ export const VirtualMachineInstancesListInput =
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineInstancesListInput =
@@ -3024,6 +3644,7 @@ export const VirtualMachineInstancesRestartInput =
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/restart",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineInstancesRestartInput =
@@ -3052,6 +3673,7 @@ export const VirtualMachineInstancesStartInput =
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/start",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineInstancesStartInput =
@@ -3076,10 +3698,13 @@ export const VirtualMachineInstancesStart =
   }));
 // Input Schema
 export const VirtualMachineInstancesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skipShutdown: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/stop",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineInstancesStopInput =
@@ -3105,10 +3730,86 @@ export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachineInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        hardwareProfile: Schema.optional(
+          Schema.Struct({
+            memorySizeMB: Schema.optional(Schema.Number),
+            numCPUs: Schema.optional(Schema.Number),
+            numCoresPerSocket: Schema.optional(Schema.Number),
+            cpuHotAddEnabled: Schema.optional(Schema.Boolean),
+            cpuHotRemoveEnabled: Schema.optional(Schema.Boolean),
+            memoryHotAddEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        storageProfile: Schema.optional(
+          Schema.Struct({
+            disks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  diskSizeGB: Schema.optional(Schema.Number),
+                  deviceKey: Schema.optional(Schema.Number),
+                  diskMode: Schema.optional(
+                    Schema.Literals([
+                      "persistent",
+                      "independent_persistent",
+                      "independent_nonpersistent",
+                    ]),
+                  ),
+                  controllerKey: Schema.optional(Schema.Number),
+                  unitNumber: Schema.optional(Schema.Number),
+                  deviceName: Schema.optional(Schema.String),
+                  diskType: Schema.optional(
+                    Schema.Literals([
+                      "flat",
+                      "pmem",
+                      "rawphysical",
+                      "rawvirtual",
+                      "sparse",
+                      "sesparse",
+                      "unknown",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        networkProfile: Schema.optional(
+          Schema.Struct({
+            networkInterfaces: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  networkId: Schema.optional(Schema.String),
+                  nicType: Schema.optional(
+                    Schema.Literals([
+                      "vmxnet3",
+                      "vmxnet2",
+                      "vmxnet",
+                      "e1000",
+                      "e1000e",
+                      "pcnet32",
+                    ]),
+                  ),
+                  powerOnBoot: Schema.optional(
+                    Schema.Literals(["enabled", "disabled"]),
+                  ),
+                  deviceKey: Schema.optional(Schema.Number),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineInstancesUpdateInput =
@@ -3153,10 +3854,166 @@ export const VirtualMachineInstancesUpdate =
 export const VirtualMachineTemplatesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      uuid: Schema.optional(Schema.String),
+      vCenterId: Schema.optional(Schema.String),
+      moRefId: Schema.optional(Schema.String),
+      inventoryItemId: Schema.optional(Schema.String),
+      moName: Schema.optional(Schema.String),
+      memorySizeMB: Schema.optional(Schema.Number),
+      numCPUs: Schema.optional(Schema.Number),
+      numCoresPerSocket: Schema.optional(Schema.Number),
+      osType: Schema.optional(Schema.Literals(["Windows", "Linux", "Other"])),
+      osName: Schema.optional(Schema.String),
+      folderPath: Schema.optional(Schema.String),
+      networkInterfaces: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            label: Schema.optional(Schema.String),
+            ipAddresses: Schema.optional(Schema.Array(Schema.String)),
+            macAddress: Schema.optional(Schema.String),
+            networkId: Schema.optional(Schema.String),
+            nicType: Schema.optional(
+              Schema.Literals([
+                "vmxnet3",
+                "vmxnet2",
+                "vmxnet",
+                "e1000",
+                "e1000e",
+                "pcnet32",
+              ]),
+            ),
+            powerOnBoot: Schema.optional(
+              Schema.Literals(["enabled", "disabled"]),
+            ),
+            networkMoRefId: Schema.optional(Schema.String),
+            networkMoName: Schema.optional(Schema.String),
+            deviceKey: Schema.optional(Schema.Number),
+            ipSettings: Schema.optional(
+              Schema.Struct({
+                allocationMethod: Schema.optional(
+                  Schema.Literals([
+                    "unset",
+                    "dynamic",
+                    "static",
+                    "linklayer",
+                    "random",
+                    "other",
+                  ]),
+                ),
+                dnsServers: Schema.optional(Schema.Array(Schema.String)),
+                gateway: Schema.optional(Schema.Array(Schema.String)),
+                ipAddress: Schema.optional(Schema.String),
+                subnetMask: Schema.optional(Schema.String),
+                primaryWinsServer: Schema.optional(Schema.String),
+                secondaryWinsServer: Schema.optional(Schema.String),
+                ipAddressInfo: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      allocationMethod: Schema.optional(Schema.String),
+                      ipAddress: Schema.optional(Schema.String),
+                      subnetMask: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+      ),
+      disks: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            label: Schema.optional(Schema.String),
+            diskObjectId: Schema.optional(Schema.String),
+            diskSizeGB: Schema.optional(Schema.Number),
+            deviceKey: Schema.optional(Schema.Number),
+            diskMode: Schema.optional(
+              Schema.Literals([
+                "persistent",
+                "independent_persistent",
+                "independent_nonpersistent",
+              ]),
+            ),
+            controllerKey: Schema.optional(Schema.Number),
+            unitNumber: Schema.optional(Schema.Number),
+            deviceName: Schema.optional(Schema.String),
+            diskType: Schema.optional(
+              Schema.Literals([
+                "flat",
+                "pmem",
+                "rawphysical",
+                "rawvirtual",
+                "sparse",
+                "sesparse",
+                "unknown",
+              ]),
+            ),
+          }),
+        ),
+      ),
+      customResourceName: Schema.optional(Schema.String),
+      toolsVersionStatus: Schema.optional(Schema.String),
+      toolsVersion: Schema.optional(Schema.String),
+      firmwareType: Schema.optional(Schema.Literals(["bios", "efi"])),
+      statuses: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            status: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            severity: Schema.optional(Schema.String),
+            lastUpdatedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Updating",
+          "Deleting",
+          "Accepted",
+          "Created",
+        ]),
+      ),
+    }),
+    location: Schema.String,
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineTemplatesCreateInput =
@@ -3346,6 +4203,7 @@ export const VirtualMachineTemplatesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineTemplatesDeleteInput =
@@ -3379,6 +4237,7 @@ export const VirtualMachineTemplatesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineTemplatesGetInput =
@@ -3566,6 +4425,7 @@ export const VirtualMachineTemplatesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineTemplatesListInput =
@@ -3768,6 +4628,7 @@ export const VirtualMachineTemplatesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineTemplatesListByResourceGroupInput =
@@ -3967,10 +4828,12 @@ export const VirtualMachineTemplatesListByResourceGroup =
 export const VirtualMachineTemplatesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualMachineTemplatesUpdateInput =
@@ -4155,10 +5018,69 @@ export const VirtualMachineTemplatesUpdate =
 export const VirtualNetworksCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      uuid: Schema.optional(Schema.String),
+      vCenterId: Schema.optional(Schema.String),
+      moRefId: Schema.optional(Schema.String),
+      inventoryItemId: Schema.optional(Schema.String),
+      moName: Schema.optional(Schema.String),
+      customResourceName: Schema.optional(Schema.String),
+      statuses: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            status: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            severity: Schema.optional(Schema.String),
+            lastUpdatedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Updating",
+          "Deleting",
+          "Accepted",
+          "Created",
+        ]),
+      ),
+    }),
+    location: Schema.String,
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualNetworksCreateInput = typeof VirtualNetworksCreateInput.Type;
@@ -4251,6 +5173,7 @@ export const VirtualNetworksDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
@@ -4284,6 +5207,7 @@ export const VirtualNetworksGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualNetworksGetInput = typeof VirtualNetworksGetInput.Type;
@@ -4370,6 +5294,7 @@ export const VirtualNetworksListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualNetworksListInput = typeof VirtualNetworksListInput.Type;
@@ -4469,6 +5394,7 @@ export const VirtualNetworksListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualNetworksListByResourceGroupInput =
@@ -4569,10 +5495,12 @@ export const VirtualNetworksListByResourceGroup =
 export const VirtualNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VirtualNetworksUpdateInput = typeof VirtualNetworksUpdateInput.Type;
@@ -4658,10 +5586,57 @@ export const VirtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VMInstanceGuestAgentsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.Struct({
+      uuid: Schema.optional(Schema.String),
+      credentials: Schema.optional(
+        Schema.Struct({
+          username: Schema.optional(Schema.String),
+          password: Schema.optional(SensitiveString),
+          privateKey: Schema.optional(SensitiveString),
+        }),
+      ),
+      privateLinkScopeResourceId: Schema.optional(Schema.String),
+      httpProxyConfig: Schema.optional(
+        Schema.Struct({
+          httpsProxy: Schema.optional(Schema.String),
+        }),
+      ),
+      provisioningAction: Schema.optional(
+        Schema.Literals(["install", "uninstall", "repair"]),
+      ),
+      status: Schema.optional(Schema.String),
+      customResourceName: Schema.optional(Schema.String),
+      statuses: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            status: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            severity: Schema.optional(Schema.String),
+            lastUpdatedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Updating",
+          "Deleting",
+          "Accepted",
+          "Created",
+        ]),
+      ),
+    }),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VMInstanceGuestAgentsCreateInput =
@@ -4709,6 +5684,7 @@ export const VMInstanceGuestAgentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VMInstanceGuestAgentsDeleteInput =
@@ -4738,6 +5714,7 @@ export const VMInstanceGuestAgentsGetInput =
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VMInstanceGuestAgentsGetInput =
@@ -4785,6 +5762,7 @@ export const VMInstanceGuestAgentsListInput =
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VMInstanceGuestAgentsListInput =
@@ -4847,6 +5825,7 @@ export const VmInstanceHybridIdentityMetadataGetInput =
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/hybridIdentityMetadata/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VmInstanceHybridIdentityMetadataGetInput =
@@ -4893,6 +5872,7 @@ export const VmInstanceHybridIdentityMetadataListInput =
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/hybridIdentityMetadata",
+      apiVersion: "2023-12-01",
     }),
   );
 export type VmInstanceHybridIdentityMetadataListInput =

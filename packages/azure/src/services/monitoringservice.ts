@@ -13,11 +13,76 @@ export const AzureMonitorWorkspacesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        accountId: Schema.optional(Schema.String),
+        metrics: Schema.optional(
+          Schema.Struct({
+            prometheusQueryEndpoint: Schema.optional(Schema.String),
+            internalId: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Succeeded",
+            "Deleting",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        defaultIngestionSettings: Schema.optional(
+          Schema.Struct({
+            dataCollectionRuleResourceId: Schema.optional(Schema.String),
+            dataCollectionEndpointResourceId: Schema.optional(Schema.String),
+          }),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+      apiVersion: "2023-04-03",
     }),
   );
 export type AzureMonitorWorkspacesCreateInput =
@@ -65,11 +130,11 @@ export const AzureMonitorWorkspacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+      apiVersion: "2023-04-03",
     }),
   );
 export type AzureMonitorWorkspacesDeleteInput =
@@ -99,11 +164,11 @@ export const AzureMonitorWorkspacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+      apiVersion: "2023-04-03",
     }),
   );
 export type AzureMonitorWorkspacesGetInput =
@@ -152,11 +217,11 @@ export const AzureMonitorWorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts",
+      apiVersion: "2023-04-03",
     }),
   );
 export type AzureMonitorWorkspacesListByResourceGroupInput =
@@ -218,11 +283,11 @@ export const AzureMonitorWorkspacesListByResourceGroup =
 export const AzureMonitorWorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Monitor/accounts",
+      apiVersion: "2023-04-03",
     }),
   );
 export type AzureMonitorWorkspacesListBySubscriptionInput =
@@ -284,11 +349,12 @@ export const AzureMonitorWorkspacesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+      apiVersion: "2023-04-03",
     }),
   );
 export type AzureMonitorWorkspacesUpdateInput =
@@ -333,10 +399,12 @@ export const AzureMonitorWorkspacesUpdate =
   }));
 // Input Schema
 export const MonitorOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Monitor/operations" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Monitor/operations",
+      apiVersion: "2023-04-03",
+    }),
   );
 export type MonitorOperationsListInput = typeof MonitorOperationsListInput.Type;
 

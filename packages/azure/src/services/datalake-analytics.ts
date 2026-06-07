@@ -7,16 +7,19 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const AccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.DataLakeAnalytics/accounts"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeAnalytics/locations/{location}/checkNameAvailability",
+      apiVersion: "2016-11-01",
     }),
   );
 export type AccountsCheckNameAvailabilityInput =
@@ -44,12 +47,84 @@ export const AccountsCheckNameAvailability =
     outputSchema: AccountsCheckNameAvailabilityOutput,
   }));
 // Input Schema
-export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.Struct({
+    defaultDataLakeStoreAccount: Schema.String,
+    dataLakeStoreAccounts: Schema.Array(
+      Schema.Struct({
+        name: Schema.String,
+        properties: Schema.optional(
+          Schema.Struct({
+            suffix: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    storageAccounts: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          properties: Schema.Struct({
+            accessKey: Schema.String,
+            suffix: Schema.optional(Schema.String),
+          }),
+        }),
+      ),
+    ),
+    computePolicies: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          properties: Schema.Struct({
+            objectId: Schema.String,
+            objectType: Schema.Literals(["User", "Group", "ServicePrincipal"]),
+            maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
+            minPriorityPerJob: Schema.optional(Schema.Number),
+          }),
+        }),
+      ),
+    ),
+    firewallRules: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          properties: Schema.Struct({
+            startIpAddress: Schema.String,
+            endIpAddress: Schema.String,
+          }),
+        }),
+      ),
+    ),
+    firewallState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    firewallAllowAzureIps: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    newTier: Schema.optional(
+      Schema.Literals([
+        "Consumption",
+        "Commitment_100AUHours",
+        "Commitment_500AUHours",
+        "Commitment_1000AUHours",
+        "Commitment_5000AUHours",
+        "Commitment_10000AUHours",
+        "Commitment_50000AUHours",
+        "Commitment_100000AUHours",
+        "Commitment_500000AUHours",
+      ]),
+    ),
+    maxJobCount: Schema.optional(Schema.Number),
+    maxDegreeOfParallelism: Schema.optional(Schema.Number),
+    maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
+    minPriorityPerJob: Schema.optional(Schema.Number),
+    queryStoreRetention: Schema.optional(Schema.Number),
+  }),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}",
+    apiVersion: "2016-11-01",
   }),
 );
 export type AccountsCreateInput = typeof AccountsCreateInput.Type;
@@ -79,6 +154,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}",
+    apiVersion: "2016-11-01",
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -102,6 +178,7 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}",
+    apiVersion: "2016-11-01",
   }),
 );
 export type AccountsGetInput = typeof AccountsGetInput.Type;
@@ -136,6 +213,7 @@ export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeAnalytics/accounts",
+    apiVersion: "2016-11-01",
   }),
 );
 export type AccountsListInput = typeof AccountsListInput.Type;
@@ -186,6 +264,7 @@ export const AccountsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts",
+      apiVersion: "2016-11-01",
     }),
   );
 export type AccountsListByResourceGroupInput =
@@ -229,12 +308,94 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      dataLakeStoreAccounts: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            properties: Schema.optional(
+              Schema.Struct({
+                suffix: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      storageAccounts: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            properties: Schema.optional(
+              Schema.Struct({
+                accessKey: Schema.optional(Schema.String),
+                suffix: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      computePolicies: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            properties: Schema.optional(
+              Schema.Struct({
+                objectId: Schema.optional(Schema.String),
+                objectType: Schema.optional(
+                  Schema.Literals(["User", "Group", "ServicePrincipal"]),
+                ),
+                maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
+                minPriorityPerJob: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+      ),
+      firewallRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            properties: Schema.optional(
+              Schema.Struct({
+                startIpAddress: Schema.optional(Schema.String),
+                endIpAddress: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      firewallState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      firewallAllowAzureIps: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      newTier: Schema.optional(
+        Schema.Literals([
+          "Consumption",
+          "Commitment_100AUHours",
+          "Commitment_500AUHours",
+          "Commitment_1000AUHours",
+          "Commitment_5000AUHours",
+          "Commitment_10000AUHours",
+          "Commitment_50000AUHours",
+          "Commitment_100000AUHours",
+          "Commitment_500000AUHours",
+        ]),
+      ),
+      maxJobCount: Schema.optional(Schema.Number),
+      maxDegreeOfParallelism: Schema.optional(Schema.Number),
+      maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
+      minPriorityPerJob: Schema.optional(Schema.Number),
+      queryStoreRetention: Schema.optional(Schema.Number),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}",
+    apiVersion: "2016-11-01",
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -261,10 +422,17 @@ export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ComputePoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     computePolicyName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      objectId: Schema.String,
+      objectType: Schema.Literals(["User", "Group", "ServicePrincipal"]),
+      maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
+      minPriorityPerJob: Schema.optional(Schema.Number),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies/{computePolicyName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type ComputePoliciesCreateOrUpdateInput =
@@ -299,6 +467,7 @@ export const ComputePoliciesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies/{computePolicyName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type ComputePoliciesDeleteInput = typeof ComputePoliciesDeleteInput.Type;
@@ -329,6 +498,7 @@ export const ComputePoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies/{computePolicyName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type ComputePoliciesGetInput = typeof ComputePoliciesGetInput.Type;
@@ -358,6 +528,7 @@ export const ComputePoliciesListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies",
+      apiVersion: "2016-11-01",
     }),
   );
 export type ComputePoliciesListByAccountInput =
@@ -393,10 +564,21 @@ export const ComputePoliciesListByAccount =
 export const ComputePoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     computePolicyName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        objectId: Schema.optional(Schema.String),
+        objectType: Schema.optional(
+          Schema.Literals(["User", "Group", "ServicePrincipal"]),
+        ),
+        maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
+        minPriorityPerJob: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies/{computePolicyName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type ComputePoliciesUpdateInput = typeof ComputePoliciesUpdateInput.Type;
@@ -427,10 +609,16 @@ export const ComputePoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DataLakeStoreAccountsAddInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataLakeStoreAccountName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        suffix: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/dataLakeStoreAccounts/{dataLakeStoreAccountName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type DataLakeStoreAccountsAddInput =
@@ -462,6 +650,7 @@ export const DataLakeStoreAccountsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/dataLakeStoreAccounts/{dataLakeStoreAccountName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type DataLakeStoreAccountsDeleteInput =
@@ -493,6 +682,7 @@ export const DataLakeStoreAccountsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/dataLakeStoreAccounts/{dataLakeStoreAccountName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type DataLakeStoreAccountsGetInput =
@@ -533,6 +723,7 @@ export const DataLakeStoreAccountsListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/dataLakeStoreAccounts",
+      apiVersion: "2016-11-01",
     }),
   );
 export type DataLakeStoreAccountsListByAccountInput =
@@ -575,10 +766,15 @@ export const DataLakeStoreAccountsListByAccount =
 export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewallRuleName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      startIpAddress: Schema.String,
+      endIpAddress: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type FirewallRulesCreateOrUpdateInput =
@@ -614,6 +810,7 @@ export const FirewallRulesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
@@ -640,6 +837,7 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}",
+    apiVersion: "2016-11-01",
   }),
 );
 export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
@@ -670,6 +868,7 @@ export const FirewallRulesListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules",
+      apiVersion: "2016-11-01",
     }),
   );
 export type FirewallRulesListByAccountInput =
@@ -706,10 +905,17 @@ export const FirewallRulesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const FirewallRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewallRuleName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        startIpAddress: Schema.optional(Schema.String),
+        endIpAddress: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type FirewallRulesUpdateInput = typeof FirewallRulesUpdateInput.Type;
@@ -741,6 +947,7 @@ export const LocationsGetCapabilityInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeAnalytics/locations/{location}/capability",
+      apiVersion: "2016-11-01",
     }),
   );
 export type LocationsGetCapabilityInput =
@@ -785,6 +992,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataLakeAnalytics/operations",
+    apiVersion: "2016-11-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -861,10 +1069,15 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const StorageAccountsAddInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageAccountName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      accessKey: Schema.String,
+      suffix: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type StorageAccountsAddInput = typeof StorageAccountsAddInput.Type;
@@ -891,6 +1104,7 @@ export const StorageAccountsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type StorageAccountsDeleteInput = typeof StorageAccountsDeleteInput.Type;
@@ -921,6 +1135,7 @@ export const StorageAccountsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type StorageAccountsGetInput = typeof StorageAccountsGetInput.Type;
@@ -953,6 +1168,7 @@ export const StorageAccountsGetStorageContainerInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}/containers/{containerName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type StorageAccountsGetStorageContainerInput =
@@ -993,6 +1209,7 @@ export const StorageAccountsListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts",
+      apiVersion: "2016-11-01",
     }),
   );
 export type StorageAccountsListByAccountInput =
@@ -1040,6 +1257,7 @@ export const StorageAccountsListSasTokensInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}/containers/{containerName}/listSasTokens",
+      apiVersion: "2016-11-01",
     }),
   );
 export type StorageAccountsListSasTokensInput =
@@ -1051,7 +1269,7 @@ export const StorageAccountsListSasTokensOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          accessToken: Schema.optional(SensitiveString),
+          accessToken: Schema.optional(SensitiveOutputString),
         }),
       ),
     ),
@@ -1080,6 +1298,7 @@ export const StorageAccountsListStorageContainersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}/containers",
+      apiVersion: "2016-11-01",
     }),
   );
 export type StorageAccountsListStorageContainersInput =
@@ -1117,10 +1336,17 @@ export const StorageAccountsListStorageContainers =
 export const StorageAccountsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageAccountName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        accessKey: Schema.optional(Schema.String),
+        suffix: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}",
+      apiVersion: "2016-11-01",
     }),
   );
 export type StorageAccountsUpdateInput = typeof StorageAccountsUpdateInput.Type;

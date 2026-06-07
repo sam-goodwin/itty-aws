@@ -15,6 +15,7 @@ export const DeleteConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/providers/Microsoft.Portal/consoles/{consoleName}",
+    apiVersion: "2018-10-01",
   }),
 );
 export type DeleteConsoleInput = typeof DeleteConsoleInput.Type;
@@ -39,6 +40,7 @@ export const DeleteConsoleWithLocationInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}",
+      apiVersion: "2018-10-01",
     }),
   );
 export type DeleteConsoleWithLocationInput =
@@ -68,6 +70,7 @@ export const DeleteUserSettingsInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Portal/userSettings/{userSettingsName}",
+      apiVersion: "2018-10-01",
     }),
   );
 export type DeleteUserSettingsInput = typeof DeleteUserSettingsInput.Type;
@@ -92,6 +95,7 @@ export const DeleteUserSettingsWithLocationInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Portal/locations/{location}/userSettings/{userSettingsName}",
+      apiVersion: "2018-10-01",
     }),
   );
 export type DeleteUserSettingsWithLocationInput =
@@ -121,6 +125,7 @@ export const GetConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Portal/consoles/{consoleName}",
+    apiVersion: "2018-10-01",
   }),
 );
 export type GetConsoleInput = typeof GetConsoleInput.Type;
@@ -145,6 +150,7 @@ export const GetConsoleWithLocationInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}",
+      apiVersion: "2018-10-01",
     }),
   );
 export type GetConsoleWithLocationInput =
@@ -175,6 +181,7 @@ export const GetUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Portal/userSettings/{userSettingsName}",
+    apiVersion: "2018-10-01",
   }),
 );
 export type GetUserSettingsInput = typeof GetUserSettingsInput.Type;
@@ -199,6 +206,7 @@ export const GetUserSettingsWithLocationInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Portal/locations/{location}/userSettings/{userSettingsName}",
+      apiVersion: "2018-10-01",
     }),
   );
 export type GetUserSettingsWithLocationInput =
@@ -229,6 +237,7 @@ export const KeepAliveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Portal/consoles/{consoleName}/keepAlive",
+    apiVersion: "2018-10-01",
   }),
 );
 export type KeepAliveInput = typeof KeepAliveInput.Type;
@@ -253,6 +262,7 @@ export const KeepAliveWithLocationInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}/keepAlive",
+      apiVersion: "2018-10-01",
     }),
   );
 export type KeepAliveWithLocationInput = typeof KeepAliveWithLocationInput.Type;
@@ -277,11 +287,33 @@ export const keepAliveWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PatchUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    properties: Schema.optional(
+      Schema.Struct({
+        preferredOsType: Schema.Literals(["Windows", "Linux"]),
+        preferredLocation: Schema.String,
+        storageProfile: Schema.Struct({
+          storageAccountResourceId: Schema.optional(Schema.String),
+          fileShareName: Schema.optional(Schema.String),
+          diskSizeInGB: Schema.optional(Schema.Number),
+        }),
+        terminalSettings: Schema.Struct({
+          fontSize: Schema.optional(
+            Schema.Literals(["NotSpecified", "Small", "Medium", "Large"]),
+          ),
+          fontStyle: Schema.optional(
+            Schema.Literals(["NotSpecified", "Monospace", "Courier"]),
+          ),
+        }),
+        preferredShellType: Schema.Literals(["bash", "pwsh", "powershell"]),
+      }),
+    ),
+  },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.Portal/userSettings/{userSettingsName}",
+    apiVersion: "2018-10-01",
   }),
 );
 export type PatchUserSettingsInput = typeof PatchUserSettingsInput.Type;
@@ -303,10 +335,32 @@ export const PatchUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PatchUserSettingsWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        preferredOsType: Schema.Literals(["Windows", "Linux"]),
+        preferredLocation: Schema.String,
+        storageProfile: Schema.Struct({
+          storageAccountResourceId: Schema.optional(Schema.String),
+          fileShareName: Schema.optional(Schema.String),
+          diskSizeInGB: Schema.optional(Schema.Number),
+        }),
+        terminalSettings: Schema.Struct({
+          fontSize: Schema.optional(
+            Schema.Literals(["NotSpecified", "Small", "Medium", "Large"]),
+          ),
+          fontStyle: Schema.optional(
+            Schema.Literals(["NotSpecified", "Monospace", "Courier"]),
+          ),
+        }),
+        preferredShellType: Schema.Literals(["bash", "pwsh", "powershell"]),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Portal/locations/{location}/userSettings/{userSettingsName}",
+      apiVersion: "2018-10-01",
     }),
   );
 export type PatchUserSettingsWithLocationInput =
@@ -330,12 +384,29 @@ export const patchUserSettingsWithLocation =
     outputSchema: PatchUserSettingsWithLocationOutput,
   }));
 // Input Schema
-export const PutConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const PutConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    osType: Schema.Literals(["Linux", "Windows"]),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "NotSpecified",
+        "Accepted",
+        "Pending",
+        "Updating",
+        "Creating",
+        "Repairing",
+        "Failed",
+        "Canceled",
+        "Succeeded",
+      ]),
+    ),
+    uri: Schema.optional(Schema.String),
+  }),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/providers/Microsoft.Portal/consoles/{consoleName}",
+    apiVersion: "2018-10-01",
   }),
 );
 export type PutConsoleInput = typeof PutConsoleInput.Type;
@@ -360,6 +431,7 @@ export const PutConsoleWithLocationInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}",
+      apiVersion: "2018-10-01",
     }),
   );
 export type PutConsoleWithLocationInput =
@@ -384,12 +456,30 @@ export const putConsoleWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const PutUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const PutUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    preferredOsType: Schema.Literals(["Windows", "Linux"]),
+    preferredLocation: Schema.String,
+    storageProfile: Schema.Struct({
+      storageAccountResourceId: Schema.optional(Schema.String),
+      fileShareName: Schema.optional(Schema.String),
+      diskSizeInGB: Schema.optional(Schema.Number),
+    }),
+    terminalSettings: Schema.Struct({
+      fontSize: Schema.optional(
+        Schema.Literals(["NotSpecified", "Small", "Medium", "Large"]),
+      ),
+      fontStyle: Schema.optional(
+        Schema.Literals(["NotSpecified", "Monospace", "Courier"]),
+      ),
+    }),
+    preferredShellType: Schema.Literals(["bash", "pwsh", "powershell"]),
+  }),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/providers/Microsoft.Portal/userSettings/{userSettingsName}",
+    apiVersion: "2018-10-01",
   }),
 );
 export type PutUserSettingsInput = typeof PutUserSettingsInput.Type;
@@ -410,10 +500,30 @@ export const PutUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PutUserSettingsWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.Struct({
+      preferredOsType: Schema.Literals(["Windows", "Linux"]),
+      preferredLocation: Schema.String,
+      storageProfile: Schema.Struct({
+        storageAccountResourceId: Schema.optional(Schema.String),
+        fileShareName: Schema.optional(Schema.String),
+        diskSizeInGB: Schema.optional(Schema.Number),
+      }),
+      terminalSettings: Schema.Struct({
+        fontSize: Schema.optional(
+          Schema.Literals(["NotSpecified", "Small", "Medium", "Large"]),
+        ),
+        fontStyle: Schema.optional(
+          Schema.Literals(["NotSpecified", "Monospace", "Courier"]),
+        ),
+      }),
+      preferredShellType: Schema.Literals(["bash", "pwsh", "powershell"]),
+    }),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Portal/locations/{location}/userSettings/{userSettingsName}",
+      apiVersion: "2018-10-01",
     }),
   );
 export type PutUserSettingsWithLocationInput =

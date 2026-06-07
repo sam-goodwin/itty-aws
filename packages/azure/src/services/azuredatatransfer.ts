@@ -7,16 +7,18 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const AzureDataTransferListApprovedSchemasInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    pipeline: Schema.optional(Schema.String),
+    direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.AzureDataTransfer/listApprovedSchemas",
+      apiVersion: "2025-05-21",
     }),
   );
 export type AzureDataTransferListApprovedSchemasInput =
@@ -57,11 +59,19 @@ export const AzureDataTransferListApprovedSchemas =
 // Input Schema
 export const AzureDataTransferValidateSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    connectionId: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.Literals(["New", "Approved"])),
+    name: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
+    schemaUri: Schema.optional(Schema.String),
+    schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.AzureDataTransfer/validateSchema",
+      apiVersion: "2025-05-21",
     }),
   );
 export type AzureDataTransferValidateSchemaInput =
@@ -93,11 +103,101 @@ export const ConnectionsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        pipeline: Schema.String,
+        direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
+        justification: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Literals(["InReview", "Approved", "Rejected", "Accepted"]),
+        ),
+        forceDisabledStatus: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "ConnectionForceDisabled",
+              "FlowTypeForceDisabled",
+            ]),
+          ),
+        ),
+        statusReason: Schema.optional(Schema.String),
+        linkStatus: Schema.optional(Schema.Literals(["Linked", "Unlinked"])),
+        linkedConnectionId: Schema.optional(Schema.String),
+        flowTypes: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "Unknown",
+              "Complex",
+              "DevSecOps",
+              "Messaging",
+              "Mission",
+              "MicrosoftInternal",
+              "BasicFiles",
+              "Data",
+              "Standard",
+              "StreamingVideo",
+              "Opaque",
+              "MissionOpaqueXML",
+              "DiskImages",
+              "API",
+            ]),
+          ),
+        ),
+        requirementId: Schema.optional(Schema.String),
+        remoteSubscriptionId: Schema.optional(Schema.String),
+        approver: Schema.optional(Schema.String),
+        pin: Schema.optional(Schema.String),
+        dateSubmitted: Schema.optional(Schema.String),
+        primaryContact: Schema.optional(Schema.String),
+        secondaryContacts: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
+        ),
+        policies: Schema.optional(Schema.Array(Schema.String)),
+        schemas: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              connectionId: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.Literals(["New", "Approved"])),
+              name: Schema.optional(Schema.String),
+              content: Schema.optional(Schema.String),
+              direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
+              schemaUri: Schema.optional(Schema.String),
+              schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
+            }),
+          ),
+        ),
+        schemaUris: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
+      apiVersion: "2025-05-21",
     }),
   );
 export type ConnectionsCreateOrUpdateInput =
@@ -148,12 +248,12 @@ export const ConnectionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
+    apiVersion: "2025-05-21",
   }),
 );
 export type ConnectionsDeleteInput = typeof ConnectionsDeleteInput.Type;
@@ -180,11 +280,11 @@ export const ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
+    apiVersion: "2025-05-21",
   }),
 );
 export type ConnectionsGetInput = typeof ConnectionsGetInput.Type;
@@ -229,11 +329,13 @@ export const ConnectionsLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  id: Schema.String,
+  statusReason: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/link",
+    apiVersion: "2025-05-21",
   }),
 );
 export type ConnectionsLinkInput = typeof ConnectionsLinkInput.Type;
@@ -278,11 +380,11 @@ export const ConnectionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections",
+      apiVersion: "2025-05-21",
     }),
   );
 export type ConnectionsListByResourceGroupInput =
@@ -344,11 +446,11 @@ export const ConnectionsListByResourceGroup =
 export const ConnectionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureDataTransfer/connections",
+      apiVersion: "2025-05-21",
     }),
   );
 export type ConnectionsListBySubscriptionInput =
@@ -411,12 +513,34 @@ export const ConnectionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
+    apiVersion: "2025-05-21",
   }),
 );
 export type ConnectionsUpdateInput = typeof ConnectionsUpdateInput.Type;
@@ -464,11 +588,142 @@ export const FlowsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
     flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        connection: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            id: Schema.String,
+            location: Schema.optional(Schema.String),
+            subscriptionName: Schema.optional(Schema.String),
+          }),
+        ),
+        flowId: Schema.optional(Schema.String),
+        keyVaultUri: Schema.optional(Schema.String),
+        linkStatus: Schema.optional(Schema.Literals(["Linked", "Unlinked"])),
+        linkedFlowId: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        forceDisabledStatus: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "ConnectionForceDisabled",
+              "FlowTypeForceDisabled",
+            ]),
+          ),
+        ),
+        storageAccountName: Schema.optional(Schema.String),
+        storageAccountId: Schema.optional(Schema.String),
+        storageContainerName: Schema.optional(Schema.String),
+        storageTableName: Schema.optional(Schema.String),
+        serviceBusQueueId: Schema.optional(Schema.String),
+        flowType: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Complex",
+            "DevSecOps",
+            "Messaging",
+            "Mission",
+            "MicrosoftInternal",
+            "BasicFiles",
+            "Data",
+            "Standard",
+            "StreamingVideo",
+            "Opaque",
+            "MissionOpaqueXML",
+            "DiskImages",
+            "API",
+          ]),
+        ),
+        dataType: Schema.optional(Schema.Literals(["Blob", "Table"])),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
+        ),
+        policies: Schema.optional(Schema.Array(Schema.String)),
+        schema: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            connectionId: Schema.optional(Schema.String),
+            status: Schema.optional(Schema.Literals(["New", "Approved"])),
+            name: Schema.optional(Schema.String),
+            content: Schema.optional(Schema.String),
+            direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
+            schemaUri: Schema.optional(Schema.String),
+            schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
+          }),
+        ),
+        messagingOptions: Schema.optional(
+          Schema.Struct({
+            billingTier: Schema.optional(
+              Schema.Literals(["BlobTransport", "Standard", "Premium"]),
+            ),
+          }),
+        ),
+        apiFlowOptions: Schema.optional(
+          Schema.Struct({
+            remoteEndpoint: Schema.optional(Schema.String),
+            cname: Schema.optional(Schema.String),
+            apiMode: Schema.optional(Schema.Literals(["SDK", "Endpoint"])),
+            identityTranslation: Schema.optional(
+              Schema.Literals(["UserIdentity", "ServiceIdentity"]),
+            ),
+            senderClientId: Schema.optional(Schema.String),
+            remoteCallingModeClientId: Schema.optional(Schema.String),
+            audienceOverride: Schema.optional(Schema.String),
+          }),
+        ),
+        customerManagedKeyVaultUri: Schema.optional(Schema.String),
+        streamId: Schema.optional(Schema.String),
+        streamProtocol: Schema.optional(Schema.Literals(["UDP", "SRT", "RTP"])),
+        streamLatency: Schema.optional(Schema.Number),
+        passphrase: Schema.optional(Schema.String),
+        sourceAddresses: Schema.optional(
+          Schema.Struct({
+            sourceAddresses: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        destinationEndpoints: Schema.optional(Schema.Array(Schema.String)),
+        destinationEndpointPorts: Schema.optional(Schema.Array(Schema.Number)),
+        eventHubId: Schema.optional(Schema.String),
+        consumerGroup: Schema.optional(Schema.String),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
+      apiVersion: "2025-05-21",
     }),
   );
 export type FlowsCreateOrUpdateInput = typeof FlowsCreateOrUpdateInput.Type;
@@ -516,11 +771,11 @@ export const FlowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
   flowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
+    apiVersion: "2025-05-21",
   }),
 );
 export type FlowsDeleteInput = typeof FlowsDeleteInput.Type;
@@ -549,11 +804,11 @@ export const FlowsDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
   flowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/disable",
+    apiVersion: "2025-05-21",
   }),
 );
 export type FlowsDisableInput = typeof FlowsDisableInput.Type;
@@ -600,11 +855,11 @@ export const FlowsEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
   flowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/enable",
+    apiVersion: "2025-05-21",
   }),
 );
 export type FlowsEnableInput = typeof FlowsEnableInput.Type;
@@ -652,11 +907,11 @@ export const FlowsGeneratePassphraseInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
     flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/generatePassphrase",
+      apiVersion: "2025-05-21",
     }),
   );
 export type FlowsGeneratePassphraseInput =
@@ -708,11 +963,11 @@ export const FlowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
   flowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
+    apiVersion: "2025-05-21",
   }),
 );
 export type FlowsGetInput = typeof FlowsGetInput.Type;
@@ -760,11 +1015,11 @@ export const FlowsGetDestinationEndpointPortsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
     flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getDestinationEndpointPorts",
+      apiVersion: "2025-05-21",
     }),
   );
 export type FlowsGetDestinationEndpointPortsInput =
@@ -800,11 +1055,11 @@ export const FlowsGetDestinationEndpointsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
     flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getDestinationEndpoints",
+      apiVersion: "2025-05-21",
     }),
   );
 export type FlowsGetDestinationEndpointsInput =
@@ -840,11 +1095,11 @@ export const FlowsGetSourceAddressesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
     flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getSourceAddresses",
+      apiVersion: "2025-05-21",
     }),
   );
 export type FlowsGetSourceAddressesInput =
@@ -881,11 +1136,11 @@ export const FlowsGetStreamConnectionStringInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
     flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getStreamConnectionString",
+      apiVersion: "2025-05-21",
     }),
   );
 export type FlowsGetStreamConnectionStringInput =
@@ -894,7 +1149,7 @@ export type FlowsGetStreamConnectionStringInput =
 // Output Schema
 export const FlowsGetStreamConnectionStringOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    connectionString: Schema.optional(SensitiveString),
+    connectionString: Schema.optional(SensitiveOutputString),
   });
 export type FlowsGetStreamConnectionStringOutput =
   typeof FlowsGetStreamConnectionStringOutput.Type;
@@ -920,11 +1175,13 @@ export const FlowsLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
   flowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  id: Schema.String,
+  statusReason: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/link",
+    apiVersion: "2025-05-21",
   }),
 );
 export type FlowsLinkInput = typeof FlowsLinkInput.Type;
@@ -971,11 +1228,11 @@ export const FlowsListByConnectionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows",
+      apiVersion: "2025-05-21",
     }),
   );
 export type FlowsListByConnectionInput = typeof FlowsListByConnectionInput.Type;
@@ -1041,11 +1298,12 @@ export const FlowsSetDestinationEndpointPortsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
     flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    ports: Schema.optional(Schema.Array(Schema.Number)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setDestinationEndpointPorts",
+      apiVersion: "2025-05-21",
     }),
   );
 export type FlowsSetDestinationEndpointPortsInput =
@@ -1097,11 +1355,12 @@ export const FlowsSetDestinationEndpointsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
     flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    endpoints: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setDestinationEndpoints",
+      apiVersion: "2025-05-21",
     }),
   );
 export type FlowsSetDestinationEndpointsInput =
@@ -1153,11 +1412,12 @@ export const FlowsSetPassphraseInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
     flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    value: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setPassphrase",
+      apiVersion: "2025-05-21",
     }),
   );
 export type FlowsSetPassphraseInput = typeof FlowsSetPassphraseInput.Type;
@@ -1206,11 +1466,12 @@ export const FlowsSetSourceAddressesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
     flowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    values: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setSourceAddresses",
+      apiVersion: "2025-05-21",
     }),
   );
 export type FlowsSetSourceAddressesInput =
@@ -1262,11 +1523,33 @@ export const FlowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
   flowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
+    apiVersion: "2025-05-21",
   }),
 );
 export type FlowsUpdateInput = typeof FlowsUpdateInput.Type;
@@ -1313,11 +1596,12 @@ export const ListFlowsByPipelineListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    value: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/listFlows",
+      apiVersion: "2025-05-21",
     }),
   );
 export type ListFlowsByPipelineListInput =
@@ -1391,11 +1675,11 @@ export const ListPendingConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/listPendingConnections",
+      apiVersion: "2025-05-21",
     }),
   );
 export type ListPendingConnectionsListInput =
@@ -1527,11 +1811,11 @@ export const ListPendingFlowsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/listPendingFlows",
+      apiVersion: "2025-05-21",
     }),
   );
 export type ListPendingFlowsListInput = typeof ListPendingFlowsListInput.Type;
@@ -1693,11 +1977,19 @@ export const ListSchemasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   pipelineName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  id: Schema.optional(Schema.String),
+  connectionId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.Literals(["New", "Approved"])),
+  name: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
+  schemaUri: Schema.optional(Schema.String),
+  schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/listSchemas",
+    apiVersion: "2025-05-21",
   }),
 );
 export type ListSchemasListInput = typeof ListSchemasListInput.Type;
@@ -1735,12 +2027,13 @@ export const ListSchemasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ListSchemasListOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzureDataTransfer/operations",
+    apiVersion: "2025-05-21",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1787,11 +2080,13 @@ export const PipelinesApproveConnectionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.String,
+    statusReason: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/approveConnection",
+      apiVersion: "2025-05-21",
     }),
   );
 export type PipelinesApproveConnectionInput =
@@ -1842,11 +2137,148 @@ export const PipelinesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        remoteCloud: Schema.String,
+        displayName: Schema.optional(Schema.String),
+        connections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              location: Schema.optional(Schema.String),
+              etag: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+              properties: Schema.optional(
+                Schema.Struct({
+                  internalMetadata: Schema.optional(
+                    Schema.Struct({
+                      operationStatus: Schema.optional(
+                        Schema.Struct({
+                          status: Schema.optional(
+                            Schema.Literals(["Failed", "Succeeded"]),
+                          ),
+                          id: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      statusSetBy: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+        subscribers: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              email: Schema.optional(Schema.String),
+              notifications: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
+        ),
+        policies: Schema.optional(Schema.Array(Schema.String)),
+        flowTypes: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "Unknown",
+              "Complex",
+              "DevSecOps",
+              "Messaging",
+              "Mission",
+              "MicrosoftInternal",
+              "BasicFiles",
+              "Data",
+              "Standard",
+              "StreamingVideo",
+              "Opaque",
+              "MissionOpaqueXML",
+              "DiskImages",
+              "API",
+            ]),
+          ),
+        ),
+        disabledFlowTypes: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "Unknown",
+              "Complex",
+              "DevSecOps",
+              "Messaging",
+              "Mission",
+              "MicrosoftInternal",
+              "BasicFiles",
+              "Data",
+              "Standard",
+              "StreamingVideo",
+              "Opaque",
+              "MissionOpaqueXML",
+              "DiskImages",
+              "API",
+            ]),
+          ),
+        ),
+        quarantineDownloadStorageAccount: Schema.optional(Schema.String),
+        quarantineDownloadStorageContainer: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
+      apiVersion: "2025-05-21",
     }),
   );
 export type PipelinesCreateOrUpdateInput =
@@ -1896,11 +2328,11 @@ export const PipelinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   pipelineName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
+    apiVersion: "2025-05-21",
   }),
 );
 export type PipelinesDeleteInput = typeof PipelinesDeleteInput.Type;
@@ -1928,11 +2360,15 @@ export const PipelinesExecuteActionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    actionType: Schema.Literals(["AllowUpdates", "ForceDisable"]),
+    targetType: Schema.Literals(["Pipeline", "Connection", "FlowType"]),
+    targets: Schema.Array(Schema.String),
+    justification: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/executeAction",
+      apiVersion: "2025-05-21",
     }),
   );
 export type PipelinesExecuteActionInput =
@@ -1982,11 +2418,11 @@ export const PipelinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   pipelineName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
+    apiVersion: "2025-05-21",
   }),
 );
 export type PipelinesGetInput = typeof PipelinesGetInput.Type;
@@ -2031,11 +2467,11 @@ export const PipelinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines",
+      apiVersion: "2025-05-21",
     }),
   );
 export type PipelinesListByResourceGroupInput =
@@ -2097,11 +2533,11 @@ export const PipelinesListByResourceGroup =
 export const PipelinesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureDataTransfer/pipelines",
+      apiVersion: "2025-05-21",
     }),
   );
 export type PipelinesListBySubscriptionInput =
@@ -2165,11 +2601,13 @@ export const PipelinesRejectConnectionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.String,
+    statusReason: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/rejectConnection",
+      apiVersion: "2025-05-21",
     }),
   );
 export type PipelinesRejectConnectionInput =
@@ -2219,11 +2657,57 @@ export const PipelinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   pipelineName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      flowTypes: Schema.optional(
+        Schema.Array(
+          Schema.Literals([
+            "Unknown",
+            "Complex",
+            "DevSecOps",
+            "Messaging",
+            "Mission",
+            "MicrosoftInternal",
+            "BasicFiles",
+            "Data",
+            "Standard",
+            "StreamingVideo",
+            "Opaque",
+            "MissionOpaqueXML",
+            "DiskImages",
+            "API",
+          ]),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
+    apiVersion: "2025-05-21",
   }),
 );
 export type PipelinesUpdateInput = typeof PipelinesUpdateInput.Type;

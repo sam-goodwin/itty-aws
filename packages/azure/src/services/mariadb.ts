@@ -12,11 +12,11 @@ import * as T from "../traits.ts";
 export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/start",
+    apiVersion: "2020-01-01",
   }),
 );
 export type ServersStartInput = typeof ServersStartInput.Type;
@@ -41,11 +41,11 @@ export const ServersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/stop",
+    apiVersion: "2020-01-01",
   }),
 );
 export type ServersStopInput = typeof ServersStopInput.Type;

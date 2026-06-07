@@ -14,11 +14,46 @@ export const AuthorizedApplicationsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     applicationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        providerAuthorization: Schema.optional(
+          Schema.Struct({
+            roleDefinitionId: Schema.optional(Schema.String),
+            managedByRoleDefinitionId: Schema.optional(Schema.String),
+          }),
+        ),
+        dataAuthorizations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              role: Schema.Literals(["ServiceOwner", "LimitedOwner"]),
+              resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "MovingResources",
+            "TransientFailure",
+            "RolloutInProgress",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type AuthorizedApplicationsCreateOrUpdateInput =
@@ -68,11 +103,11 @@ export const AuthorizedApplicationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     applicationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type AuthorizedApplicationsDeleteInput =
@@ -104,11 +139,11 @@ export const AuthorizedApplicationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     applicationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type AuthorizedApplicationsGetInput =
@@ -158,11 +193,11 @@ export const AuthorizedApplicationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications",
+      apiVersion: "2024-09-01",
     }),
   );
 export type AuthorizedApplicationsListInput =
@@ -225,11 +260,13 @@ export const AuthorizedApplicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CheckinManifestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   providerNamespace: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  environment: Schema.String,
+  baselineArmManifestLocation: Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/checkinManifest",
+    apiVersion: "2024-09-01",
   }),
 );
 export type CheckinManifestInput = typeof CheckinManifestInput.Type;
@@ -261,11 +298,142 @@ export const CustomRolloutsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     rolloutName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "NotSpecified",
+          "Accepted",
+          "Running",
+          "Creating",
+          "Created",
+          "Deleting",
+          "Deleted",
+          "Canceled",
+          "Failed",
+          "Succeeded",
+          "MovingResources",
+          "TransientFailure",
+          "RolloutInProgress",
+        ]),
+      ),
+      specification: Schema.Struct({
+        autoProvisionConfig: Schema.optional(
+          Schema.Struct({
+            storage: Schema.optional(Schema.Boolean),
+            resourceGraph: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        canary: Schema.optional(
+          Schema.Struct({
+            regions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        releaseScopes: Schema.optional(Schema.Array(Schema.String)),
+        refreshSubscriptionRegistration: Schema.optional(Schema.Boolean),
+        skipReleaseScopeValidation: Schema.optional(Schema.Boolean),
+        providerRegistration: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        resourceTypeRegistrations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+      status: Schema.optional(
+        Schema.Struct({
+          completedRegions: Schema.optional(Schema.Array(Schema.String)),
+          failedOrSkippedRegions: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                target: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                details: Schema.optional(Schema.Array(Schema.Unknown)),
+                additionalInfo: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      type: Schema.String,
+                      info: Schema.optional(Schema.Unknown),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          ),
+          manifestCheckinStatus: Schema.optional(
+            Schema.Struct({
+              isCheckedIn: Schema.Boolean,
+              statusMessage: Schema.String,
+              pullRequest: Schema.optional(Schema.String),
+              commitId: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type CustomRolloutsCreateOrUpdateInput =
@@ -315,11 +483,11 @@ export const CustomRolloutsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     rolloutName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type CustomRolloutsDeleteInput = typeof CustomRolloutsDeleteInput.Type;
@@ -350,12 +518,12 @@ export const CustomRolloutsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     rolloutName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type CustomRolloutsGetInput = typeof CustomRolloutsGetInput.Type;
@@ -401,11 +569,11 @@ export const CustomRolloutsListByProviderRegistrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts",
+      apiVersion: "2024-09-01",
     }),
   );
 export type CustomRolloutsListByProviderRegistrationInput =
@@ -469,11 +637,11 @@ export const CustomRolloutsStopInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     rolloutName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}/stop",
+      apiVersion: "2024-09-01",
     }),
   );
 export type CustomRolloutsStopInput = typeof CustomRolloutsStopInput.Type;
@@ -501,11 +669,166 @@ export const DefaultRolloutsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     rolloutName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "MovingResources",
+            "TransientFailure",
+            "RolloutInProgress",
+          ]),
+        ),
+        specification: Schema.optional(
+          Schema.Struct({
+            expeditedRollout: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            canary: Schema.optional(
+              Schema.Struct({
+                skipRegions: Schema.optional(Schema.Array(Schema.String)),
+                regions: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            lowTraffic: Schema.optional(
+              Schema.Struct({
+                regions: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            mediumTraffic: Schema.optional(
+              Schema.Struct({
+                regions: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            highTraffic: Schema.optional(
+              Schema.Struct({
+                regions: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            restOfTheWorldGroupOne: Schema.optional(
+              Schema.Struct({
+                regions: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            restOfTheWorldGroupTwo: Schema.optional(
+              Schema.Struct({
+                regions: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            providerRegistration: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                type: Schema.optional(Schema.String),
+                systemData: Schema.optional(
+                  Schema.Struct({
+                    createdBy: Schema.optional(Schema.String),
+                    createdByType: Schema.optional(
+                      Schema.Literals([
+                        "User",
+                        "Application",
+                        "ManagedIdentity",
+                        "Key",
+                      ]),
+                    ),
+                    createdAt: Schema.optional(Schema.String),
+                    lastModifiedBy: Schema.optional(Schema.String),
+                    lastModifiedByType: Schema.optional(
+                      Schema.Literals([
+                        "User",
+                        "Application",
+                        "ManagedIdentity",
+                        "Key",
+                      ]),
+                    ),
+                    lastModifiedAt: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            resourceTypeRegistrations: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                  systemData: Schema.optional(
+                    Schema.Struct({
+                      createdBy: Schema.optional(Schema.String),
+                      createdByType: Schema.optional(
+                        Schema.Literals([
+                          "User",
+                          "Application",
+                          "ManagedIdentity",
+                          "Key",
+                        ]),
+                      ),
+                      createdAt: Schema.optional(Schema.String),
+                      lastModifiedBy: Schema.optional(Schema.String),
+                      lastModifiedByType: Schema.optional(
+                        Schema.Literals([
+                          "User",
+                          "Application",
+                          "ManagedIdentity",
+                          "Key",
+                        ]),
+                      ),
+                      lastModifiedAt: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            autoProvisionConfig: Schema.optional(
+              Schema.Struct({
+                storage: Schema.optional(Schema.Boolean),
+                resourceGraph: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        status: Schema.optional(
+          Schema.Struct({
+            completedRegions: Schema.optional(Schema.Array(Schema.String)),
+            failedOrSkippedRegions: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  target: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  details: Schema.optional(Schema.Array(Schema.Unknown)),
+                  additionalInfo: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.String,
+                        info: Schema.optional(Schema.Unknown),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type DefaultRolloutsCreateOrUpdateInput =
@@ -555,11 +878,11 @@ export const DefaultRolloutsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     rolloutName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type DefaultRolloutsDeleteInput = typeof DefaultRolloutsDeleteInput.Type;
@@ -591,11 +914,11 @@ export const DefaultRolloutsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     rolloutName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type DefaultRolloutsGetInput = typeof DefaultRolloutsGetInput.Type;
@@ -641,11 +964,11 @@ export const DefaultRolloutsListByProviderRegistrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts",
+      apiVersion: "2024-09-01",
     }),
   );
 export type DefaultRolloutsListByProviderRegistrationInput =
@@ -709,11 +1032,11 @@ export const DefaultRolloutsStopInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     rolloutName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}/stop",
+      apiVersion: "2024-09-01",
     }),
   );
 export type DefaultRolloutsStopInput = typeof DefaultRolloutsStopInput.Type;
@@ -740,11 +1063,11 @@ export const DefaultRolloutsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GenerateManifestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   providerNamespace: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateManifest",
+    apiVersion: "2024-09-01",
   }),
 );
 export type GenerateManifestInput = typeof GenerateManifestInput.Type;
@@ -1407,11 +1730,67 @@ export const NewRegionFrontloadReleaseCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     releaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      operationType: Schema.String,
+      providerNamespace: Schema.String,
+      frontloadLocation: Schema.String,
+      copyFromLocation: Schema.String,
+      environmentType: Schema.Literals([
+        "NotSpecified",
+        "Canary",
+        "Prod",
+        "All",
+        "Mooncake",
+        "Fairfax",
+      ]),
+      serviceFeatureFlag: Schema.Literals(["DoNotCreate", "Create"]),
+      includeResourceTypes: Schema.Array(Schema.String),
+      excludeResourceTypes: Schema.Array(Schema.String),
+      overrideManifestLevelFields: Schema.Struct({
+        resourceHydrationAccounts: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              maxChildResourceConsistencyJobLimit: Schema.optional(
+                Schema.Number,
+              ),
+              encryptedKey: Schema.optional(Schema.String),
+              accountName: Schema.optional(Schema.String),
+              subscriptionId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+      overrideEndpointLevelFields: Schema.Struct({
+        enabled: Schema.Boolean,
+        apiVersions: Schema.Array(Schema.String),
+        endpointUri: Schema.String,
+        locations: Schema.Array(Schema.String),
+        requiredFeatures: Schema.Array(Schema.String),
+        featuresRule: Schema.Struct({
+          requiredFeaturesPolicy: Schema.Literals(["Any", "All"]),
+        }),
+        timeout: Schema.String,
+        endpointType: Schema.Literals([
+          "NotSpecified",
+          "Canary",
+          "Production",
+          "TestInProduction",
+        ]),
+        dstsConfiguration: Schema.Struct({
+          serviceName: Schema.String,
+          serviceDnsName: Schema.optional(Schema.String),
+        }),
+        skuLink: Schema.String,
+        apiVersion: Schema.String,
+        zones: Schema.Array(Schema.String),
+      }),
+      ignoreFields: Schema.Array(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/newRegionFrontloadRelease/{releaseName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type NewRegionFrontloadReleaseCreateOrUpdateInput =
@@ -1460,11 +1839,67 @@ export const NewRegionFrontloadReleaseGenerateManifestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      operationType: Schema.String,
+      providerNamespace: Schema.String,
+      frontloadLocation: Schema.String,
+      copyFromLocation: Schema.String,
+      environmentType: Schema.Literals([
+        "NotSpecified",
+        "Canary",
+        "Prod",
+        "All",
+        "Mooncake",
+        "Fairfax",
+      ]),
+      serviceFeatureFlag: Schema.Literals(["DoNotCreate", "Create"]),
+      includeResourceTypes: Schema.Array(Schema.String),
+      excludeResourceTypes: Schema.Array(Schema.String),
+      overrideManifestLevelFields: Schema.Struct({
+        resourceHydrationAccounts: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              maxChildResourceConsistencyJobLimit: Schema.optional(
+                Schema.Number,
+              ),
+              encryptedKey: Schema.optional(Schema.String),
+              accountName: Schema.optional(Schema.String),
+              subscriptionId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+      overrideEndpointLevelFields: Schema.Struct({
+        enabled: Schema.Boolean,
+        apiVersions: Schema.Array(Schema.String),
+        endpointUri: Schema.String,
+        locations: Schema.Array(Schema.String),
+        requiredFeatures: Schema.Array(Schema.String),
+        featuresRule: Schema.Struct({
+          requiredFeaturesPolicy: Schema.Literals(["Any", "All"]),
+        }),
+        timeout: Schema.String,
+        endpointType: Schema.Literals([
+          "NotSpecified",
+          "Canary",
+          "Production",
+          "TestInProduction",
+        ]),
+        dstsConfiguration: Schema.Struct({
+          serviceName: Schema.String,
+          serviceDnsName: Schema.optional(Schema.String),
+        }),
+        skuLink: Schema.String,
+        apiVersion: Schema.String,
+        zones: Schema.Array(Schema.String),
+      }),
+      ignoreFields: Schema.Array(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateNewRegionFrontloadManifest",
+      apiVersion: "2024-09-01",
     }),
   );
 export type NewRegionFrontloadReleaseGenerateManifestInput =
@@ -2129,11 +2564,11 @@ export const NewRegionFrontloadReleaseGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     releaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/newRegionFrontloadRelease/{releaseName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type NewRegionFrontloadReleaseGetInput =
@@ -2183,11 +2618,11 @@ export const NewRegionFrontloadReleaseStopInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     releaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/newRegionFrontloadRelease/{releaseName}/stop",
+      apiVersion: "2024-09-01",
     }),
   );
 export type NewRegionFrontloadReleaseStopInput =
@@ -2219,11 +2654,47 @@ export const NotificationRegistrationsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     notificationRegistrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        notificationMode: Schema.optional(
+          Schema.Literals(["NotSpecified", "EventHub", "WebHook"]),
+        ),
+        messageScope: Schema.optional(
+          Schema.Literals(["NotSpecified", "RegisteredSubscriptions"]),
+        ),
+        includedEvents: Schema.optional(Schema.Array(Schema.String)),
+        notificationEndpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              notificationDestination: Schema.optional(Schema.String),
+              locations: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "MovingResources",
+            "TransientFailure",
+            "RolloutInProgress",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type NotificationRegistrationsCreateOrUpdateInput =
@@ -2273,11 +2744,11 @@ export const NotificationRegistrationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     notificationRegistrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type NotificationRegistrationsDeleteInput =
@@ -2309,11 +2780,11 @@ export const NotificationRegistrationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     notificationRegistrationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type NotificationRegistrationsGetInput =
@@ -2362,11 +2833,11 @@ export const NotificationRegistrationsListByProviderRegistrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations",
+      apiVersion: "2024-09-01",
     }),
   );
 export type NotificationRegistrationsListByProviderRegistrationInput =
@@ -2429,11 +2900,173 @@ export const OperationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        contents: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              isDataAction: Schema.optional(Schema.Boolean),
+              origin: Schema.optional(
+                Schema.Literals(["NotSpecified", "User", "System"]),
+              ),
+              display: Schema.Struct({
+                default: Schema.Struct({
+                  provider: Schema.String,
+                  resource: Schema.String,
+                  operation: Schema.String,
+                  description: Schema.String,
+                }),
+                en: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                cs: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                de: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                es: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                fr: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                hu: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                it: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                ja: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                ko: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                nl: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                pl: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                ptBR: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                ptPT: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                ru: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                sv: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                zhHans: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+                zhHant: Schema.optional(
+                  Schema.Struct({
+                    provider: Schema.String,
+                    resource: Schema.String,
+                    operation: Schema.String,
+                    description: Schema.String,
+                  }),
+                ),
+              }),
+              actionType: Schema.optional(
+                Schema.Literals(["NotSpecified", "Internal"]),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
+      apiVersion: "2024-09-01",
     }),
   );
 export type OperationsCreateOrUpdateInput =
@@ -2481,11 +3114,11 @@ export const OperationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const OperationsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   providerNamespace: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
+    apiVersion: "2024-09-01",
   }),
 );
 export type OperationsDeleteInput = typeof OperationsDeleteInput.Type;
@@ -2507,12 +3140,13 @@ export const OperationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsDeleteOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ProviderHub/operations",
+    apiVersion: "2024-09-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -2559,11 +3193,11 @@ export const OperationsListByProviderRegistrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
+      apiVersion: "2024-09-01",
     }),
   );
 export type OperationsListByProviderRegistrationInput =
@@ -2612,11 +3246,34 @@ export const ProviderMonitorSettingsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerMonitorSettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "MovingResources",
+            "TransientFailure",
+            "RolloutInProgress",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProviderMonitorSettingsCreateInput =
@@ -2666,11 +3323,11 @@ export const ProviderMonitorSettingsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerMonitorSettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProviderMonitorSettingsDeleteInput =
@@ -2702,11 +3359,11 @@ export const ProviderMonitorSettingsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerMonitorSettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProviderMonitorSettingsGetInput =
@@ -2756,11 +3413,11 @@ export const ProviderMonitorSettingsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProviderMonitorSettingsListByResourceGroupInput =
@@ -2822,11 +3479,11 @@ export const ProviderMonitorSettingsListByResourceGroup =
 export const ProviderMonitorSettingsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerMonitorSettings",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProviderMonitorSettingsListBySubscriptionInput =
@@ -2889,11 +3546,11 @@ export const ProviderMonitorSettingsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerMonitorSettingName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProviderMonitorSettingsUpdateInput =
@@ -2942,11 +3599,423 @@ export const ProviderRegistrationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        providerAuthentication: Schema.optional(
+          Schema.Struct({
+            allowedAudiences: Schema.Array(Schema.String),
+          }),
+        ),
+        providerAuthorizations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              applicationId: Schema.optional(Schema.String),
+              roleDefinitionId: Schema.optional(Schema.String),
+              managedByRoleDefinitionId: Schema.optional(Schema.String),
+              managedByAuthorization: Schema.optional(
+                Schema.Struct({
+                  additionalAuthorizations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        applicationId: Schema.optional(Schema.String),
+                        roleDefinitionId: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  managedByResourceRoleDefinitionId: Schema.optional(
+                    Schema.String,
+                  ),
+                  allowManagedByInheritance: Schema.optional(Schema.Boolean),
+                }),
+              ),
+              allowedThirdPartyExtensions: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              groupingTag: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        namespace: Schema.optional(Schema.String),
+        services: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              serviceName: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.Literals(["Active", "Inactive"])),
+            }),
+          ),
+        ),
+        serviceName: Schema.optional(Schema.String),
+        providerVersion: Schema.optional(Schema.String),
+        providerType: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Internal",
+            "External",
+            "Hidden",
+            "RegistrationFree",
+            "LegacyRegistrationRequired",
+            "TenantOnly",
+            "AuthorizationFree",
+          ]),
+        ),
+        requiredFeatures: Schema.optional(Schema.Array(Schema.String)),
+        featuresRule: Schema.optional(
+          Schema.Struct({
+            requiredFeaturesPolicy: Schema.Literals(["Any", "All"]),
+          }),
+        ),
+        requestHeaderOptions: Schema.optional(
+          Schema.Struct({
+            optInHeaders: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "SignedUserToken",
+                "ClientGroupMembership",
+                "SignedAuxiliaryTokens",
+                "UnboundedClientGroupMembership",
+                "PrivateLinkId",
+                "PrivateLinkResourceId",
+                "ManagementGroupAncestorsEncoded",
+                "PrivateLinkVnetTrafficTag",
+                "ResourceGroupLocation",
+                "ClientPrincipalNameEncoded",
+                "MSIResourceIdEncoded",
+              ]),
+            ),
+            optOutHeaders: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "SystemDataCreatedByLastModifiedBy",
+              ]),
+            ),
+          }),
+        ),
+        management: Schema.optional(
+          Schema.Struct({
+            schemaOwners: Schema.optional(Schema.Array(Schema.String)),
+            manifestOwners: Schema.optional(Schema.Array(Schema.String)),
+            authorizationOwners: Schema.optional(Schema.Array(Schema.String)),
+            incidentRoutingService: Schema.optional(Schema.String),
+            incidentRoutingTeam: Schema.optional(Schema.String),
+            incidentContactEmail: Schema.optional(Schema.String),
+            serviceTreeInfos: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  serviceId: Schema.optional(Schema.String),
+                  componentId: Schema.optional(Schema.String),
+                  readiness: Schema.optional(
+                    Schema.Literals([
+                      "ClosingDown",
+                      "Deprecated",
+                      "GA",
+                      "InDevelopment",
+                      "InternalOnly",
+                      "PrivatePreview",
+                      "PublicPreview",
+                      "RemovedFromARM",
+                      "Retired",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+            resourceAccessPolicy: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "AcisReadAllowed",
+                "AcisActionAllowed",
+              ]),
+            ),
+            resourceAccessRoles: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  allowedGroupClaims: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  actions: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            expeditedRolloutSubmitters: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            errorResponseMessageOptions: Schema.optional(
+              Schema.Struct({
+                serverFailureResponseMessageType: Schema.optional(
+                  Schema.Literals(["NotSpecified", "OutageReporting"]),
+                ),
+              }),
+            ),
+            expeditedRolloutMetadata: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                expeditedRolloutIntent: Schema.optional(
+                  Schema.Literals(["NotSpecified", "Hotfix"]),
+                ),
+              }),
+            ),
+            canaryManifestOwners: Schema.optional(Schema.Array(Schema.String)),
+            pcCode: Schema.optional(Schema.String),
+            profitCenterProgramId: Schema.optional(Schema.String),
+          }),
+        ),
+        capabilities: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              quotaId: Schema.String,
+              effect: Schema.Literals(["NotSpecified", "Allow", "Disallow"]),
+              requiredFeatures: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+        crossTenantTokenValidation: Schema.optional(
+          Schema.Literals([
+            "EnsureSecureValidation",
+            "PassthroughInsecureToken",
+          ]),
+        ),
+        metadata: Schema.optional(Schema.Unknown),
+        templateDeploymentOptions: Schema.optional(
+          Schema.Struct({
+            preflightSupported: Schema.optional(Schema.Boolean),
+            preflightOptions: Schema.optional(
+              Schema.Array(
+                Schema.Literals([
+                  "None",
+                  "ContinueDeploymentOnFailure",
+                  "DefaultValidationOnly",
+                ]),
+              ),
+            ),
+          }),
+        ),
+        globalNotificationEndpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              enabled: Schema.optional(Schema.Boolean),
+              apiVersions: Schema.optional(Schema.Array(Schema.String)),
+              endpointUri: Schema.optional(Schema.String),
+              locations: Schema.optional(Schema.Array(Schema.String)),
+              requiredFeatures: Schema.optional(Schema.Array(Schema.String)),
+              featuresRule: Schema.optional(
+                Schema.Struct({
+                  requiredFeaturesPolicy: Schema.Literals(["Any", "All"]),
+                }),
+              ),
+              timeout: Schema.optional(Schema.String),
+              endpointType: Schema.optional(
+                Schema.Literals([
+                  "NotSpecified",
+                  "Canary",
+                  "Production",
+                  "TestInProduction",
+                ]),
+              ),
+              skuLink: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        enableTenantLinkedNotification: Schema.optional(
+          Schema.NullOr(Schema.Boolean),
+        ),
+        notifications: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              notificationType: Schema.optional(
+                Schema.Literals(["Unspecified", "SubscriptionNotification"]),
+              ),
+              skipNotifications: Schema.optional(
+                Schema.Literals(["Unspecified", "Enabled", "Disabled"]),
+              ),
+            }),
+          ),
+        ),
+        linkedNotificationRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              tokenAuthConfiguration: Schema.optional(
+                Schema.Struct({
+                  authenticationScheme: Schema.optional(
+                    Schema.Literals(["PoP", "Bearer"]),
+                  ),
+                  signedRequestScope: Schema.optional(
+                    Schema.Literals(["ResourceUri", "Endpoint"]),
+                  ),
+                  disableCertificateAuthenticationFallback: Schema.optional(
+                    Schema.Boolean,
+                  ),
+                }),
+              ),
+              actions: Schema.optional(Schema.Array(Schema.String)),
+              endpoints: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    enabled: Schema.optional(Schema.Boolean),
+                    apiVersions: Schema.optional(Schema.Array(Schema.String)),
+                    endpointUri: Schema.optional(Schema.String),
+                    locations: Schema.optional(Schema.Array(Schema.String)),
+                    requiredFeatures: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    featuresRule: Schema.optional(
+                      Schema.Struct({
+                        requiredFeaturesPolicy: Schema.Literals(["Any", "All"]),
+                      }),
+                    ),
+                    timeout: Schema.optional(Schema.String),
+                    endpointType: Schema.optional(
+                      Schema.Literals([
+                        "NotSpecified",
+                        "Canary",
+                        "Production",
+                        "TestInProduction",
+                      ]),
+                    ),
+                    skuLink: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              dstsConfiguration: Schema.optional(
+                Schema.Struct({
+                  serviceName: Schema.String,
+                  serviceDnsName: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        resourceProviderAuthorizationRules: Schema.optional(
+          Schema.Struct({
+            asyncOperationPollingRules: Schema.optional(
+              Schema.Struct({
+                authorizationActions: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                additionalOptions: Schema.optional(
+                  Schema.Literals([
+                    "ProtectedAsyncOperationPolling",
+                    "ProtectedAsyncOperationPollingAuditOnly",
+                  ]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        dstsConfiguration: Schema.optional(
+          Schema.Struct({
+            serviceName: Schema.String,
+            serviceDnsName: Schema.optional(Schema.String),
+          }),
+        ),
+        notificationOptions: Schema.optional(
+          Schema.Literals(["NotSpecified", "None", "EmitSpendingLimit"]),
+        ),
+        resourceHydrationAccounts: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              maxChildResourceConsistencyJobLimit: Schema.optional(
+                Schema.Number,
+              ),
+              encryptedKey: Schema.optional(Schema.String),
+              accountName: Schema.optional(Schema.String),
+              subscriptionId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        notificationSettings: Schema.optional(
+          Schema.Struct({
+            subscriberSettings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  filterRules: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        filterQuery: Schema.optional(Schema.String),
+                        endpointInformation: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              endpoint: Schema.optional(Schema.String),
+                              endpointType: Schema.optional(
+                                Schema.Literals(["Webhook", "Eventhub"]),
+                              ),
+                              schemaVersion: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        managementGroupGlobalNotificationEndpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              enabled: Schema.optional(Schema.Boolean),
+              apiVersions: Schema.optional(Schema.Array(Schema.String)),
+              endpointUri: Schema.optional(Schema.String),
+              locations: Schema.optional(Schema.Array(Schema.String)),
+              requiredFeatures: Schema.optional(Schema.Array(Schema.String)),
+              featuresRule: Schema.optional(
+                Schema.Struct({
+                  requiredFeaturesPolicy: Schema.Literals(["Any", "All"]),
+                }),
+              ),
+              timeout: Schema.optional(Schema.String),
+              endpointType: Schema.optional(
+                Schema.Literals([
+                  "NotSpecified",
+                  "Canary",
+                  "Production",
+                  "TestInProduction",
+                ]),
+              ),
+              skuLink: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        optionalFeatures: Schema.optional(Schema.Array(Schema.String)),
+        resourceGroupLockOptionDuringMove: Schema.optional(
+          Schema.Struct({
+            blockActionVerb: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "Read",
+                "Write",
+                "Action",
+                "Delete",
+                "Unrecognized",
+              ]),
+            ),
+          }),
+        ),
+        responseOptions: Schema.optional(
+          Schema.Struct({
+            serviceClientOptionsType: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "DisableAutomaticDecompression",
+              ]),
+            ),
+          }),
+        ),
+        legacyNamespace: Schema.optional(Schema.String),
+        legacyRegistrations: Schema.optional(Schema.Array(Schema.String)),
+        customManifestVersion: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.optional(Schema.Literals(["Managed", "Hybrid", "Direct"])),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProviderRegistrationsCreateOrUpdateInput =
@@ -2994,11 +4063,11 @@ export const ProviderRegistrationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProviderRegistrationsDeleteInput =
@@ -3029,11 +4098,11 @@ export const ProviderRegistrationsGenerateOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateOperations",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProviderRegistrationsGenerateOperationsInput =
@@ -3081,11 +4150,11 @@ export const ProviderRegistrationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProviderRegistrationsGetInput =
@@ -3133,11 +4202,11 @@ export const ProviderRegistrationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ProviderRegistrationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ProviderRegistrationsListInput =
@@ -3201,11 +4270,21 @@ export const ResourceActionsDeleteResourcesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     resourceActionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    resources: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          resourceId: Schema.String,
+          homeTenantId: Schema.optional(Schema.String),
+          location: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourceActions/{resourceActionName}/deleteResources",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ResourceActionsDeleteResourcesInput =
@@ -3237,11 +4316,836 @@ export const ResourceTypeRegistrationsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        routingType: Schema.optional(
+          Schema.Literals([
+            "Default",
+            "ProxyOnly",
+            "HostBased",
+            "Extension",
+            "Tenant",
+            "Fanout",
+            "LocationBased",
+            "Failover",
+            "CascadeExtension",
+            "ChildFanout",
+            "CascadeAuthorizedExtension",
+            "BypassEndpointSelectionOptimization",
+            "LocationMapping",
+            "ServiceFanout",
+          ]),
+        ),
+        additionalOptions: Schema.optional(
+          Schema.Literals([
+            "ProtectedAsyncOperationPolling",
+            "ProtectedAsyncOperationPollingAuditOnly",
+          ]),
+        ),
+        crossTenantTokenValidation: Schema.optional(
+          Schema.Literals([
+            "EnsureSecureValidation",
+            "PassthroughInsecureToken",
+          ]),
+        ),
+        regionality: Schema.optional(
+          Schema.Literals(["NotSpecified", "Global", "Regional"]),
+        ),
+        endpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              kind: Schema.optional(Schema.Literals(["Managed", "Direct"])),
+              enabled: Schema.optional(Schema.Boolean),
+              apiVersions: Schema.optional(Schema.Array(Schema.String)),
+              locations: Schema.optional(Schema.Array(Schema.String)),
+              requiredFeatures: Schema.optional(Schema.Array(Schema.String)),
+              featuresRule: Schema.optional(
+                Schema.Struct({
+                  requiredFeaturesPolicy: Schema.Literals(["Any", "All"]),
+                }),
+              ),
+              extensions: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    endpointUri: Schema.optional(Schema.String),
+                    extensionCategories: Schema.optional(
+                      Schema.Array(
+                        Schema.Literals([
+                          "NotSpecified",
+                          "ResourceCreationValidate",
+                          "ResourceCreationBegin",
+                          "ResourceCreationCompleted",
+                          "ResourceReadValidate",
+                          "ResourceReadBegin",
+                          "ResourcePatchValidate",
+                          "ResourcePatchCompleted",
+                          "ResourceDeletionValidate",
+                          "ResourceDeletionBegin",
+                          "ResourceDeletionCompleted",
+                          "ResourcePostAction",
+                          "SubscriptionLifecycleNotification",
+                          "ResourcePatchBegin",
+                          "ResourceMoveBegin",
+                          "ResourceMoveCompleted",
+                          "BestMatchOperationBegin",
+                          "SubscriptionLifecycleNotificationDeletion",
+                        ]),
+                      ),
+                    ),
+                    timeout: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              timeout: Schema.optional(Schema.String),
+              endpointType: Schema.optional(
+                Schema.Literals([
+                  "NotSpecified",
+                  "Canary",
+                  "Production",
+                  "TestInProduction",
+                ]),
+              ),
+              tokenAuthConfiguration: Schema.optional(
+                Schema.Struct({
+                  authenticationScheme: Schema.optional(
+                    Schema.Literals(["PoP", "Bearer"]),
+                  ),
+                  signedRequestScope: Schema.optional(
+                    Schema.Literals(["ResourceUri", "Endpoint"]),
+                  ),
+                  disableCertificateAuthenticationFallback: Schema.optional(
+                    Schema.Boolean,
+                  ),
+                }),
+              ),
+              skuLink: Schema.optional(Schema.String),
+              endpointUri: Schema.optional(Schema.String),
+              apiVersion: Schema.optional(Schema.String),
+              zones: Schema.optional(Schema.Array(Schema.String)),
+              dstsConfiguration: Schema.optional(
+                Schema.Struct({
+                  serviceName: Schema.String,
+                  serviceDnsName: Schema.optional(Schema.String),
+                }),
+              ),
+              dataBoundary: Schema.optional(
+                Schema.Literals(["NotDefined", "Global", "EU", "US"]),
+              ),
+            }),
+          ),
+        ),
+        extensionOptions: Schema.optional(
+          Schema.Struct({
+            resourceCreationBegin: Schema.optional(
+              Schema.Struct({
+                request: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals([
+                      "NotSpecified",
+                      "DoNotMergeExistingReadOnlyAndSecretProperties",
+                      "IncludeInternalMetadata",
+                    ]),
+                  ),
+                ),
+                response: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals([
+                      "NotSpecified",
+                      "DoNotMergeExistingReadOnlyAndSecretProperties",
+                      "IncludeInternalMetadata",
+                    ]),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        marketplaceType: Schema.optional(
+          Schema.Literals(["NotSpecified", "AddOn", "Bypass", "Store"]),
+        ),
+        swaggerSpecifications: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersions: Schema.optional(Schema.Array(Schema.String)),
+              swaggerSpecFolderUri: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        allowedUnauthorizedActions: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        allowedUnauthorizedActionsExtensions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              action: Schema.optional(Schema.String),
+              intent: Schema.optional(
+                Schema.Literals([
+                  "NOT_SPECIFIED",
+                  "LOW_PRIVILEGE",
+                  "DEFERRED_ACCESS_CHECK",
+                  "RP_CONTRACT",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        authorizationActionMappings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              original: Schema.optional(Schema.String),
+              desired: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        linkedAccessChecks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              actionName: Schema.optional(Schema.String),
+              linkedProperty: Schema.optional(Schema.String),
+              linkedAction: Schema.optional(Schema.String),
+              linkedActionVerb: Schema.optional(Schema.String),
+              linkedType: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        defaultApiVersion: Schema.optional(Schema.String),
+        loggingRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              action: Schema.String,
+              direction: Schema.Literals(["None", "Request", "Response"]),
+              detailLevel: Schema.Literals(["None", "Body"]),
+              hiddenPropertyPaths: Schema.optional(
+                Schema.Struct({
+                  hiddenPathsOnRequest: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  hiddenPathsOnResponse: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+        throttlingRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              action: Schema.String,
+              metrics: Schema.Array(
+                Schema.Struct({
+                  type: Schema.Literals([
+                    "NotSpecified",
+                    "NumberOfRequests",
+                    "NumberOfResources",
+                  ]),
+                  limit: Schema.Number,
+                  interval: Schema.optional(Schema.String),
+                }),
+              ),
+              requiredFeatures: Schema.optional(Schema.Array(Schema.String)),
+              applicationId: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+        requiredFeatures: Schema.optional(Schema.Array(Schema.String)),
+        featuresRule: Schema.optional(
+          Schema.Struct({
+            requiredFeaturesPolicy: Schema.Literals(["Any", "All"]),
+          }),
+        ),
+        enableAsyncOperation: Schema.optional(Schema.Boolean),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "MovingResources",
+            "TransientFailure",
+            "RolloutInProgress",
+          ]),
+        ),
+        enableThirdPartyS2S: Schema.optional(Schema.Boolean),
+        subscriptionLifecycleNotificationSpecifications: Schema.optional(
+          Schema.Struct({
+            subscriptionStateOverrideActions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  state: Schema.Literals([
+                    "Registered",
+                    "Unregistered",
+                    "Warned",
+                    "Suspended",
+                    "Deleted",
+                    "WarnedToRegistered",
+                    "WarnedToSuspended",
+                    "WarnedToDeleted",
+                    "WarnedToUnregistered",
+                    "SuspendedToRegistered",
+                    "SuspendedToWarned",
+                    "SuspendedToDeleted",
+                    "SuspendedToUnregistered",
+                  ]),
+                  action: Schema.Literals([
+                    "NotDefined",
+                    "DeleteAllResources",
+                    "SoftDeleteAllResources",
+                    "NoOp",
+                    "BillingCancellation",
+                    "UndoSoftDelete",
+                  ]),
+                }),
+              ),
+            ),
+            softDeleteTTL: Schema.optional(Schema.String),
+          }),
+        ),
+        isPureProxy: Schema.optional(Schema.Boolean),
+        identityManagement: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "SystemAssigned",
+                "UserAssigned",
+                "Actor",
+                "DelegatedResourceIdentity",
+              ]),
+            ),
+            applicationId: Schema.optional(Schema.String),
+            applicationIds: Schema.optional(Schema.Array(Schema.String)),
+            delegationAppIds: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        checkNameAvailabilitySpecifications: Schema.optional(
+          Schema.Struct({
+            enableDefaultValidation: Schema.optional(Schema.Boolean),
+            resourceTypesWithCustomValidation: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+          }),
+        ),
+        disallowedActionVerbs: Schema.optional(Schema.Array(Schema.String)),
+        serviceTreeInfos: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              serviceId: Schema.optional(Schema.String),
+              componentId: Schema.optional(Schema.String),
+              readiness: Schema.optional(
+                Schema.Literals([
+                  "ClosingDown",
+                  "Deprecated",
+                  "GA",
+                  "InDevelopment",
+                  "InternalOnly",
+                  "PrivatePreview",
+                  "PublicPreview",
+                  "RemovedFromARM",
+                  "Retired",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        requestHeaderOptions: Schema.optional(
+          Schema.Struct({
+            optInHeaders: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "SignedUserToken",
+                "ClientGroupMembership",
+                "SignedAuxiliaryTokens",
+                "UnboundedClientGroupMembership",
+                "PrivateLinkId",
+                "PrivateLinkResourceId",
+                "ManagementGroupAncestorsEncoded",
+                "PrivateLinkVnetTrafficTag",
+                "ResourceGroupLocation",
+                "ClientPrincipalNameEncoded",
+                "MSIResourceIdEncoded",
+              ]),
+            ),
+            optOutHeaders: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "SystemDataCreatedByLastModifiedBy",
+              ]),
+            ),
+          }),
+        ),
+        subscriptionStateRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              state: Schema.optional(
+                Schema.Literals([
+                  "NotDefined",
+                  "Enabled",
+                  "Warned",
+                  "PastDue",
+                  "Disabled",
+                  "Deleted",
+                ]),
+              ),
+              allowedActions: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+        templateDeploymentOptions: Schema.optional(
+          Schema.Struct({
+            preflightSupported: Schema.optional(Schema.Boolean),
+            preflightOptions: Schema.optional(
+              Schema.Array(
+                Schema.Literals([
+                  "None",
+                  "ContinueDeploymentOnFailure",
+                  "DefaultValidationOnly",
+                ]),
+              ),
+            ),
+          }),
+        ),
+        extendedLocations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(
+                Schema.Literals([
+                  "NotSpecified",
+                  "CustomLocation",
+                  "EdgeZone",
+                  "ArcZone",
+                ]),
+              ),
+              supportedPolicy: Schema.optional(
+                Schema.Literals(["NotSpecified", "All"]),
+              ),
+            }),
+          ),
+        ),
+        resourceMovePolicy: Schema.optional(
+          Schema.Struct({
+            validationRequired: Schema.optional(Schema.Boolean),
+            crossResourceGroupMoveEnabled: Schema.optional(Schema.Boolean),
+            crossSubscriptionMoveEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        resourceDeletionPolicy: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "CascadeDeleteAll",
+            "CascadeDeleteProxyOnlyChildren",
+          ]),
+        ),
+        resourceConcurrencyControlOptions: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              policy: Schema.optional(
+                Schema.Literals(["NotSpecified", "SynchronizeBeginExtension"]),
+              ),
+            }),
+          ),
+        ),
+        resourceGraphConfiguration: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            apiVersion: Schema.optional(Schema.String),
+          }),
+        ),
+        management: Schema.optional(
+          Schema.Struct({
+            schemaOwners: Schema.optional(Schema.Array(Schema.String)),
+            manifestOwners: Schema.optional(Schema.Array(Schema.String)),
+            authorizationOwners: Schema.optional(Schema.Array(Schema.String)),
+            incidentRoutingService: Schema.optional(Schema.String),
+            incidentRoutingTeam: Schema.optional(Schema.String),
+            incidentContactEmail: Schema.optional(Schema.String),
+            serviceTreeInfos: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  serviceId: Schema.optional(Schema.String),
+                  componentId: Schema.optional(Schema.String),
+                  readiness: Schema.optional(
+                    Schema.Literals([
+                      "ClosingDown",
+                      "Deprecated",
+                      "GA",
+                      "InDevelopment",
+                      "InternalOnly",
+                      "PrivatePreview",
+                      "PublicPreview",
+                      "RemovedFromARM",
+                      "Retired",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+            resourceAccessPolicy: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "AcisReadAllowed",
+                "AcisActionAllowed",
+              ]),
+            ),
+            resourceAccessRoles: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  allowedGroupClaims: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  actions: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            expeditedRolloutSubmitters: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            errorResponseMessageOptions: Schema.optional(
+              Schema.Struct({
+                serverFailureResponseMessageType: Schema.optional(
+                  Schema.Literals(["NotSpecified", "OutageReporting"]),
+                ),
+              }),
+            ),
+            expeditedRolloutMetadata: Schema.optional(
+              Schema.Struct({
+                enabled: Schema.optional(Schema.Boolean),
+                expeditedRolloutIntent: Schema.optional(
+                  Schema.Literals(["NotSpecified", "Hotfix"]),
+                ),
+              }),
+            ),
+            canaryManifestOwners: Schema.optional(Schema.Array(Schema.String)),
+            pcCode: Schema.optional(Schema.String),
+            profitCenterProgramId: Schema.optional(Schema.String),
+          }),
+        ),
+        openApiConfiguration: Schema.optional(
+          Schema.Struct({
+            validation: Schema.optional(
+              Schema.Struct({
+                allowNoncompliantCollectionResponse: Schema.optional(
+                  Schema.Boolean,
+                ),
+              }),
+            ),
+          }),
+        ),
+        onBehalfOfTokens: Schema.optional(
+          Schema.Struct({
+            actionName: Schema.optional(Schema.String),
+            lifeTime: Schema.optional(Schema.String),
+          }),
+        ),
+        category: Schema.optional(
+          Schema.Literals(["None", "FreeForm", "Internal", "PureProxy"]),
+        ),
+        resourceValidation: Schema.optional(
+          Schema.Literals(["NotSpecified", "ReservedWords", "ProfaneWords"]),
+        ),
+        disallowedEndUserOperations: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        skuLink: Schema.optional(Schema.String),
+        quotaRule: Schema.optional(
+          Schema.Struct({
+            quotaPolicy: Schema.optional(
+              Schema.Literals(["Default", "None", "Restricted"]),
+            ),
+            locationRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  policy: Schema.optional(
+                    Schema.Literals(["Default", "None", "Restricted"]),
+                  ),
+                  quotaId: Schema.optional(Schema.String),
+                  location: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            requiredFeatures: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        notifications: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              notificationType: Schema.optional(
+                Schema.Literals(["Unspecified", "SubscriptionNotification"]),
+              ),
+              skipNotifications: Schema.optional(
+                Schema.Literals(["Unspecified", "Enabled", "Disabled"]),
+              ),
+            }),
+          ),
+        ),
+        linkedNotificationRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              actions: Schema.optional(Schema.Array(Schema.String)),
+              actionsOnFailedOperation: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              fastPathActions: Schema.optional(Schema.Array(Schema.String)),
+              fastPathActionsOnFailedOperation: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              linkedNotificationTimeout: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        resourceProviderAuthorizationRules: Schema.optional(
+          Schema.Struct({
+            asyncOperationPollingRules: Schema.optional(
+              Schema.Struct({
+                authorizationActions: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                additionalOptions: Schema.optional(
+                  Schema.Literals([
+                    "ProtectedAsyncOperationPolling",
+                    "ProtectedAsyncOperationPollingAuditOnly",
+                  ]),
+                ),
+              }),
+            ),
+          }),
+        ),
+        tokenAuthConfiguration: Schema.optional(
+          Schema.Struct({
+            authenticationScheme: Schema.optional(
+              Schema.Literals(["PoP", "Bearer"]),
+            ),
+            signedRequestScope: Schema.optional(
+              Schema.Literals(["ResourceUri", "Endpoint"]),
+            ),
+            disableCertificateAuthenticationFallback: Schema.optional(
+              Schema.Boolean,
+            ),
+          }),
+        ),
+        templateDeploymentPolicy: Schema.optional(
+          Schema.Struct({
+            capabilities: Schema.Literals(["Default", "Preflight"]),
+            preflightOptions: Schema.Literals([
+              "None",
+              "ValidationRequests",
+              "DeploymentRequests",
+              "TestOnly",
+              "RegisteredOnly",
+            ]),
+            preflightNotifications: Schema.optional(
+              Schema.Literals(["None", "UnregisteredSubscriptions"]),
+            ),
+          }),
+        ),
+        allowEmptyRoleAssignments: Schema.optional(Schema.Boolean),
+        policyExecutionType: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "ExecutePolicies",
+            "BypassPolicies",
+            "ExpectPartialPutRequests",
+          ]),
+        ),
+        availabilityZoneRule: Schema.optional(
+          Schema.Struct({
+            availabilityZonePolicy: Schema.optional(
+              Schema.Literals(["NotSpecified", "SingleZoned", "MultiZoned"]),
+            ),
+          }),
+        ),
+        dstsConfiguration: Schema.optional(
+          Schema.Struct({
+            serviceName: Schema.String,
+            serviceDnsName: Schema.optional(Schema.String),
+          }),
+        ),
+        asyncTimeoutRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              actionName: Schema.optional(Schema.String),
+              timeout: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        commonApiVersions: Schema.optional(Schema.Array(Schema.String)),
+        apiProfiles: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              profileVersion: Schema.optional(Schema.String),
+              apiVersion: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        linkedOperationRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              linkedOperation: Schema.Literals([
+                "None",
+                "CrossResourceGroupResourceMove",
+                "CrossSubscriptionResourceMove",
+              ]),
+              linkedAction: Schema.Literals([
+                "NotSpecified",
+                "Blocked",
+                "Validate",
+                "Enabled",
+              ]),
+              dependsOnTypes: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+        legacyName: Schema.optional(Schema.String),
+        legacyNames: Schema.optional(Schema.Array(Schema.String)),
+        allowedTemplateDeploymentReferenceActions: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        legacyPolicy: Schema.optional(
+          Schema.Struct({
+            disallowedLegacyOperations: Schema.optional(
+              Schema.Array(
+                Schema.Literals([
+                  "NotSpecified",
+                  "Create",
+                  "Delete",
+                  "Waiting",
+                  "AzureAsyncOperationWaiting",
+                  "ResourceCacheWaiting",
+                  "Action",
+                  "Read",
+                  "EvaluateDeploymentOutput",
+                  "DeploymentCleanup",
+                ]),
+              ),
+            ),
+            disallowedConditions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  disallowedLegacyOperations: Schema.optional(
+                    Schema.Array(
+                      Schema.Literals([
+                        "NotSpecified",
+                        "Create",
+                        "Delete",
+                        "Waiting",
+                        "AzureAsyncOperationWaiting",
+                        "ResourceCacheWaiting",
+                        "Action",
+                        "Read",
+                        "EvaluateDeploymentOutput",
+                        "DeploymentCleanup",
+                      ]),
+                    ),
+                  ),
+                  feature: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        manifestLink: Schema.optional(Schema.String),
+        capacityRule: Schema.optional(
+          Schema.Struct({
+            capacityPolicy: Schema.optional(
+              Schema.Literals(["Default", "Restricted"]),
+            ),
+            skuAlias: Schema.optional(Schema.String),
+          }),
+        ),
+        marketplaceOptions: Schema.optional(
+          Schema.Struct({
+            addOnPlanConversionAllowed: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        allowedResourceNames: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              getActionVerb: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        resourceCache: Schema.optional(
+          Schema.Struct({
+            enableResourceCache: Schema.optional(Schema.Boolean),
+            resourceCacheExpirationTimespan: Schema.optional(Schema.String),
+          }),
+        ),
+        resourceQueryManagement: Schema.optional(
+          Schema.Struct({
+            filterOption: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "EnableSubscriptionFilterOnTenant",
+              ]),
+            ),
+          }),
+        ),
+        supportsTags: Schema.optional(Schema.Boolean),
+        resourceManagementOptions: Schema.optional(
+          Schema.Struct({
+            batchProvisioningSupport: Schema.optional(
+              Schema.Struct({
+                supportedOperations: Schema.optional(
+                  Schema.Literals(["NotSpecified", "Get", "Delete"]),
+                ),
+              }),
+            ),
+            deleteDependencies: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  requiredFeatures: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  linkedProperty: Schema.optional(Schema.String),
+                  linkedType: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            nestedProvisioningSupport: Schema.optional(
+              Schema.Struct({
+                minimumApiVersion: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        groupingTag: Schema.optional(Schema.String),
+        addResourceListTargetLocations: Schema.optional(Schema.Boolean),
+        resourceTypeCommonAttributeManagement: Schema.optional(
+          Schema.Struct({
+            commonApiVersionsMergeMode: Schema.optional(
+              Schema.Literals(["Merge", "Overwrite"]),
+            ),
+          }),
+        ),
+        routingRule: Schema.optional(
+          Schema.Struct({
+            hostResourceType: Schema.optional(Schema.String),
+          }),
+        ),
+        frontdoorRequestMode: Schema.optional(
+          Schema.Literals(["NotSpecified", "UseManifest"]),
+        ),
+        resourceSubType: Schema.optional(
+          Schema.Literals(["NotSpecified", "AsyncOperation"]),
+        ),
+        asyncOperationResourceTypeName: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.optional(Schema.Literals(["Managed", "Hybrid", "Direct"])),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ResourceTypeRegistrationsCreateOrUpdateInput =
@@ -3291,11 +5195,11 @@ export const ResourceTypeRegistrationsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ResourceTypeRegistrationsDeleteInput =
@@ -3327,11 +5231,11 @@ export const ResourceTypeRegistrationsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ResourceTypeRegistrationsGetInput =
@@ -3380,11 +5284,11 @@ export const ResourceTypeRegistrationsListByProviderRegistrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations",
+      apiVersion: "2024-09-01",
     }),
   );
 export type ResourceTypeRegistrationsListByProviderRegistrationInput =
@@ -3449,11 +5353,105 @@ export const SkusCreateOrUpdateInput =
     providerNamespace: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
     sku: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        skuSettings: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            tier: Schema.optional(Schema.String),
+            size: Schema.optional(Schema.String),
+            family: Schema.optional(Schema.String),
+            kind: Schema.optional(Schema.String),
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            locationInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  location: Schema.String,
+                  zones: Schema.optional(Schema.Array(Schema.String)),
+                  zoneDetails: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.Array(Schema.String)),
+                        capabilities: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.String,
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  extendedLocations: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "NotSpecified",
+                      "CustomLocation",
+                      "EdgeZone",
+                      "ArcZone",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+            requiredQuotaIds: Schema.optional(Schema.Array(Schema.String)),
+            requiredFeatures: Schema.optional(Schema.Array(Schema.String)),
+            capacity: Schema.optional(
+              Schema.Struct({
+                minimum: Schema.Number,
+                maximum: Schema.optional(Schema.Number),
+                default: Schema.optional(Schema.Number),
+                scaleType: Schema.optional(
+                  Schema.Literals(["None", "Manual", "Automatic"]),
+                ),
+              }),
+            ),
+            costs: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  meterId: Schema.String,
+                  quantity: Schema.optional(Schema.Number),
+                  extendedUnit: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            capabilities: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "MovingResources",
+            "TransientFailure",
+            "RolloutInProgress",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusCreateOrUpdateInput = typeof SkusCreateOrUpdateInput.Type;
@@ -3503,11 +5501,105 @@ export const SkusCreateOrUpdateNestedResourceTypeFirstInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeFirst: Schema.String.pipe(T.PathParam()),
     sku: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        skuSettings: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            tier: Schema.optional(Schema.String),
+            size: Schema.optional(Schema.String),
+            family: Schema.optional(Schema.String),
+            kind: Schema.optional(Schema.String),
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            locationInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  location: Schema.String,
+                  zones: Schema.optional(Schema.Array(Schema.String)),
+                  zoneDetails: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.Array(Schema.String)),
+                        capabilities: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.String,
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  extendedLocations: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "NotSpecified",
+                      "CustomLocation",
+                      "EdgeZone",
+                      "ArcZone",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+            requiredQuotaIds: Schema.optional(Schema.Array(Schema.String)),
+            requiredFeatures: Schema.optional(Schema.Array(Schema.String)),
+            capacity: Schema.optional(
+              Schema.Struct({
+                minimum: Schema.Number,
+                maximum: Schema.optional(Schema.Number),
+                default: Schema.optional(Schema.Number),
+                scaleType: Schema.optional(
+                  Schema.Literals(["None", "Manual", "Automatic"]),
+                ),
+              }),
+            ),
+            costs: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  meterId: Schema.String,
+                  quantity: Schema.optional(Schema.Number),
+                  extendedUnit: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            capabilities: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "MovingResources",
+            "TransientFailure",
+            "RolloutInProgress",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusCreateOrUpdateNestedResourceTypeFirstInput =
@@ -3562,11 +5654,105 @@ export const SkusCreateOrUpdateNestedResourceTypeSecondInput =
     nestedResourceTypeFirst: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeSecond: Schema.String.pipe(T.PathParam()),
     sku: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        skuSettings: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            tier: Schema.optional(Schema.String),
+            size: Schema.optional(Schema.String),
+            family: Schema.optional(Schema.String),
+            kind: Schema.optional(Schema.String),
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            locationInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  location: Schema.String,
+                  zones: Schema.optional(Schema.Array(Schema.String)),
+                  zoneDetails: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.Array(Schema.String)),
+                        capabilities: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.String,
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  extendedLocations: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "NotSpecified",
+                      "CustomLocation",
+                      "EdgeZone",
+                      "ArcZone",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+            requiredQuotaIds: Schema.optional(Schema.Array(Schema.String)),
+            requiredFeatures: Schema.optional(Schema.Array(Schema.String)),
+            capacity: Schema.optional(
+              Schema.Struct({
+                minimum: Schema.Number,
+                maximum: Schema.optional(Schema.Number),
+                default: Schema.optional(Schema.Number),
+                scaleType: Schema.optional(
+                  Schema.Literals(["None", "Manual", "Automatic"]),
+                ),
+              }),
+            ),
+            costs: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  meterId: Schema.String,
+                  quantity: Schema.optional(Schema.Number),
+                  extendedUnit: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            capabilities: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "MovingResources",
+            "TransientFailure",
+            "RolloutInProgress",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusCreateOrUpdateNestedResourceTypeSecondInput =
@@ -3623,11 +5809,105 @@ export const SkusCreateOrUpdateNestedResourceTypeThirdInput =
     nestedResourceTypeSecond: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeThird: Schema.String.pipe(T.PathParam()),
     sku: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        skuSettings: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            tier: Schema.optional(Schema.String),
+            size: Schema.optional(Schema.String),
+            family: Schema.optional(Schema.String),
+            kind: Schema.optional(Schema.String),
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            locationInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  location: Schema.String,
+                  zones: Schema.optional(Schema.Array(Schema.String)),
+                  zoneDetails: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.Array(Schema.String)),
+                        capabilities: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.String,
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                  ),
+                  extendedLocations: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "NotSpecified",
+                      "CustomLocation",
+                      "EdgeZone",
+                      "ArcZone",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+            requiredQuotaIds: Schema.optional(Schema.Array(Schema.String)),
+            requiredFeatures: Schema.optional(Schema.Array(Schema.String)),
+            capacity: Schema.optional(
+              Schema.Struct({
+                minimum: Schema.Number,
+                maximum: Schema.optional(Schema.Number),
+                default: Schema.optional(Schema.Number),
+                scaleType: Schema.optional(
+                  Schema.Literals(["None", "Manual", "Automatic"]),
+                ),
+              }),
+            ),
+            costs: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  meterId: Schema.String,
+                  quantity: Schema.optional(Schema.Number),
+                  extendedUnit: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            capabilities: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Creating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "MovingResources",
+            "TransientFailure",
+            "RolloutInProgress",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusCreateOrUpdateNestedResourceTypeThirdInput =
@@ -3681,11 +5961,11 @@ export const SkusDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   providerNamespace: Schema.String.pipe(T.PathParam()),
   resourceType: Schema.String.pipe(T.PathParam()),
   sku: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type SkusDeleteInput = typeof SkusDeleteInput.Type;
@@ -3716,11 +5996,11 @@ export const SkusDeleteNestedResourceTypeFirstInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeFirst: Schema.String.pipe(T.PathParam()),
     sku: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusDeleteNestedResourceTypeFirstInput =
@@ -3757,11 +6037,11 @@ export const SkusDeleteNestedResourceTypeSecondInput =
     nestedResourceTypeFirst: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeSecond: Schema.String.pipe(T.PathParam()),
     sku: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusDeleteNestedResourceTypeSecondInput =
@@ -3800,11 +6080,11 @@ export const SkusDeleteNestedResourceTypeThirdInput =
     nestedResourceTypeSecond: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeThird: Schema.String.pipe(T.PathParam()),
     sku: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusDeleteNestedResourceTypeThirdInput =
@@ -3840,11 +6120,11 @@ export const SkusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   providerNamespace: Schema.String.pipe(T.PathParam()),
   resourceType: Schema.String.pipe(T.PathParam()),
   sku: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
+    apiVersion: "2024-09-01",
   }),
 );
 export type SkusGetInput = typeof SkusGetInput.Type;
@@ -3893,11 +6173,11 @@ export const SkusGetNestedResourceTypeFirstInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeFirst: Schema.String.pipe(T.PathParam()),
     sku: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusGetNestedResourceTypeFirstInput =
@@ -3952,11 +6232,11 @@ export const SkusGetNestedResourceTypeSecondInput =
     nestedResourceTypeFirst: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeSecond: Schema.String.pipe(T.PathParam()),
     sku: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusGetNestedResourceTypeSecondInput =
@@ -4013,11 +6293,11 @@ export const SkusGetNestedResourceTypeThirdInput =
     nestedResourceTypeSecond: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeThird: Schema.String.pipe(T.PathParam()),
     sku: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusGetNestedResourceTypeThirdInput =
@@ -4071,11 +6351,11 @@ export const SkusListByResourceTypeRegistrationsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusListByResourceTypeRegistrationsInput =
@@ -4141,11 +6421,11 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeFirstInput =
     providerNamespace: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeFirst: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusListByResourceTypeRegistrationsNestedResourceTypeFirstInput =
@@ -4215,11 +6495,11 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeSecondInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeFirst: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeSecond: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusListByResourceTypeRegistrationsNestedResourceTypeSecondInput =
@@ -4291,11 +6571,11 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeThirdInput =
     nestedResourceTypeFirst: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeSecond: Schema.String.pipe(T.PathParam()),
     nestedResourceTypeThird: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus",
+      apiVersion: "2024-09-01",
     }),
   );
 export type SkusListByResourceTypeRegistrationsNestedResourceTypeThirdInput =

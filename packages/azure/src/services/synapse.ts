@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AzureADOnlyAuthenticationsCreateInput =
@@ -17,11 +18,20 @@ export const AzureADOnlyAuthenticationsCreateInput =
     azureADOnlyAuthenticationName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        azureADOnlyAuthentication: Schema.Boolean,
+        state: Schema.optional(
+          Schema.Literals(["Consistent", "InConsistent", "Updating"]),
+        ),
+        creationDate: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications/{azureADOnlyAuthenticationName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AzureADOnlyAuthenticationsCreateInput =
@@ -63,11 +73,11 @@ export const AzureADOnlyAuthenticationsGetInput =
     azureADOnlyAuthenticationName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications/{azureADOnlyAuthenticationName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AzureADOnlyAuthenticationsGetInput =
@@ -106,11 +116,11 @@ export const AzureADOnlyAuthenticationsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AzureADOnlyAuthenticationsListInput =
@@ -156,12 +166,98 @@ export const BigDataPoolsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     bigDataPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     force: Schema.optional(Schema.Boolean),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        autoScale: Schema.optional(
+          Schema.Struct({
+            minNodeCount: Schema.optional(Schema.Number),
+            enabled: Schema.optional(Schema.Boolean),
+            maxNodeCount: Schema.optional(Schema.Number),
+          }),
+        ),
+        creationDate: Schema.optional(Schema.String),
+        autoPause: Schema.optional(
+          Schema.Struct({
+            delayInMinutes: Schema.optional(Schema.Number),
+            enabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        isComputeIsolationEnabled: Schema.optional(Schema.Boolean),
+        isAutotuneEnabled: Schema.optional(Schema.Boolean),
+        sessionLevelPackagesEnabled: Schema.optional(Schema.Boolean),
+        cacheSize: Schema.optional(Schema.Number),
+        dynamicExecutorAllocation: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            minExecutors: Schema.optional(Schema.Number),
+            maxExecutors: Schema.optional(Schema.Number),
+          }),
+        ),
+        sparkEventsFolder: Schema.optional(Schema.String),
+        nodeCount: Schema.optional(Schema.Number),
+        libraryRequirements: Schema.optional(
+          Schema.Struct({
+            time: Schema.optional(Schema.String),
+            content: Schema.optional(Schema.String),
+            filename: Schema.optional(Schema.String),
+          }),
+        ),
+        customLibraries: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              path: Schema.optional(Schema.String),
+              containerName: Schema.optional(Schema.String),
+              uploadedTimestamp: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              provisioningStatus: Schema.optional(Schema.String),
+              creatorId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        sparkConfigProperties: Schema.optional(
+          Schema.Struct({
+            time: Schema.optional(Schema.String),
+            content: Schema.optional(Schema.String),
+            filename: Schema.optional(Schema.String),
+            configurationType: Schema.optional(
+              Schema.Literals(["File", "Artifact"]),
+            ),
+          }),
+        ),
+        sparkVersion: Schema.optional(Schema.String),
+        defaultSparkLogFolder: Schema.optional(Schema.String),
+        nodeSize: Schema.optional(
+          Schema.Literals([
+            "None",
+            "Small",
+            "Medium",
+            "Large",
+            "XLarge",
+            "XXLarge",
+            "XXXLarge",
+          ]),
+        ),
+        nodeSizeFamily: Schema.optional(
+          Schema.Literals([
+            "None",
+            "MemoryOptimized",
+            "HardwareAcceleratedFPGA",
+            "HardwareAcceleratedGPU",
+          ]),
+        ),
+        lastSucceededTimestamp: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type BigDataPoolsCreateOrUpdateInput =
@@ -203,11 +299,11 @@ export const BigDataPoolsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     bigDataPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type BigDataPoolsDeleteInput = typeof BigDataPoolsDeleteInput.Type;
@@ -243,11 +339,11 @@ export const BigDataPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   bigDataPoolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type BigDataPoolsGetInput = typeof BigDataPoolsGetInput.Type;
@@ -282,11 +378,11 @@ export const BigDataPoolsListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools",
+      apiVersion: "2021-06-01",
     }),
   );
 export type BigDataPoolsListByWorkspaceInput =
@@ -333,11 +429,12 @@ export const BigDataPoolsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     bigDataPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type BigDataPoolsUpdateInput = typeof BigDataPoolsUpdateInput.Type;
@@ -374,11 +471,22 @@ export const DataMaskingPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        dataMaskingState: Schema.Literals(["Disabled", "Enabled"]),
+        exemptPrincipals: Schema.optional(Schema.String),
+        applicationPrincipals: Schema.optional(Schema.String),
+        maskingLevel: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    managedBy: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type DataMaskingPoliciesCreateOrUpdateInput =
@@ -416,11 +524,11 @@ export const DataMaskingPoliciesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type DataMaskingPoliciesGetInput =
@@ -460,11 +568,36 @@ export const DataMaskingRulesCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     dataMaskingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        aliasName: Schema.optional(Schema.String),
+        ruleState: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+        schemaName: Schema.String,
+        tableName: Schema.String,
+        columnName: Schema.String,
+        maskingFunction: Schema.Literals([
+          "Default",
+          "CCN",
+          "Email",
+          "Number",
+          "SSN",
+          "Text",
+        ]),
+        numberFrom: Schema.optional(Schema.String),
+        numberTo: Schema.optional(Schema.String),
+        prefixSize: Schema.optional(Schema.String),
+        suffixSize: Schema.optional(Schema.String),
+        replacementString: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type DataMaskingRulesCreateOrUpdateInput =
@@ -504,11 +637,11 @@ export const DataMaskingRulesGetInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     dataMaskingRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type DataMaskingRulesGetInput = typeof DataMaskingRulesGetInput.Type;
@@ -544,11 +677,11 @@ export const DataMaskingRulesListBySqlPoolInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules",
+      apiVersion: "2021-06-01",
     }),
   );
 export type DataMaskingRulesListBySqlPoolInput =
@@ -593,11 +726,25 @@ export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        predicateExpression: Schema.optional(Schema.String),
+        state: Schema.Literals(["Enabled", "Disabled"]),
+        storageEndpoint: Schema.optional(Schema.String),
+        storageAccountAccessKey: Schema.optional(Schema.String),
+        retentionDays: Schema.optional(Schema.Number),
+        auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
+        storageAccountSubscriptionId: Schema.optional(Schema.String),
+        isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
+        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+        queueDelayMs: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings/{blobAuditingPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
@@ -637,11 +784,11 @@ export const ExtendedSqlPoolBlobAuditingPoliciesGetInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings/{blobAuditingPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ExtendedSqlPoolBlobAuditingPoliciesGetInput =
@@ -680,11 +827,11 @@ export const ExtendedSqlPoolBlobAuditingPoliciesListBySqlPoolInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings",
+      apiVersion: "2021-06-01",
     }),
   );
 export type ExtendedSqlPoolBlobAuditingPoliciesListBySqlPoolInput =
@@ -728,11 +875,11 @@ export const IntegrationRuntimeAuthKeysListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/listAuthKeys",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimeAuthKeysListInput =
@@ -769,11 +916,12 @@ export const IntegrationRuntimeAuthKeysRegenerateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keyName: Schema.optional(Schema.Literals(["authKey1", "authKey2"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/regenerateAuthKey",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimeAuthKeysRegenerateInput =
@@ -810,11 +958,11 @@ export const IntegrationRuntimeConnectionInfosGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getConnectionInfo",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimeConnectionInfosGetInput =
@@ -855,11 +1003,11 @@ export const IntegrationRuntimeCredentialsSyncInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/syncCredentials",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimeCredentialsSyncInput =
@@ -893,11 +1041,11 @@ export const IntegrationRuntimeMonitoringDataListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/monitoringData",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimeMonitoringDataListInput =
@@ -948,11 +1096,11 @@ export const IntegrationRuntimeNodeIpAddressGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     nodeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}/ipAddress",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimeNodeIpAddressGetInput =
@@ -990,11 +1138,11 @@ export const IntegrationRuntimeNodesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     nodeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimeNodesDeleteInput =
@@ -1030,11 +1178,11 @@ export const IntegrationRuntimeNodesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     nodeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimeNodesGetInput =
@@ -1102,11 +1250,12 @@ export const IntegrationRuntimeNodesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     nodeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    concurrentJobsLimit: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimeNodesUpdateInput =
@@ -1172,11 +1321,12 @@ export const IntegrationRuntimeObjectMetadataListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    metadataPath: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getObjectMetadata",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimeObjectMetadataListInput =
@@ -1227,11 +1377,11 @@ export const IntegrationRuntimeObjectMetadataRefreshInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/refreshObjectMetadata",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimeObjectMetadataRefreshInput =
@@ -1270,11 +1420,15 @@ export const IntegrationRuntimesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      type: Schema.Literals(["Managed", "SelfHosted"]),
+      description: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimesCreateInput =
@@ -1314,11 +1468,11 @@ export const IntegrationRuntimesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimesDeleteInput =
@@ -1353,11 +1507,11 @@ export const IntegrationRuntimesDisableInteractiveQueryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/disableInteractiveQuery",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimesDisableInteractiveQueryInput =
@@ -1389,11 +1543,11 @@ export const IntegrationRuntimesEnableInteractiveQueryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/enableInteractiveQuery",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimesEnableInteractiveQueryInput =
@@ -1425,11 +1579,11 @@ export const IntegrationRuntimesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimesGetInput =
@@ -1469,11 +1623,11 @@ export const IntegrationRuntimesListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimesListByWorkspaceInput =
@@ -1516,11 +1670,11 @@ export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/outboundNetworkDependenciesEndpoints",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput =
@@ -1578,11 +1732,11 @@ export const IntegrationRuntimesStartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/start",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimesStartInput =
@@ -1637,11 +1791,11 @@ export const IntegrationRuntimesStopInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/stop",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimesStopInput =
@@ -1676,11 +1830,11 @@ export const IntegrationRuntimeStatusGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getStatus",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimeStatusGetInput =
@@ -1735,11 +1889,13 @@ export const IntegrationRuntimesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    autoUpdate: Schema.optional(Schema.Literals(["On", "Off"])),
+    updateDelayOffset: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimesUpdateInput =
@@ -1778,11 +1934,11 @@ export const IntegrationRuntimesUpgradeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/upgrade",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IntegrationRuntimesUpgradeInput =
@@ -1817,11 +1973,26 @@ export const IpFirewallRulesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        endIpAddress: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Succeeded",
+            "Deleting",
+            "Failed",
+            "DeleteError",
+          ]),
+        ),
+        startIpAddress: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IpFirewallRulesCreateOrUpdateInput =
@@ -1857,11 +2028,11 @@ export const IpFirewallRulesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IpFirewallRulesDeleteInput = typeof IpFirewallRulesDeleteInput.Type;
@@ -1897,11 +2068,11 @@ export const IpFirewallRulesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IpFirewallRulesGetInput = typeof IpFirewallRulesGetInput.Type;
@@ -1934,11 +2105,11 @@ export const IpFirewallRulesListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IpFirewallRulesListByWorkspaceInput =
@@ -1981,11 +2152,29 @@ export const IpFirewallRulesReplaceAllInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    ipFirewallRules: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.Struct({
+          endIpAddress: Schema.optional(Schema.String),
+          provisioningState: Schema.optional(
+            Schema.Literals([
+              "Provisioning",
+              "Succeeded",
+              "Deleting",
+              "Failed",
+              "DeleteError",
+            ]),
+          ),
+          startIpAddress: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/replaceAllIpFirewallRules",
+      apiVersion: "2021-06-01",
     }),
   );
 export type IpFirewallRulesReplaceAllInput =
@@ -2020,11 +2209,17 @@ export const KeysCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        isActiveCMK: Schema.optional(Schema.Boolean),
+        keyVaultUrl: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys/{keyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type KeysCreateOrUpdateInput = typeof KeysCreateOrUpdateInput.Type;
@@ -2056,11 +2251,11 @@ export const KeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys/{keyName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type KeysDeleteInput = typeof KeysDeleteInput.Type;
@@ -2091,11 +2286,11 @@ export const KeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys/{keyName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type KeysGetInput = typeof KeysGetInput.Type;
@@ -2127,11 +2322,11 @@ export const KeysListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys",
+      apiVersion: "2021-06-01",
     }),
   );
 export type KeysListByWorkspaceInput = typeof KeysListByWorkspaceInput.Type;
@@ -2171,11 +2366,11 @@ export const LibrariesListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/libraries",
+      apiVersion: "2021-06-01",
     }),
   );
 export type LibrariesListByWorkspaceInput =
@@ -2218,11 +2413,11 @@ export const LibraryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/libraries/{libraryName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type LibraryGetInput = typeof LibraryGetInput.Type;
@@ -2254,11 +2449,13 @@ export const LibraryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const OperationsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/checkNameAvailability",
+      apiVersion: "2021-06-01",
     }),
   );
 export type OperationsCheckNameAvailabilityInput =
@@ -2296,11 +2493,11 @@ export const OperationsGetAzureAsyncHeaderResultInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/operationStatuses/{operationId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type OperationsGetAzureAsyncHeaderResultInput =
@@ -2379,11 +2576,11 @@ export const OperationsGetLocationHeaderResultInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/operationResults/{operationId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type OperationsGetLocationHeaderResultInput =
@@ -2416,7 +2613,11 @@ export const OperationsGetLocationHeaderResult =
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Synapse/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Synapse/operations",
+    apiVersion: "2021-06-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -2516,6 +2717,7 @@ export const PrivateEndpointConnectionsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -2547,6 +2749,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -2573,6 +2776,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -2603,11 +2807,11 @@ export const PrivateEndpointConnectionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -2650,6 +2854,7 @@ export const PrivateEndpointConnectionsPrivateLinkHubGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsPrivateLinkHubGetInput =
@@ -2697,6 +2902,7 @@ export const PrivateEndpointConnectionsPrivateLinkHubListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateEndpointConnectionsPrivateLinkHubListInput =
@@ -2750,11 +2956,11 @@ export const PrivateLinkHubPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkHubPrivateLinkResourcesGetInput =
@@ -2790,11 +2996,11 @@ export const PrivateLinkHubPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateLinkResources",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkHubPrivateLinkResourcesListInput =
@@ -2834,10 +3040,43 @@ export const PrivateLinkHubPrivateLinkResourcesList =
   }));
 // Input Schema
 export const PrivateLinkHubsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              properties: Schema.optional(
+                Schema.Struct({
+                  privateEndpoint: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  privateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.optional(Schema.String),
+                      description: Schema.optional(Schema.String),
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  provisioningState: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkHubsCreateOrUpdateInput =
@@ -2868,6 +3107,7 @@ export const PrivateLinkHubsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkHubsDeleteInput = typeof PrivateLinkHubsDeleteInput.Type;
@@ -2894,6 +3134,7 @@ export const PrivateLinkHubsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkHubsGetInput = typeof PrivateLinkHubsGetInput.Type;
@@ -2919,11 +3160,11 @@ export const PrivateLinkHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PrivateLinkHubsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/privateLinkHubs",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkHubsListInput = typeof PrivateLinkHubsListInput.Type;
@@ -2961,6 +3202,7 @@ export const PrivateLinkHubsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkHubsListByResourceGroupInput =
@@ -2994,10 +3236,13 @@ export const PrivateLinkHubsListByResourceGroup =
   }));
 // Input Schema
 export const PrivateLinkHubsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkHubsUpdateInput = typeof PrivateLinkHubsUpdateInput.Type;
@@ -3028,11 +3273,11 @@ export const PrivateLinkResourcesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -3071,11 +3316,11 @@ export const PrivateLinkResourcesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateLinkResources",
+      apiVersion: "2021-06-01",
     }),
   );
 export type PrivateLinkResourcesListInput =
@@ -3122,11 +3367,11 @@ export const RestorableDroppedSqlPoolsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     restorableDroppedSqlPoolId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/restorableDroppedSqlPools/{restorableDroppedSqlPoolId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type RestorableDroppedSqlPoolsGetInput =
@@ -3163,11 +3408,11 @@ export const RestorableDroppedSqlPoolsListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/restorableDroppedSqlPools",
+      apiVersion: "2021-06-01",
     }),
   );
 export type RestorableDroppedSqlPoolsListByWorkspaceInput =
@@ -3209,11 +3454,24 @@ export const SqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    kind: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        state: Schema.Literals(["Enabled", "Disabled"]),
+        storageEndpoint: Schema.optional(Schema.String),
+        storageAccountAccessKey: Schema.optional(Schema.String),
+        retentionDays: Schema.optional(Schema.Number),
+        auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
+        storageAccountSubscriptionId: Schema.optional(Schema.String),
+        isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
+        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/auditingSettings/{blobAuditingPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
@@ -3255,11 +3513,11 @@ export const SqlPoolBlobAuditingPoliciesGetInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/auditingSettings/{blobAuditingPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolBlobAuditingPoliciesGetInput =
@@ -3300,11 +3558,11 @@ export const SqlPoolBlobAuditingPoliciesListBySqlPoolInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/auditingSettings",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolBlobAuditingPoliciesListBySqlPoolInput =
@@ -3352,12 +3610,12 @@ export const SqlPoolColumnsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type SqlPoolColumnsGetInput = typeof SqlPoolColumnsGetInput.Type;
@@ -3398,11 +3656,11 @@ export const SqlPoolDataWarehouseUserActivitiesGetInput =
     dataWarehouseUserActivityName: Schema.Literals(["current"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataWarehouseUserActivities/{dataWarehouseUserActivityName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolDataWarehouseUserActivitiesGetInput =
@@ -3444,11 +3702,17 @@ export const SqlPoolGeoBackupPoliciesCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     geoBackupPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      state: Schema.Literals(["Disabled", "Enabled"]),
+      storageType: Schema.optional(Schema.String),
+    }),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/geoBackupPolicies/{geoBackupPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolGeoBackupPoliciesCreateOrUpdateInput =
@@ -3488,11 +3752,11 @@ export const SqlPoolGeoBackupPoliciesGetInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     geoBackupPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/geoBackupPolicies/{geoBackupPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolGeoBackupPoliciesGetInput =
@@ -3534,11 +3798,11 @@ export const SqlPoolGeoBackupPoliciesListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/geoBackupPolicies",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolGeoBackupPoliciesListInput =
@@ -3584,12 +3848,12 @@ export const SqlPoolMaintenanceWindowOptionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     maintenanceWindowOptionsName: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/maintenanceWindowOptions/current",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolMaintenanceWindowOptionsGetInput =
@@ -3630,12 +3894,35 @@ export const SqlPoolMaintenanceWindowsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     maintenanceWindowName: Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        timeRanges: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              dayOfWeek: Schema.optional(
+                Schema.Literals([
+                  "Sunday",
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                ]),
+              ),
+              startTime: Schema.optional(Schema.String),
+              duration: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/maintenancewindows/current",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolMaintenanceWindowsCreateOrUpdateInput =
@@ -3670,12 +3957,12 @@ export const SqlPoolMaintenanceWindowsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     maintenanceWindowName: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/maintenancewindows/current",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolMaintenanceWindowsGetInput =
@@ -3715,11 +4002,11 @@ export const SqlPoolOperationResultsGetLocationHeaderResultInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/operationResults/{operationId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolOperationResultsGetLocationHeaderResultInput =
@@ -3760,11 +4047,11 @@ export const SqlPoolOperationsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/operations",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolOperationsListInput = typeof SqlPoolOperationsListInput.Type;
@@ -3811,11 +4098,20 @@ export const SqlPoolRecommendedSensitivityLabelsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/recommendedSensitivityLabels",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolRecommendedSensitivityLabelsUpdateInput =
@@ -3850,11 +4146,11 @@ export const SqlPoolReplicationLinksGetByNameInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     linkId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/replicationLinks/{linkId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolReplicationLinksGetByNameInput =
@@ -3895,11 +4191,11 @@ export const SqlPoolReplicationLinksListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/replicationLinks",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolReplicationLinksListInput =
@@ -3947,11 +4243,12 @@ export const SqlPoolRestorePointsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    restorePointLabel: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolRestorePointsCreateInput =
@@ -3991,11 +4288,11 @@ export const SqlPoolRestorePointsDeleteInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     restorePointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints/{restorePointName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolRestorePointsDeleteInput =
@@ -4032,11 +4329,11 @@ export const SqlPoolRestorePointsGetInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     restorePointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints/{restorePointName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolRestorePointsGetInput =
@@ -4076,11 +4373,11 @@ export const SqlPoolRestorePointsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolRestorePointsListInput =
@@ -4129,12 +4426,12 @@ export const SqlPoolSchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type SqlPoolSchemasGetInput = typeof SqlPoolSchemasGetInput.Type;
@@ -4170,12 +4467,12 @@ export const SqlPoolSchemasListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolSchemasListInput = typeof SqlPoolSchemasListInput.Type;
@@ -4219,11 +4516,42 @@ export const SqlPoolsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   sqlPoolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  sku: Schema.optional(
+    Schema.Struct({
+      tier: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      maxSizeBytes: Schema.optional(Schema.Number),
+      collation: Schema.optional(Schema.String),
+      sourceDatabaseId: Schema.optional(Schema.String),
+      recoverableDatabaseId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.String),
+      restorePointInTime: Schema.optional(Schema.String),
+      createMode: Schema.optional(
+        Schema.Literals([
+          "Default",
+          "PointInTimeRestore",
+          "Recovery",
+          "Restore",
+        ]),
+      ),
+      creationDate: Schema.optional(Schema.String),
+      storageAccountType: Schema.optional(Schema.Literals(["GRS", "LRS"])),
+      sourceDatabaseDeletionDate: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type SqlPoolsCreateInput = typeof SqlPoolsCreateInput.Type;
@@ -4258,11 +4586,11 @@ export const SqlPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   sqlPoolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type SqlPoolsDeleteInput = typeof SqlPoolsDeleteInput.Type;
@@ -4299,11 +4627,23 @@ export const SqlPoolSecurityAlertPoliciesCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     securityAlertPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        state: Schema.Literals(["New", "Enabled", "Disabled"]),
+        disabledAlerts: Schema.optional(Schema.Array(Schema.String)),
+        emailAddresses: Schema.optional(Schema.Array(Schema.String)),
+        emailAccountAdmins: Schema.optional(Schema.Boolean),
+        storageEndpoint: Schema.optional(Schema.String),
+        storageAccountAccessKey: Schema.optional(Schema.String),
+        retentionDays: Schema.optional(Schema.Number),
+        creationTime: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/securityAlertPolicies/{securityAlertPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolSecurityAlertPoliciesCreateOrUpdateInput =
@@ -4345,11 +4685,11 @@ export const SqlPoolSecurityAlertPoliciesGetInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     securityAlertPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/securityAlertPolicies/{securityAlertPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolSecurityAlertPoliciesGetInput =
@@ -4390,11 +4730,11 @@ export const SqlPoolSecurityAlertPoliciesListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/securityAlertPolicies",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolSecurityAlertPoliciesListInput =
@@ -4445,11 +4785,27 @@ export const SqlPoolSensitivityLabelsCreateOrUpdateInput =
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["current"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        schemaName: Schema.optional(Schema.String),
+        tableName: Schema.optional(Schema.String),
+        columnName: Schema.optional(Schema.String),
+        labelName: Schema.optional(Schema.String),
+        labelId: Schema.optional(Schema.String),
+        informationType: Schema.optional(Schema.String),
+        informationTypeId: Schema.optional(Schema.String),
+        isDisabled: Schema.optional(Schema.Boolean),
+        rank: Schema.optional(
+          Schema.Literals(["None", "Low", "Medium", "High", "Critical"]),
+        ),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolSensitivityLabelsCreateOrUpdateInput =
@@ -4495,11 +4851,11 @@ export const SqlPoolSensitivityLabelsDeleteInput =
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["current"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolSensitivityLabelsDeleteInput =
@@ -4543,11 +4899,11 @@ export const SqlPoolSensitivityLabelsDisableRecommendationInput =
     sensitivityLabelSource: Schema.Literals(["recommended"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}/disable",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolSensitivityLabelsDisableRecommendationInput =
@@ -4591,11 +4947,11 @@ export const SqlPoolSensitivityLabelsEnableRecommendationInput =
     sensitivityLabelSource: Schema.Literals(["recommended"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}/enable",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolSensitivityLabelsEnableRecommendationInput =
@@ -4639,11 +4995,11 @@ export const SqlPoolSensitivityLabelsGetInput =
     sensitivityLabelSource: Schema.Literals(["current", "recommended"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolSensitivityLabelsGetInput =
@@ -4686,12 +5042,12 @@ export const SqlPoolSensitivityLabelsListCurrentInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/currentSensitivityLabels",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolSensitivityLabelsListCurrentInput =
@@ -4739,7 +5095,6 @@ export const SqlPoolSensitivityLabelsListRecommendedInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     includeDisabledRecommendations: Schema.optional(Schema.Boolean),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -4747,6 +5102,7 @@ export const SqlPoolSensitivityLabelsListRecommendedInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/recommendedSensitivityLabels",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolSensitivityLabelsListRecommendedInput =
@@ -4796,11 +5152,20 @@ export const SqlPoolSensitivityLabelsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/currentSensitivityLabels",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolSensitivityLabelsUpdateInput =
@@ -4833,11 +5198,11 @@ export const SqlPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   sqlPoolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type SqlPoolsGetInput = typeof SqlPoolsGetInput.Type;
@@ -4872,11 +5237,11 @@ export const SqlPoolsListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolsListByWorkspaceInput =
@@ -4922,11 +5287,11 @@ export const SqlPoolsPauseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   sqlPoolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/pause",
+    apiVersion: "2021-06-01",
   }),
 );
 export type SqlPoolsPauseInput = typeof SqlPoolsPauseInput.Type;
@@ -4961,11 +5326,11 @@ export const SqlPoolsResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   sqlPoolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/resume",
+    apiVersion: "2021-06-01",
   }),
 );
 export type SqlPoolsResumeInput = typeof SqlPoolsResumeInput.Type;
@@ -5000,11 +5365,42 @@ export const SqlPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   sqlPoolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
+  sku: Schema.optional(
+    Schema.Struct({
+      tier: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      maxSizeBytes: Schema.optional(Schema.Number),
+      collation: Schema.optional(Schema.String),
+      sourceDatabaseId: Schema.optional(Schema.String),
+      recoverableDatabaseId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.String),
+      restorePointInTime: Schema.optional(Schema.String),
+      createMode: Schema.optional(
+        Schema.Literals([
+          "Default",
+          "PointInTimeRestore",
+          "Recovery",
+          "Restore",
+        ]),
+      ),
+      creationDate: Schema.optional(Schema.String),
+      storageAccountType: Schema.optional(Schema.Literals(["GRS", "LRS"])),
+      sourceDatabaseDeletionDate: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type SqlPoolsUpdateInput = typeof SqlPoolsUpdateInput.Type;
@@ -5042,12 +5438,12 @@ export const SqlPoolTableColumnsListByTableNameInput =
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolTableColumnsListByTableNameInput =
@@ -5098,11 +5494,11 @@ export const SqlPoolTablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sqlPoolName: Schema.String.pipe(T.PathParam()),
   schemaName: Schema.String.pipe(T.PathParam()),
   tableName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type SqlPoolTablesGetInput = typeof SqlPoolTablesGetInput.Type;
@@ -5141,12 +5537,12 @@ export const SqlPoolTablesListBySchemaInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolTablesListBySchemaInput =
@@ -5199,11 +5595,17 @@ export const SqlPoolTransparentDataEncryptionsCreateOrUpdateInput =
     transparentDataEncryptionName: Schema.Literals(["current"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/transparentDataEncryption/{transparentDataEncryptionName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolTransparentDataEncryptionsCreateOrUpdateInput =
@@ -5247,11 +5649,11 @@ export const SqlPoolTransparentDataEncryptionsGetInput =
     transparentDataEncryptionName: Schema.Literals(["current"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/transparentDataEncryption/{transparentDataEncryptionName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolTransparentDataEncryptionsGetInput =
@@ -5292,11 +5694,11 @@ export const SqlPoolTransparentDataEncryptionsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/transparentDataEncryption",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolTransparentDataEncryptionsListInput =
@@ -5343,12 +5745,12 @@ export const SqlPoolUsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/usages",
+    apiVersion: "2021-06-01",
   }),
 );
 export type SqlPoolUsagesListInput = typeof SqlPoolUsagesListInput.Type;
@@ -5399,11 +5801,20 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
     ),
     ruleId: Schema.String.pipe(T.PathParam()),
     baselineName: Schema.Literals(["master", "default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        baselineResults: Schema.Array(
+          Schema.Struct({
+            result: Schema.Array(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/rules/{ruleId}/baselines/{baselineName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
@@ -5450,11 +5861,11 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteInput =
     ),
     ruleId: Schema.String.pipe(T.PathParam()),
     baselineName: Schema.Literals(["master", "default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/rules/{ruleId}/baselines/{baselineName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteInput =
@@ -5496,11 +5907,11 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselinesGetInput =
     ),
     ruleId: Schema.String.pipe(T.PathParam()),
     baselineName: Schema.Literals(["master", "default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/rules/{ruleId}/baselines/{baselineName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesGetInput =
@@ -5545,11 +5956,11 @@ export const SqlPoolVulnerabilityAssessmentScansExportInput =
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/export",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolVulnerabilityAssessmentScansExportInput =
@@ -5593,11 +6004,11 @@ export const SqlPoolVulnerabilityAssessmentScansGetInput =
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolVulnerabilityAssessmentScansGetInput =
@@ -5641,11 +6052,11 @@ export const SqlPoolVulnerabilityAssessmentScansInitiateScanInput =
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/initiateScan",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolVulnerabilityAssessmentScansInitiateScanInput =
@@ -5684,11 +6095,11 @@ export const SqlPoolVulnerabilityAssessmentScansListInput =
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolVulnerabilityAssessmentScansListInput =
@@ -5739,11 +6150,25 @@ export const SqlPoolVulnerabilityAssessmentsCreateOrUpdateInput =
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        storageContainerPath: Schema.optional(Schema.String),
+        storageContainerSasKey: Schema.optional(Schema.String),
+        storageAccountAccessKey: Schema.optional(Schema.String),
+        recurringScans: Schema.optional(
+          Schema.Struct({
+            isEnabled: Schema.optional(Schema.Boolean),
+            emailSubscriptionAdmins: Schema.optional(Schema.Boolean),
+            emails: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolVulnerabilityAssessmentsCreateOrUpdateInput =
@@ -5787,11 +6212,11 @@ export const SqlPoolVulnerabilityAssessmentsDeleteInput =
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolVulnerabilityAssessmentsDeleteInput =
@@ -5831,11 +6256,11 @@ export const SqlPoolVulnerabilityAssessmentsGetInput =
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolVulnerabilityAssessmentsGetInput =
@@ -5876,11 +6301,11 @@ export const SqlPoolVulnerabilityAssessmentsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolVulnerabilityAssessmentsListInput =
@@ -5929,11 +6354,21 @@ export const SqlPoolWorkloadClassifierCreateOrUpdateInput =
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     workloadGroupName: Schema.String.pipe(T.PathParam()),
     workloadClassifierName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        memberName: Schema.String,
+        label: Schema.optional(Schema.String),
+        context: Schema.optional(Schema.String),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        importance: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolWorkloadClassifierCreateOrUpdateInput =
@@ -5977,11 +6412,11 @@ export const SqlPoolWorkloadClassifierDeleteInput =
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     workloadGroupName: Schema.String.pipe(T.PathParam()),
     workloadClassifierName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolWorkloadClassifierDeleteInput =
@@ -6021,11 +6456,11 @@ export const SqlPoolWorkloadClassifierGetInput =
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     workloadGroupName: Schema.String.pipe(T.PathParam()),
     workloadClassifierName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolWorkloadClassifierGetInput =
@@ -6068,11 +6503,11 @@ export const SqlPoolWorkloadClassifierListInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     workloadGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolWorkloadClassifierListInput =
@@ -6121,11 +6556,21 @@ export const SqlPoolWorkloadGroupCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     workloadGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        minResourcePercent: Schema.Number,
+        maxResourcePercent: Schema.Number,
+        minResourcePercentPerRequest: Schema.Number,
+        maxResourcePercentPerRequest: Schema.optional(Schema.Number),
+        importance: Schema.optional(Schema.String),
+        queryExecutionTimeout: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolWorkloadGroupCreateOrUpdateInput =
@@ -6167,11 +6612,11 @@ export const SqlPoolWorkloadGroupDeleteInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     workloadGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolWorkloadGroupDeleteInput =
@@ -6210,11 +6655,11 @@ export const SqlPoolWorkloadGroupGetInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     workloadGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolWorkloadGroupGetInput =
@@ -6256,11 +6701,11 @@ export const SqlPoolWorkloadGroupListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups",
+      apiVersion: "2021-06-01",
     }),
   );
 export type SqlPoolWorkloadGroupListInput =
@@ -6307,11 +6752,19 @@ export const WorkspaceAadAdminsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        login: Schema.optional(Schema.String),
+        administratorType: Schema.optional(Schema.String),
+        sid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceAadAdminsCreateOrUpdateInput =
@@ -6347,11 +6800,11 @@ export const WorkspaceAadAdminsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceAadAdminsDeleteInput =
@@ -6384,11 +6837,11 @@ export const WorkspaceAadAdminsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceAadAdminsGetInput = typeof WorkspaceAadAdminsGetInput.Type;
@@ -6424,11 +6877,31 @@ export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        grantSqlControlToManagedIdentity: Schema.optional(
+          Schema.Struct({
+            desiredState: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            actualState: Schema.optional(
+              Schema.Literals([
+                "Enabling",
+                "Enabled",
+                "Disabling",
+                "Disabled",
+                "Unknown",
+              ]),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/managedIdentitySqlControlSettings/default",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateInput =
@@ -6465,11 +6938,11 @@ export const WorkspaceManagedIdentitySqlControlSettingsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/managedIdentitySqlControlSettings/default",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedIdentitySqlControlSettingsGetInput =
@@ -6506,11 +6979,25 @@ export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        state: Schema.Literals(["Enabled", "Disabled"]),
+        storageEndpoint: Schema.optional(Schema.String),
+        storageAccountAccessKey: Schema.optional(Schema.String),
+        retentionDays: Schema.optional(Schema.Number),
+        auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
+        storageAccountSubscriptionId: Schema.optional(Schema.String),
+        isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
+        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+        queueDelayMs: Schema.optional(Schema.Number),
+        isDevopsAuditEnabled: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/auditingSettings/{blobAuditingPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateInput =
@@ -6552,11 +7039,11 @@ export const WorkspaceManagedSqlServerBlobAuditingPoliciesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/auditingSettings/{blobAuditingPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerBlobAuditingPoliciesGetInput =
@@ -6595,11 +7082,11 @@ export const WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/auditingSettings",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspaceInput =
@@ -6647,11 +7134,11 @@ export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     dedicatedSQLminimalTlsSettingsName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/dedicatedSQLminimalTlsSettings/{dedicatedSQLminimalTlsSettingsName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetInput =
@@ -6692,11 +7179,11 @@ export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/dedicatedSQLminimalTlsSettings",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsListInput =
@@ -6746,11 +7233,17 @@ export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateInput 
     dedicatedSQLminimalTlsSettingsName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        minimalTlsVersion: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/dedicatedSQLminimalTlsSettings/{dedicatedSQLminimalTlsSettingsName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateInput =
@@ -6792,11 +7285,22 @@ export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        subregion: Schema.optional(Schema.String),
+        serverKeyName: Schema.optional(Schema.String),
+        serverKeyType: Schema.Literals(["ServiceManaged", "AzureKeyVault"]),
+        uri: Schema.optional(Schema.String),
+        thumbprint: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/encryptionProtector/{encryptionProtectorName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateInput =
@@ -6838,11 +7342,11 @@ export const WorkspaceManagedSqlServerEncryptionProtectorGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/encryptionProtector/{encryptionProtectorName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerEncryptionProtectorGetInput =
@@ -6881,11 +7385,11 @@ export const WorkspaceManagedSqlServerEncryptionProtectorListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/encryptionProtector",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerEncryptionProtectorListInput =
@@ -6931,11 +7435,11 @@ export const WorkspaceManagedSqlServerEncryptionProtectorRevalidateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/encryptionProtector/{encryptionProtectorName}/revalidate",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerEncryptionProtectorRevalidateInput =
@@ -6971,11 +7475,26 @@ export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdate
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        predicateExpression: Schema.optional(Schema.String),
+        state: Schema.Literals(["Enabled", "Disabled"]),
+        storageEndpoint: Schema.optional(Schema.String),
+        storageAccountAccessKey: Schema.optional(Schema.String),
+        retentionDays: Schema.optional(Schema.Number),
+        auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
+        storageAccountSubscriptionId: Schema.optional(Schema.String),
+        isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
+        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+        queueDelayMs: Schema.optional(Schema.Number),
+        isDevopsAuditEnabled: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/extendedAuditingSettings/{blobAuditingPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateInput =
@@ -7017,11 +7536,11 @@ export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/extendedAuditingSettings/{blobAuditingPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetInput =
@@ -7061,11 +7580,11 @@ export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspac
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/extendedAuditingSettings",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspaceInput =
@@ -7113,11 +7632,11 @@ export const WorkspaceManagedSqlServerRecoverableSqlPoolsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/recoverableSqlPools/{sqlPoolName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerRecoverableSqlPoolsGetInput =
@@ -7156,11 +7675,11 @@ export const WorkspaceManagedSqlServerRecoverableSqlPoolsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/recoverableSqlPools",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerRecoverableSqlPoolsListInput =
@@ -7206,11 +7725,23 @@ export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        state: Schema.Literals(["New", "Enabled", "Disabled"]),
+        disabledAlerts: Schema.optional(Schema.Array(Schema.String)),
+        emailAddresses: Schema.optional(Schema.Array(Schema.String)),
+        emailAccountAdmins: Schema.optional(Schema.Boolean),
+        storageEndpoint: Schema.optional(Schema.String),
+        storageAccountAccessKey: Schema.optional(Schema.String),
+        retentionDays: Schema.optional(Schema.Number),
+        creationTime: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/securityAlertPolicies/{securityAlertPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateInput =
@@ -7252,11 +7783,11 @@ export const WorkspaceManagedSqlServerSecurityAlertPolicyGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/securityAlertPolicies/{securityAlertPolicyName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerSecurityAlertPolicyGetInput =
@@ -7295,11 +7826,11 @@ export const WorkspaceManagedSqlServerSecurityAlertPolicyListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/securityAlertPolicies",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerSecurityAlertPolicyListInput =
@@ -7344,11 +7875,11 @@ export const WorkspaceManagedSqlServerUsagesListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlUsages",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerUsagesListInput =
@@ -7398,11 +7929,25 @@ export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateInpu
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        storageContainerPath: Schema.String,
+        storageContainerSasKey: Schema.optional(Schema.String),
+        storageAccountAccessKey: Schema.optional(Schema.String),
+        recurringScans: Schema.optional(
+          Schema.Struct({
+            isEnabled: Schema.optional(Schema.Boolean),
+            emailSubscriptionAdmins: Schema.optional(Schema.Boolean),
+            emails: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateInput =
@@ -7446,11 +7991,11 @@ export const WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteInput =
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsDeleteInput =
@@ -7488,11 +8033,11 @@ export const WorkspaceManagedSqlServerVulnerabilityAssessmentsGetInput =
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsGetInput =
@@ -7531,11 +8076,11 @@ export const WorkspaceManagedSqlServerVulnerabilityAssessmentsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsListInput =
@@ -7580,11 +8125,132 @@ export const WorkspacesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        defaultDataLakeStorage: Schema.optional(
+          Schema.Struct({
+            accountUrl: Schema.optional(Schema.String),
+            filesystem: Schema.optional(Schema.String),
+            resourceId: Schema.optional(Schema.String),
+            createManagedPrivateEndpoint: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        sqlAdministratorLoginPassword: Schema.optional(SensitiveString),
+        managedResourceGroupName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        sqlAdministratorLogin: Schema.optional(Schema.String),
+        virtualNetworkProfile: Schema.optional(
+          Schema.Struct({
+            computeSubnetId: Schema.optional(Schema.String),
+          }),
+        ),
+        connectivityEndpoints: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        managedVirtualNetwork: Schema.optional(Schema.String),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            doubleEncryptionEnabled: Schema.optional(Schema.Boolean),
+            cmk: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(Schema.String),
+                key: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    keyVaultUrl: Schema.optional(Schema.String),
+                  }),
+                ),
+                kekIdentity: Schema.optional(
+                  Schema.Struct({
+                    userAssignedIdentity: Schema.optional(Schema.String),
+                    useSystemAssignedIdentity: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        workspaceUID: Schema.optional(Schema.String),
+        extraProperties: Schema.optional(Schema.Unknown),
+        managedVirtualNetworkSettings: Schema.optional(
+          Schema.Struct({
+            preventDataExfiltration: Schema.optional(Schema.Boolean),
+            linkedAccessCheckOnTargetResource: Schema.optional(Schema.Boolean),
+            allowedAadTenantIdsForLinking: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+          }),
+        ),
+        workspaceRepositoryConfiguration: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            hostName: Schema.optional(Schema.String),
+            accountName: Schema.optional(Schema.String),
+            projectName: Schema.optional(Schema.String),
+            repositoryName: Schema.optional(Schema.String),
+            collaborationBranch: Schema.optional(Schema.String),
+            rootFolder: Schema.optional(Schema.String),
+            lastCommitId: Schema.optional(Schema.String),
+            tenantId: Schema.optional(Schema.String),
+          }),
+        ),
+        purviewConfiguration: Schema.optional(
+          Schema.Struct({
+            purviewResourceId: Schema.optional(Schema.String),
+          }),
+        ),
+        adlaResourceId: Schema.optional(Schema.String),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        cspWorkspaceAdminProperties: Schema.optional(
+          Schema.Struct({
+            initialWorkspaceAdminObjectId: Schema.optional(Schema.String),
+          }),
+        ),
+        settings: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        azureADOnlyAuthentication: Schema.optional(Schema.Boolean),
+        trustedServiceBypassEnabled: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "SystemAssigned,UserAssigned",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              clientId: Schema.optional(Schema.NullOr(Schema.String)),
+              principalId: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspacesCreateOrUpdateInput =
@@ -7620,11 +8286,11 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -7657,11 +8323,11 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
@@ -7690,11 +8356,11 @@ export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/workspaces",
+    apiVersion: "2021-06-01",
   }),
 );
 export type WorkspacesListInput = typeof WorkspacesListInput.Type;
@@ -7730,11 +8396,11 @@ export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspacesListByResourceGroupInput =
@@ -7776,11 +8442,19 @@ export const WorkspaceSqlAadAdminsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        login: Schema.optional(Schema.String),
+        administratorType: Schema.optional(Schema.String),
+        sid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceSqlAadAdminsCreateOrUpdateInput =
@@ -7816,11 +8490,11 @@ export const WorkspaceSqlAadAdminsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceSqlAadAdminsDeleteInput =
@@ -7853,11 +8527,11 @@ export const WorkspaceSqlAadAdminsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
+      apiVersion: "2021-06-01",
     }),
   );
 export type WorkspaceSqlAadAdminsGetInput =
@@ -7893,11 +8567,92 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(
+        Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+      ),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            clientId: Schema.optional(Schema.NullOr(Schema.String)),
+            principalId: Schema.optional(Schema.NullOr(Schema.String)),
+          }),
+        ),
+      ),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      sqlAdministratorLoginPassword: Schema.optional(SensitiveString),
+      managedVirtualNetworkSettings: Schema.optional(
+        Schema.Struct({
+          preventDataExfiltration: Schema.optional(Schema.Boolean),
+          linkedAccessCheckOnTargetResource: Schema.optional(Schema.Boolean),
+          allowedAadTenantIdsForLinking: Schema.optional(
+            Schema.Array(Schema.String),
+          ),
+        }),
+      ),
+      workspaceRepositoryConfiguration: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          hostName: Schema.optional(Schema.String),
+          accountName: Schema.optional(Schema.String),
+          projectName: Schema.optional(Schema.String),
+          repositoryName: Schema.optional(Schema.String),
+          collaborationBranch: Schema.optional(Schema.String),
+          rootFolder: Schema.optional(Schema.String),
+          lastCommitId: Schema.optional(Schema.String),
+          tenantId: Schema.optional(Schema.String),
+        }),
+      ),
+      purviewConfiguration: Schema.optional(
+        Schema.Struct({
+          purviewResourceId: Schema.optional(Schema.String),
+        }),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      encryption: Schema.optional(
+        Schema.Struct({
+          doubleEncryptionEnabled: Schema.optional(Schema.Boolean),
+          cmk: Schema.optional(
+            Schema.Struct({
+              status: Schema.optional(Schema.String),
+              key: Schema.optional(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  keyVaultUrl: Schema.optional(Schema.String),
+                }),
+              ),
+              kekIdentity: Schema.optional(
+                Schema.Struct({
+                  userAssignedIdentity: Schema.optional(Schema.String),
+                  useSystemAssignedIdentity: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;

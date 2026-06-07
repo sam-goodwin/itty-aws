@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AlertRuleResourcesCreateOrUpdateInput =
@@ -15,11 +16,26 @@ export const AlertRuleResourcesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
     alertRuleResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        alertRuleResourceId: Schema.String,
+        createdWithProperties: Schema.Literals([
+          "CreatedWithActionGroup",
+          "None",
+        ]),
+        creationTime: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+        alertRuleTemplateId: Schema.String,
+        alertRuleTemplateVersion: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources/{alertRuleResourceName}",
+      apiVersion: "2025-01-02",
     }),
   );
 export type AlertRuleResourcesCreateOrUpdateInput =
@@ -71,11 +87,11 @@ export const AlertRuleResourcesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
     alertRuleResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources/{alertRuleResourceName}",
+      apiVersion: "2025-01-02",
     }),
   );
 export type AlertRuleResourcesDeleteInput =
@@ -110,11 +126,11 @@ export const AlertRuleResourcesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
     alertRuleResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources/{alertRuleResourceName}",
+      apiVersion: "2025-01-02",
     }),
   );
 export type AlertRuleResourcesGetInput = typeof AlertRuleResourcesGetInput.Type;
@@ -165,11 +181,11 @@ export const AlertRuleResourcesListByParentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources",
+      apiVersion: "2025-01-02",
     }),
   );
 export type AlertRuleResourcesListByParentInput =
@@ -235,11 +251,11 @@ export const HealthValidationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
     healthValidationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/healthValidations/{healthValidationName}",
+      apiVersion: "2025-01-02",
     }),
   );
 export type HealthValidationsGetInput = typeof HealthValidationsGetInput.Type;
@@ -289,11 +305,11 @@ export const HealthValidationsListByParentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/healthValidations",
+      apiVersion: "2025-01-02",
     }),
   );
 export type HealthValidationsListByParentInput =
@@ -359,11 +375,11 @@ export const HealthValidationsStartValidationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
     healthValidationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/healthValidations/{healthValidationName}/startValidation",
+      apiVersion: "2025-01-02",
     }),
   );
 export type HealthValidationsStartValidationInput =
@@ -409,12 +425,13 @@ export const HealthValidationsStartValidation =
     outputSchema: HealthValidationsStartValidationOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DatabaseWatcher/operations",
+    apiVersion: "2025-01-02",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -462,11 +479,25 @@ export const SharedPrivateLinkResourcesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateLinkResourceId: Schema.String,
+        groupId: Schema.String,
+        requestMessage: Schema.String,
+        dnsZone: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Literals(["Pending", "Approved", "Rejected", "Disconnected"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+      apiVersion: "2025-01-02",
     }),
   );
 export type SharedPrivateLinkResourcesCreateInput =
@@ -518,11 +549,11 @@ export const SharedPrivateLinkResourcesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+      apiVersion: "2025-01-02",
     }),
   );
 export type SharedPrivateLinkResourcesDeleteInput =
@@ -556,11 +587,11 @@ export const SharedPrivateLinkResourcesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+      apiVersion: "2025-01-02",
     }),
   );
 export type SharedPrivateLinkResourcesGetInput =
@@ -611,11 +642,11 @@ export const SharedPrivateLinkResourcesListByWatcherInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources",
+      apiVersion: "2025-01-02",
     }),
   );
 export type SharedPrivateLinkResourcesListByWatcherInput =
@@ -681,11 +712,28 @@ export const TargetsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
     targetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        targetType: Schema.String,
+        targetAuthenticationType: Schema.Literals(["Aad", "Sql"]),
+        targetVault: Schema.optional(
+          Schema.Struct({
+            akvResourceId: Schema.optional(Schema.String),
+            akvTargetUser: Schema.optional(Schema.String),
+            akvTargetPassword: Schema.optional(SensitiveString),
+          }),
+        ),
+        connectionServerName: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets/{targetName}",
+      apiVersion: "2025-01-02",
     }),
   );
 export type TargetsCreateOrUpdateInput = typeof TargetsCreateOrUpdateInput.Type;
@@ -736,11 +784,11 @@ export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets/{targetName}",
+    apiVersion: "2025-01-02",
   }),
 );
 export type TargetsDeleteInput = typeof TargetsDeleteInput.Type;
@@ -769,11 +817,11 @@ export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
   targetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets/{targetName}",
+    apiVersion: "2025-01-02",
   }),
 );
 export type TargetsGetInput = typeof TargetsGetInput.Type;
@@ -820,11 +868,11 @@ export const TargetsListByWatcherInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets",
+      apiVersion: "2025-01-02",
     }),
   );
 export type TargetsListByWatcherInput = typeof TargetsListByWatcherInput.Type;
@@ -888,11 +936,62 @@ export const WatchersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        datastore: Schema.optional(
+          Schema.Struct({
+            adxClusterResourceId: Schema.optional(Schema.String),
+            kustoClusterDisplayName: Schema.optional(Schema.String),
+            kustoClusterUri: Schema.String,
+            kustoDataIngestionUri: Schema.String,
+            kustoDatabaseName: Schema.String,
+            kustoManagementUrl: Schema.String,
+            kustoOfferingType: Schema.Literals(["adx", "free", "fabric"]),
+          }),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Starting",
+            "Running",
+            "Stopping",
+            "Stopped",
+            "Deleting",
+          ]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+        defaultAlertRuleIdentityResourceId: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
+      apiVersion: "2025-01-02",
     }),
   );
 export type WatchersCreateOrUpdateInput =
@@ -942,11 +1041,11 @@ export const WatchersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
+    apiVersion: "2025-01-02",
   }),
 );
 export type WatchersDeleteInput = typeof WatchersDeleteInput.Type;
@@ -973,11 +1072,11 @@ export const WatchersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
+    apiVersion: "2025-01-02",
   }),
 );
 export type WatchersGetInput = typeof WatchersGetInput.Type;
@@ -1022,11 +1121,11 @@ export const WatchersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers",
+      apiVersion: "2025-01-02",
     }),
   );
 export type WatchersListByResourceGroupInput =
@@ -1089,11 +1188,11 @@ export const WatchersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WatchersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DatabaseWatcher/watchers",
+      apiVersion: "2025-01-02",
     }),
   );
 export type WatchersListBySubscriptionInput =
@@ -1156,11 +1255,11 @@ export const WatchersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/start",
+    apiVersion: "2025-01-02",
   }),
 );
 export type WatchersStartInput = typeof WatchersStartInput.Type;
@@ -1205,11 +1304,11 @@ export const WatchersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/stop",
+    apiVersion: "2025-01-02",
   }),
 );
 export type WatchersStopInput = typeof WatchersStopInput.Type;
@@ -1254,11 +1353,51 @@ export const WatchersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned, UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      datastore: Schema.optional(
+        Schema.Struct({
+          adxClusterResourceId: Schema.optional(Schema.String),
+          kustoClusterDisplayName: Schema.optional(Schema.String),
+          kustoClusterUri: Schema.optional(Schema.String),
+          kustoDataIngestionUri: Schema.optional(Schema.String),
+          kustoDatabaseName: Schema.optional(Schema.String),
+          kustoManagementUrl: Schema.optional(Schema.String),
+          kustoOfferingType: Schema.optional(
+            Schema.Literals(["adx", "free", "fabric"]),
+          ),
+        }),
+      ),
+      defaultAlertRuleIdentityResourceId: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
+    apiVersion: "2025-01-02",
   }),
 );
 export type WatchersUpdateInput = typeof WatchersUpdateInput.Type;

@@ -10,12 +10,11 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const FluidRelayContainersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers/{fluidRelayContainerName}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type FluidRelayContainersDeleteInput =
@@ -41,12 +40,11 @@ export const FluidRelayContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const FluidRelayContainersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers/{fluidRelayContainerName}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type FluidRelayContainersGetInput =
@@ -76,12 +74,11 @@ export const FluidRelayContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const FluidRelayContainersListByFluidRelayServersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers",
+      apiVersion: "2022-06-01",
     }),
   );
 export type FluidRelayContainersListByFluidRelayServersInput =
@@ -117,12 +114,11 @@ export const FluidRelayContainersListByFluidRelayServers =
   }));
 // Input Schema
 export const FluidRelayOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.FluidRelay/operations",
+      apiVersion: "2022-06-01",
     }),
   );
 export type FluidRelayOperationsListInput =
@@ -167,11 +163,85 @@ export const FluidRelayOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FluidRelayServersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        frsTenantId: Schema.optional(Schema.String),
+        fluidRelayEndpoints: Schema.optional(
+          Schema.Struct({
+            ordererEndpoints: Schema.optional(Schema.Array(Schema.String)),
+            storageEndpoints: Schema.optional(Schema.Array(Schema.String)),
+            serviceEndpoints: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            customerManagedKeyEncryption: Schema.optional(
+              Schema.Struct({
+                keyEncryptionKeyIdentity: Schema.optional(
+                  Schema.Struct({
+                    identityType: Schema.optional(
+                      Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                    ),
+                    userAssignedIdentityResourceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                keyEncryptionKeyUrl: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        storagesku: Schema.optional(Schema.Literals(["standard", "basic"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type FluidRelayServersCreateOrUpdateInput =
@@ -200,12 +270,11 @@ export const FluidRelayServersCreateOrUpdate =
   }));
 // Input Schema
 export const FluidRelayServersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type FluidRelayServersDeleteInput =
@@ -231,12 +300,11 @@ export const FluidRelayServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const FluidRelayServersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type FluidRelayServersGetInput = typeof FluidRelayServersGetInput.Type;
@@ -264,12 +332,11 @@ export const FluidRelayServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const FluidRelayServersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers",
+      apiVersion: "2022-06-01",
     }),
   );
 export type FluidRelayServersListByResourceGroupInput =
@@ -303,12 +370,11 @@ export const FluidRelayServersListByResourceGroup =
   }));
 // Input Schema
 export const FluidRelayServersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.FluidRelay/fluidRelayServers",
+      apiVersion: "2022-06-01",
     }),
   );
 export type FluidRelayServersListBySubscriptionInput =
@@ -342,12 +408,11 @@ export const FluidRelayServersListBySubscription =
   }));
 // Input Schema
 export const FluidRelayServersListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/listKeys",
+      apiVersion: "2022-06-01",
     }),
   );
 export type FluidRelayServersListKeysInput =
@@ -377,11 +442,12 @@ export const FluidRelayServersListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FluidRelayServersRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    keyName: Schema.Literals(["key1", "key2"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/regenerateKey",
+      apiVersion: "2022-06-01",
     }),
   );
 export type FluidRelayServersRegenerateKeyInput =
@@ -410,11 +476,59 @@ export const FluidRelayServersRegenerateKey =
 // Input Schema
 export const FluidRelayServersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        encryption: Schema.optional(
+          Schema.Struct({
+            customerManagedKeyEncryption: Schema.optional(
+              Schema.Struct({
+                keyEncryptionKeyIdentity: Schema.optional(
+                  Schema.Struct({
+                    identityType: Schema.optional(
+                      Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                    ),
+                    userAssignedIdentityResourceId: Schema.optional(
+                      Schema.String,
+                    ),
+                  }),
+                ),
+                keyEncryptionKeyUrl: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}",
+      apiVersion: "2022-06-01",
     }),
   );
 export type FluidRelayServersUpdateInput =

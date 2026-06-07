@@ -7,18 +7,101 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const ApplicationDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      lockLevel: Schema.Literals(["CanNotDelete", "ReadOnly", "None"]),
+      displayName: Schema.optional(Schema.String),
+      isEnabled: Schema.optional(Schema.Boolean),
+      authorizations: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            principalId: Schema.String,
+            roleDefinitionId: Schema.String,
+          }),
+        ),
+      ),
+      artifacts: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.Literals([
+              "NotSpecified",
+              "ApplicationResourceTemplate",
+              "CreateUiDefinition",
+              "MainTemplateParameters",
+            ]),
+            uri: Schema.String,
+            type: Schema.Literals(["NotSpecified", "Template", "Custom"]),
+          }),
+        ),
+      ),
+      description: Schema.optional(Schema.String),
+      packageFileUri: Schema.optional(Schema.String),
+      storageAccountId: Schema.optional(Schema.String),
+      mainTemplate: Schema.optional(Schema.Unknown),
+      createUiDefinition: Schema.optional(Schema.Unknown),
+      notificationPolicy: Schema.optional(
+        Schema.Struct({
+          notificationEndpoints: Schema.Array(
+            Schema.Struct({
+              uri: Schema.String,
+            }),
+          ),
+        }),
+      ),
+      lockingPolicy: Schema.optional(
+        Schema.Struct({
+          allowedActions: Schema.optional(Schema.Array(Schema.String)),
+          allowedDataActions: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      deploymentPolicy: Schema.optional(
+        Schema.Struct({
+          deploymentMode: Schema.Literals([
+            "NotSpecified",
+            "Incremental",
+            "Complete",
+          ]),
+        }),
+      ),
+      managementPolicy: Schema.optional(
+        Schema.Struct({
+          mode: Schema.optional(
+            Schema.Literals(["NotSpecified", "Unmanaged", "Managed"]),
+          ),
+        }),
+      ),
+      policies: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            policyDefinitionId: Schema.optional(Schema.String),
+            parameters: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+    managedBy: Schema.optional(Schema.String),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        model: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationDefinitionsCreateOrUpdateInput =
@@ -68,11 +151,11 @@ export const ApplicationDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationDefinitionsDeleteInput =
@@ -102,11 +185,11 @@ export const ApplicationDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationDefinitionsGetInput =
@@ -157,11 +240,11 @@ export const ApplicationDefinitionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationDefinitionsListByResourceGroupInput =
@@ -227,11 +310,11 @@ export const ApplicationDefinitionsListByResourceGroup =
 export const ApplicationDefinitionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applicationDefinitions",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationDefinitionsListBySubscriptionInput =
@@ -297,11 +380,12 @@ export const ApplicationDefinitionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationDefinitionsUpdateInput =
@@ -351,11 +435,150 @@ export const ApplicationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      managedResourceGroupId: Schema.optional(Schema.String),
+      applicationDefinitionId: Schema.optional(Schema.String),
+      parameters: Schema.optional(Schema.Unknown),
+      outputs: Schema.optional(Schema.Unknown),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "NotSpecified",
+          "Accepted",
+          "Running",
+          "Deleting",
+          "Deleted",
+          "Canceled",
+          "Failed",
+          "Succeeded",
+          "Updating",
+        ]),
+      ),
+      billingDetails: Schema.optional(
+        Schema.Struct({
+          resourceUsageId: Schema.optional(Schema.String),
+        }),
+      ),
+      jitAccessPolicy: Schema.optional(
+        Schema.Struct({
+          jitAccessEnabled: Schema.Boolean,
+          jitApprovalMode: Schema.optional(
+            Schema.Literals(["NotSpecified", "AutoApprove", "ManualApprove"]),
+          ),
+          jitApprovers: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.String,
+                type: Schema.optional(Schema.Literals(["user", "group"])),
+                displayName: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          maximumJitAccessDuration: Schema.optional(Schema.String),
+        }),
+      ),
+      publisherTenantId: Schema.optional(Schema.String),
+      authorizations: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            principalId: Schema.String,
+            roleDefinitionId: Schema.String,
+          }),
+        ),
+      ),
+      managementMode: Schema.optional(
+        Schema.Literals(["NotSpecified", "Unmanaged", "Managed"]),
+      ),
+      customerSupport: Schema.optional(
+        Schema.Struct({
+          contactName: Schema.optional(Schema.String),
+          email: Schema.String,
+          phone: Schema.String,
+        }),
+      ),
+      supportUrls: Schema.optional(
+        Schema.Struct({
+          publicAzure: Schema.optional(Schema.String),
+          governmentCloud: Schema.optional(Schema.String),
+        }),
+      ),
+      artifacts: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.Literals([
+              "NotSpecified",
+              "ViewDefinition",
+              "Authorizations",
+              "CustomRoleDefinition",
+            ]),
+            uri: Schema.String,
+            type: Schema.Literals(["NotSpecified", "Template", "Custom"]),
+          }),
+        ),
+      ),
+      createdBy: Schema.optional(
+        Schema.Struct({
+          oid: Schema.optional(Schema.String),
+          puid: Schema.optional(Schema.String),
+          applicationId: Schema.optional(Schema.String),
+        }),
+      ),
+      updatedBy: Schema.optional(
+        Schema.Struct({
+          oid: Schema.optional(Schema.String),
+          puid: Schema.optional(Schema.String),
+          applicationId: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.String,
+      }),
+    ),
+    kind: Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              tenantId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        model: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationsCreateOrUpdateInput =
@@ -405,8 +628,152 @@ export const ApplicationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ApplicationsCreateOrUpdateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(T.Http({ method: "PUT", path: "/{applicationId}" }));
+    properties: Schema.Struct({
+      managedResourceGroupId: Schema.optional(Schema.String),
+      applicationDefinitionId: Schema.optional(Schema.String),
+      parameters: Schema.optional(Schema.Unknown),
+      outputs: Schema.optional(Schema.Unknown),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "NotSpecified",
+          "Accepted",
+          "Running",
+          "Deleting",
+          "Deleted",
+          "Canceled",
+          "Failed",
+          "Succeeded",
+          "Updating",
+        ]),
+      ),
+      billingDetails: Schema.optional(
+        Schema.Struct({
+          resourceUsageId: Schema.optional(Schema.String),
+        }),
+      ),
+      jitAccessPolicy: Schema.optional(
+        Schema.Struct({
+          jitAccessEnabled: Schema.Boolean,
+          jitApprovalMode: Schema.optional(
+            Schema.Literals(["NotSpecified", "AutoApprove", "ManualApprove"]),
+          ),
+          jitApprovers: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.String,
+                type: Schema.optional(Schema.Literals(["user", "group"])),
+                displayName: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          maximumJitAccessDuration: Schema.optional(Schema.String),
+        }),
+      ),
+      publisherTenantId: Schema.optional(Schema.String),
+      authorizations: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            principalId: Schema.String,
+            roleDefinitionId: Schema.String,
+          }),
+        ),
+      ),
+      managementMode: Schema.optional(
+        Schema.Literals(["NotSpecified", "Unmanaged", "Managed"]),
+      ),
+      customerSupport: Schema.optional(
+        Schema.Struct({
+          contactName: Schema.optional(Schema.String),
+          email: Schema.String,
+          phone: Schema.String,
+        }),
+      ),
+      supportUrls: Schema.optional(
+        Schema.Struct({
+          publicAzure: Schema.optional(Schema.String),
+          governmentCloud: Schema.optional(Schema.String),
+        }),
+      ),
+      artifacts: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.Literals([
+              "NotSpecified",
+              "ViewDefinition",
+              "Authorizations",
+              "CustomRoleDefinition",
+            ]),
+            uri: Schema.String,
+            type: Schema.Literals(["NotSpecified", "Template", "Custom"]),
+          }),
+        ),
+      ),
+      createdBy: Schema.optional(
+        Schema.Struct({
+          oid: Schema.optional(Schema.String),
+          puid: Schema.optional(Schema.String),
+          applicationId: Schema.optional(Schema.String),
+        }),
+      ),
+      updatedBy: Schema.optional(
+        Schema.Struct({
+          oid: Schema.optional(Schema.String),
+          puid: Schema.optional(Schema.String),
+          applicationId: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.String,
+      }),
+    ),
+    kind: Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              tenantId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        model: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/{applicationId}",
+      apiVersion: "2021-07-01",
+    }),
+  );
 export type ApplicationsCreateOrUpdateByIdInput =
   typeof ApplicationsCreateOrUpdateByIdInput.Type;
 
@@ -453,11 +820,11 @@ export const ApplicationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
@@ -482,8 +849,13 @@ export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ApplicationsDeleteByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(T.Http({ method: "DELETE", path: "/{applicationId}" }));
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/{applicationId}",
+      apiVersion: "2021-07-01",
+    }),
+  );
 export type ApplicationsDeleteByIdInput =
   typeof ApplicationsDeleteByIdInput.Type;
 
@@ -510,11 +882,11 @@ export const ApplicationsDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
+    apiVersion: "2021-07-01",
   }),
 );
 export type ApplicationsGetInput = typeof ApplicationsGetInput.Type;
@@ -559,8 +931,13 @@ export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ApplicationsGetByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(T.Http({ method: "GET", path: "/{applicationId}" }));
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{applicationId}",
+      apiVersion: "2021-07-01",
+    }),
+  );
 export type ApplicationsGetByIdInput = typeof ApplicationsGetByIdInput.Type;
 
 // Output Schema
@@ -604,11 +981,11 @@ export const ApplicationsListAllowedUpgradePlansInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/listAllowedUpgradePlans",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationsListAllowedUpgradePlansInput =
@@ -650,11 +1027,11 @@ export const ApplicationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationsListByResourceGroupInput =
@@ -720,11 +1097,11 @@ export const ApplicationsListByResourceGroup =
 export const ApplicationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applications",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationsListBySubscriptionInput =
@@ -791,11 +1168,13 @@ export const ApplicationsListTokensInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    authorizationAudience: Schema.optional(Schema.String),
+    userAssignedIdentities: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationsListTokensInput =
@@ -807,7 +1186,7 @@ export const ApplicationsListTokensOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          accessToken: Schema.optional(SensitiveString),
+          accessToken: Schema.optional(SensitiveOutputString),
           expiresIn: Schema.optional(Schema.String),
           expiresOn: Schema.optional(Schema.String),
           notBefore: Schema.optional(Schema.String),
@@ -841,11 +1220,11 @@ export const ApplicationsRefreshPermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/refreshPermissions",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationsRefreshPermissionsInput =
@@ -875,11 +1254,152 @@ export const ApplicationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        managedResourceGroupId: Schema.optional(Schema.String),
+        applicationDefinitionId: Schema.optional(Schema.String),
+        parameters: Schema.optional(Schema.Unknown),
+        outputs: Schema.optional(Schema.Unknown),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        billingDetails: Schema.optional(
+          Schema.Struct({
+            resourceUsageId: Schema.optional(Schema.String),
+          }),
+        ),
+        jitAccessPolicy: Schema.optional(
+          Schema.Struct({
+            jitAccessEnabled: Schema.Boolean,
+            jitApprovalMode: Schema.optional(
+              Schema.Literals(["NotSpecified", "AutoApprove", "ManualApprove"]),
+            ),
+            jitApprovers: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.String,
+                  type: Schema.optional(Schema.Literals(["user", "group"])),
+                  displayName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            maximumJitAccessDuration: Schema.optional(Schema.String),
+          }),
+        ),
+        publisherTenantId: Schema.optional(Schema.String),
+        authorizations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              principalId: Schema.String,
+              roleDefinitionId: Schema.String,
+            }),
+          ),
+        ),
+        managementMode: Schema.optional(
+          Schema.Literals(["NotSpecified", "Unmanaged", "Managed"]),
+        ),
+        customerSupport: Schema.optional(
+          Schema.Struct({
+            contactName: Schema.optional(Schema.String),
+            email: Schema.String,
+            phone: Schema.String,
+          }),
+        ),
+        supportUrls: Schema.optional(
+          Schema.Struct({
+            publicAzure: Schema.optional(Schema.String),
+            governmentCloud: Schema.optional(Schema.String),
+          }),
+        ),
+        artifacts: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.Literals([
+                "NotSpecified",
+                "ViewDefinition",
+                "Authorizations",
+                "CustomRoleDefinition",
+              ]),
+              uri: Schema.String,
+              type: Schema.Literals(["NotSpecified", "Template", "Custom"]),
+            }),
+          ),
+        ),
+        createdBy: Schema.optional(
+          Schema.Struct({
+            oid: Schema.optional(Schema.String),
+            puid: Schema.optional(Schema.String),
+            applicationId: Schema.optional(Schema.String),
+          }),
+        ),
+        updatedBy: Schema.optional(
+          Schema.Struct({
+            oid: Schema.optional(Schema.String),
+            puid: Schema.optional(Schema.String),
+            applicationId: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        product: Schema.optional(Schema.String),
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              tenantId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        model: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
@@ -927,11 +1447,27 @@ export const ApplicationsUpdateAccessInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    approver: Schema.optional(Schema.String),
+    metadata: Schema.Struct({
+      originRequestId: Schema.optional(Schema.String),
+      requestorId: Schema.optional(Schema.String),
+      tenantDisplayName: Schema.optional(Schema.String),
+      subjectDisplayName: Schema.optional(Schema.String),
+    }),
+    status: Schema.Literals(["NotSpecified", "Elevate", "Remove"]),
+    subStatus: Schema.Literals([
+      "NotSpecified",
+      "Approved",
+      "Denied",
+      "Failed",
+      "Expired",
+      "Timeout",
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/updateAccess",
+      apiVersion: "2021-07-01",
     }),
   );
 export type ApplicationsUpdateAccessInput =
@@ -962,8 +1498,154 @@ export const ApplicationsUpdateAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ApplicationsUpdateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(T.Http({ method: "PATCH", path: "/{applicationId}" }));
+    properties: Schema.optional(
+      Schema.Struct({
+        managedResourceGroupId: Schema.optional(Schema.String),
+        applicationDefinitionId: Schema.optional(Schema.String),
+        parameters: Schema.optional(Schema.Unknown),
+        outputs: Schema.optional(Schema.Unknown),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        billingDetails: Schema.optional(
+          Schema.Struct({
+            resourceUsageId: Schema.optional(Schema.String),
+          }),
+        ),
+        jitAccessPolicy: Schema.optional(
+          Schema.Struct({
+            jitAccessEnabled: Schema.Boolean,
+            jitApprovalMode: Schema.optional(
+              Schema.Literals(["NotSpecified", "AutoApprove", "ManualApprove"]),
+            ),
+            jitApprovers: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.String,
+                  type: Schema.optional(Schema.Literals(["user", "group"])),
+                  displayName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            maximumJitAccessDuration: Schema.optional(Schema.String),
+          }),
+        ),
+        publisherTenantId: Schema.optional(Schema.String),
+        authorizations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              principalId: Schema.String,
+              roleDefinitionId: Schema.String,
+            }),
+          ),
+        ),
+        managementMode: Schema.optional(
+          Schema.Literals(["NotSpecified", "Unmanaged", "Managed"]),
+        ),
+        customerSupport: Schema.optional(
+          Schema.Struct({
+            contactName: Schema.optional(Schema.String),
+            email: Schema.String,
+            phone: Schema.String,
+          }),
+        ),
+        supportUrls: Schema.optional(
+          Schema.Struct({
+            publicAzure: Schema.optional(Schema.String),
+            governmentCloud: Schema.optional(Schema.String),
+          }),
+        ),
+        artifacts: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.Literals([
+                "NotSpecified",
+                "ViewDefinition",
+                "Authorizations",
+                "CustomRoleDefinition",
+              ]),
+              uri: Schema.String,
+              type: Schema.Literals(["NotSpecified", "Template", "Custom"]),
+            }),
+          ),
+        ),
+        createdBy: Schema.optional(
+          Schema.Struct({
+            oid: Schema.optional(Schema.String),
+            puid: Schema.optional(Schema.String),
+            applicationId: Schema.optional(Schema.String),
+          }),
+        ),
+        updatedBy: Schema.optional(
+          Schema.Struct({
+            oid: Schema.optional(Schema.String),
+            puid: Schema.optional(Schema.String),
+            applicationId: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        product: Schema.optional(Schema.String),
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              tenantId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        model: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/{applicationId}",
+      apiVersion: "2021-07-01",
+    }),
+  );
 export type ApplicationsUpdateByIdInput =
   typeof ApplicationsUpdateByIdInput.Type;
 
@@ -1011,11 +1693,86 @@ export const JitRequestsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        applicationResourceId: Schema.String,
+        publisherTenantId: Schema.optional(Schema.String),
+        jitAuthorizationPolicies: Schema.Array(
+          Schema.Struct({
+            principalId: Schema.String,
+            roleDefinitionId: Schema.String,
+          }),
+        ),
+        jitSchedulingPolicy: Schema.Struct({
+          type: Schema.Literals(["NotSpecified", "Once", "Recurring"]),
+          duration: Schema.String,
+          startTime: Schema.String,
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Accepted",
+            "Running",
+            "Deleting",
+            "Deleted",
+            "Canceled",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        jitRequestState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Pending",
+            "Approved",
+            "Denied",
+            "Failed",
+            "Canceled",
+            "Expired",
+            "Timeout",
+          ]),
+        ),
+        createdBy: Schema.optional(
+          Schema.Struct({
+            oid: Schema.optional(Schema.String),
+            puid: Schema.optional(Schema.String),
+            applicationId: Schema.optional(Schema.String),
+          }),
+        ),
+        updatedBy: Schema.optional(
+          Schema.Struct({
+            oid: Schema.optional(Schema.String),
+            puid: Schema.optional(Schema.String),
+            applicationId: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
+      apiVersion: "2021-07-01",
     }),
   );
 export type JitRequestsCreateOrUpdateInput =
@@ -1066,12 +1823,12 @@ export const JitRequestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
+    apiVersion: "2021-07-01",
   }),
 );
 export type JitRequestsDeleteInput = typeof JitRequestsDeleteInput.Type;
@@ -1096,11 +1853,11 @@ export const jitRequestsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const JitRequestsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
+    apiVersion: "2021-07-01",
   }),
 );
 export type JitRequestsGetInput = typeof JitRequestsGetInput.Type;
@@ -1146,11 +1903,11 @@ export const JitRequestsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests",
+      apiVersion: "2021-07-01",
     }),
   );
 export type JitRequestsListByResourceGroupInput =
@@ -1216,11 +1973,11 @@ export const jitRequestsListByResourceGroup =
 export const JitRequestsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/jitRequests",
+      apiVersion: "2021-07-01",
     }),
   );
 export type JitRequestsListBySubscriptionInput =
@@ -1286,12 +2043,13 @@ export const JitRequestsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
+    apiVersion: "2021-07-01",
   }),
 );
 export type JitRequestsUpdateInput = typeof JitRequestsUpdateInput.Type;
@@ -1334,10 +2092,14 @@ export const JitRequestsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JitRequestsUpdateOutput,
 }));
 // Input Schema
-export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Solutions/operations" }),
+export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Solutions/operations",
+    apiVersion: "2021-07-01",
+  }),
 );
 export type ListOperationsInput = typeof ListOperationsInput.Type;
 

@@ -16,11 +16,56 @@ export const ArtifactManifestsCreateOrUpdateInput =
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     artifactManifestName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Accepted",
+            "Deleting",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Converging",
+          ]),
+        ),
+        artifactManifestState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Uploading",
+            "Uploaded",
+            "Validating",
+            "ValidationFailed",
+            "Succeeded",
+          ]),
+        ),
+        artifacts: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              artifactName: Schema.optional(Schema.String),
+              artifactType: Schema.optional(
+                Schema.Literals([
+                  "Unknown",
+                  "OCIArtifact",
+                  "VhdImageFile",
+                  "ArmTemplate",
+                  "ImageFile",
+                ]),
+              ),
+              artifactVersion: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactManifestsCreateOrUpdateInput =
@@ -74,11 +119,11 @@ export const ArtifactManifestsDeleteInput =
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     artifactManifestName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactManifestsDeleteInput =
@@ -115,11 +160,11 @@ export const ArtifactManifestsGetInput =
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     artifactManifestName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactManifestsGetInput = typeof ArtifactManifestsGetInput.Type;
@@ -171,11 +216,11 @@ export const ArtifactManifestsListByArtifactStoreInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactManifestsListByArtifactStoreInput =
@@ -245,11 +290,11 @@ export const ArtifactManifestsListCredentialInput =
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     artifactManifestName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}/listCredential",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactManifestsListCredentialInput =
@@ -291,12 +336,12 @@ export const ArtifactManifestsUpdateInput =
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     artifactManifestName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactManifestsUpdateInput =
@@ -352,11 +397,21 @@ export const ArtifactManifestsUpdateStateInput =
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     artifactManifestName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    artifactManifestState: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "Uploading",
+        "Uploaded",
+        "Validating",
+        "ValidationFailed",
+        "Succeeded",
+      ]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}/updateState",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactManifestsUpdateStateInput =
@@ -402,11 +457,18 @@ export const ArtifactStoresAddNetworkFabricControllerEndPointsInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    networkFabricControllerIds: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/addNetworkFabricControllerEndPoints",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactStoresAddNetworkFabricControllerEndPointsInput =
@@ -440,11 +502,18 @@ export const ArtifactStoresApprovePrivateEndPointsInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    manualPrivateEndPointConnections: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/approvePrivateEndPoints",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactStoresApprovePrivateEndPointsInput =
@@ -478,11 +547,49 @@ export const ArtifactStoresCreateOrUpdateInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Accepted",
+            "Deleting",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Converging",
+          ]),
+        ),
+        storeType: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "AzureContainerRegistry",
+            "AzureStorageAccount",
+          ]),
+        ),
+        backingResourcePublicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        replicationStrategy: Schema.optional(
+          Schema.Literals(["Unknown", "SingleReplication"]),
+        ),
+        managedResourceGroupConfiguration: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            location: Schema.optional(Schema.String),
+          }),
+        ),
+        storageResourceId: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactStoresCreateOrUpdateInput =
@@ -534,11 +641,11 @@ export const ArtifactStoresDeleteInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactStoresDeleteInput = typeof ArtifactStoresDeleteInput.Type;
@@ -571,11 +678,18 @@ export const ArtifactStoresDeleteNetworkFabricControllerEndPointsInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    networkFabricControllerIds: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/deleteNetworkFabricControllerEndPoints",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactStoresDeleteNetworkFabricControllerEndPointsInput =
@@ -609,12 +723,12 @@ export const ArtifactStoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
+    apiVersion: "2024-04-15",
   }),
 );
 export type ArtifactStoresGetInput = typeof ArtifactStoresGetInput.Type;
@@ -662,11 +776,11 @@ export const ArtifactStoresListByPublisherInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactStoresListByPublisherInput =
@@ -734,11 +848,11 @@ export const ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/listNetworkFabricControllerPrivateEndPoints",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput =
@@ -788,11 +902,11 @@ export const ArtifactStoresListPrivateEndPointsInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/listPrivateEndPoints",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactStoresListPrivateEndPointsInput =
@@ -841,11 +955,18 @@ export const ArtifactStoresRemovePrivateEndPointsInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    manualPrivateEndPointConnections: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/removePrivateEndPoints",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactStoresRemovePrivateEndPointsInput =
@@ -879,12 +1000,12 @@ export const ArtifactStoresUpdateInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ArtifactStoresUpdateInput = typeof ArtifactStoresUpdateInput.Type;
@@ -935,11 +1056,11 @@ export const ComponentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   networkFunctionName: Schema.String.pipe(T.PathParam()),
   componentName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}/components/{componentName}",
+    apiVersion: "2024-04-15",
   }),
 );
 export type ComponentsGetInput = typeof ComponentsGetInput.Type;
@@ -986,11 +1107,11 @@ export const ComponentsListByNetworkFunctionInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     networkFunctionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}/components",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ComponentsListByNetworkFunctionInput =
@@ -1058,11 +1179,34 @@ export const ConfigurationGroupSchemasCreateOrUpdateInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     configurationGroupSchemaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Accepted",
+            "Deleting",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Converging",
+          ]),
+        ),
+        versionState: Schema.optional(
+          Schema.Literals(["Unknown", "Preview", "Active", "Deprecated"]),
+        ),
+        description: Schema.optional(Schema.String),
+        schemaDefinition: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ConfigurationGroupSchemasCreateOrUpdateInput =
@@ -1114,11 +1258,11 @@ export const ConfigurationGroupSchemasDeleteInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     configurationGroupSchemaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ConfigurationGroupSchemasDeleteInput =
@@ -1152,11 +1296,11 @@ export const ConfigurationGroupSchemasGetInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     configurationGroupSchemaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ConfigurationGroupSchemasGetInput =
@@ -1207,11 +1351,11 @@ export const ConfigurationGroupSchemasListByPublisherInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ConfigurationGroupSchemasListByPublisherInput =
@@ -1279,12 +1423,12 @@ export const ConfigurationGroupSchemasUpdateInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     configurationGroupSchemaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ConfigurationGroupSchemasUpdateInput =
@@ -1337,11 +1481,14 @@ export const ConfigurationGroupSchemasUpdateStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     configurationGroupSchemaName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    versionState: Schema.optional(
+      Schema.Literals(["Unknown", "Preview", "Active", "Deprecated"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}/updateState",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ConfigurationGroupSchemasUpdateStateInput =
@@ -1378,11 +1525,43 @@ export const ConfigurationGroupValuesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationGroupValueName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Accepted",
+            "Deleting",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Converging",
+          ]),
+        ),
+        publisherName: Schema.optional(Schema.String),
+        publisherScope: Schema.optional(
+          Schema.Literals(["Unknown", "Private"]),
+        ),
+        configurationGroupSchemaName: Schema.optional(Schema.String),
+        configurationGroupSchemaOfferingLocation: Schema.optional(
+          Schema.String,
+        ),
+        configurationGroupSchemaResourceReference: Schema.optional(
+          Schema.Struct({
+            idType: Schema.Literals(["Unknown", "Open", "Secret"]),
+          }),
+        ),
+        configurationType: Schema.Literals(["Unknown", "Secret", "Open"]),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ConfigurationGroupValuesCreateOrUpdateInput =
@@ -1432,11 +1611,11 @@ export const ConfigurationGroupValuesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationGroupValueName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ConfigurationGroupValuesDeleteInput =
@@ -1468,11 +1647,11 @@ export const ConfigurationGroupValuesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationGroupValueName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ConfigurationGroupValuesGetInput =
@@ -1522,11 +1701,11 @@ export const ConfigurationGroupValuesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ConfigurationGroupValuesListByResourceGroupInput =
@@ -1590,11 +1769,11 @@ export const ConfigurationGroupValuesListByResourceGroup =
 export const ConfigurationGroupValuesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/configurationGroupValues",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ConfigurationGroupValuesListBySubscriptionInput =
@@ -1659,12 +1838,12 @@ export const ConfigurationGroupValuesUpdateTagsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationGroupValueName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ConfigurationGroupValuesUpdateTagsInput =
@@ -1716,11 +1895,30 @@ export const NetworkFunctionDefinitionGroupsCreateOrUpdateInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Accepted",
+            "Deleting",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Converging",
+          ]),
+        ),
+        description: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionDefinitionGroupsCreateOrUpdateInput =
@@ -1772,11 +1970,11 @@ export const NetworkFunctionDefinitionGroupsDeleteInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionDefinitionGroupsDeleteInput =
@@ -1810,11 +2008,11 @@ export const NetworkFunctionDefinitionGroupsGetInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionDefinitionGroupsGetInput =
@@ -1865,11 +2063,11 @@ export const NetworkFunctionDefinitionGroupsListByPublisherInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionDefinitionGroupsListByPublisherInput =
@@ -1937,12 +2135,12 @@ export const NetworkFunctionDefinitionGroupsUpdateInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionDefinitionGroupsUpdateInput =
@@ -1996,11 +2194,46 @@ export const NetworkFunctionDefinitionVersionsCreateOrUpdateInput =
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionVersionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Accepted",
+            "Deleting",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Converging",
+          ]),
+        ),
+        versionState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Preview",
+            "Validating",
+            "ValidationFailed",
+            "Active",
+            "Deprecated",
+          ]),
+        ),
+        description: Schema.optional(Schema.String),
+        deployParameters: Schema.optional(Schema.String),
+        networkFunctionType: Schema.Literals([
+          "Unknown",
+          "VirtualNetworkFunction",
+          "ContainerizedNetworkFunction",
+        ]),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionDefinitionVersionsCreateOrUpdateInput =
@@ -2054,11 +2287,11 @@ export const NetworkFunctionDefinitionVersionsDeleteInput =
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionVersionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionDefinitionVersionsDeleteInput =
@@ -2094,11 +2327,11 @@ export const NetworkFunctionDefinitionVersionsGetInput =
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionVersionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionDefinitionVersionsGetInput =
@@ -2151,11 +2384,11 @@ export const NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGro
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupInput =
@@ -2227,12 +2460,12 @@ export const NetworkFunctionDefinitionVersionsUpdateInput =
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionVersionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionDefinitionVersionsUpdateInput =
@@ -2287,11 +2520,21 @@ export const NetworkFunctionDefinitionVersionsUpdateStateInput =
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionVersionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    versionState: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "Preview",
+        "Validating",
+        "ValidationFailed",
+        "Active",
+        "Deprecated",
+      ]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}/updateState",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionDefinitionVersionsUpdateStateInput =
@@ -2336,11 +2579,79 @@ export const NetworkFunctionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Accepted",
+            "Deleting",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Converging",
+          ]),
+        ),
+        publisherName: Schema.optional(Schema.String),
+        publisherScope: Schema.optional(
+          Schema.Literals(["Unknown", "Private"]),
+        ),
+        networkFunctionDefinitionGroupName: Schema.optional(Schema.String),
+        networkFunctionDefinitionVersion: Schema.optional(Schema.String),
+        networkFunctionDefinitionOfferingLocation: Schema.optional(
+          Schema.String,
+        ),
+        networkFunctionDefinitionVersionResourceReference: Schema.optional(
+          Schema.Struct({
+            idType: Schema.Literals(["Unknown", "Open", "Secret"]),
+          }),
+        ),
+        nfviType: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "AzureArcKubernetes",
+            "AzureCore",
+            "AzureOperatorNexus",
+          ]),
+        ),
+        nfviId: Schema.optional(Schema.String),
+        allowSoftwareUpdate: Schema.optional(Schema.Boolean),
+        configurationType: Schema.Literals(["Unknown", "Secret", "Open"]),
+        roleOverrideValues: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                principalId: Schema.optional(Schema.String),
+                clientId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionsCreateOrUpdateInput =
@@ -2390,11 +2701,11 @@ export const NetworkFunctionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionsDeleteInput =
@@ -2427,11 +2738,25 @@ export const NetworkFunctionsExecuteRequestInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    serviceEndpoint: Schema.String,
+    requestMetadata: Schema.Struct({
+      relativePath: Schema.String,
+      httpMethod: Schema.Literals([
+        "Unknown",
+        "Post",
+        "Put",
+        "Get",
+        "Patch",
+        "Delete",
+      ]),
+      serializedBody: Schema.String,
+      apiVersion: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}/executeRequest",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionsExecuteRequestInput =
@@ -2463,11 +2788,11 @@ export const NetworkFunctionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionsGetInput = typeof NetworkFunctionsGetInput.Type;
@@ -2513,11 +2838,11 @@ export const NetworkFunctionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionsListByResourceGroupInput =
@@ -2581,11 +2906,11 @@ export const NetworkFunctionsListByResourceGroup =
 export const NetworkFunctionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/networkFunctions",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionsListBySubscriptionInput =
@@ -2650,12 +2975,12 @@ export const NetworkFunctionsUpdateTagsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkFunctionsUpdateTagsInput =
@@ -2708,11 +3033,30 @@ export const NetworkServiceDesignGroupsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Accepted",
+            "Deleting",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Converging",
+          ]),
+        ),
+        description: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkServiceDesignGroupsCreateOrUpdateInput =
@@ -2764,11 +3108,11 @@ export const NetworkServiceDesignGroupsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkServiceDesignGroupsDeleteInput =
@@ -2802,11 +3146,11 @@ export const NetworkServiceDesignGroupsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkServiceDesignGroupsGetInput =
@@ -2857,11 +3201,11 @@ export const NetworkServiceDesignGroupsListByPublisherInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkServiceDesignGroupsListByPublisherInput =
@@ -2929,12 +3273,12 @@ export const NetworkServiceDesignGroupsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkServiceDesignGroupsUpdateInput =
@@ -2988,11 +3332,73 @@ export const NetworkServiceDesignVersionsCreateOrUpdateInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignGroupName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Accepted",
+            "Deleting",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Converging",
+          ]),
+        ),
+        versionState: Schema.optional(
+          Schema.Literals(["Unknown", "Preview", "Active", "Deprecated"]),
+        ),
+        description: Schema.optional(Schema.String),
+        configurationGroupSchemaReferences: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        nfvisFromSite: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        resourceElementTemplates: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              type: Schema.Literals([
+                "Unknown",
+                "ArmResourceDefinition",
+                "NetworkFunctionDefinition",
+              ]),
+              dependsOnProfile: Schema.optional(
+                Schema.Struct({
+                  installDependsOn: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  uninstallDependsOn: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  updateDependsOn: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkServiceDesignVersionsCreateOrUpdateInput =
@@ -3046,11 +3452,11 @@ export const NetworkServiceDesignVersionsDeleteInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignGroupName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkServiceDesignVersionsDeleteInput =
@@ -3086,11 +3492,11 @@ export const NetworkServiceDesignVersionsGetInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignGroupName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkServiceDesignVersionsGetInput =
@@ -3143,11 +3549,11 @@ export const NetworkServiceDesignVersionsListByNetworkServiceDesignGroupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkServiceDesignVersionsListByNetworkServiceDesignGroupInput =
@@ -3219,12 +3625,12 @@ export const NetworkServiceDesignVersionsUpdateInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignGroupName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkServiceDesignVersionsUpdateInput =
@@ -3279,11 +3685,14 @@ export const NetworkServiceDesignVersionsUpdateStateInput =
     publisherName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignGroupName: Schema.String.pipe(T.PathParam()),
     networkServiceDesignVersionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    versionState: Schema.optional(
+      Schema.Literals(["Unknown", "Preview", "Active", "Deprecated"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}/updateState",
+      apiVersion: "2024-04-15",
     }),
   );
 export type NetworkServiceDesignVersionsUpdateStateInput =
@@ -3316,12 +3725,13 @@ export const NetworkServiceDesignVersionsUpdateState =
     outputSchema: NetworkServiceDesignVersionsUpdateStateOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HybridNetwork/operations",
+    apiVersion: "2024-04-15",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -3369,11 +3779,11 @@ export const ProxyArtifactGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   artifactStoreName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   artifactName: Schema.String,
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactVersions",
+    apiVersion: "2024-04-15",
   }),
 );
 export type ProxyArtifactGetInput = typeof ProxyArtifactGetInput.Type;
@@ -3441,12 +3851,12 @@ export const ProxyArtifactListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifacts",
+    apiVersion: "2024-04-15",
   }),
 );
 export type ProxyArtifactListInput = typeof ProxyArtifactListInput.Type;
@@ -3514,11 +3924,18 @@ export const ProxyArtifactUpdateStateInput =
     artifactVersionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     artifactName: Schema.String,
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        artifactState: Schema.optional(
+          Schema.Literals(["Unknown", "Preview", "Active", "Deprecated"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactVersions/{artifactVersionName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type ProxyArtifactUpdateStateInput =
@@ -3572,11 +3989,53 @@ export const PublishersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Accepted",
+            "Deleting",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Converging",
+          ]),
+        ),
+        scope: Schema.optional(Schema.Literals(["Unknown", "Private"])),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                principalId: Schema.optional(Schema.String),
+                clientId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type PublishersCreateOrUpdateInput =
@@ -3626,11 +4085,11 @@ export const PublishersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}",
+    apiVersion: "2024-04-15",
   }),
 );
 export type PublishersDeleteInput = typeof PublishersDeleteInput.Type;
@@ -3657,11 +4116,11 @@ export const PublishersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}",
+    apiVersion: "2024-04-15",
   }),
 );
 export type PublishersGetInput = typeof PublishersGetInput.Type;
@@ -3706,11 +4165,11 @@ export const PublishersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers",
+      apiVersion: "2024-04-15",
     }),
   );
 export type PublishersListByResourceGroupInput =
@@ -3774,11 +4233,11 @@ export const PublishersListByResourceGroup =
 export const PublishersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/publishers",
+      apiVersion: "2024-04-15",
     }),
   );
 export type PublishersListBySubscriptionInput =
@@ -3842,12 +4301,12 @@ export const PublishersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}",
+    apiVersion: "2024-04-15",
   }),
 );
 export type PublishersUpdateInput = typeof PublishersUpdateInput.Type;
@@ -3896,11 +4355,102 @@ export const SiteNetworkServicesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteNetworkServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Accepted",
+            "Deleting",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Converging",
+          ]),
+        ),
+        managedResourceGroupConfiguration: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            location: Schema.optional(Schema.String),
+          }),
+        ),
+        siteReference: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        publisherName: Schema.optional(Schema.String),
+        publisherScope: Schema.optional(
+          Schema.Literals(["Unknown", "Private"]),
+        ),
+        networkServiceDesignGroupName: Schema.optional(Schema.String),
+        networkServiceDesignVersionName: Schema.optional(Schema.String),
+        networkServiceDesignVersionOfferingLocation: Schema.optional(
+          Schema.String,
+        ),
+        networkServiceDesignVersionResourceReference: Schema.optional(
+          Schema.Struct({
+            idType: Schema.Literals(["Unknown", "Open", "Secret"]),
+          }),
+        ),
+        desiredStateConfigurationGroupValueReferences: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        lastStateNetworkServiceDesignVersionName: Schema.optional(
+          Schema.String,
+        ),
+        lastStateConfigurationGroupValueReferences: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                principalId: Schema.optional(Schema.String),
+                clientId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["Basic", "Standard"]),
+        tier: Schema.optional(Schema.Literals(["Basic", "Standard"])),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/siteNetworkServices/{siteNetworkServiceName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type SiteNetworkServicesCreateOrUpdateInput =
@@ -3950,11 +4500,11 @@ export const SiteNetworkServicesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteNetworkServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/siteNetworkServices/{siteNetworkServiceName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type SiteNetworkServicesDeleteInput =
@@ -3987,11 +4537,11 @@ export const SiteNetworkServicesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteNetworkServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/siteNetworkServices/{siteNetworkServiceName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type SiteNetworkServicesGetInput =
@@ -4041,11 +4591,11 @@ export const SiteNetworkServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/siteNetworkServices",
+      apiVersion: "2024-04-15",
     }),
   );
 export type SiteNetworkServicesListByResourceGroupInput =
@@ -4109,11 +4659,11 @@ export const SiteNetworkServicesListByResourceGroup =
 export const SiteNetworkServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/siteNetworkServices",
+      apiVersion: "2024-04-15",
     }),
   );
 export type SiteNetworkServicesListBySubscriptionInput =
@@ -4178,12 +4728,12 @@ export const SiteNetworkServicesUpdateTagsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteNetworkServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/siteNetworkServices/{siteNetworkServiceName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type SiteNetworkServicesUpdateTagsInput =
@@ -4234,11 +4784,49 @@ export const SitesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Accepted",
+            "Deleting",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "Converging",
+          ]),
+        ),
+        nfvis: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              nfviType: Schema.Literals([
+                "Unknown",
+                "AzureArcKubernetes",
+                "AzureCore",
+                "AzureOperatorNexus",
+              ]),
+            }),
+          ),
+        ),
+        siteNetworkServiceReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/sites/{siteName}",
+      apiVersion: "2024-04-15",
     }),
   );
 export type SitesCreateOrUpdateInput = typeof SitesCreateOrUpdateInput.Type;
@@ -4284,11 +4872,11 @@ export const SitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   siteName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/sites/{siteName}",
+    apiVersion: "2024-04-15",
   }),
 );
 export type SitesDeleteInput = typeof SitesDeleteInput.Type;
@@ -4315,11 +4903,11 @@ export const SitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   siteName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/sites/{siteName}",
+    apiVersion: "2024-04-15",
   }),
 );
 export type SitesGetInput = typeof SitesGetInput.Type;
@@ -4364,11 +4952,11 @@ export const SitesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/sites",
+      apiVersion: "2024-04-15",
     }),
   );
 export type SitesListByResourceGroupInput =
@@ -4433,11 +5021,11 @@ export const SitesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SitesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/sites",
+      apiVersion: "2024-04-15",
     }),
   );
 export type SitesListBySubscriptionInput =
@@ -4502,12 +5090,12 @@ export const SitesUpdateTagsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   siteName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/sites/{siteName}",
+    apiVersion: "2024-04-15",
   }),
 );
 export type SitesUpdateTagsInput = typeof SitesUpdateTagsInput.Type;

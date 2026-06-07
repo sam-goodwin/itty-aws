@@ -17,6 +17,7 @@ export const BitLockerKeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}/listBitLockerKeys",
+    apiVersion: "2020-08-01",
   }),
 );
 export type BitLockerKeysListInput = typeof BitLockerKeysListInput.Type;
@@ -48,10 +49,123 @@ export const BitLockerKeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Unknown),
+  properties: Schema.optional(
+    Schema.Struct({
+      storageAccountId: Schema.optional(Schema.String),
+      jobType: Schema.optional(Schema.String),
+      returnAddress: Schema.optional(
+        Schema.Struct({
+          recipientName: Schema.String,
+          streetAddress1: Schema.String,
+          streetAddress2: Schema.optional(Schema.String),
+          city: Schema.String,
+          stateOrProvince: Schema.optional(Schema.String),
+          postalCode: Schema.String,
+          countryOrRegion: Schema.String,
+          phone: Schema.String,
+          email: Schema.String,
+        }),
+      ),
+      returnShipping: Schema.optional(
+        Schema.Struct({
+          carrierName: Schema.String,
+          carrierAccountNumber: Schema.String,
+        }),
+      ),
+      shippingInformation: Schema.optional(
+        Schema.Struct({
+          recipientName: Schema.optional(Schema.String),
+          streetAddress1: Schema.optional(Schema.String),
+          streetAddress2: Schema.optional(Schema.String),
+          city: Schema.optional(Schema.String),
+          stateOrProvince: Schema.optional(Schema.String),
+          postalCode: Schema.optional(Schema.String),
+          countryOrRegion: Schema.optional(Schema.String),
+          phone: Schema.optional(Schema.String),
+          additionalInformation: Schema.optional(Schema.String),
+        }),
+      ),
+      deliveryPackage: Schema.optional(
+        Schema.Struct({
+          carrierName: Schema.String,
+          trackingNumber: Schema.String,
+          driveCount: Schema.optional(Schema.Number),
+          shipDate: Schema.optional(Schema.String),
+        }),
+      ),
+      returnPackage: Schema.optional(
+        Schema.Struct({
+          carrierName: Schema.String,
+          trackingNumber: Schema.String,
+          driveCount: Schema.Number,
+          shipDate: Schema.String,
+        }),
+      ),
+      diagnosticsPath: Schema.optional(Schema.String),
+      logLevel: Schema.optional(Schema.String),
+      backupDriveManifest: Schema.optional(Schema.Boolean),
+      state: Schema.optional(Schema.String),
+      cancelRequested: Schema.optional(Schema.Boolean),
+      percentComplete: Schema.optional(Schema.Number),
+      incompleteBlobListUri: Schema.optional(Schema.String),
+      driveList: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            driveId: Schema.optional(Schema.String),
+            bitLockerKey: Schema.optional(Schema.String),
+            manifestFile: Schema.optional(Schema.String),
+            manifestHash: Schema.optional(Schema.String),
+            driveHeaderHash: Schema.optional(Schema.String),
+            state: Schema.optional(
+              Schema.Literals([
+                "Specified",
+                "Received",
+                "NeverReceived",
+                "Transferring",
+                "Completed",
+                "CompletedMoreInfo",
+                "ShippedBack",
+              ]),
+            ),
+            copyStatus: Schema.optional(Schema.String),
+            percentComplete: Schema.optional(Schema.Number),
+            verboseLogUri: Schema.optional(Schema.String),
+            errorLogUri: Schema.optional(Schema.String),
+            manifestUri: Schema.optional(Schema.String),
+            bytesSucceeded: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
+      export: Schema.optional(
+        Schema.Struct({
+          blobList: Schema.optional(
+            Schema.Struct({
+              blobPath: Schema.optional(Schema.Array(Schema.String)),
+              blobPathPrefix: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+          blobListBlobPath: Schema.optional(Schema.String),
+        }),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      encryptionKey: Schema.optional(
+        Schema.Struct({
+          kekType: Schema.optional(
+            Schema.Literals(["MicrosoftManaged", "CustomerManaged"]),
+          ),
+          kekUrl: Schema.optional(Schema.String),
+          kekVaultResourceID: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}",
+    apiVersion: "2020-08-01",
   }),
 );
 export type JobsCreateInput = typeof JobsCreateInput.Type;
@@ -216,6 +330,7 @@ export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}",
+    apiVersion: "2020-08-01",
   }),
 );
 export type JobsDeleteInput = typeof JobsDeleteInput.Type;
@@ -241,6 +356,7 @@ export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}",
+    apiVersion: "2020-08-01",
   }),
 );
 export type JobsGetInput = typeof JobsGetInput.Type;
@@ -407,6 +523,7 @@ export const JobsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs",
+      apiVersion: "2020-08-01",
     }),
   );
 export type JobsListByResourceGroupInput =
@@ -598,6 +715,7 @@ export const JobsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ImportExport/jobs",
+      apiVersion: "2020-08-01",
     }),
   );
 export type JobsListBySubscriptionInput =
@@ -783,10 +901,75 @@ export const JobsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Unknown),
+  properties: Schema.optional(
+    Schema.Struct({
+      cancelRequested: Schema.optional(Schema.Boolean),
+      state: Schema.optional(Schema.String),
+      returnAddress: Schema.optional(
+        Schema.Struct({
+          recipientName: Schema.String,
+          streetAddress1: Schema.String,
+          streetAddress2: Schema.optional(Schema.String),
+          city: Schema.String,
+          stateOrProvince: Schema.optional(Schema.String),
+          postalCode: Schema.String,
+          countryOrRegion: Schema.String,
+          phone: Schema.String,
+          email: Schema.String,
+        }),
+      ),
+      returnShipping: Schema.optional(
+        Schema.Struct({
+          carrierName: Schema.String,
+          carrierAccountNumber: Schema.String,
+        }),
+      ),
+      deliveryPackage: Schema.optional(
+        Schema.Struct({
+          carrierName: Schema.String,
+          trackingNumber: Schema.String,
+          driveCount: Schema.optional(Schema.Number),
+          shipDate: Schema.optional(Schema.String),
+        }),
+      ),
+      logLevel: Schema.optional(Schema.String),
+      backupDriveManifest: Schema.optional(Schema.Boolean),
+      driveList: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            driveId: Schema.optional(Schema.String),
+            bitLockerKey: Schema.optional(Schema.String),
+            manifestFile: Schema.optional(Schema.String),
+            manifestHash: Schema.optional(Schema.String),
+            driveHeaderHash: Schema.optional(Schema.String),
+            state: Schema.optional(
+              Schema.Literals([
+                "Specified",
+                "Received",
+                "NeverReceived",
+                "Transferring",
+                "Completed",
+                "CompletedMoreInfo",
+                "ShippedBack",
+              ]),
+            ),
+            copyStatus: Schema.optional(Schema.String),
+            percentComplete: Schema.optional(Schema.Number),
+            verboseLogUri: Schema.optional(Schema.String),
+            errorLogUri: Schema.optional(Schema.String),
+            manifestUri: Schema.optional(Schema.String),
+            bytesSucceeded: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}",
+    apiVersion: "2020-08-01",
   }),
 );
 export type JobsUpdateInput = typeof JobsUpdateInput.Type;
@@ -951,6 +1134,7 @@ export const LocationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ImportExport/locations/{locationName}",
+    apiVersion: "2020-08-01",
   }),
 );
 export type LocationsGetInput = typeof LocationsGetInput.Type;
@@ -995,6 +1179,7 @@ export const LocationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ImportExport/locations",
+    apiVersion: "2020-08-01",
   }),
 );
 export type LocationsListInput = typeof LocationsListInput.Type;
@@ -1043,6 +1228,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ImportExport/operations",
+    apiVersion: "2020-08-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;

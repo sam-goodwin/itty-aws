@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AmlFilesystemsArchiveInput =
@@ -14,11 +15,12 @@ export const AmlFilesystemsArchiveInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    filesystemPath: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/archive",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AmlFilesystemsArchiveInput = typeof AmlFilesystemsArchiveInput.Type;
@@ -50,11 +52,11 @@ export const AmlFilesystemsCancelArchiveInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/cancelArchive",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AmlFilesystemsCancelArchiveInput =
@@ -87,11 +89,161 @@ export const AmlFilesystemsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        storageCapacityTiB: Schema.Number,
+        currentStorageCapacityTiB: Schema.optional(Schema.Number),
+        clusterUuid: Schema.optional(Schema.String),
+        health: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(
+              Schema.Literals([
+                "Unavailable",
+                "Available",
+                "Degraded",
+                "Transitioning",
+                "Maintenance",
+                "Expanding",
+              ]),
+            ),
+            statusCode: Schema.optional(Schema.String),
+            statusDescription: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Creating",
+            "Deleting",
+            "Updating",
+            "Canceled",
+          ]),
+        ),
+        filesystemSubnet: Schema.String,
+        clientInfo: Schema.optional(
+          Schema.Struct({
+            mgsAddress: Schema.optional(Schema.String),
+            mountCommand: Schema.optional(Schema.String),
+            lustreVersion: Schema.optional(Schema.String),
+            containerStorageInterface: Schema.optional(
+              Schema.Struct({
+                persistentVolumeClaim: Schema.optional(Schema.String),
+                persistentVolume: Schema.optional(Schema.String),
+                storageClass: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        throughputProvisionedMBps: Schema.optional(Schema.Number),
+        encryptionSettings: Schema.optional(
+          Schema.Struct({
+            keyEncryptionKey: Schema.optional(
+              Schema.Struct({
+                keyUrl: Schema.String,
+                sourceVault: Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              }),
+            ),
+          }),
+        ),
+        maintenanceWindow: Schema.Struct({
+          dayOfWeek: Schema.optional(
+            Schema.Literals([
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+            ]),
+          ),
+          timeOfDayUTC: Schema.optional(Schema.String),
+        }),
+        hsm: Schema.optional(
+          Schema.Struct({
+            settings: Schema.optional(
+              Schema.Struct({
+                container: Schema.String,
+                loggingContainer: Schema.String,
+                importPrefix: Schema.optional(Schema.String),
+                importPrefixesInitial: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+              }),
+            ),
+            archiveStatus: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  filesystemPath: Schema.optional(Schema.String),
+                  status: Schema.optional(
+                    Schema.Struct({
+                      state: Schema.optional(
+                        Schema.Literals([
+                          "NotConfigured",
+                          "Idle",
+                          "InProgress",
+                          "Canceled",
+                          "Completed",
+                          "Failed",
+                          "Cancelling",
+                          "FSScanInProgress",
+                        ]),
+                      ),
+                      lastCompletionTime: Schema.optional(Schema.String),
+                      lastStartedTime: Schema.optional(Schema.String),
+                      percentComplete: Schema.optional(Schema.Number),
+                      errorCode: Schema.optional(Schema.String),
+                      errorMessage: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        rootSquashSettings: Schema.optional(
+          Schema.Struct({
+            mode: Schema.optional(Schema.Literals(["None", "RootOnly", "All"])),
+            noSquashNidLists: Schema.optional(Schema.String),
+            squashUID: Schema.optional(Schema.Number),
+            squashGID: Schema.optional(Schema.Number),
+            status: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["UserAssigned", "None"])),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AmlFilesystemsCreateOrUpdateInput =
@@ -141,11 +293,11 @@ export const AmlFilesystemsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AmlFilesystemsDeleteInput = typeof AmlFilesystemsDeleteInput.Type;
@@ -176,12 +328,12 @@ export const AmlFilesystemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type AmlFilesystemsGetInput = typeof AmlFilesystemsGetInput.Type;
@@ -226,11 +378,11 @@ export const amlFilesystemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AmlFilesystemsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/amlFilesystems",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AmlFilesystemsListInput = typeof AmlFilesystemsListInput.Type;
@@ -291,11 +443,11 @@ export const AmlFilesystemsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AmlFilesystemsListByResourceGroupInput =
@@ -361,11 +513,53 @@ export const AmlFilesystemsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        encryptionSettings: Schema.optional(
+          Schema.Struct({
+            keyEncryptionKey: Schema.optional(
+              Schema.Struct({
+                keyUrl: Schema.String,
+                sourceVault: Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              }),
+            ),
+          }),
+        ),
+        maintenanceWindow: Schema.optional(
+          Schema.Struct({
+            dayOfWeek: Schema.optional(
+              Schema.Literals([
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+              ]),
+            ),
+            timeOfDayUTC: Schema.optional(Schema.String),
+          }),
+        ),
+        rootSquashSettings: Schema.optional(
+          Schema.Struct({
+            mode: Schema.optional(Schema.Literals(["None", "RootOnly", "All"])),
+            noSquashNidLists: Schema.optional(Schema.String),
+            squashUID: Schema.optional(Schema.Number),
+            squashGID: Schema.optional(Schema.Number),
+            status: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AmlFilesystemsUpdateInput = typeof AmlFilesystemsUpdateInput.Type;
@@ -413,11 +607,11 @@ export const AscOperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   operationId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/locations/{location}/ascOperations/{operationId}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type AscOperationsGetInput = typeof AscOperationsGetInput.Type;
@@ -462,11 +656,11 @@ export const AscOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AscUsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/locations/{location}/usages",
+    apiVersion: "2026-01-01",
   }),
 );
 export type AscUsagesListInput = typeof AscUsagesListInput.Type;
@@ -511,11 +705,58 @@ export const AutoExportJobsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
     autoExportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Creating",
+            "Deleting",
+            "Updating",
+            "Canceled",
+          ]),
+        ),
+        adminStatus: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+        autoExportPrefixes: Schema.optional(Schema.Array(Schema.String)),
+        status: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(
+              Schema.Literals([
+                "InProgress",
+                "Disabling",
+                "Disabled",
+                "DisableFailed",
+                "Failed",
+              ]),
+            ),
+            statusCode: Schema.optional(Schema.String),
+            statusMessage: Schema.optional(Schema.String),
+            totalFilesExported: Schema.optional(Schema.Number),
+            totalMiBExported: Schema.optional(Schema.Number),
+            totalFilesFailed: Schema.optional(Schema.Number),
+            exportIterationCount: Schema.optional(Schema.Number),
+            lastSuccessfulIterationCompletionTimeUTC: Schema.optional(
+              Schema.String,
+            ),
+            currentIterationFilesDiscovered: Schema.optional(Schema.Number),
+            currentIterationMiBDiscovered: Schema.optional(Schema.Number),
+            currentIterationFilesExported: Schema.optional(Schema.Number),
+            currentIterationMiBExported: Schema.optional(Schema.Number),
+            currentIterationFilesFailed: Schema.optional(Schema.Number),
+            lastStartedTimeUTC: Schema.optional(Schema.String),
+            lastCompletionTimeUTC: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AutoExportJobsCreateOrUpdateInput =
@@ -567,11 +808,11 @@ export const AutoExportJobsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
     autoExportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AutoExportJobsDeleteInput = typeof AutoExportJobsDeleteInput.Type;
@@ -604,12 +845,12 @@ export const AutoExportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
     autoExportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type AutoExportJobsGetInput = typeof AutoExportJobsGetInput.Type;
@@ -657,11 +898,11 @@ export const AutoExportJobsListByAmlFilesystemInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AutoExportJobsListByAmlFilesystemInput =
@@ -729,11 +970,17 @@ export const AutoExportJobsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
     autoExportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        adminStatus: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AutoExportJobsUpdateInput = typeof AutoExportJobsUpdateInput.Type;
@@ -784,11 +1031,86 @@ export const AutoImportJobsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
     autoImportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Creating",
+            "Deleting",
+            "Updating",
+            "Canceled",
+          ]),
+        ),
+        adminStatus: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+        autoImportPrefixes: Schema.optional(Schema.Array(Schema.String)),
+        conflictResolutionMode: Schema.optional(
+          Schema.Literals([
+            "Fail",
+            "Skip",
+            "OverwriteIfDirty",
+            "OverwriteAlways",
+          ]),
+        ),
+        enableDeletions: Schema.optional(Schema.Boolean),
+        maximumErrors: Schema.optional(Schema.Number),
+        status: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(
+              Schema.Literals([
+                "InProgress",
+                "Failed",
+                "Disabling",
+                "Disabled",
+              ]),
+            ),
+            statusCode: Schema.optional(Schema.String),
+            statusMessage: Schema.optional(Schema.String),
+            scanStartTime: Schema.optional(Schema.String),
+            scanEndTime: Schema.optional(Schema.String),
+            totalBlobsWalked: Schema.optional(Schema.Number),
+            rateOfBlobWalk: Schema.optional(Schema.Number),
+            totalBlobsImported: Schema.optional(Schema.Number),
+            rateOfBlobImport: Schema.optional(Schema.Number),
+            importedFiles: Schema.optional(Schema.Number),
+            importedDirectories: Schema.optional(Schema.Number),
+            importedSymlinks: Schema.optional(Schema.Number),
+            preexistingFiles: Schema.optional(Schema.Number),
+            preexistingDirectories: Schema.optional(Schema.Number),
+            preexistingSymlinks: Schema.optional(Schema.Number),
+            totalErrors: Schema.optional(Schema.Number),
+            totalConflicts: Schema.optional(Schema.Number),
+            blobSyncEvents: Schema.optional(
+              Schema.Struct({
+                importedFiles: Schema.optional(Schema.Number),
+                importedDirectories: Schema.optional(Schema.Number),
+                importedSymlinks: Schema.optional(Schema.Number),
+                preexistingFiles: Schema.optional(Schema.Number),
+                preexistingDirectories: Schema.optional(Schema.Number),
+                preexistingSymlinks: Schema.optional(Schema.Number),
+                totalBlobsImported: Schema.optional(Schema.Number),
+                rateOfBlobImport: Schema.optional(Schema.Number),
+                totalErrors: Schema.optional(Schema.Number),
+                totalConflicts: Schema.optional(Schema.Number),
+                deletions: Schema.optional(Schema.Number),
+                lastChangeFeedEventConsumedTime: Schema.optional(Schema.String),
+                lastTimeFullySynchronized: Schema.optional(Schema.String),
+              }),
+            ),
+            lastStartedTimeUTC: Schema.optional(Schema.String),
+            lastCompletionTimeUTC: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AutoImportJobsCreateOrUpdateInput =
@@ -840,11 +1162,11 @@ export const AutoImportJobsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
     autoImportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AutoImportJobsDeleteInput = typeof AutoImportJobsDeleteInput.Type;
@@ -877,12 +1199,12 @@ export const AutoImportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
     autoImportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type AutoImportJobsGetInput = typeof AutoImportJobsGetInput.Type;
@@ -930,11 +1252,11 @@ export const AutoImportJobsListByAmlFilesystemInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AutoImportJobsListByAmlFilesystemInput =
@@ -1002,11 +1324,17 @@ export const AutoImportJobsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
     autoImportJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        adminStatus: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type AutoImportJobsUpdateInput = typeof AutoImportJobsUpdateInput.Type;
@@ -1056,11 +1384,237 @@ export const CachesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        cacheSizeGB: Schema.optional(Schema.Number),
+        health: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "Healthy",
+                "Degraded",
+                "Down",
+                "Transitioning",
+                "Stopping",
+                "Stopped",
+                "Upgrading",
+                "Flushing",
+                "WaitingForKey",
+                "StartFailed",
+                "UpgradeFailed",
+              ]),
+            ),
+            statusDescription: Schema.optional(Schema.String),
+            conditions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  timestamp: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        mountAddresses: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        subnet: Schema.optional(Schema.String),
+        upgradeStatus: Schema.optional(
+          Schema.Struct({
+            currentFirmwareVersion: Schema.optional(Schema.String),
+            firmwareUpdateStatus: Schema.optional(
+              Schema.Literals(["available", "unavailable"]),
+            ),
+            firmwareUpdateDeadline: Schema.optional(Schema.String),
+            lastFirmwareUpdate: Schema.optional(Schema.String),
+            pendingFirmwareVersion: Schema.optional(Schema.String),
+          }),
+        ),
+        upgradeSettings: Schema.optional(
+          Schema.Struct({
+            upgradeScheduleEnabled: Schema.optional(Schema.Boolean),
+            scheduledTime: Schema.optional(Schema.String),
+          }),
+        ),
+        networkSettings: Schema.optional(
+          Schema.Struct({
+            mtu: Schema.optional(Schema.Number),
+            utilityAddresses: Schema.optional(Schema.Array(Schema.String)),
+            dnsServers: Schema.optional(Schema.Array(Schema.String)),
+            dnsSearchDomain: Schema.optional(Schema.String),
+            ntpServer: Schema.optional(Schema.String),
+          }),
+        ),
+        encryptionSettings: Schema.optional(
+          Schema.Struct({
+            keyEncryptionKey: Schema.optional(
+              Schema.Struct({
+                keyUrl: Schema.String,
+                sourceVault: Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              }),
+            ),
+            rotationToLatestKeyVersionEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        securitySettings: Schema.optional(
+          Schema.Struct({
+            accessPolicies: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  accessRules: Schema.Array(
+                    Schema.Struct({
+                      scope: Schema.Literals(["default", "network", "host"]),
+                      filter: Schema.optional(Schema.String),
+                      access: Schema.Literals(["no", "ro", "rw"]),
+                      suid: Schema.optional(Schema.Boolean),
+                      submountAccess: Schema.optional(Schema.Boolean),
+                      rootSquash: Schema.optional(Schema.Boolean),
+                      anonymousUID: Schema.optional(Schema.String),
+                      anonymousGID: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        directoryServicesSettings: Schema.optional(
+          Schema.Struct({
+            activeDirectory: Schema.optional(
+              Schema.Struct({
+                primaryDnsIpAddress: Schema.String,
+                secondaryDnsIpAddress: Schema.optional(Schema.String),
+                domainName: Schema.String,
+                domainNetBiosName: Schema.String,
+                cacheNetBiosName: Schema.String,
+                domainJoined: Schema.optional(
+                  Schema.Literals(["Yes", "No", "Error"]),
+                ),
+                credentials: Schema.optional(
+                  Schema.Struct({
+                    username: Schema.String,
+                    password: Schema.optional(SensitiveString),
+                  }),
+                ),
+              }),
+            ),
+            usernameDownload: Schema.optional(
+              Schema.Struct({
+                extendedGroups: Schema.optional(Schema.Boolean),
+                usernameSource: Schema.optional(
+                  Schema.Literals(["AD", "LDAP", "File", "None"]),
+                ),
+                groupFileURI: Schema.optional(Schema.String),
+                userFileURI: Schema.optional(Schema.String),
+                ldapServer: Schema.optional(Schema.String),
+                ldapBaseDN: Schema.optional(Schema.String),
+                encryptLdapConnection: Schema.optional(Schema.Boolean),
+                requireValidCertificate: Schema.optional(Schema.Boolean),
+                autoDownloadCertificate: Schema.optional(Schema.Boolean),
+                caCertificateURI: Schema.optional(Schema.String),
+                usernameDownloaded: Schema.optional(
+                  Schema.Literals(["Yes", "No", "Error"]),
+                ),
+                credentials: Schema.optional(
+                  Schema.Struct({
+                    bindDn: Schema.optional(Schema.String),
+                    bindPassword: Schema.optional(SensitiveString),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        zones: Schema.optional(Schema.Array(Schema.String)),
+        primingJobs: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              primingJobName: Schema.String,
+              primingManifestUrl: Schema.String,
+              primingJobId: Schema.optional(Schema.String),
+              primingJobState: Schema.optional(
+                Schema.Literals(["Queued", "Running", "Paused", "Complete"]),
+              ),
+              primingJobStatus: Schema.optional(Schema.String),
+              primingJobDetails: Schema.optional(Schema.String),
+              primingJobPercentComplete: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        spaceAllocation: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              allocationPercentage: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type CachesCreateOrUpdateInput = typeof CachesCreateOrUpdateInput.Type;
@@ -1108,11 +1662,11 @@ export const CachesDebugInfoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/debugInfo",
+    apiVersion: "2026-01-01",
   }),
 );
 export type CachesDebugInfoInput = typeof CachesDebugInfoInput.Type;
@@ -1139,11 +1693,11 @@ export const CachesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type CachesDeleteInput = typeof CachesDeleteInput.Type;
@@ -1170,11 +1724,11 @@ export const CachesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/flush",
+    apiVersion: "2026-01-01",
   }),
 );
 export type CachesFlushInput = typeof CachesFlushInput.Type;
@@ -1201,11 +1755,11 @@ export const CachesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type CachesGetInput = typeof CachesGetInput.Type;
@@ -1248,11 +1802,11 @@ export const CachesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CachesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/caches",
+    apiVersion: "2026-01-01",
   }),
 );
 export type CachesListInput = typeof CachesListInput.Type;
@@ -1312,11 +1866,11 @@ export const CachesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches",
+      apiVersion: "2026-01-01",
     }),
   );
 export type CachesListByResourceGroupInput =
@@ -1383,11 +1937,12 @@ export const CachesPausePrimingJobInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    primingJobId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/pausePrimingJob",
+      apiVersion: "2026-01-01",
     }),
   );
 export type CachesPausePrimingJobInput = typeof CachesPausePrimingJobInput.Type;
@@ -1419,11 +1974,12 @@ export const CachesResumePrimingJobInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    primingJobId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/resumePrimingJob",
+      apiVersion: "2026-01-01",
     }),
   );
 export type CachesResumePrimingJobInput =
@@ -1456,11 +2012,11 @@ export const CachesSpaceAllocationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/spaceAllocation",
+      apiVersion: "2026-01-01",
     }),
   );
 export type CachesSpaceAllocationInput = typeof CachesSpaceAllocationInput.Type;
@@ -1491,11 +2047,11 @@ export const CachesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/start",
+    apiVersion: "2026-01-01",
   }),
 );
 export type CachesStartInput = typeof CachesStartInput.Type;
@@ -1523,11 +2079,20 @@ export const CachesStartPrimingJobInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    primingJobName: Schema.String,
+    primingManifestUrl: Schema.String,
+    primingJobId: Schema.optional(Schema.String),
+    primingJobState: Schema.optional(
+      Schema.Literals(["Queued", "Running", "Paused", "Complete"]),
+    ),
+    primingJobStatus: Schema.optional(Schema.String),
+    primingJobDetails: Schema.optional(Schema.String),
+    primingJobPercentComplete: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/startPrimingJob",
+      apiVersion: "2026-01-01",
     }),
   );
 export type CachesStartPrimingJobInput = typeof CachesStartPrimingJobInput.Type;
@@ -1558,11 +2123,11 @@ export const CachesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stop",
+    apiVersion: "2026-01-01",
   }),
 );
 export type CachesStopInput = typeof CachesStopInput.Type;
@@ -1590,11 +2155,12 @@ export const CachesStopPrimingJobInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    primingJobId: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stopPrimingJob",
+      apiVersion: "2026-01-01",
     }),
   );
 export type CachesStopPrimingJobInput = typeof CachesStopPrimingJobInput.Type;
@@ -1624,11 +2190,237 @@ export const CachesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      cacheSizeGB: Schema.optional(Schema.Number),
+      health: Schema.optional(
+        Schema.Struct({
+          state: Schema.optional(
+            Schema.Literals([
+              "Unknown",
+              "Healthy",
+              "Degraded",
+              "Down",
+              "Transitioning",
+              "Stopping",
+              "Stopped",
+              "Upgrading",
+              "Flushing",
+              "WaitingForKey",
+              "StartFailed",
+              "UpgradeFailed",
+            ]),
+          ),
+          statusDescription: Schema.optional(Schema.String),
+          conditions: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                timestamp: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      mountAddresses: Schema.optional(Schema.Array(Schema.String)),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Updating",
+        ]),
+      ),
+      subnet: Schema.optional(Schema.String),
+      upgradeStatus: Schema.optional(
+        Schema.Struct({
+          currentFirmwareVersion: Schema.optional(Schema.String),
+          firmwareUpdateStatus: Schema.optional(
+            Schema.Literals(["available", "unavailable"]),
+          ),
+          firmwareUpdateDeadline: Schema.optional(Schema.String),
+          lastFirmwareUpdate: Schema.optional(Schema.String),
+          pendingFirmwareVersion: Schema.optional(Schema.String),
+        }),
+      ),
+      upgradeSettings: Schema.optional(
+        Schema.Struct({
+          upgradeScheduleEnabled: Schema.optional(Schema.Boolean),
+          scheduledTime: Schema.optional(Schema.String),
+        }),
+      ),
+      networkSettings: Schema.optional(
+        Schema.Struct({
+          mtu: Schema.optional(Schema.Number),
+          utilityAddresses: Schema.optional(Schema.Array(Schema.String)),
+          dnsServers: Schema.optional(Schema.Array(Schema.String)),
+          dnsSearchDomain: Schema.optional(Schema.String),
+          ntpServer: Schema.optional(Schema.String),
+        }),
+      ),
+      encryptionSettings: Schema.optional(
+        Schema.Struct({
+          keyEncryptionKey: Schema.optional(
+            Schema.Struct({
+              keyUrl: Schema.String,
+              sourceVault: Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            }),
+          ),
+          rotationToLatestKeyVersionEnabled: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      securitySettings: Schema.optional(
+        Schema.Struct({
+          accessPolicies: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                accessRules: Schema.Array(
+                  Schema.Struct({
+                    scope: Schema.Literals(["default", "network", "host"]),
+                    filter: Schema.optional(Schema.String),
+                    access: Schema.Literals(["no", "ro", "rw"]),
+                    suid: Schema.optional(Schema.Boolean),
+                    submountAccess: Schema.optional(Schema.Boolean),
+                    rootSquash: Schema.optional(Schema.Boolean),
+                    anonymousUID: Schema.optional(Schema.String),
+                    anonymousGID: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      directoryServicesSettings: Schema.optional(
+        Schema.Struct({
+          activeDirectory: Schema.optional(
+            Schema.Struct({
+              primaryDnsIpAddress: Schema.String,
+              secondaryDnsIpAddress: Schema.optional(Schema.String),
+              domainName: Schema.String,
+              domainNetBiosName: Schema.String,
+              cacheNetBiosName: Schema.String,
+              domainJoined: Schema.optional(
+                Schema.Literals(["Yes", "No", "Error"]),
+              ),
+              credentials: Schema.optional(
+                Schema.Struct({
+                  username: Schema.String,
+                  password: Schema.optional(SensitiveString),
+                }),
+              ),
+            }),
+          ),
+          usernameDownload: Schema.optional(
+            Schema.Struct({
+              extendedGroups: Schema.optional(Schema.Boolean),
+              usernameSource: Schema.optional(
+                Schema.Literals(["AD", "LDAP", "File", "None"]),
+              ),
+              groupFileURI: Schema.optional(Schema.String),
+              userFileURI: Schema.optional(Schema.String),
+              ldapServer: Schema.optional(Schema.String),
+              ldapBaseDN: Schema.optional(Schema.String),
+              encryptLdapConnection: Schema.optional(Schema.Boolean),
+              requireValidCertificate: Schema.optional(Schema.Boolean),
+              autoDownloadCertificate: Schema.optional(Schema.Boolean),
+              caCertificateURI: Schema.optional(Schema.String),
+              usernameDownloaded: Schema.optional(
+                Schema.Literals(["Yes", "No", "Error"]),
+              ),
+              credentials: Schema.optional(
+                Schema.Struct({
+                  bindDn: Schema.optional(Schema.String),
+                  bindPassword: Schema.optional(SensitiveString),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+      zones: Schema.optional(Schema.Array(Schema.String)),
+      primingJobs: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            primingJobName: Schema.String,
+            primingManifestUrl: Schema.String,
+            primingJobId: Schema.optional(Schema.String),
+            primingJobState: Schema.optional(
+              Schema.Literals(["Queued", "Running", "Paused", "Complete"]),
+            ),
+            primingJobStatus: Schema.optional(Schema.String),
+            primingJobDetails: Schema.optional(Schema.String),
+            primingJobPercentComplete: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
+      spaceAllocation: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            allocationPercentage: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(
+        Schema.Literals([
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+          "None",
+        ]),
+      ),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type CachesUpdateInput = typeof CachesUpdateInput.Type;
@@ -1674,11 +2466,11 @@ export const CachesUpgradeFirmwareInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade",
+      apiVersion: "2026-01-01",
     }),
   );
 export type CachesUpgradeFirmwareInput = typeof CachesUpgradeFirmwareInput.Type;
@@ -1708,12 +2500,20 @@ export const CachesUpgradeFirmware = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CheckAmlFSSubnetsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    filesystemSubnet: Schema.optional(Schema.String),
+    storageCapacityTiB: Schema.optional(Schema.Number),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/checkAmlFSSubnets",
+    apiVersion: "2026-01-01",
   }),
 );
 export type CheckAmlFSSubnetsInput = typeof CheckAmlFSSubnetsInput.Type;
@@ -1740,11 +2540,46 @@ export const ExpansionJobsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
     expansionJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Creating",
+            "Deleting",
+            "Updating",
+            "Canceled",
+          ]),
+        ),
+        newStorageCapacityTiB: Schema.optional(Schema.Number),
+        status: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(
+              Schema.Literals([
+                "InProgress",
+                "Completed",
+                "Failed",
+                "Deleting",
+                "RollingBack",
+              ]),
+            ),
+            statusCode: Schema.optional(Schema.String),
+            statusMessage: Schema.optional(Schema.String),
+            percentComplete: Schema.optional(Schema.Number),
+            startTimeUTC: Schema.optional(Schema.String),
+            completionTimeUTC: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type ExpansionJobsCreateOrUpdateInput =
@@ -1797,11 +2632,11 @@ export const ExpansionJobsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
     expansionJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type ExpansionJobsDeleteInput = typeof ExpansionJobsDeleteInput.Type;
@@ -1831,11 +2666,11 @@ export const ExpansionJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   amlFilesystemName: Schema.String.pipe(T.PathParam()),
   expansionJobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type ExpansionJobsGetInput = typeof ExpansionJobsGetInput.Type;
@@ -1884,11 +2719,11 @@ export const ExpansionJobsListByAmlFilesystemInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs",
+      apiVersion: "2026-01-01",
     }),
   );
 export type ExpansionJobsListByAmlFilesystemInput =
@@ -1956,11 +2791,12 @@ export const ExpansionJobsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
     expansionJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type ExpansionJobsUpdateInput = typeof ExpansionJobsUpdateInput.Type;
@@ -2006,11 +2842,17 @@ export const expansionJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GetRequiredAmlFSSubnetsSizeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    storageCapacityTiB: Schema.optional(Schema.Number),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/getRequiredAmlFSSubnetsSize",
+      apiVersion: "2026-01-01",
     }),
   );
 export type GetRequiredAmlFSSubnetsSizeInput =
@@ -2044,11 +2886,67 @@ export const ImportJobsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
     importJobName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Creating",
+            "Deleting",
+            "Updating",
+            "Canceled",
+          ]),
+        ),
+        adminStatus: Schema.optional(Schema.Literals(["Active", "Cancel"])),
+        importPrefixes: Schema.optional(Schema.Array(Schema.String)),
+        conflictResolutionMode: Schema.optional(
+          Schema.Literals([
+            "Fail",
+            "Skip",
+            "OverwriteIfDirty",
+            "OverwriteAlways",
+          ]),
+        ),
+        maximumErrors: Schema.optional(Schema.Number),
+        status: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(
+              Schema.Literals([
+                "InProgress",
+                "Cancelling",
+                "Canceled",
+                "Completed",
+                "CompletedPartial",
+                "Failed",
+              ]),
+            ),
+            statusMessage: Schema.optional(Schema.String),
+            totalBlobsWalked: Schema.optional(Schema.Number),
+            blobsWalkedPerSecond: Schema.optional(Schema.Number),
+            totalBlobsImported: Schema.optional(Schema.Number),
+            importedFiles: Schema.optional(Schema.Number),
+            importedDirectories: Schema.optional(Schema.Number),
+            importedSymlinks: Schema.optional(Schema.Number),
+            preexistingFiles: Schema.optional(Schema.Number),
+            preexistingDirectories: Schema.optional(Schema.Number),
+            preexistingSymlinks: Schema.optional(Schema.Number),
+            blobsImportedPerSecond: Schema.optional(Schema.Number),
+            lastCompletionTime: Schema.optional(Schema.String),
+            lastStartedTime: Schema.optional(Schema.String),
+            totalErrors: Schema.optional(Schema.Number),
+            totalConflicts: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type ImportJobsCreateOrUpdateInput =
@@ -2100,11 +2998,11 @@ export const ImportJobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   amlFilesystemName: Schema.String.pipe(T.PathParam()),
   importJobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type ImportJobsDeleteInput = typeof ImportJobsDeleteInput.Type;
@@ -2133,11 +3031,11 @@ export const ImportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   amlFilesystemName: Schema.String.pipe(T.PathParam()),
   importJobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type ImportJobsGetInput = typeof ImportJobsGetInput.Type;
@@ -2184,11 +3082,11 @@ export const ImportJobsListByAmlFilesystemInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs",
+      apiVersion: "2026-01-01",
     }),
   );
 export type ImportJobsListByAmlFilesystemInput =
@@ -2255,11 +3153,17 @@ export const ImportJobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   amlFilesystemName: Schema.String.pipe(T.PathParam()),
   importJobName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      adminStatus: Schema.optional(Schema.Literals(["Active", "Cancel"])),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type ImportJobsUpdateInput = typeof ImportJobsUpdateInput.Type;
@@ -2303,12 +3207,13 @@ export const importJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ImportJobsUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StorageCache/operations",
+    apiVersion: "2026-01-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -2402,11 +3307,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/skus",
+    apiVersion: "2026-01-01",
   }),
 );
 export type SkusListInput = typeof SkusListInput.Type;
@@ -2471,11 +3376,11 @@ export const StorageTargetFlushInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/flush",
+      apiVersion: "2026-01-01",
     }),
   );
 export type StorageTargetFlushInput = typeof StorageTargetFlushInput.Type;
@@ -2505,11 +3410,11 @@ export const StorageTargetInvalidateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/invalidate",
+      apiVersion: "2026-01-01",
     }),
   );
 export type StorageTargetInvalidateInput =
@@ -2544,11 +3449,11 @@ export const StorageTargetResumeInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/resume",
+      apiVersion: "2026-01-01",
     }),
   );
 export type StorageTargetResumeInput = typeof StorageTargetResumeInput.Type;
@@ -2579,11 +3484,69 @@ export const StorageTargetsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        junctions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              namespacePath: Schema.optional(Schema.String),
+              targetPath: Schema.optional(Schema.String),
+              nfsExport: Schema.optional(Schema.String),
+              nfsAccessPolicy: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        targetType: Schema.Literals(["nfs3", "clfs", "unknown", "blobNfs"]),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Creating",
+            "Deleting",
+            "Updating",
+          ]),
+        ),
+        state: Schema.optional(
+          Schema.Literals(["Ready", "Busy", "Suspended", "Flushing"]),
+        ),
+        nfs3: Schema.optional(
+          Schema.Struct({
+            target: Schema.optional(Schema.String),
+            usageModel: Schema.optional(Schema.String),
+            verificationTimer: Schema.optional(Schema.Number),
+            writeBackTimer: Schema.optional(Schema.Number),
+          }),
+        ),
+        clfs: Schema.optional(
+          Schema.Struct({
+            target: Schema.optional(Schema.String),
+          }),
+        ),
+        unknown: Schema.optional(
+          Schema.Struct({
+            attributes: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        blobNfs: Schema.optional(
+          Schema.Struct({
+            target: Schema.optional(Schema.String),
+            usageModel: Schema.optional(Schema.String),
+            verificationTimer: Schema.optional(Schema.Number),
+            writeBackTimer: Schema.optional(Schema.Number),
+          }),
+        ),
+        allocationPercentage: Schema.optional(Schema.Number),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type StorageTargetsCreateOrUpdateInput =
@@ -2635,12 +3598,12 @@ export const StorageTargetsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     force: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
+      apiVersion: "2026-01-01",
     }),
   );
 export type StorageTargetsDeleteInput = typeof StorageTargetsDeleteInput.Type;
@@ -2674,11 +3637,11 @@ export const StorageTargetsDnsRefreshInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/dnsRefresh",
+      apiVersion: "2026-01-01",
     }),
   );
 export type StorageTargetsDnsRefreshInput =
@@ -2713,12 +3676,12 @@ export const StorageTargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
+    apiVersion: "2026-01-01",
   }),
 );
 export type StorageTargetsGetInput = typeof StorageTargetsGetInput.Type;
@@ -2766,11 +3729,11 @@ export const StorageTargetsListByCacheInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets",
+      apiVersion: "2026-01-01",
     }),
   );
 export type StorageTargetsListByCacheInput =
@@ -2839,11 +3802,11 @@ export const StorageTargetsRestoreDefaultsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/restoreDefaults",
+      apiVersion: "2026-01-01",
     }),
   );
 export type StorageTargetsRestoreDefaultsInput =
@@ -2877,11 +3840,11 @@ export const StorageTargetSuspendInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     storageTargetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/suspend",
+      apiVersion: "2026-01-01",
     }),
   );
 export type StorageTargetSuspendInput = typeof StorageTargetSuspendInput.Type;
@@ -2910,11 +3873,11 @@ export const StorageTargetSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const UsageModelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/usageModels",
+    apiVersion: "2026-01-01",
   }),
 );
 export type UsageModelsListInput = typeof UsageModelsListInput.Type;

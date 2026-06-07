@@ -7,14 +7,146 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const ConfigurationStoresCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        creationDate: Schema.optional(Schema.String),
+        endpoint: Schema.optional(Schema.String),
+        encryption: Schema.optional(
+          Schema.Struct({
+            keyVaultProperties: Schema.optional(
+              Schema.Struct({
+                keyIdentifier: Schema.optional(Schema.String),
+                identityClientId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              properties: Schema.optional(
+                Schema.Struct({
+                  provisioningState: Schema.optional(
+                    Schema.Literals([
+                      "Creating",
+                      "Updating",
+                      "Deleting",
+                      "Succeeded",
+                      "Failed",
+                      "Canceled",
+                    ]),
+                  ),
+                  privateEndpoint: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  privateLinkServiceConnectionState: Schema.Struct({
+                    status: Schema.optional(
+                      Schema.Literals([
+                        "Pending",
+                        "Approved",
+                        "Rejected",
+                        "Disconnected",
+                      ]),
+                    ),
+                    description: Schema.optional(Schema.String),
+                    actionsRequired: Schema.optional(
+                      Schema.Literals(["None", "Recreate"]),
+                    ),
+                  }),
+                }),
+              ),
+            }),
+          ),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+        softDeleteRetentionInDays: Schema.optional(Schema.Number),
+        defaultKeyValueRevisionRetentionPeriodInSeconds: Schema.optional(
+          Schema.Number,
+        ),
+        enablePurgeProtection: Schema.optional(Schema.Boolean),
+        dataPlaneProxy: Schema.optional(
+          Schema.Struct({
+            authenticationMode: Schema.optional(
+              Schema.Literals(["Local", "Pass-through"]),
+            ),
+            privateLinkDelegation: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+        createMode: Schema.optional(Schema.Literals(["Recover", "Default"])),
+      }),
+    ),
+    sku: Schema.Struct({
+      name: Schema.String,
+    }),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type ConfigurationStoresCreateInput =
@@ -46,6 +178,7 @@ export const ConfigurationStoresDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type ConfigurationStoresDeleteInput =
@@ -73,6 +206,7 @@ export const ConfigurationStoresGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type ConfigurationStoresGetInput =
@@ -104,6 +238,7 @@ export const ConfigurationStoresGetDeletedInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type ConfigurationStoresGetDeletedInput =
@@ -146,6 +281,7 @@ export const ConfigurationStoresListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/configurationStores",
+      apiVersion: "2024-06-01",
     }),
   );
 export type ConfigurationStoresListInput =
@@ -188,6 +324,7 @@ export const ConfigurationStoresListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores",
+      apiVersion: "2024-06-01",
     }),
   );
 export type ConfigurationStoresListByResourceGroupInput =
@@ -227,6 +364,7 @@ export const ConfigurationStoresListDeletedInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/deletedConfigurationStores",
+      apiVersion: "2024-06-01",
     }),
   );
 export type ConfigurationStoresListDeletedInput =
@@ -278,6 +416,7 @@ export const ConfigurationStoresListKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/listKeys",
+      apiVersion: "2024-06-01",
     }),
   );
 export type ConfigurationStoresListKeysInput =
@@ -292,7 +431,7 @@ export const ConfigurationStoresListKeysOutput =
           id: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           value: Schema.optional(Schema.String),
-          connectionString: Schema.optional(SensitiveString),
+          connectionString: Schema.optional(SensitiveOutputString),
           lastModified: Schema.optional(Schema.String),
           readOnly: Schema.optional(Schema.Boolean),
         }),
@@ -321,6 +460,7 @@ export const ConfigurationStoresPurgeDeletedInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}/purge",
+      apiVersion: "2024-06-01",
     }),
   );
 export type ConfigurationStoresPurgeDeletedInput =
@@ -343,10 +483,13 @@ export const ConfigurationStoresPurgeDeleted =
   }));
 // Input Schema
 export const ConfigurationStoresRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/regenerateKey",
+      apiVersion: "2024-06-01",
     }),
   );
 export type ConfigurationStoresRegenerateKeyInput =
@@ -358,7 +501,7 @@ export const ConfigurationStoresRegenerateKeyOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
-    connectionString: Schema.optional(SensitiveString),
+    connectionString: Schema.optional(SensitiveOutputString),
     lastModified: Schema.optional(Schema.String),
     readOnly: Schema.optional(Schema.Boolean),
   });
@@ -376,10 +519,73 @@ export const ConfigurationStoresRegenerateKey =
   }));
 // Input Schema
 export const ConfigurationStoresUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        encryption: Schema.optional(
+          Schema.Struct({
+            keyVaultProperties: Schema.optional(
+              Schema.Struct({
+                keyIdentifier: Schema.optional(Schema.String),
+                identityClientId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        enablePurgeProtection: Schema.optional(Schema.Boolean),
+        dataPlaneProxy: Schema.optional(
+          Schema.Struct({
+            authenticationMode: Schema.optional(
+              Schema.Literals(["Local", "Pass-through"]),
+            ),
+            privateLinkDelegation: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+        defaultKeyValueRevisionRetentionPeriodInSeconds: Schema.optional(
+          Schema.Number,
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type ConfigurationStoresUpdateInput =
@@ -409,10 +615,26 @@ export const ConfigurationStoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const KeyValuesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyValueName: Schema.String.pipe(T.PathParam()),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        key: Schema.optional(Schema.String),
+        label: Schema.optional(Schema.String),
+        value: Schema.optional(Schema.String),
+        contentType: Schema.optional(Schema.String),
+        eTag: Schema.optional(Schema.String),
+        lastModified: Schema.optional(Schema.String),
+        locked: Schema.optional(Schema.Boolean),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type KeyValuesCreateOrUpdateInput =
@@ -459,6 +681,7 @@ export const KeyValuesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}",
+    apiVersion: "2024-06-01",
   }),
 );
 export type KeyValuesDeleteInput = typeof KeyValuesDeleteInput.Type;
@@ -484,6 +707,7 @@ export const KeyValuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}",
+    apiVersion: "2024-06-01",
   }),
 );
 export type KeyValuesGetInput = typeof KeyValuesGetInput.Type;
@@ -520,10 +744,14 @@ export const KeyValuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const OperationsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.AppConfiguration/configurationStores"]),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/checkNameAvailability",
+      apiVersion: "2024-06-01",
     }),
   );
 export type OperationsCheckNameAvailabilityInput =
@@ -555,6 +783,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppConfiguration/operations",
+    apiVersion: "2024-06-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -633,10 +862,14 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const OperationsRegionalCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.AppConfiguration/configurationStores"]),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/checkNameAvailability",
+      apiVersion: "2024-06-01",
     }),
   );
 export type OperationsRegionalCheckNameAvailabilityInput =
@@ -665,10 +898,47 @@ export const OperationsRegionalCheckNameAvailability =
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals([
+              "Pending",
+              "Approved",
+              "Rejected",
+              "Disconnected",
+            ]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(
+            Schema.Literals(["None", "Recreate"]),
+          ),
+        }),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -736,6 +1006,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -766,6 +1037,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -831,6 +1103,7 @@ export const PrivateEndpointConnectionsListByConfigurationStoreInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections",
+      apiVersion: "2024-06-01",
     }),
   );
 export type PrivateEndpointConnectionsListByConfigurationStoreInput =
@@ -903,6 +1176,7 @@ export const PrivateLinkResourcesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources/{groupName}",
+      apiVersion: "2024-06-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -943,6 +1217,7 @@ export const PrivateLinkResourcesListByConfigurationStoreInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources",
+      apiVersion: "2024-06-01",
     }),
   );
 export type PrivateLinkResourcesListByConfigurationStoreInput =
@@ -984,10 +1259,43 @@ export const PrivateLinkResourcesListByConfigurationStore =
 // Input Schema
 export const ReplicasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   replicaName: Schema.String.pipe(T.PathParam()),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      endpoint: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Succeeded",
+          "Deleting",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
+    apiVersion: "2024-06-01",
   }),
 );
 export type ReplicasCreateInput = typeof ReplicasCreateInput.Type;
@@ -1046,6 +1354,7 @@ export const ReplicasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
+    apiVersion: "2024-06-01",
   }),
 );
 export type ReplicasDeleteInput = typeof ReplicasDeleteInput.Type;
@@ -1071,6 +1380,7 @@ export const ReplicasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
+    apiVersion: "2024-06-01",
   }),
 );
 export type ReplicasGetInput = typeof ReplicasGetInput.Type;
@@ -1130,6 +1440,7 @@ export const ReplicasListByConfigurationStoreInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas",
+      apiVersion: "2024-06-01",
     }),
   );
 export type ReplicasListByConfigurationStoreInput =
@@ -1206,11 +1517,45 @@ export const ReplicasListByConfigurationStore =
 export const SnapshotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+        ]),
+      ),
+      status: Schema.optional(
+        Schema.Literals(["Provisioning", "Ready", "Archived", "Failed"]),
+      ),
+      filters: Schema.Array(
+        Schema.Struct({
+          key: Schema.String,
+          label: Schema.optional(Schema.String),
+        }),
+      ),
+      compositionType: Schema.optional(Schema.Literals(["Key", "Key_Label"])),
+      created: Schema.optional(Schema.String),
+      expires: Schema.optional(Schema.String),
+      retentionPeriod: Schema.optional(Schema.Number),
+      size: Schema.optional(Schema.Number),
+      itemsCount: Schema.optional(Schema.Number),
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      etag: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/snapshots/{snapshotName}",
+    apiVersion: "2024-06-01",
   }),
 );
 export type SnapshotsCreateInput = typeof SnapshotsCreateInput.Type;
@@ -1270,11 +1615,11 @@ export const SnapshotsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/snapshots/{snapshotName}",
+    apiVersion: "2024-06-01",
   }),
 );
 export type SnapshotsGetInput = typeof SnapshotsGetInput.Type;

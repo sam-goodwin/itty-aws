@@ -15,6 +15,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AnalysisServices/operations",
+    apiVersion: "2017-08-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -89,10 +90,13 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServersCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability",
+      apiVersion: "2017-08-01",
     }),
   );
 export type ServersCheckNameAvailabilityInput =
@@ -122,10 +126,59 @@ export const ServersCheckNameAvailability =
 // Input Schema
 export const ServersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serverName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      asAdministrators: Schema.optional(
+        Schema.Struct({
+          members: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      backupBlobContainerUri: Schema.optional(Schema.String),
+      gatewayDetails: Schema.optional(
+        Schema.Struct({
+          gatewayResourceId: Schema.optional(Schema.String),
+          gatewayObjectId: Schema.optional(Schema.String),
+          dmtsClusterUri: Schema.optional(Schema.String),
+        }),
+      ),
+      ipV4FirewallSettings: Schema.optional(
+        Schema.Struct({
+          firewallRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                firewallRuleName: Schema.optional(Schema.String),
+                rangeStart: Schema.optional(Schema.String),
+                rangeEnd: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          enablePowerBIService: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      querypoolConnectionMode: Schema.optional(
+        Schema.Literals(["All", "ReadOnly"]),
+      ),
+      managedMode: Schema.optional(Schema.Literals([0, 1])),
+      serverMonitorMode: Schema.optional(Schema.Literals([0, 1])),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  sku: Schema.Struct({
+    name: Schema.String,
+    tier: Schema.optional(
+      Schema.Literals(["Development", "Basic", "Standard"]),
+    ),
+    capacity: Schema.optional(Schema.Number),
+  }),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+    apiVersion: "2017-08-01",
   }),
 );
 export type ServersCreateInput = typeof ServersCreateInput.Type;
@@ -164,6 +217,7 @@ export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+    apiVersion: "2017-08-01",
   }),
 );
 export type ServersDeleteInput = typeof ServersDeleteInput.Type;
@@ -190,6 +244,7 @@ export const ServersDissociateGatewayInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway",
+      apiVersion: "2017-08-01",
     }),
   );
 export type ServersDissociateGatewayInput =
@@ -222,6 +277,7 @@ export const ServersGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+    apiVersion: "2017-08-01",
   }),
 );
 export type ServersGetDetailsInput = typeof ServersGetDetailsInput.Type;
@@ -261,6 +317,7 @@ export const ServersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers",
+    apiVersion: "2017-08-01",
   }),
 );
 export type ServersListInput = typeof ServersListInput.Type;
@@ -300,6 +357,7 @@ export const ServersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers",
+      apiVersion: "2017-08-01",
     }),
   );
 export type ServersListByResourceGroupInput =
@@ -346,6 +404,7 @@ export const ServersListGatewayStatusInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus",
+      apiVersion: "2017-08-01",
     }),
   );
 export type ServersListGatewayStatusInput =
@@ -380,6 +439,7 @@ export const ServersListOperationResultsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}",
+      apiVersion: "2017-08-01",
     }),
   );
 export type ServersListOperationResultsInput =
@@ -413,6 +473,7 @@ export const ServersListOperationStatusesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}",
+      apiVersion: "2017-08-01",
     }),
   );
 export type ServersListOperationStatusesInput =
@@ -469,6 +530,7 @@ export const ServersListSkusForExistingInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus",
+      apiVersion: "2017-08-01",
     }),
   );
 export type ServersListSkusForExistingInput =
@@ -515,6 +577,7 @@ export const ServersListSkusForNewInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus",
+      apiVersion: "2017-08-01",
     }),
   );
 export type ServersListSkusForNewInput = typeof ServersListSkusForNewInput.Type;
@@ -554,6 +617,7 @@ export const ServersResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume",
+    apiVersion: "2017-08-01",
   }),
 );
 export type ServersResumeInput = typeof ServersResumeInput.Type;
@@ -579,6 +643,7 @@ export const ServersSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend",
+    apiVersion: "2017-08-01",
   }),
 );
 export type ServersSuspendInput = typeof ServersSuspendInput.Type;
@@ -600,10 +665,57 @@ export const ServersSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serverName: Schema.String.pipe(T.PathParam()),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(
+        Schema.Literals(["Development", "Basic", "Standard"]),
+      ),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      asAdministrators: Schema.optional(
+        Schema.Struct({
+          members: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      backupBlobContainerUri: Schema.optional(Schema.String),
+      gatewayDetails: Schema.optional(
+        Schema.Struct({
+          gatewayResourceId: Schema.optional(Schema.String),
+          gatewayObjectId: Schema.optional(Schema.String),
+          dmtsClusterUri: Schema.optional(Schema.String),
+        }),
+      ),
+      ipV4FirewallSettings: Schema.optional(
+        Schema.Struct({
+          firewallRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                firewallRuleName: Schema.optional(Schema.String),
+                rangeStart: Schema.optional(Schema.String),
+                rangeEnd: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          enablePowerBIService: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      querypoolConnectionMode: Schema.optional(
+        Schema.Literals(["All", "ReadOnly"]),
+      ),
+      managedMode: Schema.optional(Schema.Literals([0, 1])),
+      serverMonitorMode: Schema.optional(Schema.Literals([0, 1])),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+    apiVersion: "2017-08-01",
   }),
 );
 export type ServersUpdateInput = typeof ServersUpdateInput.Type;

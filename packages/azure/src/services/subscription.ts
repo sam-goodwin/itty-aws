@@ -9,12 +9,29 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AliasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AliasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      displayName: Schema.optional(Schema.String),
+      workload: Schema.optional(Schema.Literals(["Production", "DevTest"])),
+      billingScope: Schema.optional(Schema.String),
+      subscriptionId: Schema.optional(Schema.String),
+      resellerId: Schema.optional(Schema.String),
+      additionalProperties: Schema.optional(
+        Schema.Struct({
+          managementGroupId: Schema.optional(Schema.String),
+          subscriptionTenantId: Schema.optional(Schema.String),
+          subscriptionOwnerId: Schema.optional(Schema.String),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        }),
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/providers/Microsoft.Subscription/aliases/{aliasName}",
+    apiVersion: "2021-10-01",
   }),
 );
 export type AliasCreateInput = typeof AliasCreateInput.Type;
@@ -76,6 +93,7 @@ export const AliasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/providers/Microsoft.Subscription/aliases/{aliasName}",
+    apiVersion: "2021-10-01",
   }),
 );
 export type AliasDeleteInput = typeof AliasDeleteInput.Type;
@@ -97,6 +115,7 @@ export const AliasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Subscription/aliases/{aliasName}",
+    apiVersion: "2021-10-01",
   }),
 );
 export type AliasGetInput = typeof AliasGetInput.Type;
@@ -155,7 +174,11 @@ export const AliasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AliasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Subscription/aliases" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Subscription/aliases",
+    apiVersion: "2021-10-01",
+  }),
 );
 export type AliasListInput = typeof AliasListInput.Type;
 
@@ -234,6 +257,7 @@ export const BillingAccountGetPolicyInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Subscription/policies/default",
+      apiVersion: "2021-10-01",
     }),
   );
 export type BillingAccountGetPolicyInput =
@@ -293,6 +317,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Subscription/operations",
+    apiVersion: "2021-10-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -329,10 +354,19 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SubscriptionAcceptOwnershipInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        displayName: Schema.String,
+        managementGroupId: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Subscription/subscriptions/{subscriptionId}/acceptOwnership",
+      apiVersion: "2021-10-01",
     }),
   );
 export type SubscriptionAcceptOwnershipInput =
@@ -360,6 +394,7 @@ export const SubscriptionAcceptOwnershipStatusInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Subscription/subscriptions/{subscriptionId}/acceptOwnershipStatus",
+      apiVersion: "2021-10-01",
     }),
   );
 export type SubscriptionAcceptOwnershipStatusInput =
@@ -398,6 +433,7 @@ export const SubscriptionCancelInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/cancel",
+      apiVersion: "2021-10-01",
     }),
   );
 export type SubscriptionCancelInput = typeof SubscriptionCancelInput.Type;
@@ -423,6 +459,7 @@ export const SubscriptionEnableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/enable",
+      apiVersion: "2021-10-01",
     }),
   );
 export type SubscriptionEnableInput = typeof SubscriptionEnableInput.Type;
@@ -450,6 +487,7 @@ export const SubscriptionOperationGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Subscription/subscriptionOperations/{operationId}",
+      apiVersion: "2021-10-01",
     }),
   );
 export type SubscriptionOperationGetInput =
@@ -477,10 +515,15 @@ export const SubscriptionOperationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SubscriptionPolicyAddUpdatePolicyForTenantInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    blockSubscriptionsLeavingTenant: Schema.optional(Schema.Boolean),
+    blockSubscriptionsIntoTenant: Schema.optional(Schema.Boolean),
+    exemptedPrincipals: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Subscription/policies/default",
+      apiVersion: "2021-10-01",
     }),
   );
 export type SubscriptionPolicyAddUpdatePolicyForTenantInput =
@@ -533,6 +576,7 @@ export const SubscriptionPolicyGetPolicyForTenantInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Subscription/policies/default",
+      apiVersion: "2021-10-01",
     }),
   );
 export type SubscriptionPolicyGetPolicyForTenantInput =
@@ -585,6 +629,7 @@ export const SubscriptionPolicyListPolicyForTenantInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Subscription/policies",
+      apiVersion: "2021-10-01",
     }),
   );
 export type SubscriptionPolicyListPolicyForTenantInput =
@@ -654,6 +699,7 @@ export const SubscriptionRenameInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/rename",
+      apiVersion: "2021-10-01",
     }),
   );
 export type SubscriptionRenameInput = typeof SubscriptionRenameInput.Type;

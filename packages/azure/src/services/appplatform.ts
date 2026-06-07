@@ -7,13 +7,21 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const ApiPortalCustomDomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        thumbprint: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApiPortalCustomDomainsCreateOrUpdateInput =
@@ -58,6 +66,7 @@ export const ApiPortalCustomDomainsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApiPortalCustomDomainsDeleteInput =
@@ -84,6 +93,7 @@ export const ApiPortalCustomDomainsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApiPortalCustomDomainsGetInput =
@@ -129,6 +139,7 @@ export const ApiPortalCustomDomainsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApiPortalCustomDomainsListInput =
@@ -187,10 +198,62 @@ export const ApiPortalCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ApiPortalsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+        public: Schema.optional(Schema.Boolean),
+        url: Schema.optional(Schema.String),
+        httpsOnly: Schema.optional(Schema.Boolean),
+        gatewayIds: Schema.optional(Schema.Array(Schema.String)),
+        sourceUrls: Schema.optional(Schema.Array(Schema.String)),
+        ssoProperties: Schema.optional(
+          Schema.Struct({
+            scope: Schema.optional(Schema.Array(Schema.String)),
+            clientId: Schema.optional(Schema.String),
+            clientSecret: Schema.optional(SensitiveString),
+            issuerUri: Schema.optional(Schema.String),
+          }),
+        ),
+        resourceRequests: Schema.optional(
+          Schema.Struct({
+            cpu: Schema.optional(Schema.String),
+            memory: Schema.optional(Schema.String),
+          }),
+        ),
+        instances: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        apiTryOutEnabledState: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApiPortalsCreateOrUpdateInput =
@@ -237,6 +300,7 @@ export const ApiPortalsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ApiPortalsDeleteInput = typeof ApiPortalsDeleteInput.Type;
@@ -260,6 +324,7 @@ export const ApiPortalsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ApiPortalsGetInput = typeof ApiPortalsGetInput.Type;
@@ -301,6 +366,7 @@ export const ApiPortalsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ApiPortalsListInput = typeof ApiPortalsListInput.Type;
@@ -354,10 +420,13 @@ export const ApiPortalsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ApiPortalsValidateDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/validateDomain",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApiPortalsValidateDomainInput =
@@ -384,10 +453,31 @@ export const ApiPortalsValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ApmsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        type: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+            "Canceled",
+          ]),
+        ),
+        properties: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        secrets: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApmsCreateOrUpdateInput = typeof ApmsCreateOrUpdateInput.Type;
@@ -430,6 +520,7 @@ export const ApmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ApmsDeleteInput = typeof ApmsDeleteInput.Type;
@@ -451,6 +542,7 @@ export const ApmsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ApmsGetInput = typeof ApmsGetInput.Type;
@@ -490,6 +582,7 @@ export const ApmsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ApmsListInput = typeof ApmsListInput.Type;
@@ -547,6 +640,7 @@ export const ApmsListSecretKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}/listSecretKeys",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApmsListSecretKeysInput = typeof ApmsListSecretKeysInput.Type;
@@ -568,10 +662,55 @@ export const ApmsListSecretKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ApplicationAcceleratorsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+            "Canceled",
+          ]),
+        ),
+        components: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              resourceRequests: Schema.optional(
+                Schema.Struct({
+                  cpu: Schema.optional(Schema.String),
+                  memory: Schema.optional(Schema.String),
+                  instanceCount: Schema.optional(Schema.Number),
+                }),
+              ),
+              instances: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    status: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApplicationAcceleratorsCreateOrUpdateInput =
@@ -616,6 +755,7 @@ export const ApplicationAcceleratorsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApplicationAcceleratorsDeleteInput =
@@ -642,6 +782,7 @@ export const ApplicationAcceleratorsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApplicationAcceleratorsGetInput =
@@ -687,6 +828,7 @@ export const ApplicationAcceleratorsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApplicationAcceleratorsListInput =
@@ -745,10 +887,48 @@ export const ApplicationAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ApplicationLiveViewsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+            "Canceled",
+          ]),
+        ),
+        components: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.Unknown),
+              resourceRequests: Schema.optional(
+                Schema.Struct({
+                  cpu: Schema.optional(Schema.String),
+                  memory: Schema.optional(Schema.String),
+                  instanceCount: Schema.optional(Schema.Number),
+                }),
+              ),
+              instances: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    status: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApplicationLiveViewsCreateOrUpdateInput =
@@ -793,6 +973,7 @@ export const ApplicationLiveViewsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApplicationLiveViewsDeleteInput =
@@ -820,6 +1001,7 @@ export const ApplicationLiveViewsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApplicationLiveViewsGetInput =
@@ -865,6 +1047,7 @@ export const ApplicationLiveViewsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ApplicationLiveViewsListInput =
@@ -923,10 +1106,118 @@ export const ApplicationLiveViewsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AppsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        public: Schema.optional(Schema.Boolean),
+        url: Schema.optional(Schema.String),
+        addonConfigs: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Creating",
+            "Updating",
+            "Deleting",
+          ]),
+        ),
+        fqdn: Schema.optional(Schema.String),
+        httpsOnly: Schema.optional(Schema.Boolean),
+        temporaryDisk: Schema.optional(
+          Schema.Struct({
+            sizeInGB: Schema.optional(Schema.Number),
+            mountPath: Schema.optional(Schema.String),
+          }),
+        ),
+        persistentDisk: Schema.optional(
+          Schema.Struct({
+            sizeInGB: Schema.optional(Schema.Number),
+            usedInGB: Schema.optional(Schema.Number),
+            mountPath: Schema.optional(Schema.String),
+          }),
+        ),
+        customPersistentDisks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              customPersistentDiskProperties: Schema.optional(
+                Schema.Struct({
+                  type: Schema.Literals(["AzureFileVolume"]),
+                  mountPath: Schema.String,
+                  readOnly: Schema.optional(Schema.Boolean),
+                  enableSubPath: Schema.optional(Schema.Boolean),
+                  mountOptions: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+              storageId: Schema.String,
+            }),
+          ),
+        ),
+        enableEndToEndTLS: Schema.optional(Schema.Boolean),
+        loadedCertificates: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              resourceId: Schema.String,
+              loadTrustStore: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+        vnetAddons: Schema.optional(
+          Schema.Struct({
+            publicEndpoint: Schema.optional(Schema.Boolean),
+            publicEndpointUrl: Schema.optional(Schema.String),
+          }),
+        ),
+        ingressSettings: Schema.optional(
+          Schema.Struct({
+            readTimeoutInSeconds: Schema.optional(Schema.Number),
+            sendTimeoutInSeconds: Schema.optional(Schema.Number),
+            sessionAffinity: Schema.optional(
+              Schema.Literals(["Cookie", "None"]),
+            ),
+            sessionCookieMaxAge: Schema.optional(Schema.Number),
+            backendProtocol: Schema.optional(
+              Schema.Literals(["GRPC", "Default"]),
+            ),
+            clientAuth: Schema.optional(
+              Schema.Struct({
+                certificates: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+          ]),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type AppsCreateOrUpdateInput = typeof AppsCreateOrUpdateInput.Type;
@@ -969,6 +1260,7 @@ export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type AppsDeleteInput = typeof AppsDeleteInput.Type;
@@ -992,6 +1284,7 @@ export const AppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type AppsGetInput = typeof AppsGetInput.Type;
@@ -1034,6 +1327,7 @@ export const AppsGetResourceUploadUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/getResourceUploadUrl",
+      apiVersion: "2023-12-01",
     }),
   );
 export type AppsGetResourceUploadUrlInput =
@@ -1063,6 +1357,7 @@ export const AppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps",
+    apiVersion: "2023-12-01",
   }),
 );
 export type AppsListInput = typeof AppsListInput.Type;
@@ -1116,10 +1411,13 @@ export const AppsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AppsSetActiveDeploymentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activeDeploymentNames: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/setActiveDeployments",
+      apiVersion: "2023-12-01",
     }),
   );
 export type AppsSetActiveDeploymentsInput =
@@ -1160,12 +1458,116 @@ export const AppsSetActiveDeployments = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      public: Schema.optional(Schema.Boolean),
+      url: Schema.optional(Schema.String),
+      addonConfigs: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Creating",
+          "Updating",
+          "Deleting",
+        ]),
+      ),
+      fqdn: Schema.optional(Schema.String),
+      httpsOnly: Schema.optional(Schema.Boolean),
+      temporaryDisk: Schema.optional(
+        Schema.Struct({
+          sizeInGB: Schema.optional(Schema.Number),
+          mountPath: Schema.optional(Schema.String),
+        }),
+      ),
+      persistentDisk: Schema.optional(
+        Schema.Struct({
+          sizeInGB: Schema.optional(Schema.Number),
+          usedInGB: Schema.optional(Schema.Number),
+          mountPath: Schema.optional(Schema.String),
+        }),
+      ),
+      customPersistentDisks: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            customPersistentDiskProperties: Schema.optional(
+              Schema.Struct({
+                type: Schema.Literals(["AzureFileVolume"]),
+                mountPath: Schema.String,
+                readOnly: Schema.optional(Schema.Boolean),
+                enableSubPath: Schema.optional(Schema.Boolean),
+                mountOptions: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            storageId: Schema.String,
+          }),
+        ),
+      ),
+      enableEndToEndTLS: Schema.optional(Schema.Boolean),
+      loadedCertificates: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourceId: Schema.String,
+            loadTrustStore: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      ),
+      vnetAddons: Schema.optional(
+        Schema.Struct({
+          publicEndpoint: Schema.optional(Schema.Boolean),
+          publicEndpointUrl: Schema.optional(Schema.String),
+        }),
+      ),
+      ingressSettings: Schema.optional(
+        Schema.Struct({
+          readTimeoutInSeconds: Schema.optional(Schema.Number),
+          sendTimeoutInSeconds: Schema.optional(Schema.Number),
+          sessionAffinity: Schema.optional(Schema.Literals(["Cookie", "None"])),
+          sessionCookieMaxAge: Schema.optional(Schema.Number),
+          backendProtocol: Schema.optional(
+            Schema.Literals(["GRPC", "Default"]),
+          ),
+          clientAuth: Schema.optional(
+            Schema.Struct({
+              certificates: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+      ),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type AppsUpdateInput = typeof AppsUpdateInput.Type;
@@ -1202,10 +1604,13 @@ export const AppsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AppsValidateDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/validateDomain",
+      apiVersion: "2023-12-01",
     }),
   );
 export type AppsValidateDomainInput = typeof AppsValidateDomainInput.Type;
@@ -1228,10 +1633,26 @@ export const AppsValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BindingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        resourceName: Schema.optional(Schema.String),
+        resourceType: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        key: Schema.optional(Schema.String),
+        bindingParameters: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        generatedProperties: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        updatedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BindingsCreateOrUpdateInput =
@@ -1278,6 +1699,7 @@ export const BindingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type BindingsDeleteInput = typeof BindingsDeleteInput.Type;
@@ -1301,6 +1723,7 @@ export const BindingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type BindingsGetInput = typeof BindingsGetInput.Type;
@@ -1342,6 +1765,7 @@ export const BindingsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings",
+    apiVersion: "2023-12-01",
   }),
 );
 export type BindingsListInput = typeof BindingsListInput.Type;
@@ -1394,12 +1818,26 @@ export const BindingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BindingsListOutput,
 }));
 // Input Schema
-export const BindingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const BindingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      resourceName: Schema.optional(Schema.String),
+      resourceType: Schema.optional(Schema.String),
+      resourceId: Schema.optional(Schema.String),
+      key: Schema.optional(Schema.String),
+      bindingParameters: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+      generatedProperties: Schema.optional(Schema.String),
+      createdAt: Schema.optional(Schema.String),
+      updatedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type BindingsUpdateInput = typeof BindingsUpdateInput.Type;
@@ -1436,10 +1874,45 @@ export const BindingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BuildpackBindingCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        bindingType: Schema.optional(
+          Schema.Literals([
+            "ApplicationInsights",
+            "ApacheSkyWalking",
+            "AppDynamics",
+            "Dynatrace",
+            "NewRelic",
+            "ElasticAPM",
+          ]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+        launchProperties: Schema.optional(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            secrets: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildpackBindingCreateOrUpdateInput =
@@ -1484,6 +1957,7 @@ export const BuildpackBindingDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildpackBindingDeleteInput =
@@ -1511,6 +1985,7 @@ export const BuildpackBindingGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildpackBindingGetInput = typeof BuildpackBindingGetInput.Type;
@@ -1552,6 +2027,7 @@ export const BuildpackBindingListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildpackBindingListInput = typeof BuildpackBindingListInput.Type;
@@ -1612,6 +2088,7 @@ export const BuildpackBindingListForClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildpackBindings",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildpackBindingListForClusterInput =
@@ -1673,6 +2150,7 @@ export const BuildServiceAgentPoolGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceAgentPoolGetInput =
@@ -1718,6 +2196,7 @@ export const BuildServiceAgentPoolListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceAgentPoolListInput =
@@ -1776,10 +2255,24 @@ export const BuildServiceAgentPoolList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildServiceAgentPoolUpdatePutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        poolSize: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            cpu: Schema.optional(Schema.String),
+            memory: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceAgentPoolUpdatePutInput =
@@ -1820,10 +2313,45 @@ export const BuildServiceAgentPoolUpdatePut =
   }));
 // Input Schema
 export const BuildServiceBuilderCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+        stack: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+        buildpackGroups: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              buildpacks: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceBuilderCreateOrUpdateInput =
@@ -1868,6 +2396,7 @@ export const BuildServiceBuilderDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceBuilderDeleteInput =
@@ -1895,6 +2424,7 @@ export const BuildServiceBuilderGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceBuilderGetInput =
@@ -1940,6 +2470,7 @@ export const BuildServiceBuilderListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceBuilderListInput =
@@ -2002,6 +2533,7 @@ export const BuildServiceBuilderListDeploymentsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/listUsingDeployments",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceBuilderListDeploymentsInput =
@@ -2026,10 +2558,33 @@ export const BuildServiceBuilderListDeployments =
   }));
 // Input Schema
 export const BuildServiceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        containerRegistry: Schema.optional(Schema.String),
+        kPackVersion: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+        resourceRequests: Schema.optional(
+          Schema.Struct({
+            cpu: Schema.optional(Schema.String),
+            memory: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceCreateOrUpdateInput =
@@ -2071,10 +2626,68 @@ export const BuildServiceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BuildServiceCreateOrUpdateBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        relativePath: Schema.optional(Schema.String),
+        builder: Schema.optional(Schema.String),
+        agentPool: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+        env: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        apms: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              resourceId: Schema.String,
+            }),
+          ),
+        ),
+        certificates: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              resourceId: Schema.String,
+            }),
+          ),
+        ),
+        triggeredBuildResult: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            provisioningState: Schema.optional(
+              Schema.Literals([
+                "Queuing",
+                "Building",
+                "Succeeded",
+                "Failed",
+                "Deleting",
+                "Canceled",
+              ]),
+            ),
+            image: Schema.optional(Schema.String),
+            lastTransitionTime: Schema.optional(Schema.String),
+            lastTransitionReason: Schema.optional(Schema.String),
+            lastTransitionStatus: Schema.optional(Schema.String),
+          }),
+        ),
+        resourceRequests: Schema.optional(
+          Schema.Struct({
+            cpu: Schema.optional(Schema.String),
+            memory: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceCreateOrUpdateBuildInput =
@@ -2119,6 +2732,7 @@ export const BuildServiceDeleteBuildInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceDeleteBuildInput =
@@ -2146,6 +2760,7 @@ export const BuildServiceGetBuildInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceGetBuildInput = typeof BuildServiceGetBuildInput.Type;
@@ -2189,6 +2804,7 @@ export const BuildServiceGetBuildResultInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results/{buildResultName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceGetBuildResultInput =
@@ -2234,6 +2850,7 @@ export const BuildServiceGetBuildResultLogInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results/{buildResultName}/getLogFileUrl",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceGetBuildResultLogInput =
@@ -2262,6 +2879,7 @@ export const BuildServiceGetBuildServiceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceGetBuildServiceInput =
@@ -2307,6 +2925,7 @@ export const BuildServiceGetResourceUploadUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/getResourceUploadUrl",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceGetResourceUploadUrlInput =
@@ -2336,6 +2955,7 @@ export const BuildServiceGetSupportedBuildpackInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedBuildpacks/{buildpackName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceGetSupportedBuildpackInput =
@@ -2380,6 +3000,7 @@ export const BuildServiceGetSupportedStackInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedStacks/{stackName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceGetSupportedStackInput =
@@ -2424,6 +3045,7 @@ export const BuildServiceListBuildResultsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceListBuildResultsInput =
@@ -2485,6 +3107,7 @@ export const BuildServiceListBuildsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceListBuildsInput =
@@ -2547,6 +3170,7 @@ export const BuildServiceListBuildServicesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceListBuildServicesInput =
@@ -2608,6 +3232,7 @@ export const BuildServiceListSupportedBuildpacksInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedBuildpacks",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceListSupportedBuildpacksInput =
@@ -2669,6 +3294,7 @@ export const BuildServiceListSupportedStacksInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedStacks",
+      apiVersion: "2023-12-01",
     }),
   );
 export type BuildServiceListSupportedStacksInput =
@@ -2726,10 +3352,33 @@ export const BuildServiceListSupportedStacks =
   }));
 // Input Schema
 export const CertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        type: Schema.String,
+        thumbprint: Schema.optional(Schema.String),
+        issuer: Schema.optional(Schema.String),
+        issuedDate: Schema.optional(Schema.String),
+        expirationDate: Schema.optional(Schema.String),
+        activateDate: Schema.optional(Schema.String),
+        subjectName: Schema.optional(Schema.String),
+        dnsNames: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type CertificatesCreateOrUpdateInput =
@@ -2775,6 +3424,7 @@ export const CertificatesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
@@ -2798,6 +3448,7 @@ export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type CertificatesGetInput = typeof CertificatesGetInput.Type;
@@ -2839,6 +3490,7 @@ export const CertificatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates",
+    apiVersion: "2023-12-01",
   }),
 );
 export type CertificatesListInput = typeof CertificatesListInput.Type;
@@ -2899,6 +3551,7 @@ export const ConfigServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ConfigServersGetInput = typeof ConfigServersGetInput.Type;
@@ -2937,10 +3590,65 @@ export const ConfigServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ConfigServersUpdatePatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotAvailable",
+            "Deleted",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        configServer: Schema.optional(
+          Schema.Struct({
+            gitProperty: Schema.optional(
+              Schema.Struct({
+                repositories: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.String,
+                      pattern: Schema.optional(Schema.Array(Schema.String)),
+                      uri: Schema.String,
+                      label: Schema.optional(Schema.String),
+                      searchPaths: Schema.optional(Schema.Array(Schema.String)),
+                      username: Schema.optional(Schema.String),
+                      password: Schema.optional(SensitiveString),
+                      hostKey: Schema.optional(Schema.String),
+                      hostKeyAlgorithm: Schema.optional(Schema.String),
+                      privateKey: Schema.optional(SensitiveString),
+                      strictHostKeyChecking: Schema.optional(Schema.Boolean),
+                    }),
+                  ),
+                ),
+                uri: Schema.String,
+                label: Schema.optional(Schema.String),
+                searchPaths: Schema.optional(Schema.Array(Schema.String)),
+                username: Schema.optional(Schema.String),
+                password: Schema.optional(SensitiveString),
+                hostKey: Schema.optional(Schema.String),
+                hostKeyAlgorithm: Schema.optional(Schema.String),
+                privateKey: Schema.optional(SensitiveString),
+                strictHostKeyChecking: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ConfigServersUpdatePatchInput =
@@ -2982,10 +3690,65 @@ export const ConfigServersUpdatePatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConfigServersUpdatePutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "NotAvailable",
+            "Deleted",
+            "Failed",
+            "Succeeded",
+            "Updating",
+          ]),
+        ),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        configServer: Schema.optional(
+          Schema.Struct({
+            gitProperty: Schema.optional(
+              Schema.Struct({
+                repositories: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.String,
+                      pattern: Schema.optional(Schema.Array(Schema.String)),
+                      uri: Schema.String,
+                      label: Schema.optional(Schema.String),
+                      searchPaths: Schema.optional(Schema.Array(Schema.String)),
+                      username: Schema.optional(Schema.String),
+                      password: Schema.optional(SensitiveString),
+                      hostKey: Schema.optional(Schema.String),
+                      hostKeyAlgorithm: Schema.optional(Schema.String),
+                      privateKey: Schema.optional(SensitiveString),
+                      strictHostKeyChecking: Schema.optional(Schema.Boolean),
+                    }),
+                  ),
+                ),
+                uri: Schema.String,
+                label: Schema.optional(Schema.String),
+                searchPaths: Schema.optional(Schema.Array(Schema.String)),
+                username: Schema.optional(Schema.String),
+                password: Schema.optional(SensitiveString),
+                hostKey: Schema.optional(Schema.String),
+                hostKeyAlgorithm: Schema.optional(Schema.String),
+                privateKey: Schema.optional(SensitiveString),
+                strictHostKeyChecking: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ConfigServersUpdatePutInput =
@@ -3027,10 +3790,42 @@ export const ConfigServersUpdatePut = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConfigServersValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitProperty: Schema.optional(
+      Schema.Struct({
+        repositories: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              pattern: Schema.optional(Schema.Array(Schema.String)),
+              uri: Schema.String,
+              label: Schema.optional(Schema.String),
+              searchPaths: Schema.optional(Schema.Array(Schema.String)),
+              username: Schema.optional(Schema.String),
+              password: Schema.optional(SensitiveString),
+              hostKey: Schema.optional(Schema.String),
+              hostKeyAlgorithm: Schema.optional(Schema.String),
+              privateKey: Schema.optional(SensitiveString),
+              strictHostKeyChecking: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+        uri: Schema.String,
+        label: Schema.optional(Schema.String),
+        searchPaths: Schema.optional(Schema.Array(Schema.String)),
+        username: Schema.optional(Schema.String),
+        password: Schema.optional(SensitiveString),
+        hostKey: Schema.optional(Schema.String),
+        hostKeyAlgorithm: Schema.optional(Schema.String),
+        privateKey: Schema.optional(SensitiveString),
+        strictHostKeyChecking: Schema.optional(Schema.Boolean),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/validate",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ConfigServersValidateInput = typeof ConfigServersValidateInput.Type;
@@ -3064,10 +3859,70 @@ export const ConfigServersValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConfigurationServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+        generation: Schema.optional(Schema.Literals(["Gen1", "Gen2"])),
+        resourceRequests: Schema.optional(
+          Schema.Struct({
+            cpu: Schema.optional(Schema.String),
+            memory: Schema.optional(Schema.String),
+            instanceCount: Schema.optional(Schema.Number),
+          }),
+        ),
+        instances: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        settings: Schema.optional(
+          Schema.Struct({
+            gitProperty: Schema.optional(
+              Schema.Struct({
+                repositories: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.String,
+                      patterns: Schema.Array(Schema.String),
+                      uri: Schema.String,
+                      label: Schema.String,
+                      searchPaths: Schema.optional(Schema.Array(Schema.String)),
+                      username: Schema.optional(Schema.String),
+                      password: Schema.optional(SensitiveString),
+                      hostKey: Schema.optional(Schema.String),
+                      hostKeyAlgorithm: Schema.optional(Schema.String),
+                      privateKey: Schema.optional(SensitiveString),
+                      strictHostKeyChecking: Schema.optional(Schema.Boolean),
+                      gitImplementation: Schema.optional(
+                        Schema.Literals(["go-git", "libgit2"]),
+                      ),
+                      caCertResourceId: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ConfigurationServicesCreateOrUpdateInput =
@@ -3112,6 +3967,7 @@ export const ConfigurationServicesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ConfigurationServicesDeleteInput =
@@ -3139,6 +3995,7 @@ export const ConfigurationServicesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ConfigurationServicesGetInput =
@@ -3184,6 +4041,7 @@ export const ConfigurationServicesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ConfigurationServicesListInput =
@@ -3242,10 +4100,37 @@ export const ConfigurationServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConfigurationServicesValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitProperty: Schema.optional(
+      Schema.Struct({
+        repositories: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              patterns: Schema.Array(Schema.String),
+              uri: Schema.String,
+              label: Schema.String,
+              searchPaths: Schema.optional(Schema.Array(Schema.String)),
+              username: Schema.optional(Schema.String),
+              password: Schema.optional(SensitiveString),
+              hostKey: Schema.optional(Schema.String),
+              hostKeyAlgorithm: Schema.optional(Schema.String),
+              privateKey: Schema.optional(SensitiveString),
+              strictHostKeyChecking: Schema.optional(Schema.Boolean),
+              gitImplementation: Schema.optional(
+                Schema.Literals(["go-git", "libgit2"]),
+              ),
+              caCertResourceId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validate",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ConfigurationServicesValidateInput =
@@ -3282,10 +4167,70 @@ export const ConfigurationServicesValidate =
   }));
 // Input Schema
 export const ConfigurationServicesValidateResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+        generation: Schema.optional(Schema.Literals(["Gen1", "Gen2"])),
+        resourceRequests: Schema.optional(
+          Schema.Struct({
+            cpu: Schema.optional(Schema.String),
+            memory: Schema.optional(Schema.String),
+            instanceCount: Schema.optional(Schema.Number),
+          }),
+        ),
+        instances: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        settings: Schema.optional(
+          Schema.Struct({
+            gitProperty: Schema.optional(
+              Schema.Struct({
+                repositories: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.String,
+                      patterns: Schema.Array(Schema.String),
+                      uri: Schema.String,
+                      label: Schema.String,
+                      searchPaths: Schema.optional(Schema.Array(Schema.String)),
+                      username: Schema.optional(Schema.String),
+                      password: Schema.optional(SensitiveString),
+                      hostKey: Schema.optional(Schema.String),
+                      hostKeyAlgorithm: Schema.optional(Schema.String),
+                      privateKey: Schema.optional(SensitiveString),
+                      strictHostKeyChecking: Schema.optional(Schema.Boolean),
+                      gitImplementation: Schema.optional(
+                        Schema.Literals(["go-git", "libgit2"]),
+                      ),
+                      caCertResourceId: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validateResource",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ConfigurationServicesValidateResourceInput =
@@ -3322,10 +4267,29 @@ export const ConfigurationServicesValidateResource =
   }));
 // Input Schema
 export const ContainerRegistriesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        credentials: Schema.Struct({
+          type: Schema.String,
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ContainerRegistriesCreateOrUpdateInput =
@@ -3370,6 +4334,7 @@ export const ContainerRegistriesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ContainerRegistriesDeleteInput =
@@ -3397,6 +4362,7 @@ export const ContainerRegistriesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ContainerRegistriesGetInput =
@@ -3442,6 +4408,7 @@ export const ContainerRegistriesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ContainerRegistriesListInput =
@@ -3500,10 +4467,25 @@ export const ContainerRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ContainerRegistriesValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    credentials: Schema.Struct({
+      type: Schema.String,
+    }),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Creating",
+        "Updating",
+        "Succeeded",
+        "Failed",
+        "Deleting",
+        "Canceled",
+      ]),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}/validate",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ContainerRegistriesValidateInput =
@@ -3530,10 +4512,28 @@ export const ContainerRegistriesValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CustomDomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        thumbprint: Schema.optional(Schema.String),
+        appName: Schema.optional(Schema.String),
+        certName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type CustomDomainsCreateOrUpdateInput =
@@ -3579,6 +4579,7 @@ export const CustomDomainsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type CustomDomainsDeleteInput = typeof CustomDomainsDeleteInput.Type;
@@ -3603,6 +4604,7 @@ export const CustomDomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type CustomDomainsGetInput = typeof CustomDomainsGetInput.Type;
@@ -3646,6 +4648,7 @@ export const CustomDomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains",
+    apiVersion: "2023-12-01",
   }),
 );
 export type CustomDomainsListInput = typeof CustomDomainsListInput.Type;
@@ -3700,10 +4703,28 @@ export const CustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const CustomDomainsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        thumbprint: Schema.optional(Schema.String),
+        appName: Schema.optional(Schema.String),
+        certName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type CustomDomainsUpdateInput = typeof CustomDomainsUpdateInput.Type;
@@ -3741,10 +4762,52 @@ export const CustomDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const CustomizedAcceleratorsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+            "Canceled",
+          ]),
+        ),
+        acceleratorType: Schema.optional(
+          Schema.Literals(["Accelerator", "Fragment"]),
+        ),
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        iconUrl: Schema.optional(Schema.String),
+        acceleratorTags: Schema.optional(Schema.Array(Schema.String)),
+        imports: Schema.optional(Schema.Array(Schema.String)),
+        gitRepository: Schema.Struct({
+          url: Schema.String,
+          intervalInSeconds: Schema.optional(Schema.Number),
+          branch: Schema.optional(Schema.String),
+          commit: Schema.optional(Schema.String),
+          gitTag: Schema.optional(Schema.String),
+          authSetting: Schema.Struct({
+            authType: Schema.String,
+          }),
+          subPath: Schema.optional(Schema.String),
+        }),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type CustomizedAcceleratorsCreateOrUpdateInput =
@@ -3789,6 +4852,7 @@ export const CustomizedAcceleratorsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type CustomizedAcceleratorsDeleteInput =
@@ -3815,6 +4879,7 @@ export const CustomizedAcceleratorsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type CustomizedAcceleratorsGetInput =
@@ -3860,6 +4925,7 @@ export const CustomizedAcceleratorsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators",
+      apiVersion: "2023-12-01",
     }),
   );
 export type CustomizedAcceleratorsListInput =
@@ -3918,10 +4984,41 @@ export const CustomizedAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CustomizedAcceleratorsValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Creating",
+        "Updating",
+        "Succeeded",
+        "Failed",
+        "Deleting",
+        "Canceled",
+      ]),
+    ),
+    acceleratorType: Schema.optional(
+      Schema.Literals(["Accelerator", "Fragment"]),
+    ),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    iconUrl: Schema.optional(Schema.String),
+    acceleratorTags: Schema.optional(Schema.Array(Schema.String)),
+    imports: Schema.optional(Schema.Array(Schema.String)),
+    gitRepository: Schema.Struct({
+      url: Schema.String,
+      intervalInSeconds: Schema.optional(Schema.Number),
+      branch: Schema.optional(Schema.String),
+      commit: Schema.optional(Schema.String),
+      gitTag: Schema.optional(Schema.String),
+      authSetting: Schema.Struct({
+        authType: Schema.String,
+      }),
+      subPath: Schema.optional(Schema.String),
+    }),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}/validate",
+      apiVersion: "2023-12-01",
     }),
   );
 export type CustomizedAcceleratorsValidateInput =
@@ -3947,10 +5044,132 @@ export const CustomizedAcceleratorsValidate =
   }));
 // Input Schema
 export const DeploymentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.optional(
+          Schema.Struct({
+            type: Schema.String,
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+        deploymentSettings: Schema.optional(
+          Schema.Struct({
+            resourceRequests: Schema.optional(
+              Schema.Struct({
+                cpu: Schema.optional(Schema.String),
+                memory: Schema.optional(Schema.String),
+              }),
+            ),
+            environmentVariables: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            apms: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  resourceId: Schema.String,
+                }),
+              ),
+            ),
+            addonConfigs: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            livenessProbe: Schema.optional(
+              Schema.Struct({
+                probeAction: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.Literals([
+                      "HTTPGetAction",
+                      "TCPSocketAction",
+                      "ExecAction",
+                    ]),
+                  }),
+                ),
+                disableProbe: Schema.Boolean,
+                initialDelaySeconds: Schema.optional(Schema.Number),
+                periodSeconds: Schema.optional(Schema.Number),
+                timeoutSeconds: Schema.optional(Schema.Number),
+                failureThreshold: Schema.optional(Schema.Number),
+                successThreshold: Schema.optional(Schema.Number),
+              }),
+            ),
+            readinessProbe: Schema.optional(
+              Schema.Struct({
+                probeAction: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.Literals([
+                      "HTTPGetAction",
+                      "TCPSocketAction",
+                      "ExecAction",
+                    ]),
+                  }),
+                ),
+                disableProbe: Schema.Boolean,
+                initialDelaySeconds: Schema.optional(Schema.Number),
+                periodSeconds: Schema.optional(Schema.Number),
+                timeoutSeconds: Schema.optional(Schema.Number),
+                failureThreshold: Schema.optional(Schema.Number),
+                successThreshold: Schema.optional(Schema.Number),
+              }),
+            ),
+            startupProbe: Schema.optional(
+              Schema.Struct({
+                probeAction: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.Literals([
+                      "HTTPGetAction",
+                      "TCPSocketAction",
+                      "ExecAction",
+                    ]),
+                  }),
+                ),
+                disableProbe: Schema.Boolean,
+                initialDelaySeconds: Schema.optional(Schema.Number),
+                periodSeconds: Schema.optional(Schema.Number),
+                timeoutSeconds: Schema.optional(Schema.Number),
+                failureThreshold: Schema.optional(Schema.Number),
+                successThreshold: Schema.optional(Schema.Number),
+              }),
+            ),
+            terminationGracePeriodSeconds: Schema.optional(Schema.Number),
+            containerProbeSettings: Schema.optional(
+              Schema.Struct({
+                disableProbe: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Creating", "Updating", "Succeeded", "Failed"]),
+        ),
+        status: Schema.optional(Schema.Literals(["Stopped", "Running"])),
+        active: Schema.optional(Schema.Boolean),
+        instances: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+              discoveryStatus: Schema.optional(Schema.String),
+              startTime: Schema.optional(Schema.String),
+              zone: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DeploymentsCreateOrUpdateInput =
@@ -3997,6 +5216,7 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
@@ -4019,6 +5239,7 @@ export const DeploymentsDisableRemoteDebuggingInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/disableRemoteDebugging",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DeploymentsDisableRemoteDebuggingInput =
@@ -4044,10 +5265,13 @@ export const DeploymentsDisableRemoteDebugging =
   }));
 // Input Schema
 export const DeploymentsEnableRemoteDebuggingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    port: Schema.optional(Schema.Number),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/enableRemoteDebugging",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DeploymentsEnableRemoteDebuggingInput =
@@ -4073,10 +5297,15 @@ export const DeploymentsEnableRemoteDebugging =
   }));
 // Input Schema
 export const DeploymentsGenerateHeapDumpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appInstance: Schema.optional(Schema.String),
+    filePath: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/generateHeapDump",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DeploymentsGenerateHeapDumpInput =
@@ -4100,10 +5329,15 @@ export const DeploymentsGenerateHeapDump = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DeploymentsGenerateThreadDumpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appInstance: Schema.optional(Schema.String),
+    filePath: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/generateThreadDump",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DeploymentsGenerateThreadDumpInput =
@@ -4131,6 +5365,7 @@ export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DeploymentsGetInput = typeof DeploymentsGetInput.Type;
@@ -4171,6 +5406,7 @@ export const DeploymentsGetLogFileUrlInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/getLogFileUrl",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DeploymentsGetLogFileUrlInput =
@@ -4200,6 +5436,7 @@ export const DeploymentsGetRemoteDebuggingConfigInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/getRemoteDebuggingConfig",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DeploymentsGetRemoteDebuggingConfigInput =
@@ -4230,6 +5467,7 @@ export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DeploymentsListInput = typeof DeploymentsListInput.Type;
@@ -4292,6 +5530,7 @@ export const DeploymentsListForClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/deployments",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DeploymentsListForClusterInput =
@@ -4357,6 +5596,7 @@ export const DeploymentsRestartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/restart",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DeploymentsRestartInput = typeof DeploymentsRestartInput.Type;
@@ -4380,6 +5620,7 @@ export const DeploymentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/start",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DeploymentsStartInput = typeof DeploymentsStartInput.Type;
@@ -4398,10 +5639,15 @@ export const DeploymentsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DeploymentsStartJFRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appInstance: Schema.optional(Schema.String),
+    filePath: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/startJFR",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DeploymentsStartJFRInput = typeof DeploymentsStartJFRInput.Type;
@@ -4426,6 +5672,7 @@ export const DeploymentsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/stop",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DeploymentsStopInput = typeof DeploymentsStopInput.Type;
@@ -4444,11 +5691,133 @@ export const DeploymentsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DeploymentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.optional(
+          Schema.Struct({
+            type: Schema.String,
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+        deploymentSettings: Schema.optional(
+          Schema.Struct({
+            resourceRequests: Schema.optional(
+              Schema.Struct({
+                cpu: Schema.optional(Schema.String),
+                memory: Schema.optional(Schema.String),
+              }),
+            ),
+            environmentVariables: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            apms: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  resourceId: Schema.String,
+                }),
+              ),
+            ),
+            addonConfigs: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            livenessProbe: Schema.optional(
+              Schema.Struct({
+                probeAction: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.Literals([
+                      "HTTPGetAction",
+                      "TCPSocketAction",
+                      "ExecAction",
+                    ]),
+                  }),
+                ),
+                disableProbe: Schema.Boolean,
+                initialDelaySeconds: Schema.optional(Schema.Number),
+                periodSeconds: Schema.optional(Schema.Number),
+                timeoutSeconds: Schema.optional(Schema.Number),
+                failureThreshold: Schema.optional(Schema.Number),
+                successThreshold: Schema.optional(Schema.Number),
+              }),
+            ),
+            readinessProbe: Schema.optional(
+              Schema.Struct({
+                probeAction: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.Literals([
+                      "HTTPGetAction",
+                      "TCPSocketAction",
+                      "ExecAction",
+                    ]),
+                  }),
+                ),
+                disableProbe: Schema.Boolean,
+                initialDelaySeconds: Schema.optional(Schema.Number),
+                periodSeconds: Schema.optional(Schema.Number),
+                timeoutSeconds: Schema.optional(Schema.Number),
+                failureThreshold: Schema.optional(Schema.Number),
+                successThreshold: Schema.optional(Schema.Number),
+              }),
+            ),
+            startupProbe: Schema.optional(
+              Schema.Struct({
+                probeAction: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.Literals([
+                      "HTTPGetAction",
+                      "TCPSocketAction",
+                      "ExecAction",
+                    ]),
+                  }),
+                ),
+                disableProbe: Schema.Boolean,
+                initialDelaySeconds: Schema.optional(Schema.Number),
+                periodSeconds: Schema.optional(Schema.Number),
+                timeoutSeconds: Schema.optional(Schema.Number),
+                failureThreshold: Schema.optional(Schema.Number),
+                successThreshold: Schema.optional(Schema.Number),
+              }),
+            ),
+            terminationGracePeriodSeconds: Schema.optional(Schema.Number),
+            containerProbeSettings: Schema.optional(
+              Schema.Struct({
+                disableProbe: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Creating", "Updating", "Succeeded", "Failed"]),
+        ),
+        status: Schema.optional(Schema.Literals(["Stopped", "Running"])),
+        active: Schema.optional(Schema.Boolean),
+        instances: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+              discoveryStatus: Schema.optional(Schema.String),
+              startTime: Schema.optional(Schema.String),
+              zone: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+  },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DeploymentsUpdateInput = typeof DeploymentsUpdateInput.Type;
@@ -4486,10 +5855,78 @@ export const DeploymentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DevToolPortalsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+            "Canceled",
+          ]),
+        ),
+        components: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              resourceRequests: Schema.optional(
+                Schema.Struct({
+                  cpu: Schema.optional(Schema.String),
+                  memory: Schema.optional(Schema.String),
+                  instanceCount: Schema.optional(Schema.Number),
+                }),
+              ),
+              instances: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    status: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        public: Schema.optional(Schema.Boolean),
+        url: Schema.optional(Schema.String),
+        ssoProperties: Schema.optional(
+          Schema.Struct({
+            scopes: Schema.optional(Schema.Array(Schema.String)),
+            clientId: Schema.optional(Schema.String),
+            clientSecret: Schema.optional(SensitiveString),
+            metadataUrl: Schema.optional(Schema.String),
+          }),
+        ),
+        features: Schema.optional(
+          Schema.Struct({
+            applicationAccelerator: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                route: Schema.optional(Schema.String),
+              }),
+            ),
+            applicationLiveView: Schema.optional(
+              Schema.Struct({
+                state: Schema.optional(
+                  Schema.Literals(["Enabled", "Disabled"]),
+                ),
+                route: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevToolPortalsCreateOrUpdateInput =
@@ -4534,6 +5971,7 @@ export const DevToolPortalsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevToolPortalsDeleteInput = typeof DevToolPortalsDeleteInput.Type;
@@ -4560,6 +5998,7 @@ export const DevToolPortalsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type DevToolPortalsGetInput = typeof DevToolPortalsGetInput.Type;
@@ -4601,6 +6040,7 @@ export const DevToolPortalsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/devToolPortals",
+      apiVersion: "2023-12-01",
     }),
   );
 export type DevToolPortalsListInput = typeof DevToolPortalsListInput.Type;
@@ -4655,10 +6095,17 @@ export const DevToolPortalsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const GatewayCustomDomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        thumbprint: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type GatewayCustomDomainsCreateOrUpdateInput =
@@ -4703,6 +6150,7 @@ export const GatewayCustomDomainsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type GatewayCustomDomainsDeleteInput =
@@ -4730,6 +6178,7 @@ export const GatewayCustomDomainsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type GatewayCustomDomainsGetInput =
@@ -4775,6 +6224,7 @@ export const GatewayCustomDomainsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains",
+      apiVersion: "2023-12-01",
     }),
   );
 export type GatewayCustomDomainsListInput =
@@ -4833,10 +6283,50 @@ export const GatewayCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const GatewayRouteConfigsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+        appResourceId: Schema.optional(Schema.String),
+        openApi: Schema.optional(
+          Schema.Struct({
+            uri: Schema.optional(Schema.String),
+          }),
+        ),
+        protocol: Schema.optional(Schema.Literals(["HTTP", "HTTPS"])),
+        routes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              title: Schema.optional(Schema.String),
+              description: Schema.optional(Schema.String),
+              uri: Schema.optional(Schema.String),
+              ssoEnabled: Schema.optional(Schema.Boolean),
+              tokenRelay: Schema.optional(Schema.Boolean),
+              predicates: Schema.optional(Schema.Array(Schema.String)),
+              filters: Schema.optional(Schema.Array(Schema.String)),
+              order: Schema.optional(Schema.Number),
+              tags: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+        ssoEnabled: Schema.optional(Schema.Boolean),
+        predicates: Schema.optional(Schema.Array(Schema.String)),
+        filters: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type GatewayRouteConfigsCreateOrUpdateInput =
@@ -4881,6 +6371,7 @@ export const GatewayRouteConfigsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type GatewayRouteConfigsDeleteInput =
@@ -4908,6 +6399,7 @@ export const GatewayRouteConfigsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type GatewayRouteConfigsGetInput =
@@ -4953,6 +6445,7 @@ export const GatewayRouteConfigsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs",
+      apiVersion: "2023-12-01",
     }),
   );
 export type GatewayRouteConfigsListInput =
@@ -5011,10 +6504,121 @@ export const GatewayRouteConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const GatewaysCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Deleting",
+          ]),
+        ),
+        public: Schema.optional(Schema.Boolean),
+        url: Schema.optional(Schema.String),
+        httpsOnly: Schema.optional(Schema.Boolean),
+        ssoProperties: Schema.optional(
+          Schema.Struct({
+            scope: Schema.optional(Schema.Array(Schema.String)),
+            clientId: Schema.optional(Schema.String),
+            clientSecret: Schema.optional(SensitiveString),
+            issuerUri: Schema.optional(Schema.String),
+          }),
+        ),
+        apiMetadataProperties: Schema.optional(
+          Schema.Struct({
+            title: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            documentation: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            serverUrl: Schema.optional(Schema.String),
+          }),
+        ),
+        corsProperties: Schema.optional(
+          Schema.Struct({
+            allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
+            allowedOriginPatterns: Schema.optional(Schema.Array(Schema.String)),
+            allowedMethods: Schema.optional(Schema.Array(Schema.String)),
+            allowedHeaders: Schema.optional(Schema.Array(Schema.String)),
+            maxAge: Schema.optional(Schema.Number),
+            allowCredentials: Schema.optional(Schema.Boolean),
+            exposedHeaders: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        clientAuth: Schema.optional(
+          Schema.Struct({
+            certificates: Schema.optional(Schema.Array(Schema.String)),
+            certificateVerification: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+        apms: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              resourceId: Schema.String,
+            }),
+          ),
+        ),
+        environmentVariables: Schema.optional(
+          Schema.Struct({
+            properties: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            secrets: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        resourceRequests: Schema.optional(
+          Schema.Struct({
+            cpu: Schema.optional(Schema.String),
+            memory: Schema.optional(Schema.String),
+          }),
+        ),
+        instances: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        operatorProperties: Schema.optional(
+          Schema.Struct({
+            resourceRequests: Schema.optional(
+              Schema.Struct({
+                cpu: Schema.optional(Schema.String),
+                memory: Schema.optional(Schema.String),
+                instanceCount: Schema.optional(Schema.Number),
+              }),
+            ),
+            instances: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  status: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type GatewaysCreateOrUpdateInput =
@@ -5061,6 +6665,7 @@ export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type GatewaysDeleteInput = typeof GatewaysDeleteInput.Type;
@@ -5084,6 +6689,7 @@ export const GatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type GatewaysGetInput = typeof GatewaysGetInput.Type;
@@ -5125,6 +6731,7 @@ export const GatewaysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways",
+    apiVersion: "2023-12-01",
   }),
 );
 export type GatewaysListInput = typeof GatewaysListInput.Type;
@@ -5182,6 +6789,7 @@ export const GatewaysListEnvSecretsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/listEnvSecrets",
+      apiVersion: "2023-12-01",
     }),
   );
 export type GatewaysListEnvSecretsInput =
@@ -5210,6 +6818,7 @@ export const GatewaysRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/restart",
+    apiVersion: "2023-12-01",
   }),
 );
 export type GatewaysRestartInput = typeof GatewaysRestartInput.Type;
@@ -5228,10 +6837,13 @@ export const GatewaysRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const GatewaysValidateDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/validateDomain",
+      apiVersion: "2023-12-01",
     }),
   );
 export type GatewaysValidateDomainInput =
@@ -5262,6 +6874,7 @@ export const MonitoringSettingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type MonitoringSettingsGetInput = typeof MonitoringSettingsGetInput.Type;
@@ -5302,10 +6915,33 @@ export const MonitoringSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const MonitoringSettingsUpdatePatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["NotAvailable", "Failed", "Succeeded", "Updating"]),
+        ),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        traceEnabled: Schema.optional(Schema.Boolean),
+        appInsightsInstrumentationKey: Schema.optional(Schema.String),
+        appInsightsSamplingRate: Schema.optional(Schema.Number),
+        appInsightsAgentVersions: Schema.optional(
+          Schema.Struct({
+            java: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type MonitoringSettingsUpdatePatchInput =
@@ -5346,10 +6982,33 @@ export const MonitoringSettingsUpdatePatch =
   }));
 // Input Schema
 export const MonitoringSettingsUpdatePutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["NotAvailable", "Failed", "Succeeded", "Updating"]),
+        ),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        traceEnabled: Schema.optional(Schema.Boolean),
+        appInsightsInstrumentationKey: Schema.optional(Schema.String),
+        appInsightsSamplingRate: Schema.optional(Schema.Number),
+        appInsightsAgentVersions: Schema.optional(
+          Schema.Struct({
+            java: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
+      apiVersion: "2023-12-01",
     }),
   );
 export type MonitoringSettingsUpdatePutInput =
@@ -5396,6 +7055,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppPlatform/operations",
+    apiVersion: "2023-12-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -5486,6 +7146,7 @@ export const PredefinedAcceleratorsDisableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/disable",
+      apiVersion: "2023-12-01",
     }),
   );
 export type PredefinedAcceleratorsDisableInput =
@@ -5512,6 +7173,7 @@ export const PredefinedAcceleratorsEnableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/enable",
+      apiVersion: "2023-12-01",
     }),
   );
 export type PredefinedAcceleratorsEnableInput =
@@ -5538,6 +7200,7 @@ export const PredefinedAcceleratorsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type PredefinedAcceleratorsGetInput =
@@ -5583,6 +7246,7 @@ export const PredefinedAcceleratorsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators",
+      apiVersion: "2023-12-01",
     }),
   );
 export type PredefinedAcceleratorsListInput =
@@ -5645,6 +7309,7 @@ export const RuntimeVersionsListRuntimeVersionsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.AppPlatform/runtimeVersions",
+      apiVersion: "2023-12-01",
     }),
   );
 export type RuntimeVersionsListRuntimeVersionsInput =
@@ -5683,6 +7348,7 @@ export const ServiceRegistriesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServiceRegistriesCreateOrUpdateInput =
@@ -5727,6 +7393,7 @@ export const ServiceRegistriesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServiceRegistriesDeleteInput =
@@ -5754,6 +7421,7 @@ export const ServiceRegistriesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServiceRegistriesGetInput = typeof ServiceRegistriesGetInput.Type;
@@ -5797,6 +7465,7 @@ export const ServiceRegistriesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServiceRegistriesListInput = typeof ServiceRegistriesListInput.Type;
@@ -5856,10 +7525,13 @@ export const ServiceRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ServicesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
+    type: Schema.String,
+    name: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/locations/{location}/checkNameAvailability",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesCheckNameAvailabilityInput =
@@ -5888,10 +7560,91 @@ export const ServicesCheckNameAvailability =
   }));
 // Input Schema
 export const ServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Starting",
+            "Stopping",
+            "Deleting",
+            "Deleted",
+            "Succeeded",
+            "Failed",
+            "Moving",
+            "Moved",
+            "MoveFailed",
+          ]),
+        ),
+        networkProfile: Schema.optional(
+          Schema.Struct({
+            serviceRuntimeSubnetId: Schema.optional(Schema.String),
+            appSubnetId: Schema.optional(Schema.String),
+            serviceCidr: Schema.optional(Schema.String),
+            serviceRuntimeNetworkResourceGroup: Schema.optional(Schema.String),
+            appNetworkResourceGroup: Schema.optional(Schema.String),
+            outboundIPs: Schema.optional(
+              Schema.Struct({
+                publicIPs: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            requiredTraffics: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  protocol: Schema.optional(Schema.String),
+                  port: Schema.optional(Schema.Number),
+                  ips: Schema.optional(Schema.Array(Schema.String)),
+                  fqdns: Schema.optional(Schema.Array(Schema.String)),
+                  direction: Schema.optional(
+                    Schema.Literals(["Inbound", "Outbound"]),
+                  ),
+                }),
+              ),
+            ),
+            ingressConfig: Schema.optional(
+              Schema.Struct({
+                readTimeoutInSeconds: Schema.optional(Schema.Number),
+              }),
+            ),
+            outboundType: Schema.optional(Schema.String),
+          }),
+        ),
+        vnetAddons: Schema.optional(
+          Schema.Struct({
+            logStreamPublicEndpoint: Schema.optional(Schema.Boolean),
+            dataPlanePublicEndpoint: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        version: Schema.optional(Schema.Number),
+        serviceId: Schema.optional(Schema.String),
+        powerState: Schema.optional(Schema.Literals(["Running", "Stopped"])),
+        zoneRedundant: Schema.optional(Schema.Boolean),
+        fqdn: Schema.optional(Schema.String),
+        marketplaceResource: Schema.optional(
+          Schema.Struct({
+            plan: Schema.optional(Schema.String),
+            publisher: Schema.optional(Schema.String),
+            product: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -5938,6 +7691,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -5956,10 +7710,13 @@ export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ServicesDisableApmGloballyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableApmGlobally",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesDisableApmGloballyInput =
@@ -5987,6 +7744,7 @@ export const ServicesDisableTestEndpointInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableTestEndpoint",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesDisableTestEndpointInput =
@@ -6010,10 +7768,13 @@ export const ServicesDisableTestEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServicesEnableApmGloballyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableApmGlobally",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesEnableApmGloballyInput =
@@ -6041,6 +7802,7 @@ export const ServicesEnableTestEndpointInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableTestEndpoint",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesEnableTestEndpointInput =
@@ -6074,6 +7836,7 @@ export const ServicesFlushVnetDnsSettingInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/flushVirtualNetworkDnsSettings",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesFlushVnetDnsSettingInput =
@@ -6102,6 +7865,7 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ServicesGetInput = typeof ServicesGetInput.Type;
@@ -6143,6 +7907,7 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ServicesListInput = typeof ServicesListInput.Type;
@@ -6200,6 +7965,7 @@ export const ServicesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/Spring",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesListBySubscriptionInput =
@@ -6262,6 +8028,7 @@ export const ServicesListGloballyEnabledApmsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listGloballyEnabledApms",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesListGloballyEnabledApmsInput =
@@ -6290,6 +8057,7 @@ export const ServicesListSupportedApmTypesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/supportedApmTypes",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesListSupportedApmTypesInput =
@@ -6325,6 +8093,7 @@ export const ServicesListSupportedServerVersionsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/supportedServerVersions",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesListSupportedServerVersionsInput =
@@ -6362,6 +8131,7 @@ export const ServicesListTestKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listTestKeys",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesListTestKeysInput = typeof ServicesListTestKeysInput.Type;
@@ -6389,10 +8159,13 @@ export const ServicesListTestKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServicesRegenerateTestKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyType: Schema.Literals(["Primary", "Secondary"]),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/regenerateTestKey",
+      apiVersion: "2023-12-01",
     }),
   );
 export type ServicesRegenerateTestKeyInput =
@@ -6427,6 +8200,7 @@ export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/start",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ServicesStartInput = typeof ServicesStartInput.Type;
@@ -6450,6 +8224,7 @@ export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/stop",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ServicesStopInput = typeof ServicesStopInput.Type;
@@ -6467,12 +8242,91 @@ export const ServicesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesStopOutput,
 }));
 // Input Schema
-export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Updating",
+          "Starting",
+          "Stopping",
+          "Deleting",
+          "Deleted",
+          "Succeeded",
+          "Failed",
+          "Moving",
+          "Moved",
+          "MoveFailed",
+        ]),
+      ),
+      networkProfile: Schema.optional(
+        Schema.Struct({
+          serviceRuntimeSubnetId: Schema.optional(Schema.String),
+          appSubnetId: Schema.optional(Schema.String),
+          serviceCidr: Schema.optional(Schema.String),
+          serviceRuntimeNetworkResourceGroup: Schema.optional(Schema.String),
+          appNetworkResourceGroup: Schema.optional(Schema.String),
+          outboundIPs: Schema.optional(
+            Schema.Struct({
+              publicIPs: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+          requiredTraffics: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                protocol: Schema.optional(Schema.String),
+                port: Schema.optional(Schema.Number),
+                ips: Schema.optional(Schema.Array(Schema.String)),
+                fqdns: Schema.optional(Schema.Array(Schema.String)),
+                direction: Schema.optional(
+                  Schema.Literals(["Inbound", "Outbound"]),
+                ),
+              }),
+            ),
+          ),
+          ingressConfig: Schema.optional(
+            Schema.Struct({
+              readTimeoutInSeconds: Schema.optional(Schema.Number),
+            }),
+          ),
+          outboundType: Schema.optional(Schema.String),
+        }),
+      ),
+      vnetAddons: Schema.optional(
+        Schema.Struct({
+          logStreamPublicEndpoint: Schema.optional(Schema.Boolean),
+          dataPlanePublicEndpoint: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      version: Schema.optional(Schema.Number),
+      serviceId: Schema.optional(Schema.String),
+      powerState: Schema.optional(Schema.Literals(["Running", "Stopped"])),
+      zoneRedundant: Schema.optional(Schema.Boolean),
+      fqdn: Schema.optional(Schema.String),
+      marketplaceResource: Schema.optional(
+        Schema.Struct({
+          plan: Schema.optional(Schema.String),
+          publisher: Schema.optional(Schema.String),
+          product: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      tier: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
@@ -6512,6 +8366,7 @@ export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/skus",
+    apiVersion: "2023-12-01",
   }),
 );
 export type SkusListInput = typeof SkusListInput.Type;
@@ -6592,10 +8447,17 @@ export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const StoragesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        storageType: Schema.Literals(["StorageAccount"]),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
+      apiVersion: "2023-12-01",
     }),
   );
 export type StoragesCreateOrUpdateInput =
@@ -6642,6 +8504,7 @@ export const StoragesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type StoragesDeleteInput = typeof StoragesDeleteInput.Type;
@@ -6665,6 +8528,7 @@ export const StoragesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
+    apiVersion: "2023-12-01",
   }),
 );
 export type StoragesGetInput = typeof StoragesGetInput.Type;
@@ -6706,6 +8570,7 @@ export const StoragesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages",
+    apiVersion: "2023-12-01",
   }),
 );
 export type StoragesListInput = typeof StoragesListInput.Type;

@@ -7,17 +7,17 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const DisableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/consoleServices/{default}/disableConsole",
+    apiVersion: "2024-07-01",
   }),
 );
 export type DisableConsoleInput = typeof DisableConsoleInput.Type;
@@ -50,11 +50,11 @@ export const DisableConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EnableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/consoleServices/{default}/enableConsole",
+    apiVersion: "2024-07-01",
   }),
 );
 export type EnableConsoleInput = typeof EnableConsoleInput.Type;
@@ -87,11 +87,11 @@ export const EnableConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GetConsoleStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/consoleServices/{default}",
+    apiVersion: "2024-07-01",
   }),
 );
 export type GetConsoleStatusInput = typeof GetConsoleStatusInput.Type;
@@ -123,12 +123,13 @@ export const GetConsoleStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetConsoleStatusOutput,
 }));
 // Input Schema
-export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.SerialConsole/operations",
+    apiVersion: "2024-07-01",
   }),
 );
 export type ListOperationsInput = typeof ListOperationsInput.Type;
@@ -173,11 +174,11 @@ export const SerialPortsConnectInput =
     parentResourceType: Schema.String.pipe(T.PathParam()),
     parentResource: Schema.String.pipe(T.PathParam()),
     serialPort: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts/{serialPort}/connect",
+      apiVersion: "2024-07-01",
     }),
   );
 export type SerialPortsConnectInput = typeof SerialPortsConnectInput.Type;
@@ -185,7 +186,7 @@ export type SerialPortsConnectInput = typeof SerialPortsConnectInput.Type;
 // Output Schema
 export const SerialPortsConnectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    connectionString: Schema.optional(SensitiveString),
+    connectionString: Schema.optional(SensitiveOutputString),
   });
 export type SerialPortsConnectOutput = typeof SerialPortsConnectOutput.Type;
 
@@ -214,12 +215,20 @@ export const SerialPortsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     parentResourceType: Schema.String.pipe(T.PathParam()),
     parentResource: Schema.String.pipe(T.PathParam()),
     serialPort: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        state: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+        connectionState: Schema.optional(
+          Schema.Literals(["active", "inactive"]),
+        ),
+      }),
+    ),
   },
 ).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts/{serialPort}",
+    apiVersion: "2024-07-01",
   }),
 );
 export type SerialPortsCreateInput = typeof SerialPortsCreateInput.Type;
@@ -271,11 +280,11 @@ export const SerialPortsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parentResourceType: Schema.String.pipe(T.PathParam()),
   parentResource: Schema.String.pipe(T.PathParam()),
   serialPort: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts/{serialPort}",
+    apiVersion: "2024-07-01",
   }),
 );
 export type SerialPortsGetInput = typeof SerialPortsGetInput.Type;
@@ -325,11 +334,11 @@ export const SerialPortsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   parentResourceType: Schema.String.pipe(T.PathParam()),
   parentResource: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts",
+    apiVersion: "2024-07-01",
   }),
 );
 export type SerialPortsListInput = typeof SerialPortsListInput.Type;
@@ -391,11 +400,11 @@ export const SerialPortsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SerialPortsListBySubscriptionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/serialPorts",
+      apiVersion: "2024-07-01",
     }),
   );
 export type SerialPortsListBySubscriptionsInput =

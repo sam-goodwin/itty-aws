@@ -7,7 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const ActivityRunsQueryByPipelineRunInput =
@@ -16,11 +16,54 @@ export const ActivityRunsQueryByPipelineRunInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     runId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    continuationToken: Schema.optional(Schema.String),
+    lastUpdatedAfter: Schema.String,
+    lastUpdatedBefore: Schema.String,
+    filters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          operand: Schema.Literals([
+            "PipelineName",
+            "Status",
+            "RunStart",
+            "RunEnd",
+            "ActivityName",
+            "ActivityRunStart",
+            "ActivityRunEnd",
+            "ActivityType",
+            "TriggerName",
+            "TriggerRunTimestamp",
+            "RunGroupId",
+            "LatestOnly",
+          ]),
+          operator: Schema.Literals(["Equals", "NotEquals", "In", "NotIn"]),
+          values: Schema.Array(Schema.String),
+        }),
+      ),
+    ),
+    orderBy: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          orderBy: Schema.Literals([
+            "RunStart",
+            "RunEnd",
+            "PipelineName",
+            "Status",
+            "ActivityName",
+            "ActivityRunStart",
+            "ActivityRunEnd",
+            "TriggerName",
+            "TriggerRunTimestamp",
+          ]),
+          order: Schema.Literals(["ASC", "DESC"]),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/pipelineruns/{runId}/queryActivityruns",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ActivityRunsQueryByPipelineRunInput =
@@ -72,11 +115,211 @@ export const ChangeDataCaptureCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     changeDataCaptureName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      folder: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      description: Schema.optional(Schema.String),
+      sourceConnectionsInfo: Schema.Array(
+        Schema.Struct({
+          sourceEntities: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                properties: Schema.optional(
+                  Schema.Struct({
+                    schema: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          dataType: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    dslConnectorProperties: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          value: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          connection: Schema.optional(
+            Schema.Struct({
+              linkedService: Schema.optional(
+                Schema.Struct({
+                  type: Schema.Literals(["LinkedServiceReference"]),
+                  referenceName: Schema.String,
+                  parameters: Schema.optional(
+                    Schema.Record(Schema.String, Schema.Unknown),
+                  ),
+                }),
+              ),
+              linkedServiceType: Schema.optional(Schema.String),
+              type: Schema.Literals(["linkedservicetype"]),
+              isInlineDataset: Schema.optional(Schema.Boolean),
+              commonDslConnectorProperties: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    value: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+      targetConnectionsInfo: Schema.Array(
+        Schema.Struct({
+          targetEntities: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                properties: Schema.optional(
+                  Schema.Struct({
+                    schema: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          dataType: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    dslConnectorProperties: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          value: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          connection: Schema.optional(
+            Schema.Struct({
+              linkedService: Schema.optional(
+                Schema.Struct({
+                  type: Schema.Literals(["LinkedServiceReference"]),
+                  referenceName: Schema.String,
+                  parameters: Schema.optional(
+                    Schema.Record(Schema.String, Schema.Unknown),
+                  ),
+                }),
+              ),
+              linkedServiceType: Schema.optional(Schema.String),
+              type: Schema.Literals(["linkedservicetype"]),
+              isInlineDataset: Schema.optional(Schema.Boolean),
+              commonDslConnectorProperties: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    value: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+          dataMapperMappings: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                targetEntityName: Schema.optional(Schema.String),
+                sourceEntityName: Schema.optional(Schema.String),
+                sourceConnectionReference: Schema.optional(
+                  Schema.Struct({
+                    connectionName: Schema.optional(Schema.String),
+                    type: Schema.optional(
+                      Schema.Literals(["linkedservicetype"]),
+                    ),
+                  }),
+                ),
+                attributeMappingInfo: Schema.optional(
+                  Schema.Struct({
+                    attributeMappings: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          type: Schema.optional(
+                            Schema.Literals(["Direct", "Derived", "Aggregate"]),
+                          ),
+                          functionName: Schema.optional(Schema.String),
+                          expression: Schema.optional(Schema.String),
+                          attributeReference: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              entity: Schema.optional(Schema.String),
+                              entityConnectionReference: Schema.optional(
+                                Schema.Struct({
+                                  connectionName: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  type: Schema.optional(
+                                    Schema.Literals(["linkedservicetype"]),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                          attributeReferences: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                entity: Schema.optional(Schema.String),
+                                entityConnectionReference: Schema.optional(
+                                  Schema.Struct({
+                                    connectionName: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    type: Schema.optional(
+                                      Schema.Literals(["linkedservicetype"]),
+                                    ),
+                                  }),
+                                ),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                sourceDenormalizeInfo: Schema.optional(Schema.Unknown),
+              }),
+            ),
+          ),
+          relationships: Schema.optional(Schema.Array(Schema.Unknown)),
+        }),
+      ),
+      policy: Schema.Struct({
+        mode: Schema.optional(Schema.String),
+        recurrence: Schema.optional(
+          Schema.Struct({
+            frequency: Schema.optional(
+              Schema.Literals(["Hour", "Minute", "Second"]),
+            ),
+            interval: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+      allowVNetOverride: Schema.optional(Schema.Boolean),
+      status: Schema.optional(Schema.String),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ChangeDataCaptureCreateOrUpdateInput =
@@ -129,11 +372,11 @@ export const ChangeDataCaptureDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     changeDataCaptureName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ChangeDataCaptureDeleteInput =
@@ -168,11 +411,11 @@ export const ChangeDataCaptureGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     changeDataCaptureName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ChangeDataCaptureGetInput = typeof ChangeDataCaptureGetInput.Type;
@@ -223,11 +466,11 @@ export const ChangeDataCaptureListByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ChangeDataCaptureListByFactoryInput =
@@ -293,11 +536,11 @@ export const ChangeDataCaptureStartInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     changeDataCaptureName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}/start",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ChangeDataCaptureStartInput =
@@ -332,11 +575,11 @@ export const ChangeDataCaptureStatusInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     changeDataCaptureName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}/status",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ChangeDataCaptureStatusInput =
@@ -371,11 +614,11 @@ export const ChangeDataCaptureStopInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     changeDataCaptureName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}/stop",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ChangeDataCaptureStopInput = typeof ChangeDataCaptureStopInput.Type;
@@ -409,11 +652,17 @@ export const CredentialOperationsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     credentialName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      type: Schema.String,
+      description: Schema.optional(Schema.String),
+      annotations: Schema.optional(Schema.Array(Schema.Unknown)),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/credentials/{credentialName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type CredentialOperationsCreateOrUpdateInput =
@@ -466,11 +715,11 @@ export const CredentialOperationsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     credentialName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/credentials/{credentialName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type CredentialOperationsDeleteInput =
@@ -505,11 +754,11 @@ export const CredentialOperationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     credentialName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/credentials/{credentialName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type CredentialOperationsGetInput =
@@ -562,11 +811,11 @@ export const CredentialOperationsListByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/credentials",
+      apiVersion: "2018-06-01",
     }),
   );
 export type CredentialOperationsListByFactoryInput =
@@ -631,11 +880,68 @@ export const DataFlowDebugSessionAddDataFlowInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sessionId: Schema.optional(Schema.String),
+    dataFlow: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    dataFlows: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    datasets: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    linkedServices: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    staging: Schema.optional(
+      Schema.Struct({
+        linkedService: Schema.optional(
+          Schema.Struct({
+            type: Schema.Literals(["LinkedServiceReference"]),
+            referenceName: Schema.String,
+            parameters: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+          }),
+        ),
+        folderPath: Schema.optional(Schema.Unknown),
+      }),
+    ),
+    debugSettings: Schema.optional(
+      Schema.Struct({
+        sourceSettings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              sourceName: Schema.optional(Schema.String),
+              rowLimit: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        parameters: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        datasetParameters: Schema.optional(Schema.Unknown),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/addDataFlowToDebugSession",
+      apiVersion: "2018-06-01",
     }),
   );
 export type DataFlowDebugSessionAddDataFlowInput =
@@ -669,11 +975,19 @@ export const DataFlowDebugSessionCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    computeType: Schema.optional(Schema.String),
+    coreCount: Schema.optional(Schema.Number),
+    timeToLive: Schema.optional(Schema.Number),
+    integrationRuntime: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/createDataFlowDebugSession",
+      apiVersion: "2018-06-01",
     }),
   );
 export type DataFlowDebugSessionCreateInput =
@@ -709,11 +1023,12 @@ export const DataFlowDebugSessionDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sessionId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/deleteDataFlowDebugSession",
+      apiVersion: "2018-06-01",
     }),
   );
 export type DataFlowDebugSessionDeleteInput =
@@ -746,11 +1061,27 @@ export const DataFlowDebugSessionExecuteCommandInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sessionId: Schema.optional(Schema.String),
+    command: Schema.optional(
+      Schema.Literals([
+        "executePreviewQuery",
+        "executeStatisticsQuery",
+        "executeExpressionQuery",
+      ]),
+    ),
+    commandPayload: Schema.optional(
+      Schema.Struct({
+        streamName: Schema.String,
+        rowLimits: Schema.optional(Schema.Number),
+        columns: Schema.optional(Schema.Array(Schema.String)),
+        expression: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/executeDataFlowDebugCommand",
+      apiVersion: "2018-06-01",
     }),
   );
 export type DataFlowDebugSessionExecuteCommandInput =
@@ -785,11 +1116,11 @@ export const DataFlowDebugSessionQueryByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryDataFlowDebugSessions",
+      apiVersion: "2018-06-01",
     }),
   );
 export type DataFlowDebugSessionQueryByFactoryInput =
@@ -837,11 +1168,22 @@ export const DataFlowsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     dataFlowName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      type: Schema.String,
+      description: Schema.optional(Schema.String),
+      annotations: Schema.optional(Schema.Array(Schema.Unknown)),
+      folder: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/dataflows/{dataFlowName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type DataFlowsCreateOrUpdateInput =
@@ -894,11 +1236,11 @@ export const DataFlowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
   dataFlowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/dataflows/{dataFlowName}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type DataFlowsDeleteInput = typeof DataFlowsDeleteInput.Type;
@@ -927,11 +1269,11 @@ export const DataFlowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
   dataFlowName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/dataflows/{dataFlowName}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type DataFlowsGetInput = typeof DataFlowsGetInput.Type;
@@ -979,11 +1321,11 @@ export const DataFlowsListByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/dataflows",
+      apiVersion: "2018-06-01",
     }),
   );
 export type DataFlowsListByFactoryInput =
@@ -1050,11 +1392,48 @@ export const DatasetsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     datasetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      type: Schema.String,
+      description: Schema.optional(Schema.String),
+      structure: Schema.optional(Schema.Unknown),
+      schema: Schema.optional(Schema.Unknown),
+      linkedServiceName: Schema.Struct({
+        type: Schema.Literals(["LinkedServiceReference"]),
+        referenceName: Schema.String,
+        parameters: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+      }),
+      parameters: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            type: Schema.Literals([
+              "Object",
+              "String",
+              "Int",
+              "Float",
+              "Bool",
+              "Array",
+              "SecureString",
+            ]),
+            defaultValue: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+      annotations: Schema.optional(Schema.Array(Schema.Unknown)),
+      folder: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/datasets/{datasetName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type DatasetsCreateOrUpdateInput =
@@ -1107,11 +1486,11 @@ export const DatasetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
   datasetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/datasets/{datasetName}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type DatasetsDeleteInput = typeof DatasetsDeleteInput.Type;
@@ -1140,11 +1519,11 @@ export const DatasetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
   datasetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/datasets/{datasetName}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type DatasetsGetInput = typeof DatasetsGetInput.Type;
@@ -1192,11 +1571,11 @@ export const DatasetsListByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/datasets",
+      apiVersion: "2018-06-01",
     }),
   );
 export type DatasetsListByFactoryInput = typeof DatasetsListByFactoryInput.Type;
@@ -1260,11 +1639,13 @@ export const ExposureControlGetFeatureValueInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    featureName: Schema.optional(Schema.String),
+    featureType: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataFactory/locations/{locationId}/getFeatureValue",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ExposureControlGetFeatureValueInput =
@@ -1298,11 +1679,13 @@ export const ExposureControlGetFeatureValueByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    featureName: Schema.optional(Schema.String),
+    featureType: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/getFeatureValue",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ExposureControlGetFeatureValueByFactoryInput =
@@ -1337,11 +1720,17 @@ export const ExposureControlQueryFeatureValuesByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    exposureControlRequests: Schema.Array(
+      Schema.Struct({
+        featureName: Schema.optional(Schema.String),
+        featureType: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryFeaturesValue",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ExposureControlQueryFeatureValuesByFactoryInput =
@@ -1379,11 +1768,23 @@ export const FactoriesConfigureFactoryRepoInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    factoryResourceId: Schema.optional(Schema.String),
+    repoConfiguration: Schema.optional(
+      Schema.Struct({
+        type: Schema.String,
+        accountName: Schema.String,
+        repositoryName: Schema.String,
+        collaborationBranch: Schema.String,
+        rootFolder: Schema.String,
+        lastCommitId: Schema.optional(Schema.String),
+        disablePublish: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataFactory/locations/{locationId}/configureFactoryRepo",
+      apiVersion: "2018-06-01",
     }),
   );
 export type FactoriesConfigureFactoryRepoInput =
@@ -1432,11 +1833,99 @@ export const FactoriesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        createTime: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+        purviewConfiguration: Schema.optional(
+          Schema.Struct({
+            purviewResourceId: Schema.optional(Schema.String),
+          }),
+        ),
+        repoConfiguration: Schema.optional(
+          Schema.Struct({
+            type: Schema.String,
+            accountName: Schema.String,
+            repositoryName: Schema.String,
+            collaborationBranch: Schema.String,
+            rootFolder: Schema.String,
+            lastCommitId: Schema.optional(Schema.String),
+            disablePublish: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        globalParameters: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              type: Schema.Literals([
+                "Object",
+                "String",
+                "Int",
+                "Float",
+                "Bool",
+                "Array",
+              ]),
+              value: Schema.Unknown,
+            }),
+          ),
+        ),
+        encryption: Schema.optional(
+          Schema.Struct({
+            keyName: Schema.String,
+            vaultBaseUrl: Schema.String,
+            keyVersion: Schema.optional(Schema.String),
+            identity: Schema.optional(
+              Schema.Struct({
+                userAssignedIdentity: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    eTag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals([
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type FactoriesCreateOrUpdateInput =
@@ -1487,11 +1976,11 @@ export const FactoriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type FactoriesDeleteInput = typeof FactoriesDeleteInput.Type;
@@ -1518,11 +2007,11 @@ export const FactoriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type FactoriesGetInput = typeof FactoriesGetInput.Type;
@@ -1569,11 +2058,16 @@ export const FactoriesGetDataPlaneAccessInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    permissions: Schema.optional(Schema.String),
+    accessResourcePath: Schema.optional(Schema.String),
+    profileName: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/getDataPlaneAccess",
+      apiVersion: "2018-06-01",
     }),
   );
 export type FactoriesGetDataPlaneAccessInput =
@@ -1591,7 +2085,7 @@ export const FactoriesGetDataPlaneAccessOutput =
         expireTime: Schema.optional(Schema.String),
       }),
     ),
-    accessToken: Schema.optional(SensitiveString),
+    accessToken: Schema.optional(SensitiveOutputString),
     dataPlaneUrl: Schema.optional(Schema.String),
   });
 export type FactoriesGetDataPlaneAccessOutput =
@@ -1618,11 +2112,20 @@ export const FactoriesGetGitHubAccessTokenInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    gitHubAccessCode: Schema.String,
+    gitHubClientId: Schema.optional(Schema.String),
+    gitHubClientSecret: Schema.optional(
+      Schema.Struct({
+        byoaSecretAkvUrl: Schema.optional(Schema.String),
+        byoaSecretName: Schema.optional(Schema.String),
+      }),
+    ),
+    gitHubAccessTokenBaseUrl: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/getGitHubAccessToken",
+      apiVersion: "2018-06-01",
     }),
   );
 export type FactoriesGetGitHubAccessTokenInput =
@@ -1653,11 +2156,11 @@ export const FactoriesGetGitHubAccessToken =
 // Input Schema
 export const FactoriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataFactory/factories",
+    apiVersion: "2018-06-01",
   }),
 );
 export type FactoriesListInput = typeof FactoriesListInput.Type;
@@ -1705,11 +2208,11 @@ export const FactoriesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories",
+      apiVersion: "2018-06-01",
     }),
   );
 export type FactoriesListByResourceGroupInput =
@@ -1772,11 +2275,33 @@ export const FactoriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.Literals([
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type FactoriesUpdateInput = typeof FactoriesUpdateInput.Type;
@@ -1823,11 +2348,26 @@ export const GlobalParametersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     globalParameterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Record(
+      Schema.String,
+      Schema.Struct({
+        type: Schema.Literals([
+          "Object",
+          "String",
+          "Int",
+          "Float",
+          "Bool",
+          "Array",
+        ]),
+        value: Schema.Unknown,
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/globalParameters/{globalParameterName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type GlobalParametersCreateOrUpdateInput =
@@ -1879,11 +2419,11 @@ export const GlobalParametersDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     globalParameterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/globalParameters/{globalParameterName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type GlobalParametersDeleteInput =
@@ -1918,11 +2458,11 @@ export const GlobalParametersGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     globalParameterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/globalParameters/{globalParameterName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type GlobalParametersGetInput = typeof GlobalParametersGetInput.Type;
@@ -1970,11 +2510,11 @@ export const GlobalParametersListByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/globalParameters",
+      apiVersion: "2018-06-01",
     }),
   );
 export type GlobalParametersListByFactoryInput =
@@ -2040,11 +2580,11 @@ export const IntegrationRuntimeDisableInteractiveQueryInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/disableInteractiveQuery",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimeDisableInteractiveQueryInput =
@@ -2096,11 +2636,12 @@ export const IntegrationRuntimeEnableInteractiveQueryInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    autoTerminationMinutes: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/enableInteractiveQuery",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimeEnableInteractiveQueryInput =
@@ -2153,11 +2694,11 @@ export const IntegrationRuntimeNodesDeleteInput =
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
     nodeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimeNodesDeleteInput =
@@ -2191,11 +2732,11 @@ export const IntegrationRuntimeNodesGetInput =
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
     nodeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimeNodesGetInput =
@@ -2261,11 +2802,11 @@ export const IntegrationRuntimeNodesGetIpAddressInput =
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
     nodeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}/ipAddress",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimeNodesGetIpAddressInput =
@@ -2301,11 +2842,12 @@ export const IntegrationRuntimeNodesUpdateInput =
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
     nodeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    concurrentJobsLimit: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimeNodesUpdateInput =
@@ -2369,11 +2911,12 @@ export const IntegrationRuntimeObjectMetadataGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    metadataPath: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/getObjectMetadata",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimeObjectMetadataGetInput =
@@ -2417,11 +2960,11 @@ export const IntegrationRuntimeObjectMetadataRefreshInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/refreshObjectMetadata",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimeObjectMetadataRefreshInput =
@@ -2460,11 +3003,14 @@ export const IntegrationRuntimesCreateLinkedIntegrationRuntimeInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    dataFactoryName: Schema.optional(Schema.String),
+    dataFactoryLocation: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/linkedIntegrationRuntime",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesCreateLinkedIntegrationRuntimeInput =
@@ -2518,11 +3064,16 @@ export const IntegrationRuntimesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      type: Schema.Literals(["Managed", "SelfHosted"]),
+      description: Schema.optional(Schema.String),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesCreateOrUpdateInput =
@@ -2575,11 +3126,11 @@ export const IntegrationRuntimesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesDeleteInput =
@@ -2614,11 +3165,11 @@ export const IntegrationRuntimesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesGetInput =
@@ -2672,11 +3223,11 @@ export const IntegrationRuntimesGetConnectionInfoInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/getConnectionInfo",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesGetConnectionInfoInput =
@@ -2717,11 +3268,11 @@ export const IntegrationRuntimesGetMonitoringDataInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/monitoringData",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesGetMonitoringDataInput =
@@ -2771,11 +3322,11 @@ export const IntegrationRuntimesGetStatusInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/getStatus",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesGetStatusInput =
@@ -2829,11 +3380,11 @@ export const IntegrationRuntimesListAuthKeysInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/listAuthKeys",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesListAuthKeysInput =
@@ -2869,11 +3420,11 @@ export const IntegrationRuntimesListByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesListByFactoryInput =
@@ -2939,11 +3490,11 @@ export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/outboundNetworkDependenciesEndpoints",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput =
@@ -3001,11 +3552,12 @@ export const IntegrationRuntimesRegenerateAuthKeyInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keyName: Schema.optional(Schema.Literals(["authKey1", "authKey2"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/regenerateAuthKey",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesRegenerateAuthKeyInput =
@@ -3042,11 +3594,11 @@ export const IntegrationRuntimesRemoveLinksInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/removeLinks",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesRemoveLinksInput =
@@ -3080,11 +3632,11 @@ export const IntegrationRuntimesStartInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesStartInput =
@@ -3139,11 +3691,11 @@ export const IntegrationRuntimesStopInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesStopInput =
@@ -3178,11 +3730,11 @@ export const IntegrationRuntimesSyncCredentialsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/syncCredentials",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesSyncCredentialsInput =
@@ -3216,11 +3768,13 @@ export const IntegrationRuntimesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    autoUpdate: Schema.optional(Schema.Literals(["On", "Off"])),
+    updateDelayOffset: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesUpdateInput =
@@ -3273,11 +3827,11 @@ export const IntegrationRuntimesUpgradeInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     integrationRuntimeName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/upgrade",
+      apiVersion: "2018-06-01",
     }),
   );
 export type IntegrationRuntimesUpgradeInput =
@@ -3312,11 +3866,44 @@ export const LinkedServicesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     linkedServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      type: Schema.String,
+      version: Schema.optional(Schema.String),
+      connectVia: Schema.optional(
+        Schema.Struct({
+          type: Schema.Literals(["IntegrationRuntimeReference"]),
+          referenceName: Schema.String,
+          parameters: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+        }),
+      ),
+      description: Schema.optional(Schema.String),
+      parameters: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            type: Schema.Literals([
+              "Object",
+              "String",
+              "Int",
+              "Float",
+              "Bool",
+              "Array",
+              "SecureString",
+            ]),
+            defaultValue: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+      annotations: Schema.optional(Schema.Array(Schema.Unknown)),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/linkedservices/{linkedServiceName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type LinkedServicesCreateOrUpdateInput =
@@ -3369,11 +3956,11 @@ export const LinkedServicesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     linkedServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/linkedservices/{linkedServiceName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type LinkedServicesDeleteInput = typeof LinkedServicesDeleteInput.Type;
@@ -3406,12 +3993,12 @@ export const LinkedServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     linkedServiceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/linkedservices/{linkedServiceName}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type LinkedServicesGetInput = typeof LinkedServicesGetInput.Type;
@@ -3460,11 +4047,11 @@ export const LinkedServicesListByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/linkedservices",
+      apiVersion: "2018-06-01",
     }),
   );
 export type LinkedServicesListByFactoryInput =
@@ -3532,11 +4119,26 @@ export const ManagedPrivateEndpointsCreateOrUpdateInput =
     factoryName: Schema.String.pipe(T.PathParam()),
     managedVirtualNetworkName: Schema.String.pipe(T.PathParam()),
     managedPrivateEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      connectionState: Schema.optional(
+        Schema.Struct({
+          actionsRequired: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+        }),
+      ),
+      fqdns: Schema.optional(Schema.Array(Schema.String)),
+      groupId: Schema.optional(Schema.String),
+      isReserved: Schema.optional(Schema.Boolean),
+      privateLinkResourceId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ManagedPrivateEndpointsCreateOrUpdateInput =
@@ -3591,11 +4193,11 @@ export const ManagedPrivateEndpointsDeleteInput =
     factoryName: Schema.String.pipe(T.PathParam()),
     managedVirtualNetworkName: Schema.String.pipe(T.PathParam()),
     managedPrivateEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ManagedPrivateEndpointsDeleteInput =
@@ -3631,11 +4233,11 @@ export const ManagedPrivateEndpointsGetInput =
     factoryName: Schema.String.pipe(T.PathParam()),
     managedVirtualNetworkName: Schema.String.pipe(T.PathParam()),
     managedPrivateEndpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ManagedPrivateEndpointsGetInput =
@@ -3690,11 +4292,11 @@ export const ManagedPrivateEndpointsListByFactoryInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     managedVirtualNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}/managedPrivateEndpoints",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ManagedPrivateEndpointsListByFactoryInput =
@@ -3761,11 +4363,16 @@ export const ManagedVirtualNetworksCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     managedVirtualNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      vNetId: Schema.optional(Schema.String),
+      alias: Schema.optional(Schema.String),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ManagedVirtualNetworksCreateOrUpdateInput =
@@ -3818,11 +4425,11 @@ export const ManagedVirtualNetworksGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     managedVirtualNetworkName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ManagedVirtualNetworksGetInput =
@@ -3875,11 +4482,11 @@ export const ManagedVirtualNetworksListByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks",
+      apiVersion: "2018-06-01",
     }),
   );
 export type ManagedVirtualNetworksListByFactoryInput =
@@ -3939,12 +4546,13 @@ export const ManagedVirtualNetworksListByFactory =
     outputSchema: ManagedVirtualNetworksListByFactoryOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataFactory/operations",
+    apiVersion: "2018-06-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -4038,12 +4646,12 @@ export const PipelineRunsCancelInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     runId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     isRecursive: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/pipelineruns/{runId}/cancel",
+      apiVersion: "2018-06-01",
     }),
   );
 export type PipelineRunsCancelInput = typeof PipelineRunsCancelInput.Type;
@@ -4072,11 +4680,11 @@ export const PipelineRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
   runId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/pipelineruns/{runId}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type PipelineRunsGetInput = typeof PipelineRunsGetInput.Type;
@@ -4126,11 +4734,54 @@ export const PipelineRunsQueryByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    continuationToken: Schema.optional(Schema.String),
+    lastUpdatedAfter: Schema.String,
+    lastUpdatedBefore: Schema.String,
+    filters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          operand: Schema.Literals([
+            "PipelineName",
+            "Status",
+            "RunStart",
+            "RunEnd",
+            "ActivityName",
+            "ActivityRunStart",
+            "ActivityRunEnd",
+            "ActivityType",
+            "TriggerName",
+            "TriggerRunTimestamp",
+            "RunGroupId",
+            "LatestOnly",
+          ]),
+          operator: Schema.Literals(["Equals", "NotEquals", "In", "NotIn"]),
+          values: Schema.Array(Schema.String),
+        }),
+      ),
+    ),
+    orderBy: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          orderBy: Schema.Literals([
+            "RunStart",
+            "RunEnd",
+            "PipelineName",
+            "Status",
+            "ActivityName",
+            "ActivityRunStart",
+            "ActivityRunEnd",
+            "TriggerName",
+            "TriggerRunTimestamp",
+          ]),
+          order: Schema.Literals(["ASC", "DESC"]),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryPipelineRuns",
+      apiVersion: "2018-06-01",
     }),
   );
 export type PipelineRunsQueryByFactoryInput =
@@ -4195,11 +4846,96 @@ export const PipelinesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      description: Schema.optional(Schema.String),
+      activities: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.String,
+            description: Schema.optional(Schema.String),
+            state: Schema.optional(Schema.Literals(["Active", "Inactive"])),
+            onInactiveMarkAs: Schema.optional(
+              Schema.Literals(["Succeeded", "Failed", "Skipped"]),
+            ),
+            dependsOn: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  activity: Schema.String,
+                  dependencyConditions: Schema.Array(
+                    Schema.Literals([
+                      "Succeeded",
+                      "Failed",
+                      "Skipped",
+                      "Completed",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
+            userProperties: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  value: Schema.Unknown,
+                }),
+              ),
+            ),
+          }),
+        ),
+      ),
+      parameters: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            type: Schema.Literals([
+              "Object",
+              "String",
+              "Int",
+              "Float",
+              "Bool",
+              "Array",
+              "SecureString",
+            ]),
+            defaultValue: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+      variables: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            type: Schema.Literals(["String", "Bool", "Array"]),
+            defaultValue: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+      concurrency: Schema.optional(Schema.Number),
+      annotations: Schema.optional(Schema.Array(Schema.Unknown)),
+      runDimensions: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+      folder: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ),
+      policy: Schema.optional(
+        Schema.Struct({
+          elapsedTimeMetric: Schema.optional(
+            Schema.Struct({
+              duration: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        }),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines/{pipelineName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type PipelinesCreateOrUpdateInput =
@@ -4253,7 +4989,6 @@ export const PipelinesCreateRunInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     referencePipelineRunId: Schema.optional(Schema.String),
     isRecovery: Schema.optional(Schema.Boolean),
     startActivityName: Schema.optional(Schema.String),
@@ -4262,6 +4997,7 @@ export const PipelinesCreateRunInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines/{pipelineName}/createRun",
+      apiVersion: "2018-06-01",
     }),
   );
 export type PipelinesCreateRunInput = typeof PipelinesCreateRunInput.Type;
@@ -4297,11 +5033,11 @@ export const PipelinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
   pipelineName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines/{pipelineName}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type PipelinesDeleteInput = typeof PipelinesDeleteInput.Type;
@@ -4330,11 +5066,11 @@ export const PipelinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
   pipelineName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines/{pipelineName}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type PipelinesGetInput = typeof PipelinesGetInput.Type;
@@ -4382,11 +5118,11 @@ export const PipelinesListByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines",
+      apiVersion: "2018-06-01",
     }),
   );
 export type PipelinesListByFactoryInput =
@@ -4453,11 +5189,31 @@ export const PrivateEndpointConnectionCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type PrivateEndpointConnectionCreateOrUpdateInput =
@@ -4510,11 +5266,11 @@ export const PrivateEndpointConnectionDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type PrivateEndpointConnectionDeleteInput =
@@ -4548,11 +5304,11 @@ export const PrivateEndpointConnectionGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type PrivateEndpointConnectionGetInput =
@@ -4604,11 +5360,11 @@ export const PrivateEndPointConnectionsListByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections",
+      apiVersion: "2018-06-01",
     }),
   );
 export type PrivateEndPointConnectionsListByFactoryInput =
@@ -4673,11 +5429,11 @@ export const PrivateLinkResourcesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateLinkResources",
+      apiVersion: "2018-06-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -4721,12 +5477,12 @@ export const TriggerRunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     factoryName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
     runId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/triggerRuns/{runId}/cancel",
+    apiVersion: "2018-06-01",
   }),
 );
 export type TriggerRunsCancelInput = typeof TriggerRunsCancelInput.Type;
@@ -4754,11 +5510,54 @@ export const TriggerRunsQueryByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    continuationToken: Schema.optional(Schema.String),
+    lastUpdatedAfter: Schema.String,
+    lastUpdatedBefore: Schema.String,
+    filters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          operand: Schema.Literals([
+            "PipelineName",
+            "Status",
+            "RunStart",
+            "RunEnd",
+            "ActivityName",
+            "ActivityRunStart",
+            "ActivityRunEnd",
+            "ActivityType",
+            "TriggerName",
+            "TriggerRunTimestamp",
+            "RunGroupId",
+            "LatestOnly",
+          ]),
+          operator: Schema.Literals(["Equals", "NotEquals", "In", "NotIn"]),
+          values: Schema.Array(Schema.String),
+        }),
+      ),
+    ),
+    orderBy: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          orderBy: Schema.Literals([
+            "RunStart",
+            "RunEnd",
+            "PipelineName",
+            "Status",
+            "ActivityName",
+            "ActivityRunStart",
+            "ActivityRunEnd",
+            "TriggerName",
+            "TriggerRunTimestamp",
+          ]),
+          order: Schema.Literals(["ASC", "DESC"]),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryTriggerRuns",
+      apiVersion: "2018-06-01",
     }),
   );
 export type TriggerRunsQueryByFactoryInput =
@@ -4818,11 +5617,11 @@ export const TriggerRunsRerunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   factoryName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
   runId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/triggerRuns/{runId}/rerun",
+    apiVersion: "2018-06-01",
   }),
 );
 export type TriggerRunsRerunInput = typeof TriggerRunsRerunInput.Type;
@@ -4851,11 +5650,20 @@ export const TriggersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      type: Schema.String,
+      description: Schema.optional(Schema.String),
+      runtimeState: Schema.optional(
+        Schema.Literals(["Started", "Stopped", "Disabled"]),
+      ),
+      annotations: Schema.optional(Schema.Array(Schema.Unknown)),
+    }),
+    etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}",
+      apiVersion: "2018-06-01",
     }),
   );
 export type TriggersCreateOrUpdateInput =
@@ -4908,11 +5716,11 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
@@ -4941,11 +5749,11 @@ export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}",
+    apiVersion: "2018-06-01",
   }),
 );
 export type TriggersGetInput = typeof TriggersGetInput.Type;
@@ -4994,11 +5802,11 @@ export const TriggersGetEventSubscriptionStatusInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/getEventSubscriptionStatus",
+      apiVersion: "2018-06-01",
     }),
   );
 export type TriggersGetEventSubscriptionStatusInput =
@@ -5042,11 +5850,11 @@ export const TriggersListByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers",
+      apiVersion: "2018-06-01",
     }),
   );
 export type TriggersListByFactoryInput = typeof TriggersListByFactoryInput.Type;
@@ -5111,11 +5919,13 @@ export const TriggersQueryByFactoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    continuationToken: Schema.optional(Schema.String),
+    parentTriggerName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/querytriggers",
+      apiVersion: "2018-06-01",
     }),
   );
 export type TriggersQueryByFactoryInput =
@@ -5181,11 +5991,11 @@ export const TriggersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/start",
+    apiVersion: "2018-06-01",
   }),
 );
 export type TriggersStartInput = typeof TriggersStartInput.Type;
@@ -5214,11 +6024,11 @@ export const TriggersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/stop",
+    apiVersion: "2018-06-01",
   }),
 );
 export type TriggersStopInput = typeof TriggersStopInput.Type;
@@ -5248,11 +6058,11 @@ export const TriggersSubscribeToEventsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/subscribeToEvents",
+      apiVersion: "2018-06-01",
     }),
   );
 export type TriggersSubscribeToEventsInput =
@@ -5298,11 +6108,11 @@ export const TriggersUnsubscribeFromEventsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/unsubscribeFromEvents",
+      apiVersion: "2018-06-01",
     }),
   );
 export type TriggersUnsubscribeFromEventsInput =

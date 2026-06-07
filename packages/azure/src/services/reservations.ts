@@ -11,11 +11,135 @@ import * as T from "../traits.ts";
 // Input Schema
 export const CalculateExchangePostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        reservationsToPurchase: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              sku: Schema.optional(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                }),
+              ),
+              location: Schema.optional(Schema.String),
+              properties: Schema.optional(
+                Schema.Struct({
+                  reservedResourceType: Schema.optional(
+                    Schema.Literals([
+                      "VirtualMachines",
+                      "SqlDatabases",
+                      "SuseLinux",
+                      "CosmosDb",
+                      "RedHat",
+                      "SqlDataWarehouse",
+                      "VMwareCloudSimple",
+                      "RedHatOsa",
+                      "Databricks",
+                      "AppService",
+                      "ManagedDisk",
+                      "BlockBlob",
+                      "RedisCache",
+                      "AzureDataExplorer",
+                      "MySql",
+                      "MariaDb",
+                      "PostgreSql",
+                      "DedicatedHost",
+                      "SapHana",
+                      "SqlAzureHybridBenefit",
+                      "AVS",
+                      "DataFactory",
+                      "NetAppStorage",
+                      "AzureFiles",
+                      "SqlEdge",
+                      "VirtualMachineSoftware",
+                    ]),
+                  ),
+                  billingScopeId: Schema.optional(Schema.String),
+                  term: Schema.optional(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
+                  billingPlan: Schema.optional(
+                    Schema.Literals(["Upfront", "Monthly"]),
+                  ),
+                  quantity: Schema.optional(Schema.Number),
+                  displayName: Schema.optional(Schema.String),
+                  appliedScopeType: Schema.optional(
+                    Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+                  ),
+                  appliedScopes: Schema.optional(Schema.Array(Schema.String)),
+                  appliedScopeProperties: Schema.optional(
+                    Schema.Struct({
+                      tenantId: Schema.optional(Schema.String),
+                      managementGroupId: Schema.optional(Schema.String),
+                      subscriptionId: Schema.optional(Schema.String),
+                      resourceGroupId: Schema.optional(Schema.String),
+                      displayName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  renew: Schema.optional(Schema.Boolean),
+                  reservedResourceProperties: Schema.optional(
+                    Schema.Struct({
+                      instanceFlexibility: Schema.optional(
+                        Schema.Literals(["On", "Off"]),
+                      ),
+                    }),
+                  ),
+                  reviewDateTime: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        savingsPlansToPurchase: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              sku: Schema.optional(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                }),
+              ),
+              properties: Schema.optional(
+                Schema.Struct({
+                  displayName: Schema.optional(Schema.String),
+                  billingScopeId: Schema.optional(Schema.String),
+                  term: Schema.optional(Schema.Literals(["P1Y", "P3Y"])),
+                  billingPlan: Schema.optional(Schema.Literals(["P1M"])),
+                  appliedScopeType: Schema.optional(
+                    Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+                  ),
+                  appliedScopeProperties: Schema.optional(
+                    Schema.Struct({
+                      tenantId: Schema.optional(Schema.String),
+                      managementGroupId: Schema.optional(Schema.String),
+                      subscriptionId: Schema.optional(Schema.String),
+                      resourceGroupId: Schema.optional(Schema.String),
+                      displayName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  commitment: Schema.optional(
+                    Schema.Struct({
+                      currencyCode: Schema.optional(Schema.String),
+                      amount: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+        reservationsToExchange: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              reservationId: Schema.optional(Schema.String),
+              quantity: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/calculateExchange",
+      apiVersion: "2022-11-01",
     }),
   );
 export type CalculateExchangePostInput = typeof CalculateExchangePostInput.Type;
@@ -271,11 +395,23 @@ export const CalculateExchangePost = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CalculateRefundPostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        scope: Schema.optional(Schema.String),
+        reservationToReturn: Schema.optional(
+          Schema.Struct({
+            reservationId: Schema.optional(Schema.String),
+            quantity: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/calculateRefund",
+      apiVersion: "2022-11-01",
     }),
   );
 export type CalculateRefundPostInput = typeof CalculateRefundPostInput.Type;
@@ -436,9 +572,17 @@ export const CalculateRefundPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ExchangePostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      sessionId: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
-  T.Http({ method: "POST", path: "/providers/Microsoft.Capacity/exchange" }),
+  T.Http({
+    method: "POST",
+    path: "/providers/Microsoft.Capacity/exchange",
+    apiVersion: "2022-11-01",
+  }),
 );
 export type ExchangePostInput = typeof ExchangePostInput.Type;
 
@@ -698,11 +842,11 @@ export const ExchangePost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GetAppliedReservationListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Capacity/appliedReservations",
+      apiVersion: "2022-11-01",
     }),
   );
 export type GetAppliedReservationListInput =
@@ -746,7 +890,6 @@ export const GetAppliedReservationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const GetCatalogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   reservedResourceType: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   publisherId: Schema.optional(Schema.String),
@@ -759,6 +902,7 @@ export const GetCatalogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Capacity/catalogs",
+    apiVersion: "2022-11-01",
   }),
 );
 export type GetCatalogInput = typeof GetCatalogInput.Type;
@@ -855,10 +999,14 @@ export const GetCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetCatalogOutput,
 }));
 // Input Schema
-export const OperationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Capacity/operations" }),
+export const OperationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Capacity/operations",
+    apiVersion: "2022-11-01",
+  }),
 );
 export type OperationListInput = typeof OperationListInput.Type;
 
@@ -903,11 +1051,11 @@ export const ReservationArchiveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/archive",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ReservationArchiveInput = typeof ReservationArchiveInput.Type;
@@ -935,11 +1083,16 @@ export const ReservationAvailableScopesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        scopes: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/availableScopes",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ReservationAvailableScopesInput =
@@ -984,12 +1137,12 @@ export const ReservationAvailableScopes = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ReservationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   reservationId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
+    apiVersion: "2022-11-01",
   }),
 );
 export type ReservationGetInput = typeof ReservationGetInput.Type;
@@ -1034,11 +1187,11 @@ export const ReservationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ReservationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations",
+    apiVersion: "2022-11-01",
   }),
 );
 export type ReservationListInput = typeof ReservationListInput.Type;
@@ -1086,7 +1239,6 @@ export const ReservationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ReservationListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
     refreshSummary: Schema.optional(Schema.String),
@@ -1097,6 +1249,7 @@ export const ReservationListAllInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Capacity/reservations",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ReservationListAllInput = typeof ReservationListAllInput.Type;
@@ -1175,11 +1328,11 @@ export const ReservationListRevisionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/revisions",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ReservationListRevisionsInput =
@@ -1243,11 +1396,16 @@ export const ReservationListRevisions = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ReservationMergeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      sources: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/merge",
+    apiVersion: "2022-11-01",
   }),
 );
 export type ReservationMergeInput = typeof ReservationMergeInput.Type;
@@ -1292,11 +1450,78 @@ export const ReservationMerge = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ReservationOrderCalculateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        reservedResourceType: Schema.optional(
+          Schema.Literals([
+            "VirtualMachines",
+            "SqlDatabases",
+            "SuseLinux",
+            "CosmosDb",
+            "RedHat",
+            "SqlDataWarehouse",
+            "VMwareCloudSimple",
+            "RedHatOsa",
+            "Databricks",
+            "AppService",
+            "ManagedDisk",
+            "BlockBlob",
+            "RedisCache",
+            "AzureDataExplorer",
+            "MySql",
+            "MariaDb",
+            "PostgreSql",
+            "DedicatedHost",
+            "SapHana",
+            "SqlAzureHybridBenefit",
+            "AVS",
+            "DataFactory",
+            "NetAppStorage",
+            "AzureFiles",
+            "SqlEdge",
+            "VirtualMachineSoftware",
+          ]),
+        ),
+        billingScopeId: Schema.optional(Schema.String),
+        term: Schema.optional(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
+        billingPlan: Schema.optional(Schema.Literals(["Upfront", "Monthly"])),
+        quantity: Schema.optional(Schema.Number),
+        displayName: Schema.optional(Schema.String),
+        appliedScopeType: Schema.optional(
+          Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+        ),
+        appliedScopes: Schema.optional(Schema.Array(Schema.String)),
+        appliedScopeProperties: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            managementGroupId: Schema.optional(Schema.String),
+            subscriptionId: Schema.optional(Schema.String),
+            resourceGroupId: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+          }),
+        ),
+        renew: Schema.optional(Schema.Boolean),
+        reservedResourceProperties: Schema.optional(
+          Schema.Struct({
+            instanceFlexibility: Schema.optional(
+              Schema.Literals(["On", "Off"]),
+            ),
+          }),
+        ),
+        reviewDateTime: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/calculatePrice",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ReservationOrderCalculateInput =
@@ -1399,11 +1624,12 @@ export const ReservationOrderCalculate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ReservationOrderChangeDirectoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    destinationTenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/changeDirectory",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ReservationOrderChangeDirectoryInput =
@@ -1452,12 +1678,12 @@ export const ReservationOrderChangeDirectory =
 export const ReservationOrderGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ReservationOrderGetInput = typeof ReservationOrderGetInput.Type;
@@ -1501,12 +1727,11 @@ export const ReservationOrderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ReservationOrderListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Capacity/reservationOrders",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ReservationOrderListInput = typeof ReservationOrderListInput.Type;
@@ -1567,11 +1792,78 @@ export const ReservationOrderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ReservationOrderPurchaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        reservedResourceType: Schema.optional(
+          Schema.Literals([
+            "VirtualMachines",
+            "SqlDatabases",
+            "SuseLinux",
+            "CosmosDb",
+            "RedHat",
+            "SqlDataWarehouse",
+            "VMwareCloudSimple",
+            "RedHatOsa",
+            "Databricks",
+            "AppService",
+            "ManagedDisk",
+            "BlockBlob",
+            "RedisCache",
+            "AzureDataExplorer",
+            "MySql",
+            "MariaDb",
+            "PostgreSql",
+            "DedicatedHost",
+            "SapHana",
+            "SqlAzureHybridBenefit",
+            "AVS",
+            "DataFactory",
+            "NetAppStorage",
+            "AzureFiles",
+            "SqlEdge",
+            "VirtualMachineSoftware",
+          ]),
+        ),
+        billingScopeId: Schema.optional(Schema.String),
+        term: Schema.optional(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
+        billingPlan: Schema.optional(Schema.Literals(["Upfront", "Monthly"])),
+        quantity: Schema.optional(Schema.Number),
+        displayName: Schema.optional(Schema.String),
+        appliedScopeType: Schema.optional(
+          Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+        ),
+        appliedScopes: Schema.optional(Schema.Array(Schema.String)),
+        appliedScopeProperties: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            managementGroupId: Schema.optional(Schema.String),
+            subscriptionId: Schema.optional(Schema.String),
+            resourceGroupId: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+          }),
+        ),
+        renew: Schema.optional(Schema.Boolean),
+        reservedResourceProperties: Schema.optional(
+          Schema.Struct({
+            instanceFlexibility: Schema.optional(
+              Schema.Literals(["On", "Off"]),
+            ),
+          }),
+        ),
+        reviewDateTime: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ReservationOrderPurchaseInput =
@@ -1619,11 +1911,17 @@ export const ReservationOrderPurchase = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ReservationSplitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      quantities: Schema.optional(Schema.Array(Schema.Number)),
+      reservationId: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/split",
+    apiVersion: "2022-11-01",
   }),
 );
 export type ReservationSplitInput = typeof ReservationSplitInput.Type;
@@ -1670,11 +1968,11 @@ export const ReservationUnarchiveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/unarchive",
+      apiVersion: "2022-11-01",
     }),
   );
 export type ReservationUnarchiveInput = typeof ReservationUnarchiveInput.Type;
@@ -1705,12 +2003,112 @@ export const ReservationUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        appliedScopeType: Schema.optional(
+          Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+        ),
+        appliedScopes: Schema.optional(Schema.Array(Schema.String)),
+        appliedScopeProperties: Schema.optional(
+          Schema.Struct({
+            tenantId: Schema.optional(Schema.String),
+            managementGroupId: Schema.optional(Schema.String),
+            subscriptionId: Schema.optional(Schema.String),
+            resourceGroupId: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+          }),
+        ),
+        instanceFlexibility: Schema.optional(Schema.Literals(["On", "Off"])),
+        name: Schema.optional(Schema.String),
+        renew: Schema.optional(Schema.Boolean),
+        renewProperties: Schema.optional(
+          Schema.Struct({
+            purchaseProperties: Schema.optional(
+              Schema.Struct({
+                sku: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                  }),
+                ),
+                location: Schema.optional(Schema.String),
+                properties: Schema.optional(
+                  Schema.Struct({
+                    reservedResourceType: Schema.optional(
+                      Schema.Literals([
+                        "VirtualMachines",
+                        "SqlDatabases",
+                        "SuseLinux",
+                        "CosmosDb",
+                        "RedHat",
+                        "SqlDataWarehouse",
+                        "VMwareCloudSimple",
+                        "RedHatOsa",
+                        "Databricks",
+                        "AppService",
+                        "ManagedDisk",
+                        "BlockBlob",
+                        "RedisCache",
+                        "AzureDataExplorer",
+                        "MySql",
+                        "MariaDb",
+                        "PostgreSql",
+                        "DedicatedHost",
+                        "SapHana",
+                        "SqlAzureHybridBenefit",
+                        "AVS",
+                        "DataFactory",
+                        "NetAppStorage",
+                        "AzureFiles",
+                        "SqlEdge",
+                        "VirtualMachineSoftware",
+                      ]),
+                    ),
+                    billingScopeId: Schema.optional(Schema.String),
+                    term: Schema.optional(
+                      Schema.Literals(["P1Y", "P3Y", "P5Y"]),
+                    ),
+                    billingPlan: Schema.optional(
+                      Schema.Literals(["Upfront", "Monthly"]),
+                    ),
+                    quantity: Schema.optional(Schema.Number),
+                    displayName: Schema.optional(Schema.String),
+                    appliedScopeType: Schema.optional(
+                      Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+                    ),
+                    appliedScopes: Schema.optional(Schema.Array(Schema.String)),
+                    appliedScopeProperties: Schema.optional(
+                      Schema.Struct({
+                        tenantId: Schema.optional(Schema.String),
+                        managementGroupId: Schema.optional(Schema.String),
+                        subscriptionId: Schema.optional(Schema.String),
+                        resourceGroupId: Schema.optional(Schema.String),
+                        displayName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    renew: Schema.optional(Schema.Boolean),
+                    reservedResourceProperties: Schema.optional(
+                      Schema.Struct({
+                        instanceFlexibility: Schema.optional(
+                          Schema.Literals(["On", "Off"]),
+                        ),
+                      }),
+                    ),
+                    reviewDateTime: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        reviewDateTime: Schema.optional(Schema.String),
+      }),
+    ),
   },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
+    apiVersion: "2022-11-01",
   }),
 );
 export type ReservationUpdateInput = typeof ReservationUpdateInput.Type;
@@ -1755,11 +2153,24 @@ export const ReservationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ReturnPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      sessionId: Schema.optional(Schema.String),
+      scope: Schema.optional(Schema.String),
+      reservationToReturn: Schema.optional(
+        Schema.Struct({
+          reservationId: Schema.optional(Schema.String),
+          quantity: Schema.optional(Schema.Number),
+        }),
+      ),
+      returnReason: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/return",
+    apiVersion: "2022-11-01",
   }),
 );
 export type ReturnPostInput = typeof ReturnPostInput.Type;

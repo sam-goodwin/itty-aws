@@ -15,6 +15,7 @@ export const NotificationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscription}/providers/Microsoft.MarketplaceNotifications/reviewsNotification/{notification}",
+    apiVersion: "2021-03-03",
   }),
 );
 export type NotificationGetInput = typeof NotificationGetInput.Type;
@@ -38,6 +39,7 @@ export const NotificationGetOperationsInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.MarketplaceNotifications/operations",
+      apiVersion: "2021-03-03",
     }),
   );
 export type NotificationGetOperationsInput =
@@ -83,6 +85,7 @@ export const NotificationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscription}/providers/Microsoft.MarketplaceNotifications/reviewsNotifications",
+    apiVersion: "2021-03-03",
   }),
 );
 export type NotificationsListInput = typeof NotificationsListInput.Type;

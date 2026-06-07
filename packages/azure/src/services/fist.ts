@@ -15,11 +15,11 @@ export const BinaryHardeningListByFirmwareInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     firmwareId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/binaryHardeningResults",
+      apiVersion: "2025-08-02",
     }),
   );
 export type BinaryHardeningListByFirmwareInput =
@@ -86,11 +86,11 @@ export const CryptoCertificatesListByFirmwareInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     firmwareId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cryptoCertificates",
+      apiVersion: "2025-08-02",
     }),
   );
 export type CryptoCertificatesListByFirmwareInput =
@@ -157,11 +157,11 @@ export const CryptoKeysListByFirmwareInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     firmwareId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cryptoKeys",
+      apiVersion: "2025-08-02",
     }),
   );
 export type CryptoKeysListByFirmwareInput =
@@ -229,11 +229,11 @@ export const CvesListByFirmwareInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     firmwareId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cves",
+      apiVersion: "2025-08-02",
     }),
   );
 export type CvesListByFirmwareInput = typeof CvesListByFirmwareInput.Type;
@@ -296,11 +296,48 @@ export const FirmwaresCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   firmwareId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      fileName: Schema.optional(Schema.String),
+      vendor: Schema.optional(Schema.String),
+      model: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      fileSize: Schema.optional(Schema.Number),
+      status: Schema.optional(
+        Schema.Literals([
+          "Pending",
+          "Extracting",
+          "Analyzing",
+          "Ready",
+          "Error",
+        ]),
+      ),
+      statusMessages: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            errorCode: Schema.optional(Schema.Number),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Pending",
+          "Extracting",
+          "Analyzing",
+        ]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
+    apiVersion: "2025-08-02",
   }),
 );
 export type FirmwaresCreateInput = typeof FirmwaresCreateInput.Type;
@@ -347,11 +384,11 @@ export const FirmwaresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   firmwareId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
+    apiVersion: "2025-08-02",
   }),
 );
 export type FirmwaresDeleteInput = typeof FirmwaresDeleteInput.Type;
@@ -380,11 +417,11 @@ export const FirmwaresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   firmwareId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
+    apiVersion: "2025-08-02",
   }),
 );
 export type FirmwaresGetInput = typeof FirmwaresGetInput.Type;
@@ -431,11 +468,11 @@ export const FirmwaresListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares",
+      apiVersion: "2025-08-02",
     }),
   );
 export type FirmwaresListByWorkspaceInput =
@@ -501,11 +538,48 @@ export const FirmwaresUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   firmwareId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      fileName: Schema.optional(Schema.String),
+      vendor: Schema.optional(Schema.String),
+      model: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      fileSize: Schema.optional(Schema.Number),
+      status: Schema.optional(
+        Schema.Literals([
+          "Pending",
+          "Extracting",
+          "Analyzing",
+          "Ready",
+          "Error",
+        ]),
+      ),
+      statusMessages: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            errorCode: Schema.optional(Schema.Number),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Pending",
+          "Extracting",
+          "Analyzing",
+        ]),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
+    apiVersion: "2025-08-02",
   }),
 );
 export type FirmwaresUpdateInput = typeof FirmwaresUpdateInput.Type;
@@ -547,12 +621,13 @@ export const FirmwaresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FirmwaresUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.IoTFirmwareDefense/operations",
+    apiVersion: "2025-08-02",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -600,11 +675,11 @@ export const PasswordHashesListByFirmwareInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     firmwareId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/passwordHashes",
+      apiVersion: "2025-08-02",
     }),
   );
 export type PasswordHashesListByFirmwareInput =
@@ -671,11 +746,11 @@ export const SbomComponentsListByFirmwareInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     firmwareId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/sbomComponents",
+      apiVersion: "2025-08-02",
     }),
   );
 export type SbomComponentsListByFirmwareInput =
@@ -748,11 +823,11 @@ export const SummariesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "CryptoCertificate",
     "CryptoKey",
   ]).pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryType}",
+    apiVersion: "2025-08-02",
   }),
 );
 export type SummariesGetInput = typeof SummariesGetInput.Type;
@@ -801,11 +876,11 @@ export const SummariesListByFirmwareInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     firmwareId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries",
+      apiVersion: "2025-08-02",
     }),
   );
 export type SummariesListByFirmwareInput =
@@ -872,11 +947,11 @@ export const UsageMetricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics/{name}",
+    apiVersion: "2025-08-02",
   }),
 );
 export type UsageMetricsGetInput = typeof UsageMetricsGetInput.Type;
@@ -923,11 +998,11 @@ export const UsageMetricsListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics",
+      apiVersion: "2025-08-02",
     }),
   );
 export type UsageMetricsListByWorkspaceInput =
@@ -992,11 +1067,38 @@ export const WorkspacesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Pending",
+          "Extracting",
+          "Analyzing",
+        ]),
+      ),
+    }),
+  ),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(
+        Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+      ),
+      size: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
+    apiVersion: "2025-08-02",
   }),
 );
 export type WorkspacesCreateInput = typeof WorkspacesCreateInput.Type;
@@ -1043,11 +1145,11 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
+    apiVersion: "2025-08-02",
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -1075,11 +1177,12 @@ export const WorkspacesGenerateUploadUrlInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    firmwareId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/generateUploadUrl",
+      apiVersion: "2025-08-02",
     }),
   );
 export type WorkspacesGenerateUploadUrlInput =
@@ -1113,11 +1216,11 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
+    apiVersion: "2025-08-02",
   }),
 );
 export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
@@ -1162,11 +1265,11 @@ export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces",
+      apiVersion: "2025-08-02",
     }),
   );
 export type WorkspacesListByResourceGroupInput =
@@ -1228,11 +1331,11 @@ export const WorkspacesListByResourceGroup =
 export const WorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTFirmwareDefense/workspaces",
+      apiVersion: "2025-08-02",
     }),
   );
 export type WorkspacesListBySubscriptionInput =
@@ -1294,11 +1397,23 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      tier: Schema.optional(
+        Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+      ),
+      size: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
+    apiVersion: "2025-08-02",
   }),
 );
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;

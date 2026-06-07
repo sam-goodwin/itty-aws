@@ -10,10 +10,23 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DnsResourceReferenceGetByTargetResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        targetResources: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/getDnsResourceReference",
+      apiVersion: "2018-05-01",
     }),
   );
 export type DnsResourceReferenceGetByTargetResourcesInput =
@@ -75,10 +88,106 @@ export const RecordSetsCreateOrUpdateInput =
       "SRV",
       "TXT",
     ]).pipe(T.PathParam()),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        TTL: Schema.optional(Schema.Number),
+        fqdn: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        targetResource: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        ARecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipv4Address: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        AAAARecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipv6Address: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        MXRecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              preference: Schema.optional(Schema.Number),
+              exchange: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        NSRecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              nsdname: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        PTRRecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ptrdname: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        SRVRecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              priority: Schema.optional(Schema.Number),
+              weight: Schema.optional(Schema.Number),
+              port: Schema.optional(Schema.Number),
+              target: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        TXTRecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              value: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        ),
+        CNAMERecord: Schema.optional(
+          Schema.Struct({
+            cname: Schema.optional(Schema.String),
+          }),
+        ),
+        SOARecord: Schema.optional(
+          Schema.Struct({
+            host: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            serialNumber: Schema.optional(Schema.Number),
+            refreshTime: Schema.optional(Schema.Number),
+            retryTime: Schema.optional(Schema.Number),
+            expireTime: Schema.optional(Schema.Number),
+            minimumTTL: Schema.optional(Schema.Number),
+          }),
+        ),
+        caaRecords: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              flags: Schema.optional(Schema.Number),
+              tag: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}",
+      apiVersion: "2018-05-01",
     }),
   );
 export type RecordSetsCreateOrUpdateInput =
@@ -224,6 +333,7 @@ export const RecordSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}",
+    apiVersion: "2018-05-01",
   }),
 );
 export type RecordSetsDeleteInput = typeof RecordSetsDeleteInput.Type;
@@ -267,6 +377,7 @@ export const RecordSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}",
+    apiVersion: "2018-05-01",
   }),
 );
 export type RecordSetsGetInput = typeof RecordSetsGetInput.Type;
@@ -395,6 +506,7 @@ export const RecordSetsListAllByDnsZoneInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/all",
+      apiVersion: "2018-05-01",
     }),
   );
 export type RecordSetsListAllByDnsZoneInput =
@@ -537,6 +649,7 @@ export const RecordSetsListByDnsZoneInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/recordsets",
+      apiVersion: "2018-05-01",
     }),
   );
 export type RecordSetsListByDnsZoneInput =
@@ -691,6 +804,7 @@ export const RecordSetsListByTypeInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}",
+      apiVersion: "2018-05-01",
     }),
   );
 export type RecordSetsListByTypeInput = typeof RecordSetsListByTypeInput.Type;
@@ -838,10 +952,106 @@ export const RecordSetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "SRV",
     "TXT",
   ]).pipe(T.PathParam()),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      TTL: Schema.optional(Schema.Number),
+      fqdn: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      targetResource: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+      ARecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            ipv4Address: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      AAAARecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            ipv6Address: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      MXRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            preference: Schema.optional(Schema.Number),
+            exchange: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      NSRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            nsdname: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      PTRRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            ptrdname: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      SRVRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            priority: Schema.optional(Schema.Number),
+            weight: Schema.optional(Schema.Number),
+            port: Schema.optional(Schema.Number),
+            target: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      TXTRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            value: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      ),
+      CNAMERecord: Schema.optional(
+        Schema.Struct({
+          cname: Schema.optional(Schema.String),
+        }),
+      ),
+      SOARecord: Schema.optional(
+        Schema.Struct({
+          host: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          serialNumber: Schema.optional(Schema.Number),
+          refreshTime: Schema.optional(Schema.Number),
+          retryTime: Schema.optional(Schema.Number),
+          expireTime: Schema.optional(Schema.Number),
+          minimumTTL: Schema.optional(Schema.Number),
+        }),
+      ),
+      caaRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            flags: Schema.optional(Schema.Number),
+            tag: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}",
+    apiVersion: "2018-05-01",
   }),
 );
 export type RecordSetsUpdateInput = typeof RecordSetsUpdateInput.Type;
@@ -967,10 +1177,40 @@ export const ZonesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     zoneName: Schema.String.pipe(T.PathParam()),
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        maxNumberOfRecordSets: Schema.optional(Schema.Number),
+        maxNumberOfRecordsPerRecordSet: Schema.optional(Schema.Number),
+        numberOfRecordSets: Schema.optional(Schema.Number),
+        nameServers: Schema.optional(Schema.Array(Schema.String)),
+        zoneType: Schema.optional(Schema.Literals(["Public", "Private"])),
+        registrationVirtualNetworks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        resolutionVirtualNetworks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
+      apiVersion: "2018-05-01",
     }),
   );
 export type ZonesCreateOrUpdateInput = typeof ZonesCreateOrUpdateInput.Type;
@@ -1007,6 +1247,7 @@ export const ZonesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
+    apiVersion: "2018-05-01",
   }),
 );
 export type ZonesDeleteInput = typeof ZonesDeleteInput.Type;
@@ -1035,6 +1276,7 @@ export const ZonesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
+    apiVersion: "2018-05-01",
   }),
 );
 export type ZonesGetInput = typeof ZonesGetInput.Type;
@@ -1067,6 +1309,7 @@ export const ZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnszones",
+    apiVersion: "2018-05-01",
   }),
 );
 export type ZonesListInput = typeof ZonesListInput.Type;
@@ -1107,6 +1350,7 @@ export const ZonesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones",
+      apiVersion: "2018-05-01",
     }),
   );
 export type ZonesListByResourceGroupInput =
@@ -1148,10 +1392,12 @@ export const ZonesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ZonesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
+    apiVersion: "2018-05-01",
   }),
 );
 export type ZonesUpdateInput = typeof ZonesUpdateInput.Type;

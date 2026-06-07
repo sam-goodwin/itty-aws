@@ -12,11 +12,18 @@ import * as T from "../traits.ts";
 export const EndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        type: Schema.Literals(["default", "custom"]),
+        resourceId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EndpointsCreateOrUpdateInput =
@@ -62,11 +69,11 @@ export const EndpointsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endpointName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EndpointsDeleteInput = typeof EndpointsDeleteInput.Type;
@@ -89,11 +96,11 @@ export const EndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endpointName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EndpointsGetInput = typeof EndpointsGetInput.Type;
@@ -132,12 +139,13 @@ export const EndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EndpointsGetOutput,
 }));
 // Input Schema
-export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EndpointsListInput = typeof EndpointsListInput.Type;
@@ -183,12 +191,13 @@ export const EndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const EndpointsListCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     expiresin: Schema.optional(Schema.Number),
+    serviceName: Schema.optional(Schema.Literals(["SSH", "WAC"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/listCredentials",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EndpointsListCredentialsInput =
@@ -229,12 +238,13 @@ export const EndpointsListCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const EndpointsListIngressGatewayCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     expiresin: Schema.optional(Schema.Number),
+    serviceName: Schema.optional(Schema.Literals(["SSH", "WAC"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/listIngressGatewayCredentials",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EndpointsListIngressGatewayCredentialsInput =
@@ -283,11 +293,14 @@ export const EndpointsListIngressGatewayCredentials =
 export const EndpointsListManagedProxyDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    service: Schema.String,
+    hostname: Schema.optional(Schema.String),
+    serviceName: Schema.optional(Schema.Literals(["SSH", "WAC"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/listManagedProxyDetails",
+      apiVersion: "2024-12-01",
     }),
   );
 export type EndpointsListManagedProxyDetailsInput =
@@ -317,11 +330,18 @@ export const EndpointsListManagedProxyDetails =
 // Input Schema
 export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endpointName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      type: Schema.Literals(["default", "custom"]),
+      resourceId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type EndpointsUpdateInput = typeof EndpointsUpdateInput.Type;
@@ -363,11 +383,22 @@ export const EndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GenerateAwsTemplatePostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    connectorId: Schema.String,
+    solutionTypes: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          solutionType: Schema.String,
+          solutionSettings: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+        }),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridConnectivity/generateAwsTemplate",
+      apiVersion: "2024-12-01",
     }),
   );
 export type GenerateAwsTemplatePostInput =
@@ -396,11 +427,11 @@ export const GenerateAwsTemplatePost = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const InventoryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   solutionConfiguration: Schema.String.pipe(T.PathParam()),
   inventoryId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}/inventory/{inventoryId}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type InventoryGetInput = typeof InventoryGetInput.Type;
@@ -443,11 +474,11 @@ export const InventoryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const InventoryListBySolutionConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}/inventory",
+      apiVersion: "2024-12-01",
     }),
   );
 export type InventoryListBySolutionConfigurationInput =
@@ -505,12 +536,13 @@ export const InventoryListBySolutionConfiguration =
     outputSchema: InventoryListBySolutionConfigurationOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HybridConnectivity/operations",
+    apiVersion: "2024-12-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -557,11 +589,27 @@ export const PublicCloudConnectorsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publicCloudConnector: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsCloudProfile: Schema.Struct({
+          accountId: Schema.String,
+          excludedAccounts: Schema.optional(Schema.Array(Schema.String)),
+          isOrganizationalAccount: Schema.optional(Schema.Boolean),
+        }),
+        hostType: Schema.Literals(["AWS"]),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+        connectorPrimaryIdentifier: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type PublicCloudConnectorsCreateOrUpdateInput =
@@ -611,11 +659,11 @@ export const PublicCloudConnectorsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publicCloudConnector: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type PublicCloudConnectorsDeleteInput =
@@ -648,11 +696,11 @@ export const PublicCloudConnectorsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publicCloudConnector: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type PublicCloudConnectorsGetInput =
@@ -702,11 +750,11 @@ export const PublicCloudConnectorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors",
+      apiVersion: "2024-12-01",
     }),
   );
 export type PublicCloudConnectorsListByResourceGroupInput =
@@ -768,11 +816,11 @@ export const PublicCloudConnectorsListByResourceGroup =
 export const PublicCloudConnectorsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridConnectivity/publicCloudConnectors",
+      apiVersion: "2024-12-01",
     }),
   );
 export type PublicCloudConnectorsListBySubscriptionInput =
@@ -835,11 +883,11 @@ export const PublicCloudConnectorsTestPermissionsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publicCloudConnector: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}/testPermissions",
+      apiVersion: "2024-12-01",
     }),
   );
 export type PublicCloudConnectorsTestPermissionsInput =
@@ -925,11 +973,21 @@ export const PublicCloudConnectorsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publicCloudConnector: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        awsCloudProfile: Schema.optional(
+          Schema.Struct({
+            excludedAccounts: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type PublicCloudConnectorsUpdateInput =
@@ -979,11 +1037,27 @@ export const ServiceConfigurationsCreateOrupdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        serviceName: Schema.Literals(["SSH", "WAC"]),
+        resourceId: Schema.optional(Schema.String),
+        port: Schema.optional(Schema.Number),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Creating",
+            "Updating",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ServiceConfigurationsCreateOrupdateInput =
@@ -1031,11 +1105,11 @@ export const ServiceConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ServiceConfigurationsDeleteInput =
@@ -1066,11 +1140,11 @@ export const ServiceConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ServiceConfigurationsGetInput =
@@ -1118,11 +1192,11 @@ export const ServiceConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ServiceConfigurationsListByEndpointResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ServiceConfigurationsListByEndpointResourceInput =
@@ -1186,11 +1260,16 @@ export const ServiceConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        port: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type ServiceConfigurationsUpdateInput =
@@ -1238,11 +1317,27 @@ export const ServiceConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SolutionConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+        ),
+        solutionType: Schema.String,
+        solutionSettings: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        status: Schema.optional(
+          Schema.Literals(["New", "InProgress", "Completed", "Failed"]),
+        ),
+        statusDetails: Schema.optional(Schema.String),
+        lastSyncTime: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SolutionConfigurationsCreateOrUpdateInput =
@@ -1288,11 +1383,11 @@ export const SolutionConfigurationsCreateOrUpdate =
 export const SolutionConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SolutionConfigurationsDeleteInput =
@@ -1320,11 +1415,11 @@ export const SolutionConfigurationsDelete =
 export const SolutionConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SolutionConfigurationsGetInput =
@@ -1369,12 +1464,11 @@ export const SolutionConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SolutionConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SolutionConfigurationsListInput =
@@ -1435,11 +1529,11 @@ export const SolutionConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SolutionConfigurationsSyncNowInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}/syncNow",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SolutionConfigurationsSyncNowInput =
@@ -1521,11 +1615,19 @@ export const SolutionConfigurationsSyncNow =
 export const SolutionConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        solutionType: Schema.optional(Schema.String),
+        solutionSettings: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SolutionConfigurationsUpdateInput =
@@ -1572,11 +1674,11 @@ export const SolutionTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   solutionType: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/solutionTypes/{solutionType}",
+    apiVersion: "2024-12-01",
   }),
 );
 export type SolutionTypesGetInput = typeof SolutionTypesGetInput.Type;
@@ -1623,11 +1725,11 @@ export const SolutionTypesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/solutionTypes",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SolutionTypesListByResourceGroupInput =
@@ -1689,11 +1791,11 @@ export const SolutionTypesListByResourceGroup =
 export const SolutionTypesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridConnectivity/solutionTypes",
+      apiVersion: "2024-12-01",
     }),
   );
 export type SolutionTypesListBySubscriptionInput =

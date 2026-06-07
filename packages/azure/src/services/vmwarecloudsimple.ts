@@ -7,7 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const CustomizationPoliciesGetInput =
@@ -17,6 +17,7 @@ export const CustomizationPoliciesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/customizationPolicies/{customizationPolicyName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type CustomizationPoliciesGetInput =
@@ -121,6 +122,7 @@ export const CustomizationPoliciesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/customizationPolicies",
+      apiVersion: "2019-04-01",
     }),
   );
 export type CustomizationPoliciesListInput =
@@ -230,10 +232,48 @@ export const customizationPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DedicatedCloudNodesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dedicatedCloudNodeName: Schema.String.pipe(T.PathParam()),
+    id: Schema.optional(Schema.String),
+    location: Schema.String,
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        availabilityZoneId: Schema.String,
+        availabilityZoneName: Schema.optional(Schema.String),
+        cloudRackName: Schema.optional(Schema.String),
+        created: Schema.optional(Schema.String),
+        nodesCount: Schema.Number,
+        placementGroupId: Schema.String,
+        placementGroupName: Schema.optional(Schema.String),
+        privateCloudId: Schema.optional(Schema.String),
+        privateCloudName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        purchaseId: Schema.String,
+        skuDescription: Schema.optional(
+          Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+          }),
+        ),
+        status: Schema.optional(Schema.Literals(["unused", "used"])),
+        vmwareClusterName: Schema.optional(Schema.String),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        capacity: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        name: Schema.String,
+        tier: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Unknown),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes/{dedicatedCloudNodeName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type DedicatedCloudNodesCreateOrUpdateInput =
@@ -304,6 +344,7 @@ export const DedicatedCloudNodesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes/{dedicatedCloudNodeName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type DedicatedCloudNodesDeleteInput =
@@ -337,6 +378,7 @@ export const DedicatedCloudNodesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes/{dedicatedCloudNodeName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type DedicatedCloudNodesGetInput =
@@ -410,6 +452,7 @@ export const DedicatedCloudNodesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes",
+      apiVersion: "2019-04-01",
     }),
   );
 export type DedicatedCloudNodesListByResourceGroupInput =
@@ -491,6 +534,7 @@ export const DedicatedCloudNodesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes",
+      apiVersion: "2019-04-01",
     }),
   );
 export type DedicatedCloudNodesListBySubscriptionInput =
@@ -566,10 +610,12 @@ export const DedicatedCloudNodesListBySubscription =
 export const DedicatedCloudNodesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dedicatedCloudNodeName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes/{dedicatedCloudNodeName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type DedicatedCloudNodesUpdateInput =
@@ -637,10 +683,31 @@ export const DedicatedCloudNodesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DedicatedCloudServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dedicatedCloudServiceName: Schema.String.pipe(T.PathParam()),
+    id: Schema.optional(Schema.String),
+    location: Schema.String,
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        gatewaySubnet: Schema.String,
+        isAccountOnboarded: Schema.optional(
+          Schema.Literals([
+            "notOnBoarded",
+            "onBoarded",
+            "onBoardingFailed",
+            "onBoarding",
+          ]),
+        ),
+        nodes: Schema.optional(Schema.Number),
+        serviceURL: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Unknown),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices/{dedicatedCloudServiceName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type DedicatedCloudServicesCreateOrUpdateInput =
@@ -694,6 +761,7 @@ export const DedicatedCloudServicesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices/{dedicatedCloudServiceName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type DedicatedCloudServicesDeleteInput =
@@ -726,6 +794,7 @@ export const DedicatedCloudServicesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices/{dedicatedCloudServiceName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type DedicatedCloudServicesGetInput =
@@ -782,6 +851,7 @@ export const DedicatedCloudServicesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices",
+      apiVersion: "2019-04-01",
     }),
   );
 export type DedicatedCloudServicesListByResourceGroupInput =
@@ -846,6 +916,7 @@ export const DedicatedCloudServicesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices",
+      apiVersion: "2019-04-01",
     }),
   );
 export type DedicatedCloudServicesListBySubscriptionInput =
@@ -904,10 +975,12 @@ export const DedicatedCloudServicesListBySubscription =
 export const DedicatedCloudServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dedicatedCloudServiceName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices/{dedicatedCloudServiceName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type DedicatedCloudServicesUpdateInput =
@@ -960,6 +1033,7 @@ export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/operationResults/{operationId}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type OperationsGetInput = typeof OperationsGetInput.Type;
@@ -999,6 +1073,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.VMwareCloudSimple/operations",
+    apiVersion: "2019-04-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1064,6 +1139,7 @@ export const PrivateCloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type PrivateCloudsGetInput = typeof PrivateCloudsGetInput.Type;
@@ -1255,6 +1331,7 @@ export const PrivateCloudsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds",
+    apiVersion: "2019-04-01",
   }),
 );
 export type PrivateCloudsListInput = typeof PrivateCloudsListInput.Type;
@@ -1462,6 +1539,7 @@ export const ResourcePoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/resourcePools/{resourcePoolName}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type ResourcePoolsGetInput = typeof ResourcePoolsGetInput.Type;
@@ -1502,6 +1580,7 @@ export const ResourcePoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/resourcePools",
+    apiVersion: "2019-04-01",
   }),
 );
 export type ResourcePoolsListInput = typeof ResourcePoolsListInput.Type;
@@ -1547,6 +1626,7 @@ export const SkusAvailabilityListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/availabilities",
+      apiVersion: "2019-04-01",
     }),
   );
 export type SkusAvailabilityListInput = typeof SkusAvailabilityListInput.Type;
@@ -1593,6 +1673,7 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/usages",
+    apiVersion: "2019-04-01",
   }),
 );
 export type UsagesListInput = typeof UsagesListInput.Type;
@@ -1643,18 +1724,6 @@ export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const VirtualMachinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
-    }),
-  );
-export type VirtualMachinesCreateOrUpdateInput =
-  typeof VirtualMachinesCreateOrUpdateInput.Type;
-
-// Output Schema
-export const VirtualMachinesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     location: Schema.String,
     name: Schema.optional(Schema.String),
@@ -1748,6 +1817,148 @@ export const VirtualMachinesCreateOrUpdateOutput =
         ),
         numberOfCores: Schema.Number,
         password: Schema.optional(SensitiveString),
+        privateCloudId: Schema.String,
+        provisioningState: Schema.optional(Schema.String),
+        publicIP: Schema.optional(Schema.String),
+        resourcePool: Schema.optional(
+          Schema.Struct({
+            id: Schema.String,
+            location: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            privateCloudId: Schema.optional(Schema.String),
+            properties: Schema.optional(
+              Schema.Struct({
+                fullName: Schema.optional(Schema.String),
+              }),
+            ),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "running",
+            "suspended",
+            "poweredoff",
+            "updating",
+            "deallocating",
+            "deleting",
+          ]),
+        ),
+        templateId: Schema.optional(Schema.String),
+        username: Schema.optional(Schema.String),
+        vSphereNetworks: Schema.optional(Schema.Array(Schema.String)),
+        vmId: Schema.optional(Schema.String),
+        vmwaretools: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Unknown),
+    type: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
+      apiVersion: "2019-04-01",
+    }),
+  );
+export type VirtualMachinesCreateOrUpdateInput =
+  typeof VirtualMachinesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const VirtualMachinesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    location: Schema.String,
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        amountOfRam: Schema.Number,
+        controllers: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              subType: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        customization: Schema.optional(
+          Schema.Struct({
+            dnsServers: Schema.optional(Schema.Array(Schema.String)),
+            hostName: Schema.optional(Schema.String),
+            password: Schema.optional(SensitiveOutputString),
+            policyId: Schema.optional(Schema.String),
+            username: Schema.optional(Schema.String),
+          }),
+        ),
+        disks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              controllerId: Schema.String,
+              independenceMode: Schema.Literals([
+                "persistent",
+                "independent_persistent",
+                "independent_nonpersistent",
+              ]),
+              totalSize: Schema.Number,
+              virtualDiskId: Schema.optional(Schema.String),
+              virtualDiskName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        dnsname: Schema.optional(Schema.String),
+        exposeToGuestVM: Schema.optional(Schema.Boolean),
+        folder: Schema.optional(Schema.String),
+        guestOS: Schema.optional(Schema.String),
+        guestOSType: Schema.optional(
+          Schema.Literals(["linux", "windows", "other"]),
+        ),
+        nics: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              customization: Schema.optional(
+                Schema.Struct({
+                  allocation: Schema.optional(
+                    Schema.Literals(["static", "dynamic"]),
+                  ),
+                  dnsServers: Schema.optional(Schema.Array(Schema.String)),
+                  gateway: Schema.optional(Schema.Array(Schema.String)),
+                  ipAddress: Schema.optional(Schema.String),
+                  mask: Schema.optional(Schema.String),
+                  primaryWinsServer: Schema.optional(Schema.String),
+                  secondaryWinsServer: Schema.optional(Schema.String),
+                }),
+              ),
+              ipAddresses: Schema.optional(Schema.Array(Schema.String)),
+              macAddress: Schema.optional(Schema.String),
+              network: Schema.Struct({
+                assignable: Schema.optional(Schema.Boolean),
+                id: Schema.String,
+                location: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                properties: Schema.optional(
+                  Schema.Struct({
+                    privateCloudId: Schema.optional(Schema.String),
+                  }),
+                ),
+                type: Schema.optional(Schema.String),
+              }),
+              nicType: Schema.Literals([
+                "E1000",
+                "E1000E",
+                "PCNET32",
+                "VMXNET",
+                "VMXNET2",
+                "VMXNET3",
+              ]),
+              powerOnBoot: Schema.optional(Schema.Boolean),
+              virtualNicId: Schema.optional(Schema.String),
+              virtualNicName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        numberOfCores: Schema.Number,
+        password: Schema.optional(SensitiveOutputString),
         privateCloudId: Schema.String,
         provisioningState: Schema.optional(Schema.String),
         publicIP: Schema.optional(Schema.String),
@@ -1809,6 +2020,7 @@ export const VirtualMachinesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
@@ -1841,6 +2053,7 @@ export const VirtualMachinesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
@@ -1868,7 +2081,7 @@ export const VirtualMachinesGetOutput =
           Schema.Struct({
             dnsServers: Schema.optional(Schema.Array(Schema.String)),
             hostName: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
+            password: Schema.optional(SensitiveOutputString),
             policyId: Schema.optional(Schema.String),
             username: Schema.optional(Schema.String),
           }),
@@ -1940,7 +2153,7 @@ export const VirtualMachinesGetOutput =
           ),
         ),
         numberOfCores: Schema.Number,
-        password: Schema.optional(SensitiveString),
+        password: Schema.optional(SensitiveOutputString),
         privateCloudId: Schema.String,
         provisioningState: Schema.optional(Schema.String),
         publicIP: Schema.optional(Schema.String),
@@ -2002,6 +2215,7 @@ export const VirtualMachinesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines",
+      apiVersion: "2019-04-01",
     }),
   );
 export type VirtualMachinesListByResourceGroupInput =
@@ -2034,7 +2248,7 @@ export const VirtualMachinesListByResourceGroupOutput =
                 Schema.Struct({
                   dnsServers: Schema.optional(Schema.Array(Schema.String)),
                   hostName: Schema.optional(Schema.String),
-                  password: Schema.optional(SensitiveString),
+                  password: Schema.optional(SensitiveOutputString),
                   policyId: Schema.optional(Schema.String),
                   username: Schema.optional(Schema.String),
                 }),
@@ -2108,7 +2322,7 @@ export const VirtualMachinesListByResourceGroupOutput =
                 ),
               ),
               numberOfCores: Schema.Number,
-              password: Schema.optional(SensitiveString),
+              password: Schema.optional(SensitiveOutputString),
               privateCloudId: Schema.String,
               provisioningState: Schema.optional(Schema.String),
               publicIP: Schema.optional(Schema.String),
@@ -2177,6 +2391,7 @@ export const VirtualMachinesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/virtualMachines",
+      apiVersion: "2019-04-01",
     }),
   );
 export type VirtualMachinesListBySubscriptionInput =
@@ -2209,7 +2424,7 @@ export const VirtualMachinesListBySubscriptionOutput =
                 Schema.Struct({
                   dnsServers: Schema.optional(Schema.Array(Schema.String)),
                   hostName: Schema.optional(Schema.String),
-                  password: Schema.optional(SensitiveString),
+                  password: Schema.optional(SensitiveOutputString),
                   policyId: Schema.optional(Schema.String),
                   username: Schema.optional(Schema.String),
                 }),
@@ -2283,7 +2498,7 @@ export const VirtualMachinesListBySubscriptionOutput =
                 ),
               ),
               numberOfCores: Schema.Number,
-              password: Schema.optional(SensitiveString),
+              password: Schema.optional(SensitiveOutputString),
               privateCloudId: Schema.String,
               provisioningState: Schema.optional(Schema.String),
               publicIP: Schema.optional(Schema.String),
@@ -2350,6 +2565,7 @@ export const VirtualMachinesStartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}/start",
+      apiVersion: "2019-04-01",
     }),
   );
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
@@ -2384,6 +2600,7 @@ export const VirtualMachinesStopInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}/stop",
+      apiVersion: "2019-04-01",
     }),
   );
 export type VirtualMachinesStopInput = typeof VirtualMachinesStopInput.Type;
@@ -2410,10 +2627,12 @@ export const VirtualMachinesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const VirtualMachinesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualMachineName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;
@@ -2441,7 +2660,7 @@ export const VirtualMachinesUpdateOutput =
           Schema.Struct({
             dnsServers: Schema.optional(Schema.Array(Schema.String)),
             hostName: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
+            password: Schema.optional(SensitiveOutputString),
             policyId: Schema.optional(Schema.String),
             username: Schema.optional(Schema.String),
           }),
@@ -2513,7 +2732,7 @@ export const VirtualMachinesUpdateOutput =
           ),
         ),
         numberOfCores: Schema.Number,
-        password: Schema.optional(SensitiveString),
+        password: Schema.optional(SensitiveOutputString),
         privateCloudId: Schema.String,
         provisioningState: Schema.optional(Schema.String),
         publicIP: Schema.optional(Schema.String),
@@ -2576,6 +2795,7 @@ export const VirtualMachineTemplatesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualMachineTemplates/{virtualMachineTemplateName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type VirtualMachineTemplatesGetInput =
@@ -2698,6 +2918,7 @@ export const VirtualMachineTemplatesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualMachineTemplates",
+      apiVersion: "2019-04-01",
     }),
   );
 export type VirtualMachineTemplatesListInput =
@@ -2829,6 +3050,7 @@ export const VirtualNetworksGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualNetworks/{virtualNetworkName}",
+      apiVersion: "2019-04-01",
     }),
   );
 export type VirtualNetworksGetInput = typeof VirtualNetworksGetInput.Type;
@@ -2869,6 +3091,7 @@ export const VirtualNetworksListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualNetworks",
+      apiVersion: "2019-04-01",
     }),
   );
 export type VirtualNetworksListInput = typeof VirtualNetworksListInput.Type;

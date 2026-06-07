@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AdvancedThreatProtectionSettingsGetInput =
@@ -17,11 +18,11 @@ export const AdvancedThreatProtectionSettingsGetInput =
     advancedThreatProtectionName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/advancedThreatProtectionSettings/{advancedThreatProtectionName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type AdvancedThreatProtectionSettingsGetInput =
@@ -72,11 +73,11 @@ export const AdvancedThreatProtectionSettingsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/advancedThreatProtectionSettings",
+      apiVersion: "2024-12-30",
     }),
   );
 export type AdvancedThreatProtectionSettingsListInput =
@@ -146,11 +147,16 @@ export const AdvancedThreatProtectionSettingsUpdateInput =
     advancedThreatProtectionName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        state: Schema.Literals(["Enabled", "Disabled"]),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/advancedThreatProtectionSettings/{advancedThreatProtectionName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type AdvancedThreatProtectionSettingsUpdateInput =
@@ -204,11 +210,20 @@ export const AdvancedThreatProtectionSettingsUpdatePutInput =
     advancedThreatProtectionName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        creationTime: Schema.optional(Schema.String),
+        state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Updating", "Canceled", "Failed"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/advancedThreatProtectionSettings/{advancedThreatProtectionName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type AdvancedThreatProtectionSettingsUpdatePutInput =
@@ -260,11 +275,22 @@ export const AzureADAdministratorsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        administratorType: Schema.optional(
+          Schema.Literals(["ActiveDirectory"]),
+        ),
+        login: Schema.optional(Schema.String),
+        sid: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        identityResourceId: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/administrators/{administratorName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type AzureADAdministratorsCreateOrUpdateInput =
@@ -316,11 +342,11 @@ export const AzureADAdministratorsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/administrators/{administratorName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type AzureADAdministratorsDeleteInput =
@@ -355,11 +381,11 @@ export const AzureADAdministratorsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/administrators/{administratorName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type AzureADAdministratorsGetInput =
@@ -411,11 +437,11 @@ export const AzureADAdministratorsListByServerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/administrators",
+      apiVersion: "2024-12-30",
     }),
   );
 export type AzureADAdministratorsListByServerInput =
@@ -482,11 +508,18 @@ export const BackupAndExportCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    targetDetails: Schema.Struct({
+      objectType: Schema.String,
+    }),
+    backupSettings: Schema.Struct({
+      backupName: Schema.String,
+      backupFormat: Schema.optional(Schema.Literals(["CollatedFormat", "Raw"])),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/backupAndExport",
+      apiVersion: "2024-12-30",
     }),
   );
 export type BackupAndExportCreateInput = typeof BackupAndExportCreateInput.Type;
@@ -536,11 +569,11 @@ export const BackupAndExportValidateBackupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/validateBackup",
+      apiVersion: "2024-12-30",
     }),
   );
 export type BackupAndExportValidateBackupInput =
@@ -578,11 +611,11 @@ export const BackupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
   backupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/backups/{backupName}",
+    apiVersion: "2024-12-30",
   }),
 );
 export type BackupsGetInput = typeof BackupsGetInput.Type;
@@ -629,11 +662,11 @@ export const BackupsListByServerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/backups",
+      apiVersion: "2024-12-30",
     }),
   );
 export type BackupsListByServerInput = typeof BackupsListByServerInput.Type;
@@ -697,11 +730,11 @@ export const BackupsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
   backupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/backups/{backupName}",
+    apiVersion: "2024-12-30",
   }),
 );
 export type BackupsPutInput = typeof BackupsPutInput.Type;
@@ -746,11 +779,13 @@ export const BackupsPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const CheckNameAvailabilityExecuteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/checkNameAvailability",
+      apiVersion: "2024-12-30",
     }),
   );
 export type CheckNameAvailabilityExecuteInput =
@@ -782,11 +817,13 @@ export const CheckNameAvailabilityExecute =
 export const CheckNameAvailabilityWithoutLocationExecuteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/checkNameAvailability",
+      apiVersion: "2024-12-30",
     }),
   );
 export type CheckNameAvailabilityWithoutLocationExecuteInput =
@@ -818,11 +855,12 @@ export const CheckNameAvailabilityWithoutLocationExecute =
 export const CheckVirtualNetworkSubnetUsageExecuteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    virtualNetworkResourceId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/checkVirtualNetworkSubnetUsage",
+      apiVersion: "2024-12-30",
     }),
   );
 export type CheckVirtualNetworkSubnetUsageExecuteInput =
@@ -863,11 +901,25 @@ export const ConfigurationsBatchUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          properties: Schema.optional(
+            Schema.Struct({
+              value: Schema.optional(Schema.String),
+              source: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    resetAllToDefault: Schema.optional(Schema.Literals(["True", "False"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/updateConfigurations",
+      apiVersion: "2024-12-30",
     }),
   );
 export type ConfigurationsBatchUpdateInput =
@@ -936,11 +988,30 @@ export const ConfigurationsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        value: Schema.optional(Schema.String),
+        currentValue: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        documentationLink: Schema.optional(Schema.String),
+        defaultValue: Schema.optional(Schema.String),
+        dataType: Schema.optional(Schema.String),
+        allowedValues: Schema.optional(Schema.String),
+        source: Schema.optional(
+          Schema.Literals(["system-default", "user-override"]),
+        ),
+        isReadOnly: Schema.optional(Schema.Literals(["True", "False"])),
+        isConfigPendingRestart: Schema.optional(
+          Schema.Literals(["True", "False"]),
+        ),
+        isDynamicConfig: Schema.optional(Schema.Literals(["True", "False"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/configurations/{configurationName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type ConfigurationsCreateOrUpdateInput =
@@ -992,12 +1063,12 @@ export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/configurations/{configurationName}",
+    apiVersion: "2024-12-30",
   }),
 );
 export type ConfigurationsGetInput = typeof ConfigurationsGetInput.Type;
@@ -1045,7 +1116,6 @@ export const ConfigurationsListByServerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     tags: Schema.optional(Schema.String),
     keyword: Schema.optional(Schema.String),
     page: Schema.optional(Schema.Number),
@@ -1054,6 +1124,7 @@ export const ConfigurationsListByServerInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/configurations",
+      apiVersion: "2024-12-30",
     }),
   );
 export type ConfigurationsListByServerInput =
@@ -1126,11 +1197,30 @@ export const ConfigurationsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        value: Schema.optional(Schema.String),
+        currentValue: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        documentationLink: Schema.optional(Schema.String),
+        defaultValue: Schema.optional(Schema.String),
+        dataType: Schema.optional(Schema.String),
+        allowedValues: Schema.optional(Schema.String),
+        source: Schema.optional(
+          Schema.Literals(["system-default", "user-override"]),
+        ),
+        isReadOnly: Schema.optional(Schema.Literals(["True", "False"])),
+        isConfigPendingRestart: Schema.optional(
+          Schema.Literals(["True", "False"]),
+        ),
+        isDynamicConfig: Schema.optional(Schema.Literals(["True", "False"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/configurations/{configurationName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type ConfigurationsUpdateInput = typeof ConfigurationsUpdateInput.Type;
@@ -1181,11 +1271,17 @@ export const DatabasesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        charset: Schema.optional(Schema.String),
+        collation: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type DatabasesCreateOrUpdateInput =
@@ -1237,11 +1333,11 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}",
+    apiVersion: "2024-12-30",
   }),
 );
 export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
@@ -1270,11 +1366,11 @@ export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}",
+    apiVersion: "2024-12-30",
   }),
 );
 export type DatabasesGetInput = typeof DatabasesGetInput.Type;
@@ -1321,11 +1417,11 @@ export const DatabasesListByServerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases",
+      apiVersion: "2024-12-30",
     }),
   );
 export type DatabasesListByServerInput = typeof DatabasesListByServerInput.Type;
@@ -1393,11 +1489,15 @@ export const FirewallRulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      startIpAddress: Schema.String,
+      endIpAddress: Schema.String,
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type FirewallRulesCreateOrUpdateInput =
@@ -1450,11 +1550,11 @@ export const FirewallRulesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
@@ -1484,11 +1584,11 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
   firewallRuleName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
+    apiVersion: "2024-12-30",
   }),
 );
 export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
@@ -1537,11 +1637,11 @@ export const FirewallRulesListByServerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules",
+      apiVersion: "2024-12-30",
     }),
   );
 export type FirewallRulesListByServerInput =
@@ -1605,12 +1705,11 @@ export const FirewallRulesListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const GetPrivateDnsZoneSuffixExecuteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.DBforMySQL/getPrivateDnsZoneSuffix",
+      apiVersion: "2024-12-30",
     }),
   );
 export type GetPrivateDnsZoneSuffixExecuteInput =
@@ -1639,11 +1738,11 @@ export const GetPrivateDnsZoneSuffixExecute =
 export const LocationBasedCapabilitiesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/capabilities",
+      apiVersion: "2024-12-30",
     }),
   );
 export type LocationBasedCapabilitiesListInput =
@@ -1724,11 +1823,11 @@ export const LocationBasedCapabilitySetGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     capabilitySetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/capabilitySets/{capabilitySetName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type LocationBasedCapabilitySetGetInput =
@@ -1775,11 +1874,11 @@ export const LocationBasedCapabilitySetGet =
 export const LocationBasedCapabilitySetListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/capabilitySets",
+      apiVersion: "2024-12-30",
     }),
   );
 export type LocationBasedCapabilitySetListInput =
@@ -1844,11 +1943,11 @@ export const LogFilesListByServerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/logFiles",
+      apiVersion: "2024-12-30",
     }),
   );
 export type LogFilesListByServerInput = typeof LogFilesListByServerInput.Type;
@@ -1915,11 +2014,28 @@ export const LongRunningBackupCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        backupNameV2: Schema.optional(Schema.String),
+        backupType: Schema.optional(Schema.Literals(["FULL"])),
+        completedTime: Schema.optional(Schema.String),
+        source: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Creating",
+            "Deleting",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/backupsV2/{backupName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type LongRunningBackupCreateInput =
@@ -1972,11 +2088,11 @@ export const LongRunningBackupsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/backupsV2/{backupName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type LongRunningBackupsGetInput = typeof LongRunningBackupsGetInput.Type;
@@ -2027,11 +2143,11 @@ export const LongRunningBackupsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/backupsV2",
+      apiVersion: "2024-12-30",
     }),
   );
 export type LongRunningBackupsListInput =
@@ -2098,11 +2214,11 @@ export const MaintenancesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/maintenances",
+    apiVersion: "2024-12-30",
   }),
 );
 export type MaintenancesListInput = typeof MaintenancesListInput.Type;
@@ -2167,11 +2283,11 @@ export const MaintenancesReadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
   maintenanceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/maintenances/{maintenanceName}",
+    apiVersion: "2024-12-30",
   }),
 );
 export type MaintenancesReadInput = typeof MaintenancesReadInput.Type;
@@ -2221,11 +2337,16 @@ export const MaintenancesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     maintenanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        maintenanceStartTime: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/maintenances/{maintenanceName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type MaintenancesUpdateInput = typeof MaintenancesUpdateInput.Type;
@@ -2272,11 +2393,11 @@ export const OperationProgressGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/operationProgress/{operationId}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type OperationProgressGetInput = typeof OperationProgressGetInput.Type;
@@ -2359,11 +2480,11 @@ export const OperationResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/operationResults/{operationId}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type OperationResultsGetInput = typeof OperationResultsGetInput.Type;
@@ -2440,10 +2561,14 @@ export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationResultsGetOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.DBforMySQL/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.DBforMySQL/operations",
+    apiVersion: "2024-12-30",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -2491,7 +2616,6 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         groupIds: Schema.optional(Schema.Array(Schema.String)),
@@ -2512,10 +2636,28 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
         ),
       }),
     ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -2568,11 +2710,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -2606,11 +2748,11 @@ export const PrivateEndpointConnectionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -2661,11 +2803,11 @@ export const PrivateEndpointConnectionsListByServerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/privateEndpointConnections",
+      apiVersion: "2024-12-30",
     }),
   );
 export type PrivateEndpointConnectionsListByServerInput =
@@ -2731,11 +2873,11 @@ export const PrivateLinkResourcesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/privateLinkResources/{groupName}",
+      apiVersion: "2024-12-30",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -2787,11 +2929,11 @@ export const PrivateLinkResourcesListByServerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/privateLinkResources",
+      apiVersion: "2024-12-30",
     }),
   );
 export type PrivateLinkResourcesListByServerInput =
@@ -2857,11 +2999,11 @@ export const ReplicasListByServerInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/replicas",
+      apiVersion: "2024-12-30",
     }),
   );
 export type ReplicasListByServerInput = typeof ReplicasListByServerInput.Type;
@@ -2927,11 +3069,19 @@ export const ServerKeysCreateOrUpdateInput =
     keyName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    kind: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        serverKeyType: Schema.Literals(["AzureKeyVault"]),
+        uri: Schema.optional(Schema.String),
+        creationDate: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/keys/{keyName}",
+      apiVersion: "2020-01-01",
     }),
   );
 export type ServerKeysCreateOrUpdateInput =
@@ -2967,11 +3117,11 @@ export const ServerKeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   keyName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/keys/{keyName}",
+    apiVersion: "2020-01-01",
   }),
 );
 export type ServerKeysDeleteInput = typeof ServerKeysDeleteInput.Type;
@@ -2998,11 +3148,11 @@ export const ServerKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   keyName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/keys/{keyName}",
+    apiVersion: "2020-01-01",
   }),
 );
 export type ServerKeysGetInput = typeof ServerKeysGetInput.Type;
@@ -3032,11 +3182,11 @@ export const ServerKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServerKeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/keys",
+    apiVersion: "2020-01-01",
   }),
 );
 export type ServerKeysListInput = typeof ServerKeysListInput.Type;
@@ -3073,11 +3223,192 @@ export const ServersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      administratorLogin: Schema.optional(Schema.String),
+      administratorLoginPassword: Schema.optional(SensitiveString),
+      version: Schema.optional(Schema.Literals(["5.7", "8.0.21"])),
+      fullVersion: Schema.optional(Schema.String),
+      availabilityZone: Schema.optional(Schema.String),
+      createMode: Schema.optional(
+        Schema.Literals([
+          "Default",
+          "PointInTimeRestore",
+          "Replica",
+          "GeoRestore",
+        ]),
+      ),
+      sourceServerResourceId: Schema.optional(Schema.String),
+      restorePointInTime: Schema.optional(Schema.String),
+      replicationRole: Schema.optional(
+        Schema.Literals(["None", "Source", "Replica"]),
+      ),
+      replicaCapacity: Schema.optional(Schema.Number),
+      dataEncryption: Schema.optional(
+        Schema.Struct({
+          primaryUserAssignedIdentityId: Schema.optional(Schema.String),
+          primaryKeyURI: Schema.optional(Schema.String),
+          geoBackupUserAssignedIdentityId: Schema.optional(Schema.String),
+          geoBackupKeyURI: Schema.optional(Schema.String),
+          type: Schema.optional(
+            Schema.Literals(["AzureKeyVault", "SystemManaged"]),
+          ),
+        }),
+      ),
+      state: Schema.optional(
+        Schema.Literals([
+          "Ready",
+          "Dropping",
+          "Disabled",
+          "Starting",
+          "Stopping",
+          "Stopped",
+          "Updating",
+        ]),
+      ),
+      fullyQualifiedDomainName: Schema.optional(Schema.String),
+      databasePort: Schema.optional(Schema.Number),
+      storage: Schema.optional(
+        Schema.Struct({
+          storageSizeGB: Schema.optional(Schema.Number),
+          iops: Schema.optional(Schema.Number),
+          autoGrow: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          logOnDisk: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          storageSku: Schema.optional(Schema.String),
+          autoIoScaling: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          storageRedundancy: Schema.optional(
+            Schema.Literals(["LocalRedundancy", "ZoneRedundancy"]),
+          ),
+        }),
+      ),
+      backup: Schema.optional(
+        Schema.Struct({
+          backupRetentionDays: Schema.optional(Schema.Number),
+          backupIntervalHours: Schema.optional(Schema.Number),
+          geoRedundantBackup: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          earliestRestoreDate: Schema.optional(Schema.String),
+        }),
+      ),
+      highAvailability: Schema.optional(
+        Schema.Struct({
+          mode: Schema.optional(
+            Schema.Literals(["Disabled", "ZoneRedundant", "SameZone"]),
+          ),
+          state: Schema.optional(
+            Schema.Literals([
+              "NotEnabled",
+              "CreatingStandby",
+              "Healthy",
+              "FailingOver",
+              "RemovingStandby",
+            ]),
+          ),
+          standbyAvailabilityZone: Schema.optional(Schema.String),
+        }),
+      ),
+      network: Schema.optional(
+        Schema.Struct({
+          publicNetworkAccess: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          delegatedSubnetResourceId: Schema.optional(Schema.String),
+          privateDnsZoneResourceId: Schema.optional(Schema.String),
+        }),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      maintenancePolicy: Schema.optional(
+        Schema.Struct({
+          patchStrategy: Schema.optional(
+            Schema.Literals(["Regular", "VirtualCanary"]),
+          ),
+        }),
+      ),
+      maintenanceWindow: Schema.optional(
+        Schema.Struct({
+          customWindow: Schema.optional(Schema.String),
+          startHour: Schema.optional(Schema.Number),
+          startMinute: Schema.optional(Schema.Number),
+          dayOfWeek: Schema.optional(Schema.Number),
+          batchOfMaintenance: Schema.optional(
+            Schema.Literals(["Default", "Batch1", "Batch2"]),
+          ),
+        }),
+      ),
+      importSourceProperties: Schema.optional(
+        Schema.Struct({
+          storageType: Schema.optional(Schema.Literals(["AzureBlob"])),
+          storageUrl: Schema.optional(Schema.String),
+          sasToken: Schema.optional(Schema.String),
+          dataDirPath: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Literals(["UserAssigned"])),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      tier: Schema.Literals(["Burstable", "GeneralPurpose", "MemoryOptimized"]),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
+    apiVersion: "2024-12-30",
   }),
 );
 export type ServersCreateInput = typeof ServersCreateInput.Type;
@@ -3122,11 +3453,11 @@ export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
+    apiVersion: "2024-12-30",
   }),
 );
 export type ServersDeleteInput = typeof ServersDeleteInput.Type;
@@ -3154,12 +3485,15 @@ export const ServersDetachVNetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    publicNetworkAccess: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/detachVNet",
+    apiVersion: "2024-12-30",
   }),
 );
 export type ServersDetachVNetInput = typeof ServersDetachVNetInput.Type;
@@ -3205,11 +3539,11 @@ export const ServersFailoverInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/failover",
+    apiVersion: "2024-12-30",
   }),
 );
 export type ServersFailoverInput = typeof ServersFailoverInput.Type;
@@ -3236,11 +3570,11 @@ export const ServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
+    apiVersion: "2024-12-30",
   }),
 );
 export type ServersGetInput = typeof ServersGetInput.Type;
@@ -3283,11 +3617,11 @@ export const ServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/flexibleServers",
+    apiVersion: "2024-12-30",
   }),
 );
 export type ServersListInput = typeof ServersListInput.Type;
@@ -3347,11 +3681,11 @@ export const ServersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers",
+      apiVersion: "2024-12-30",
     }),
   );
 export type ServersListByResourceGroupInput =
@@ -3418,11 +3752,11 @@ export const ServersMigrationCutoverMigrationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/cutoverMigration",
+      apiVersion: "2024-12-30",
     }),
   );
 export type ServersMigrationCutoverMigrationInput =
@@ -3471,11 +3805,12 @@ export const ServersResetGtidInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  gtidSet: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/resetGtid",
+    apiVersion: "2024-12-30",
   }),
 );
 export type ServersResetGtidInput = typeof ServersResetGtidInput.Type;
@@ -3502,11 +3837,15 @@ export const ServersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  restartWithFailover: Schema.optional(
+    Schema.Literals(["Enabled", "Disabled"]),
+  ),
+  maxFailoverSeconds: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/restart",
+    apiVersion: "2024-12-30",
   }),
 );
 export type ServersRestartInput = typeof ServersRestartInput.Type;
@@ -3533,11 +3872,11 @@ export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/start",
+    apiVersion: "2024-12-30",
   }),
 );
 export type ServersStartInput = typeof ServersStartInput.Type;
@@ -3564,11 +3903,11 @@ export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/stop",
+    apiVersion: "2024-12-30",
   }),
 );
 export type ServersStopInput = typeof ServersStopInput.Type;
@@ -3595,11 +3934,123 @@ export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Literals(["UserAssigned"])),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      tier: Schema.Literals(["Burstable", "GeneralPurpose", "MemoryOptimized"]),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      administratorLoginPassword: Schema.optional(SensitiveString),
+      version: Schema.optional(Schema.Literals(["5.7", "8.0.21"])),
+      storage: Schema.optional(
+        Schema.Struct({
+          storageSizeGB: Schema.optional(Schema.Number),
+          iops: Schema.optional(Schema.Number),
+          autoGrow: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          logOnDisk: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          storageSku: Schema.optional(Schema.String),
+          autoIoScaling: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          storageRedundancy: Schema.optional(
+            Schema.Literals(["LocalRedundancy", "ZoneRedundancy"]),
+          ),
+        }),
+      ),
+      backup: Schema.optional(
+        Schema.Struct({
+          backupRetentionDays: Schema.optional(Schema.Number),
+          backupIntervalHours: Schema.optional(Schema.Number),
+          geoRedundantBackup: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          earliestRestoreDate: Schema.optional(Schema.String),
+        }),
+      ),
+      highAvailability: Schema.optional(
+        Schema.Struct({
+          mode: Schema.optional(
+            Schema.Literals(["Disabled", "ZoneRedundant", "SameZone"]),
+          ),
+          state: Schema.optional(
+            Schema.Literals([
+              "NotEnabled",
+              "CreatingStandby",
+              "Healthy",
+              "FailingOver",
+              "RemovingStandby",
+            ]),
+          ),
+          standbyAvailabilityZone: Schema.optional(Schema.String),
+        }),
+      ),
+      maintenancePolicy: Schema.optional(
+        Schema.Struct({
+          patchStrategy: Schema.optional(
+            Schema.Literals(["Regular", "VirtualCanary"]),
+          ),
+        }),
+      ),
+      maintenanceWindow: Schema.optional(
+        Schema.Struct({
+          customWindow: Schema.optional(Schema.String),
+          startHour: Schema.optional(Schema.Number),
+          startMinute: Schema.optional(Schema.Number),
+          dayOfWeek: Schema.optional(Schema.Number),
+          batchOfMaintenance: Schema.optional(
+            Schema.Literals(["Default", "Batch1", "Batch2"]),
+          ),
+        }),
+      ),
+      replicationRole: Schema.optional(
+        Schema.Literals(["None", "Source", "Replica"]),
+      ),
+      dataEncryption: Schema.optional(
+        Schema.Struct({
+          primaryUserAssignedIdentityId: Schema.optional(Schema.String),
+          primaryKeyURI: Schema.optional(Schema.String),
+          geoBackupUserAssignedIdentityId: Schema.optional(Schema.String),
+          geoBackupKeyURI: Schema.optional(Schema.String),
+          type: Schema.optional(
+            Schema.Literals(["AzureKeyVault", "SystemManaged"]),
+          ),
+        }),
+      ),
+      network: Schema.optional(
+        Schema.Struct({
+          publicNetworkAccess: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          delegatedSubnetResourceId: Schema.optional(Schema.String),
+          privateDnsZoneResourceId: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
+    apiVersion: "2024-12-30",
   }),
 );
 export type ServersUpdateInput = typeof ServersUpdateInput.Type;
@@ -3643,11 +4094,16 @@ export const ServersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServersUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      targetServerVersion: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/upgrade",
+    apiVersion: "2020-01-01",
   }),
 );
 export type ServersUpgradeInput = typeof ServersUpgradeInput.Type;
@@ -3674,11 +4130,14 @@ export const ServersValidateEstimateHighAvailabilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    estimatedDowntime: Schema.optional(Schema.Number),
+    scheduledStandbyAvailabilityZone: Schema.optional(Schema.String),
+    expectedStandbyAvailabilityZone: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/validateEstimateHighAvailability",
+      apiVersion: "2024-12-30",
     }),
   );
 export type ServersValidateEstimateHighAvailabilityInput =

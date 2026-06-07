@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AvailabilityGroupListenersCreateOrUpdateInput =
@@ -15,11 +16,76 @@ export const AvailabilityGroupListenersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
     availabilityGroupListenerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        availabilityGroupName: Schema.optional(Schema.String),
+        loadBalancerConfigurations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              privateIpAddress: Schema.optional(
+                Schema.Struct({
+                  ipAddress: Schema.optional(Schema.String),
+                  subnetResourceId: Schema.optional(Schema.String),
+                }),
+              ),
+              publicIpAddressResourceId: Schema.optional(Schema.String),
+              loadBalancerResourceId: Schema.optional(Schema.String),
+              probePort: Schema.optional(Schema.Number),
+              sqlVirtualMachineInstances: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+            }),
+          ),
+        ),
+        multiSubnetIpConfigurations: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              privateIpAddress: Schema.Struct({
+                ipAddress: Schema.optional(Schema.String),
+                subnetResourceId: Schema.optional(Schema.String),
+              }),
+              sqlVirtualMachineInstance: Schema.String,
+            }),
+          ),
+        ),
+        createDefaultAvailabilityGroupIfNotExist: Schema.optional(
+          Schema.Boolean,
+        ),
+        port: Schema.optional(Schema.Number),
+        availabilityGroupConfiguration: Schema.optional(
+          Schema.Struct({
+            replicas: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  sqlVirtualMachineInstanceId: Schema.optional(Schema.String),
+                  role: Schema.optional(
+                    Schema.Literals(["Primary", "Secondary"]),
+                  ),
+                  commit: Schema.optional(
+                    Schema.Literals([
+                      "Synchronous_Commit",
+                      "Asynchronous_Commit",
+                    ]),
+                  ),
+                  failover: Schema.optional(
+                    Schema.Literals(["Automatic", "Manual"]),
+                  ),
+                  readableSecondary: Schema.optional(
+                    Schema.Literals(["No", "All", "Read_Only"]),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}",
+      apiVersion: "2023-10-01",
     }),
   );
 export type AvailabilityGroupListenersCreateOrUpdateInput =
@@ -71,11 +137,11 @@ export const AvailabilityGroupListenersDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
     availabilityGroupListenerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}",
+      apiVersion: "2023-10-01",
     }),
   );
 export type AvailabilityGroupListenersDeleteInput =
@@ -109,12 +175,12 @@ export const AvailabilityGroupListenersGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
     availabilityGroupListenerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}",
+      apiVersion: "2023-10-01",
     }),
   );
 export type AvailabilityGroupListenersGetInput =
@@ -166,11 +232,11 @@ export const AvailabilityGroupListenersListByGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners",
+      apiVersion: "2023-10-01",
     }),
   );
 export type AvailabilityGroupListenersListByGroupInput =
@@ -230,12 +296,13 @@ export const AvailabilityGroupListenersListByGroup =
     outputSchema: AvailabilityGroupListenersListByGroupOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.SqlVirtualMachine/operations",
+    apiVersion: "2023-10-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -277,11 +344,41 @@ export const SqlVirtualMachineGroupsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        sqlImageOffer: Schema.optional(Schema.String),
+        sqlImageSku: Schema.optional(
+          Schema.Literals(["Developer", "Enterprise"]),
+        ),
+        scaleType: Schema.optional(Schema.Literals(["HA"])),
+        clusterManagerType: Schema.optional(Schema.Literals(["WSFC"])),
+        clusterConfiguration: Schema.optional(Schema.Literals(["Domainful"])),
+        wsfcDomainProfile: Schema.optional(
+          Schema.Struct({
+            domainFqdn: Schema.optional(Schema.String),
+            ouPath: Schema.optional(Schema.String),
+            clusterBootstrapAccount: Schema.optional(Schema.String),
+            clusterOperatorAccount: Schema.optional(Schema.String),
+            sqlServiceAccount: Schema.optional(Schema.String),
+            isSqlServiceAccountGmsa: Schema.optional(Schema.Boolean),
+            fileShareWitnessPath: Schema.optional(Schema.String),
+            storageAccountUrl: Schema.optional(Schema.String),
+            storageAccountPrimaryKey: Schema.optional(Schema.String),
+            clusterSubnetType: Schema.optional(
+              Schema.Literals(["SingleSubnet", "MultiSubnet"]),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachineGroupsCreateOrUpdateInput =
@@ -331,11 +428,11 @@ export const SqlVirtualMachineGroupsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachineGroupsDeleteInput =
@@ -367,11 +464,11 @@ export const SqlVirtualMachineGroupsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachineGroupsGetInput =
@@ -420,11 +517,11 @@ export const SqlVirtualMachineGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SqlVirtualMachineGroupsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachineGroupsListInput =
@@ -487,11 +584,11 @@ export const SqlVirtualMachineGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachineGroupsListByResourceGroupInput =
@@ -555,11 +652,12 @@ export const SqlVirtualMachineGroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachineGroupsUpdateInput =
@@ -609,11 +707,277 @@ export const SqlVirtualMachinesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        virtualMachineResourceId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+        sqlImageOffer: Schema.optional(Schema.String),
+        sqlServerLicenseType: Schema.optional(
+          Schema.Literals(["PAYG", "AHUB", "DR"]),
+        ),
+        sqlManagement: Schema.optional(
+          Schema.Literals(["Full", "LightWeight", "NoAgent"]),
+        ),
+        leastPrivilegeMode: Schema.optional(
+          Schema.Literals(["Enabled", "NotSet"]),
+        ),
+        sqlImageSku: Schema.optional(
+          Schema.Literals([
+            "Developer",
+            "Express",
+            "Standard",
+            "Enterprise",
+            "Web",
+          ]),
+        ),
+        sqlVirtualMachineGroupResourceId: Schema.optional(Schema.String),
+        wsfcDomainCredentials: Schema.optional(
+          Schema.Struct({
+            clusterBootstrapAccountPassword: Schema.optional(SensitiveString),
+            clusterOperatorAccountPassword: Schema.optional(SensitiveString),
+            sqlServiceAccountPassword: Schema.optional(SensitiveString),
+          }),
+        ),
+        wsfcStaticIp: Schema.optional(Schema.String),
+        autoPatchingSettings: Schema.optional(
+          Schema.Struct({
+            enable: Schema.optional(Schema.Boolean),
+            dayOfWeek: Schema.optional(
+              Schema.Literals([
+                "Everyday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+              ]),
+            ),
+            maintenanceWindowStartingHour: Schema.optional(Schema.Number),
+            maintenanceWindowDuration: Schema.optional(Schema.Number),
+            additionalVmPatch: Schema.optional(
+              Schema.Literals(["NotSet", "MicrosoftUpdate"]),
+            ),
+          }),
+        ),
+        autoBackupSettings: Schema.optional(
+          Schema.Struct({
+            enable: Schema.optional(Schema.Boolean),
+            enableEncryption: Schema.optional(Schema.Boolean),
+            retentionPeriod: Schema.optional(Schema.Number),
+            storageAccountUrl: Schema.optional(Schema.String),
+            storageContainerName: Schema.optional(Schema.String),
+            storageAccessKey: Schema.optional(Schema.String),
+            password: Schema.optional(SensitiveString),
+            backupSystemDbs: Schema.optional(Schema.Boolean),
+            backupScheduleType: Schema.optional(
+              Schema.Literals(["Manual", "Automated"]),
+            ),
+            fullBackupFrequency: Schema.optional(
+              Schema.Literals(["Daily", "Weekly"]),
+            ),
+            daysOfWeek: Schema.optional(
+              Schema.Array(
+                Schema.Literals([
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                  "Sunday",
+                ]),
+              ),
+            ),
+            fullBackupStartTime: Schema.optional(Schema.Number),
+            fullBackupWindowHours: Schema.optional(Schema.Number),
+            logBackupFrequency: Schema.optional(Schema.Number),
+          }),
+        ),
+        keyVaultCredentialSettings: Schema.optional(
+          Schema.Struct({
+            enable: Schema.optional(Schema.Boolean),
+            credentialName: Schema.optional(Schema.String),
+            azureKeyVaultUrl: Schema.optional(Schema.String),
+            servicePrincipalName: Schema.optional(Schema.String),
+            servicePrincipalSecret: Schema.optional(Schema.String),
+          }),
+        ),
+        serverConfigurationsManagementSettings: Schema.optional(
+          Schema.Struct({
+            sqlConnectivityUpdateSettings: Schema.optional(
+              Schema.Struct({
+                connectivityType: Schema.optional(
+                  Schema.Literals(["LOCAL", "PRIVATE", "PUBLIC"]),
+                ),
+                port: Schema.optional(Schema.Number),
+                sqlAuthUpdateUserName: Schema.optional(Schema.String),
+                sqlAuthUpdatePassword: Schema.optional(SensitiveString),
+              }),
+            ),
+            sqlWorkloadTypeUpdateSettings: Schema.optional(
+              Schema.Struct({
+                sqlWorkloadType: Schema.optional(
+                  Schema.Literals(["GENERAL", "OLTP", "DW"]),
+                ),
+              }),
+            ),
+            sqlStorageUpdateSettings: Schema.optional(
+              Schema.Struct({
+                diskCount: Schema.optional(Schema.Number),
+                startingDeviceId: Schema.optional(Schema.Number),
+                diskConfigurationType: Schema.optional(
+                  Schema.Literals(["NEW", "EXTEND", "ADD"]),
+                ),
+              }),
+            ),
+            additionalFeaturesServerConfigurations: Schema.optional(
+              Schema.Struct({
+                isRServicesEnabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            sqlInstanceSettings: Schema.optional(
+              Schema.Struct({
+                collation: Schema.optional(Schema.String),
+                maxDop: Schema.optional(Schema.Number),
+                isOptimizeForAdHocWorkloadsEnabled: Schema.optional(
+                  Schema.Boolean,
+                ),
+                minServerMemoryMB: Schema.optional(Schema.Number),
+                maxServerMemoryMB: Schema.optional(Schema.Number),
+                isLpimEnabled: Schema.optional(Schema.Boolean),
+                isIfiEnabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            azureAdAuthenticationSettings: Schema.optional(
+              Schema.Struct({
+                clientId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        storageConfigurationSettings: Schema.optional(
+          Schema.Struct({
+            sqlDataSettings: Schema.optional(
+              Schema.Struct({
+                luns: Schema.optional(Schema.Array(Schema.Number)),
+                defaultFilePath: Schema.optional(Schema.String),
+                useStoragePool: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            sqlLogSettings: Schema.optional(
+              Schema.Struct({
+                luns: Schema.optional(Schema.Array(Schema.Number)),
+                defaultFilePath: Schema.optional(Schema.String),
+                useStoragePool: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            sqlTempDbSettings: Schema.optional(
+              Schema.Struct({
+                dataFileSize: Schema.optional(Schema.Number),
+                dataGrowth: Schema.optional(Schema.Number),
+                logFileSize: Schema.optional(Schema.Number),
+                logGrowth: Schema.optional(Schema.Number),
+                dataFileCount: Schema.optional(Schema.Number),
+                persistFolder: Schema.optional(Schema.Boolean),
+                persistFolderPath: Schema.optional(Schema.String),
+                luns: Schema.optional(Schema.Array(Schema.Number)),
+                defaultFilePath: Schema.optional(Schema.String),
+                useStoragePool: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            sqlSystemDbOnDataDisk: Schema.optional(Schema.Boolean),
+            diskConfigurationType: Schema.optional(
+              Schema.Literals(["NEW", "EXTEND", "ADD"]),
+            ),
+            storageWorkloadType: Schema.optional(
+              Schema.Literals(["GENERAL", "OLTP", "DW"]),
+            ),
+            enableStorageConfigBlade: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        troubleshootingStatus: Schema.optional(
+          Schema.Struct({
+            rootCause: Schema.optional(Schema.String),
+            lastTriggerTimeUtc: Schema.optional(Schema.String),
+            startTimeUtc: Schema.optional(Schema.String),
+            endTimeUtc: Schema.optional(Schema.String),
+            troubleshootingScenario: Schema.optional(
+              Schema.Literals(["UnhealthyReplica"]),
+            ),
+            properties: Schema.optional(
+              Schema.Struct({
+                unhealthyReplicaInfo: Schema.optional(
+                  Schema.Struct({
+                    availabilityGroupName: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        assessmentSettings: Schema.optional(
+          Schema.Struct({
+            enable: Schema.optional(Schema.Boolean),
+            runImmediately: Schema.optional(Schema.Boolean),
+            schedule: Schema.optional(
+              Schema.Struct({
+                enable: Schema.optional(Schema.Boolean),
+                weeklyInterval: Schema.optional(Schema.Number),
+                monthlyOccurrence: Schema.optional(Schema.Number),
+                dayOfWeek: Schema.optional(
+                  Schema.Literals([
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday",
+                  ]),
+                ),
+                startTime: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+        additionalVmPatch: Schema.optional(
+          Schema.Literals(["WU", "WUMU", "WSUS"]),
+        ),
+        virtualMachineIdentitySettings: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+            ),
+            resourceId: Schema.optional(Schema.String),
+          }),
+        ),
+        osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned,UserAssigned",
+          ]),
+        ),
+        tenantId: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachinesCreateOrUpdateInput =
@@ -663,11 +1027,11 @@ export const SqlVirtualMachinesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachinesDeleteInput =
@@ -700,11 +1064,12 @@ export const SqlVirtualMachinesFetchDCAssessmentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    runDiskConfigRules: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/fetchDCAssessment",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachinesFetchDCAssessmentInput =
@@ -736,12 +1101,12 @@ export const SqlVirtualMachinesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachinesGetInput = typeof SqlVirtualMachinesGetInput.Type;
@@ -790,11 +1155,11 @@ export const SqlVirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SqlVirtualMachinesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachinesListInput =
@@ -857,11 +1222,11 @@ export const SqlVirtualMachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachinesListByResourceGroupInput =
@@ -925,11 +1290,11 @@ export const SqlVirtualMachinesListBySqlVmGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/sqlVirtualMachines",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachinesListBySqlVmGroupInput =
@@ -994,11 +1359,11 @@ export const SqlVirtualMachinesRedeployInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/redeploy",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachinesRedeployInput =
@@ -1031,11 +1396,11 @@ export const SqlVirtualMachinesStartAssessmentInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/startAssessment",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachinesStartAssessmentInput =
@@ -1067,11 +1432,12 @@ export const SqlVirtualMachinesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachinesUpdateInput =
@@ -1122,11 +1488,26 @@ export const SqlVirtualMachineTroubleshootTroubleshootInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    startTimeUtc: Schema.optional(Schema.String),
+    endTimeUtc: Schema.optional(Schema.String),
+    troubleshootingScenario: Schema.optional(
+      Schema.Literals(["UnhealthyReplica"]),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        unhealthyReplicaInfo: Schema.optional(
+          Schema.Struct({
+            availabilityGroupName: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    virtualMachineResourceId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/troubleshoot",
+      apiVersion: "2023-10-01",
     }),
   );
 export type SqlVirtualMachineTroubleshootTroubleshootInput =

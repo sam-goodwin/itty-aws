@@ -9,12 +9,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.SignalRService/operations",
+    apiVersion: "2024-03-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -98,11 +99,13 @@ export const SignalRCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    type: Schema.String,
+    name: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/checkNameAvailability",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRCheckNameAvailabilityInput =
@@ -136,11 +139,282 @@ export const SignalRCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Running",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Moving",
+          ]),
+        ),
+        externalIP: Schema.optional(Schema.String),
+        hostName: Schema.optional(Schema.String),
+        publicPort: Schema.optional(Schema.Number),
+        serverPort: Schema.optional(Schema.Number),
+        version: Schema.optional(Schema.String),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        sharedPrivateLinkResources: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        tls: Schema.optional(
+          Schema.Struct({
+            clientCertEnabled: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        hostNamePrefix: Schema.optional(Schema.String),
+        features: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              flag: Schema.Literals([
+                "ServiceMode",
+                "EnableConnectivityLogs",
+                "EnableMessagingLogs",
+                "EnableLiveTrace",
+              ]),
+              value: Schema.String,
+              properties: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+            }),
+          ),
+        ),
+        liveTraceConfiguration: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.String),
+            categories: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  enabled: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        resourceLogConfiguration: Schema.optional(
+          Schema.Struct({
+            categories: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  enabled: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+        cors: Schema.optional(
+          Schema.Struct({
+            allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        serverless: Schema.optional(
+          Schema.Struct({
+            connectionTimeoutInSeconds: Schema.optional(Schema.Number),
+          }),
+        ),
+        upstream: Schema.optional(
+          Schema.Struct({
+            templates: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  hubPattern: Schema.optional(Schema.String),
+                  eventPattern: Schema.optional(Schema.String),
+                  categoryPattern: Schema.optional(Schema.String),
+                  urlTemplate: Schema.String,
+                  auth: Schema.optional(
+                    Schema.Struct({
+                      type: Schema.optional(
+                        Schema.Literals(["None", "ManagedIdentity"]),
+                      ),
+                      managedIdentity: Schema.optional(
+                        Schema.Struct({
+                          resource: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        networkACLs: Schema.optional(
+          Schema.Struct({
+            defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+            publicNetwork: Schema.optional(
+              Schema.Struct({
+                allow: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals([
+                      "ClientConnection",
+                      "ServerConnection",
+                      "RESTAPI",
+                      "Trace",
+                    ]),
+                  ),
+                ),
+                deny: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals([
+                      "ClientConnection",
+                      "ServerConnection",
+                      "RESTAPI",
+                      "Trace",
+                    ]),
+                  ),
+                ),
+              }),
+            ),
+            privateEndpoints: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  allow: Schema.optional(
+                    Schema.Array(
+                      Schema.Literals([
+                        "ClientConnection",
+                        "ServerConnection",
+                        "RESTAPI",
+                        "Trace",
+                      ]),
+                    ),
+                  ),
+                  deny: Schema.optional(
+                    Schema.Array(
+                      Schema.Literals([
+                        "ClientConnection",
+                        "ServerConnection",
+                        "RESTAPI",
+                        "Trace",
+                      ]),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            ipRules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  value: Schema.optional(Schema.String),
+                  action: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+                }),
+              ),
+            ),
+          }),
+        ),
+        publicNetworkAccess: Schema.optional(Schema.String),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+        disableAadAuth: Schema.optional(Schema.Boolean),
+        regionEndpointEnabled: Schema.optional(Schema.String),
+        resourceStopped: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.optional(Schema.Literals(["SignalR", "RawWebSockets"])),
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(
+          Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRCreateOrUpdateInput = typeof SignalRCreateOrUpdateInput.Type;
@@ -189,11 +463,29 @@ export const SignalRCustomCertificatesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Unknown",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Running",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Moving",
+        ]),
+      ),
+      keyVaultBaseUri: Schema.String,
+      keyVaultSecretName: Schema.String,
+      keyVaultSecretVersion: Schema.optional(Schema.String),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRCustomCertificatesCreateOrUpdateInput =
@@ -243,11 +535,11 @@ export const SignalRCustomCertificatesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRCustomCertificatesDeleteInput =
@@ -279,11 +571,11 @@ export const SignalRCustomCertificatesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRCustomCertificatesGetInput =
@@ -332,11 +624,11 @@ export const SignalRCustomCertificatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRCustomCertificatesListInput =
@@ -402,11 +694,30 @@ export const SignalRCustomDomainsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Unknown",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Running",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Moving",
+        ]),
+      ),
+      domainName: Schema.String,
+      customCertificate: Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRCustomDomainsCreateOrUpdateInput =
@@ -456,11 +767,11 @@ export const SignalRCustomDomainsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRCustomDomainsDeleteInput =
@@ -493,11 +804,11 @@ export const SignalRCustomDomainsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRCustomDomainsGetInput =
@@ -547,11 +858,11 @@ export const SignalRCustomDomainsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRCustomDomainsListInput =
@@ -616,11 +927,11 @@ export const SignalRCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SignalRDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type SignalRDeleteInput = typeof SignalRDeleteInput.Type;
@@ -645,11 +956,11 @@ export const SignalRDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SignalRGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type SignalRGetInput = typeof SignalRGetInput.Type;
@@ -693,11 +1004,11 @@ export const SignalRListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRListByResourceGroupInput =
@@ -762,11 +1073,11 @@ export const SignalRListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SignalRListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/signalR",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRListBySubscriptionInput =
@@ -830,11 +1141,11 @@ export const SignalRListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SignalRListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/listKeys",
+    apiVersion: "2024-03-01",
   }),
 );
 export type SignalRListKeysInput = typeof SignalRListKeysInput.Type;
@@ -865,11 +1176,11 @@ export const SignalRListReplicaSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/skus",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRListReplicaSkusInput =
@@ -930,11 +1241,11 @@ export const SignalRListReplicaSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SignalRListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/skus",
+    apiVersion: "2024-03-01",
   }),
 );
 export type SignalRListSkusInput = typeof SignalRListSkusInput.Type;
@@ -992,11 +1303,11 @@ export const SignalRPrivateEndpointConnectionsDeleteInput =
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRPrivateEndpointConnectionsDeleteInput =
@@ -1028,11 +1339,11 @@ export const SignalRPrivateEndpointConnectionsGetInput =
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRPrivateEndpointConnectionsGetInput =
@@ -1081,11 +1392,11 @@ export const SignalRPrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRPrivateEndpointConnectionsListInput =
@@ -1151,11 +1462,48 @@ export const SignalRPrivateEndpointConnectionsUpdateInput =
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Running",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Moving",
+          ]),
+        ),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Pending",
+                "Approved",
+                "Rejected",
+                "Disconnected",
+              ]),
+            ),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRPrivateEndpointConnectionsUpdateInput =
@@ -1204,11 +1552,11 @@ export const SignalRPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateLinkResources",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRPrivateLinkResourcesListInput =
@@ -1273,11 +1621,12 @@ export const SignalRRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keyType: Schema.optional(Schema.Literals(["Primary", "Secondary", "Salt"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/regenerateKey",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRRegenerateKeyInput = typeof SignalRRegenerateKeyInput.Type;
@@ -1311,11 +1660,43 @@ export const SignalRReplicasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Running",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Moving",
+          ]),
+        ),
+        regionEndpointEnabled: Schema.optional(Schema.String),
+        resourceStopped: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRReplicasCreateOrUpdateInput =
@@ -1363,11 +1744,11 @@ export const SignalRReplicasDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRReplicasDeleteInput = typeof SignalRReplicasDeleteInput.Type;
@@ -1397,11 +1778,11 @@ export const SignalRReplicasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRReplicasGetInput = typeof SignalRReplicasGetInput.Type;
@@ -1446,11 +1827,40 @@ export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        groupId: Schema.String,
+        privateLinkResourceId: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Running",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Moving",
+          ]),
+        ),
+        requestMessage: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Literals([
+            "Pending",
+            "Approved",
+            "Rejected",
+            "Disconnected",
+            "Timeout",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
@@ -1498,11 +1908,11 @@ export const SignalRReplicaSharedPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRReplicaSharedPrivateLinkResourcesGetInput =
@@ -1550,11 +1960,11 @@ export const SignalRReplicaSharedPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRReplicaSharedPrivateLinkResourcesListInput =
@@ -1619,11 +2029,11 @@ export const SignalRReplicasListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRReplicasListInput = typeof SignalRReplicasListInput.Type;
@@ -1685,11 +2095,11 @@ export const SignalRReplicasRestartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/restart",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRReplicasRestartInput =
@@ -1720,11 +2130,43 @@ export const SignalRReplicasUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(
+          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+        ),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Running",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Moving",
+          ]),
+        ),
+        regionEndpointEnabled: Schema.optional(Schema.String),
+        resourceStopped: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRReplicasUpdateInput = typeof SignalRReplicasUpdateInput.Type;
@@ -1771,11 +2213,11 @@ export const SignalRReplicasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SignalRRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/restart",
+    apiVersion: "2024-03-01",
   }),
 );
 export type SignalRRestartInput = typeof SignalRRestartInput.Type;
@@ -1801,11 +2243,40 @@ export const SignalRSharedPrivateLinkResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        groupId: Schema.String,
+        privateLinkResourceId: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Running",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Moving",
+          ]),
+        ),
+        requestMessage: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Literals([
+            "Pending",
+            "Approved",
+            "Rejected",
+            "Disconnected",
+            "Timeout",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRSharedPrivateLinkResourcesCreateOrUpdateInput =
@@ -1853,11 +2324,11 @@ export const SignalRSharedPrivateLinkResourcesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRSharedPrivateLinkResourcesDeleteInput =
@@ -1887,11 +2358,11 @@ export const SignalRSharedPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRSharedPrivateLinkResourcesGetInput =
@@ -1939,11 +2410,11 @@ export const SignalRSharedPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources",
+      apiVersion: "2024-03-01",
     }),
   );
 export type SignalRSharedPrivateLinkResourcesListInput =
@@ -2007,11 +2478,282 @@ export const SignalRSharedPrivateLinkResourcesList =
 export const SignalRUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(
+        Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+      ),
+      size: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Unknown",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Running",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Moving",
+        ]),
+      ),
+      externalIP: Schema.optional(Schema.String),
+      hostName: Schema.optional(Schema.String),
+      publicPort: Schema.optional(Schema.Number),
+      serverPort: Schema.optional(Schema.Number),
+      version: Schema.optional(Schema.String),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      sharedPrivateLinkResources: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      tls: Schema.optional(
+        Schema.Struct({
+          clientCertEnabled: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      hostNamePrefix: Schema.optional(Schema.String),
+      features: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            flag: Schema.Literals([
+              "ServiceMode",
+              "EnableConnectivityLogs",
+              "EnableMessagingLogs",
+              "EnableLiveTrace",
+            ]),
+            value: Schema.String,
+            properties: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+      ),
+      liveTraceConfiguration: Schema.optional(
+        Schema.Struct({
+          enabled: Schema.optional(Schema.String),
+          categories: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                enabled: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      resourceLogConfiguration: Schema.optional(
+        Schema.Struct({
+          categories: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                enabled: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      cors: Schema.optional(
+        Schema.Struct({
+          allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      serverless: Schema.optional(
+        Schema.Struct({
+          connectionTimeoutInSeconds: Schema.optional(Schema.Number),
+        }),
+      ),
+      upstream: Schema.optional(
+        Schema.Struct({
+          templates: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                hubPattern: Schema.optional(Schema.String),
+                eventPattern: Schema.optional(Schema.String),
+                categoryPattern: Schema.optional(Schema.String),
+                urlTemplate: Schema.String,
+                auth: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.optional(
+                      Schema.Literals(["None", "ManagedIdentity"]),
+                    ),
+                    managedIdentity: Schema.optional(
+                      Schema.Struct({
+                        resource: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+      networkACLs: Schema.optional(
+        Schema.Struct({
+          defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+          publicNetwork: Schema.optional(
+            Schema.Struct({
+              allow: Schema.optional(
+                Schema.Array(
+                  Schema.Literals([
+                    "ClientConnection",
+                    "ServerConnection",
+                    "RESTAPI",
+                    "Trace",
+                  ]),
+                ),
+              ),
+              deny: Schema.optional(
+                Schema.Array(
+                  Schema.Literals([
+                    "ClientConnection",
+                    "ServerConnection",
+                    "RESTAPI",
+                    "Trace",
+                  ]),
+                ),
+              ),
+            }),
+          ),
+          privateEndpoints: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                allow: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals([
+                      "ClientConnection",
+                      "ServerConnection",
+                      "RESTAPI",
+                      "Trace",
+                    ]),
+                  ),
+                ),
+                deny: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals([
+                      "ClientConnection",
+                      "ServerConnection",
+                      "RESTAPI",
+                      "Trace",
+                    ]),
+                  ),
+                ),
+              }),
+            ),
+          ),
+          ipRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                value: Schema.optional(Schema.String),
+                action: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+              }),
+            ),
+          ),
+        }),
+      ),
+      publicNetworkAccess: Schema.optional(Schema.String),
+      disableLocalAuth: Schema.optional(Schema.Boolean),
+      disableAadAuth: Schema.optional(Schema.Boolean),
+      regionEndpointEnabled: Schema.optional(Schema.String),
+      resourceStopped: Schema.optional(Schema.String),
+    }),
+  ),
+  kind: Schema.optional(Schema.Literals(["SignalR", "RawWebSockets"])),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+      ),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type SignalRUpdateInput = typeof SignalRUpdateInput.Type;
@@ -2054,11 +2796,11 @@ export const SignalRUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   location: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/usages",
+    apiVersion: "2024-03-01",
   }),
 );
 export type UsagesListInput = typeof UsagesListInput.Type;

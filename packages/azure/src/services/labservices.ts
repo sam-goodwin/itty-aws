@@ -7,13 +7,33 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const ImagesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.Struct({
+      enabledState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    }),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images/{imageName}",
+      apiVersion: "2023-06-07",
     }),
   );
 export type ImagesCreateOrUpdateInput = typeof ImagesCreateOrUpdateInput.Type;
@@ -46,6 +66,7 @@ export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images/{imageName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type ImagesGetInput = typeof ImagesGetInput.Type;
@@ -74,6 +95,7 @@ export const ImagesListByLabPlanInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images",
+      apiVersion: "2023-06-07",
     }),
   );
 export type ImagesListByLabPlanInput = typeof ImagesListByLabPlanInput.Type;
@@ -105,12 +127,17 @@ export const ImagesListByLabPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ImagesListByLabPlanOutput,
 }));
 // Input Schema
-export const ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      enabledState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images/{imageName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type ImagesUpdateInput = typeof ImagesUpdateInput.Type;
@@ -135,10 +162,85 @@ export const ImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LabPlansCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.Struct({
+      defaultConnectionProfile: Schema.optional(
+        Schema.Struct({
+          webSshAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+          webRdpAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+          clientSshAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+          clientRdpAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+        }),
+      ),
+      defaultAutoShutdownProfile: Schema.optional(
+        Schema.Struct({
+          shutdownOnDisconnect: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          shutdownWhenNotConnected: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          shutdownOnIdle: Schema.optional(
+            Schema.Literals(["None", "UserAbsence", "LowUsage"]),
+          ),
+          disconnectDelay: Schema.optional(Schema.String),
+          noConnectDelay: Schema.optional(Schema.String),
+          idleDelay: Schema.optional(Schema.String),
+        }),
+      ),
+      defaultNetworkProfile: Schema.optional(
+        Schema.Struct({
+          subnetId: Schema.optional(Schema.String),
+        }),
+      ),
+      allowedRegions: Schema.optional(Schema.Array(Schema.String)),
+      sharedGalleryId: Schema.optional(Schema.String),
+      supportInfo: Schema.optional(
+        Schema.Struct({
+          url: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          phone: Schema.optional(Schema.String),
+          instructions: Schema.optional(Schema.String),
+        }),
+      ),
+      linkedLmsInstance: Schema.optional(Schema.String),
+    }),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
+      apiVersion: "2023-06-07",
     }),
   );
 export type LabPlansCreateOrUpdateInput =
@@ -173,6 +275,7 @@ export const LabPlansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type LabPlansDeleteInput = typeof LabPlansDeleteInput.Type;
@@ -198,6 +301,7 @@ export const LabPlansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type LabPlansGetInput = typeof LabPlansGetInput.Type;
@@ -226,6 +330,7 @@ export const LabPlansListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans",
+      apiVersion: "2023-06-07",
     }),
   );
 export type LabPlansListByResourceGroupInput =
@@ -266,6 +371,7 @@ export const LabPlansListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/labPlans",
+      apiVersion: "2023-06-07",
     }),
   );
 export type LabPlansListBySubscriptionInput =
@@ -302,11 +408,15 @@ export const LabPlansListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const LabPlansSaveImageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    name: Schema.optional(Schema.String),
+    labVirtualMachineId: Schema.optional(Schema.String),
+  },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/saveImage",
+    apiVersion: "2023-06-07",
   }),
 );
 export type LabPlansSaveImageInput = typeof LabPlansSaveImageInput.Type;
@@ -326,12 +436,72 @@ export const LabPlansSaveImage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LabPlansSaveImageOutput,
 }));
 // Input Schema
-export const LabPlansUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabPlansUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      defaultConnectionProfile: Schema.optional(
+        Schema.Struct({
+          webSshAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+          webRdpAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+          clientSshAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+          clientRdpAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+        }),
+      ),
+      defaultAutoShutdownProfile: Schema.optional(
+        Schema.Struct({
+          shutdownOnDisconnect: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          shutdownWhenNotConnected: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          shutdownOnIdle: Schema.optional(
+            Schema.Literals(["None", "UserAbsence", "LowUsage"]),
+          ),
+          disconnectDelay: Schema.optional(Schema.String),
+          noConnectDelay: Schema.optional(Schema.String),
+          idleDelay: Schema.optional(Schema.String),
+        }),
+      ),
+      defaultNetworkProfile: Schema.optional(
+        Schema.Struct({
+          subnetId: Schema.optional(Schema.String),
+        }),
+      ),
+      allowedRegions: Schema.optional(Schema.Array(Schema.String)),
+      sharedGalleryId: Schema.optional(Schema.String),
+      supportInfo: Schema.optional(
+        Schema.Struct({
+          url: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          phone: Schema.optional(Schema.String),
+          instructions: Schema.optional(Schema.String),
+        }),
+      ),
+      linkedLmsInstance: Schema.optional(Schema.String),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+    }),
+  ),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type LabPlansUpdateInput = typeof LabPlansUpdateInput.Type;
@@ -356,10 +526,124 @@ export const LabPlansUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LabsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.Struct({
+      autoShutdownProfile: Schema.optional(
+        Schema.Struct({
+          shutdownOnDisconnect: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          shutdownWhenNotConnected: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          shutdownOnIdle: Schema.optional(
+            Schema.Literals(["None", "UserAbsence", "LowUsage"]),
+          ),
+          disconnectDelay: Schema.optional(Schema.String),
+          noConnectDelay: Schema.optional(Schema.String),
+          idleDelay: Schema.optional(Schema.String),
+        }),
+      ),
+      connectionProfile: Schema.optional(
+        Schema.Struct({
+          webSshAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+          webRdpAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+          clientSshAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+          clientRdpAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+        }),
+      ),
+      virtualMachineProfile: Schema.optional(
+        Schema.Struct({
+          createOption: Schema.Literals(["Image", "TemplateVM"]),
+          imageReference: Schema.Struct({
+            id: Schema.optional(Schema.String),
+            offer: Schema.optional(Schema.String),
+            publisher: Schema.optional(Schema.String),
+            sku: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            exactVersion: Schema.optional(Schema.String),
+          }),
+          osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+          sku: Schema.Struct({
+            name: Schema.String,
+            tier: Schema.optional(
+              Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+            ),
+            size: Schema.optional(Schema.String),
+            family: Schema.optional(Schema.String),
+            capacity: Schema.optional(Schema.Number),
+          }),
+          additionalCapabilities: Schema.optional(
+            Schema.Struct({
+              installGpuDrivers: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled"]),
+              ),
+            }),
+          ),
+          usageQuota: Schema.String,
+          useSharedPassword: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          adminUser: Schema.Struct({
+            username: Schema.String,
+            password: Schema.optional(SensitiveString),
+          }),
+          nonAdminUser: Schema.optional(
+            Schema.Struct({
+              username: Schema.String,
+              password: Schema.optional(SensitiveString),
+            }),
+          ),
+        }),
+      ),
+      securityProfile: Schema.optional(
+        Schema.Struct({
+          registrationCode: Schema.optional(Schema.String),
+          openAccess: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        }),
+      ),
+      rosterProfile: Schema.optional(
+        Schema.Struct({
+          activeDirectoryGroupId: Schema.optional(Schema.String),
+          ltiContextId: Schema.optional(Schema.String),
+          lmsInstance: Schema.optional(Schema.String),
+          ltiClientId: Schema.optional(Schema.String),
+          ltiRosterEndpoint: Schema.optional(Schema.String),
+        }),
+      ),
+      labPlanId: Schema.optional(Schema.String),
+      title: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
+      apiVersion: "2023-06-07",
     }),
   );
 export type LabsCreateOrUpdateInput = typeof LabsCreateOrUpdateInput.Type;
@@ -390,6 +674,7 @@ export const LabsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type LabsDeleteInput = typeof LabsDeleteInput.Type;
@@ -413,6 +698,7 @@ export const LabsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type LabsGetInput = typeof LabsGetInput.Type;
@@ -441,6 +727,7 @@ export const LabsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs",
+      apiVersion: "2023-06-07",
     }),
   );
 export type LabsListByResourceGroupInput =
@@ -481,6 +768,7 @@ export const LabsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/labs",
+      apiVersion: "2023-06-07",
     }),
   );
 export type LabsListBySubscriptionInput =
@@ -522,6 +810,7 @@ export const LabsPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/publish",
+    apiVersion: "2023-06-07",
   }),
 );
 export type LabsPublishInput = typeof LabsPublishInput.Type;
@@ -547,6 +836,7 @@ export const LabsSyncGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/syncGroup",
+    apiVersion: "2023-06-07",
   }),
 );
 export type LabsSyncGroupInput = typeof LabsSyncGroupInput.Type;
@@ -566,12 +856,111 @@ export const LabsSyncGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LabsSyncGroupOutput,
 }));
 // Input Schema
-export const LabsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LabsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      autoShutdownProfile: Schema.optional(
+        Schema.Struct({
+          shutdownOnDisconnect: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          shutdownWhenNotConnected: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          shutdownOnIdle: Schema.optional(
+            Schema.Literals(["None", "UserAbsence", "LowUsage"]),
+          ),
+          disconnectDelay: Schema.optional(Schema.String),
+          noConnectDelay: Schema.optional(Schema.String),
+          idleDelay: Schema.optional(Schema.String),
+        }),
+      ),
+      connectionProfile: Schema.optional(
+        Schema.Struct({
+          webSshAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+          webRdpAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+          clientSshAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+          clientRdpAccess: Schema.optional(
+            Schema.Literals(["Public", "Private", "None"]),
+          ),
+        }),
+      ),
+      virtualMachineProfile: Schema.optional(
+        Schema.Struct({
+          createOption: Schema.Literals(["Image", "TemplateVM"]),
+          imageReference: Schema.Struct({
+            id: Schema.optional(Schema.String),
+            offer: Schema.optional(Schema.String),
+            publisher: Schema.optional(Schema.String),
+            sku: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+            exactVersion: Schema.optional(Schema.String),
+          }),
+          osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+          sku: Schema.Struct({
+            name: Schema.String,
+            tier: Schema.optional(
+              Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+            ),
+            size: Schema.optional(Schema.String),
+            family: Schema.optional(Schema.String),
+            capacity: Schema.optional(Schema.Number),
+          }),
+          additionalCapabilities: Schema.optional(
+            Schema.Struct({
+              installGpuDrivers: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled"]),
+              ),
+            }),
+          ),
+          usageQuota: Schema.String,
+          useSharedPassword: Schema.optional(
+            Schema.Literals(["Enabled", "Disabled"]),
+          ),
+          adminUser: Schema.Struct({
+            username: Schema.String,
+            password: Schema.optional(SensitiveString),
+          }),
+          nonAdminUser: Schema.optional(
+            Schema.Struct({
+              username: Schema.String,
+              password: Schema.optional(SensitiveString),
+            }),
+          ),
+        }),
+      ),
+      securityProfile: Schema.optional(
+        Schema.Struct({
+          registrationCode: Schema.optional(Schema.String),
+          openAccess: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+        }),
+      ),
+      rosterProfile: Schema.optional(
+        Schema.Struct({
+          activeDirectoryGroupId: Schema.optional(Schema.String),
+          ltiContextId: Schema.optional(Schema.String),
+          lmsInstance: Schema.optional(Schema.String),
+          ltiClientId: Schema.optional(Schema.String),
+          ltiRosterEndpoint: Schema.optional(Schema.String),
+        }),
+      ),
+      labPlanId: Schema.optional(Schema.String),
+      title: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type LabsUpdateInput = typeof LabsUpdateInput.Type;
@@ -600,6 +989,7 @@ export const OperationResultsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/operationResults/{operationResultId}",
+      apiVersion: "2023-06-07",
     }),
   );
 export type OperationResultsGetInput = typeof OperationResultsGetInput.Type;
@@ -672,6 +1062,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.LabServices/operations",
+    apiVersion: "2023-06-07",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -714,10 +1105,52 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SchedulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.Struct({
+      startAt: Schema.optional(Schema.String),
+      stopAt: Schema.optional(Schema.String),
+      recurrencePattern: Schema.optional(
+        Schema.Struct({
+          frequency: Schema.Literals(["Daily", "Weekly"]),
+          weekDays: Schema.optional(
+            Schema.Array(
+              Schema.Literals([
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+              ]),
+            ),
+          ),
+          interval: Schema.optional(Schema.Number),
+          expirationDate: Schema.String,
+        }),
+      ),
+      timeZoneId: Schema.optional(Schema.String),
+      notes: Schema.optional(Schema.String),
+    }),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}",
+      apiVersion: "2023-06-07",
     }),
   );
 export type SchedulesCreateOrUpdateInput =
@@ -752,6 +1185,7 @@ export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type SchedulesDeleteInput = typeof SchedulesDeleteInput.Type;
@@ -777,6 +1211,7 @@ export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type SchedulesGetInput = typeof SchedulesGetInput.Type;
@@ -805,6 +1240,7 @@ export const SchedulesListByLabInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules",
+      apiVersion: "2023-06-07",
     }),
   );
 export type SchedulesListByLabInput = typeof SchedulesListByLabInput.Type;
@@ -836,12 +1272,40 @@ export const SchedulesListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesListByLabOutput,
 }));
 // Input Schema
-export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      startAt: Schema.optional(Schema.String),
+      stopAt: Schema.optional(Schema.String),
+      recurrencePattern: Schema.optional(
+        Schema.Struct({
+          frequency: Schema.Literals(["Daily", "Weekly"]),
+          weekDays: Schema.optional(
+            Schema.Array(
+              Schema.Literals([
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+              ]),
+            ),
+          ),
+          interval: Schema.optional(Schema.Number),
+          expirationDate: Schema.String,
+        }),
+      ),
+      timeZoneId: Schema.optional(Schema.String),
+      notes: Schema.optional(Schema.String),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type SchedulesUpdateInput = typeof SchedulesUpdateInput.Type;
@@ -869,6 +1333,7 @@ export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/skus",
+    apiVersion: "2023-06-07",
   }),
 );
 export type SkusListInput = typeof SkusListInput.Type;
@@ -945,6 +1410,7 @@ export const UsagesListByLocationInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/locations/{location}/usages",
+      apiVersion: "2023-06-07",
     }),
   );
 export type UsagesListByLocationInput = typeof UsagesListByLocationInput.Type;
@@ -987,10 +1453,29 @@ export const UsagesListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const UsersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.Struct({
+      additionalUsageQuota: Schema.optional(Schema.String),
+    }),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
+      apiVersion: "2023-06-07",
     }),
   );
 export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
@@ -1021,6 +1506,7 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;
@@ -1044,6 +1530,7 @@ export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type UsersGetInput = typeof UsersGetInput.Type;
@@ -1067,12 +1554,13 @@ export const UsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersGetOutput,
 }));
 // Input Schema
-export const UsersInviteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const UsersInviteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}/invite",
+    apiVersion: "2023-06-07",
   }),
 );
 export type UsersInviteInput = typeof UsersInviteInput.Type;
@@ -1098,6 +1586,7 @@ export const UsersListByLabInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users",
+    apiVersion: "2023-06-07",
   }),
 );
 export type UsersListByLabInput = typeof UsersListByLabInput.Type;
@@ -1128,12 +1617,17 @@ export const UsersListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersListByLabOutput,
 }));
 // Input Schema
-export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      additionalUsageQuota: Schema.optional(Schema.String),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
+    apiVersion: "2023-06-07",
   }),
 );
 export type UsersUpdateInput = typeof UsersUpdateInput.Type;
@@ -1162,6 +1656,7 @@ export const VirtualMachinesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}",
+      apiVersion: "2023-06-07",
     }),
   );
 export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
@@ -1191,6 +1686,7 @@ export const VirtualMachinesListByLabInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines",
+      apiVersion: "2023-06-07",
     }),
   );
 export type VirtualMachinesListByLabInput =
@@ -1231,6 +1727,7 @@ export const VirtualMachinesRedeployInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/redeploy",
+      apiVersion: "2023-06-07",
     }),
   );
 export type VirtualMachinesRedeployInput =
@@ -1260,6 +1757,7 @@ export const VirtualMachinesReimageInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/reimage",
+      apiVersion: "2023-06-07",
     }),
   );
 export type VirtualMachinesReimageInput =
@@ -1285,10 +1783,14 @@ export const VirtualMachinesReimage = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachinesResetPasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.String,
+    password: SensitiveString,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/resetPassword",
+      apiVersion: "2023-06-07",
     }),
   );
 export type VirtualMachinesResetPasswordInput =
@@ -1317,6 +1819,7 @@ export const VirtualMachinesStartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/start",
+      apiVersion: "2023-06-07",
     }),
   );
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
@@ -1344,6 +1847,7 @@ export const VirtualMachinesStopInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/stop",
+      apiVersion: "2023-06-07",
     }),
   );
 export type VirtualMachinesStopInput = typeof VirtualMachinesStopInput.Type;

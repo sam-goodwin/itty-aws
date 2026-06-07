@@ -7,17 +7,19 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const AccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.VideoIndexer/accounts"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VideoIndexer/checkNameAvailability",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AccountsCheckNameAvailabilityInput =
@@ -50,11 +52,117 @@ export const AccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        accountId: Schema.optional(Schema.String),
+        accountName: Schema.optional(Schema.String),
+        storageServices: Schema.optional(
+          Schema.Struct({
+            resourceId: Schema.optional(Schema.String),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        openAiServices: Schema.optional(
+          Schema.Struct({
+            resourceId: Schema.optional(Schema.String),
+            userAssignedIdentity: Schema.optional(Schema.String),
+          }),
+        ),
+        totalSecondsIndexed: Schema.optional(Schema.Number),
+        totalMinutesIndexed: Schema.optional(Schema.Number),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  createdAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Accepted",
+            "Provisioning",
+            "Deleting",
+          ]),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                principalId: Schema.optional(Schema.String),
+                clientId: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AccountsCreateOrUpdateInput =
@@ -102,11 +210,11 @@ export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}",
+    apiVersion: "2025-04-01",
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -131,11 +239,11 @@ export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}",
+    apiVersion: "2025-04-01",
   }),
 );
 export type AccountsGetInput = typeof AccountsGetInput.Type;
@@ -177,11 +285,11 @@ export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VideoIndexer/accounts",
+    apiVersion: "2025-04-01",
   }),
 );
 export type AccountsListInput = typeof AccountsListInput.Type;
@@ -241,11 +349,11 @@ export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts",
+      apiVersion: "2025-04-01",
     }),
   );
 export type AccountsListByResourceGroupInput =
@@ -310,11 +418,98 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      tenantId: Schema.optional(Schema.String),
+      accountId: Schema.optional(Schema.String),
+      storageServices: Schema.optional(
+        Schema.Struct({
+          userAssignedIdentity: Schema.optional(Schema.String),
+        }),
+      ),
+      openAiServices: Schema.optional(
+        Schema.Struct({
+          resourceId: Schema.optional(Schema.String),
+          userAssignedIdentity: Schema.optional(Schema.String),
+        }),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Accepted",
+          "Provisioning",
+          "Deleting",
+        ]),
+      ),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.NullOr(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}",
+    apiVersion: "2025-04-01",
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -358,11 +553,15 @@ export const GenerateAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    permissionType: Schema.Literals(["Contributor", "Reader"]),
+    scope: Schema.Literals(["Video", "Account", "Project"]),
+    videoId: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/generateAccessToken",
+      apiVersion: "2025-04-01",
     }),
   );
 export type GenerateAccessTokenInput = typeof GenerateAccessTokenInput.Type;
@@ -370,7 +569,7 @@ export type GenerateAccessTokenInput = typeof GenerateAccessTokenInput.Type;
 // Output Schema
 export const GenerateAccessTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accessToken: Schema.optional(SensitiveString),
+    accessToken: Schema.optional(SensitiveOutputString),
   });
 export type GenerateAccessTokenOutput = typeof GenerateAccessTokenOutput.Type;
 
@@ -391,11 +590,16 @@ export const GenerateExtensionAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    permissionType: Schema.Literals(["Contributor", "Reader"]),
+    scope: Schema.Literals(["Video", "Account", "Project"]),
+    extensionId: Schema.String,
+    videoId: Schema.optional(Schema.String),
+    tokenLifetimeInSeconds: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/generateExtensionAccessToken",
+      apiVersion: "2025-04-01",
     }),
   );
 export type GenerateExtensionAccessTokenInput =
@@ -404,7 +608,7 @@ export type GenerateExtensionAccessTokenInput =
 // Output Schema
 export const GenerateExtensionAccessTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accessToken: Schema.optional(SensitiveString),
+    accessToken: Schema.optional(SensitiveOutputString),
   });
 export type GenerateExtensionAccessTokenOutput =
   typeof GenerateExtensionAccessTokenOutput.Type;
@@ -427,11 +631,15 @@ export const GenerateExtensionRestrictedViewerAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    scope: Schema.Literals(["Video", "Account", "Project"]),
+    extensionId: Schema.String,
+    videoId: Schema.optional(Schema.String),
+    tokenLifetimeInSeconds: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/generateExtensionRestrictedViewerAccessToken",
+      apiVersion: "2025-04-01",
     }),
   );
 export type GenerateExtensionRestrictedViewerAccessTokenInput =
@@ -440,7 +648,7 @@ export type GenerateExtensionRestrictedViewerAccessTokenInput =
 // Output Schema
 export const GenerateExtensionRestrictedViewerAccessTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accessToken: Schema.optional(SensitiveString),
+    accessToken: Schema.optional(SensitiveOutputString),
   });
 export type GenerateExtensionRestrictedViewerAccessTokenOutput =
   typeof GenerateExtensionRestrictedViewerAccessTokenOutput.Type;
@@ -463,11 +671,14 @@ export const GenerateRestrictedViewerAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    scope: Schema.Literals(["Video", "Account", "Project"]),
+    videoId: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/generateRestrictedViewerAccessToken",
+      apiVersion: "2025-04-01",
     }),
   );
 export type GenerateRestrictedViewerAccessTokenInput =
@@ -476,7 +687,7 @@ export type GenerateRestrictedViewerAccessTokenInput =
 // Output Schema
 export const GenerateRestrictedViewerAccessTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accessToken: Schema.optional(SensitiveString),
+    accessToken: Schema.optional(SensitiveOutputString),
   });
 export type GenerateRestrictedViewerAccessTokenOutput =
   typeof GenerateRestrictedViewerAccessTokenOutput.Type;
@@ -495,12 +706,13 @@ export const GenerateRestrictedViewerAccessToken =
     outputSchema: GenerateRestrictedViewerAccessTokenOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.VideoIndexer/operations",
+    apiVersion: "2025-04-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -545,7 +757,6 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         groupIds: Schema.optional(Schema.Array(Schema.String)),
@@ -566,10 +777,28 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
         ),
       }),
     ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -620,11 +849,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -656,11 +885,11 @@ export const PrivateEndpointConnectionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -709,11 +938,11 @@ export const PrivateEndpointConnectionsListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/privateEndpointConnections",
+      apiVersion: "2025-04-01",
     }),
   );
 export type PrivateEndpointConnectionsListByAccountInput =
@@ -778,11 +1007,11 @@ export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/privateLinkResources/{groupId}",
+      apiVersion: "2025-04-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -831,11 +1060,11 @@ export const PrivateLinkResourcesListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/privateLinkResources",
+      apiVersion: "2025-04-01",
     }),
   );
 export type PrivateLinkResourcesListByAccountInput =

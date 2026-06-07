@@ -14,11 +14,11 @@ export const AvailableServiceTiersListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/availableServiceTiers",
+      apiVersion: "2025-07-01",
     }),
   );
 export type AvailableServiceTiersListByWorkspaceInput =
@@ -70,11 +70,109 @@ export const ClustersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        capacity: Schema.optional(Schema.NullOr(Schema.Number)),
+        name: Schema.optional(Schema.Literals(["CapacityReservation"])),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        clusterId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Deleting",
+            "ProvisioningAccount",
+            "Updating",
+          ]),
+        ),
+        isDoubleEncryptionEnabled: Schema.optional(Schema.Boolean),
+        isAvailabilityZonesEnabled: Schema.optional(Schema.Boolean),
+        billingType: Schema.optional(
+          Schema.Literals(["Cluster", "Workspaces"]),
+        ),
+        keyVaultProperties: Schema.optional(
+          Schema.Struct({
+            keyVaultUri: Schema.optional(Schema.String),
+            keyName: Schema.optional(Schema.String),
+            keyVersion: Schema.optional(Schema.String),
+            keyRsaSize: Schema.optional(Schema.Number),
+          }),
+        ),
+        lastModifiedDate: Schema.optional(Schema.String),
+        createdDate: Schema.optional(Schema.String),
+        associatedWorkspaces: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              workspaceId: Schema.optional(Schema.String),
+              workspaceName: Schema.optional(Schema.String),
+              resourceId: Schema.optional(Schema.String),
+              associateDate: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        capacityReservationProperties: Schema.optional(
+          Schema.Struct({
+            lastSkuUpdate: Schema.optional(Schema.String),
+            minCapacity: Schema.optional(Schema.Number),
+          }),
+        ),
+        replication: Schema.optional(
+          Schema.Struct({
+            location: Schema.optional(Schema.String),
+            enabled: Schema.optional(Schema.Boolean),
+            isAvailabilityZonesEnabled: Schema.optional(Schema.Boolean),
+            provisioningState: Schema.optional(
+              Schema.Literals([
+                "Succeeded",
+                "EnableRequested",
+                "Enabling",
+                "DisableRequested",
+                "Disabling",
+                "RollbackRequested",
+                "RollingBack",
+                "Failed",
+                "Canceled",
+              ]),
+            ),
+            createdDate: Schema.optional(Schema.String),
+            lastModifiedDate: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -110,11 +208,11 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -141,11 +239,11 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type ClustersGetInput = typeof ClustersGetInput.Type;
@@ -174,11 +272,11 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/clusters",
+    apiVersion: "2025-07-01",
   }),
 );
 export type ClustersListInput = typeof ClustersListInput.Type;
@@ -214,11 +312,11 @@ export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ClustersListByResourceGroupInput =
@@ -260,11 +358,52 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      keyVaultProperties: Schema.optional(
+        Schema.Struct({
+          keyVaultUri: Schema.optional(Schema.String),
+          keyName: Schema.optional(Schema.String),
+          keyVersion: Schema.optional(Schema.String),
+          keyRsaSize: Schema.optional(Schema.Number),
+        }),
+      ),
+      billingType: Schema.optional(Schema.Literals(["Cluster", "Workspaces"])),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  sku: Schema.optional(
+    Schema.Struct({
+      capacity: Schema.optional(Schema.NullOr(Schema.Number)),
+      name: Schema.optional(Schema.Literals(["CapacityReservation"])),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -297,11 +436,33 @@ export const DataExportsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     dataExportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        dataExportId: Schema.optional(Schema.String),
+        tableNames: Schema.Array(Schema.String),
+        destination: Schema.optional(
+          Schema.Struct({
+            resourceId: Schema.String,
+            type: Schema.optional(
+              Schema.Literals(["StorageAccount", "EventHub"]),
+            ),
+            metaData: Schema.optional(
+              Schema.Struct({
+                eventHubName: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        enable: Schema.optional(Schema.Boolean),
+        createdDate: Schema.optional(Schema.String),
+        lastModifiedDate: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DataExportsCreateOrUpdateInput =
@@ -340,12 +501,12 @@ export const DataExportsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     dataExportName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type DataExportsDeleteInput = typeof DataExportsDeleteInput.Type;
@@ -374,11 +535,11 @@ export const DataExportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   dataExportName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type DataExportsGetInput = typeof DataExportsGetInput.Type;
@@ -411,11 +572,11 @@ export const DataExportsListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DataExportsListByWorkspaceInput =
@@ -459,11 +620,49 @@ export const DataSourcesCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     dataSourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({}),
+    etag: Schema.optional(Schema.String),
+    kind: Schema.Literals([
+      "WindowsEvent",
+      "WindowsPerformanceCounter",
+      "IISLogs",
+      "LinuxSyslog",
+      "LinuxSyslogCollection",
+      "LinuxPerformanceObject",
+      "LinuxPerformanceCollection",
+      "CustomLog",
+      "CustomLogCollection",
+      "AzureAuditLog",
+      "AzureActivityLog",
+      "GenericDataSource",
+      "ChangeTrackingCustomPath",
+      "ChangeTrackingPath",
+      "ChangeTrackingServices",
+      "ChangeTrackingDataTypeConfiguration",
+      "ChangeTrackingDefaultRegistry",
+      "ChangeTrackingRegistry",
+      "ChangeTrackingLinuxPath",
+      "LinuxChangeTrackingPath",
+      "ChangeTrackingContentLocation",
+      "WindowsTelemetry",
+      "Office365",
+      "SecurityWindowsBaselineConfiguration",
+      "SecurityCenterSecurityWindowsBaselineConfiguration",
+      "SecurityEventCollectionConfiguration",
+      "SecurityInsightsSecurityEventCollectionConfiguration",
+      "ImportComputerGroup",
+      "NetworkMonitoring",
+      "Itsm",
+      "DnsAnalytics",
+      "ApplicationInsights",
+      "SqlDataClassification",
+    ]),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DataSourcesCreateOrUpdateInput =
@@ -502,12 +701,12 @@ export const DataSourcesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     workspaceName: Schema.String.pipe(T.PathParam()),
     dataSourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type DataSourcesDeleteInput = typeof DataSourcesDeleteInput.Type;
@@ -536,11 +735,11 @@ export const DataSourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workspaceName: Schema.String.pipe(T.PathParam()),
   dataSourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type DataSourcesGetInput = typeof DataSourcesGetInput.Type;
@@ -575,11 +774,11 @@ export const DataSourcesListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.String,
     $skiptoken: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DataSourcesListByWorkspaceInput =
@@ -623,11 +822,11 @@ export const DataSourcesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DeletedWorkspacesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/deletedWorkspaces",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DeletedWorkspacesListInput = typeof DeletedWorkspacesListInput.Type;
@@ -666,11 +865,11 @@ export const DeletedWorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/deletedWorkspaces",
+      apiVersion: "2025-07-01",
     }),
   );
 export type DeletedWorkspacesListByResourceGroupInput =
@@ -710,11 +909,11 @@ export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/gateways/{gatewayId}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type GatewaysDeleteInput = typeof GatewaysDeleteInput.Type;
@@ -743,11 +942,11 @@ export const IntelligencePacksDisableInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     intelligencePackName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Disable",
+      apiVersion: "2025-07-01",
     }),
   );
 export type IntelligencePacksDisableInput =
@@ -782,11 +981,11 @@ export const IntelligencePacksEnableInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     intelligencePackName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Enable",
+      apiVersion: "2025-07-01",
     }),
   );
 export type IntelligencePacksEnableInput =
@@ -820,11 +1019,11 @@ export const IntelligencePacksListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks",
+      apiVersion: "2025-07-01",
     }),
   );
 export type IntelligencePacksListInput = typeof IntelligencePacksListInput.Type;
@@ -863,11 +1062,24 @@ export const LinkedServicesCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     linkedServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      resourceId: Schema.optional(Schema.String),
+      writeAccessResourceId: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Deleting",
+          "ProvisioningAccount",
+          "Updating",
+        ]),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LinkedServicesCreateOrUpdateInput =
@@ -905,11 +1117,11 @@ export const LinkedServicesDeleteInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     linkedServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LinkedServicesDeleteInput = typeof LinkedServicesDeleteInput.Type;
@@ -946,12 +1158,12 @@ export const LinkedServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     workspaceName: Schema.String.pipe(T.PathParam()),
     linkedServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type LinkedServicesGetInput = typeof LinkedServicesGetInput.Type;
@@ -985,11 +1197,11 @@ export const LinkedServicesListByWorkspaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LinkedServicesListByWorkspaceInput =
@@ -1031,11 +1243,23 @@ export const LinkedStorageAccountsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      dataSourceType: Schema.optional(
+        Schema.Literals([
+          "CustomLogs",
+          "AzureWatson",
+          "Query",
+          "Ingestion",
+          "Alerts",
+        ]),
+      ),
+      storageAccountIds: Schema.optional(Schema.Array(Schema.String)),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LinkedStorageAccountsCreateOrUpdateInput =
@@ -1071,11 +1295,11 @@ export const LinkedStorageAccountsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LinkedStorageAccountsDeleteInput =
@@ -1108,11 +1332,11 @@ export const LinkedStorageAccountsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LinkedStorageAccountsGetInput =
@@ -1149,11 +1373,11 @@ export const LinkedStorageAccountsListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts",
+      apiVersion: "2025-07-01",
     }),
   );
 export type LinkedStorageAccountsListByWorkspaceInput =
@@ -1195,11 +1419,11 @@ export const ManagementGroupsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/managementGroups",
+      apiVersion: "2025-07-01",
     }),
   );
 export type ManagementGroupsListInput = typeof ManagementGroupsListInput.Type;
@@ -1244,12 +1468,13 @@ export const ManagementGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.OperationalInsights/operations",
+    apiVersion: "2025-07-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1291,11 +1516,11 @@ export const OperationStatusesGetInput =
     location: Schema.String.pipe(T.PathParam()),
     asyncOperationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/locations/{location}/operationStatuses/{asyncOperationId}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type OperationStatusesGetInput = typeof OperationStatusesGetInput.Type;
@@ -1350,11 +1575,11 @@ export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const QueriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type QueriesDeleteInput = typeof QueriesDeleteInput.Type;
@@ -1379,11 +1604,11 @@ export const QueriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QueriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type QueriesGetInput = typeof QueriesGetInput.Type;
@@ -1426,11 +1651,11 @@ export const QueriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QueriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries",
+    apiVersion: "2025-07-01",
   }),
 );
 export type QueriesListInput = typeof QueriesListInput.Type;
@@ -1478,11 +1703,33 @@ export const QueriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QueriesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      displayName: Schema.String,
+      timeCreated: Schema.optional(Schema.String),
+      timeModified: Schema.optional(Schema.String),
+      author: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      body: Schema.String,
+      related: Schema.optional(
+        Schema.Struct({
+          categories: Schema.optional(Schema.Array(Schema.String)),
+          resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+          solutions: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      tags: Schema.optional(
+        Schema.Record(Schema.String, Schema.Array(Schema.String)),
+      ),
+      properties: Schema.optional(Schema.Unknown),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type QueriesPutInput = typeof QueriesPutInput.Type;
@@ -1525,11 +1772,21 @@ export const QueriesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QueriesSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  related: Schema.optional(
+    Schema.Struct({
+      categories: Schema.optional(Schema.Array(Schema.String)),
+      resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+      solutions: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  tags: Schema.optional(
+    Schema.Record(Schema.String, Schema.Array(Schema.String)),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/search",
+    apiVersion: "2025-07-01",
   }),
 );
 export type QueriesSearchInput = typeof QueriesSearchInput.Type;
@@ -1577,11 +1834,33 @@ export const QueriesSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QueriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      displayName: Schema.String,
+      timeCreated: Schema.optional(Schema.String),
+      timeModified: Schema.optional(Schema.String),
+      author: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      body: Schema.String,
+      related: Schema.optional(
+        Schema.Struct({
+          categories: Schema.optional(Schema.Array(Schema.String)),
+          resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+          solutions: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      tags: Schema.optional(
+        Schema.Record(Schema.String, Schema.Array(Schema.String)),
+      ),
+      properties: Schema.optional(Schema.Unknown),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type QueriesUpdateInput = typeof QueriesUpdateInput.Type;
@@ -1625,11 +1904,19 @@ export const QueryPacksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      queryPackId: Schema.optional(Schema.String),
+      timeCreated: Schema.optional(Schema.String),
+      timeModified: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type QueryPacksCreateOrUpdateInput =
@@ -1678,11 +1965,19 @@ export const QueryPacksCreateOrUpdateWithoutNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      queryPackId: Schema.optional(Schema.String),
+      timeCreated: Schema.optional(Schema.String),
+      timeModified: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks",
+      apiVersion: "2025-07-01",
     }),
   );
 export type QueryPacksCreateOrUpdateWithoutNameInput =
@@ -1729,11 +2024,11 @@ export const QueryPacksCreateOrUpdateWithoutName =
 export const QueryPacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type QueryPacksDeleteInput = typeof QueryPacksDeleteInput.Type;
@@ -1758,11 +2053,11 @@ export const QueryPacksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QueryPacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type QueryPacksGetInput = typeof QueryPacksGetInput.Type;
@@ -1804,11 +2099,11 @@ export const QueryPacksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const QueryPacksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/queryPacks",
+    apiVersion: "2025-07-01",
   }),
 );
 export type QueryPacksListInput = typeof QueryPacksListInput.Type;
@@ -1856,11 +2151,11 @@ export const QueryPacksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks",
+      apiVersion: "2025-07-01",
     }),
   );
 export type QueryPacksListByResourceGroupInput =
@@ -1923,11 +2218,12 @@ export const QueryPacksUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type QueryPacksUpdateTagsInput = typeof QueryPacksUpdateTagsInput.Type;
@@ -1976,11 +2272,28 @@ export const SavedSearchesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     savedSearchId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    etag: Schema.optional(Schema.String),
+    properties: Schema.Struct({
+      category: Schema.String,
+      displayName: Schema.String,
+      query: Schema.String,
+      functionAlias: Schema.optional(Schema.String),
+      functionParameters: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.Number),
+      tags: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SavedSearchesCreateOrUpdateInput =
@@ -2019,11 +2332,11 @@ export const SavedSearchesDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     savedSearchId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SavedSearchesDeleteInput = typeof SavedSearchesDeleteInput.Type;
@@ -2053,11 +2366,11 @@ export const SavedSearchesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   savedSearchId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type SavedSearchesGetInput = typeof SavedSearchesGetInput.Type;
@@ -2092,11 +2405,11 @@ export const SavedSearchesListByWorkspaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SavedSearchesListByWorkspaceInput =
@@ -2137,11 +2450,11 @@ export const SchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/schema",
+    apiVersion: "2025-07-01",
   }),
 );
 export type SchemaGetInput = typeof SchemaGetInput.Type;
@@ -2223,11 +2536,11 @@ export const SharedKeysGetSharedKeysInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/sharedKeys",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SharedKeysGetSharedKeysInput =
@@ -2263,11 +2576,11 @@ export const SharedKeysRegenerateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/regenerateSharedKey",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SharedKeysRegenerateInput = typeof SharedKeysRegenerateInput.Type;
@@ -2302,11 +2615,29 @@ export const StorageInsightConfigsCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     storageInsightName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        containers: Schema.optional(Schema.Array(Schema.String)),
+        tables: Schema.optional(Schema.Array(Schema.String)),
+        storageAccount: Schema.Struct({
+          id: Schema.String,
+          key: Schema.String,
+        }),
+        status: Schema.optional(
+          Schema.Struct({
+            state: Schema.Literals(["OK", "ERROR"]),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type StorageInsightConfigsCreateOrUpdateInput =
@@ -2344,11 +2675,11 @@ export const StorageInsightConfigsDeleteInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     storageInsightName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type StorageInsightConfigsDeleteInput =
@@ -2383,11 +2714,11 @@ export const StorageInsightConfigsGetInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     storageInsightName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type StorageInsightConfigsGetInput =
@@ -2425,11 +2756,11 @@ export const StorageInsightConfigsListByWorkspaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs",
+      apiVersion: "2025-07-01",
     }),
   );
 export type StorageInsightConfigsListByWorkspaceInput =
@@ -2472,11 +2803,55 @@ export const SummaryLogsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        ruleType: Schema.optional(Schema.Literals(["User"])),
+        displayName: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        isActive: Schema.optional(Schema.Boolean),
+        statusCode: Schema.optional(
+          Schema.Literals(["UserAction", "DataPlaneError"]),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Updating",
+            "Succeeded",
+            "Deleting",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        ruleDefinition: Schema.optional(
+          Schema.Struct({
+            query: Schema.optional(Schema.String),
+            binSize: Schema.optional(Schema.Number),
+            binDelay: Schema.optional(Schema.Number),
+            binStartTime: Schema.optional(Schema.String),
+            timeSelector: Schema.optional(Schema.Literals(["TimeGenerated"])),
+            destinationTable: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SummaryLogsCreateOrUpdateInput =
@@ -2527,12 +2902,12 @@ export const SummaryLogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type SummaryLogsDeleteInput = typeof SummaryLogsDeleteInput.Type;
@@ -2559,11 +2934,11 @@ export const SummaryLogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type SummaryLogsGetInput = typeof SummaryLogsGetInput.Type;
@@ -2609,11 +2984,11 @@ export const SummaryLogsListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SummaryLogsListByWorkspaceInput =
@@ -2681,11 +3056,16 @@ export const SummaryLogsRetryBinInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        retryBinStartTime: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/retrybin",
+      apiVersion: "2025-07-01",
     }),
   );
 export type SummaryLogsRetryBinInput = typeof SummaryLogsRetryBinInput.Type;
@@ -2713,11 +3093,11 @@ export const SummaryLogsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/start",
+    apiVersion: "2025-07-01",
   }),
 );
 export type SummaryLogsStartInput = typeof SummaryLogsStartInput.Type;
@@ -2744,11 +3124,11 @@ export const SummaryLogsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/stop",
+    apiVersion: "2025-07-01",
   }),
 );
 export type SummaryLogsStopInput = typeof SummaryLogsStopInput.Type;
@@ -2777,11 +3157,11 @@ export const TablesCancelSearchInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}/cancelSearch",
+      apiVersion: "2025-07-01",
     }),
   );
 export type TablesCancelSearchInput = typeof TablesCancelSearchInput.Type;
@@ -2811,11 +3191,141 @@ export const TablesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        retentionInDays: Schema.optional(Schema.Number),
+        totalRetentionInDays: Schema.optional(Schema.Number),
+        archiveRetentionInDays: Schema.optional(Schema.Number),
+        searchResults: Schema.optional(
+          Schema.Struct({
+            query: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            limit: Schema.optional(Schema.Number),
+            startSearchTime: Schema.optional(Schema.String),
+            endSearchTime: Schema.optional(Schema.String),
+            sourceTable: Schema.optional(Schema.String),
+            azureAsyncOperationId: Schema.optional(Schema.String),
+          }),
+        ),
+        restoredLogs: Schema.optional(
+          Schema.Struct({
+            startRestoreTime: Schema.optional(Schema.String),
+            endRestoreTime: Schema.optional(Schema.String),
+            sourceTable: Schema.optional(Schema.String),
+            azureAsyncOperationId: Schema.optional(Schema.String),
+          }),
+        ),
+        resultStatistics: Schema.optional(
+          Schema.Struct({
+            progress: Schema.optional(Schema.Number),
+            ingestedRecords: Schema.optional(Schema.Number),
+            scannedGb: Schema.optional(Schema.Number),
+          }),
+        ),
+        plan: Schema.optional(
+          Schema.Literals(["Basic", "Analytics", "Auxiliary"]),
+        ),
+        lastPlanModifiedDate: Schema.optional(Schema.String),
+        schema: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            displayName: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            columns: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "string",
+                      "int",
+                      "long",
+                      "real",
+                      "boolean",
+                      "dateTime",
+                      "guid",
+                      "dynamic",
+                    ]),
+                  ),
+                  dataTypeHint: Schema.optional(
+                    Schema.Literals(["uri", "guid", "armPath", "ip"]),
+                  ),
+                  displayName: Schema.optional(Schema.String),
+                  description: Schema.optional(Schema.String),
+                  isDefaultDisplay: Schema.optional(Schema.Boolean),
+                  isHidden: Schema.optional(Schema.Boolean),
+                }),
+              ),
+            ),
+            standardColumns: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "string",
+                      "int",
+                      "long",
+                      "real",
+                      "boolean",
+                      "dateTime",
+                      "guid",
+                      "dynamic",
+                    ]),
+                  ),
+                  dataTypeHint: Schema.optional(
+                    Schema.Literals(["uri", "guid", "armPath", "ip"]),
+                  ),
+                  displayName: Schema.optional(Schema.String),
+                  description: Schema.optional(Schema.String),
+                  isDefaultDisplay: Schema.optional(Schema.Boolean),
+                  isHidden: Schema.optional(Schema.Boolean),
+                }),
+              ),
+            ),
+            categories: Schema.optional(Schema.Array(Schema.String)),
+            labels: Schema.optional(Schema.Array(Schema.String)),
+            source: Schema.optional(Schema.Literals(["microsoft", "customer"])),
+            tableType: Schema.optional(
+              Schema.Literals([
+                "Microsoft",
+                "CustomLog",
+                "RestoredLogs",
+                "SearchResults",
+              ]),
+            ),
+            tableSubType: Schema.optional(
+              Schema.Literals(["Any", "Classic", "DataCollectionRuleBased"]),
+            ),
+            solutions: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Updating", "InProgress", "Succeeded", "Deleting"]),
+        ),
+        retentionInDaysAsDefault: Schema.optional(Schema.Boolean),
+        totalRetentionInDaysAsDefault: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type TablesCreateOrUpdateInput = typeof TablesCreateOrUpdateInput.Type;
@@ -2851,11 +3361,11 @@ export const TablesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   tableName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type TablesDeleteInput = typeof TablesDeleteInput.Type;
@@ -2884,11 +3394,11 @@ export const TablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   tableName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type TablesGetInput = typeof TablesGetInput.Type;
@@ -2921,11 +3431,11 @@ export const TablesListByWorkspaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables",
+      apiVersion: "2025-07-01",
     }),
   );
 export type TablesListByWorkspaceInput = typeof TablesListByWorkspaceInput.Type;
@@ -2967,11 +3477,11 @@ export const TablesMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   tableName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}/migrate",
+    apiVersion: "2025-07-01",
   }),
 );
 export type TablesMigrateInput = typeof TablesMigrateInput.Type;
@@ -3000,11 +3510,141 @@ export const TablesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   tableName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      retentionInDays: Schema.optional(Schema.Number),
+      totalRetentionInDays: Schema.optional(Schema.Number),
+      archiveRetentionInDays: Schema.optional(Schema.Number),
+      searchResults: Schema.optional(
+        Schema.Struct({
+          query: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+          limit: Schema.optional(Schema.Number),
+          startSearchTime: Schema.optional(Schema.String),
+          endSearchTime: Schema.optional(Schema.String),
+          sourceTable: Schema.optional(Schema.String),
+          azureAsyncOperationId: Schema.optional(Schema.String),
+        }),
+      ),
+      restoredLogs: Schema.optional(
+        Schema.Struct({
+          startRestoreTime: Schema.optional(Schema.String),
+          endRestoreTime: Schema.optional(Schema.String),
+          sourceTable: Schema.optional(Schema.String),
+          azureAsyncOperationId: Schema.optional(Schema.String),
+        }),
+      ),
+      resultStatistics: Schema.optional(
+        Schema.Struct({
+          progress: Schema.optional(Schema.Number),
+          ingestedRecords: Schema.optional(Schema.Number),
+          scannedGb: Schema.optional(Schema.Number),
+        }),
+      ),
+      plan: Schema.optional(
+        Schema.Literals(["Basic", "Analytics", "Auxiliary"]),
+      ),
+      lastPlanModifiedDate: Schema.optional(Schema.String),
+      schema: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          displayName: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+          columns: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                type: Schema.optional(
+                  Schema.Literals([
+                    "string",
+                    "int",
+                    "long",
+                    "real",
+                    "boolean",
+                    "dateTime",
+                    "guid",
+                    "dynamic",
+                  ]),
+                ),
+                dataTypeHint: Schema.optional(
+                  Schema.Literals(["uri", "guid", "armPath", "ip"]),
+                ),
+                displayName: Schema.optional(Schema.String),
+                description: Schema.optional(Schema.String),
+                isDefaultDisplay: Schema.optional(Schema.Boolean),
+                isHidden: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          ),
+          standardColumns: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                type: Schema.optional(
+                  Schema.Literals([
+                    "string",
+                    "int",
+                    "long",
+                    "real",
+                    "boolean",
+                    "dateTime",
+                    "guid",
+                    "dynamic",
+                  ]),
+                ),
+                dataTypeHint: Schema.optional(
+                  Schema.Literals(["uri", "guid", "armPath", "ip"]),
+                ),
+                displayName: Schema.optional(Schema.String),
+                description: Schema.optional(Schema.String),
+                isDefaultDisplay: Schema.optional(Schema.Boolean),
+                isHidden: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          ),
+          categories: Schema.optional(Schema.Array(Schema.String)),
+          labels: Schema.optional(Schema.Array(Schema.String)),
+          source: Schema.optional(Schema.Literals(["microsoft", "customer"])),
+          tableType: Schema.optional(
+            Schema.Literals([
+              "Microsoft",
+              "CustomLog",
+              "RestoredLogs",
+              "SearchResults",
+            ]),
+          ),
+          tableSubType: Schema.optional(
+            Schema.Literals(["Any", "Classic", "DataCollectionRuleBased"]),
+          ),
+          solutions: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Updating", "InProgress", "Succeeded", "Deleting"]),
+      ),
+      retentionInDaysAsDefault: Schema.optional(Schema.Boolean),
+      totalRetentionInDaysAsDefault: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type TablesUpdateInput = typeof TablesUpdateInput.Type;
@@ -3036,11 +3676,11 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/usages",
+    apiVersion: "2025-07-01",
   }),
 );
 export type UsagesListInput = typeof UsagesListInput.Type;
@@ -3086,11 +3726,11 @@ export const WorkspacePurgeGetPurgeStatusInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/operations/{purgeId}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WorkspacePurgeGetPurgeStatusInput =
@@ -3124,11 +3764,11 @@ export const WorkspacePurgePurgeInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/purge",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WorkspacePurgePurgeInput = typeof WorkspacePurgePurgeInput.Type;
@@ -3159,11 +3799,165 @@ export const WorkspacesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Deleting",
+            "ProvisioningAccount",
+            "Updating",
+          ]),
+        ),
+        customerId: Schema.optional(Schema.String),
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.Literals([
+              "Free",
+              "Standard",
+              "Premium",
+              "PerNode",
+              "PerGB2018",
+              "Standalone",
+              "CapacityReservation",
+              "LACluster",
+            ]),
+            capacityReservationLevel: Schema.optional(
+              Schema.NullOr(Schema.Number),
+            ),
+            lastSkuUpdate: Schema.optional(Schema.String),
+          }),
+        ),
+        retentionInDays: Schema.optional(Schema.NullOr(Schema.Number)),
+        workspaceCapping: Schema.optional(
+          Schema.Struct({
+            dailyQuotaGb: Schema.optional(Schema.Number),
+            quotaNextResetTime: Schema.optional(Schema.String),
+            dataIngestionStatus: Schema.optional(
+              Schema.Literals([
+                "RespectQuota",
+                "ForceOn",
+                "ForceOff",
+                "OverQuota",
+                "SubscriptionSuspended",
+                "ApproachingQuota",
+              ]),
+            ),
+          }),
+        ),
+        createdDate: Schema.optional(Schema.String),
+        modifiedDate: Schema.optional(Schema.String),
+        publicNetworkAccessForIngestion: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+        ),
+        publicNetworkAccessForQuery: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+        ),
+        forceCmkForQuery: Schema.optional(Schema.Boolean),
+        privateLinkScopedResources: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              resourceId: Schema.optional(Schema.String),
+              scopeId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        features: Schema.optional(
+          Schema.Struct({
+            enableDataExport: Schema.optional(Schema.NullOr(Schema.Boolean)),
+            immediatePurgeDataOn30Days: Schema.optional(
+              Schema.NullOr(Schema.Boolean),
+            ),
+            enableLogAccessUsingOnlyResourcePermissions: Schema.optional(
+              Schema.NullOr(Schema.Boolean),
+            ),
+            clusterResourceId: Schema.optional(Schema.NullOr(Schema.String)),
+            disableLocalAuth: Schema.optional(Schema.NullOr(Schema.Boolean)),
+            unifiedSentinelBillingOnly: Schema.optional(
+              Schema.NullOr(Schema.Boolean),
+            ),
+            associations: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        defaultDataCollectionRuleResourceId: Schema.optional(Schema.String),
+        replication: Schema.optional(
+          Schema.Struct({
+            location: Schema.optional(Schema.String),
+            enabled: Schema.optional(Schema.Boolean),
+            provisioningState: Schema.optional(
+              Schema.Literals([
+                "Succeeded",
+                "EnableRequested",
+                "Enabling",
+                "DisableRequested",
+                "Disabling",
+                "RollbackRequested",
+                "RollingBack",
+                "Failed",
+                "Canceled",
+              ]),
+            ),
+            createdDate: Schema.optional(Schema.String),
+            lastModifiedDate: Schema.optional(Schema.String),
+          }),
+        ),
+        failover: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(
+              Schema.Literals([
+                "Inactive",
+                "Activating",
+                "Active",
+                "Deactivating",
+                "Failed",
+              ]),
+            ),
+            lastModifiedDate: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WorkspacesCreateOrUpdateInput =
@@ -3199,12 +3993,12 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   force: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -3233,11 +4027,11 @@ export const WorkspacesFailbackInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/failback",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WorkspacesFailbackInput = typeof WorkspacesFailbackInput.Type;
@@ -3267,11 +4061,11 @@ export const WorkspacesFailoverInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/locations/{location}/workspaces/{workspaceName}/failover",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WorkspacesFailoverInput = typeof WorkspacesFailoverInput.Type;
@@ -3300,11 +4094,11 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
@@ -3335,11 +4129,11 @@ export const WorkspacesGetNSPInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type WorkspacesGetNSPInput = typeof WorkspacesGetNSPInput.Type;
@@ -3384,11 +4178,11 @@ export const WorkspacesGetNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/workspaces",
+    apiVersion: "2025-07-01",
   }),
 );
 export type WorkspacesListInput = typeof WorkspacesListInput.Type;
@@ -3423,11 +4217,11 @@ export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WorkspacesListByResourceGroupInput =
@@ -3468,12 +4262,12 @@ export const WorkspacesListNSPInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations",
+    apiVersion: "2025-07-01",
   }),
 );
 export type WorkspacesListNSPInput = typeof WorkspacesListNSPInput.Type;
@@ -3537,11 +4331,11 @@ export const WorkspacesReconcileNSPInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
+      apiVersion: "2025-07-01",
     }),
   );
 export type WorkspacesReconcileNSPInput =
@@ -3573,11 +4367,150 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Deleting",
+          "ProvisioningAccount",
+          "Updating",
+        ]),
+      ),
+      customerId: Schema.optional(Schema.String),
+      sku: Schema.optional(
+        Schema.Struct({
+          name: Schema.Literals([
+            "Free",
+            "Standard",
+            "Premium",
+            "PerNode",
+            "PerGB2018",
+            "Standalone",
+            "CapacityReservation",
+            "LACluster",
+          ]),
+          capacityReservationLevel: Schema.optional(
+            Schema.NullOr(Schema.Number),
+          ),
+          lastSkuUpdate: Schema.optional(Schema.String),
+        }),
+      ),
+      retentionInDays: Schema.optional(Schema.NullOr(Schema.Number)),
+      workspaceCapping: Schema.optional(
+        Schema.Struct({
+          dailyQuotaGb: Schema.optional(Schema.Number),
+          quotaNextResetTime: Schema.optional(Schema.String),
+          dataIngestionStatus: Schema.optional(
+            Schema.Literals([
+              "RespectQuota",
+              "ForceOn",
+              "ForceOff",
+              "OverQuota",
+              "SubscriptionSuspended",
+              "ApproachingQuota",
+            ]),
+          ),
+        }),
+      ),
+      createdDate: Schema.optional(Schema.String),
+      modifiedDate: Schema.optional(Schema.String),
+      publicNetworkAccessForIngestion: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+      ),
+      publicNetworkAccessForQuery: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+      ),
+      forceCmkForQuery: Schema.optional(Schema.Boolean),
+      privateLinkScopedResources: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourceId: Schema.optional(Schema.String),
+            scopeId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      features: Schema.optional(
+        Schema.Struct({
+          enableDataExport: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          immediatePurgeDataOn30Days: Schema.optional(
+            Schema.NullOr(Schema.Boolean),
+          ),
+          enableLogAccessUsingOnlyResourcePermissions: Schema.optional(
+            Schema.NullOr(Schema.Boolean),
+          ),
+          clusterResourceId: Schema.optional(Schema.NullOr(Schema.String)),
+          disableLocalAuth: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          unifiedSentinelBillingOnly: Schema.optional(
+            Schema.NullOr(Schema.Boolean),
+          ),
+          associations: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      defaultDataCollectionRuleResourceId: Schema.optional(Schema.String),
+      replication: Schema.optional(
+        Schema.Struct({
+          location: Schema.optional(Schema.String),
+          enabled: Schema.optional(Schema.Boolean),
+          provisioningState: Schema.optional(
+            Schema.Literals([
+              "Succeeded",
+              "EnableRequested",
+              "Enabling",
+              "DisableRequested",
+              "Disabling",
+              "RollbackRequested",
+              "RollingBack",
+              "Failed",
+              "Canceled",
+            ]),
+          ),
+          createdDate: Schema.optional(Schema.String),
+          lastModifiedDate: Schema.optional(Schema.String),
+        }),
+      ),
+      failover: Schema.optional(
+        Schema.Struct({
+          state: Schema.optional(
+            Schema.Literals([
+              "Inactive",
+              "Activating",
+              "Active",
+              "Deactivating",
+              "Failed",
+            ]),
+          ),
+          lastModifiedDate: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
+    apiVersion: "2025-07-01",
   }),
 );
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;

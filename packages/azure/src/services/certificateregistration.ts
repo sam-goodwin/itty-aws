@@ -14,11 +14,136 @@ export const AppServiceCertificateOrdersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        certificates: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              keyVaultId: Schema.optional(Schema.String),
+              keyVaultSecretName: Schema.optional(Schema.String),
+              provisioningState: Schema.optional(
+                Schema.Literals([
+                  "Initialized",
+                  "WaitingOnCertificateOrder",
+                  "Succeeded",
+                  "CertificateOrderFailed",
+                  "OperationNotPermittedOnKeyVault",
+                  "AzureServiceUnauthorizedToAccessKeyVault",
+                  "KeyVaultDoesNotExist",
+                  "KeyVaultSecretDoesNotExist",
+                  "UnknownError",
+                  "ExternalPrivateKey",
+                  "Unknown",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        distinguishedName: Schema.optional(Schema.String),
+        domainVerificationToken: Schema.optional(Schema.String),
+        validityInYears: Schema.optional(Schema.Number),
+        keySize: Schema.optional(Schema.Number),
+        productType: Schema.Literals([
+          "StandardDomainValidatedSsl",
+          "StandardDomainValidatedWildCardSsl",
+        ]),
+        autoRenew: Schema.optional(Schema.Boolean),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Pendingissuance",
+            "Issued",
+            "Revoked",
+            "Canceled",
+            "Denied",
+            "Pendingrevocation",
+            "PendingRekey",
+            "Unused",
+            "Expired",
+            "NotSubmitted",
+          ]),
+        ),
+        signedCertificate: Schema.optional(
+          Schema.Struct({
+            version: Schema.optional(Schema.Number),
+            serialNumber: Schema.optional(Schema.String),
+            thumbprint: Schema.optional(Schema.String),
+            subject: Schema.optional(Schema.String),
+            notBefore: Schema.optional(Schema.String),
+            notAfter: Schema.optional(Schema.String),
+            signatureAlgorithm: Schema.optional(Schema.String),
+            issuer: Schema.optional(Schema.String),
+            rawData: Schema.optional(Schema.String),
+          }),
+        ),
+        csr: Schema.optional(Schema.String),
+        intermediate: Schema.optional(
+          Schema.Struct({
+            version: Schema.optional(Schema.Number),
+            serialNumber: Schema.optional(Schema.String),
+            thumbprint: Schema.optional(Schema.String),
+            subject: Schema.optional(Schema.String),
+            notBefore: Schema.optional(Schema.String),
+            notAfter: Schema.optional(Schema.String),
+            signatureAlgorithm: Schema.optional(Schema.String),
+            issuer: Schema.optional(Schema.String),
+            rawData: Schema.optional(Schema.String),
+          }),
+        ),
+        root: Schema.optional(
+          Schema.Struct({
+            version: Schema.optional(Schema.Number),
+            serialNumber: Schema.optional(Schema.String),
+            thumbprint: Schema.optional(Schema.String),
+            subject: Schema.optional(Schema.String),
+            notBefore: Schema.optional(Schema.String),
+            notAfter: Schema.optional(Schema.String),
+            signatureAlgorithm: Schema.optional(Schema.String),
+            issuer: Schema.optional(Schema.String),
+            rawData: Schema.optional(Schema.String),
+          }),
+        ),
+        serialNumber: Schema.optional(Schema.String),
+        lastCertificateIssuanceTime: Schema.optional(Schema.String),
+        expirationTime: Schema.optional(Schema.String),
+        isPrivateKeyExternal: Schema.optional(Schema.Boolean),
+        appServiceCertificateNotRenewableReasons: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "RegistrationStatusNotSupportedForRenewal",
+              "ExpirationNotInRenewalTimeRange",
+              "SubscriptionNotActive",
+            ]),
+          ),
+        ),
+        nextAutoRenewalTimeStamp: Schema.optional(Schema.String),
+        contact: Schema.optional(
+          Schema.Struct({
+            email: Schema.optional(Schema.String),
+            nameFirst: Schema.optional(Schema.String),
+            nameLast: Schema.optional(Schema.String),
+            phone: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersCreateOrUpdateInput =
@@ -71,11 +196,35 @@ export const AppServiceCertificateOrdersCreateOrUpdateCertificateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        keyVaultId: Schema.optional(Schema.String),
+        keyVaultSecretName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Initialized",
+            "WaitingOnCertificateOrder",
+            "Succeeded",
+            "CertificateOrderFailed",
+            "OperationNotPermittedOnKeyVault",
+            "AzureServiceUnauthorizedToAccessKeyVault",
+            "KeyVaultDoesNotExist",
+            "KeyVaultSecretDoesNotExist",
+            "UnknownError",
+            "ExternalPrivateKey",
+            "Unknown",
+          ]),
+        ),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersCreateOrUpdateCertificateInput =
@@ -128,11 +277,11 @@ export const AppServiceCertificateOrdersDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersDeleteInput =
@@ -167,11 +316,11 @@ export const AppServiceCertificateOrdersDeleteCertificateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersDeleteCertificateInput =
@@ -206,11 +355,11 @@ export const AppServiceCertificateOrdersGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersGetInput =
@@ -263,11 +412,11 @@ export const AppServiceCertificateOrdersGetCertificateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersGetCertificateInput =
@@ -318,11 +467,11 @@ export const AppServiceCertificateOrdersGetCertificate =
 export const AppServiceCertificateOrdersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CertificateRegistration/certificateOrders",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersListInput =
@@ -386,11 +535,11 @@ export const AppServiceCertificateOrdersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersListByResourceGroupInput =
@@ -456,11 +605,11 @@ export const AppServiceCertificateOrdersListCertificatesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersListCertificatesInput =
@@ -527,11 +676,23 @@ export const AppServiceCertificateOrdersReissueInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        keySize: Schema.optional(Schema.Number),
+        delayExistingRevokeInHours: Schema.optional(Schema.Number),
+        csr: Schema.optional(Schema.String),
+        isPrivateKeyExternal: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/reissue",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersReissueInput =
@@ -565,11 +726,22 @@ export const AppServiceCertificateOrdersRenewInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        keySize: Schema.optional(Schema.Number),
+        csr: Schema.optional(Schema.String),
+        isPrivateKeyExternal: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/renew",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersRenewInput =
@@ -603,11 +775,11 @@ export const AppServiceCertificateOrdersResendEmailInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/resendEmail",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersResendEmailInput =
@@ -641,11 +813,12 @@ export const AppServiceCertificateOrdersResendRequestEmailsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/resendRequestEmails",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersResendRequestEmailsInput =
@@ -679,11 +852,11 @@ export const AppServiceCertificateOrdersRetrieveCertificateActionsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/retrieveCertificateActions",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersRetrieveCertificateActionsInput =
@@ -739,11 +912,11 @@ export const AppServiceCertificateOrdersRetrieveCertificateEmailHistoryInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/retrieveEmailHistory",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersRetrieveCertificateEmailHistoryInput =
@@ -784,11 +957,13 @@ export const AppServiceCertificateOrdersRetrieveSiteSealInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    lightTheme: Schema.optional(Schema.Boolean),
+    locale: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/retrieveSiteSeal",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersRetrieveSiteSealInput =
@@ -824,11 +999,137 @@ export const AppServiceCertificateOrdersUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        certificates: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              keyVaultId: Schema.optional(Schema.String),
+              keyVaultSecretName: Schema.optional(Schema.String),
+              provisioningState: Schema.optional(
+                Schema.Literals([
+                  "Initialized",
+                  "WaitingOnCertificateOrder",
+                  "Succeeded",
+                  "CertificateOrderFailed",
+                  "OperationNotPermittedOnKeyVault",
+                  "AzureServiceUnauthorizedToAccessKeyVault",
+                  "KeyVaultDoesNotExist",
+                  "KeyVaultSecretDoesNotExist",
+                  "UnknownError",
+                  "ExternalPrivateKey",
+                  "Unknown",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        distinguishedName: Schema.optional(Schema.String),
+        domainVerificationToken: Schema.optional(Schema.String),
+        validityInYears: Schema.optional(Schema.Number),
+        keySize: Schema.optional(Schema.Number),
+        productType: Schema.Literals([
+          "StandardDomainValidatedSsl",
+          "StandardDomainValidatedWildCardSsl",
+        ]),
+        autoRenew: Schema.optional(Schema.Boolean),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Pendingissuance",
+            "Issued",
+            "Revoked",
+            "Canceled",
+            "Denied",
+            "Pendingrevocation",
+            "PendingRekey",
+            "Unused",
+            "Expired",
+            "NotSubmitted",
+          ]),
+        ),
+        signedCertificate: Schema.optional(
+          Schema.Struct({
+            version: Schema.optional(Schema.Number),
+            serialNumber: Schema.optional(Schema.String),
+            thumbprint: Schema.optional(Schema.String),
+            subject: Schema.optional(Schema.String),
+            notBefore: Schema.optional(Schema.String),
+            notAfter: Schema.optional(Schema.String),
+            signatureAlgorithm: Schema.optional(Schema.String),
+            issuer: Schema.optional(Schema.String),
+            rawData: Schema.optional(Schema.String),
+          }),
+        ),
+        csr: Schema.optional(Schema.String),
+        intermediate: Schema.optional(
+          Schema.Struct({
+            version: Schema.optional(Schema.Number),
+            serialNumber: Schema.optional(Schema.String),
+            thumbprint: Schema.optional(Schema.String),
+            subject: Schema.optional(Schema.String),
+            notBefore: Schema.optional(Schema.String),
+            notAfter: Schema.optional(Schema.String),
+            signatureAlgorithm: Schema.optional(Schema.String),
+            issuer: Schema.optional(Schema.String),
+            rawData: Schema.optional(Schema.String),
+          }),
+        ),
+        root: Schema.optional(
+          Schema.Struct({
+            version: Schema.optional(Schema.Number),
+            serialNumber: Schema.optional(Schema.String),
+            thumbprint: Schema.optional(Schema.String),
+            subject: Schema.optional(Schema.String),
+            notBefore: Schema.optional(Schema.String),
+            notAfter: Schema.optional(Schema.String),
+            signatureAlgorithm: Schema.optional(Schema.String),
+            issuer: Schema.optional(Schema.String),
+            rawData: Schema.optional(Schema.String),
+          }),
+        ),
+        serialNumber: Schema.optional(Schema.String),
+        lastCertificateIssuanceTime: Schema.optional(Schema.String),
+        expirationTime: Schema.optional(Schema.String),
+        isPrivateKeyExternal: Schema.optional(Schema.Boolean),
+        appServiceCertificateNotRenewableReasons: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "RegistrationStatusNotSupportedForRenewal",
+              "ExpirationNotInRenewalTimeRange",
+              "SubscriptionNotActive",
+            ]),
+          ),
+        ),
+        nextAutoRenewalTimeStamp: Schema.optional(Schema.String),
+        contact: Schema.optional(
+          Schema.Struct({
+            email: Schema.optional(Schema.String),
+            nameFirst: Schema.optional(Schema.String),
+            nameLast: Schema.optional(Schema.String),
+            phone: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersUpdateInput =
@@ -881,11 +1182,35 @@ export const AppServiceCertificateOrdersUpdateCertificateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        keyVaultId: Schema.optional(Schema.String),
+        keyVaultSecretName: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Initialized",
+            "WaitingOnCertificateOrder",
+            "Succeeded",
+            "CertificateOrderFailed",
+            "OperationNotPermittedOnKeyVault",
+            "AzureServiceUnauthorizedToAccessKeyVault",
+            "KeyVaultDoesNotExist",
+            "KeyVaultSecretDoesNotExist",
+            "UnknownError",
+            "ExternalPrivateKey",
+            "Unknown",
+          ]),
+        ),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersUpdateCertificateInput =
@@ -936,11 +1261,136 @@ export const AppServiceCertificateOrdersUpdateCertificate =
 export const AppServiceCertificateOrdersValidatePurchaseInformationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        certificates: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              keyVaultId: Schema.optional(Schema.String),
+              keyVaultSecretName: Schema.optional(Schema.String),
+              provisioningState: Schema.optional(
+                Schema.Literals([
+                  "Initialized",
+                  "WaitingOnCertificateOrder",
+                  "Succeeded",
+                  "CertificateOrderFailed",
+                  "OperationNotPermittedOnKeyVault",
+                  "AzureServiceUnauthorizedToAccessKeyVault",
+                  "KeyVaultDoesNotExist",
+                  "KeyVaultSecretDoesNotExist",
+                  "UnknownError",
+                  "ExternalPrivateKey",
+                  "Unknown",
+                ]),
+              ),
+            }),
+          ),
+        ),
+        distinguishedName: Schema.optional(Schema.String),
+        domainVerificationToken: Schema.optional(Schema.String),
+        validityInYears: Schema.optional(Schema.Number),
+        keySize: Schema.optional(Schema.Number),
+        productType: Schema.Literals([
+          "StandardDomainValidatedSsl",
+          "StandardDomainValidatedWildCardSsl",
+        ]),
+        autoRenew: Schema.optional(Schema.Boolean),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "InProgress",
+            "Deleting",
+          ]),
+        ),
+        status: Schema.optional(
+          Schema.Literals([
+            "Pendingissuance",
+            "Issued",
+            "Revoked",
+            "Canceled",
+            "Denied",
+            "Pendingrevocation",
+            "PendingRekey",
+            "Unused",
+            "Expired",
+            "NotSubmitted",
+          ]),
+        ),
+        signedCertificate: Schema.optional(
+          Schema.Struct({
+            version: Schema.optional(Schema.Number),
+            serialNumber: Schema.optional(Schema.String),
+            thumbprint: Schema.optional(Schema.String),
+            subject: Schema.optional(Schema.String),
+            notBefore: Schema.optional(Schema.String),
+            notAfter: Schema.optional(Schema.String),
+            signatureAlgorithm: Schema.optional(Schema.String),
+            issuer: Schema.optional(Schema.String),
+            rawData: Schema.optional(Schema.String),
+          }),
+        ),
+        csr: Schema.optional(Schema.String),
+        intermediate: Schema.optional(
+          Schema.Struct({
+            version: Schema.optional(Schema.Number),
+            serialNumber: Schema.optional(Schema.String),
+            thumbprint: Schema.optional(Schema.String),
+            subject: Schema.optional(Schema.String),
+            notBefore: Schema.optional(Schema.String),
+            notAfter: Schema.optional(Schema.String),
+            signatureAlgorithm: Schema.optional(Schema.String),
+            issuer: Schema.optional(Schema.String),
+            rawData: Schema.optional(Schema.String),
+          }),
+        ),
+        root: Schema.optional(
+          Schema.Struct({
+            version: Schema.optional(Schema.Number),
+            serialNumber: Schema.optional(Schema.String),
+            thumbprint: Schema.optional(Schema.String),
+            subject: Schema.optional(Schema.String),
+            notBefore: Schema.optional(Schema.String),
+            notAfter: Schema.optional(Schema.String),
+            signatureAlgorithm: Schema.optional(Schema.String),
+            issuer: Schema.optional(Schema.String),
+            rawData: Schema.optional(Schema.String),
+          }),
+        ),
+        serialNumber: Schema.optional(Schema.String),
+        lastCertificateIssuanceTime: Schema.optional(Schema.String),
+        expirationTime: Schema.optional(Schema.String),
+        isPrivateKeyExternal: Schema.optional(Schema.Boolean),
+        appServiceCertificateNotRenewableReasons: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "RegistrationStatusNotSupportedForRenewal",
+              "ExpirationNotInRenewalTimeRange",
+              "SubscriptionNotActive",
+            ]),
+          ),
+        ),
+        nextAutoRenewalTimeStamp: Schema.optional(Schema.String),
+        contact: Schema.optional(
+          Schema.Struct({
+            email: Schema.optional(Schema.String),
+            nameFirst: Schema.optional(Schema.String),
+            nameLast: Schema.optional(Schema.String),
+            phone: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CertificateRegistration/validateCertificateRegistrationInformation",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersValidatePurchaseInformationInput =
@@ -972,11 +1422,11 @@ export const AppServiceCertificateOrdersVerifyDomainOwnershipInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/verifyDomainOwnership",
+      apiVersion: "2024-11-01",
     }),
   );
 export type AppServiceCertificateOrdersVerifyDomainOwnershipInput =
@@ -1011,7 +1461,6 @@ export const CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorRe
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
     detectorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     timeGrain: Schema.optional(Schema.String),
@@ -1019,6 +1468,7 @@ export const CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorRe
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/detectors/{detectorName}",
+      apiVersion: "2024-11-01",
     }),
   );
 export type CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseInput =
@@ -1076,11 +1526,11 @@ export const CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorR
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateOrderName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/detectors",
+      apiVersion: "2024-11-01",
     }),
   );
 export type CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseInput =
@@ -1145,12 +1595,11 @@ export const CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorR
   }));
 // Input Schema
 export const CertificateRegistrationProviderListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.CertificateRegistration/operations",
+      apiVersion: "2024-11-01",
     }),
   );
 export type CertificateRegistrationProviderListOperationsInput =

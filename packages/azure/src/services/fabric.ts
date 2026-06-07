@@ -13,13 +13,13 @@ export const FabricCapacitiesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Fabric/locations/{location}/checkNameAvailability",
+      apiVersion: "2023-11-01",
     }),
   );
 export type FabricCapacitiesCheckNameAvailabilityInput =
@@ -56,11 +56,48 @@ export const FabricCapacitiesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Deleting",
+          "Provisioning",
+          "Updating",
+        ]),
+      ),
+      state: Schema.optional(
+        Schema.Literals([
+          "Active",
+          "Provisioning",
+          "Failed",
+          "Updating",
+          "Deleting",
+          "Suspending",
+          "Suspended",
+          "Pausing",
+          "Paused",
+          "Resuming",
+          "Scaling",
+          "Preparing",
+        ]),
+      ),
+      administration: Schema.Struct({
+        members: Schema.Array(Schema.String),
+      }),
+    }),
+    sku: Schema.Struct({
+      name: Schema.String,
+      tier: Schema.Literals(["Fabric"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
+      apiVersion: "2023-11-01",
     }),
   );
 export type FabricCapacitiesCreateOrUpdateInput =
@@ -110,11 +147,11 @@ export const FabricCapacitiesDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
+      apiVersion: "2023-11-01",
     }),
   );
 export type FabricCapacitiesDeleteInput =
@@ -147,11 +184,11 @@ export const FabricCapacitiesGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
+      apiVersion: "2023-11-01",
     }),
   );
 export type FabricCapacitiesGetInput = typeof FabricCapacitiesGetInput.Type;
@@ -197,11 +234,11 @@ export const FabricCapacitiesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities",
+      apiVersion: "2023-11-01",
     }),
   );
 export type FabricCapacitiesListByResourceGroupInput =
@@ -263,11 +300,11 @@ export const FabricCapacitiesListByResourceGroup =
 export const FabricCapacitiesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Fabric/capacities",
+      apiVersion: "2023-11-01",
     }),
   );
 export type FabricCapacitiesListBySubscriptionInput =
@@ -328,11 +365,11 @@ export const FabricCapacitiesListBySubscription =
 export const FabricCapacitiesListSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Fabric/skus",
+      apiVersion: "2023-11-01",
     }),
   );
 export type FabricCapacitiesListSkusInput =
@@ -372,11 +409,11 @@ export const FabricCapacitiesListSkusForCapacityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}/skus",
+      apiVersion: "2023-11-01",
     }),
   );
 export type FabricCapacitiesListSkusForCapacityInput =
@@ -419,11 +456,11 @@ export const FabricCapacitiesResumeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}/resume",
+      apiVersion: "2023-11-01",
     }),
   );
 export type FabricCapacitiesResumeInput =
@@ -456,11 +493,11 @@ export const FabricCapacitiesSuspendInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}/suspend",
+      apiVersion: "2023-11-01",
     }),
   );
 export type FabricCapacitiesSuspendInput =
@@ -493,11 +530,27 @@ export const FabricCapacitiesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.Literals(["Fabric"]),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        administration: Schema.optional(
+          Schema.Struct({
+            members: Schema.Array(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
+      apiVersion: "2023-11-01",
     }),
   );
 export type FabricCapacitiesUpdateInput =
@@ -543,10 +596,14 @@ export const FabricCapacitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Fabric/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Fabric/operations",
+    apiVersion: "2023-11-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 

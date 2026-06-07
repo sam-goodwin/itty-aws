@@ -10,10 +10,43 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const PrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Approved",
+                "Pending",
+                "Rejected",
+                "Disconnected",
+              ]),
+            ),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Provisioning", "Failed"]),
+        ),
+        privateLinkConnectionTags: Schema.optional(
+          Schema.Struct({
+            tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -44,6 +77,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -70,6 +104,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -100,6 +135,7 @@ export const PrivateEndpointConnectionsListByPolicyNameInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateEndpointConnectionsListByPolicyNameInput =
@@ -133,10 +169,22 @@ export const PrivateEndpointConnectionsListByPolicyName =
   }));
 // Input Schema
 export const PrivateLinkForAzureAdCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    ownerTenantId: Schema.optional(Schema.String),
+    allTenants: Schema.optional(Schema.Boolean),
+    tenants: Schema.optional(Schema.Array(Schema.String)),
+    resourceName: Schema.optional(Schema.String),
+    subscriptionId: Schema.optional(Schema.String),
+    resourceGroup: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateLinkForAzureAdCreateInput =
@@ -168,6 +216,7 @@ export const PrivateLinkForAzureAdDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateLinkForAzureAdDeleteInput =
@@ -195,6 +244,7 @@ export const PrivateLinkForAzureAdGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateLinkForAzureAdGetInput =
@@ -226,6 +276,7 @@ export const PrivateLinkForAzureAdListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateLinkForAzureAdListInput =
@@ -264,6 +315,7 @@ export const PrivateLinkForAzureAdListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/microsoft.aadiam/privateLinkForAzureAd",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateLinkForAzureAdListBySubscriptionInput =
@@ -297,10 +349,13 @@ export const privateLinkForAzureAdListBySubscription =
   }));
 // Input Schema
 export const PrivateLinkForAzureAdUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateLinkForAzureAdUpdateInput =
@@ -332,6 +387,7 @@ export const PrivateLinkResourcesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateLinkResources/{groupName}",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -363,6 +419,7 @@ export const PrivateLinkResourcesListByPrivateLinkPolicyInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateLinkResources",
+      apiVersion: "2020-03-01",
     }),
   );
 export type PrivateLinkResourcesListByPrivateLinkPolicyInput =

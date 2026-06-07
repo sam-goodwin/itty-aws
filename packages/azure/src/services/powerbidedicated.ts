@@ -14,11 +14,23 @@ export const AutoScaleVCoresCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcoreName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        capacityLimit: Schema.optional(Schema.Number),
+      }),
+    ),
+    sku: Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(Schema.Literals(["AutoScale"])),
+      capacity: Schema.optional(Schema.Number),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
+      apiVersion: "2021-01-01",
     }),
   );
 export type AutoScaleVCoresCreateInput = typeof AutoScaleVCoresCreateInput.Type;
@@ -68,11 +80,11 @@ export const AutoScaleVCoresDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcoreName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
+      apiVersion: "2021-01-01",
     }),
   );
 export type AutoScaleVCoresDeleteInput = typeof AutoScaleVCoresDeleteInput.Type;
@@ -104,11 +116,11 @@ export const AutoScaleVCoresGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcoreName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
+      apiVersion: "2021-01-01",
     }),
   );
 export type AutoScaleVCoresGetInput = typeof AutoScaleVCoresGetInput.Type;
@@ -154,11 +166,11 @@ export const AutoScaleVCoresListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
+      apiVersion: "2021-01-01",
     }),
   );
 export type AutoScaleVCoresListByResourceGroupInput =
@@ -220,11 +232,11 @@ export const AutoScaleVCoresListByResourceGroup =
 export const AutoScaleVCoresListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
+      apiVersion: "2021-01-01",
     }),
   );
 export type AutoScaleVCoresListBySubscriptionInput =
@@ -287,11 +299,24 @@ export const AutoScaleVCoresUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcoreName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.Literals(["AutoScale"])),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.Struct({
+        capacityLimit: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
+      apiVersion: "2021-01-01",
     }),
   );
 export type AutoScaleVCoresUpdateInput = typeof AutoScaleVCoresUpdateInput.Type;
@@ -340,11 +365,13 @@ export const CapacitiesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/locations/{location}/checkNameAvailability",
+      apiVersion: "2021-01-01",
     }),
   );
 export type CapacitiesCheckNameAvailabilityInput =
@@ -378,11 +405,32 @@ export const CapacitiesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      administration: Schema.optional(
+        Schema.Struct({
+          members: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      mode: Schema.optional(Schema.Literals(["Gen1", "Gen2"])),
+      tenantId: Schema.optional(Schema.String),
+      friendlyName: Schema.optional(Schema.String),
+    }),
+  ),
+  sku: Schema.Struct({
+    name: Schema.String,
+    tier: Schema.optional(
+      Schema.Literals(["PBIE_Azure", "Premium", "AutoPremiumHost"]),
+    ),
+    capacity: Schema.optional(Schema.Number),
+  }),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
+    apiVersion: "2021-01-01",
   }),
 );
 export type CapacitiesCreateInput = typeof CapacitiesCreateInput.Type;
@@ -429,11 +477,11 @@ export const CapacitiesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
+    apiVersion: "2021-01-01",
   }),
 );
 export type CapacitiesDeleteInput = typeof CapacitiesDeleteInput.Type;
@@ -461,11 +509,11 @@ export const CapacitiesGetDetailsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
+      apiVersion: "2021-01-01",
     }),
   );
 export type CapacitiesGetDetailsInput = typeof CapacitiesGetDetailsInput.Type;
@@ -511,11 +559,11 @@ export const CapacitiesGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CapacitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/capacities",
+    apiVersion: "2021-01-01",
   }),
 );
 export type CapacitiesListInput = typeof CapacitiesListInput.Type;
@@ -563,11 +611,11 @@ export const CapacitiesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities",
+      apiVersion: "2021-01-01",
     }),
   );
 export type CapacitiesListByResourceGroupInput =
@@ -629,11 +677,11 @@ export const CapacitiesListByResourceGroup =
 export const CapacitiesListSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/skus",
+      apiVersion: "2021-01-01",
     }),
   );
 export type CapacitiesListSkusInput = typeof CapacitiesListSkusInput.Type;
@@ -672,11 +720,11 @@ export const CapacitiesListSkusForCapacityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/skus",
+      apiVersion: "2021-01-01",
     }),
   );
 export type CapacitiesListSkusForCapacityInput =
@@ -724,11 +772,11 @@ export const CapacitiesResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/resume",
+    apiVersion: "2021-01-01",
   }),
 );
 export type CapacitiesResumeInput = typeof CapacitiesResumeInput.Type;
@@ -756,12 +804,12 @@ export const CapacitiesSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/suspend",
+    apiVersion: "2021-01-01",
   }),
 );
 export type CapacitiesSuspendInput = typeof CapacitiesSuspendInput.Type;
@@ -788,11 +836,33 @@ export const CapacitiesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(
+        Schema.Literals(["PBIE_Azure", "Premium", "AutoPremiumHost"]),
+      ),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      administration: Schema.optional(
+        Schema.Struct({
+          members: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+      mode: Schema.optional(Schema.Literals(["Gen1", "Gen2"])),
+      tenantId: Schema.optional(Schema.String),
+      friendlyName: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
+    apiVersion: "2021-01-01",
   }),
 );
 export type CapacitiesUpdateInput = typeof CapacitiesUpdateInput.Type;
@@ -835,12 +905,13 @@ export const CapacitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CapacitiesUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.PowerBIDedicated/operations",
+    apiVersion: "2021-01-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;

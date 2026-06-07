@@ -10,10 +10,14 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AppsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    type: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/checkNameAvailability",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AppsCheckNameAvailabilityInput =
@@ -41,10 +45,14 @@ export const AppsCheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AppsCheckSubdomainAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    type: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/checkSubdomainAvailability",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AppsCheckSubdomainAvailabilityInput =
@@ -71,10 +79,36 @@ export const AppsCheckSubdomainAvailability =
   }));
 // Input Schema
 export const AppsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        applicationId: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        subdomain: Schema.optional(Schema.String),
+        template: Schema.optional(Schema.String),
+        state: Schema.optional(Schema.Literals(["created", "suspended"])),
+      }),
+    ),
+    sku: Schema.Struct({
+      name: Schema.Literals(["ST0", "ST1", "ST2"]),
+    }),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals(["None", "SystemAssigned"]),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AppsCreateOrUpdateInput = typeof AppsCreateOrUpdateInput.Type;
@@ -105,6 +139,7 @@ export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type AppsDeleteInput = typeof AppsDeleteInput.Type;
@@ -126,6 +161,7 @@ export const AppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type AppsGetInput = typeof AppsGetInput.Type;
@@ -154,6 +190,7 @@ export const AppsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AppsListByResourceGroupInput =
@@ -194,6 +231,7 @@ export const AppsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/iotApps",
+      apiVersion: "2021-06-01",
     }),
   );
 export type AppsListBySubscriptionInput =
@@ -235,6 +273,7 @@ export const AppsListTemplatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/appTemplates",
+    apiVersion: "2021-06-01",
   }),
 );
 export type AppsListTemplatesInput = typeof AppsListTemplatesInput.Type;
@@ -276,12 +315,34 @@ export const AppsListTemplates = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AppsListTemplatesOutput,
 }));
 // Input Schema
-export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["ST0", "ST1", "ST2"]),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      applicationId: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.String),
+      subdomain: Schema.optional(Schema.String),
+      template: Schema.optional(Schema.String),
+      state: Schema.optional(Schema.Literals(["created", "suspended"])),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals(["None", "SystemAssigned"]),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}",
+    apiVersion: "2021-06-01",
   }),
 );
 export type AppsUpdateInput = typeof AppsUpdateInput.Type;
@@ -308,7 +369,11 @@ export const AppsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.IoTCentral/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.IoTCentral/operations",
+    apiVersion: "2021-06-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 

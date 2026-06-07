@@ -11,11 +11,15 @@ import * as T from "../traits.ts";
 // Input Schema
 export const CheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Literals(["Microsoft.Management/managementGroups"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Management/checkNameAvailability",
+      apiVersion: "2023-04-01",
     }),
   );
 export type CheckNameAvailabilityInput = typeof CheckNameAvailabilityInput.Type;
@@ -44,7 +48,6 @@ export const CheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const EntitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
   $skiptoken: Schema.optional(Schema.String),
   $skip: Schema.optional(Schema.Number),
   $top: Schema.optional(Schema.Number),
@@ -72,6 +75,7 @@ export const EntitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Management/getEntities",
+    apiVersion: "2023-04-01",
   }),
 );
 export type EntitiesListInput = typeof EntitiesListInput.Type;
@@ -145,11 +149,17 @@ export const EntitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const HierarchySettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        requireAuthorizationForGroupCreation: Schema.optional(Schema.Boolean),
+        defaultManagementGroup: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
+      apiVersion: "2023-04-01",
     }),
   );
 export type HierarchySettingsCreateOrUpdateInput =
@@ -195,11 +205,11 @@ export const HierarchySettingsCreateOrUpdate =
 export const HierarchySettingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
+      apiVersion: "2023-04-01",
     }),
   );
 export type HierarchySettingsDeleteInput =
@@ -228,11 +238,11 @@ export const HierarchySettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const HierarchySettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
+      apiVersion: "2023-04-01",
     }),
   );
 export type HierarchySettingsGetInput = typeof HierarchySettingsGetInput.Type;
@@ -277,11 +287,11 @@ export const HierarchySettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const HierarchySettingsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings",
+      apiVersion: "2023-04-01",
     }),
   );
 export type HierarchySettingsListInput = typeof HierarchySettingsListInput.Type;
@@ -329,11 +339,17 @@ export const HierarchySettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const HierarchySettingsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        requireAuthorizationForGroupCreation: Schema.optional(Schema.Boolean),
+        defaultManagementGroup: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
+      apiVersion: "2023-04-01",
     }),
   );
 export type HierarchySettingsUpdateInput =
@@ -380,11 +396,52 @@ export const HierarchySettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ManagementGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        tenantId: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.NullOr(Schema.String)),
+        details: Schema.optional(
+          Schema.Struct({
+            version: Schema.optional(Schema.Number),
+            updatedTime: Schema.optional(Schema.String),
+            updatedBy: Schema.optional(Schema.String),
+            parent: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                displayName: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        children: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Literals([
+                    "Microsoft.Management/managementGroups",
+                    "/subscriptions",
+                  ]),
+                ),
+                id: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                displayName: Schema.optional(Schema.String),
+                children: Schema.optional(Schema.Array(Schema.Unknown)),
+              }),
+            ),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ManagementGroupsCreateOrUpdateInput =
@@ -432,11 +489,11 @@ export const ManagementGroupsCreateOrUpdate =
 export const ManagementGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ManagementGroupsDeleteInput =
@@ -467,7 +524,6 @@ export const ManagementGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ManagementGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(
       Schema.Literals(["children", "path", "ancestors"]),
     ),
@@ -477,6 +533,7 @@ export const ManagementGroupsGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ManagementGroupsGetInput = typeof ManagementGroupsGetInput.Type;
@@ -523,13 +580,13 @@ export const ManagementGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ManagementGroupsGetDescendantsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $skiptoken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/descendants",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ManagementGroupsGetDescendantsInput =
@@ -578,12 +635,12 @@ export const ManagementGroupsGetDescendants =
 // Input Schema
 export const ManagementGroupsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ManagementGroupsListInput = typeof ManagementGroupsListInput.Type;
@@ -630,11 +687,11 @@ export const ManagementGroupSubscriptionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ManagementGroupSubscriptionsCreateInput =
@@ -683,11 +740,11 @@ export const ManagementGroupSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ManagementGroupSubscriptionsDeleteInput =
@@ -718,11 +775,11 @@ export const ManagementGroupSubscriptionsGetSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ManagementGroupSubscriptionsGetSubscriptionInput =
@@ -770,12 +827,12 @@ export const ManagementGroupSubscriptionsGetSubscription =
 export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInput =
@@ -840,11 +897,13 @@ export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroup =
 export const ManagementGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    displayName: Schema.optional(Schema.String),
+    parentGroupId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}",
+      apiVersion: "2023-04-01",
     }),
   );
 export type ManagementGroupsUpdateInput =
@@ -889,10 +948,14 @@ export const ManagementGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Management/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Management/operations",
+    apiVersion: "2023-04-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -934,12 +997,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const StartTenantBackfillInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Management/startTenantBackfill",
+      apiVersion: "2023-04-01",
     }),
   );
 export type StartTenantBackfillInput = typeof StartTenantBackfillInput.Type;
@@ -973,12 +1035,11 @@ export const StartTenantBackfill = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const TenantBackfillStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Management/tenantBackfillStatus",
+      apiVersion: "2023-04-01",
     }),
   );
 export type TenantBackfillStatusInput = typeof TenantBackfillStatusInput.Type;

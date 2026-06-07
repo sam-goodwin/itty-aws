@@ -7,16 +7,19 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const ClustersCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.DBforPostgreSQL/serverGroupsv2"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability",
+      apiVersion: "2022-11-08",
     }),
   );
 export type ClustersCheckNameAvailabilityInput =
@@ -49,11 +52,89 @@ export const ClustersCheckNameAvailability =
 export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      administratorLogin: Schema.optional(Schema.String),
+      administratorLoginPassword: Schema.optional(SensitiveString),
+      provisioningState: Schema.optional(Schema.String),
+      state: Schema.optional(Schema.String),
+      postgresqlVersion: Schema.optional(Schema.String),
+      citusVersion: Schema.optional(Schema.String),
+      maintenanceWindow: Schema.optional(
+        Schema.Struct({
+          customWindow: Schema.optional(Schema.String),
+          startHour: Schema.optional(Schema.Number),
+          startMinute: Schema.optional(Schema.Number),
+          dayOfWeek: Schema.optional(Schema.Number),
+        }),
+      ),
+      preferredPrimaryZone: Schema.optional(Schema.String),
+      enableShardsOnCoordinator: Schema.optional(Schema.Boolean),
+      enableHa: Schema.optional(Schema.Boolean),
+      coordinatorServerEdition: Schema.optional(Schema.String),
+      coordinatorStorageQuotaInMb: Schema.optional(Schema.Number),
+      coordinatorVCores: Schema.optional(Schema.Number),
+      coordinatorEnablePublicIpAccess: Schema.optional(Schema.Boolean),
+      nodeServerEdition: Schema.optional(Schema.String),
+      nodeCount: Schema.optional(Schema.Number),
+      nodeStorageQuotaInMb: Schema.optional(Schema.Number),
+      nodeVCores: Schema.optional(Schema.Number),
+      nodeEnablePublicIpAccess: Schema.optional(Schema.Boolean),
+      serverNames: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            fullyQualifiedDomainName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      sourceResourceId: Schema.optional(Schema.String),
+      sourceLocation: Schema.optional(Schema.String),
+      pointInTimeUTC: Schema.optional(Schema.String),
+      readReplicas: Schema.optional(Schema.Array(Schema.String)),
+      earliestRestoreTime: Schema.optional(Schema.String),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                createdAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}",
+    apiVersion: "2022-11-08",
   }),
 );
 export type ClustersCreateInput = typeof ClustersCreateInput.Type;
@@ -96,11 +177,11 @@ export const ClustersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}",
+    apiVersion: "2022-11-08",
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -125,11 +206,11 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}",
+    apiVersion: "2022-11-08",
   }),
 );
 export type ClustersGetInput = typeof ClustersGetInput.Type;
@@ -171,11 +252,11 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2",
+    apiVersion: "2022-11-08",
   }),
 );
 export type ClustersListInput = typeof ClustersListInput.Type;
@@ -235,11 +316,11 @@ export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2",
+      apiVersion: "2022-11-08",
     }),
   );
 export type ClustersListByResourceGroupInput =
@@ -305,11 +386,11 @@ export const ClustersPromoteReadReplicaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/promote",
+      apiVersion: "2022-11-08",
     }),
   );
 export type ClustersPromoteReadReplicaInput =
@@ -339,11 +420,11 @@ export const ClustersPromoteReadReplica = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ClustersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/restart",
+    apiVersion: "2022-11-08",
   }),
 );
 export type ClustersRestartInput = typeof ClustersRestartInput.Type;
@@ -368,11 +449,11 @@ export const ClustersRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/start",
+    apiVersion: "2022-11-08",
   }),
 );
 export type ClustersStartInput = typeof ClustersStartInput.Type;
@@ -397,11 +478,11 @@ export const ClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/stop",
+    apiVersion: "2022-11-08",
   }),
 );
 export type ClustersStopInput = typeof ClustersStopInput.Type;
@@ -426,11 +507,39 @@ export const ClustersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      administratorLoginPassword: Schema.optional(SensitiveString),
+      postgresqlVersion: Schema.optional(Schema.String),
+      citusVersion: Schema.optional(Schema.String),
+      enableShardsOnCoordinator: Schema.optional(Schema.Boolean),
+      enableHa: Schema.optional(Schema.Boolean),
+      preferredPrimaryZone: Schema.optional(Schema.String),
+      coordinatorServerEdition: Schema.optional(Schema.String),
+      coordinatorStorageQuotaInMb: Schema.optional(Schema.Number),
+      coordinatorVCores: Schema.optional(Schema.Number),
+      coordinatorEnablePublicIpAccess: Schema.optional(Schema.Boolean),
+      nodeServerEdition: Schema.optional(Schema.String),
+      nodeCount: Schema.optional(Schema.Number),
+      nodeStorageQuotaInMb: Schema.optional(Schema.Number),
+      nodeVCores: Schema.optional(Schema.Number),
+      nodeEnablePublicIpAccess: Schema.optional(Schema.Boolean),
+      maintenanceWindow: Schema.optional(
+        Schema.Struct({
+          customWindow: Schema.optional(Schema.String),
+          startHour: Schema.optional(Schema.Number),
+          startMinute: Schema.optional(Schema.Number),
+          dayOfWeek: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}",
+    apiVersion: "2022-11-08",
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -474,12 +583,12 @@ export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/configurations/{configurationName}",
+    apiVersion: "2022-11-08",
   }),
 );
 export type ConfigurationsGetInput = typeof ConfigurationsGetInput.Type;
@@ -524,11 +633,11 @@ export const ConfigurationsGetCoordinatorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/coordinatorConfigurations/{configurationName}",
+      apiVersion: "2022-11-08",
     }),
   );
 export type ConfigurationsGetCoordinatorInput =
@@ -576,11 +685,11 @@ export const ConfigurationsGetNodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/nodeConfigurations/{configurationName}",
+      apiVersion: "2022-11-08",
     }),
   );
 export type ConfigurationsGetNodeInput = typeof ConfigurationsGetNodeInput.Type;
@@ -628,11 +737,11 @@ export const ConfigurationsListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/configurations",
+      apiVersion: "2022-11-08",
     }),
   );
 export type ConfigurationsListByClusterInput =
@@ -698,11 +807,11 @@ export const ConfigurationsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers/{serverName}/configurations",
+      apiVersion: "2022-11-08",
     }),
   );
 export type ConfigurationsListByServerInput =
@@ -768,11 +877,27 @@ export const ConfigurationsUpdateOnCoordinatorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        value: Schema.String,
+        source: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        defaultValue: Schema.optional(Schema.String),
+        dataType: Schema.optional(
+          Schema.Literals(["Boolean", "Numeric", "Integer", "Enumeration"]),
+        ),
+        allowedValues: Schema.optional(Schema.String),
+        requiresRestart: Schema.optional(Schema.Boolean),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Canceled", "InProgress", "Failed"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/coordinatorConfigurations/{configurationName}",
+      apiVersion: "2022-11-08",
     }),
   );
 export type ConfigurationsUpdateOnCoordinatorInput =
@@ -820,11 +945,27 @@ export const ConfigurationsUpdateOnNodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        value: Schema.String,
+        source: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        defaultValue: Schema.optional(Schema.String),
+        dataType: Schema.optional(
+          Schema.Literals(["Boolean", "Numeric", "Integer", "Enumeration"]),
+        ),
+        allowedValues: Schema.optional(Schema.String),
+        requiresRestart: Schema.optional(Schema.Boolean),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Canceled", "InProgress", "Failed"]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/nodeConfigurations/{configurationName}",
+      apiVersion: "2022-11-08",
     }),
   );
 export type ConfigurationsUpdateOnNodeInput =
@@ -873,11 +1014,18 @@ export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.Struct({
+      startIpAddress: Schema.String,
+      endIpAddress: Schema.String,
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Canceled", "InProgress", "Failed"]),
+      ),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}",
+      apiVersion: "2022-11-08",
     }),
   );
 export type FirewallRulesCreateOrUpdateInput =
@@ -926,11 +1074,11 @@ export const FirewallRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}",
+      apiVersion: "2022-11-08",
     }),
   );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
@@ -956,11 +1104,11 @@ export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}",
+    apiVersion: "2022-11-08",
   }),
 );
 export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
@@ -1006,11 +1154,11 @@ export const FirewallRulesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules",
+      apiVersion: "2022-11-08",
     }),
   );
 export type FirewallRulesListByClusterInput =
@@ -1071,12 +1219,13 @@ export const FirewallRulesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DBforPostgreSQL/operations",
+    apiVersion: "2022-11-08",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1124,7 +1273,6 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
         groupIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1145,10 +1293,28 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
         ),
       }),
     ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2022-11-08",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1197,11 +1363,11 @@ export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2022-11-08",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1231,11 +1397,11 @@ export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2022-11-08",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -1283,11 +1449,11 @@ export const PrivateEndpointConnectionsListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections",
+      apiVersion: "2022-11-08",
     }),
   );
 export type PrivateEndpointConnectionsListByClusterInput =
@@ -1351,11 +1517,11 @@ export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateLinkResources/{privateLinkResourceName}",
+      apiVersion: "2022-11-08",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -1404,11 +1570,11 @@ export const PrivateLinkResourcesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateLinkResources",
+      apiVersion: "2022-11-08",
     }),
   );
 export type PrivateLinkResourcesListByClusterInput =
@@ -1471,11 +1637,17 @@ export const PrivateLinkResourcesListByCluster =
 export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.Struct({
+    password: SensitiveString,
+    provisioningState: Schema.optional(
+      Schema.Literals(["Succeeded", "Canceled", "InProgress", "Failed"]),
+    ),
+  }),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles/{roleName}",
+    apiVersion: "2022-11-08",
   }),
 );
 export type RolesCreateInput = typeof RolesCreateInput.Type;
@@ -1518,11 +1690,11 @@ export const RolesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles/{roleName}",
+    apiVersion: "2022-11-08",
   }),
 );
 export type RolesDeleteInput = typeof RolesDeleteInput.Type;
@@ -1547,11 +1719,11 @@ export const RolesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const RolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles/{roleName}",
+    apiVersion: "2022-11-08",
   }),
 );
 export type RolesGetInput = typeof RolesGetInput.Type;
@@ -1595,11 +1767,11 @@ export const RolesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles",
+      apiVersion: "2022-11-08",
     }),
   );
 export type RolesListByClusterInput = typeof RolesListByClusterInput.Type;
@@ -1659,11 +1831,11 @@ export const RolesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers/{serverName}",
+    apiVersion: "2022-11-08",
   }),
 );
 export type ServersGetInput = typeof ServersGetInput.Type;
@@ -1707,11 +1879,11 @@ export const ServersListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers",
+      apiVersion: "2022-11-08",
     }),
   );
 export type ServersListByClusterInput = typeof ServersListByClusterInput.Type;

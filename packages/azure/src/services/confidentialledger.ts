@@ -17,6 +17,7 @@ export const CheckNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConfidentialLedger/checkNameAvailability",
+      apiVersion: "2022-05-13",
     }),
   );
 export type CheckNameAvailabilityInput = typeof CheckNameAvailabilityInput.Type;
@@ -44,12 +45,74 @@ export const CheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const LedgerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LedgerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      ledgerName: Schema.optional(Schema.String),
+      ledgerUri: Schema.optional(Schema.String),
+      identityServiceUri: Schema.optional(Schema.String),
+      ledgerInternalNamespace: Schema.optional(Schema.String),
+      ledgerType: Schema.optional(
+        Schema.Literals(["Unknown", "Public", "Private"]),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Unknown",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Updating",
+        ]),
+      ),
+      aadBasedSecurityPrincipals: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            tenantId: Schema.optional(Schema.String),
+            ledgerRoleName: Schema.optional(
+              Schema.Literals(["Reader", "Contributor", "Administrator"]),
+            ),
+          }),
+        ),
+      ),
+      certBasedSecurityPrincipals: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            cert: Schema.optional(Schema.String),
+            ledgerRoleName: Schema.optional(
+              Schema.Literals(["Reader", "Contributor", "Administrator"]),
+            ),
+          }),
+        ),
+      ),
+    }),
+  ),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}",
+    apiVersion: "2022-05-13",
   }),
 );
 export type LedgerCreateInput = typeof LedgerCreateInput.Type;
@@ -95,6 +158,7 @@ export const LedgerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}",
+    apiVersion: "2022-05-13",
   }),
 );
 export type LedgerDeleteInput = typeof LedgerDeleteInput.Type;
@@ -119,12 +183,14 @@ export const LedgerFilesExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ledgerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    restoreRegion: Schema.optional(Schema.String),
+    uri: Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}/filesExport",
+    apiVersion: "2026-02-23",
   }),
 );
 export type LedgerFilesExportInput = typeof LedgerFilesExportInput.Type;
@@ -156,6 +222,7 @@ export const LedgerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}",
+    apiVersion: "2022-05-13",
   }),
 );
 export type LedgerGetInput = typeof LedgerGetInput.Type;
@@ -202,6 +269,7 @@ export const LedgerListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers",
+      apiVersion: "2022-05-13",
     }),
   );
 export type LedgerListByResourceGroupInput =
@@ -272,6 +340,7 @@ export const LedgerListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ConfidentialLedger/ledgers",
+      apiVersion: "2022-05-13",
     }),
   );
 export type LedgerListBySubscriptionInput =
@@ -335,12 +404,74 @@ export const LedgerListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const LedgerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LedgerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      ledgerName: Schema.optional(Schema.String),
+      ledgerUri: Schema.optional(Schema.String),
+      identityServiceUri: Schema.optional(Schema.String),
+      ledgerInternalNamespace: Schema.optional(Schema.String),
+      ledgerType: Schema.optional(
+        Schema.Literals(["Unknown", "Public", "Private"]),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Unknown",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Deleting",
+          "Updating",
+        ]),
+      ),
+      aadBasedSecurityPrincipals: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            tenantId: Schema.optional(Schema.String),
+            ledgerRoleName: Schema.optional(
+              Schema.Literals(["Reader", "Contributor", "Administrator"]),
+            ),
+          }),
+        ),
+      ),
+      certBasedSecurityPrincipals: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            cert: Schema.optional(Schema.String),
+            ledgerRoleName: Schema.optional(
+              Schema.Literals(["Reader", "Contributor", "Administrator"]),
+            ),
+          }),
+        ),
+      ),
+    }),
+  ),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}",
+    apiVersion: "2022-05-13",
   }),
 );
 export type LedgerUpdateInput = typeof LedgerUpdateInput.Type;
@@ -386,6 +517,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ConfidentialLedger/operations",
+    apiVersion: "2022-05-13",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;

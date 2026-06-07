@@ -7,18 +7,18 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const BillingInfoGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/getBillingInfo",
+    apiVersion: "2025-06-11",
   }),
 );
 export type BillingInfoGetInput = typeof BillingInfoGetInput.Type;
@@ -61,12 +61,12 @@ export const BillingInfoGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const CreationSupportedGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     datadogOrganizationId: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/subscriptionStatuses/default",
+      apiVersion: "2025-06-11",
     }),
   );
 export type CreationSupportedGetInput = typeof CreationSupportedGetInput.Type;
@@ -101,12 +101,12 @@ export const CreationSupportedGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CreationSupportedListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     datadogOrganizationId: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/subscriptionStatuses",
+      apiVersion: "2025-06-11",
     }),
   );
 export type CreationSupportedListInput = typeof CreationSupportedListInput.Type;
@@ -147,11 +147,40 @@ export const CreationSupportedList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const MarketplaceAgreementsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        publisher: Schema.optional(Schema.String),
+        product: Schema.optional(Schema.String),
+        plan: Schema.optional(Schema.String),
+        licenseTextLink: Schema.optional(Schema.String),
+        privacyPolicyLink: Schema.optional(Schema.String),
+        retrieveDatetime: Schema.optional(Schema.String),
+        signature: Schema.optional(Schema.String),
+        accepted: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/agreements/default",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MarketplaceAgreementsCreateOrUpdateInput =
@@ -209,11 +238,11 @@ export const MarketplaceAgreementsCreateOrUpdate =
 export const MarketplaceAgreementsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/agreements",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MarketplaceAgreementsListInput =
@@ -290,11 +319,103 @@ export const MonitoredSubscriptionsCreateorUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        operation: Schema.optional(
+          Schema.Literals([
+            "AddBegin",
+            "AddComplete",
+            "DeleteBegin",
+            "DeleteComplete",
+            "Active",
+          ]),
+        ),
+        monitoredSubscriptionList: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              subscriptionId: Schema.optional(Schema.String),
+              status: Schema.optional(
+                Schema.Literals(["InProgress", "Active", "Failed", "Deleting"]),
+              ),
+              error: Schema.optional(Schema.String),
+              tagRules: Schema.optional(
+                Schema.Struct({
+                  provisioningState: Schema.optional(
+                    Schema.Literals([
+                      "Accepted",
+                      "Creating",
+                      "Updating",
+                      "Deleting",
+                      "Succeeded",
+                      "Failed",
+                      "Canceled",
+                      "Deleted",
+                      "NotSpecified",
+                    ]),
+                  ),
+                  logRules: Schema.optional(
+                    Schema.Struct({
+                      sendAadLogs: Schema.optional(Schema.Boolean),
+                      sendSubscriptionLogs: Schema.optional(Schema.Boolean),
+                      sendResourceLogs: Schema.optional(Schema.Boolean),
+                      filteringTags: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                            action: Schema.optional(
+                              Schema.Literals(["Include", "Exclude"]),
+                            ),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  metricRules: Schema.optional(
+                    Schema.Struct({
+                      filteringTags: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                            action: Schema.optional(
+                              Schema.Literals(["Include", "Exclude"]),
+                            ),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  agentRules: Schema.optional(
+                    Schema.Struct({
+                      enableAgentMonitoring: Schema.optional(Schema.Boolean),
+                      filteringTags: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                            action: Schema.optional(
+                              Schema.Literals(["Include", "Exclude"]),
+                            ),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  automuting: Schema.optional(Schema.Boolean),
+                  customMetrics: Schema.optional(Schema.Boolean),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MonitoredSubscriptionsCreateorUpdateInput =
@@ -346,11 +467,11 @@ export const MonitoredSubscriptionsDeleteInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MonitoredSubscriptionsDeleteInput =
@@ -384,11 +505,11 @@ export const MonitoredSubscriptionsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MonitoredSubscriptionsGetInput =
@@ -440,11 +561,11 @@ export const MonitoredSubscriptionsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MonitoredSubscriptionsListInput =
@@ -511,11 +632,103 @@ export const MonitoredSubscriptionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        operation: Schema.optional(
+          Schema.Literals([
+            "AddBegin",
+            "AddComplete",
+            "DeleteBegin",
+            "DeleteComplete",
+            "Active",
+          ]),
+        ),
+        monitoredSubscriptionList: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              subscriptionId: Schema.optional(Schema.String),
+              status: Schema.optional(
+                Schema.Literals(["InProgress", "Active", "Failed", "Deleting"]),
+              ),
+              error: Schema.optional(Schema.String),
+              tagRules: Schema.optional(
+                Schema.Struct({
+                  provisioningState: Schema.optional(
+                    Schema.Literals([
+                      "Accepted",
+                      "Creating",
+                      "Updating",
+                      "Deleting",
+                      "Succeeded",
+                      "Failed",
+                      "Canceled",
+                      "Deleted",
+                      "NotSpecified",
+                    ]),
+                  ),
+                  logRules: Schema.optional(
+                    Schema.Struct({
+                      sendAadLogs: Schema.optional(Schema.Boolean),
+                      sendSubscriptionLogs: Schema.optional(Schema.Boolean),
+                      sendResourceLogs: Schema.optional(Schema.Boolean),
+                      filteringTags: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                            action: Schema.optional(
+                              Schema.Literals(["Include", "Exclude"]),
+                            ),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  metricRules: Schema.optional(
+                    Schema.Struct({
+                      filteringTags: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                            action: Schema.optional(
+                              Schema.Literals(["Include", "Exclude"]),
+                            ),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  agentRules: Schema.optional(
+                    Schema.Struct({
+                      enableAgentMonitoring: Schema.optional(Schema.Boolean),
+                      filteringTags: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                            action: Schema.optional(
+                              Schema.Literals(["Include", "Exclude"]),
+                            ),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                  automuting: Schema.optional(Schema.Boolean),
+                  customMetrics: Schema.optional(Schema.Boolean),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MonitoredSubscriptionsUpdateInput =
@@ -565,11 +778,80 @@ export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Deleted",
+          "NotSpecified",
+        ]),
+      ),
+      monitoringStatus: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      marketplaceSubscriptionStatus: Schema.optional(
+        Schema.Literals([
+          "Provisioning",
+          "Active",
+          "Suspended",
+          "Unsubscribed",
+        ]),
+      ),
+      datadogOrganizationProperties: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          linkingAuthCode: Schema.optional(Schema.String),
+          linkingClientId: Schema.optional(Schema.String),
+          redirectUri: Schema.optional(Schema.String),
+          apiKey: Schema.optional(SensitiveString),
+          applicationKey: Schema.optional(Schema.String),
+          enterpriseAppId: Schema.optional(Schema.String),
+          cspm: Schema.optional(Schema.Boolean),
+          resourceCollection: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      userInfo: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          emailAddress: Schema.optional(Schema.String),
+          phoneNumber: Schema.optional(Schema.String),
+        }),
+      ),
+      liftrResourceCategory: Schema.optional(
+        Schema.Literals(["Unknown", "MonitorLogs"]),
+      ),
+      liftrResourcePreference: Schema.optional(Schema.Number),
+    }),
+  ),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(
+        Schema.Literals(["SystemAssigned", "UserAssigned"]),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}",
+    apiVersion: "2025-06-11",
   }),
 );
 export type MonitorsCreateInput = typeof MonitorsCreateInput.Type;
@@ -614,11 +896,11 @@ export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}",
+    apiVersion: "2025-06-11",
   }),
 );
 export type MonitorsDeleteInput = typeof MonitorsDeleteInput.Type;
@@ -645,11 +927,11 @@ export const MonitorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}",
+    apiVersion: "2025-06-11",
   }),
 );
 export type MonitorsGetInput = typeof MonitorsGetInput.Type;
@@ -695,11 +977,11 @@ export const MonitorsGetDefaultKeyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/getDefaultKey",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MonitorsGetDefaultKeyInput = typeof MonitorsGetDefaultKeyInput.Type;
@@ -733,11 +1015,11 @@ export const MonitorsGetDefaultKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const MonitorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/monitors",
+    apiVersion: "2025-06-11",
   }),
 );
 export type MonitorsListInput = typeof MonitorsListInput.Type;
@@ -786,11 +1068,11 @@ export const MonitorsListApiKeysInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listApiKeys",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MonitorsListApiKeysInput = typeof MonitorsListApiKeysInput.Type;
@@ -828,11 +1110,11 @@ export const MonitorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MonitorsListByResourceGroupInput =
@@ -897,12 +1179,12 @@ export const MonitorsListHostsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listHosts",
+    apiVersion: "2025-06-11",
   }),
 );
 export type MonitorsListHostsInput = typeof MonitorsListHostsInput.Type;
@@ -957,11 +1239,11 @@ export const MonitorsListLinkedResourcesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listLinkedResources",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MonitorsListLinkedResourcesInput =
@@ -1002,11 +1284,11 @@ export const MonitorsListMonitoredResourcesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listMonitoredResources",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MonitorsListMonitoredResourcesInput =
@@ -1049,11 +1331,11 @@ export const MonitorsRefreshSetPasswordLinkInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/refreshSetPasswordLink",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MonitorsRefreshSetPasswordLinkInput =
@@ -1062,7 +1344,7 @@ export type MonitorsRefreshSetPasswordLinkInput =
 // Output Schema
 export const MonitorsRefreshSetPasswordLinkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    setPasswordLink: Schema.optional(SensitiveString),
+    setPasswordLink: Schema.optional(SensitiveOutputString),
   });
 export type MonitorsRefreshSetPasswordLinkOutput =
   typeof MonitorsRefreshSetPasswordLinkOutput.Type;
@@ -1087,11 +1369,15 @@ export const MonitorsSetDefaultKeyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    createdBy: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    key: Schema.String,
+    created: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/setDefaultKey",
+      apiVersion: "2025-06-11",
     }),
   );
 export type MonitorsSetDefaultKeyInput = typeof MonitorsSetDefaultKeyInput.Type;
@@ -1122,11 +1408,26 @@ export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      monitoringStatus: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      cspm: Schema.optional(Schema.Boolean),
+      resourceCollection: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}",
+    apiVersion: "2025-06-11",
   }),
 );
 export type MonitorsUpdateInput = typeof MonitorsUpdateInput.Type;
@@ -1167,10 +1468,14 @@ export const MonitorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorsUpdateOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Datadog/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Datadog/operations",
+    apiVersion: "2025-06-11",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -1210,11 +1515,18 @@ export const OrganizationsResubscribeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+      }),
+    ),
+    azureSubscriptionId: Schema.optional(Schema.String),
+    resourceGroup: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/resubscribe",
+      apiVersion: "2025-06-11",
     }),
   );
 export type OrganizationsResubscribeInput =
@@ -1266,11 +1578,33 @@ export const SingleSignOnConfigurationsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "NotSpecified",
+          ]),
+        ),
+        singleSignOnState: Schema.optional(
+          Schema.Literals(["Initial", "Enable", "Disable", "Existing"]),
+        ),
+        enterpriseAppId: Schema.optional(Schema.String),
+        singleSignOnUrl: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}",
+      apiVersion: "2025-06-11",
     }),
   );
 export type SingleSignOnConfigurationsCreateOrUpdateInput =
@@ -1322,11 +1656,11 @@ export const SingleSignOnConfigurationsGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}",
+      apiVersion: "2025-06-11",
     }),
   );
 export type SingleSignOnConfigurationsGetInput =
@@ -1377,11 +1711,11 @@ export const SingleSignOnConfigurationsListInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/singleSignOnConfigurations",
+      apiVersion: "2025-06-11",
     }),
   );
 export type SingleSignOnConfigurationsListInput =
@@ -1447,11 +1781,79 @@ export const TagRulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
     ruleSetName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Deleted",
+            "NotSpecified",
+          ]),
+        ),
+        logRules: Schema.optional(
+          Schema.Struct({
+            sendAadLogs: Schema.optional(Schema.Boolean),
+            sendSubscriptionLogs: Schema.optional(Schema.Boolean),
+            sendResourceLogs: Schema.optional(Schema.Boolean),
+            filteringTags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                  action: Schema.optional(
+                    Schema.Literals(["Include", "Exclude"]),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        metricRules: Schema.optional(
+          Schema.Struct({
+            filteringTags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                  action: Schema.optional(
+                    Schema.Literals(["Include", "Exclude"]),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        agentRules: Schema.optional(
+          Schema.Struct({
+            enableAgentMonitoring: Schema.optional(Schema.Boolean),
+            filteringTags: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                  action: Schema.optional(
+                    Schema.Literals(["Include", "Exclude"]),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        automuting: Schema.optional(Schema.Boolean),
+        customMetrics: Schema.optional(Schema.Boolean),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/tagRules/{ruleSetName}",
+      apiVersion: "2025-06-11",
     }),
   );
 export type TagRulesCreateOrUpdateInput =
@@ -1503,11 +1905,11 @@ export const TagRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
   ruleSetName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/tagRules/{ruleSetName}",
+    apiVersion: "2025-06-11",
   }),
 );
 export type TagRulesGetInput = typeof TagRulesGetInput.Type;
@@ -1553,11 +1955,11 @@ export const TagRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/tagRules",
+    apiVersion: "2025-06-11",
   }),
 );
 export type TagRulesListInput = typeof TagRulesListInput.Type;

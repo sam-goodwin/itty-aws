@@ -14,11 +14,11 @@ export const ImageVersionsListByImageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/images/{imageName}/versions",
+      apiVersion: "2025-09-20",
     }),
   );
 export type ImageVersionsListByImageInput =
@@ -79,12 +79,13 @@ export const ImageVersionsListByImage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DevOpsInfrastructure/operations",
+    apiVersion: "2025-09-20",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -129,11 +130,13 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PoolsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
+    type: Schema.Literals(["Microsoft.DevOpsInfrastructure/pools"]),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/checkNameAvailability",
+      apiVersion: "2025-09-20",
     }),
   );
 export type PoolsCheckNameAvailabilityInput =
@@ -169,11 +172,71 @@ export const PoolsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+        maximumConcurrency: Schema.Number,
+        organizationProfile: Schema.Struct({
+          kind: Schema.String,
+        }),
+        agentProfile: Schema.Struct({
+          kind: Schema.String,
+          resourcePredictions: Schema.optional(Schema.Unknown),
+          resourcePredictionsProfile: Schema.optional(
+            Schema.Struct({
+              kind: Schema.Literals(["Manual", "Automatic"]),
+            }),
+          ),
+        }),
+        fabricProfile: Schema.Struct({
+          kind: Schema.String,
+        }),
+        devCenterProjectResourceId: Schema.String,
+        runtimeConfiguration: Schema.optional(
+          Schema.Struct({
+            workFolder: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
+      apiVersion: "2025-09-20",
     }),
   );
 export type PoolsCreateOrUpdateInput = typeof PoolsCreateOrUpdateInput.Type;
@@ -219,11 +282,11 @@ export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
+    apiVersion: "2025-09-20",
   }),
 );
 export type PoolsDeleteInput = typeof PoolsDeleteInput.Type;
@@ -251,11 +314,12 @@ export const PoolsDeleteResourcesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    resourceIds: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}/resources",
+      apiVersion: "2025-09-20",
     }),
   );
 export type PoolsDeleteResourcesInput = typeof PoolsDeleteResourcesInput.Type;
@@ -285,11 +349,11 @@ export const PoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
+    apiVersion: "2025-09-20",
   }),
 );
 export type PoolsGetInput = typeof PoolsGetInput.Type;
@@ -334,11 +398,11 @@ export const PoolsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools",
+      apiVersion: "2025-09-20",
     }),
   );
 export type PoolsListByResourceGroupInput =
@@ -401,11 +465,11 @@ export const PoolsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PoolsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/pools",
+      apiVersion: "2025-09-20",
     }),
   );
 export type PoolsListBySubscriptionInput =
@@ -468,11 +532,76 @@ export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Provisioning",
+          "Updating",
+          "Deleting",
+          "Accepted",
+        ]),
+      ),
+      maximumConcurrency: Schema.optional(Schema.Number),
+      organizationProfile: Schema.optional(
+        Schema.Struct({
+          kind: Schema.String,
+        }),
+      ),
+      agentProfile: Schema.optional(
+        Schema.Struct({
+          kind: Schema.String,
+          resourcePredictions: Schema.optional(Schema.Unknown),
+          resourcePredictionsProfile: Schema.optional(
+            Schema.Struct({
+              kind: Schema.Literals(["Manual", "Automatic"]),
+            }),
+          ),
+        }),
+      ),
+      fabricProfile: Schema.optional(
+        Schema.Struct({
+          kind: Schema.String,
+        }),
+      ),
+      devCenterProjectResourceId: Schema.optional(Schema.String),
+      runtimeConfiguration: Schema.optional(
+        Schema.Struct({
+          workFolder: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
+    apiVersion: "2025-09-20",
   }),
 );
 export type PoolsUpdateInput = typeof PoolsUpdateInput.Type;
@@ -518,11 +647,11 @@ export const ResourceDetailsListByPoolInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}/resources",
+      apiVersion: "2025-09-20",
     }),
   );
 export type ResourceDetailsListByPoolInput =
@@ -587,12 +716,12 @@ export const SkuListByLocationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/locations/{locationName}/skus",
+    apiVersion: "2025-09-20",
   }),
 );
 export type SkuListByLocationInput = typeof SkuListByLocationInput.Type;
@@ -652,11 +781,11 @@ export const SubscriptionUsagesUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/locations/{location}/usages",
+      apiVersion: "2025-09-20",
     }),
   );
 export type SubscriptionUsagesUsagesInput =

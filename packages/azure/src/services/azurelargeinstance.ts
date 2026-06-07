@@ -14,11 +14,11 @@ export const AzureLargeInstanceGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}",
+      apiVersion: "2024-04-10",
     }),
   );
 export type AzureLargeInstanceGetInput = typeof AzureLargeInstanceGetInput.Type;
@@ -68,11 +68,11 @@ export const AzureLargeInstanceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances",
+      apiVersion: "2024-04-10",
     }),
   );
 export type AzureLargeInstanceListByResourceGroupInput =
@@ -135,11 +135,11 @@ export const AzureLargeInstanceListByResourceGroup =
 export const AzureLargeInstanceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureLargeInstance/azureLargeInstances",
+      apiVersion: "2024-04-10",
     }),
   );
 export type AzureLargeInstanceListBySubscriptionInput =
@@ -203,11 +203,12 @@ export const AzureLargeInstanceRestartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    forceState: Schema.optional(Schema.Literals(["active", "inactive"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/restart",
+      apiVersion: "2024-04-10",
     }),
   );
 export type AzureLargeInstanceRestartInput =
@@ -294,11 +295,11 @@ export const AzureLargeInstanceShutdownInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/shutdown",
+      apiVersion: "2024-04-10",
     }),
   );
 export type AzureLargeInstanceShutdownInput =
@@ -385,11 +386,11 @@ export const AzureLargeInstanceStartInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/start",
+      apiVersion: "2024-04-10",
     }),
   );
 export type AzureLargeInstanceStartInput =
@@ -476,11 +477,12 @@ export const AzureLargeInstanceUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}",
+      apiVersion: "2024-04-10",
     }),
   );
 export type AzureLargeInstanceUpdateInput =
@@ -532,11 +534,11 @@ export const AzureLargeStorageInstanceGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeStorageInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances/{azureLargeStorageInstanceName}",
+      apiVersion: "2024-04-10",
     }),
   );
 export type AzureLargeStorageInstanceGetInput =
@@ -586,11 +588,11 @@ export const AzureLargeStorageInstanceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances",
+      apiVersion: "2024-04-10",
     }),
   );
 export type AzureLargeStorageInstanceListByResourceGroupInput =
@@ -654,11 +656,11 @@ export const AzureLargeStorageInstanceListByResourceGroup =
 export const AzureLargeStorageInstanceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances",
+      apiVersion: "2024-04-10",
     }),
   );
 export type AzureLargeStorageInstanceListBySubscriptionInput =
@@ -722,11 +724,12 @@ export const AzureLargeStorageInstanceUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeStorageInstanceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances/{azureLargeStorageInstanceName}",
+      apiVersion: "2024-04-10",
     }),
   );
 export type AzureLargeStorageInstanceUpdateInput =
@@ -772,12 +775,13 @@ export const AzureLargeStorageInstanceUpdate =
     outputSchema: AzureLargeStorageInstanceUpdateOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzureLargeInstance/operations",
+    apiVersion: "2024-04-10",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;

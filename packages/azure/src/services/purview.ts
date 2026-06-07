@@ -10,10 +10,13 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const AccountsAddRootCollectionAdminInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectId: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/addRootCollectionAdmin",
+      apiVersion: "2021-12-01",
     }),
   );
 export type AccountsAddRootCollectionAdminInput =
@@ -38,10 +41,14 @@ export const AccountsAddRootCollectionAdmin =
   }));
 // Input Schema
 export const AccountsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Purview/checkNameAvailability",
+      apiVersion: "2021-12-01",
     }),
   );
 export type AccountsCheckNameAvailabilityInput =
@@ -70,10 +77,164 @@ export const AccountsCheckNameAvailability =
   }));
 // Input Schema
 export const AccountsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        accountStatus: Schema.optional(
+          Schema.Struct({
+            accountProvisioningState: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "Creating",
+                "Updating",
+                "Moving",
+                "Deleting",
+                "SoftDeleting",
+                "SoftDeleted",
+                "Failed",
+                "Succeeded",
+                "Canceled",
+              ]),
+            ),
+            errorDetails: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                details: Schema.optional(Schema.Array(Schema.Unknown)),
+                message: Schema.optional(Schema.String),
+                target: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        cloudConnectors: Schema.optional(
+          Schema.Struct({
+            awsExternalId: Schema.optional(Schema.String),
+          }),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByObjectId: Schema.optional(Schema.String),
+        endpoints: Schema.optional(
+          Schema.Struct({
+            catalog: Schema.optional(Schema.String),
+            guardian: Schema.optional(Schema.String),
+            scan: Schema.optional(Schema.String),
+          }),
+        ),
+        friendlyName: Schema.optional(Schema.String),
+        managedEventHubState: Schema.optional(
+          Schema.Literals(["NotSpecified", "Disabled", "Enabled"]),
+        ),
+        managedResourceGroupName: Schema.optional(Schema.String),
+        managedResources: Schema.optional(
+          Schema.Struct({
+            eventHubNamespace: Schema.optional(Schema.String),
+            resourceGroup: Schema.optional(Schema.String),
+            storageAccount: Schema.optional(Schema.String),
+          }),
+        ),
+        managedResourcesPublicNetworkAccess: Schema.optional(
+          Schema.Literals(["NotSpecified", "Enabled", "Disabled"]),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              systemData: Schema.optional(
+                Schema.Struct({
+                  createdAt: Schema.optional(Schema.String),
+                  createdBy: Schema.optional(Schema.String),
+                  createdByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                  lastModifiedAt: Schema.optional(Schema.String),
+                  lastModifiedBy: Schema.optional(Schema.String),
+                  lastModifiedByType: Schema.optional(
+                    Schema.Literals([
+                      "User",
+                      "Application",
+                      "ManagedIdentity",
+                      "Key",
+                    ]),
+                  ),
+                }),
+              ),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Creating",
+            "Moving",
+            "Deleting",
+            "SoftDeleting",
+            "SoftDeleted",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["NotSpecified", "Enabled", "Disabled"]),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        capacity: Schema.optional(Schema.Number),
+        name: Schema.optional(Schema.Literals(["Standard"])),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              clientId: Schema.optional(Schema.String),
+              principalId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdAt: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    type: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
+      apiVersion: "2021-12-01",
     }),
   );
 export type AccountsCreateOrUpdateInput =
@@ -142,6 +303,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
+    apiVersion: "2021-12-01",
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -167,6 +329,7 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
+    apiVersion: "2021-12-01",
   }),
 );
 export type AccountsGetInput = typeof AccountsGetInput.Type;
@@ -231,6 +394,7 @@ export const AccountsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts",
+      apiVersion: "2021-12-01",
     }),
   );
 export type AccountsListByResourceGroupInput =
@@ -318,6 +482,7 @@ export const AccountsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Purview/accounts",
+      apiVersion: "2021-12-01",
     }),
   );
 export type AccountsListBySubscriptionInput =
@@ -404,6 +569,7 @@ export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/listkeys",
+    apiVersion: "2021-12-01",
   }),
 );
 export type AccountsListKeysInput = typeof AccountsListKeysInput.Type;
@@ -428,12 +594,140 @@ export const AccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsListKeysOutput,
 }));
 // Input Schema
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(
+        Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+      ),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            principalId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      accountStatus: Schema.optional(
+        Schema.Struct({
+          accountProvisioningState: Schema.optional(
+            Schema.Literals([
+              "Unknown",
+              "Creating",
+              "Updating",
+              "Moving",
+              "Deleting",
+              "SoftDeleting",
+              "SoftDeleted",
+              "Failed",
+              "Succeeded",
+              "Canceled",
+            ]),
+          ),
+          errorDetails: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+      cloudConnectors: Schema.optional(
+        Schema.Struct({
+          awsExternalId: Schema.optional(Schema.String),
+        }),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByObjectId: Schema.optional(Schema.String),
+      endpoints: Schema.optional(
+        Schema.Struct({
+          catalog: Schema.optional(Schema.String),
+          guardian: Schema.optional(Schema.String),
+          scan: Schema.optional(Schema.String),
+        }),
+      ),
+      friendlyName: Schema.optional(Schema.String),
+      managedEventHubState: Schema.optional(
+        Schema.Literals(["NotSpecified", "Disabled", "Enabled"]),
+      ),
+      managedResourceGroupName: Schema.optional(Schema.String),
+      managedResources: Schema.optional(
+        Schema.Struct({
+          eventHubNamespace: Schema.optional(Schema.String),
+          resourceGroup: Schema.optional(Schema.String),
+          storageAccount: Schema.optional(Schema.String),
+        }),
+      ),
+      managedResourcesPublicNetworkAccess: Schema.optional(
+        Schema.Literals(["NotSpecified", "Enabled", "Disabled"]),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            systemData: Schema.optional(
+              Schema.Struct({
+                createdAt: Schema.optional(Schema.String),
+                createdBy: Schema.optional(Schema.String),
+                createdByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+                lastModifiedAt: Schema.optional(Schema.String),
+                lastModifiedBy: Schema.optional(Schema.String),
+                lastModifiedByType: Schema.optional(
+                  Schema.Literals([
+                    "User",
+                    "Application",
+                    "ManagedIdentity",
+                    "Key",
+                  ]),
+                ),
+              }),
+            ),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Unknown",
+          "Creating",
+          "Moving",
+          "Deleting",
+          "SoftDeleting",
+          "SoftDeleted",
+          "Failed",
+          "Succeeded",
+          "Canceled",
+        ]),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["NotSpecified", "Enabled", "Disabled"]),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
+    apiVersion: "2021-12-01",
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -500,6 +794,7 @@ export const DefaultAccountsGetInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Purview/getDefaultAccount",
+      apiVersion: "2021-12-01",
     }),
   );
 export type DefaultAccountsGetInput = typeof DefaultAccountsGetInput.Type;
@@ -540,6 +835,7 @@ export const DefaultAccountsRemoveInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Purview/removeDefaultAccount",
+      apiVersion: "2021-12-01",
     }),
   );
 export type DefaultAccountsRemoveInput = typeof DefaultAccountsRemoveInput.Type;
@@ -566,10 +862,18 @@ export const DefaultAccountsRemove = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DefaultAccountsSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountName: Schema.optional(Schema.String),
+    resourceGroupName: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+    scopeTenantId: Schema.optional(Schema.String),
+    scopeType: Schema.optional(Schema.Literals(["Tenant", "Subscription"])),
+    subscriptionId: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Purview/setDefaultAccount",
+      apiVersion: "2021-12-01",
     }),
   );
 export type DefaultAccountsSetInput = typeof DefaultAccountsSetInput.Type;
@@ -596,10 +900,13 @@ export const DefaultAccountsSet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const FeaturesAccountGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    features: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/listFeatures",
+      apiVersion: "2021-12-01",
     }),
   );
 export type FeaturesAccountGetInput = typeof FeaturesAccountGetInput.Type;
@@ -627,10 +934,12 @@ export const FeaturesAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FeaturesSubscriptionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.String.pipe(T.PathParam()),
+    features: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Purview/locations/{locations}/listFeatures",
+      apiVersion: "2021-12-01",
     }),
   );
 export type FeaturesSubscriptionGetInput =
@@ -664,10 +973,52 @@ export const FeaturesSubscriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const KafkaConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kafkaConfigurationName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        consumerGroup: Schema.optional(Schema.String),
+        credentials: Schema.optional(
+          Schema.Struct({
+            identityId: Schema.optional(Schema.String),
+            type: Schema.optional(
+              Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+            ),
+          }),
+        ),
+        eventHubResourceId: Schema.optional(Schema.String),
+        eventHubType: Schema.optional(
+          Schema.Literals(["Notification", "Hook"]),
+        ),
+        eventStreamingState: Schema.optional(
+          Schema.Literals(["Disabled", "Enabled"]),
+        ),
+        eventStreamingType: Schema.optional(
+          Schema.Literals(["None", "Managed", "Azure"]),
+        ),
+        eventHubPartitionId: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdAt: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+      }),
+    ),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/kafkaConfigurations/{kafkaConfigurationName}",
+      apiVersion: "2021-12-01",
     }),
   );
 export type KafkaConfigurationsCreateOrUpdateInput =
@@ -718,6 +1069,7 @@ export const KafkaConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/kafkaConfigurations/{kafkaConfigurationName}",
+      apiVersion: "2021-12-01",
     }),
   );
 export type KafkaConfigurationsDeleteInput =
@@ -751,6 +1103,7 @@ export const KafkaConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/kafkaConfigurations/{kafkaConfigurationName}",
+      apiVersion: "2021-12-01",
     }),
   );
 export type KafkaConfigurationsGetInput =
@@ -802,6 +1155,7 @@ export const KafkaConfigurationsListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/kafkaConfigurations",
+      apiVersion: "2021-12-01",
     }),
   );
 export type KafkaConfigurationsListByAccountInput =
@@ -863,7 +1217,11 @@ export const KafkaConfigurationsListByAccount =
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.Purview/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.Purview/operations",
+    apiVersion: "2021-12-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -953,10 +1311,53 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            actionsRequired: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "Pending",
+                "Approved",
+                "Rejected",
+                "Disconnected",
+              ]),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdAt: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+      }),
+    ),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-12-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1007,6 +1408,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-12-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1039,6 +1441,7 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2021-12-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -1089,6 +1492,7 @@ export const PrivateEndpointConnectionsListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateEndpointConnections",
+      apiVersion: "2021-12-01",
     }),
   );
 export type PrivateEndpointConnectionsListByAccountInput =
@@ -1154,6 +1558,7 @@ export const PrivateLinkResourcesGetByGroupIdInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateLinkResources/{groupId}",
+      apiVersion: "2021-12-01",
     }),
   );
 export type PrivateLinkResourcesGetByGroupIdInput =
@@ -1195,6 +1600,7 @@ export const PrivateLinkResourcesListByAccountInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateLinkResources",
+      apiVersion: "2021-12-01",
     }),
   );
 export type PrivateLinkResourcesListByAccountInput =
@@ -1241,6 +1647,7 @@ export const UsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Purview/locations/{location}/usages",
+    apiVersion: "2021-12-01",
   }),
 );
 export type UsagesGetInput = typeof UsagesGetInput.Type;

@@ -7,16 +7,17 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AgentVersionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   osType: Schema.String.pipe(T.PathParam()),
   version: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HybridCompute/osType/{osType}/agentVersions/{version}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type AgentVersionGetInput = typeof AgentVersionGetInput.Type;
@@ -44,11 +45,11 @@ export const AgentVersionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AgentVersionListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   osType: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HybridCompute/osType/{osType}/agentVersions",
+    apiVersion: "2025-01-13",
   }),
 );
 export type AgentVersionListInput = typeof AgentVersionListInput.Type;
@@ -89,11 +90,11 @@ export const ExtensionMetadataGetInput =
     publisher: Schema.String.pipe(T.PathParam()),
     extensionType: Schema.String.pipe(T.PathParam()),
     version: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes/{extensionType}/versions/{version}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type ExtensionMetadataGetInput = typeof ExtensionMetadataGetInput.Type;
@@ -145,11 +146,11 @@ export const ExtensionMetadataListInput =
     location: Schema.String.pipe(T.PathParam()),
     publisher: Schema.String.pipe(T.PathParam()),
     extensionType: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes/{extensionType}/versions",
+      apiVersion: "2025-01-13",
     }),
   );
 export type ExtensionMetadataListInput = typeof ExtensionMetadataListInput.Type;
@@ -217,11 +218,11 @@ export const ExtensionMetadataV2GetInput =
     publisher: Schema.String.pipe(T.PathParam()),
     extensionType: Schema.String.pipe(T.PathParam()),
     version: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes/{extensionType}/versions/{version}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type ExtensionMetadataV2GetInput =
@@ -273,11 +274,11 @@ export const ExtensionMetadataV2ListInput =
     location: Schema.String.pipe(T.PathParam()),
     publisher: Schema.String.pipe(T.PathParam()),
     extensionType: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes/{extensionType}/versions",
+      apiVersion: "2025-01-13",
     }),
   );
 export type ExtensionMetadataV2ListInput =
@@ -343,11 +344,11 @@ export const ExtensionMetadataV2List = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ExtensionPublisherListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.HybridCompute/locations/{location}/publishers",
+      apiVersion: "2025-01-13",
     }),
   );
 export type ExtensionPublisherListInput =
@@ -387,12 +388,12 @@ export const ExtensionTypeListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     location: Schema.String.pipe(T.PathParam()),
     publisher: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes",
+    apiVersion: "2025-01-13",
   }),
 );
 export type ExtensionTypeListInput = typeof ExtensionTypeListInput.Type;
@@ -429,11 +430,33 @@ export const GatewaysCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Accepted",
+            "Canceled",
+            "Deleted",
+          ]),
+        ),
+        gatewayId: Schema.optional(Schema.String),
+        gatewayType: Schema.optional(Schema.Literals(["Public"])),
+        gatewayEndpoint: Schema.optional(Schema.String),
+        allowedFeatures: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/gateways/{gatewayName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type GatewaysCreateOrUpdateInput =
@@ -481,11 +504,11 @@ export const GatewaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/gateways/{gatewayName}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type GatewaysDeleteInput = typeof GatewaysDeleteInput.Type;
@@ -510,11 +533,11 @@ export const GatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const GatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/gateways/{gatewayName}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type GatewaysGetInput = typeof GatewaysGetInput.Type;
@@ -558,11 +581,11 @@ export const GatewaysListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/gateways",
+      apiVersion: "2025-01-13",
     }),
   );
 export type GatewaysListByResourceGroupInput =
@@ -625,11 +648,11 @@ export const GatewaysListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const GatewaysListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/gateways",
+      apiVersion: "2025-01-13",
     }),
   );
 export type GatewaysListBySubscriptionInput =
@@ -691,11 +714,17 @@ export const GatewaysListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const GatewaysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      allowedFeatures: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/gateways/{gatewayName}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type GatewaysUpdateInput = typeof GatewaysUpdateInput.Type;
@@ -741,11 +770,11 @@ export const HybridIdentityMetadataGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     metadataName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/hybridIdentityMetadata/{metadataName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type HybridIdentityMetadataGetInput =
@@ -799,11 +828,11 @@ export const HybridIdentityMetadataListByMachinesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/hybridIdentityMetadata",
+      apiVersion: "2025-01-13",
     }),
   );
 export type HybridIdentityMetadataListByMachinesInput =
@@ -869,11 +898,157 @@ export const LicenseProfilesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        softwareAssurance: Schema.optional(
+          Schema.Struct({
+            softwareAssuranceCustomer: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        esuProfile: Schema.optional(
+          Schema.Struct({
+            assignedLicenseImmutableId: Schema.optional(Schema.String),
+            esuKeys: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  sku: Schema.optional(Schema.String),
+                  licenseStatus: Schema.optional(Schema.Number),
+                }),
+              ),
+            ),
+          }),
+        ),
+        productProfile: Schema.optional(
+          Schema.Struct({
+            subscriptionStatus: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "Enabling",
+                "Enabled",
+                "Disabled",
+                "Disabling",
+                "Failed",
+              ]),
+            ),
+            productType: Schema.optional(
+              Schema.Literals(["WindowsServer", "WindowsIoTEnterprise"]),
+            ),
+            enrollmentDate: Schema.optional(Schema.String),
+            billingStartDate: Schema.optional(Schema.String),
+            disenrollmentDate: Schema.optional(Schema.String),
+            billingEndDate: Schema.optional(Schema.String),
+            error: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                target: Schema.optional(Schema.String),
+                details: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                      target: Schema.optional(Schema.String),
+                      details: Schema.optional(Schema.Array(Schema.Unknown)),
+                      additionalInfo: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            type: Schema.optional(Schema.String),
+                            info: Schema.optional(Schema.Unknown),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                ),
+                additionalInfo: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      type: Schema.optional(Schema.String),
+                      info: Schema.optional(Schema.Unknown),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            productFeatures: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  subscriptionStatus: Schema.optional(
+                    Schema.Literals([
+                      "Unknown",
+                      "Enabling",
+                      "Enabled",
+                      "Disabled",
+                      "Disabling",
+                      "Failed",
+                    ]),
+                  ),
+                  enrollmentDate: Schema.optional(Schema.String),
+                  billingStartDate: Schema.optional(Schema.String),
+                  disenrollmentDate: Schema.optional(Schema.String),
+                  billingEndDate: Schema.optional(Schema.String),
+                  error: Schema.optional(
+                    Schema.Struct({
+                      code: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                      target: Schema.optional(Schema.String),
+                      details: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            code: Schema.optional(Schema.String),
+                            message: Schema.optional(Schema.String),
+                            target: Schema.optional(Schema.String),
+                            details: Schema.optional(
+                              Schema.Array(Schema.Unknown),
+                            ),
+                            additionalInfo: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  type: Schema.optional(Schema.String),
+                                  info: Schema.optional(Schema.Unknown),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      ),
+                      additionalInfo: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            type: Schema.optional(Schema.String),
+                            info: Schema.optional(Schema.Unknown),
+                          }),
+                        ),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Accepted",
+            "Canceled",
+            "Deleted",
+          ]),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type LicenseProfilesCreateOrUpdateInput =
@@ -921,11 +1096,11 @@ export const LicenseProfilesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type LicenseProfilesDeleteInput = typeof LicenseProfilesDeleteInput.Type;
@@ -955,11 +1130,11 @@ export const LicenseProfilesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type LicenseProfilesGetInput = typeof LicenseProfilesGetInput.Type;
@@ -1005,11 +1180,11 @@ export const LicenseProfilesListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles",
+      apiVersion: "2025-01-13",
     }),
   );
 export type LicenseProfilesListInput = typeof LicenseProfilesListInput.Type;
@@ -1070,11 +1245,46 @@ export const LicenseProfilesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        softwareAssurance: Schema.optional(
+          Schema.Struct({
+            softwareAssuranceCustomer: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        esuProfile: Schema.optional(
+          Schema.Struct({
+            assignedLicense: Schema.optional(Schema.String),
+          }),
+        ),
+        productProfile: Schema.optional(
+          Schema.Struct({
+            subscriptionStatus: Schema.optional(
+              Schema.Literals(["Enable", "Disable"]),
+            ),
+            productType: Schema.optional(
+              Schema.Literals(["WindowsServer", "WindowsIoTEnterprise"]),
+            ),
+            productFeatures: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  subscriptionStatus: Schema.optional(
+                    Schema.Literals(["Enable", "Disable"]),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type LicenseProfilesUpdateInput = typeof LicenseProfilesUpdateInput.Type;
@@ -1122,11 +1332,61 @@ export const LicensesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Accepted",
+            "Canceled",
+            "Deleted",
+          ]),
+        ),
+        tenantId: Schema.optional(Schema.String),
+        licenseType: Schema.optional(Schema.Literals(["ESU"])),
+        licenseDetails: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(
+              Schema.Literals(["Activated", "Deactivated"]),
+            ),
+            target: Schema.optional(
+              Schema.Literals([
+                "Windows Server 2012",
+                "Windows Server 2012 R2",
+              ]),
+            ),
+            edition: Schema.optional(
+              Schema.Literals(["Standard", "Datacenter"]),
+            ),
+            type: Schema.optional(Schema.Literals(["pCore", "vCore"])),
+            processors: Schema.optional(Schema.Number),
+            assignedLicenses: Schema.optional(Schema.Number),
+            immutableId: Schema.optional(Schema.String),
+            volumeLicenseDetails: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  programYear: Schema.optional(
+                    Schema.Literals(["Year 1", "Year 2", "Year 3"]),
+                  ),
+                  invoiceId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type LicensesCreateOrUpdateInput =
@@ -1174,11 +1434,11 @@ export const LicensesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const LicensesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type LicensesDeleteInput = typeof LicensesDeleteInput.Type;
@@ -1203,11 +1463,11 @@ export const LicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const LicensesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type LicensesGetInput = typeof LicensesGetInput.Type;
@@ -1251,11 +1511,11 @@ export const LicensesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses",
+      apiVersion: "2025-01-13",
     }),
   );
 export type LicensesListByResourceGroupInput =
@@ -1318,11 +1578,11 @@ export const LicensesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const LicensesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/licenses",
+      apiVersion: "2025-01-13",
     }),
   );
 export type LicensesListBySubscriptionInput =
@@ -1384,11 +1644,28 @@ export const LicensesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const LicensesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      licenseType: Schema.optional(Schema.Literals(["ESU"])),
+      licenseDetails: Schema.optional(
+        Schema.Struct({
+          state: Schema.optional(Schema.Literals(["Activated", "Deactivated"])),
+          target: Schema.optional(
+            Schema.Literals(["Windows Server 2012", "Windows Server 2012 R2"]),
+          ),
+          edition: Schema.optional(Schema.Literals(["Standard", "Datacenter"])),
+          type: Schema.optional(Schema.Literals(["pCore", "vCore"])),
+          processors: Schema.optional(Schema.Number),
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type LicensesUpdateInput = typeof LicensesUpdateInput.Type;
@@ -1431,11 +1708,61 @@ export const LicensesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const LicensesValidateLicenseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Failed",
+            "Accepted",
+            "Canceled",
+            "Deleted",
+          ]),
+        ),
+        tenantId: Schema.optional(Schema.String),
+        licenseType: Schema.optional(Schema.Literals(["ESU"])),
+        licenseDetails: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(
+              Schema.Literals(["Activated", "Deactivated"]),
+            ),
+            target: Schema.optional(
+              Schema.Literals([
+                "Windows Server 2012",
+                "Windows Server 2012 R2",
+              ]),
+            ),
+            edition: Schema.optional(
+              Schema.Literals(["Standard", "Datacenter"]),
+            ),
+            type: Schema.optional(Schema.Literals(["pCore", "vCore"])),
+            processors: Schema.optional(Schema.Number),
+            assignedLicenses: Schema.optional(Schema.Number),
+            immutableId: Schema.optional(Schema.String),
+            volumeLicenseDetails: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  programYear: Schema.optional(
+                    Schema.Literals(["Year 1", "Year 2", "Year 3"]),
+                  ),
+                  invoiceId: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/validateLicense",
+      apiVersion: "2025-01-13",
     }),
   );
 export type LicensesValidateLicenseInput =
@@ -1485,11 +1812,46 @@ export const MachineExtensionsCreateOrUpdateInput =
     machineName: Schema.String.pipe(T.PathParam()),
     extensionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        forceUpdateTag: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        typeHandlerVersion: Schema.optional(Schema.String),
+        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+        settings: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        protectedSettings: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            typeHandlerVersion: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                level: Schema.optional(
+                  Schema.Literals(["Info", "Warning", "Error"]),
+                ),
+                displayStatus: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachineExtensionsCreateOrUpdateInput =
@@ -1541,11 +1903,11 @@ export const MachineExtensionsDeleteInput =
     machineName: Schema.String.pipe(T.PathParam()),
     extensionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachineExtensionsDeleteInput =
@@ -1580,11 +1942,11 @@ export const MachineExtensionsGetInput =
     machineName: Schema.String.pipe(T.PathParam()),
     extensionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachineExtensionsGetInput = typeof MachineExtensionsGetInput.Type;
@@ -1635,11 +1997,11 @@ export const MachineExtensionsListInput =
     machineName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachineExtensionsListInput = typeof MachineExtensionsListInput.Type;
@@ -1708,11 +2070,26 @@ export const MachineExtensionsUpdateInput =
     machineName: Schema.String.pipe(T.PathParam()),
     extensionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        forceUpdateTag: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        typeHandlerVersion: Schema.optional(Schema.String),
+        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+        settings: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        protectedSettings: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachineExtensionsUpdateInput =
@@ -1763,11 +2140,99 @@ export const MachineRunCommandsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        source: Schema.optional(
+          Schema.Struct({
+            script: Schema.optional(Schema.String),
+            scriptUri: Schema.optional(Schema.String),
+            commandId: Schema.optional(Schema.String),
+            scriptUriManagedIdentity: Schema.optional(
+              Schema.Struct({
+                clientId: Schema.optional(Schema.String),
+                objectId: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        parameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        protectedParameters: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        asyncExecution: Schema.optional(Schema.Boolean),
+        runAsUser: Schema.optional(Schema.String),
+        runAsPassword: Schema.optional(SensitiveString),
+        timeoutInSeconds: Schema.optional(Schema.Number),
+        outputBlobUri: Schema.optional(Schema.String),
+        errorBlobUri: Schema.optional(Schema.String),
+        outputBlobManagedIdentity: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
+        ),
+        errorBlobManagedIdentity: Schema.optional(
+          Schema.Struct({
+            clientId: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            executionState: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "Pending",
+                "Running",
+                "Failed",
+                "Succeeded",
+                "TimedOut",
+                "Canceled",
+              ]),
+            ),
+            executionMessage: Schema.optional(Schema.String),
+            exitCode: Schema.optional(Schema.Number),
+            output: Schema.optional(Schema.String),
+            error: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+            statuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachineRunCommandsCreateOrUpdateInput =
@@ -1815,11 +2280,11 @@ export const MachineRunCommandsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachineRunCommandsDeleteInput =
@@ -1850,11 +2315,11 @@ export const MachineRunCommandsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachineRunCommandsGetInput = typeof MachineRunCommandsGetInput.Type;
@@ -1903,11 +2368,11 @@ export const MachineRunCommandsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachineRunCommandsListInput =
@@ -1974,11 +2439,12 @@ export const MachineRunCommandsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachineRunCommandsUpdateInput =
@@ -2028,11 +2494,11 @@ export const MachinesAssessPatchesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{name}/assessPatches",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachinesAssessPatchesInput = typeof MachinesAssessPatchesInput.Type;
@@ -2129,12 +2595,563 @@ export const MachinesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        locationData: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            city: Schema.optional(Schema.String),
+            district: Schema.optional(Schema.String),
+            countryOrRegion: Schema.optional(Schema.String),
+          }),
+        ),
+        agentConfiguration: Schema.optional(
+          Schema.Struct({
+            proxyUrl: Schema.optional(Schema.String),
+            incomingConnectionsPorts: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            extensionsAllowList: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  publisher: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            extensionsBlockList: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  publisher: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            proxyBypass: Schema.optional(Schema.Array(Schema.String)),
+            extensionsEnabled: Schema.optional(Schema.String),
+            guestConfigurationEnabled: Schema.optional(Schema.String),
+            configMode: Schema.optional(Schema.Literals(["full", "monitor"])),
+          }),
+        ),
+        serviceStatuses: Schema.optional(
+          Schema.Struct({
+            extensionService: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(Schema.String),
+                startupType: Schema.optional(Schema.String),
+              }),
+            ),
+            guestConfigurationService: Schema.optional(
+              Schema.Struct({
+                status: Schema.optional(Schema.String),
+                startupType: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        hardwareProfile: Schema.optional(
+          Schema.Struct({
+            totalPhysicalMemoryInBytes: Schema.optional(Schema.Number),
+            numberOfCpuSockets: Schema.optional(Schema.Number),
+            processors: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  numberOfCores: Schema.optional(Schema.Number),
+                }),
+              ),
+            ),
+          }),
+        ),
+        storageProfile: Schema.optional(
+          Schema.Struct({
+            disks: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  path: Schema.optional(Schema.String),
+                  diskType: Schema.optional(Schema.String),
+                  generatedId: Schema.optional(Schema.String),
+                  id: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  maxSizeInBytes: Schema.optional(Schema.Number),
+                  usedSpaceInBytes: Schema.optional(Schema.Number),
+                }),
+              ),
+            ),
+          }),
+        ),
+        firmwareProfile: Schema.optional(
+          Schema.Struct({
+            serialNumber: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+        cloudMetadata: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+          }),
+        ),
+        agentUpgrade: Schema.optional(
+          Schema.Struct({
+            desiredVersion: Schema.optional(Schema.String),
+            correlationId: Schema.optional(Schema.String),
+            enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+            lastAttemptDesiredVersion: Schema.optional(Schema.String),
+            lastAttemptTimestamp: Schema.optional(Schema.String),
+            lastAttemptStatus: Schema.optional(
+              Schema.Literals(["Success", "Failed"]),
+            ),
+            lastAttemptMessage: Schema.optional(Schema.String),
+          }),
+        ),
+        osProfile: Schema.optional(
+          Schema.Struct({
+            computerName: Schema.optional(Schema.String),
+            windowsConfiguration: Schema.optional(
+              Schema.Struct({
+                patchSettings: Schema.optional(
+                  Schema.Struct({
+                    assessmentMode: Schema.optional(
+                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                    ),
+                    patchMode: Schema.optional(
+                      Schema.Literals([
+                        "ImageDefault",
+                        "AutomaticByPlatform",
+                        "AutomaticByOS",
+                        "Manual",
+                      ]),
+                    ),
+                    enableHotpatching: Schema.optional(Schema.Boolean),
+                    status: Schema.optional(
+                      Schema.Struct({
+                        hotpatchEnablementStatus: Schema.optional(
+                          Schema.Literals([
+                            "Unknown",
+                            "PendingEvaluation",
+                            "Disabled",
+                            "ActionRequired",
+                            "Enabled",
+                          ]),
+                        ),
+                        error: Schema.optional(
+                          Schema.Struct({
+                            code: Schema.optional(Schema.String),
+                            message: Schema.optional(Schema.String),
+                            target: Schema.optional(Schema.String),
+                            details: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  code: Schema.optional(Schema.String),
+                                  message: Schema.optional(Schema.String),
+                                  target: Schema.optional(Schema.String),
+                                  details: Schema.optional(
+                                    Schema.Array(Schema.Unknown),
+                                  ),
+                                  additionalInfo: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        type: Schema.optional(Schema.String),
+                                        info: Schema.optional(Schema.Unknown),
+                                      }),
+                                    ),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            additionalInfo: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  type: Schema.optional(Schema.String),
+                                  info: Schema.optional(Schema.Unknown),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            linuxConfiguration: Schema.optional(
+              Schema.Struct({
+                patchSettings: Schema.optional(
+                  Schema.Struct({
+                    assessmentMode: Schema.optional(
+                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                    ),
+                    patchMode: Schema.optional(
+                      Schema.Literals([
+                        "ImageDefault",
+                        "AutomaticByPlatform",
+                        "AutomaticByOS",
+                        "Manual",
+                      ]),
+                    ),
+                    enableHotpatching: Schema.optional(Schema.Boolean),
+                    status: Schema.optional(
+                      Schema.Struct({
+                        hotpatchEnablementStatus: Schema.optional(
+                          Schema.Literals([
+                            "Unknown",
+                            "PendingEvaluation",
+                            "Disabled",
+                            "ActionRequired",
+                            "Enabled",
+                          ]),
+                        ),
+                        error: Schema.optional(
+                          Schema.Struct({
+                            code: Schema.optional(Schema.String),
+                            message: Schema.optional(Schema.String),
+                            target: Schema.optional(Schema.String),
+                            details: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  code: Schema.optional(Schema.String),
+                                  message: Schema.optional(Schema.String),
+                                  target: Schema.optional(Schema.String),
+                                  details: Schema.optional(
+                                    Schema.Array(Schema.Unknown),
+                                  ),
+                                  additionalInfo: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        type: Schema.optional(Schema.String),
+                                        info: Schema.optional(Schema.Unknown),
+                                      }),
+                                    ),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            additionalInfo: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  type: Schema.optional(Schema.String),
+                                  info: Schema.optional(Schema.Unknown),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        licenseProfile: Schema.optional(
+          Schema.Struct({
+            licenseStatus: Schema.optional(
+              Schema.Literals([
+                "Unlicensed",
+                "Licensed",
+                "OOBGrace",
+                "OOTGrace",
+                "NonGenuineGrace",
+                "Notification",
+                "ExtendedGrace",
+              ]),
+            ),
+            licenseChannel: Schema.optional(Schema.String),
+            softwareAssurance: Schema.optional(
+              Schema.Struct({
+                softwareAssuranceCustomer: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            esuProfile: Schema.optional(
+              Schema.Struct({
+                assignedLicenseImmutableId: Schema.optional(Schema.String),
+                esuKeys: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      sku: Schema.optional(Schema.String),
+                      licenseStatus: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            productProfile: Schema.optional(
+              Schema.Struct({
+                subscriptionStatus: Schema.optional(
+                  Schema.Literals([
+                    "Unknown",
+                    "Enabling",
+                    "Enabled",
+                    "Disabled",
+                    "Disabling",
+                    "Failed",
+                  ]),
+                ),
+                productType: Schema.optional(
+                  Schema.Literals(["WindowsServer", "WindowsIoTEnterprise"]),
+                ),
+                enrollmentDate: Schema.optional(Schema.String),
+                billingStartDate: Schema.optional(Schema.String),
+                disenrollmentDate: Schema.optional(Schema.String),
+                billingEndDate: Schema.optional(Schema.String),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          code: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          target: Schema.optional(Schema.String),
+                          details: Schema.optional(
+                            Schema.Array(Schema.Unknown),
+                          ),
+                          additionalInfo: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                type: Schema.optional(Schema.String),
+                                info: Schema.optional(Schema.Unknown),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    ),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+                productFeatures: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      subscriptionStatus: Schema.optional(
+                        Schema.Literals([
+                          "Unknown",
+                          "Enabling",
+                          "Enabled",
+                          "Disabled",
+                          "Disabling",
+                          "Failed",
+                        ]),
+                      ),
+                      enrollmentDate: Schema.optional(Schema.String),
+                      billingStartDate: Schema.optional(Schema.String),
+                      disenrollmentDate: Schema.optional(Schema.String),
+                      billingEndDate: Schema.optional(Schema.String),
+                      error: Schema.optional(
+                        Schema.Struct({
+                          code: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          target: Schema.optional(Schema.String),
+                          details: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                code: Schema.optional(Schema.String),
+                                message: Schema.optional(Schema.String),
+                                target: Schema.optional(Schema.String),
+                                details: Schema.optional(
+                                  Schema.Array(Schema.Unknown),
+                                ),
+                                additionalInfo: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      type: Schema.optional(Schema.String),
+                                      info: Schema.optional(Schema.Unknown),
+                                    }),
+                                  ),
+                                ),
+                              }),
+                            ),
+                          ),
+                          additionalInfo: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                type: Schema.optional(Schema.String),
+                                info: Schema.optional(Schema.Unknown),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Literals(["Connected", "Disconnected", "Error"]),
+        ),
+        lastStatusChange: Schema.optional(Schema.String),
+        errorDetails: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              ),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        agentVersion: Schema.optional(Schema.String),
+        vmId: Schema.optional(Schema.String),
+        displayName: Schema.optional(Schema.String),
+        machineFqdn: Schema.optional(Schema.String),
+        clientPublicKey: Schema.optional(Schema.String),
+        identityKeyStore: Schema.optional(Schema.Literals(["TPM", "Default"])),
+        tpmEkCertificate: Schema.optional(Schema.String),
+        osName: Schema.optional(Schema.String),
+        osVersion: Schema.optional(Schema.String),
+        osType: Schema.optional(Schema.String),
+        vmUuid: Schema.optional(Schema.String),
+        extensions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              typeHandlerVersion: Schema.optional(Schema.String),
+              status: Schema.optional(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        osSku: Schema.optional(Schema.String),
+        osEdition: Schema.optional(Schema.String),
+        domainName: Schema.optional(Schema.String),
+        adFqdn: Schema.optional(Schema.String),
+        dnsFqdn: Schema.optional(Schema.String),
+        privateLinkScopeResourceId: Schema.optional(Schema.String),
+        parentClusterResourceId: Schema.optional(Schema.String),
+        mssqlDiscovered: Schema.optional(Schema.String),
+        detectedProperties: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        networkProfile: Schema.optional(
+          Schema.Struct({
+            networkInterfaces: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  macAddress: Schema.optional(Schema.String),
+                  id: Schema.optional(Schema.String),
+                  name: Schema.optional(Schema.String),
+                  ipAddresses: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        address: Schema.optional(Schema.String),
+                        ipAddressVersion: Schema.optional(Schema.String),
+                        subnet: Schema.optional(
+                          Schema.Struct({
+                            addressPrefix: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    resources: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+      }),
+    ),
+    kind: Schema.optional(
+      Schema.Literals(["AVS", "HCI", "SCVMM", "VMware", "EPS", "GCP", "AWS"]),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachinesCreateOrUpdateInput =
@@ -2185,11 +3202,11 @@ export const MachinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   machineName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type MachinesDeleteInput = typeof MachinesDeleteInput.Type;
@@ -2216,12 +3233,12 @@ export const MachinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   machineName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
   $expand: Schema.optional(Schema.Literals(["instanceView"])),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type MachinesGetInput = typeof MachinesGetInput.Type;
@@ -2268,11 +3285,44 @@ export const MachinesInstallPatchesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    maximumDuration: Schema.String,
+    rebootSetting: Schema.Literals(["IfRequired", "Never", "Always"]),
+    windowsParameters: Schema.optional(
+      Schema.Struct({
+        classificationsToInclude: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "Critical",
+              "Security",
+              "UpdateRollUp",
+              "FeaturePack",
+              "ServicePack",
+              "Definition",
+              "Tools",
+              "Updates",
+            ]),
+          ),
+        ),
+        kbNumbersToInclude: Schema.optional(Schema.Array(Schema.String)),
+        kbNumbersToExclude: Schema.optional(Schema.Array(Schema.String)),
+        excludeKbsRequiringReboot: Schema.optional(Schema.Boolean),
+        maxPatchPublishDate: Schema.optional(Schema.String),
+      }),
+    ),
+    linuxParameters: Schema.optional(
+      Schema.Struct({
+        classificationsToInclude: Schema.optional(
+          Schema.Array(Schema.Literals(["Critical", "Security", "Other"])),
+        ),
+        packageNameMasksToInclude: Schema.optional(Schema.Array(Schema.String)),
+        packageNameMasksToExclude: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{name}/installPatches",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachinesInstallPatchesInput =
@@ -2371,12 +3421,12 @@ export const MachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachinesListByResourceGroupInput =
@@ -2440,11 +3490,11 @@ export const MachinesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const MachinesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/machines",
+      apiVersion: "2025-01-13",
     }),
   );
 export type MachinesListBySubscriptionInput =
@@ -2507,11 +3557,197 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   machineName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+    }),
+  ),
+  kind: Schema.optional(
+    Schema.Literals(["AVS", "HCI", "SCVMM", "VMware", "EPS", "GCP", "AWS"]),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      locationData: Schema.optional(
+        Schema.Struct({
+          name: Schema.String,
+          city: Schema.optional(Schema.String),
+          district: Schema.optional(Schema.String),
+          countryOrRegion: Schema.optional(Schema.String),
+        }),
+      ),
+      osProfile: Schema.optional(
+        Schema.Struct({
+          computerName: Schema.optional(Schema.String),
+          windowsConfiguration: Schema.optional(
+            Schema.Struct({
+              patchSettings: Schema.optional(
+                Schema.Struct({
+                  assessmentMode: Schema.optional(
+                    Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                  ),
+                  patchMode: Schema.optional(
+                    Schema.Literals([
+                      "ImageDefault",
+                      "AutomaticByPlatform",
+                      "AutomaticByOS",
+                      "Manual",
+                    ]),
+                  ),
+                  enableHotpatching: Schema.optional(Schema.Boolean),
+                  status: Schema.optional(
+                    Schema.Struct({
+                      hotpatchEnablementStatus: Schema.optional(
+                        Schema.Literals([
+                          "Unknown",
+                          "PendingEvaluation",
+                          "Disabled",
+                          "ActionRequired",
+                          "Enabled",
+                        ]),
+                      ),
+                      error: Schema.optional(
+                        Schema.Struct({
+                          code: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          target: Schema.optional(Schema.String),
+                          details: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                code: Schema.optional(Schema.String),
+                                message: Schema.optional(Schema.String),
+                                target: Schema.optional(Schema.String),
+                                details: Schema.optional(
+                                  Schema.Array(Schema.Unknown),
+                                ),
+                                additionalInfo: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      type: Schema.optional(Schema.String),
+                                      info: Schema.optional(Schema.Unknown),
+                                    }),
+                                  ),
+                                ),
+                              }),
+                            ),
+                          ),
+                          additionalInfo: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                type: Schema.optional(Schema.String),
+                                info: Schema.optional(Schema.Unknown),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+          linuxConfiguration: Schema.optional(
+            Schema.Struct({
+              patchSettings: Schema.optional(
+                Schema.Struct({
+                  assessmentMode: Schema.optional(
+                    Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
+                  ),
+                  patchMode: Schema.optional(
+                    Schema.Literals([
+                      "ImageDefault",
+                      "AutomaticByPlatform",
+                      "AutomaticByOS",
+                      "Manual",
+                    ]),
+                  ),
+                  enableHotpatching: Schema.optional(Schema.Boolean),
+                  status: Schema.optional(
+                    Schema.Struct({
+                      hotpatchEnablementStatus: Schema.optional(
+                        Schema.Literals([
+                          "Unknown",
+                          "PendingEvaluation",
+                          "Disabled",
+                          "ActionRequired",
+                          "Enabled",
+                        ]),
+                      ),
+                      error: Schema.optional(
+                        Schema.Struct({
+                          code: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                          target: Schema.optional(Schema.String),
+                          details: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                code: Schema.optional(Schema.String),
+                                message: Schema.optional(Schema.String),
+                                target: Schema.optional(Schema.String),
+                                details: Schema.optional(
+                                  Schema.Array(Schema.Unknown),
+                                ),
+                                additionalInfo: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      type: Schema.optional(Schema.String),
+                                      info: Schema.optional(Schema.Unknown),
+                                    }),
+                                  ),
+                                ),
+                              }),
+                            ),
+                          ),
+                          additionalInfo: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                type: Schema.optional(Schema.String),
+                                info: Schema.optional(Schema.Unknown),
+                              }),
+                            ),
+                          ),
+                        }),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+      cloudMetadata: Schema.optional(
+        Schema.Struct({
+          provider: Schema.optional(Schema.String),
+        }),
+      ),
+      agentUpgrade: Schema.optional(
+        Schema.Struct({
+          desiredVersion: Schema.optional(Schema.String),
+          correlationId: Schema.optional(Schema.String),
+          enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+          lastAttemptDesiredVersion: Schema.optional(Schema.String),
+          lastAttemptTimestamp: Schema.optional(Schema.String),
+          lastAttemptStatus: Schema.optional(
+            Schema.Literals(["Success", "Failed"]),
+          ),
+          lastAttemptMessage: Schema.optional(Schema.String),
+        }),
+      ),
+      parentClusterResourceId: Schema.optional(Schema.String),
+      privateLinkScopeResourceId: Schema.optional(Schema.String),
+      identityKeyStore: Schema.optional(Schema.String),
+      tpmEkCertificate: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type MachinesUpdateInput = typeof MachinesUpdateInput.Type;
@@ -2556,11 +3792,37 @@ export const NetworkConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        location: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        networkConfigurationScopeId: Schema.optional(Schema.String),
+        networkConfigurationScopeResourceId: Schema.optional(Schema.String),
+        keyProperties: Schema.optional(
+          Schema.Struct({
+            clientPublicKey: Schema.optional(
+              Schema.Struct({
+                publicKey: Schema.optional(Schema.String),
+                notAfter: Schema.optional(Schema.String),
+                renewAfter: Schema.optional(Schema.String),
+              }),
+            ),
+            candidatePublicKey: Schema.optional(
+              Schema.Struct({
+                publicKey: Schema.optional(Schema.String),
+                notAfter: Schema.optional(Schema.String),
+                renewAfter: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.HybridCompute/networkConfigurations/current",
+      apiVersion: "2025-01-13",
     }),
   );
 export type NetworkConfigurationsCreateOrUpdateInput =
@@ -2608,11 +3870,11 @@ export const NetworkConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.HybridCompute/networkConfigurations/current",
+      apiVersion: "2025-01-13",
     }),
   );
 export type NetworkConfigurationsGetInput =
@@ -2661,11 +3923,37 @@ export const NetworkConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        location: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        networkConfigurationScopeId: Schema.optional(Schema.String),
+        networkConfigurationScopeResourceId: Schema.optional(Schema.String),
+        keyProperties: Schema.optional(
+          Schema.Struct({
+            clientPublicKey: Schema.optional(
+              Schema.Struct({
+                publicKey: Schema.optional(Schema.String),
+                notAfter: Schema.optional(Schema.String),
+                renewAfter: Schema.optional(Schema.String),
+              }),
+            ),
+            candidatePublicKey: Schema.optional(
+              Schema.Struct({
+                publicKey: Schema.optional(Schema.String),
+                notAfter: Schema.optional(Schema.String),
+                renewAfter: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.HybridCompute/networkConfigurations/current",
+      apiVersion: "2025-01-13",
     }),
   );
 export type NetworkConfigurationsUpdateInput =
@@ -2715,12 +4003,12 @@ export const NetworkProfileGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/networkProfile",
+    apiVersion: "2025-01-13",
   }),
 );
 export type NetworkProfileGetInput = typeof NetworkProfileGetInput.Type;
@@ -2771,11 +4059,11 @@ export const NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/networkSecurityPerimeterConfigurations/{perimeterName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeInput =
@@ -2899,11 +4187,11 @@ export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/networkSecurityPerimeterConfigurations",
+      apiVersion: "2025-01-13",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeInput =
@@ -3036,11 +4324,11 @@ export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeI
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/networkSecurityPerimeterConfigurations/{perimeterName}/reconcile",
+      apiVersion: "2025-01-13",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeInput =
@@ -3070,12 +4358,13 @@ export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScope 
       NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HybridCompute/operations",
+    apiVersion: "2025-01-13",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -3118,11 +4407,43 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.String,
+            description: Schema.String,
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -3172,11 +4493,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -3208,11 +4529,11 @@ export const PrivateEndpointConnectionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -3261,11 +4582,11 @@ export const PrivateEndpointConnectionsListByPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateEndpointConnectionsListByPrivateLinkScopeInput =
@@ -3330,11 +4651,11 @@ export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateLinkResources/{groupName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -3383,11 +4704,11 @@ export const PrivateLinkResourcesListByPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateLinkResources",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateLinkResourcesListByPrivateLinkScopeInput =
@@ -3452,11 +4773,66 @@ export const PrivateLinkScopesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        privateLinkScopeId: Schema.optional(Schema.String),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              properties: Schema.optional(
+                Schema.Struct({
+                  privateEndpoint: Schema.optional(
+                    Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  privateLinkServiceConnectionState: Schema.optional(
+                    Schema.Struct({
+                      status: Schema.String,
+                      description: Schema.String,
+                      actionsRequired: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  provisioningState: Schema.optional(Schema.String),
+                  groupIds: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateLinkScopesCreateOrUpdateInput =
@@ -3492,11 +4868,11 @@ export const PrivateLinkScopesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateLinkScopesDeleteInput =
@@ -3527,11 +4903,11 @@ export const PrivateLinkScopesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateLinkScopesGetInput = typeof PrivateLinkScopesGetInput.Type;
@@ -3565,11 +4941,11 @@ export const PrivateLinkScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const PrivateLinkScopesGetValidationDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/locations/{location}/privateLinkScopes/{privateLinkScopeId}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateLinkScopesGetValidationDetailsInput =
@@ -3614,11 +4990,11 @@ export const PrivateLinkScopesGetValidationDetailsForMachineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/privateLinkScopes/current",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateLinkScopesGetValidationDetailsForMachineInput =
@@ -3663,11 +5039,11 @@ export const PrivateLinkScopesGetValidationDetailsForMachine =
 export const PrivateLinkScopesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/privateLinkScopes",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateLinkScopesListInput = typeof PrivateLinkScopesListInput.Type;
@@ -3707,11 +5083,11 @@ export const PrivateLinkScopesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateLinkScopesListByResourceGroupInput =
@@ -3752,11 +5128,12 @@ export const PrivateLinkScopesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}",
+      apiVersion: "2025-01-13",
     }),
   );
 export type PrivateLinkScopesUpdateTagsInput =
@@ -3792,11 +5169,11 @@ export const PrivateLinkScopesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SettingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseProvider}/{baseResourceType}/{baseResourceName}/providers/Microsoft.HybridCompute/settings/{settingsResourceName}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type SettingsGetInput = typeof SettingsGetInput.Type;
@@ -3839,11 +5216,21 @@ export const SettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SettingsPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      tenantId: Schema.optional(Schema.String),
+      gatewayProperties: Schema.optional(
+        Schema.Struct({
+          gatewayResourceId: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseProvider}/{baseResourceType}/{baseResourceName}/providers/Microsoft.HybridCompute/settings/{settingsResourceName}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type SettingsPatchInput = typeof SettingsPatchInput.Type;
@@ -3886,11 +5273,21 @@ export const SettingsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SettingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      tenantId: Schema.optional(Schema.String),
+      gatewayProperties: Schema.optional(
+        Schema.Struct({
+          gatewayResourceId: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseProvider}/{baseResourceType}/{baseResourceName}/providers/Microsoft.HybridCompute/settings/{settingsResourceName}",
+    apiVersion: "2025-01-13",
   }),
 );
 export type SettingsUpdateInput = typeof SettingsUpdateInput.Type;
@@ -3934,11 +5331,46 @@ export const SetupExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   machineName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  extensions: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        forceUpdateTag: Schema.optional(Schema.String),
+        publisher: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        typeHandlerVersion: Schema.optional(Schema.String),
+        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+        settings: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        protectedSettings: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        instanceView: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            typeHandlerVersion: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                level: Schema.optional(
+                  Schema.Literals(["Info", "Warning", "Error"]),
+                ),
+                displayStatus: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
+    ),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/addExtensions",
+    apiVersion: "2025-01-13",
   }),
 );
 export type SetupExtensionsInput = typeof SetupExtensionsInput.Type;
@@ -4002,12 +5434,20 @@ export const UpgradeExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    extensionTargets: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.Struct({
+          targetVersion: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/upgradeExtensions",
+    apiVersion: "2025-01-13",
   }),
 );
 export type UpgradeExtensionsInput = typeof UpgradeExtensionsInput.Type;

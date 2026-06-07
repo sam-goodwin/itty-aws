@@ -10,10 +10,42 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const ADCCatalogsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        sku: Schema.optional(Schema.Literals(["Free", "Standard"])),
+        units: Schema.optional(Schema.Number),
+        admins: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              upn: Schema.optional(Schema.String),
+              objectId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        users: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              upn: Schema.optional(Schema.String),
+              objectId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        successfullyProvisioned: Schema.optional(Schema.Boolean),
+        enableAutomaticUnitAdjustment: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
+      apiVersion: "2016-03-30",
     }),
   );
 export type ADCCatalogsCreateOrUpdateInput =
@@ -51,6 +83,7 @@ export const ADCCatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
+    apiVersion: "2016-03-30",
   }),
 );
 export type ADCCatalogsDeleteInput = typeof ADCCatalogsDeleteInput.Type;
@@ -76,6 +109,7 @@ export const ADCCatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
+    apiVersion: "2016-03-30",
   }),
 );
 export type ADCCatalogsGetInput = typeof ADCCatalogsGetInput.Type;
@@ -107,6 +141,7 @@ export const ADCCatalogsListtByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs",
+      apiVersion: "2016-03-30",
     }),
   );
 export type ADCCatalogsListtByResourceGroupInput =
@@ -144,11 +179,43 @@ export const ADCCatalogsListtByResourceGroup =
   }));
 // Input Schema
 export const ADCCatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    properties: Schema.optional(
+      Schema.Struct({
+        sku: Schema.optional(Schema.Literals(["Free", "Standard"])),
+        units: Schema.optional(Schema.Number),
+        admins: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              upn: Schema.optional(Schema.String),
+              objectId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        users: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              upn: Schema.optional(Schema.String),
+              objectId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        successfullyProvisioned: Schema.optional(Schema.Boolean),
+        enableAutomaticUnitAdjustment: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+  },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
+    apiVersion: "2016-03-30",
   }),
 );
 export type ADCCatalogsUpdateInput = typeof ADCCatalogsUpdateInput.Type;
@@ -182,6 +249,7 @@ export const ADCOperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataCatalog/operations",
+    apiVersion: "2016-03-30",
   }),
 );
 export type ADCOperationsListInput = typeof ADCOperationsListInput.Type;

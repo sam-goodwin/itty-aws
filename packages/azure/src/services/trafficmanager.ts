@@ -20,11 +20,56 @@ export const EndpointsCreateOrUpdateInput =
       "NestedEndpoints",
     ]).pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        targetResourceId: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        endpointStatus: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        weight: Schema.optional(Schema.Number),
+        priority: Schema.optional(Schema.Number),
+        endpointLocation: Schema.optional(Schema.String),
+        endpointMonitorStatus: Schema.optional(
+          Schema.Literals([
+            "CheckingEndpoint",
+            "Online",
+            "Degraded",
+            "Disabled",
+            "Inactive",
+            "Stopped",
+            "Unmonitored",
+          ]),
+        ),
+        minChildEndpoints: Schema.optional(Schema.Number),
+        minChildEndpointsIPv4: Schema.optional(Schema.Number),
+        minChildEndpointsIPv6: Schema.optional(Schema.Number),
+        geoMapping: Schema.optional(Schema.Array(Schema.String)),
+        subnets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              first: Schema.optional(Schema.String),
+              last: Schema.optional(Schema.String),
+              scope: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        customHeaders: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        alwaysServe: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
+      apiVersion: "2022-04-01",
     }),
   );
 export type EndpointsCreateOrUpdateInput =
@@ -68,11 +113,11 @@ export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "NestedEndpoints",
   ]).pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
+    apiVersion: "2022-04-01",
   }),
 );
 export type EndpointsDeleteInput = typeof EndpointsDeleteInput.Type;
@@ -109,11 +154,11 @@ export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "NestedEndpoints",
   ]).pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
+    apiVersion: "2022-04-01",
   }),
 );
 export type EndpointsGetInput = typeof EndpointsGetInput.Type;
@@ -152,11 +197,54 @@ export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "NestedEndpoints",
   ]).pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      targetResourceId: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      endpointStatus: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      weight: Schema.optional(Schema.Number),
+      priority: Schema.optional(Schema.Number),
+      endpointLocation: Schema.optional(Schema.String),
+      endpointMonitorStatus: Schema.optional(
+        Schema.Literals([
+          "CheckingEndpoint",
+          "Online",
+          "Degraded",
+          "Disabled",
+          "Inactive",
+          "Stopped",
+          "Unmonitored",
+        ]),
+      ),
+      minChildEndpoints: Schema.optional(Schema.Number),
+      minChildEndpointsIPv4: Schema.optional(Schema.Number),
+      minChildEndpointsIPv6: Schema.optional(Schema.Number),
+      geoMapping: Schema.optional(Schema.Array(Schema.String)),
+      subnets: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            first: Schema.optional(Schema.String),
+            last: Schema.optional(Schema.String),
+            scope: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
+      customHeaders: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      alwaysServe: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
+    apiVersion: "2022-04-01",
   }),
 );
 export type EndpointsUpdateInput = typeof EndpointsUpdateInput.Type;
@@ -186,12 +274,11 @@ export const EndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const GeographicHierarchiesGetDefaultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Network/trafficManagerGeographicHierarchies/default",
+      apiVersion: "2022-04-01",
     }),
   );
 export type GeographicHierarchiesGetDefaultInput =
@@ -224,13 +311,13 @@ export const HeatMapGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
   heatMapType: Schema.Literals(["default"]).pipe(T.PathParam()),
-  "api-version": Schema.String,
   topLeft: Schema.optional(Schema.String),
   botRight: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/heatMaps/{heatMapType}",
+    apiVersion: "2022-04-01",
   }),
 );
 export type HeatMapGetInput = typeof HeatMapGetInput.Type;
@@ -263,11 +350,13 @@ export const HeatMapGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ProfilesCheckTrafficManagerNameAvailabilityV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/checkTrafficManagerNameAvailabilityV2",
+      apiVersion: "2022-04-01",
     }),
   );
 export type ProfilesCheckTrafficManagerNameAvailabilityV2Input =
@@ -300,11 +389,13 @@ export const ProfilesCheckTrafficManagerNameAvailabilityV2 =
 // Input Schema
 export const ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Network/checkTrafficManagerNameAvailability",
+      apiVersion: "2022-04-01",
     }),
   );
 export type ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityInput =
@@ -339,11 +430,97 @@ export const ProfilesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        profileStatus: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        trafficRoutingMethod: Schema.optional(
+          Schema.Literals([
+            "Performance",
+            "Priority",
+            "Weighted",
+            "Geographic",
+            "MultiValue",
+            "Subnet",
+          ]),
+        ),
+        dnsConfig: Schema.optional(
+          Schema.Struct({
+            relativeName: Schema.optional(Schema.String),
+            fqdn: Schema.optional(Schema.String),
+            ttl: Schema.optional(Schema.Number),
+          }),
+        ),
+        monitorConfig: Schema.optional(
+          Schema.Struct({
+            profileMonitorStatus: Schema.optional(
+              Schema.Literals([
+                "CheckingEndpoints",
+                "Online",
+                "Degraded",
+                "Disabled",
+                "Inactive",
+              ]),
+            ),
+            protocol: Schema.optional(
+              Schema.Literals(["HTTP", "HTTPS", "TCP"]),
+            ),
+            port: Schema.optional(Schema.Number),
+            path: Schema.optional(Schema.String),
+            intervalInSeconds: Schema.optional(Schema.Number),
+            timeoutInSeconds: Schema.optional(Schema.Number),
+            toleratedNumberOfFailures: Schema.optional(Schema.Number),
+            customHeaders: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  value: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            expectedStatusCodeRanges: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  min: Schema.optional(Schema.Number),
+                  max: Schema.optional(Schema.Number),
+                }),
+              ),
+            ),
+          }),
+        ),
+        endpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        trafficViewEnrollmentStatus: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+        allowedEndpointRecordTypes: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "DomainName",
+              "IPv4Address",
+              "IPv6Address",
+              "Any",
+            ]),
+          ),
+        ),
+        maxReturn: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
+      apiVersion: "2022-04-01",
     }),
   );
 export type ProfilesCreateOrUpdateInput =
@@ -379,11 +556,11 @@ export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
+    apiVersion: "2022-04-01",
   }),
 );
 export type ProfilesDeleteInput = typeof ProfilesDeleteInput.Type;
@@ -412,11 +589,11 @@ export const ProfilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
+    apiVersion: "2022-04-01",
   }),
 );
 export type ProfilesGetInput = typeof ProfilesGetInput.Type;
@@ -447,11 +624,11 @@ export const ProfilesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles",
+      apiVersion: "2022-04-01",
     }),
   );
 export type ProfilesListByResourceGroupInput =
@@ -490,11 +667,11 @@ export const ProfilesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ProfilesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficmanagerprofiles",
+      apiVersion: "2022-04-01",
     }),
   );
 export type ProfilesListBySubscriptionInput =
@@ -533,11 +710,88 @@ export const ProfilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  properties: Schema.optional(
+    Schema.Struct({
+      profileStatus: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+      trafficRoutingMethod: Schema.optional(
+        Schema.Literals([
+          "Performance",
+          "Priority",
+          "Weighted",
+          "Geographic",
+          "MultiValue",
+          "Subnet",
+        ]),
+      ),
+      dnsConfig: Schema.optional(
+        Schema.Struct({
+          relativeName: Schema.optional(Schema.String),
+          fqdn: Schema.optional(Schema.String),
+          ttl: Schema.optional(Schema.Number),
+        }),
+      ),
+      monitorConfig: Schema.optional(
+        Schema.Struct({
+          profileMonitorStatus: Schema.optional(
+            Schema.Literals([
+              "CheckingEndpoints",
+              "Online",
+              "Degraded",
+              "Disabled",
+              "Inactive",
+            ]),
+          ),
+          protocol: Schema.optional(Schema.Literals(["HTTP", "HTTPS", "TCP"])),
+          port: Schema.optional(Schema.Number),
+          path: Schema.optional(Schema.String),
+          intervalInSeconds: Schema.optional(Schema.Number),
+          timeoutInSeconds: Schema.optional(Schema.Number),
+          toleratedNumberOfFailures: Schema.optional(Schema.Number),
+          customHeaders: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          expectedStatusCodeRanges: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                min: Schema.optional(Schema.Number),
+                max: Schema.optional(Schema.Number),
+              }),
+            ),
+          ),
+        }),
+      ),
+      endpoints: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      trafficViewEnrollmentStatus: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      allowedEndpointRecordTypes: Schema.optional(
+        Schema.Array(
+          Schema.Literals(["DomainName", "IPv4Address", "IPv6Address", "Any"]),
+        ),
+      ),
+      maxReturn: Schema.optional(Schema.Number),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
+    apiVersion: "2022-04-01",
   }),
 );
 export type ProfilesUpdateInput = typeof ProfilesUpdateInput.Type;
@@ -567,11 +821,11 @@ export const ProfilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const TrafficManagerUserMetricsKeysCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default",
+      apiVersion: "2022-04-01",
     }),
   );
 export type TrafficManagerUserMetricsKeysCreateOrUpdateInput =
@@ -603,11 +857,11 @@ export const TrafficManagerUserMetricsKeysCreateOrUpdate =
 export const TrafficManagerUserMetricsKeysDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default",
+      apiVersion: "2022-04-01",
     }),
   );
 export type TrafficManagerUserMetricsKeysDeleteInput =
@@ -637,11 +891,11 @@ export const TrafficManagerUserMetricsKeysDelete =
 export const TrafficManagerUserMetricsKeysGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default",
+      apiVersion: "2022-04-01",
     }),
   );
 export type TrafficManagerUserMetricsKeysGetInput =

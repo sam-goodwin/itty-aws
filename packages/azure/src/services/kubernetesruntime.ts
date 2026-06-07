@@ -7,16 +7,35 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const BgpPeersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bgpPeerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        myAsn: Schema.Number,
+        peerAsn: Schema.Number,
+        peerAddress: Schema.String,
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers/{bgpPeerName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type BgpPeersCreateOrUpdateInput =
@@ -62,11 +81,11 @@ export const BgpPeersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const BgpPeersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   bgpPeerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers/{bgpPeerName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type BgpPeersDeleteInput = typeof BgpPeersDeleteInput.Type;
@@ -89,11 +108,11 @@ export const BgpPeersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const BgpPeersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   bgpPeerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers/{bgpPeerName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type BgpPeersGetInput = typeof BgpPeersGetInput.Type;
@@ -132,12 +151,13 @@ export const BgpPeersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BgpPeersGetOutput,
 }));
 // Input Schema
-export const BgpPeersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const BgpPeersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers",
+    apiVersion: "2024-03-01",
   }),
 );
 export type BgpPeersListInput = typeof BgpPeersListInput.Type;
@@ -183,11 +203,32 @@ export const BgpPeersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const LoadBalancersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     loadBalancerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        addresses: Schema.Array(Schema.String),
+        serviceSelector: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        advertiseMode: Schema.Literals(["ARP", "BGP", "Both"]),
+        bgpPeers: Schema.optional(Schema.Array(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type LoadBalancersCreateOrUpdateInput =
@@ -234,11 +275,11 @@ export const LoadBalancersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const LoadBalancersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     loadBalancerName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type LoadBalancersDeleteInput = typeof LoadBalancersDeleteInput.Type;
@@ -262,11 +303,11 @@ export const LoadBalancersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LoadBalancersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   loadBalancerName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type LoadBalancersGetInput = typeof LoadBalancersGetInput.Type;
@@ -308,13 +349,12 @@ export const LoadBalancersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LoadBalancersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    "api-version": Schema.String,
-  },
+  {},
 ).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers",
+    apiVersion: "2024-03-01",
   }),
 );
 export type LoadBalancersListInput = typeof LoadBalancersListInput.Type;
@@ -368,12 +408,13 @@ export const LoadBalancersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LoadBalancersListOutput,
 }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.KubernetesRuntime/operations",
+    apiVersion: "2024-03-01",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -418,11 +459,27 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        rpObjectId: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -468,11 +525,11 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -495,11 +552,11 @@ export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type ServicesGetInput = typeof ServicesGetInput.Type;
@@ -538,12 +595,13 @@ export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services",
+    apiVersion: "2024-03-01",
   }),
 );
 export type ServicesListInput = typeof ServicesListInput.Type;
@@ -589,11 +647,57 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const StorageClassCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageClassName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        allowVolumeExpansion: Schema.optional(
+          Schema.Literals(["Allow", "Disallow"]),
+        ),
+        mountOptions: Schema.optional(Schema.Array(Schema.String)),
+        provisioner: Schema.optional(Schema.String),
+        volumeBindingMode: Schema.optional(
+          Schema.Literals(["Immediate", "WaitForFirstConsumer"]),
+        ),
+        accessModes: Schema.optional(
+          Schema.Array(Schema.Literals(["ReadWriteOnce", "ReadWriteMany"])),
+        ),
+        dataResilience: Schema.optional(
+          Schema.Literals(["NotDataResilient", "DataResilient"]),
+        ),
+        failoverSpeed: Schema.optional(
+          Schema.Literals(["NotAvailable", "Slow", "Fast", "Super"]),
+        ),
+        limitations: Schema.optional(Schema.Array(Schema.String)),
+        performance: Schema.optional(
+          Schema.Literals([
+            "Undefined",
+            "Basic",
+            "Standard",
+            "Premium",
+            "Ultra",
+          ]),
+        ),
+        priority: Schema.optional(Schema.Number),
+        typeProperties: Schema.Struct({
+          type: Schema.Literals(["Native", "RWX", "Blob", "NFS", "SMB"]),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Provisioning",
+            "Updating",
+            "Deleting",
+            "Accepted",
+          ]),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type StorageClassCreateOrUpdateInput =
@@ -640,11 +744,11 @@ export const StorageClassCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const StorageClassDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageClassName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type StorageClassDeleteInput = typeof StorageClassDeleteInput.Type;
@@ -667,11 +771,11 @@ export const StorageClassDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const StorageClassGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   storageClassName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
+    apiVersion: "2024-03-01",
   }),
 );
 export type StorageClassGetInput = typeof StorageClassGetInput.Type;
@@ -710,12 +814,13 @@ export const StorageClassGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: StorageClassGetOutput,
 }));
 // Input Schema
-export const StorageClassListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const StorageClassListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses",
+    apiVersion: "2024-03-01",
   }),
 );
 export type StorageClassListInput = typeof StorageClassListInput.Type;
@@ -773,11 +878,55 @@ export const StorageClassList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const StorageClassUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageClassName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        allowVolumeExpansion: Schema.optional(
+          Schema.Literals(["Allow", "Disallow"]),
+        ),
+        mountOptions: Schema.optional(Schema.Array(Schema.String)),
+        accessModes: Schema.optional(
+          Schema.Array(Schema.Literals(["ReadWriteOnce", "ReadWriteMany"])),
+        ),
+        dataResilience: Schema.optional(
+          Schema.Literals(["NotDataResilient", "DataResilient"]),
+        ),
+        failoverSpeed: Schema.optional(
+          Schema.Literals(["NotAvailable", "Slow", "Fast", "Super"]),
+        ),
+        limitations: Schema.optional(Schema.Array(Schema.String)),
+        performance: Schema.optional(
+          Schema.Literals([
+            "Undefined",
+            "Basic",
+            "Standard",
+            "Premium",
+            "Ultra",
+          ]),
+        ),
+        priority: Schema.optional(Schema.Number),
+        typeProperties: Schema.optional(
+          Schema.Struct({
+            backingStorageClassName: Schema.optional(Schema.String),
+            azureStorageAccountName: Schema.optional(Schema.String),
+            azureStorageAccountKey: Schema.optional(Schema.String),
+            server: Schema.optional(Schema.String),
+            share: Schema.optional(Schema.String),
+            subDir: Schema.optional(Schema.String),
+            mountPermissions: Schema.optional(Schema.String),
+            onDelete: Schema.optional(Schema.Literals(["Delete", "Retain"])),
+            source: Schema.optional(Schema.String),
+            username: Schema.optional(Schema.String),
+            password: Schema.optional(SensitiveString),
+            domain: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
+      apiVersion: "2024-03-01",
     }),
   );
 export type StorageClassUpdateInput = typeof StorageClassUpdateInput.Type;

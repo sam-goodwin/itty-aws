@@ -12,10 +12,13 @@ import * as T from "../traits.ts";
 export const ContainerHostMappingsGetContainerHostMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
+    containerHostResourceId: Schema.optional(Schema.String),
+    mappedControllerResourceId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/locations/{location}/checkContainerHostMapping",
+      apiVersion: "2019-04-01",
     }),
   );
 export type ContainerHostMappingsGetContainerHostMappingInput =
@@ -43,11 +46,37 @@ export const ContainerHostMappingsGetContainerHostMapping =
   }));
 // Input Schema
 export const ControllersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Updating",
+          "Creating",
+          "Deleting",
+          "Deleted",
+        ]),
+      ),
+      hostSuffix: Schema.optional(Schema.String),
+      dataPlaneFqdn: Schema.optional(Schema.String),
+      targetContainerHostApiServerFqdn: Schema.optional(Schema.String),
+      targetContainerHostResourceId: Schema.String,
+      targetContainerHostCredentialsBase64: Schema.String,
+    }),
+    sku: Schema.Struct({
+      name: Schema.Literals(["S1"]),
+      tier: Schema.optional(Schema.Literals(["Standard"])),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  },
 ).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers/{name}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type ControllersCreateInput = typeof ControllersCreateInput.Type;
@@ -78,6 +107,7 @@ export const ControllersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers/{name}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type ControllersDeleteInput = typeof ControllersDeleteInput.Type;
@@ -103,6 +133,7 @@ export const ControllersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers/{name}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type ControllersGetInput = typeof ControllersGetInput.Type;
@@ -132,6 +163,7 @@ export const ControllersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevSpaces/controllers",
+    apiVersion: "2019-04-01",
   }),
 );
 export type ControllersListInput = typeof ControllersListInput.Type;
@@ -167,6 +199,7 @@ export const ControllersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers",
+      apiVersion: "2019-04-01",
     }),
   );
 export type ControllersListByResourceGroupInput =
@@ -202,10 +235,13 @@ export const ControllersListByResourceGroup =
   }));
 // Input Schema
 export const ControllersListConnectionDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetContainerHostResourceId: Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers/{name}/listConnectionDetails",
+      apiVersion: "2019-04-01",
     }),
   );
 export type ControllersListConnectionDetailsInput =
@@ -242,11 +278,19 @@ export const ControllersListConnectionDetails =
   }));
 // Input Schema
 export const ControllersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    tags: Schema.optional(Schema.Unknown),
+    properties: Schema.optional(
+      Schema.Struct({
+        targetContainerHostCredentialsBase64: Schema.optional(Schema.String),
+      }),
+    ),
+  },
 ).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers/{name}",
+    apiVersion: "2019-04-01",
   }),
 );
 export type ControllersUpdateInput = typeof ControllersUpdateInput.Type;
@@ -274,7 +318,11 @@ export const ControllersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.DevSpaces/operations" }),
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.DevSpaces/operations",
+    apiVersion: "2019-04-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 

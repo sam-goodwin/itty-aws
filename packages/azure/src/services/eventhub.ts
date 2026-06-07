@@ -15,11 +15,43 @@ export const ApplicationGroupCreateOrUpdateApplicationGroupInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     applicationGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        isEnabled: Schema.optional(Schema.Boolean),
+        clientAppGroupIdentifier: Schema.String,
+        policies: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literals(["ThrottlingPolicy"]),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups/{applicationGroupName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ApplicationGroupCreateOrUpdateApplicationGroupInput =
@@ -58,11 +90,11 @@ export const ApplicationGroupDeleteInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     applicationGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups/{applicationGroupName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ApplicationGroupDeleteInput =
@@ -97,11 +129,11 @@ export const ApplicationGroupGetInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     applicationGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups/{applicationGroupName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ApplicationGroupGetInput = typeof ApplicationGroupGetInput.Type;
@@ -136,11 +168,11 @@ export const ApplicationGroupListByNamespaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ApplicationGroupListByNamespaceInput =
@@ -184,11 +216,54 @@ export const ClustersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["Dedicated"]),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        createdAt: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Unknown",
+            "Creating",
+            "Deleting",
+            "Scaling",
+            "Active",
+            "Failed",
+            "Succeeded",
+            "Canceled",
+          ]),
+        ),
+        updatedAt: Schema.optional(Schema.String),
+        metricId: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+        supportsScaling: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -224,11 +299,11 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}",
+    apiVersion: "2024-01-01",
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -255,11 +330,11 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}",
+    apiVersion: "2024-01-01",
   }),
 );
 export type ClustersGetInput = typeof ClustersGetInput.Type;
@@ -289,11 +364,11 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersListAvailableClusterRegionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventHub/availableClusterRegions",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ClustersListAvailableClusterRegionInput =
@@ -330,11 +405,11 @@ export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ClustersListByResourceGroupInput =
@@ -375,11 +450,11 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventHub/clusters",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ClustersListBySubscriptionInput =
@@ -421,11 +496,11 @@ export const ClustersListNamespacesInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}/namespaces",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ClustersListNamespacesInput =
@@ -465,11 +540,54 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["Dedicated"]),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Unknown",
+          "Creating",
+          "Deleting",
+          "Scaling",
+          "Active",
+          "Failed",
+          "Succeeded",
+          "Canceled",
+        ]),
+      ),
+      updatedAt: Schema.optional(Schema.String),
+      metricId: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.String),
+      supportsScaling: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}",
+    apiVersion: "2024-01-01",
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -500,11 +618,11 @@ export const ConfigurationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}/quotaConfiguration/default",
+    apiVersion: "2024-01-01",
   }),
 );
 export type ConfigurationGetInput = typeof ConfigurationGetInput.Type;
@@ -536,11 +654,12 @@ export const ConfigurationPatchInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    settings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}/quotaConfiguration/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ConfigurationPatchInput = typeof ConfigurationPatchInput.Type;
@@ -573,11 +692,36 @@ export const ConsumerGroupsCreateOrUpdateInput =
     eventHubName: Schema.String.pipe(T.PathParam()),
     consumerGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        createdAt: Schema.optional(Schema.String),
+        updatedAt: Schema.optional(Schema.String),
+        userMetadata: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups/{consumerGroupName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ConsumerGroupsCreateOrUpdateInput =
@@ -618,11 +762,11 @@ export const ConsumerGroupsDeleteInput =
     eventHubName: Schema.String.pipe(T.PathParam()),
     consumerGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups/{consumerGroupName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ConsumerGroupsDeleteInput = typeof ConsumerGroupsDeleteInput.Type;
@@ -657,12 +801,12 @@ export const ConsumerGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     eventHubName: Schema.String.pipe(T.PathParam()),
     consumerGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups/{consumerGroupName}",
+    apiVersion: "2024-01-01",
   }),
 );
 export type ConsumerGroupsGetInput = typeof ConsumerGroupsGetInput.Type;
@@ -699,13 +843,13 @@ export const ConsumerGroupsListByEventHubInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     eventHubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups",
+      apiVersion: "2024-01-01",
     }),
   );
 export type ConsumerGroupsListByEventHubInput =
@@ -753,11 +897,11 @@ export const DisasterRecoveryConfigsBreakPairingInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/breakPairing",
+      apiVersion: "2024-01-01",
     }),
   );
 export type DisasterRecoveryConfigsBreakPairingInput =
@@ -790,11 +934,12 @@ export const DisasterRecoveryConfigsCheckNameAvailabilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/checkNameAvailability",
+      apiVersion: "2024-01-01",
     }),
   );
 export type DisasterRecoveryConfigsCheckNameAvailabilityInput =
@@ -840,11 +985,42 @@ export const DisasterRecoveryConfigsCreateOrUpdateInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Accepted", "Succeeded", "Failed"]),
+        ),
+        partnerNamespace: Schema.optional(Schema.String),
+        alternateName: Schema.optional(Schema.String),
+        role: Schema.optional(
+          Schema.Literals(["Primary", "PrimaryNotReplicating", "Secondary"]),
+        ),
+        pendingReplicationOperationsCount: Schema.optional(Schema.Number),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type DisasterRecoveryConfigsCreateOrUpdateInput =
@@ -883,11 +1059,11 @@ export const DisasterRecoveryConfigsDeleteInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type DisasterRecoveryConfigsDeleteInput =
@@ -921,11 +1097,11 @@ export const DisasterRecoveryConfigsFailOverInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/failover",
+      apiVersion: "2024-01-01",
     }),
   );
 export type DisasterRecoveryConfigsFailOverInput =
@@ -959,11 +1135,11 @@ export const DisasterRecoveryConfigsGetInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type DisasterRecoveryConfigsGetInput =
@@ -1004,11 +1180,11 @@ export const DisasterRecoveryConfigsGetAuthorizationRuleInput =
     alias: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type DisasterRecoveryConfigsGetAuthorizationRuleInput =
@@ -1047,11 +1223,11 @@ export const DisasterRecoveryConfigsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs",
+      apiVersion: "2024-01-01",
     }),
   );
 export type DisasterRecoveryConfigsListInput =
@@ -1097,11 +1273,11 @@ export const DisasterRecoveryConfigsListAuthorizationRulesInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     alias: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules",
+      apiVersion: "2024-01-01",
     }),
   );
 export type DisasterRecoveryConfigsListAuthorizationRulesInput =
@@ -1148,11 +1324,11 @@ export const DisasterRecoveryConfigsListKeysInput =
     alias: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules/{authorizationRuleName}/listKeys",
+      apiVersion: "2024-01-01",
     }),
   );
 export type DisasterRecoveryConfigsListKeysInput =
@@ -1195,11 +1371,93 @@ export const EventHubsCreateOrUpdateInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     eventHubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        partitionIds: Schema.optional(Schema.Array(Schema.String)),
+        createdAt: Schema.optional(Schema.String),
+        updatedAt: Schema.optional(Schema.String),
+        messageRetentionInDays: Schema.optional(Schema.Number),
+        partitionCount: Schema.optional(Schema.Number),
+        status: Schema.optional(
+          Schema.Literals([
+            "Active",
+            "Disabled",
+            "Restoring",
+            "SendDisabled",
+            "ReceiveDisabled",
+            "Creating",
+            "Deleting",
+            "Renaming",
+            "Unknown",
+          ]),
+        ),
+        userMetadata: Schema.optional(Schema.String),
+        captureDescription: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            encoding: Schema.optional(Schema.Literals(["Avro", "AvroDeflate"])),
+            intervalInSeconds: Schema.optional(Schema.Number),
+            sizeLimitInBytes: Schema.optional(Schema.Number),
+            destination: Schema.optional(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                identity: Schema.optional(
+                  Schema.Struct({
+                    type: Schema.optional(
+                      Schema.Literals(["SystemAssigned", "UserAssigned"]),
+                    ),
+                    userAssignedIdentity: Schema.optional(Schema.String),
+                  }),
+                ),
+                properties: Schema.optional(
+                  Schema.Struct({
+                    storageAccountResourceId: Schema.optional(Schema.String),
+                    blobContainer: Schema.optional(Schema.String),
+                    archiveNameFormat: Schema.optional(Schema.String),
+                    dataLakeSubscriptionId: Schema.optional(Schema.String),
+                    dataLakeAccountName: Schema.optional(Schema.String),
+                    dataLakeFolderPath: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            skipEmptyArchives: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        retentionDescription: Schema.optional(
+          Schema.Struct({
+            cleanupPolicy: Schema.optional(
+              Schema.Literals(["Delete", "Compact"]),
+            ),
+            retentionTimeInHours: Schema.optional(Schema.Number),
+            tombstoneRetentionTimeInHours: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type EventHubsCreateOrUpdateInput =
@@ -1240,11 +1498,34 @@ export const EventHubsCreateOrUpdateAuthorizationRuleInput =
     eventHubName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type EventHubsCreateOrUpdateAuthorizationRuleInput =
@@ -1283,11 +1564,11 @@ export const EventHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   namespaceName: Schema.String.pipe(T.PathParam()),
   eventHubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}",
+    apiVersion: "2024-01-01",
   }),
 );
 export type EventHubsDeleteInput = typeof EventHubsDeleteInput.Type;
@@ -1318,11 +1599,11 @@ export const EventHubsDeleteAuthorizationRuleInput =
     eventHubName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type EventHubsDeleteAuthorizationRuleInput =
@@ -1356,11 +1637,11 @@ export const EventHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   namespaceName: Schema.String.pipe(T.PathParam()),
   eventHubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}",
+    apiVersion: "2024-01-01",
   }),
 );
 export type EventHubsGetInput = typeof EventHubsGetInput.Type;
@@ -1396,11 +1677,11 @@ export const EventHubsGetAuthorizationRuleInput =
     eventHubName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type EventHubsGetAuthorizationRuleInput =
@@ -1440,11 +1721,11 @@ export const EventHubsListAuthorizationRulesInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     eventHubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules",
+      apiVersion: "2024-01-01",
     }),
   );
 export type EventHubsListAuthorizationRulesInput =
@@ -1489,13 +1770,13 @@ export const EventHubsListByNamespaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs",
+      apiVersion: "2024-01-01",
     }),
   );
 export type EventHubsListByNamespaceInput =
@@ -1544,12 +1825,12 @@ export const EventHubsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     eventHubName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}/listKeys",
+    apiVersion: "2024-01-01",
   }),
 );
 export type EventHubsListKeysInput = typeof EventHubsListKeysInput.Type;
@@ -1590,11 +1871,13 @@ export const EventHubsRegenerateKeysInput =
     eventHubName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keyType: Schema.Literals(["PrimaryKey", "SecondaryKey"]),
+    key: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
+      apiVersion: "2024-01-01",
     }),
   );
 export type EventHubsRegenerateKeysInput =
@@ -1635,11 +1918,12 @@ export const EventHubsRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const NamespacesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    name: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventHub/checkNameAvailability",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NamespacesCheckNameAvailabilityInput =
@@ -1682,11 +1966,112 @@ export const NamespacesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.Literals(["Basic", "Standard", "Premium"]),
+        tier: Schema.optional(
+          Schema.Literals(["Basic", "Standard", "Premium"]),
+        ),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals([
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssigned, UserAssigned",
+            "None",
+          ]),
+        ),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              clientId: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        minimumTlsVersion: Schema.optional(
+          Schema.Literals(["1.0", "1.1", "1.2"]),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+        createdAt: Schema.optional(Schema.String),
+        updatedAt: Schema.optional(Schema.String),
+        serviceBusEndpoint: Schema.optional(Schema.String),
+        clusterArmId: Schema.optional(Schema.String),
+        metricId: Schema.optional(Schema.String),
+        isAutoInflateEnabled: Schema.optional(Schema.Boolean),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+        ),
+        maximumThroughputUnits: Schema.optional(Schema.Number),
+        kafkaEnabled: Schema.optional(Schema.Boolean),
+        zoneRedundant: Schema.optional(Schema.Boolean),
+        encryption: Schema.optional(
+          Schema.Struct({
+            keyVaultProperties: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  keyName: Schema.optional(Schema.String),
+                  keyVaultUri: Schema.optional(Schema.String),
+                  keyVersion: Schema.optional(Schema.String),
+                  identity: Schema.optional(
+                    Schema.Struct({
+                      userAssignedIdentity: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            keySource: Schema.optional(Schema.Literals(["Microsoft.KeyVault"])),
+            requireInfrastructureEncryption: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              location: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        disableLocalAuth: Schema.optional(Schema.Boolean),
+        alternateName: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NamespacesCreateOrUpdateInput =
@@ -1724,11 +2109,34 @@ export const NamespacesCreateOrUpdateAuthorizationRuleInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NamespacesCreateOrUpdateAuthorizationRuleInput =
@@ -1766,11 +2174,58 @@ export const NamespacesCreateOrUpdateNetworkRuleSetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        trustedServiceAccessEnabled: Schema.optional(Schema.Boolean),
+        defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+        virtualNetworkRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              subnet: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+              ignoreMissingVnetServiceEndpoint: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+        ipRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ipMask: Schema.optional(Schema.String),
+              action: Schema.optional(Schema.Literals(["Allow"])),
+            }),
+          ),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkRuleSets/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NamespacesCreateOrUpdateNetworkRuleSetInput =
@@ -1806,11 +2261,11 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}",
+    apiVersion: "2024-01-01",
   }),
 );
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
@@ -1839,11 +2294,11 @@ export const NamespacesDeleteAuthorizationRuleInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NamespacesDeleteAuthorizationRuleInput =
@@ -1875,11 +2330,11 @@ export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}",
+    apiVersion: "2024-01-01",
   }),
 );
 export type NamespacesGetInput = typeof NamespacesGetInput.Type;
@@ -1912,11 +2367,11 @@ export const NamespacesGetAuthorizationRuleInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NamespacesGetAuthorizationRuleInput =
@@ -1954,11 +2409,11 @@ export const NamespacesGetNetworkRuleSetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkRuleSets/default",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NamespacesGetNetworkRuleSetInput =
@@ -1993,11 +2448,11 @@ export const NamespacesGetNetworkRuleSet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventHub/namespaces",
+    apiVersion: "2024-01-01",
   }),
 );
 export type NamespacesListInput = typeof NamespacesListInput.Type;
@@ -2034,11 +2489,11 @@ export const NamespacesListAuthorizationRulesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NamespacesListAuthorizationRulesInput =
@@ -2081,11 +2536,11 @@ export const NamespacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NamespacesListByResourceGroupInput =
@@ -2128,11 +2583,11 @@ export const NamespacesListKeysInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NamespacesListKeysInput = typeof NamespacesListKeysInput.Type;
@@ -2170,11 +2625,11 @@ export const NamespacesListNetworkRuleSetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkRuleSets",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NamespacesListNetworkRuleSetInput =
@@ -2219,11 +2674,13 @@ export const NamespacesRegenerateKeysInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    keyType: Schema.Literals(["PrimaryKey", "SecondaryKey"]),
+    key: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NamespacesRegenerateKeysInput =
@@ -2264,11 +2721,110 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  "api-version": Schema.String,
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["Basic", "Standard", "Premium"]),
+      tier: Schema.optional(Schema.Literals(["Basic", "Standard", "Premium"])),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(
+        Schema.Literals([
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned, UserAssigned",
+          "None",
+        ]),
+      ),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      minimumTlsVersion: Schema.optional(
+        Schema.Literals(["1.0", "1.1", "1.2"]),
+      ),
+      provisioningState: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.String),
+      createdAt: Schema.optional(Schema.String),
+      updatedAt: Schema.optional(Schema.String),
+      serviceBusEndpoint: Schema.optional(Schema.String),
+      clusterArmId: Schema.optional(Schema.String),
+      metricId: Schema.optional(Schema.String),
+      isAutoInflateEnabled: Schema.optional(Schema.Boolean),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+      ),
+      maximumThroughputUnits: Schema.optional(Schema.Number),
+      kafkaEnabled: Schema.optional(Schema.Boolean),
+      zoneRedundant: Schema.optional(Schema.Boolean),
+      encryption: Schema.optional(
+        Schema.Struct({
+          keyVaultProperties: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                keyName: Schema.optional(Schema.String),
+                keyVaultUri: Schema.optional(Schema.String),
+                keyVersion: Schema.optional(Schema.String),
+                identity: Schema.optional(
+                  Schema.Struct({
+                    userAssignedIdentity: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          keySource: Schema.optional(Schema.Literals(["Microsoft.KeyVault"])),
+          requireInfrastructureEncryption: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            location: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      disableLocalAuth: Schema.optional(Schema.Boolean),
+      alternateName: Schema.optional(Schema.String),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}",
+    apiVersion: "2024-01-01",
   }),
 );
 export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
@@ -2302,11 +2858,11 @@ export const NetworkSecurityPerimeterConfigurationListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationListInput =
@@ -2350,11 +2906,11 @@ export const NetworkSecurityPerimeterConfigurationsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     resourceAssociationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations/{resourceAssociationName}/reconcile",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsCreateOrUpdateInput =
@@ -2388,11 +2944,11 @@ export const NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameInp
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     resourceAssociationName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations/{resourceAssociationName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameInput =
@@ -2427,10 +2983,14 @@ export const NetworkSecurityPerimeterConfigurationsGetResourceAssociationName =
       NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameOutput,
   }));
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
-  T.Http({ method: "GET", path: "/providers/Microsoft.EventHub/operations" }),
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.EventHub/operations",
+    apiVersion: "2024-01-01",
+  }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
 
@@ -2475,11 +3035,61 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Pending",
+                "Approved",
+                "Rejected",
+                "Disconnected",
+              ]),
+            ),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Creating",
+            "Updating",
+            "Deleting",
+            "Succeeded",
+            "Canceled",
+            "Failed",
+          ]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -2518,11 +3128,11 @@ export const PrivateEndpointConnectionsDeleteInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -2556,11 +3166,11 @@ export const PrivateEndpointConnectionsGetInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type PrivateEndpointConnectionsGetInput =
@@ -2598,11 +3208,11 @@ export const PrivateEndpointConnectionsListInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections",
+      apiVersion: "2024-01-01",
     }),
   );
 export type PrivateEndpointConnectionsListInput =
@@ -2646,11 +3256,11 @@ export const PrivateLinkResourcesGetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateLinkResources",
+      apiVersion: "2024-01-01",
     }),
   );
 export type PrivateLinkResourcesGetInput =
@@ -2702,11 +3312,43 @@ export const SchemaRegistryCreateOrUpdateInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     schemaGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        updatedAtUtc: Schema.optional(Schema.String),
+        createdAtUtc: Schema.optional(Schema.String),
+        eTag: Schema.optional(Schema.String),
+        groupProperties: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        schemaCompatibility: Schema.optional(
+          Schema.Literals(["None", "Backward", "Forward"]),
+        ),
+        schemaType: Schema.optional(Schema.Literals(["Unknown", "Avro"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type SchemaRegistryCreateOrUpdateInput =
@@ -2745,11 +3387,11 @@ export const SchemaRegistryDeleteInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     schemaGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}",
+      apiVersion: "2024-01-01",
     }),
   );
 export type SchemaRegistryDeleteInput = typeof SchemaRegistryDeleteInput.Type;
@@ -2782,12 +3424,12 @@ export const SchemaRegistryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     namespaceName: Schema.String.pipe(T.PathParam()),
     schemaGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}",
+    apiVersion: "2024-01-01",
   }),
 );
 export type SchemaRegistryGetInput = typeof SchemaRegistryGetInput.Type;
@@ -2822,13 +3464,13 @@ export const SchemaRegistryListByNamespaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups",
+      apiVersion: "2024-01-01",
     }),
   );
 export type SchemaRegistryListByNamespaceInput =

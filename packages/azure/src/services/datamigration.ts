@@ -10,10 +10,44 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        kind: Schema.Literals([
+          "SqlMi",
+          "SqlVm",
+          "SqlDb",
+          "MongoToCosmosDbMongo",
+        ]),
+        scope: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        migrationStatus: Schema.optional(Schema.String),
+        startedOn: Schema.optional(Schema.String),
+        endedOn: Schema.optional(Schema.String),
+        migrationService: Schema.optional(Schema.String),
+        migrationOperationId: Schema.optional(Schema.String),
+        migrationFailureError: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningError: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput =
@@ -60,6 +94,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput =
@@ -88,6 +123,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsMongoToCosmosDbRUMongoGetInput =
@@ -132,6 +168,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeInput =
@@ -189,10 +226,44 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScope =
   }));
 // Input Schema
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        kind: Schema.Literals([
+          "SqlMi",
+          "SqlVm",
+          "SqlDb",
+          "MongoToCosmosDbMongo",
+        ]),
+        scope: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        migrationStatus: Schema.optional(Schema.String),
+        startedOn: Schema.optional(Schema.String),
+        endedOn: Schema.optional(Schema.String),
+        migrationService: Schema.optional(Schema.String),
+        migrationOperationId: Schema.optional(Schema.String),
+        migrationFailureError: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningError: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput =
@@ -239,6 +310,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput =
@@ -267,6 +339,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsMongoToCosmosDbvCoreMongoGetInput =
@@ -311,6 +384,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeInput =
@@ -370,10 +444,12 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScope =
 export const DatabaseMigrationsSqlDbCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sqlDbInstanceName: Schema.String.pipe(T.PathParam()),
+    migrationOperationId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlDbCancelInput =
@@ -398,10 +474,43 @@ export const DatabaseMigrationsSqlDbCancel =
 export const DatabaseMigrationsSqlDbCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sqlDbInstanceName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        kind: Schema.Literals([
+          "SqlMi",
+          "SqlVm",
+          "SqlDb",
+          "MongoToCosmosDbMongo",
+        ]),
+        scope: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        migrationStatus: Schema.optional(Schema.String),
+        startedOn: Schema.optional(Schema.String),
+        endedOn: Schema.optional(Schema.String),
+        migrationService: Schema.optional(Schema.String),
+        migrationOperationId: Schema.optional(Schema.String),
+        migrationFailureError: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningError: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlDbCreateOrUpdateInput =
@@ -449,6 +558,7 @@ export const DatabaseMigrationsSqlDbDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlDbDeleteInput =
@@ -481,6 +591,7 @@ export const DatabaseMigrationsSqlDbGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlDbGetInput =
@@ -528,10 +639,12 @@ export const DatabaseMigrationsSqlDbRetryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sqlDbInstanceName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
+    migrationOperationId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/retry",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlDbRetryInput =
@@ -558,10 +671,12 @@ export const DatabaseMigrationsSqlDbRetry =
 export const DatabaseMigrationsSqlMiCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    migrationOperationId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlMiCancelInput =
@@ -586,10 +701,43 @@ export const DatabaseMigrationsSqlMiCancel =
 export const DatabaseMigrationsSqlMiCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        kind: Schema.Literals([
+          "SqlMi",
+          "SqlVm",
+          "SqlDb",
+          "MongoToCosmosDbMongo",
+        ]),
+        scope: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        migrationStatus: Schema.optional(Schema.String),
+        startedOn: Schema.optional(Schema.String),
+        endedOn: Schema.optional(Schema.String),
+        migrationService: Schema.optional(Schema.String),
+        migrationOperationId: Schema.optional(Schema.String),
+        migrationFailureError: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningError: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlMiCreateOrUpdateInput =
@@ -632,10 +780,12 @@ export const DatabaseMigrationsSqlMiCreateOrUpdate =
 export const DatabaseMigrationsSqlMiCutoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    migrationOperationId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlMiCutoverInput =
@@ -665,6 +815,7 @@ export const DatabaseMigrationsSqlMiDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlMiDeleteInput =
@@ -715,6 +866,7 @@ export const DatabaseMigrationsSqlMiGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlMiGetInput =
@@ -761,10 +913,12 @@ export const DatabaseMigrationsSqlMiGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const DatabaseMigrationsSqlVmCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
+    migrationOperationId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlVmCancelInput =
@@ -789,10 +943,43 @@ export const DatabaseMigrationsSqlVmCancel =
 export const DatabaseMigrationsSqlVmCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        kind: Schema.Literals([
+          "SqlMi",
+          "SqlVm",
+          "SqlDb",
+          "MongoToCosmosDbMongo",
+        ]),
+        scope: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        migrationStatus: Schema.optional(Schema.String),
+        startedOn: Schema.optional(Schema.String),
+        endedOn: Schema.optional(Schema.String),
+        migrationService: Schema.optional(Schema.String),
+        migrationOperationId: Schema.optional(Schema.String),
+        migrationFailureError: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningError: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlVmCreateOrUpdateInput =
@@ -835,10 +1022,12 @@ export const DatabaseMigrationsSqlVmCreateOrUpdate =
 export const DatabaseMigrationsSqlVmCutoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
+    migrationOperationId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlVmCutoverInput =
@@ -868,6 +1057,7 @@ export const DatabaseMigrationsSqlVmDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlVmDeleteInput =
@@ -918,6 +1108,7 @@ export const DatabaseMigrationsSqlVmGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type DatabaseMigrationsSqlVmGetInput =
@@ -966,6 +1157,7 @@ export const FilesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type FilesCreateOrUpdateInput = typeof FilesCreateOrUpdateInput.Type;
@@ -1010,6 +1202,7 @@ export const FilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type FilesDeleteInput = typeof FilesDeleteInput.Type;
@@ -1033,6 +1226,7 @@ export const FilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type FilesGetInput = typeof FilesGetInput.Type;
@@ -1076,6 +1270,7 @@ export const FilesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files",
+    apiVersion: "2025-06-30",
   }),
 );
 export type FilesListInput = typeof FilesListInput.Type;
@@ -1138,6 +1333,7 @@ export const FilesReadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}/read",
+    apiVersion: "2025-06-30",
   }),
 );
 export type FilesReadInput = typeof FilesReadInput.Type;
@@ -1168,6 +1364,7 @@ export const FilesReadWriteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}/readwrite",
+    apiVersion: "2025-06-30",
   }),
 );
 export type FilesReadWriteInput = typeof FilesReadWriteInput.Type;
@@ -1198,6 +1395,7 @@ export const FilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type FilesUpdateInput = typeof FilesUpdateInput.Type;
@@ -1236,10 +1434,28 @@ export const FilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const MigrationServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Provisioning",
+            "Updating",
+            "Succeeded",
+            "Failed",
+            "Canceled",
+          ]),
+        ),
+        integrationRuntimeState: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type MigrationServicesCreateOrUpdateInput =
@@ -1284,6 +1500,7 @@ export const MigrationServicesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type MigrationServicesDeleteInput =
@@ -1311,6 +1528,7 @@ export const MigrationServicesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type MigrationServicesGetInput = typeof MigrationServicesGetInput.Type;
@@ -1354,6 +1572,7 @@ export const MigrationServicesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices",
+      apiVersion: "2025-06-30",
     }),
   );
 export type MigrationServicesListByResourceGroupInput =
@@ -1415,6 +1634,7 @@ export const MigrationServicesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/migrationServices",
+      apiVersion: "2025-06-30",
     }),
   );
 export type MigrationServicesListBySubscriptionInput =
@@ -1476,6 +1696,7 @@ export const MigrationServicesListMigrationsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}/listMigrations",
+      apiVersion: "2025-06-30",
     }),
   );
 export type MigrationServicesListMigrationsInput =
@@ -1533,10 +1754,13 @@ export const MigrationServicesListMigrations =
   }));
 // Input Schema
 export const MigrationServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type MigrationServicesUpdateInput =
@@ -1583,6 +1807,7 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataMigration/operations",
+    apiVersion: "2025-06-30",
   }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -1627,6 +1852,7 @@ export const ProjectsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type ProjectsCreateOrUpdateInput =
@@ -1675,6 +1901,7 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
@@ -1700,6 +1927,7 @@ export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ProjectsGetInput = typeof ProjectsGetInput.Type;
@@ -1743,6 +1971,7 @@ export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ProjectsListInput = typeof ProjectsListInput.Type;
@@ -1805,6 +2034,7 @@ export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ProjectsUpdateInput = typeof ProjectsUpdateInput.Type;
@@ -1849,6 +2079,7 @@ export const ResourceSkusListSkusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/skus",
+      apiVersion: "2025-06-30",
     }),
   );
 export type ResourceSkusListSkusInput = typeof ResourceSkusListSkusInput.Type;
@@ -1932,6 +2163,7 @@ export const ServicesCheckChildrenNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkNameAvailability",
+      apiVersion: "2025-06-30",
     }),
   );
 export type ServicesCheckChildrenNameAvailabilityInput =
@@ -1968,6 +2200,7 @@ export const ServicesCheckNameAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/checkNameAvailability",
+      apiVersion: "2025-06-30",
     }),
   );
 export type ServicesCheckNameAvailabilityInput =
@@ -2004,6 +2237,7 @@ export const ServicesCheckStatusInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkStatus",
+      apiVersion: "2025-06-30",
     }),
   );
 export type ServicesCheckStatusInput = typeof ServicesCheckStatusInput.Type;
@@ -2037,6 +2271,7 @@ export const ServicesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -2085,6 +2320,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -2110,6 +2346,7 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ServicesGetInput = typeof ServicesGetInput.Type;
@@ -2153,6 +2390,7 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/services",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ServicesListInput = typeof ServicesListInput.Type;
@@ -2216,6 +2454,7 @@ export const ServicesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services",
+      apiVersion: "2025-06-30",
     }),
   );
 export type ServicesListByResourceGroupInput =
@@ -2283,6 +2522,7 @@ export const ServicesListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/skus",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ServicesListSkusInput = typeof ServicesListSkusInput.Type;
@@ -2339,6 +2579,7 @@ export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/start",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ServicesStartInput = typeof ServicesStartInput.Type;
@@ -2366,6 +2607,7 @@ export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/stop",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ServicesStopInput = typeof ServicesStopInput.Type;
@@ -2393,6 +2635,7 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
@@ -2437,6 +2680,7 @@ export const ServiceTasksCancelInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}/cancel",
+      apiVersion: "2025-06-30",
     }),
   );
 export type ServiceTasksCancelInput = typeof ServiceTasksCancelInput.Type;
@@ -2482,6 +2726,7 @@ export const ServiceTasksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type ServiceTasksCreateOrUpdateInput =
@@ -2529,6 +2774,7 @@ export const ServiceTasksDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type ServiceTasksDeleteInput = typeof ServiceTasksDeleteInput.Type;
@@ -2554,6 +2800,7 @@ export const ServiceTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ServiceTasksGetInput = typeof ServiceTasksGetInput.Type;
@@ -2599,6 +2846,7 @@ export const ServiceTasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks",
+    apiVersion: "2025-06-30",
   }),
 );
 export type ServiceTasksListInput = typeof ServiceTasksListInput.Type;
@@ -2662,6 +2910,7 @@ export const ServiceTasksUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type ServiceTasksUpdateInput = typeof ServiceTasksUpdateInput.Type;
@@ -2701,10 +2950,20 @@ export const ServiceTasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SqlMigrationServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        integrationRuntimeState: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type SqlMigrationServicesCreateOrUpdateInput =
@@ -2749,6 +3008,7 @@ export const SqlMigrationServicesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type SqlMigrationServicesDeleteInput =
@@ -2772,10 +3032,14 @@ export const SqlMigrationServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlMigrationServicesDeleteNodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodeName: Schema.optional(Schema.String),
+    integrationRuntimeName: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/deleteNode",
+      apiVersion: "2025-06-30",
     }),
   );
 export type SqlMigrationServicesDeleteNodeInput =
@@ -2805,6 +3069,7 @@ export const SqlMigrationServicesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type SqlMigrationServicesGetInput =
@@ -2850,6 +3115,7 @@ export const SqlMigrationServicesListAuthKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listAuthKeys",
+      apiVersion: "2025-06-30",
     }),
   );
 export type SqlMigrationServicesListAuthKeysInput =
@@ -2879,6 +3145,7 @@ export const SqlMigrationServicesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices",
+      apiVersion: "2025-06-30",
     }),
   );
 export type SqlMigrationServicesListByResourceGroupInput =
@@ -2940,6 +3207,7 @@ export const SqlMigrationServicesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/sqlMigrationServices",
+      apiVersion: "2025-06-30",
     }),
   );
 export type SqlMigrationServicesListBySubscriptionInput =
@@ -3001,6 +3269,7 @@ export const SqlMigrationServicesListMigrationsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listMigrations",
+      apiVersion: "2025-06-30",
     }),
   );
 export type SqlMigrationServicesListMigrationsInput =
@@ -3062,6 +3331,7 @@ export const SqlMigrationServicesListMonitoringDataInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listMonitoringData",
+      apiVersion: "2025-06-30",
     }),
   );
 export type SqlMigrationServicesListMonitoringDataInput =
@@ -3103,10 +3373,15 @@ export const SqlMigrationServicesListMonitoringData =
   }));
 // Input Schema
 export const SqlMigrationServicesRegenerateAuthKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyName: Schema.optional(Schema.String),
+    authKey1: Schema.optional(Schema.String),
+    authKey2: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/regenerateAuthKeys",
+      apiVersion: "2025-06-30",
     }),
   );
 export type SqlMigrationServicesRegenerateAuthKeysInput =
@@ -3133,10 +3408,13 @@ export const SqlMigrationServicesRegenerateAuthKeys =
   }));
 // Input Schema
 export const SqlMigrationServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type SqlMigrationServicesUpdateInput =
@@ -3183,6 +3461,7 @@ export const TasksCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}/cancel",
+    apiVersion: "2025-06-30",
   }),
 );
 export type TasksCancelInput = typeof TasksCancelInput.Type;
@@ -3228,6 +3507,7 @@ export const TasksCommandInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}/command",
+    apiVersion: "2025-06-30",
   }),
 );
 export type TasksCommandInput = typeof TasksCommandInput.Type;
@@ -3282,6 +3562,7 @@ export const TasksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
+      apiVersion: "2025-06-30",
     }),
   );
 export type TasksCreateOrUpdateInput = typeof TasksCreateOrUpdateInput.Type;
@@ -3326,6 +3607,7 @@ export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type TasksDeleteInput = typeof TasksDeleteInput.Type;
@@ -3351,6 +3633,7 @@ export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type TasksGetInput = typeof TasksGetInput.Type;
@@ -3396,6 +3679,7 @@ export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks",
+    apiVersion: "2025-06-30",
   }),
 );
 export type TasksListInput = typeof TasksListInput.Type;
@@ -3458,6 +3742,7 @@ export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
+    apiVersion: "2025-06-30",
   }),
 );
 export type TasksUpdateInput = typeof TasksUpdateInput.Type;
@@ -3501,6 +3786,7 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/usages",
+    apiVersion: "2025-06-30",
   }),
 );
 export type UsagesListInput = typeof UsagesListInput.Type;
