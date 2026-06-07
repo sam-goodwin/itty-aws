@@ -1,0 +1,40 @@
+{
+  "name": "distilled-v1",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsgo -b",
+    "typecheck": "tsgo -b",
+    "format": "oxfmt '.'",
+    "format:check": "bun run format -- --check",
+    "lint": "oxlint",
+    "test": "bun test",
+    "prepare": "husky"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "catalog": {
+      "@effect/language-service": ">=4.0.0-beta.78 || >=4.0.0",
+      "@effect/platform-bun": ">=4.0.0-beta.78 || >=4.0.0",
+      "@effect/platform-node-shared": ">=4.0.0-beta.78 || >=4.0.0",
+      "@effect/platform-node": ">=4.0.0-beta.78 || >=4.0.0",
+      "@effect/sql-pg": ">=4.0.0-beta.78 || >=4.0.0",
+      "@types/bun": "latest",
+      "@types/node": "latest",
+      "@typescript/native-preview": "latest",
+      "effect": ">=4.0.0-beta.78 || >=4.0.0"
+    }
+  },
+  "devDependencies": {
+    "@effect/language-service": "^0.77.0",
+    "@types/bun": "latest",
+    "@types/node": "latest",
+    "@typescript/native-preview": "^7.0.0-dev.20260317.1",
+    "husky": "^9.1.7",
+    "oxfmt": "latest",
+    "oxlint": "latest"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [{ "path": "./packages/core/tsconfig.json" }],
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "@effect/language-service"
+      }
+    ]
+  }
+}
