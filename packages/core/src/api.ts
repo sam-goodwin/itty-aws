@@ -4,9 +4,11 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 import * as Schedule from "effect/Schedule";
+import * as Schema from "effect/Schema";
 import { hasCategory } from "./error-category.ts";
 import { RETRYABLE } from "./errors.ts";
 
+//#region RetryPolicy
 export type RetrySchedule = Schedule.Schedule<unknown, any, never, never>;
 
 export type RetryPolicyFn = (
@@ -59,3 +61,42 @@ export const addRetryPolicy = (
     lifted,
   ]);
 };
+
+//#endregion
+
+//#region Protocol
+export class Protocol extends Context.Service<Protocol, {}>()("Protocol") {}
+//#endregion
+
+//#region Make
+
+export type ApiErrorClass = {
+  new (...args: any[]): {
+    readonly _tag: string;
+    readonly message: string;
+  };
+};
+
+export interface OperationConfig<
+  I extends Schema.Top,
+  O extends Schema.Top,
+  E extends readonly ApiErrorClass[] = readonly ApiErrorClass[],
+> {
+  inputSchema?: I;
+  outputSchema?: O;
+  errors?: E;
+}
+
+export function make<
+  I extends Schema.Top,
+  O extends Schema.Top,
+  const E extends readonly ApiErrorClass[] = readonly [],
+>(
+  configFn: () => OperationConfig<I, O, E>,
+): (
+  input: Schema.Schema.Type<I>,
+) => Effect.Effect<Schema.Schema.Type<O>, InstanceType<E[number]>, Protocol> {
+  return "TODO" as any;
+}
+
+//#endregion

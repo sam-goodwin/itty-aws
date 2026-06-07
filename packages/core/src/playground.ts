@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { Effect, Layer, Match } from "effect";
 import * as Schedule from "effect/Schedule";
 import * as S from "effect/Schema";
@@ -45,12 +43,8 @@ export const SampleRetryPolicy = API.addRetryPolicy(
   ),
 );
 
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SampleOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SampleRequest,
   output: SampleResponse,
   errors: [SampleRetryableError, SampleErrorA, SampleErrorB],
-})).pipe(
-  Effect.provide(
-    Layer.provideMerge(SampleProtocol, SampleRetryPolicy, SampleCredentials),
-  ),
-);
+})).pipe(Effect.provide(Layer.provideMerge(SampleProtocol, SampleRetryPolicy)));
