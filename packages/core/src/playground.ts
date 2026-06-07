@@ -1,4 +1,7 @@
-import { Effect, Layer, Match } from "effect";
+import { Effect } from "effect";
+import * as Context from "effect/Context";
+import * as Layer from "effect/Layer";
+import * as Match from "effect/Match";
 import * as Schedule from "effect/Schedule";
 import * as S from "effect/Schema";
 import * as API from "./api.ts";
@@ -23,18 +26,27 @@ export const SampleRequest = /*@__PURE__*/ /*#__PURE__*/ S.Struct({
   body: S.String.pipe(T.Body()),
   bodyName: S.String.pipe(T.Body("body_name")),
   header: S.String.pipe(T.Header()),
-  HeaderName: S.String.pipe(T.Header("x-header-name")),
+  headerName: S.String.pipe(T.Header("x-header-name")),
 });
 
 export const SampleResponse = /*@__PURE__*/ /*#__PURE__*/ S.Struct({
   body: S.String.pipe(T.Body()),
   bodyName: S.String.pipe(T.Body("body_name")),
   header: S.String.pipe(T.Header()),
-  HeaderName: S.String.pipe(T.Header("x-header-name")),
+  headerName: S.String.pipe(T.Header("x-header-name")),
 });
 
-export const SampleProtocol = "???";
-export const SampleCredentials = "???";
+export class SampleCredentials extends Context.Service<SampleCredentials, {}>()(
+  "SampleCredentials",
+) {}
+
+export const SampleProtocol = Layer.effect(
+  API.Protocol,
+  Effect.gen(function* () {
+    yield* SampleCredentials;
+    return {};
+  }),
+);
 
 export const SampleRetryPolicy = API.addRetryPolicy(
   Match.type().pipe(
@@ -47,4 +59,15 @@ export const SampleOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SampleRequest,
   output: SampleResponse,
   errors: [SampleRetryableError, SampleErrorA, SampleErrorB],
-})).pipe(Effect.provide(Layer.provideMerge(SampleProtocol, SampleRetryPolicy)));
+  protocol: SampleProtocol,
+}));
+
+const test = Effect.gen(function* () {
+  const res = yield* SampleOperation({
+    body: "",
+    bodyName: "",
+    header: "",
+    headerName: "",
+  }).pipe(Effect.provide(SampleRetryPolicy));
+  return res;
+});

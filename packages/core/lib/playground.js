@@ -1,4 +1,7 @@
-import { Effect, Layer, Match } from "effect";
+import { Effect } from "effect";
+import * as Context from "effect/Context";
+import * as Layer from "effect/Layer";
+import * as Match from "effect/Match";
 import * as Schedule from "effect/Schedule";
 import * as S from "effect/Schema";
 import * as API from "./api.js";
@@ -14,23 +17,38 @@ export const SampleRequest = /*@__PURE__*/ /*#__PURE__*/ S.Struct({
     body: S.String.pipe(T.Body()),
     bodyName: S.String.pipe(T.Body("body_name")),
     header: S.String.pipe(T.Header()),
-    HeaderName: S.String.pipe(T.Header("x-header-name")),
+    headerName: S.String.pipe(T.Header("x-header-name")),
 });
 export const SampleResponse = /*@__PURE__*/ /*#__PURE__*/ S.Struct({
     body: S.String.pipe(T.Body()),
     bodyName: S.String.pipe(T.Body("body_name")),
     header: S.String.pipe(T.Header()),
-    HeaderName: S.String.pipe(T.Header("x-header-name")),
+    headerName: S.String.pipe(T.Header("x-header-name")),
 });
-export const SampleProtocol = "???";
-export const SampleCredentials = "???";
-// `Match.instanceOf` is a refinement, so the matcher can accept `unknown` and
-// still narrow each case. `Match.option` returns `Option<Schedule>` directly,
-// which `addRetryPolicy`'s sync overload takes as-is — no Effect wrapping.
+export class SampleCredentials extends Context.Service()("SampleCredentials") {
+}
+export const SampleProtocol = Layer.effect(API.Protocol, Effect.gen(function* () {
+    yield* SampleCredentials;
+    return {};
+}));
+// export const SampleCredentials = "???";
 export const SampleRetryPolicy = API.addRetryPolicy(Match.type().pipe(Match.when(Match.instanceOf(SampleErrorB), () => Schedule.recurs(0)), Match.option));
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SampleOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     input: SampleRequest,
     output: SampleResponse,
     errors: [SampleRetryableError, SampleErrorA, SampleErrorB],
-})).pipe(Effect.provide(Layer.provideMerge(SampleProtocol, SampleRetryPolicy, SampleCredentials)));
+    protocol: SampleProtocol,
+    retryPolicy: null,
+}));
+const test = Effect.gen(function* () {
+    // Operation now only requires what SampleProtocol pulls in (SampleCredentials).
+    // Additional retry policies still compose via Effect.provide at the call site.
+    const res = yield* SampleOperation({
+        body: "",
+        bodyName: "",
+        header: "",
+        headerName: "",
+    }).pipe(Effect.provide(SampleRetryPolicy));
+    return res;
+});
 //# sourceMappingURL=playground.js.map

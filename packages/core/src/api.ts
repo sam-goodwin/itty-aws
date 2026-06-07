@@ -20,19 +20,23 @@ export const RetryPolicies: Context.Reference<ReadonlyArray<RetryPolicyFn>> =
     defaultValue: () => [],
   });
 
-const defaultErrorPolicy = (error: unknown): Effect.Effect<RetrySchedule> =>
-  Effect.succeed(
-    hasCategory(RETRYABLE)(error)
-      ? Schedule.forever
-      : Schedule.exponential(Duration.millis(100), 2).pipe(Schedule.take(3)),
-  );
+export type DefaultRetryPolicyFn = (
+  error: unknown,
+) => Effect.Effect<RetrySchedule>;
 
-export class DefaultRetryPolicy extends Context.Service<
-  DefaultRetryPolicy,
-  (error: unknown) => Effect.Effect<RetrySchedule>
->()("DefaultRetryPolicy") {}
+export const DefaultRetryPolicy: Context.Reference<DefaultRetryPolicyFn> =
+  Context.Reference<DefaultRetryPolicyFn>("DefaultRetryPolicy", {
+    defaultValue: () => (error) =>
+      Effect.succeed(
+        hasCategory(RETRYABLE)(error)
+          ? Schedule.forever
+          : Schedule.exponential(Duration.millis(100), 2).pipe(
+              Schedule.take(3),
+            ),
+      ),
+  });
 
-export const resolveRetrySchedule = (error: unknown) =>
+const resolveRetrySchedule = (error: unknown) =>
   Effect.gen(function* () {
     const stack = yield* RetryPolicies;
     //* reverse through the retry policies to see if any handle
@@ -40,12 +44,7 @@ export const resolveRetrySchedule = (error: unknown) =>
       const r = yield* stack[i]!(error);
       if (Option.isSome(r)) return r.value;
     }
-    const defaultPolicyOverride =
-      yield* Effect.serviceOption(DefaultRetryPolicy);
-    const defaultPolicy = Option.isNone(defaultPolicyOverride)
-      ? defaultErrorPolicy
-      : defaultPolicyOverride.value;
-
+    const defaultPolicy = yield* DefaultRetryPolicy;
     return yield* defaultPolicy(error);
   });
 
@@ -66,6 +65,7 @@ export const addRetryPolicy = (
 
 //#region Protocol
 export class Protocol extends Context.Service<Protocol, {}>()("Protocol") {}
+
 //#endregion
 
 //#region Make
@@ -81,21 +81,41 @@ export interface OperationConfig<
   I extends Schema.Top,
   O extends Schema.Top,
   E extends readonly ApiErrorClass[] = readonly ApiErrorClass[],
+  PE = never,
+  PR = never,
 > {
-  inputSchema?: I;
-  outputSchema?: O;
+  input?: I;
+  output?: O;
   errors?: E;
+  protocol: Layer.Layer<Protocol, PE, PR>;
+  retryPolicy?: RetryPolicyFn;
 }
 
 export function make<
   I extends Schema.Top,
   O extends Schema.Top,
   const E extends readonly ApiErrorClass[] = readonly [],
+  PE = never,
+  PR = never,
 >(
-  configFn: () => OperationConfig<I, O, E>,
+  configFn: () => OperationConfig<I, O, E, PE, PR>,
 ): (
   input: Schema.Schema.Type<I>,
-) => Effect.Effect<Schema.Schema.Type<O>, InstanceType<E[number]>, Protocol> {
+) => Effect.Effect<Schema.Schema.Type<O>, InstanceType<E[number]> | PE, PR> {
+  // Implementation sketch (currently stubbed):
+  //
+  //   const cfg = configFn()
+  //   const inner = (input) => /* real operation effect that requires Protocol */
+  //   return (input) =>
+  //     Effect.gen(function*() {
+  //       // Only apply the baked Protocol layer when nothing else has provided one,
+  //       // so a caller's `Effect.provide(otherProtocol)` wins.
+  //       const existing = yield* Effect.serviceOption(Protocol)
+  //       const eff = inner(input)
+  //       return yield* Option.isSome(existing)
+  //         ? eff
+  //         : eff.pipe(Effect.provide(cfg.protocol))
+  //     })
   return "TODO" as any;
 }
 
