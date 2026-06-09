@@ -18,9 +18,10 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "WorkosCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("WorkosCredentials") {}
 
 const envConfig = EffectConfig.all({
   apiKey: EffectConfig.string("WORKOS_API_KEY"),
@@ -29,7 +30,7 @@ const envConfig = EffectConfig.all({
   ),
 });
 
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
   envConfig.pipe(
     Effect.mapError(
@@ -42,5 +43,6 @@ export const CredentialsFromEnv = Layer.effect(
       apiKey: Redacted.make(apiKey),
       apiBaseUrl,
     })),
+    Effect.orDie,
   ),
 );
