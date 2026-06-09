@@ -42,7 +42,7 @@ const isApiError = (error: unknown): boolean =>
  */
 const getOrganization = () =>
   Effect.gen(function* () {
-    const { organization } = yield* Credentials;
+    const { organization } = yield* yield* Credentials;
     return organization;
   }).pipe(Effect.provide(MainLayer));
 

@@ -18,7 +18,7 @@ import { listDatabases } from "@distilled.cloud/planetscale/Operations";
 import { CredentialsFromEnv, Credentials } from "@distilled.cloud/planetscale";
 
 const program = Effect.gen(function* () {
-  const { organization } = yield* Credentials;
+  const { organization } = yield* yield* Credentials;
   const databases = yield* listDatabases({ organization });
   return databases.data;
 });

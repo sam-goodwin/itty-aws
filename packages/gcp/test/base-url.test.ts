@@ -10,10 +10,13 @@ import * as crm from "../src/services/cloudresourcemanager-v3.ts";
 // Asserts the per-service `rootUrl` fallback resolves the full
 // request URL, captured via a mock `HttpClient`.
 
-const fakeCredentials = Layer.succeed(Credentials, {
-  accessToken: Redacted.make("ya29.fake-test-token"),
-  project: "fake-test-project",
-});
+const fakeCredentials = Layer.succeed(
+  Credentials,
+  Effect.succeed({
+    accessToken: Redacted.make("ya29.fake-test-token"),
+    project: "fake-test-project",
+  }),
+);
 
 const captureUrl = (sink: {
   url?: string;

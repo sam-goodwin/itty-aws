@@ -1,12 +1,12 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
+import { ResourceGroupNotFound, ResourceNotFound } from "../src/errors";
 import {
-  ResourceGroupsList,
-  ResourceGroupsGet,
   ResourceGroupsCreateOrUpdate,
   ResourceGroupsDelete,
+  ResourceGroupsGet,
+  ResourceGroupsList,
 } from "../src/services/resources";
-import { ResourceNotFound, ResourceGroupNotFound } from "../src/errors";
 import { runEffect, testRunId } from "./setup";
 
 const rgName = (name: string) => `distilled-azure-${name}-${testRunId}`;
@@ -54,7 +54,7 @@ describe("ResourceGroups", () => {
     it(
       "error - NotFound for non-existent resource group",
       async () => {
-        const error = await runEffect(
+        const error: any = await runEffect(
           ResourceGroupsGet({
             resourceGroupName: NON_EXISTENT_RG,
           }).pipe(Effect.flip),
@@ -66,7 +66,9 @@ describe("ResourceGroups", () => {
             (error !== null &&
               typeof error === "object" &&
               "_tag" in error &&
-              (error._tag === "NotFound" || error._tag === "ResourceNotFound" || error._tag === "ResourceGroupNotFound")),
+              (error._tag === "NotFound" ||
+                error._tag === "ResourceNotFound" ||
+                error._tag === "ResourceGroupNotFound")),
         ).toBe(true);
       },
       { timeout: 30_000 },

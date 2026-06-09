@@ -69,7 +69,7 @@ describe("regions", () => {
     it("can list regions for an organization", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* listRegionsForOrganization({ organization });
         }),
       );
@@ -82,7 +82,7 @@ describe("regions", () => {
     it("can list regions for an organization with pagination", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* listRegionsForOrganization({
             organization,
             page: 1,
@@ -98,7 +98,7 @@ describe("regions", () => {
     it("returns region data with expected fields including current_default", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* listRegionsForOrganization({ organization });
         }),
       );
@@ -140,7 +140,7 @@ describe("regions", () => {
     it("returns NotFound or Forbidden for non-existent database", async () => {
       const error = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* listReadOnlyRegions({
             organization,
             database: NON_EXISTENT_DATABASE,

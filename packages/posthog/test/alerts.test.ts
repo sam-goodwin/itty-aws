@@ -1,7 +1,7 @@
-import { describe, expect } from "vitest";
 import * as Effect from "effect/Effect";
-import { test, getProjectId, testRunId } from "./test.ts";
+import { describe, expect } from "vitest";
 import * as Alerts from "~/operations/alerts";
+import { getProjectId, test, testRunId } from "./test.ts";
 
 describe("Alerts", () => {
   // --------------------------------------------------------------------------
@@ -68,11 +68,11 @@ describe("Alerts", () => {
 
           expect(result).toBeDefined();
           expect(typeof result.id).toBe("string");
-          expect(result.id.length).toBeGreaterThan(0);
+          expect(result.id?.length).toBeGreaterThan(0);
           expect(result.name).toBe(alertName);
           expect(result.insight).toBe(insightId());
           expect(typeof result.state).toBe("string");
-          expect(result.threshold.configuration.type).toBe("absolute");
+          expect(result.threshold?.configuration?.type).toBe("absolute");
 
           createdId = result.id;
         }).pipe(
@@ -172,19 +172,19 @@ describe("Alerts", () => {
             createBody(`distilled-posthog-alert-del-${testRunId}`),
           );
           expect(typeof created.id).toBe("string");
-          expect(created.id.length).toBeGreaterThan(0);
+          expect(created.id?.length).toBeGreaterThan(0);
 
           // Act: destroy it. Output schema is Schema.Void → undefined.
           const result = yield* Alerts.alertsDestroy({
             project_id: getProjectId(),
-            id: created.id,
+            id: created.id!,
           });
           expect(result).toBeUndefined();
 
           // Assert: deleting again returns NotFound.
           const followUp = yield* Alerts.alertsDestroy({
             project_id: getProjectId(),
-            id: created.id,
+            id: created.id!,
           }).pipe(Effect.flip);
           expect(followUp._tag).toBe("NotFound");
         }),
@@ -228,20 +228,20 @@ describe("Alerts", () => {
         expect(typeof result.count).toBe("number");
         expect(result.count).toBeGreaterThanOrEqual(0);
         expect(Array.isArray(result.results)).toBe(true);
-        expect(result.results.length).toBeLessThanOrEqual(5);
+        expect(result.results?.length).toBeLessThanOrEqual(5);
 
         // Validate shape of each entry, if any are present.
-        for (const entry of result.results) {
+        for (const entry of result.results ?? []) {
           expect(typeof entry.id).toBe("string");
-          expect(entry.id.length).toBeGreaterThan(0);
+          expect(entry.id?.length).toBeGreaterThan(0);
           expect(typeof entry.insight).toBe("number");
           expect(typeof entry.state).toBe("string");
           expect(typeof entry.created_at).toBe("string");
-          expect(typeof entry.created_by.id).toBe("number");
-          expect(typeof entry.created_by.email).toBe("string");
-          expect(typeof entry.threshold.id).toBe("string");
+          expect(typeof entry.created_by?.id).toBe("number");
+          expect(typeof entry.created_by?.email).toBe("string");
+          expect(typeof entry.threshold?.id).toBe("string");
           expect(["absolute", "percentage"]).toContain(
-            entry.threshold.configuration.type,
+            entry.threshold?.configuration?.type,
           );
           expect(Array.isArray(entry.subscribed_users)).toBe(true);
           expect(Array.isArray(entry.checks)).toBe(true);
@@ -259,7 +259,7 @@ describe("Alerts", () => {
         expect(result).toBeDefined();
         expect(typeof result.count).toBe("number");
         expect(Array.isArray(result.results)).toBe(true);
-        expect(result.results.length).toBeLessThanOrEqual(1);
+        expect(result.results?.length).toBeLessThanOrEqual(1);
       }));
 
     test("error - NotFound for non-existent project_id", () =>
@@ -347,7 +347,7 @@ describe("Alerts", () => {
           // Act: PATCH only the name + enabled fields.
           const result = yield* Alerts.alertsPartialUpdate({
             project_id: getProjectId(),
-            id: created.id,
+            id: created.id!,
             name: updatedName,
             enabled: false,
           });
@@ -359,7 +359,7 @@ describe("Alerts", () => {
           expect(result.enabled).toBe(false);
           expect(result.insight).toBe(insightId());
           expect(typeof result.state).toBe("string");
-          expect(result.threshold.configuration.type).toBe("absolute");
+          expect(result.threshold?.configuration?.type).toBe("absolute");
         }).pipe(
           Effect.ensuring(
             Effect.suspend(() =>
@@ -464,7 +464,7 @@ describe("Alerts", () => {
           // Act: retrieve by id.
           const result = yield* Alerts.alertsRetrieve({
             project_id: getProjectId(),
-            id: created.id,
+            id: created.id!,
           });
 
           // Assert: identity + key fields preserved.
@@ -474,9 +474,9 @@ describe("Alerts", () => {
           expect(result.insight).toBe(insightId());
           expect(typeof result.state).toBe("string");
           expect(typeof result.created_at).toBe("string");
-          expect(typeof result.created_by.id).toBe("number");
-          expect(typeof result.created_by.email).toBe("string");
-          expect(result.threshold.configuration.type).toBe("absolute");
+          expect(typeof result.created_by?.id).toBe("number");
+          expect(typeof result.created_by?.email).toBe("string");
+          expect(result.threshold?.configuration?.type).toBe("absolute");
           expect(Array.isArray(result.subscribed_users)).toBe(true);
           expect(Array.isArray(result.checks)).toBe(true);
         }).pipe(
@@ -506,7 +506,7 @@ describe("Alerts", () => {
 
           const result = yield* Alerts.alertsRetrieve({
             project_id: getProjectId(),
-            id: created.id,
+            id: created.id!,
             checks_limit: 5,
             checks_offset: 0,
             checks_date_from: "-24h",
@@ -514,7 +514,7 @@ describe("Alerts", () => {
 
           expect(result.id).toBe(created.id);
           expect(Array.isArray(result.checks)).toBe(true);
-          expect(result.checks.length).toBeLessThanOrEqual(5);
+          expect(result.checks?.length).toBeLessThanOrEqual(5);
         }).pipe(
           Effect.ensuring(
             Effect.suspend(() =>
@@ -593,7 +593,7 @@ describe("Alerts", () => {
           expect(typeof result.anomaly_count).toBe("number");
           expect(result.anomaly_count).toBeGreaterThanOrEqual(0);
           // The dates and data arrays should align in length.
-          expect(result.dates.length).toBe(result.data.length);
+          expect(result.dates?.length).toBe(result.data?.length);
         }),
     );
 
@@ -713,7 +713,7 @@ describe("Alerts", () => {
           expect(result.name).toBe(replacedName);
           expect(result.insight).toBe(insightId());
           expect(typeof result.state).toBe("string");
-          expect(result.threshold.configuration.type).toBe("absolute");
+          expect(result.threshold?.configuration?.type).toBe("absolute");
         }).pipe(
           Effect.ensuring(
             Effect.suspend(() =>

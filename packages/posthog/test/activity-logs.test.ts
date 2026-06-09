@@ -1,7 +1,7 @@
-import { describe, expect } from "vitest";
 import * as Effect from "effect/Effect";
-import { test, getProjectId, testRunId } from "./test.ts";
+import { describe, expect } from "vitest";
 import * as ActivityLogs from "~/operations/activity-logs";
+import { getProjectId, test, testRunId } from "./test.ts";
 
 describe("ActivityLogs", () => {
   // --------------------------------------------------------------------------
@@ -34,8 +34,8 @@ describe("ActivityLogs", () => {
                 expect(typeof entry.activity).toBe("string");
                 expect(typeof entry.scope).toBe("string");
                 expect(typeof entry.unread).toBe("boolean");
-                expect(typeof entry.user.id).toBe("number");
-                expect(typeof entry.user.email).toBe("string");
+                expect(typeof entry.user?.id).toBe("number");
+                expect(typeof entry.user?.email).toBe("string");
               }
             }),
         }),
@@ -55,7 +55,7 @@ describe("ActivityLogs", () => {
           onSuccess: (result) =>
             Effect.sync(() => {
               expect(Array.isArray(result.results)).toBe(true);
-              for (const entry of result.results) {
+              for (const entry of result.results ?? []) {
                 expect(entry.scope).toBe("FeatureFlag");
               }
             }),

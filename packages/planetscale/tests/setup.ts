@@ -92,7 +92,7 @@ export const setupTestDatabase = (
   options?: SetupTestDatabaseOptions,
 ) =>
   Effect.gen(function* () {
-    const { organization } = yield* Credentials;
+    const { organization } = yield* yield* Credentials;
     const databaseName = getDatabaseName(suffix);
     const prefix = suffix ?? "default";
     const requestedKind = options?.kind ?? "mysql";

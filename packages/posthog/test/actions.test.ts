@@ -1,7 +1,7 @@
-import { describe, expect } from "vitest";
 import * as Effect from "effect/Effect";
-import { test, getProjectId, testRunId } from "./test.ts";
+import { describe, expect } from "vitest";
 import * as Actions from "~/operations/actions";
+import { getProjectId, test, testRunId } from "./test.ts";
 
 describe("Actions", () => {
   // --------------------------------------------------------------------------
@@ -133,7 +133,7 @@ describe("Actions", () => {
         // UnknownPosthogError; accept that as well.
         const destroyResult = yield* Actions.actionsDestroy({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         }).pipe(
           Effect.matchEffect({
             onFailure: (e) =>
@@ -148,7 +148,7 @@ describe("Actions", () => {
         // Assert: subsequent destroy of the same id errors.
         const followUp = yield* Actions.actionsDestroy({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         }).pipe(Effect.flip);
         expect(["NotFound", "UnknownPosthogError"]).toContain(followUp._tag);
       }));
@@ -210,7 +210,7 @@ describe("Actions", () => {
         // sometimes returns the full unpaginated set. Just verify shape.
 
         // Validate shape of each returned action.
-        for (const action of result.results) {
+        for (const action of result.results ?? []) {
           expect(typeof action.id).toBe("number");
           expect(typeof action.is_calculating).toBe("boolean");
           expect(typeof action.is_action).toBe("boolean");
@@ -309,7 +309,7 @@ describe("Actions", () => {
         // Act: patch only `name` and `description`.
         const updated = yield* Actions.actionsPartialUpdate({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
           name: updatedName,
           description: `patched at ${testRunId}`,
         });
@@ -408,7 +408,7 @@ describe("Actions", () => {
         // the array shape if any references happen to be present.
         const refs = yield* Actions.actionsReferencesList({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         });
 
         expect(Array.isArray(refs)).toBe(true);
@@ -417,8 +417,8 @@ describe("Actions", () => {
           expect(typeof ref.id).toBe("string");
           expect(typeof ref.name).toBe("string");
           expect(typeof ref.url).toBe("string");
-          expect(typeof ref.created_by.id).toBe("number");
-          expect(typeof ref.created_by.email).toBe("string");
+          expect(typeof ref.created_by?.id).toBe("number");
+          expect(typeof ref.created_by?.email).toBe("string");
         }
       }).pipe(
         Effect.ensuring(
@@ -503,7 +503,7 @@ describe("Actions", () => {
         // Act: retrieve by id.
         const result = yield* Actions.actionsRetrieve({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         });
 
         // Assert: returned action matches the one we created.
@@ -512,8 +512,8 @@ describe("Actions", () => {
         expect(result.is_action).toBe(true);
         expect(typeof result.team_id).toBe("number");
         expect(typeof result.created_at).toBe("string");
-        expect(typeof result.created_by.id).toBe("number");
-        expect(typeof result.created_by.email).toBe("string");
+        expect(typeof result.created_by?.id).toBe("number");
+        expect(typeof result.created_by?.email).toBe("string");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -639,6 +639,7 @@ describe("Actions", () => {
 
         // Act: PUT-update the action with new name and description.
         const updated = yield* Actions.actionsUpdate(
+          // @ts-expect-error - created.id is not undefined
           updateBody(created, {
             name: updatedName,
             description: `replaced at ${testRunId}`,

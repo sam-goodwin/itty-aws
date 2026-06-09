@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 import { Effect, Layer } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
-import { CredentialsFromEnv } from "../src/credentials";
+import { Credentials, CredentialsFromEnv } from "../src/credentials";
 
 // Load environment variables from .env file
 config();
@@ -22,6 +22,6 @@ export const testRunId: string = crypto
  * Run an Effect with the shared TestLayer (Azure credentials + HTTP client).
  */
 export const runEffect = <A, E>(
-  effect: Effect.Effect<A, E, never>,
+  effect: Effect.Effect<A, E, Credentials>,
 ): Promise<A> =>
   Effect.runPromise(Effect.provide(effect, TestLayer) as Effect.Effect<A>);

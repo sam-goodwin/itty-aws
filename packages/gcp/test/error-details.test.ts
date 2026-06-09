@@ -14,10 +14,13 @@ import * as crm from "../src/services/cloudresourcemanager-v3.ts";
 // to disambiguate sub-cases by string-matching the `message`, which is
 // fragile and locale-dependent.
 
-const fakeCredentials = Layer.succeed(Credentials, {
-  accessToken: Redacted.make("ya29.fake-test-token"),
-  project: "fake-test-project",
-});
+const fakeCredentials = Layer.succeed(
+  Credentials,
+  Effect.succeed({
+    accessToken: Redacted.make("ya29.fake-test-token"),
+    project: "fake-test-project",
+  }),
+);
 
 const respondWith = (
   status: number,

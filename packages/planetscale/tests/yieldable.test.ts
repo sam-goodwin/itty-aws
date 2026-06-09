@@ -8,7 +8,7 @@ describe("OperationMethod yieldable", () => {
   it("direct call - yield* operation(input) works with services in context", async () => {
     const result = await runEffect(
       Effect.gen(function* () {
-        const { organization } = yield* Credentials;
+        const { organization } = yield* yield* Credentials;
         const org = yield* getOrganization({ organization });
         return org;
       }),
@@ -21,7 +21,7 @@ describe("OperationMethod yieldable", () => {
   it("yield first - yield* operation captures services and returns requirement-free function", async () => {
     const result = await runEffect(
       Effect.gen(function* () {
-        const { organization } = yield* Credentials;
+        const { organization } = yield* yield* Credentials;
         // yield* the operation itself (not calling it) to capture Credentials + HttpClient
         const getOrg = yield* getOrganization;
 
@@ -38,7 +38,7 @@ describe("OperationMethod yieldable", () => {
   it("yield first function works without service context", async () => {
     const result = await runEffect(
       Effect.gen(function* () {
-        const { organization } = yield* Credentials;
+        const { organization } = yield* yield* Credentials;
         // Capture services into a requirement-free function
         const getOrg = yield* getOrganization;
 

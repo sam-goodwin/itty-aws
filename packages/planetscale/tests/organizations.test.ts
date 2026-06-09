@@ -124,7 +124,7 @@ describe("organizations", () => {
     it("can get an organization", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* getOrganization({ organization });
         }),
       );
@@ -165,7 +165,7 @@ describe("organizations", () => {
     it("can list organization members", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* listOrganizationMembers({ organization });
         }),
       );
@@ -177,7 +177,7 @@ describe("organizations", () => {
     it("can list organization members with pagination", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* listOrganizationMembers({
             organization,
             page: 1,
@@ -193,7 +193,7 @@ describe("organizations", () => {
     it("can search organization members by query", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* listOrganizationMembers({
             organization,
             q: "test",
@@ -207,7 +207,7 @@ describe("organizations", () => {
     it("returns member data with expected fields", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* listOrganizationMembers({ organization });
         }),
       );
@@ -251,7 +251,7 @@ describe("organizations", () => {
     it("can get an organization member by id", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           // First list members to get a valid member ID
           const members = yield* listOrganizationMembers({ organization });
           if (members.data.length === 0) {
@@ -294,7 +294,7 @@ describe("organizations", () => {
     it("returns NotFound for non-existent member", async () => {
       const error = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* getOrganizationMembership({
             organization,
             id: NON_EXISTENT_MEMBERSHIP_ID,
@@ -337,7 +337,7 @@ describe("organizations", () => {
     it("can list organization teams", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* listOrganizationTeams({ organization });
         }),
       );
@@ -349,7 +349,7 @@ describe("organizations", () => {
     it("can search organization teams by query", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* listOrganizationTeams({
             organization,
             q: "test",
@@ -363,7 +363,7 @@ describe("organizations", () => {
     it("returns team data with expected fields when teams exist", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* listOrganizationTeams({ organization });
         }),
       );
@@ -407,7 +407,7 @@ describe("organizations", () => {
     it("can get an organization team by slug", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           // First list teams to get a valid team slug
           const teams = yield* listOrganizationTeams({ organization });
           if (teams.data.length === 0) {
@@ -437,7 +437,7 @@ describe("organizations", () => {
     it("returns NotFound for non-existent team", async () => {
       const error = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* getOrganizationTeam({
             organization,
             team: NON_EXISTENT_TEAM,
@@ -480,7 +480,7 @@ describe("organizations", () => {
     it("can update an organization (or returns error if no permission)", async () => {
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           // Get current organization to retrieve current billing email
           const currentOrg = yield* getOrganization({ organization });
           // Update with same billing email (no-op change)
@@ -533,7 +533,7 @@ describe("organizations", () => {
     it("returns NotFound for non-existent member", async () => {
       const error = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* removeOrganizationMember({
             organization,
             id: NON_EXISTENT_MEMBERSHIP_ID,
@@ -576,7 +576,7 @@ describe("organizations", () => {
     it("returns NotFound for non-existent member", async () => {
       const error = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* updateOrganizationMembership({
             organization,
             id: NON_EXISTENT_MEMBERSHIP_ID,
@@ -623,7 +623,7 @@ describe("organizations", () => {
 
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* createOrganizationTeam({
             organization,
             name: teamName,
@@ -650,7 +650,7 @@ describe("organizations", () => {
         // Clean up: delete the team
         await runEffect(
           Effect.gen(function* () {
-            const { organization } = yield* Credentials;
+            const { organization } = yield* yield* Credentials;
             yield* deleteOrganizationTeam({
               organization,
               team: result.data.slug,
@@ -689,7 +689,7 @@ describe("organizations", () => {
     it("returns NotFound or Forbidden for non-existent team", async () => {
       const error = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* deleteOrganizationTeam({
             organization,
             team: NON_EXISTENT_TEAM,
@@ -732,7 +732,7 @@ describe("organizations", () => {
     it("returns NotFound or Forbidden for non-existent team", async () => {
       const error = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
           return yield* updateOrganizationTeam({
             organization,
             team: NON_EXISTENT_TEAM,
@@ -775,7 +775,7 @@ describe("organizations", () => {
 
       const result = await runEffect(
         Effect.gen(function* () {
-          const { organization } = yield* Credentials;
+          const { organization } = yield* yield* Credentials;
 
           // Create team
           const createResult = yield* createOrganizationTeam({
@@ -815,7 +815,7 @@ describe("organizations", () => {
       if (teamSlug) {
         await runEffect(
           Effect.gen(function* () {
-            const { organization } = yield* Credentials;
+            const { organization } = yield* yield* Credentials;
             yield* deleteOrganizationTeam({
               organization,
               team: teamSlug!,
