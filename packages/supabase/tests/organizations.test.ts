@@ -2,10 +2,10 @@ import { Effect, Layer } from "effect";
 import * as Redacted from "effect/Redacted";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
-import { runEffect, testRunId } from "./setup";
+import { Credentials, DEFAULT_API_BASE_URL } from "../src/credentials";
 import { v1CreateAnOrganization } from "../src/operations/v1CreateAnOrganization";
 import { v1ListAllOrganizations } from "../src/operations/v1ListAllOrganizations";
-import { Credentials, DEFAULT_API_BASE_URL } from "../src/credentials";
+import { runEffect, testRunId } from "./setup";
 
 // Supabase's management API has no DELETE /v1/organizations/{slug} endpoint —
 // every organization created by a test run is permanent. Gate org-creation
@@ -15,10 +15,13 @@ const runOrgCreationTests =
   !!process.env.SUPABASE_RUN_ORGANIZATION_CREATION_TESTS;
 
 const BadTokenLayer = Layer.merge(
-  Layer.succeed(Credentials, {
-    accessToken: Redacted.make("sbp_invalid_token_00000000"),
-    apiBaseUrl: DEFAULT_API_BASE_URL,
-  }),
+  Layer.succeed(
+    Credentials,
+    Effect.succeed({
+      accessToken: Redacted.make("sbp_invalid_token_00000000"),
+      apiBaseUrl: DEFAULT_API_BASE_URL,
+    }),
+  ),
   FetchHttpClient.layer,
 );
 

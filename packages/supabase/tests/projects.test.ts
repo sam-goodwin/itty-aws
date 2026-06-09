@@ -2,46 +2,49 @@ import { Effect, Layer, Schedule } from "effect";
 import * as Redacted from "effect/Redacted";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
-import {
-  runEffect,
-  FAKE_REF,
-  getExistingProject,
-  getExistingOrgSlug,
-  testRunId,
-  retryOnFreeProjectLimit,
-} from "./setup";
-import { v1ListAllProjects } from "../src/operations/v1ListAllProjects";
-import { v1GetProject } from "../src/operations/v1GetProject";
-import { v1UpdateAProject } from "../src/operations/v1UpdateAProject";
-import { v1DeleteAProject } from "../src/operations/v1DeleteAProject";
-import { v1CreateAProject } from "../src/operations/v1CreateAProject";
-import { v1GetAvailableRegions } from "../src/operations/v1GetAvailableRegions";
-import { v1PauseAProject } from "../src/operations/v1PauseAProject";
-import { v1RestoreAProject } from "../src/operations/v1RestoreAProject";
+import { Credentials, DEFAULT_API_BASE_URL } from "../src/credentials";
 import { v1CancelAProjectRestoration } from "../src/operations/v1CancelAProjectRestoration";
-import { v1GetServicesHealth } from "../src/operations/v1GetServicesHealth";
-import { v1GetReadonlyModeStatus } from "../src/operations/v1GetReadonlyModeStatus";
+import { v1CreateAProject } from "../src/operations/v1CreateAProject";
+import { v1DeleteAProject } from "../src/operations/v1DeleteAProject";
 import { v1DisableReadonlyModeTemporarily } from "../src/operations/v1DisableReadonlyModeTemporarily";
-import { v1GetProjectLogs } from "../src/operations/v1GetProjectLogs";
-import { v1GetProjectUsageApiCount } from "../src/operations/v1GetProjectUsageApiCount";
-import { v1GetProjectUsageRequestCount } from "../src/operations/v1GetProjectUsageRequestCount";
-import { v1GetProjectFunctionCombinedStats } from "../src/operations/v1GetProjectFunctionCombinedStats";
-import { v1GetDiskUtilization } from "../src/operations/v1GetDiskUtilization";
+import { v1GetAvailableRegions } from "../src/operations/v1GetAvailableRegions";
 import { v1GetDatabaseDisk } from "../src/operations/v1GetDatabaseDisk";
-import { v1ModifyDatabaseDisk } from "../src/operations/v1ModifyDatabaseDisk";
-import { v1GetProjectDiskAutoscaleConfig } from "../src/operations/v1GetProjectDiskAutoscaleConfig";
+import { v1GetDiskUtilization } from "../src/operations/v1GetDiskUtilization";
 import { v1GetPostgresUpgradeEligibility } from "../src/operations/v1GetPostgresUpgradeEligibility";
 import { v1GetPostgresUpgradeStatus } from "../src/operations/v1GetPostgresUpgradeStatus";
-import { v1UpgradePostgresVersion } from "../src/operations/v1UpgradePostgresVersion";
+import { v1GetProject } from "../src/operations/v1GetProject";
+import { v1GetProjectDiskAutoscaleConfig } from "../src/operations/v1GetProjectDiskAutoscaleConfig";
+import { v1GetProjectFunctionCombinedStats } from "../src/operations/v1GetProjectFunctionCombinedStats";
+import { v1GetProjectLogs } from "../src/operations/v1GetProjectLogs";
 import { v1GetProjectPgbouncerConfig } from "../src/operations/v1GetProjectPgbouncerConfig";
-import { Credentials, DEFAULT_API_BASE_URL } from "../src/credentials";
+import { v1GetProjectUsageApiCount } from "../src/operations/v1GetProjectUsageApiCount";
+import { v1GetProjectUsageRequestCount } from "../src/operations/v1GetProjectUsageRequestCount";
+import { v1GetReadonlyModeStatus } from "../src/operations/v1GetReadonlyModeStatus";
+import { v1GetServicesHealth } from "../src/operations/v1GetServicesHealth";
+import { v1ListAllProjects } from "../src/operations/v1ListAllProjects";
+import { v1ModifyDatabaseDisk } from "../src/operations/v1ModifyDatabaseDisk";
+import { v1PauseAProject } from "../src/operations/v1PauseAProject";
+import { v1RestoreAProject } from "../src/operations/v1RestoreAProject";
+import { v1UpdateAProject } from "../src/operations/v1UpdateAProject";
+import { v1UpgradePostgresVersion } from "../src/operations/v1UpgradePostgresVersion";
+import {
+  FAKE_REF,
+  getExistingOrgSlug,
+  getExistingProject,
+  retryOnFreeProjectLimit,
+  runEffect,
+  testRunId,
+} from "./setup";
 
 // Layer with an invalid token to trigger Forbidden/Unauthorized errors
 const BadTokenLayer = Layer.merge(
-  Layer.succeed(Credentials, {
-    accessToken: Redacted.make("sbp_invalid_token_00000000"),
-    apiBaseUrl: DEFAULT_API_BASE_URL,
-  }),
+  Layer.succeed(
+    Credentials,
+    Effect.succeed({
+      accessToken: Redacted.make("sbp_invalid_token_00000000"),
+      apiBaseUrl: DEFAULT_API_BASE_URL,
+    }),
+  ),
   FetchHttpClient.layer,
 );
 
