@@ -24,9 +24,10 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "KubernetesCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("KubernetesCredentials") {}
 
 const envConfig = EffectConfig.all({
   token: EffectConfig.string("KUBERNETES_TOKEN"),
@@ -41,7 +42,7 @@ const envConfig = EffectConfig.all({
  * | `KUBERNETES_TOKEN` | yes | Bearer token for authentication |
  * | `KUBERNETES_API_URL` | yes | API server URL (e.g. from `kubectl cluster-info`) |
  */
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
   envConfig.pipe(
     Effect.mapError(
@@ -58,5 +59,6 @@ export const CredentialsFromEnv = Layer.effect(
       token: Redacted.make(token),
       apiBaseUrl,
     })),
+    Effect.orDie,
   ),
 );

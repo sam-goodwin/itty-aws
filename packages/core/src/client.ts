@@ -126,9 +126,7 @@ const isEffectLike = (value: unknown): value is Effect.Effect<unknown> =>
  */
 export interface ClientConfig<Creds> {
   /** The credentials service tag */
-  credentials: {
-    new (): Creds;
-  };
+  credentials: Context.ServiceClass<any, any, Effect.Effect<Creds>>;
 
   /** Get the base URL from credentials */
   getBaseUrl: (creds: ResolvedClientCredentials<Creds>) => string;
@@ -513,7 +511,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
 
       const innerFn = (input: Input): Effect.Effect<any, any, any> =>
         Effect.gen(function* () {
-          const credentials = yield* config.credentials as any;
+          const credentials = yield* yield* config.credentials;
           const creds = isEffectLike(credentials)
             ? yield* credentials
             : credentials;

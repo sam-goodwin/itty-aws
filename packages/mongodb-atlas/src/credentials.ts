@@ -12,9 +12,10 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "Mongodb-atlasCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("Mongodb-atlasCredentials") {}
 
 const envConfig = EffectConfig.all({
   clientId: EffectConfig.string("MONGODB_ATLAS_CLIENT_ID"),
@@ -24,7 +25,7 @@ const envConfig = EffectConfig.all({
   ),
 });
 
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
   Effect.gen(function* () {
     const { clientId, clientSecret, apiBaseUrl } = yield* envConfig.pipe(
@@ -65,5 +66,5 @@ export const CredentialsFromEnv = Layer.effect(
       accessToken: Redacted.make(data.access_token),
       apiBaseUrl,
     };
-  }),
+  }).pipe(Effect.orDie),
 );

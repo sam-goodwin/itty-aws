@@ -34,9 +34,10 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "CoinbaseCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("CoinbaseCredentials") {}
 
 const envConfig = EffectConfig.all({
   apiKeyId: EffectConfig.option(EffectConfig.string("CDP_API_KEY_ID")),
@@ -45,7 +46,7 @@ const envConfig = EffectConfig.all({
   walletSecret: EffectConfig.option(EffectConfig.string("CDP_WALLET_SECRET")),
 });
 
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
   Effect.gen(function* () {
     const config = yield* envConfig.pipe(
@@ -76,5 +77,5 @@ export const CredentialsFromEnv = Layer.effect(
       walletSecret: walletSecret ? Redacted.make(walletSecret) : undefined,
       apiBaseUrl: DEFAULT_API_BASE_URL,
     };
-  }),
+  }).pipe(Effect.orDie),
 );

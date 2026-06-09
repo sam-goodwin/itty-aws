@@ -20,9 +20,10 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "EasCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("EasCredentials") {}
 
 const envConfig = EffectConfig.all({
   accessToken: EffectConfig.string("EXPO_TOKEN"),
@@ -40,7 +41,7 @@ const envConfig = EffectConfig.all({
  *   https://api.expo.dev). Set to `https://staging-api.expo.dev` to target
  *   staging, mirroring eas-cli's `EXPO_STAGING=1` flag.
  */
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
   envConfig.pipe(
     Effect.mapError(
@@ -53,5 +54,6 @@ export const CredentialsFromEnv = Layer.effect(
       accessToken: Redacted.make(accessToken),
       apiBaseUrl,
     })),
+    Effect.orDie,
   ),
 );

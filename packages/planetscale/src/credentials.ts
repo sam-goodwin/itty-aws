@@ -39,9 +39,10 @@ export interface OAuthConfig {
 
 export type Config = ServiceTokenConfig | OAuthConfig;
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "PlanetScaleCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("PlanetScaleCredentials") {}
 
 /**
  * Build the `Authorization` header for a resolved set of credentials.
@@ -63,15 +64,18 @@ export const fromOAuth = (input: {
   organization: string;
   apiBaseUrl?: string;
 }): Layer.Layer<Credentials> =>
-  Layer.succeed(Credentials, {
-    type: "oauth",
-    accessToken:
-      typeof input.accessToken === "string"
-        ? Redacted.make(input.accessToken)
-        : input.accessToken,
-    organization: input.organization,
-    apiBaseUrl: input.apiBaseUrl ?? DEFAULT_API_BASE_URL,
-  });
+  Layer.succeed(
+    Credentials,
+    Effect.succeed({
+      type: "oauth",
+      accessToken:
+        typeof input.accessToken === "string"
+          ? Redacted.make(input.accessToken)
+          : input.accessToken,
+      organization: input.organization,
+      apiBaseUrl: input.apiBaseUrl ?? DEFAULT_API_BASE_URL,
+    }),
+  );
 
 const envConfig = EffectConfig.all({
   tokenId: EffectConfig.string("PLANETSCALE_API_TOKEN_ID"),
@@ -79,21 +83,23 @@ const envConfig = EffectConfig.all({
   organization: EffectConfig.string("PLANETSCALE_ORGANIZATION"),
 });
 
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
-  envConfig.pipe(
-    Effect.mapError(
-      () =>
-        new ConfigError({
-          message:
-            "PLANETSCALE_API_TOKEN_ID, PLANETSCALE_API_TOKEN, and PLANETSCALE_ORGANIZATION environment variables are required",
-        }),
-    ),
-    Effect.map(({ tokenId, token, organization }) => ({
-      tokenId: Redacted.make(tokenId),
-      token: Redacted.make(token),
-      organization,
-      apiBaseUrl: DEFAULT_API_BASE_URL,
-    })),
-  ),
+  envConfig
+    .pipe(
+      Effect.mapError(
+        () =>
+          new ConfigError({
+            message:
+              "PLANETSCALE_API_TOKEN_ID, PLANETSCALE_API_TOKEN, and PLANETSCALE_ORGANIZATION environment variables are required",
+          }),
+      ),
+      Effect.map(({ tokenId, token, organization }) => ({
+        tokenId: Redacted.make(tokenId),
+        token: Redacted.make(token),
+        organization,
+        apiBaseUrl: DEFAULT_API_BASE_URL,
+      })),
+    )
+    .pipe(Effect.orDie),
 );

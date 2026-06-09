@@ -17,16 +17,17 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "TypesenseCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("TypesenseCredentials") {}
 
 const envConfig = EffectConfig.all({
   apiKey: EffectConfig.string("TYPESENSE_API_KEY"),
   apiBaseUrl: EffectConfig.string("TYPESENSE_API_URL"),
 });
 
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
   envConfig.pipe(
     Effect.mapError(
@@ -40,5 +41,6 @@ export const CredentialsFromEnv = Layer.effect(
       apiKey: Redacted.make(apiKey),
       apiBaseUrl,
     })),
+    Effect.orDie,
   ),
 );

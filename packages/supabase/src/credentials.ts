@@ -12,15 +12,16 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "SupabaseCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("SupabaseCredentials") {}
 
 const envConfig = EffectConfig.all({
   accessToken: EffectConfig.string("SUPABASE_ACCESS_TOKEN"),
 });
 
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
   envConfig.pipe(
     Effect.mapError(
@@ -33,5 +34,6 @@ export const CredentialsFromEnv = Layer.effect(
       accessToken: Redacted.make(accessToken),
       apiBaseUrl: DEFAULT_API_BASE_URL,
     })),
+    Effect.orDie,
   ),
 );

@@ -1,10 +1,10 @@
+import { ConfigError } from "@distilled.cloud/core/errors";
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
-import { ConfigError } from "@distilled.cloud/core/errors";
 
 /** Default base URL for Axiom Cloud. Self-hosted users can override via AXIOM_URL. */
 export const DEFAULT_API_BASE_URL = "https://api.axiom.co";
@@ -20,9 +20,10 @@ export interface Config {
   readonly orgId?: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "AxiomCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("AxiomCredentials") {}
 
 const envConfig = EffectConfig.all({
   apiToken: EffectConfig.option(EffectConfig.string("AXIOM_TOKEN")),
@@ -41,7 +42,7 @@ const envConfig = EffectConfig.all({
  *   regional edge deployments). Defaults to `https://api.axiom.co`.
  * - `AXIOM_ORG_ID` (optional) — organization ID, required for PATs.
  */
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
   Effect.gen(function* () {
     const config = yield* envConfig.pipe(
@@ -69,5 +70,5 @@ export const CredentialsFromEnv = Layer.effect(
       apiBaseUrl: config.apiBaseUrl,
       orgId: Option.getOrUndefined(config.orgId),
     };
-  }),
+  }).pipe(Effect.orDie),
 );

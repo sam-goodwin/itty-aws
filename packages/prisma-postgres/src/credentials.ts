@@ -12,15 +12,16 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "PrismaPostgresCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("PrismaPostgresCredentials") {}
 
 const envConfig = EffectConfig.all({
   apiToken: EffectConfig.string("PRISMA_POSTGRES_API_TOKEN"),
 });
 
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
   envConfig.pipe(
     Effect.mapError(
@@ -33,5 +34,6 @@ export const CredentialsFromEnv = Layer.effect(
       apiToken: Redacted.make(apiToken),
       apiBaseUrl: DEFAULT_API_BASE_URL,
     })),
+    Effect.orDie,
   ),
 );

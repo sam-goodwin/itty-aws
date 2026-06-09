@@ -11,16 +11,17 @@ export interface Config {
   readonly project?: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "GCPCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("GCPCredentials") {}
 
 const envConfig = EffectConfig.all({
   accessToken: EffectConfig.string("GOOGLE_ACCESS_TOKEN"),
   project: EffectConfig.option(EffectConfig.string("GOOGLE_PROJECT_ID")),
 });
 
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
   envConfig.pipe(
     Effect.mapError(
@@ -33,5 +34,6 @@ export const CredentialsFromEnv = Layer.effect(
       accessToken: Redacted.make(accessToken),
       project: Option.getOrUndefined(project),
     })),
+    Effect.orDie,
   ),
 );

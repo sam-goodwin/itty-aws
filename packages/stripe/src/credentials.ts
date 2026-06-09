@@ -12,15 +12,16 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "StripeCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("StripeCredentials") {}
 
 const envConfig = EffectConfig.all({
   apiKey: EffectConfig.string("STRIPE_API_KEY"),
 });
 
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
   envConfig.pipe(
     Effect.mapError(
@@ -33,5 +34,6 @@ export const CredentialsFromEnv = Layer.effect(
       apiKey: Redacted.make(apiKey),
       apiBaseUrl: DEFAULT_API_BASE_URL,
     })),
+    Effect.orDie,
   ),
 );

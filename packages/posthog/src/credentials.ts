@@ -20,9 +20,10 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Config>()(
-  "PosthogCredentials",
-) {}
+export class Credentials extends Context.Service<
+  Credentials,
+  Effect.Effect<Config>
+>()("PosthogCredentials") {}
 
 const envConfig = EffectConfig.all({
   apiKey: EffectConfig.string("POSTHOG_API_KEY"),
@@ -31,7 +32,7 @@ const envConfig = EffectConfig.all({
   ),
 });
 
-export const CredentialsFromEnv = Layer.effect(
+export const CredentialsFromEnv = Layer.succeed(
   Credentials,
   envConfig.pipe(
     Effect.mapError(
@@ -40,5 +41,6 @@ export const CredentialsFromEnv = Layer.effect(
           message: "POSTHOG_API_KEY environment variable is required",
         }),
     ),
+    Effect.orDie,
   ),
 );
