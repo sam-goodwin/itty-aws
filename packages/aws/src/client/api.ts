@@ -99,7 +99,7 @@ export const make = <Op extends Operation<any, any, any>>(
 
     // Sign the request
     const credentials = yield* yield* Credentials.Credentials;
-    const region = yield* Region.Region;
+    const region = yield* yield* Region.Region;
     const serviceName = sigv4?.name ?? "s3";
 
     // Resolve endpoint and adjust request path if needed

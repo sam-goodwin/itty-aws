@@ -1,17 +1,19 @@
 import * as Config from "effect/Config";
-import * as Layer from "effect/Layer";
 import * as Context from "effect/Context";
+import * as Effect from "effect/Effect";
+import * as Layer from "effect/Layer";
 
-export class Region extends Context.Service<Region, RegionName>()(
-  "AWS::Region",
-) {}
+export class Region extends Context.Service<
+  Region,
+  Effect.Effect<RegionName>
+>()("AWS::Region") {}
 
 export const fromEnv = () =>
-  Layer.effect(
+  Layer.succeed(
     Region,
-    Config.string("AWS_REGION").pipe(
-      Config.orElse(() => Config.string("AWS_DEFAULT_REGION")),
-    ),
+    Config.string("AWS_REGION")
+      .pipe(Config.orElse(() => Config.string("AWS_DEFAULT_REGION")))
+      .pipe(Effect.orDie),
   );
 
 export type RegionName =
