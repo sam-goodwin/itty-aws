@@ -2,9 +2,9 @@ import { Effect, Layer, Redacted } from "effect";
 import { FetchHttpClient } from "effect/unstable/http";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials";
+import { queryApl } from "../src/operations/v1-edge-query/queryApl";
 import { createDataset } from "../src/operations/v2/createDataset";
 import { deleteDataset } from "../src/operations/v2/deleteDataset";
-import { queryApl } from "../src/operations/v1-edge-query/queryApl";
 import { runEffect, testRunId } from "./setup";
 
 describe("queryApl", () => {
@@ -40,10 +40,13 @@ describe("queryApl", () => {
   it(
     "returns Unauthorized when credentials are invalid",
     async () => {
-      const badCredentials = Layer.succeed(Credentials, {
-        apiKey: Redacted.make("invalid-queryapl-token"),
-        apiBaseUrl: "https://api.axiom.co",
-      });
+      const badCredentials = Layer.succeed(
+        Credentials,
+        Effect.succeed({
+          apiKey: Redacted.make("invalid-queryapl-token"),
+          apiBaseUrl: "https://api.axiom.co",
+        }),
+      );
 
       const effect = queryApl({
         format: "tabular",

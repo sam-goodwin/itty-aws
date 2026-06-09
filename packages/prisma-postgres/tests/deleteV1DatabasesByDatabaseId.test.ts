@@ -1,26 +1,29 @@
 import { Effect, Layer } from "effect";
 import * as Redacted from "effect/Redacted";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
-import { describe, expect, it, beforeAll, afterAll } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { Credentials, DEFAULT_API_BASE_URL } from "../src/credentials";
+import { deleteV1DatabasesByDatabaseId } from "../src/operations/deleteV1DatabasesByDatabaseId";
+import { getV1DatabasesByDatabaseId } from "../src/operations/getV1DatabasesByDatabaseId";
+import { postV1Databases } from "../src/operations/postV1Databases";
 import {
   TestLayer,
+  getTestProject,
   runEffect,
   setupTestProject,
   teardownTestProject,
-  getTestProject,
   testRunId,
 } from "./setup";
-import { deleteV1DatabasesByDatabaseId } from "../src/operations/deleteV1DatabasesByDatabaseId";
-import { postV1Databases } from "../src/operations/postV1Databases";
-import { getV1DatabasesByDatabaseId } from "../src/operations/getV1DatabasesByDatabaseId";
-import { Credentials, DEFAULT_API_BASE_URL } from "../src/credentials";
 
 // Layer with an invalid token to trigger Forbidden/Unauthorized errors
 const BadTokenLayer = Layer.merge(
-  Layer.succeed(Credentials, {
-    apiToken: Redacted.make("invalid_token_000000"),
-    apiBaseUrl: DEFAULT_API_BASE_URL,
-  }),
+  Layer.succeed(
+    Credentials,
+    Effect.succeed({
+      apiToken: Redacted.make("invalid_token_000000"),
+      apiBaseUrl: DEFAULT_API_BASE_URL,
+    }),
+  ),
   FetchHttpClient.layer,
 );
 
@@ -56,9 +59,9 @@ describe("deleteV1DatabasesByDatabaseId", () => {
         yield* deleteV1DatabasesByDatabaseId({ databaseId: dbId });
 
         // Verify it's gone
-        const err = yield* getV1DatabasesByDatabaseId({ databaseId: dbId }).pipe(
-          Effect.flip,
-        );
+        const err = yield* getV1DatabasesByDatabaseId({
+          databaseId: dbId,
+        }).pipe(Effect.flip);
         expect((err as any)._tag).toBe("NotFound");
       }),
     );
@@ -75,7 +78,9 @@ describe("deleteV1DatabasesByDatabaseId", () => {
       }).pipe(
         Effect.flip,
         Effect.map((e) => {
-          expect(["NotFound", "UnprocessableEntity"]).toContain((e as any)._tag);
+          expect(["NotFound", "UnprocessableEntity"]).toContain(
+            (e as any)._tag,
+          );
         }),
         Effect.provide(TestLayer),
       ),

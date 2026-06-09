@@ -17,9 +17,7 @@ describe("retrieveAllPresets", () => {
         yield* upsertPreset({
           presetId,
           value: {
-            searches: [
-              { collection: "products", q: "shoe", query_by: "name" },
-            ],
+            searches: [{ collection: "products", q: "shoe", query_by: "name" }],
           },
         });
 
@@ -28,9 +26,7 @@ describe("retrieveAllPresets", () => {
 
         const ours = result.presets.find((p) => p.name === presetId);
         expect(ours).toBeDefined();
-      }).pipe(
-        Effect.ensuring(deletePreset({ presetId }).pipe(Effect.ignore)),
-      );
+      }).pipe(Effect.ensuring(deletePreset({ presetId }).pipe(Effect.ignore)));
 
       await runEffect(effect);
     },
@@ -46,14 +42,15 @@ describe("retrieveAllPresets", () => {
       // typed Unauthorized error class.
       const apiBaseUrl = process.env.TYPESENSE_API_URL;
       if (!apiBaseUrl) {
-        throw new Error(
-          "TYPESENSE_API_URL must be set to run typesense tests",
-        );
+        throw new Error("TYPESENSE_API_URL must be set to run typesense tests");
       }
-      const BadCredentials = Layer.succeed(Credentials, {
-        apiKey: Redacted.make(`invalid-key-${testRunId}`),
-        apiBaseUrl,
-      });
+      const BadCredentials = Layer.succeed(
+        Credentials,
+        Effect.succeed({
+          apiKey: Redacted.make(`invalid-key-${testRunId}`),
+          apiBaseUrl,
+        }),
+      );
 
       const error = await Effect.runPromise(
         retrieveAllPresets({}).pipe(

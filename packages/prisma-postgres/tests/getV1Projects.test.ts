@@ -2,16 +2,19 @@ import { Effect, Layer } from "effect";
 import * as Redacted from "effect/Redacted";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
-import { runEffect } from "./setup";
-import { getV1Projects } from "../src/operations/getV1Projects";
 import { Credentials, DEFAULT_API_BASE_URL } from "../src/credentials";
+import { getV1Projects } from "../src/operations/getV1Projects";
+import { runEffect } from "./setup";
 
 // Layer with an invalid token to trigger Unauthorized/Forbidden errors
 const BadTokenLayer = Layer.merge(
-  Layer.succeed(Credentials, {
-    apiToken: Redacted.make("invalid_token_000000"),
-    apiBaseUrl: DEFAULT_API_BASE_URL,
-  }),
+  Layer.succeed(
+    Credentials,
+    Effect.succeed({
+      apiToken: Redacted.make("invalid_token_000000"),
+      apiBaseUrl: DEFAULT_API_BASE_URL,
+    }),
+  ),
   FetchHttpClient.layer,
 );
 

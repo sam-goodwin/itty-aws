@@ -17,7 +17,9 @@ describe("retrieveMetrics", () => {
       // system_cpu_active_percentage, system_memory_used_bytes, etc.
       // Schema.Unknown means the SDK doesn't validate the shape, so we
       // just sanity-check it's a plain object with at least one key.
-      expect(Object.keys(result as Record<string, unknown>).length).toBeGreaterThan(0);
+      expect(
+        Object.keys(result as Record<string, unknown>).length,
+      ).toBeGreaterThan(0);
     },
     { timeout: 30_000 },
   );
@@ -27,14 +29,15 @@ describe("retrieveMetrics", () => {
     async () => {
       const apiBaseUrl = process.env.TYPESENSE_API_URL;
       if (!apiBaseUrl) {
-        throw new Error(
-          "TYPESENSE_API_URL must be set to run typesense tests",
-        );
+        throw new Error("TYPESENSE_API_URL must be set to run typesense tests");
       }
-      const BadCredentials = Layer.succeed(Credentials, {
-        apiKey: Redacted.make(`invalid-key-${testRunId}`),
-        apiBaseUrl,
-      });
+      const BadCredentials = Layer.succeed(
+        Credentials,
+        Effect.succeed({
+          apiKey: Redacted.make(`invalid-key-${testRunId}`),
+          apiBaseUrl,
+        }),
+      );
 
       const error = await Effect.runPromise(
         retrieveMetrics({}).pipe(

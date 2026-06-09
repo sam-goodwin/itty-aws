@@ -43,10 +43,13 @@ describe("listDashboards", () => {
     async () => {
       // Override the shared Credentials layer with a Bearer token that is
       // not authorized. Axiom surfaces this as a 401, which the SDK's matchError maps to the typed Unauthorized class.
-      const BadCredentials = Layer.succeed(Credentials, {
-        apiKey: Redacted.make(`invalid-token-${testRunId}`),
-        apiBaseUrl: "https://api.axiom.co",
-      });
+      const BadCredentials = Layer.succeed(
+        Credentials,
+        Effect.succeed({
+          apiKey: Redacted.make(`invalid-token-${testRunId}`),
+          apiBaseUrl: "https://api.axiom.co",
+        }),
+      );
 
       const error = await Effect.runPromise(
         listDashboards({}).pipe(

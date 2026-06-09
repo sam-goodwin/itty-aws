@@ -31,10 +31,13 @@ describe("health", () => {
           "TYPESENSE_API_URL and TYPESENSE_API_KEY must be set to run typesense tests",
         );
       }
-      const BogusBase = Layer.succeed(Credentials, {
-        apiKey: Redacted.make(apiKey),
-        apiBaseUrl: `${apiBaseUrl}/nonexistent-${testRunId}`,
-      });
+      const BogusBase = Layer.succeed(
+        Credentials,
+        Effect.succeed({
+          apiKey: Redacted.make(apiKey),
+          apiBaseUrl: `${apiBaseUrl}/nonexistent-${testRunId}`,
+        }),
+      );
 
       const error = await Effect.runPromise(
         health({}).pipe(

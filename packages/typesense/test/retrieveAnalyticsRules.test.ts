@@ -47,15 +47,11 @@ describe("retrieveAnalyticsRules", () => {
       );
     }
 
-    const createRule = await rawFetch(
-      "PUT",
-      `/analytics/rules/${ruleName}`,
-      {
-        type: "log",
-        collection: collectionName,
-        event_type: "click",
-      },
-    );
+    const createRule = await rawFetch("PUT", `/analytics/rules/${ruleName}`, {
+      type: "log",
+      collection: collectionName,
+      event_type: "click",
+    });
     if (!createRule.ok) {
       throw new Error(
         `Failed to create test analytics rule: ${createRule.status} ${await createRule.text()}`,
@@ -88,14 +84,15 @@ describe("retrieveAnalyticsRules", () => {
     "returns Unauthorized when the X-TYPESENSE-API-KEY is invalid",
     async () => {
       if (!apiBaseUrl) {
-        throw new Error(
-          "TYPESENSE_API_URL must be set to run typesense tests",
-        );
+        throw new Error("TYPESENSE_API_URL must be set to run typesense tests");
       }
-      const BadCredentials = Layer.succeed(Credentials, {
-        apiKey: Redacted.make(`invalid-key-${testRunId}`),
-        apiBaseUrl,
-      });
+      const BadCredentials = Layer.succeed(
+        Credentials,
+        Effect.succeed({
+          apiKey: Redacted.make(`invalid-key-${testRunId}`),
+          apiBaseUrl,
+        }),
+      );
 
       const error = await Effect.runPromise(
         retrieveAnalyticsRules({}).pipe(

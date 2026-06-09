@@ -25,14 +25,15 @@ describe("clearCache", () => {
       // typed Unauthorized error class.
       const apiBaseUrl = process.env.TYPESENSE_API_URL;
       if (!apiBaseUrl) {
-        throw new Error(
-          "TYPESENSE_API_URL must be set to run typesense tests",
-        );
+        throw new Error("TYPESENSE_API_URL must be set to run typesense tests");
       }
-      const BadCredentials = Layer.succeed(Credentials, {
-        apiKey: Redacted.make(`invalid-key-${testRunId}`),
-        apiBaseUrl,
-      });
+      const BadCredentials = Layer.succeed(
+        Credentials,
+        Effect.succeed({
+          apiKey: Redacted.make(`invalid-key-${testRunId}`),
+          apiBaseUrl,
+        }),
+      );
 
       const error = await Effect.runPromise(
         clearCache({}).pipe(

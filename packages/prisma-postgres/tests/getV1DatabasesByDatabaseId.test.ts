@@ -1,23 +1,26 @@
 import { Effect, Layer } from "effect";
 import * as Redacted from "effect/Redacted";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
-import { describe, expect, it, beforeAll, afterAll } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { Credentials, DEFAULT_API_BASE_URL } from "../src/credentials";
+import { getV1DatabasesByDatabaseId } from "../src/operations/getV1DatabasesByDatabaseId";
 import {
   TestLayer,
+  getTestProject,
   runEffect,
   setupTestProject,
   teardownTestProject,
-  getTestProject,
 } from "./setup";
-import { getV1DatabasesByDatabaseId } from "../src/operations/getV1DatabasesByDatabaseId";
-import { Credentials, DEFAULT_API_BASE_URL } from "../src/credentials";
 
 // Layer with an invalid token to trigger Forbidden/Unauthorized errors
 const BadTokenLayer = Layer.merge(
-  Layer.succeed(Credentials, {
-    apiToken: Redacted.make("invalid_token_000000"),
-    apiBaseUrl: DEFAULT_API_BASE_URL,
-  }),
+  Layer.succeed(
+    Credentials,
+    Effect.succeed({
+      apiToken: Redacted.make("invalid_token_000000"),
+      apiBaseUrl: DEFAULT_API_BASE_URL,
+    }),
+  ),
   FetchHttpClient.layer,
 );
 
@@ -38,9 +41,7 @@ describe("getV1DatabasesByDatabaseId", () => {
     const project = getTestProject("db-get");
     const databaseId = project.databaseId!;
 
-    const result = await runEffect(
-      getV1DatabasesByDatabaseId({ databaseId }),
-    );
+    const result = await runEffect(getV1DatabasesByDatabaseId({ databaseId }));
 
     expect(result.data.id).toBe(databaseId);
     expect(result.data.name).toBeDefined();
@@ -62,7 +63,9 @@ describe("getV1DatabasesByDatabaseId", () => {
       }).pipe(
         Effect.flip,
         Effect.map((e) => {
-          expect(["NotFound", "UnprocessableEntity"]).toContain((e as any)._tag);
+          expect(["NotFound", "UnprocessableEntity"]).toContain(
+            (e as any)._tag,
+          );
         }),
         Effect.provide(TestLayer),
       ),

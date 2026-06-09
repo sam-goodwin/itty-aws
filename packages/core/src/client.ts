@@ -512,6 +512,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
       const innerFn = (input: Input): Effect.Effect<any, any, any> =>
         Effect.gen(function* () {
           const credentials = yield* config.credentials;
+          console.log("credentials", credentials);
           const creds = isEffectLike(credentials)
             ? yield* credentials
             : credentials;
