@@ -121,7 +121,7 @@ function provideTestEnv<A, E, R extends Provided>(
 ) {
   let eff = effect.pipe(
     Effect.provide(platform),
-    Effect.provideService(Region, "us-east-1"),
+    Effect.provideService(Region, Effect.succeed("us-east-1")),
     Effect.provideService(
       MinimumLogLevel,
       process.env.DEBUG ? "Debug" : "Info",
