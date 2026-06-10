@@ -5,17 +5,13 @@
  * generated service files so that `API.make()`, `API.OperationMethod`, etc.
  * are all accessible as namespace members.
  */
-import * as Effect from "effect/Effect";
-import * as Schema from "effect/Schema";
-import type * as AST from "effect/SchemaAST";
-import * as Stream from "effect/Stream";
+import { retryableKey } from "@distilled.cloud/core/category";
 import {
   makeAPI,
   type ApiErrorClass,
   type OperationMethod,
   type PaginatedOperationMethod,
 } from "@distilled.cloud/core/client";
-import { retryableKey } from "@distilled.cloud/core/category";
 import {
   paginateCursor,
   paginateSingle,
@@ -27,6 +23,11 @@ import {
   parseServerRetryHint,
 } from "@distilled.cloud/core/retry-after";
 import { getPath, type RequestParts } from "@distilled.cloud/core/traits";
+import * as Effect from "effect/Effect";
+import * as Schema from "effect/Schema";
+import type * as AST from "effect/SchemaAST";
+import * as Stream from "effect/Stream";
+import { Credentials, formatHeaders } from "../credentials.ts";
 import {
   CloudflareHttpError,
   Forbidden,
@@ -38,9 +39,8 @@ import {
   Unauthorized,
   UnknownCloudflareError,
 } from "../errors.ts";
-import { Credentials, formatHeaders } from "../credentials.ts";
 import { Retry } from "../retry.ts";
-import { type ErrorMatcher, getErrorMatchers } from "../traits.ts";
+import { getErrorMatchers, type ErrorMatcher } from "../traits.ts";
 
 // ============================================================================
 // Global Cloudflare error codes
@@ -58,6 +58,9 @@ const tagRetryable = <E>(error: E): E => {
   (error as Record<string, unknown>)[retryableKey] = {};
   return error;
 };
+
+const GLOBAL_RATE_LIMIT_MESSAGE =
+  /\b(rate ?limit(ed|ing)?|throttl(ed|ing) your request)\b/i;
 
 /**
  * Cloudflare error codes that map to global/default errors regardless of operation.
@@ -378,6 +381,15 @@ const matchError = (
   // Check global error codes before falling through to unknown
   if (errorCode !== undefined && errorCode in GLOBAL_ERROR_CODE_MAP) {
     return Effect.fail(GLOBAL_ERROR_CODE_MAP[errorCode](errorMessage, headers));
+  }
+
+  if (status === 429 || GLOBAL_RATE_LIMIT_MESSAGE.test(errorMessage)) {
+    return Effect.fail(
+      new TooManyRequests({
+        message: errorMessage,
+        retryAfter: parseServerRetryHint(headers),
+      }),
+    );
   }
 
   // Heuristic fallback: map by HTTP status, but only for non-retryable
